@@ -87,8 +87,8 @@ local function hero_register_main()
 		
 		-- hero:add_skill('宠物天赋','英雄',8)
 		
-		--创建一个宠物
-		player:create_pets()
+		--随机创建一个宠物
+		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 	end)
 
 end

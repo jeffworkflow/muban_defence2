@@ -1,12 +1,27 @@
+ac.peon_list = {}
+for name,data in pairs(ac.table.UnitData) do 
+    local color = data.unit_type 
+    if data.unit_type == '宠物' and data.name ~='宠物' then 
+        table.insert(ac.peon_list,name)
+    end 
+end 
+
+table.sort(ac.peon_list,function (strA,strB)
+    return strA<strB
+end)
+
 local player = require 'ac.player'
 
-function player.__index:create_pets()
+function player.__index:create_pets(name)
+    local name =name or '宠物'
     local x,y = ac.map.rects['出生点']:get_point():get()
-    local u = self:create_unit('宠物',ac.point(x-500,y))
+    local u = self:create_unit(name,ac.point(x-500,y))
     u.unit_type = '宠物'
     u:set('移动速度',522)
-    
     self.peon = u
+    if u.data and u.data.skill_name then 
+        u:add_skill(u.data.skill_name ,'英雄')
+    end    
     -- u:set_animation_speed(1000)
     --添加切换背包
     u:add_skill('切换背包','英雄',5)
@@ -29,12 +44,4 @@ function player.__index:create_pets()
     
     -- 测试魔法书
     -- u:add_skill('魔法书demo','英雄')
-    
-    --
-    if (self.cus_server and self.cus_server['勇士徽章']) or 0  > 0 then
-        self.flag_init_yshz = true 
-        local item = u:add_item('勇士徽章')
-        self.flag_init_yshz = false
-        item:set_item_count(self.cus_server['勇士徽章'])
-    end    
 end
