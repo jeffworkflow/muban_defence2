@@ -12,6 +12,7 @@ require 'war3'
 require 'types'
 -- print(3)
 require 'ac'
+-- require '框架拓展'
 -- print(4)
 require 'ui'
 -- print(5)

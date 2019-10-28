@@ -2,11 +2,7 @@ require '物品.装备'
 require '物品.消耗品'
 require '物品.杂类'
 require '物品.商店'
-require '物品.合成装备'
-require '物品.套装'
-require '物品.特殊处理'
-require '物品.黑色物品'
-require '物品.超神器'
+require '物品._常用'
 
 local unit = require 'types.unit'
 

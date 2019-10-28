@@ -270,6 +270,13 @@ function helper:dtdj(lv)
 	end    
 end
 
+--地图等级相关
+function helper:get_map_lv()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	print(p:Map_GetMapLevel())
+
+
+end	
 function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
 	local peon = p.peon
@@ -510,8 +517,8 @@ end
 function helper:show()
 	local function text(damage)
 		local size = 20
-		local x, y = damage.target:get_point():get()
-		local z = damage.target:get_point():getZ()
+		local x, y,z = damage.target:get_point():get()
+		-- local z = damage.target:get_point():getZ()
 		local tag = ac.texttag
 		{
 			string = ('%d'):format(math.floor(damage:get_current_damage())),
@@ -673,6 +680,14 @@ function helper:ads(str)
 	end				
 end
 
+--给进攻怪增加技能 
+function helper:ads_u(unit,str)
+	for key,val in pairs(ac.unit.all_units) do 
+		if val:get_name() == unit then 
+			val:add_skill(str,'英雄')
+		end	
+	end	
+end
 --增加 属性
 function helper:add(str,cnt)
 	print(self:add(str,tonumber(cnt)))
@@ -842,6 +857,8 @@ function helper:tt()
 	self:add('免伤几率',90)
 	self:add('全伤加深',10030000000)
 	self:add('暴击加深',1003000)
+	self:add('攻击速度',500)
+	self:add('攻击间隔',-1)
 	self:add_wood(10000000)
 	self:add_fire_seed(10000000)
 	-- if not ac.wtf then

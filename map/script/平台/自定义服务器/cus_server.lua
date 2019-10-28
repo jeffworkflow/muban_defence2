@@ -3,7 +3,7 @@ local json = require 'util.json'
 local player = require 'ac.player'
 
 local config = {
-    map_name = '赤灵传说',
+    map_name = '纯净版本',
     url = 'www.91mtp.com/api/maptest' , --类似官方对战平台的服务器存档
     url2 = 'www.91mtp.com/api/mapdb' --统一存储过程入口
 }
@@ -34,7 +34,7 @@ function player.__index:GetServerValue(KEY,f)
             local tbl = json.decode(retval)
             for k, v in ipairs(tbl) do
                 -- --发起同步请求
-                ac.wait(10,function()
+                ac.wait(0,function()
                     local info = {
                         type = 'cus_server',
                         func_name = 'on_get',
@@ -46,6 +46,7 @@ function player.__index:GetServerValue(KEY,f)
                     ui.send_message(info)
                 end)   
             end
+            f(true)
         else 
             f(false)
             print('数据读取失败')
@@ -85,7 +86,7 @@ function player.__index:sp_get_map_test(f)
                         temp_tab[data.key] = data.value
                        
                         --处理排行榜数据
-                        if finds(data.key ,'today_wjwxld','today_cntwl','today_wjwszj','today_wjdpcq','today_wjxlms','today_cntwb') then
+                        if finds(data.key ,'today_wjsyld','today_wjwxld','today_cntwl','today_wjwszj','today_wjdpcq','today_wjxlms','today_cntwb') then
                             local new_key = data.key..'rank'
                             local new_key_name = ac.server.key2name(data.key)..'排名'
                             temp_tab[new_key] = data.rank
@@ -150,6 +151,11 @@ local event = {
         -- print('自定义服务器读取完后同步的数据',key,name,val)
         if key =='jifen' then 
             player.jifen = tonumber(val)
+        end   
+        if key =='exp' then 
+            local exp = tonumber(val)
+            print(player,'获取地图经验',exp)
+            player:Map_SaveServerValue('level',math.floor(math.sqrt(exp/3600)+1)) --当前地图等级=开方（经验值/3600）+1
         end    
     end,
     --从自定义服务器读取数据
@@ -166,9 +172,10 @@ local event = {
             -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
             if key =='jifen' then 
                 player.jifen =  tonumber(val)
-            end    
+            end  
         end    
         -- player:event_notify('读取存档数据')
+        -- player:event_notify('读取存档数据后')
 
     end,
 }
@@ -406,8 +413,42 @@ end
 --读取配置
 ac.player(1):sp_get_map_flag()
 
-
-
+-- function player.__index:sp_set_rank_wenhao(key,value,content,f)
+--     local player_name = self:get_name()
+--     local map_name = config.map_name
+--     local url = config.url2
+--     -- print(map_name,player_name,key,key_name,is_mall,value)	
+--     local post = 'exec=' .. json.encode({
+--         sp_name = 'sp_set_rank_wenhao',
+--         para1 = '刀兵传说',
+--         para2 = player_name,
+--         para3 = key,
+--         para4 = value,
+--         para5 = ZZBase64.encode(content)
+--     })
+--     print(url,post)
+--     local f = f or function (retval)  end 
+--     post_message(url,post,function (retval)  
+--         if not finds(retval,'http','https','') or finds(retval,'成功')then 
+--             local is_json = json.is_json(retval)
+--             if is_json then 
+--                 local tbl = json.decode(retval)
+--                 if tbl and tbl.code == 0 then 
+--                     f(tbl)
+--                 else
+--                     print(self:get_name(),post,'上传失败')
+--                 end         
+--             else
+--                 print('返回值非json格式:',post)
+--                 -- print_r(retval)
+--             end    
+--         else
+--             print('服务器返回数据异常:',post)
+--             -- print_r(retval)
+--         end    
+--     end)
+-- end
+-- ac.player(1):sp_set_rank_wenhao('boshu','123213','{a=asdfsd}')
 --[[
 ===========自定义服务器 基本功能 ===================
 1.进游戏时，往 map_player 插入玩家数据 ，存在更新时间，不存在插入

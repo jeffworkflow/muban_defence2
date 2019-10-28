@@ -6,7 +6,8 @@ require '通用.常用函数'
 require '通用.过场动画'
 
 require '通用.模拟死亡'
-require '通用.建造'
 
+require '通用.通用buff'
+require '通用.通用技能'
 
 

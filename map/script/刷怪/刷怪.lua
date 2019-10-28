@@ -218,6 +218,7 @@ ac.wait(20,function()
                 { name = "斗破苍穹(无尽)" },
                 { name = "无上之境(无尽)" },
                 { name = "无限乱斗(快速)" },
+                { name = "深渊乱斗(快速)" },
                 { name = "武林大会(可PK)" },
             }
             local list2 = {
@@ -251,7 +252,10 @@ ac.wait(20,function()
                 if finds(name,'无限乱斗') then 
                     name = "无限乱斗"
                 end 
-                if not finds(name,'普通模式','武林大会','无限乱斗') then 
+                if finds(name,'深渊乱斗') then 
+                    name = "深渊乱斗"
+                end
+                if not finds(name,'普通模式','武林大会','无限乱斗','深渊乱斗') then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
             end  
@@ -279,10 +283,14 @@ ac.wait(20,function()
                         ac.g_game_degree_name = "无上之境"  
                     elseif index == 5 then 
                         ac.g_game_degree = 14
-                        ac.g_game_degree_attr = 13  
+                        ac.g_game_degree_attr = 14  
                         ac.g_game_degree_name = "无限乱斗"  
                     elseif index == 6 then 
                         ac.g_game_degree = 15
+                        ac.g_game_degree_attr = 15  
+                        ac.g_game_degree_name = "深渊乱斗"  
+                    elseif index == 7 then 
+                        ac.g_game_degree = 16
                         ac.g_game_degree_attr = 2  
                         ac.g_game_degree_name = "武林大会"  
                     end    
@@ -301,7 +309,7 @@ ac.wait(20,function()
                                 ac.game:event_notify('游戏-开始')
                             end)
                             ac.player.self:sendMsg("选择了 |cffffff00"..list2[index].name.."|r")
-                            ac.game:event_notify('选择难度',ac.g_game_degree_name)
+                            ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree)
                         end)
                     elseif  index < #list  then 
                         --创建预设英雄
@@ -310,7 +318,7 @@ ac.wait(20,function()
                         ac.wait(30*1000,function()
                             ac.game:event_notify('游戏-开始')
                         end)
-                        ac.game:event_notify('选择难度',ac.g_game_degree_name)
+                        ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree)
                     else
                         --发起投票
                         ac.game.start_vote()
@@ -321,7 +329,7 @@ ac.wait(20,function()
                             ac.wait(30*1000,function()
                                 ac.game:event_notify('游戏-开始')
                             end)
-                            ac.game:event_notify('选择难度',ac.g_game_degree_name)
+                            ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree)
                         end)
                     end    
                 end)
@@ -372,3 +380,22 @@ ac.wait(20,function()
     end)    
    
 end);
+
+--boss以及进攻单位 杀死英雄马上进攻其他英雄
+ac.game:event '单位-杀死单位' (function(trg, killer, target)
+    
+    local unit_str = table.concat(ac.attack_unit) .. table.concat(ac.attack_boss)
+    if not target:is_hero() or not finds(unit_str,killer:get_name()) then 
+        return 
+    end    
+    ac.attack_hero(killer)
+    --其他进攻单位
+    for i=1 ,3 do
+        local creep = ac.creep['刷怪'..i]
+        for _, unit in ipairs(creep.group) do
+            -- print('刷怪单位',unit:get_name())
+            ac.attack_hero(unit)
+        end    
+    end    
+
+end)    

@@ -76,8 +76,8 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 			return
 		end
 	end
-	local x, y = where:get_point():get()
-	local z = where:get_point():getZ()
+	local x, y,z = where:get_point():get()
+	-- local z = where:get_point():getZ()
 	local position = ac.point(x - 30, y, z + 30)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
@@ -376,6 +376,7 @@ ac.map.rects={
 local minx, miny, maxx, maxy = ac.map_area:get()
 -- print(minx, miny, maxx, maxy)
 
+--关闭附近可通行的点
 local function pathRegionInit(minx, miny, maxx, maxy)
 	jass.EnumDestructablesInRect(jass.Rect(minx, miny, maxx, maxy), nil, function()
 		local dstrct = jass.GetEnumDestructable()
@@ -406,6 +407,8 @@ local function pathRegionInit(minx, miny, maxx, maxy)
 end
 pathRegionInit(minx, miny, maxx, maxy)
 
+--设置镜头平滑参数
+jass.CameraSetSmoothingFactor(30.00)
 
 --出地图者死 
 local rect = ac.rect.create(minx-200, miny-500, maxx+200, maxy+800)

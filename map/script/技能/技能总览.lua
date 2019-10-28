@@ -91,7 +91,7 @@ for _,name in ipairs(ac.skill_list2) do
     ac.skill[name].gold = 2000
 end    
 
-
+--F9 任务说明
 local function initialize()
     local unit = ac.player(16):create_dummy('e001',ac.point(0,0),0)
 

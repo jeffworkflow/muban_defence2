@@ -1,36 +1,5 @@
 
 
---按照装备品阶 筛选出 lni 装备。
---quality_item={'白' = {'新手剑','新手戒指'},'蓝' = {..}}
--- local quality_item ={}
--- local all_item = {}
--- for name,data in pairs(ac.table.ItemData) do 
---     local color = data.color 
---     if color then 
---         if data.item_type == '装备' or data.item_type == '消耗品'   then
---             if not quality_item[color] then 
---                 quality_item[color] = {}
---             end    
---             table.insert(quality_item[color],name)
---             --打印 可合成或是掉落的物品 
---             -- print(name,color)
---             table.insert(all_item,name)
---         end    
---     end 
--- end
-
--- for k,v in pairs(quality_item) do 
---     table.sort(v,function (strA,strB)
---         return strA < strB
---     end)
--- end    
--- table.sort(ac.all_item,function (strA,strB)
---     return strA<strB
--- end)
-
---英雄技能，钥匙怪掉落表
-ac.skill_list2 = ac.skill_list2
-
 local function item_self_skill(item,unit,time)
     local timer = ac.wait((time or 100) * 1000,function (timer)
         -- print(123333,item.owner)
@@ -69,8 +38,8 @@ local function on_texttag(string,color,hero)
     }
 
     local target = hero
-    local x, y = target:get_point():get()
-    local z = target:get_point():getZ()
+    local x, y,z = target:get_point():get()
+    -- local z = target:get_point():getZ()
     local tag = ac.texttag
     {
         string = string,
@@ -92,12 +61,6 @@ ac.on_texttag =  on_texttag
 
 --先列出所有奖励 再按概率抽取
 local reward = {
-    ['符文'] = function (player,hero,unit,level)
-        local list = {'力量符文','敏捷符文','智力符文','血质符文','魔力符文','生命符文','魔法符文'}
-        local name = list[math.random(#list)] .. level 
-        local x,y = unit:get_point():get() 
-        local item = hero:add_item(name)
-    end,
 
     ['随机白装'] = function (player,hero,unit,is_on_hero)
         local list = ac.quality_item['白']
@@ -708,7 +671,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         return 
     end 
     --无尽后，死亡不掉落任何东西
-    if ac.creep['刷怪-无尽1'].index >= 1 then 
+    if not ac.creep['刷怪-无尽1'] or ac.creep['刷怪-无尽1'].index >= 1 then 
         return 
     end
     local player = killer:get_owner()
