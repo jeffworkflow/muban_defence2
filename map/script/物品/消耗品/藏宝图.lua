@@ -285,7 +285,7 @@ function mt:on_remove()
     
 end
 
---散落碎片
+--散落碎片 @起始点 @随机掉落物品表
 ac.func_give_suipian = function(start,tab)
     local cnt = math.random(5,10)
     local tab = tab or ac.shenlong_suipin

@@ -12,7 +12,7 @@ require 'war3'
 require 'types'
 -- print(3)
 require 'ac'
--- require '框架拓展'
+require '框架拓展'
 -- print(4)
 require 'ui'
 -- print(5)
@@ -55,12 +55,30 @@ ac.wait(100,function ()
     end
     -- light(3)
 
-    --开局锁定镜头
-    -- local point = ac.map.rects['出生点']:get_point()
-    -- local p = ac.player(1)
-    -- local hero = p:createHero('希尔瓦娜斯',point);
-    -- p.hero = hero
-    -- p:event_notify('玩家-注册英雄', p, p.hero)
+    --开局创建英雄
+    local point = ac.map.rects['出生点']:get_point()
+    local p = ac.player(1)
+    local hero = p:createHero('大地',point);
+    p.hero = hero
+    p:event_notify('玩家-注册英雄', p, p.hero)
+    
+    --创建木桩
+	local cnt = 1 
+	local point = ac.point(-200,0)
+	for i=1,cnt do 
+		local unit = ac.player(12):create_unit('甲虫',point)
+		unit:set('生命上限',100000000000000)
+		unit:set('生命恢复',100000000000000)
+		unit:set('护甲',10000)
+		unit:set('攻击',0)
+		unit:add_restriction '定身'
+		unit:add_restriction '缴械'
+		unit:set_size(2)
+	end
+
+
+
+
     -- hero:add_skill('神兵','英雄')
     -- local book_skl = hero:add_skill('洗练石','英雄')
     -- hero:add_skill('境界','英雄')

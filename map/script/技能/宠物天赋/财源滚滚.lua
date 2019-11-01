@@ -12,33 +12,29 @@ mt{
    damage_area = 500,
 	--流派
 	skill_type = "木头",
-	--被动
-	passive = true,
 	--耗蓝
-	cost = 100,
-	--忽略技能冷却
-	ignore_cool_save = true,
+	cost = 0,
+	--冷却时间
+	cool = 180,
 	--作用在人身上
 	strong_hero = true,
 	--属性加成
- ['杀怪加全属性'] = {10,20,30,40,50},
- ['分裂伤害'] = 25,
+ ['生命上限%'] = 20,
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+10*Lv
-【分裂伤害】+25%|r
-
-|cff00bdec被动效果：攻击10%几率造成范围技能伤害
-伤害公式：（力量*10+10000）*Lv|r
-
-|cff00ff00凌波微步：按D向鼠标方向飘逸500码距离|r]],
+	tip = [[|cff00ff00钱越滚越多，点击获得|cffffff00【10%当前木头】|cff00ff00的木头]],
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNArthas.blp]],
-	--特效
-	effect = [[jn_tf1.mdx]],
+	art = [[jinzhu.blp]],
 }
 function mt:on_add()
     local skill = self
     local hero = self.owner
+end
+function mt:on_cast_start()
+    local skill = self
+    local hero = self.owner
+    local p = self.owner.owner
+    hero:add_wood(p.wood * 0.1)  
+
 end
 function mt:on_remove()
     local hero = self.owner

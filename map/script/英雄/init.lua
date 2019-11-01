@@ -14,4 +14,4 @@ require '英雄.hero_info'
 --加载选择英雄
 require '英雄.成长之路'
 --加载选择英雄
-require '英雄.choose_hero'
+-- require '英雄.choose_hero'

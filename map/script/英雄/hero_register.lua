@@ -86,9 +86,13 @@ local function hero_register_main()
 		hero:add_skill('减少周围护甲','隐藏')
 		
 		-- hero:add_skill('宠物天赋','英雄',8)
+		print(os.clock()*1000 % 1000)
+		--随机创建一个宠物 随机： ac.clock()
+		ac.wait(os.clock()*1000 % 1000 ,function()
+			player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
+			player:selectUnit(player.peon)
+		end)
 		
-		--随机创建一个宠物
-		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 	end)
 
 end

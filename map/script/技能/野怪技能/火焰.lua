@@ -83,7 +83,7 @@ end
 
 local mt = ac.buff['火焰']
 mt.ref = 'origin' 
-mt.cover_type = 0
+mt.cover_type = 0 --独占性，只有一个生效
 -- mt.cover_max = 1
 -- mt.cover_global = 1
 

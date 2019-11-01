@@ -12,12 +12,26 @@ mt{
    damage_area = 500,
 	--流派
 	skill_type = "物品",
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 180,
 	--作用在人身上
 	strong_hero = true,
+	--属性加成
+ ['智力%'] = 10,
+	--介绍
+	tip = [[|cff00ff00点击从兜里掏出一件|cffffff00随机物品]],
+	--技能图标
+	art = [[xiaodingdang.blp]],
 }
-function mt:on_add()
+function mt:on_cast_start()
     local skill = self
     local hero = self.owner
+    
+    --概率触发
+    hero:add_item(ac.all_item[math.random(#ac.all_item)],true)
+
 end
 function mt:on_remove()
     local hero = self.owner

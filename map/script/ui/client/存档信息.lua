@@ -154,7 +154,7 @@ class.player_info_panel = extends(class.panel){
                     if name =='地图等级' then 
                         new_value = player:Map_GetMapLevel()
                     elseif name =='宠物等级' then
-                        new_value = peon.peon_lv
+                        new_value = peon:find_skill('宠物天赋') and peon:find_skill('宠物天赋').level
                     elseif name =='小龙女碎片' then
                         name = '手无寸铁的小龙女碎片' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  

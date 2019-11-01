@@ -12,31 +12,18 @@ mt{
    damage_area = 500,
 	--流派
 	skill_type = "物品",
-	--被动
-	passive = true,
 	--耗蓝
-	cost = 100,
-	--忽略技能冷却
-	ignore_cool_save = true,
+	cost = 0,
+	--冷却时间
+	cool = 180,
 	--作用在人身上
 	strong_hero = true,
 	--属性加成
- ['杀怪加全属性'] = {10,20,30,40,50},
- ['护甲'] = 25,
- ['伤害减少'] = 5000,
+ ['生命上限%'] = 20,
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+10*Lv
-【护甲】+500
-【伤害减少】+5000|r
-
-|cff00bdec被动效果：攻击10%几率造成范围技能伤害
-伤害公式：（力量*10+10000）*Lv|r
-
-|cff00ff00凌波微步：按D向鼠标方向飘逸500码距离|r]],
+	tip = [[|cff00ff00对乔巴进行一顿称赞，75%概率可获得它|cffffff00精心研制的药水]],
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNHeroMountainKing.blp]],
-	--特效
-	effect = [[jn_tf1.mdx]],
+	art = [[nizhenbang.blp]],
 }
 function mt:on_add()
     local skill = self

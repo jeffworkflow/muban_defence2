@@ -69,7 +69,9 @@ function mt:on_add()
 				}
 			end 
             --激活cd
-            skill:active_cd() 
+			skill:active_cd() 
+			--发布事件
+			hero:event_notify('触发被动',skill,damage.target)
         end
     end)
 end

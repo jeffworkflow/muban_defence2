@@ -784,15 +784,17 @@ function helper:add_ability(str)
 end	
 --测试用的木桩
 function helper:tt_unit(where)
-	local cnt = 5 
-	local point = ac.map.rects['出生点']:get_point()
+	local cnt = 1 
+	local point = ac.point(-200,0)
 	for i=1,cnt do 
 		local unit = ac.player(12):create_unit('甲虫',point)
-		unit:set('生命上限',10000000000)
-		unit:set('生命恢复',10000000000)
+		unit:set('生命上限',100000000000000)
+		unit:set('生命恢复',100000000000000)
 		unit:set('护甲',10000)
-		unit:set('攻击',10000)
-		-- unit:set('移动速度',0)
+		unit:set('攻击',0)
+		unit:add_restriction '定身'
+		unit:add_restriction '缴械'
+		unit:set_size(2)
 	end	
 end	
 function helper:final()

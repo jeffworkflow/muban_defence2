@@ -234,9 +234,11 @@
             end 
         end    
 
-
         --购买上限
-        if it.max_buy_cnt and it.player_buy_cnt then
+        if not it.player_buy_cnt then 
+            it.player_buy_cnt = {} 
+        end
+        if it.max_buy_cnt  then
             if it.player_buy_cnt[player] and (it.player_buy_cnt[player] > (it.max_buy_cnt or 9999999)) then
                 u:get_owner():sendMsg('超出购买上限',3)
                 return
@@ -264,6 +266,9 @@
         end    
         --给单位添加物品时，会进行一系列逻辑处理，处理完后会改变 buy_suc 状态
         if u.buy_suc then 
+            --记录每个玩家的购买次数
+            it.player_buy_cnt[player] = it.player_buy_cnt[player] or 0 + 1
+
             if has_raffle then 
                 u_raffle:add_item_count(-need_cnt)
             else
@@ -481,6 +486,9 @@
             else 
                 if item._count > 0 then 
                     item._count = item._count - 1
+                    ac.wait(0,function()
+                        item:add_item_count(1)
+                    end)  
                 end
             end    
 

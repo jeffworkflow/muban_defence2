@@ -66,7 +66,7 @@ local ui_info = {
     },
     {
         name = nil,  
-        path = 'f3_liangongfang.blp',
+        path = 'image\\控制台\\f3_liangongfang.blp',
         key = 'F3', 
         tip = "F3进入练功房"
     },

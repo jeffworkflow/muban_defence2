@@ -106,6 +106,7 @@ function mt:on_add()
     ac.wait(500,function()
         if value > 0 then
             hero:peon_add_xp(value)
+            hero:peon_add_lv()
         end    
     end )
 end
@@ -224,6 +225,19 @@ function unit.__index:peon_get_lv_by_xp(xp)
 	return lv 
 end   
 
+--额外宠物等级
+function unit.__index:peon_add_lv()
+    local skill = self:find_skill('宠物天赋')
+    if not skill then 
+        return 
+    end
+    local ex_peon_lv = self:get_owner():get('宠物等级')
+    print('额外宠物等级',ex_peon_lv)
+    for i=1,ex_peon_lv do 
+        skill:upgrade(1)
+        ac.game:event_notify('宠物升级',self)
+    end
+end
 --增加经验
 function unit.__index:peon_add_xp(xp)
     local player = self:get_owner()
@@ -257,7 +271,7 @@ function unit.__index:peon_add_xp(xp)
                 ac.game:event_notify('宠物升级',self)
                 flag = true
             end    
-        end 
+        end     
     end
     --改变宠物的名字 不是英雄单位无法修改
     -- japi.EXSetUnitArrayString(base.string2id(self.id), 61, 0, name)

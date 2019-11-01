@@ -4,6 +4,8 @@ local jass = require 'jass.common'
 local Care = {
     '金币', '木材', '食物', '食物上限',
     '局内地图等级', 
+    '宠物等级', 
+    '翻倍', 
 }
 
 local Show = {
@@ -28,7 +30,11 @@ local Get = {
 }
 
 local mt = ac.player.__index
-mt.type = 'player attribute'
+-- mt.type = 'player attribute'
+
+mt._base = {}
+mt._rate = {}
+mt._show = {}
 
 -- 设置固定值，会清除百分比部分
 function mt:set(k, v)
@@ -48,6 +54,10 @@ function mt:set(k, v)
 end
 
 function mt:get(k)
+    --没有传key 表示获取玩家id
+    if not k then 
+        return self.id
+    end    
     local base = self._base[k] or 0.0
     local rate = self._rate[k] or 0.0
     local v = base * (1.0 + rate / 100.0)
@@ -98,7 +108,7 @@ function mt:onShow(k)
     if v == s then
         return
     end
-    local player = self._player
+    local player = self
     local delta = v - s
     self._show[k] = v
     Show[k](player, v)
@@ -111,16 +121,22 @@ function mt:onSet(k)
     end
     return Set[k](self)
 end
+-- local function init()
+--     for i=1,10 do 
 
-return function (player)
-    local obj = setmetatable({
-        _player = player,
-        _base = {},
-        _rate = {},
-        _show = {},
-    }, mt)
-    for _, k in ipairs(Care) do
-        obj:set(k, 0.0)
-    end
-    return obj
-end
+        
+--     end
+-- end 
+-- init()    
+-- return function (player)
+--     local obj = setmetatable({
+--         _player = player,
+--         _base = {},
+--         _rate = {},
+--         _show = {},
+--     }, mt)
+--     for _, k in ipairs(Care) do
+--         obj:set(k, 0.0)
+--     end
+--     return obj
+-- end

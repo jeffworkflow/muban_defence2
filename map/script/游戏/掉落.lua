@@ -671,7 +671,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         return 
     end 
     --无尽后，死亡不掉落任何东西
-    if not ac.creep['刷怪-无尽1'] or ac.creep['刷怪-无尽1'].index >= 1 then 
+    if type(ac.creep['刷怪-无尽1']) == 'function' or ac.creep['刷怪-无尽1'].index >= 1 then 
         return 
     end
     local player = killer:get_owner()

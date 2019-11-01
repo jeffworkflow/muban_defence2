@@ -439,7 +439,7 @@ function mt:item_init_skill()
 	-- end
 	-- 用 item.not_dis = true 替换
 	japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, self.cool or 0)
-	self.is_skill_init = true
+	-- self.is_skill_init = true
 end
 function mt:get_item_lni_tip(str)
 	local item_tip = str or (self.lni_data and self.lni_data.tip ) or ''

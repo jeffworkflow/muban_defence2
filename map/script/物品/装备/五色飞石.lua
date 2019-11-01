@@ -135,7 +135,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local player = hero:get_owner()
     --需要先增加一个，否则消耗品点击则无条件先消耗
-    self:add_item_count(1) 
+    -- self:add_item_count(1) 
 end    
 --实际是丢掉
 function mt:on_remove()
