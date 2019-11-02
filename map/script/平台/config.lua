@@ -59,12 +59,13 @@ local item = {
     {'gg','关公',35},
     {'jbl','加百列',42},
     {'cxwxly','赤霞万象领域',37},
+    
+-- {'gd','肝帝',60},
+    
+    
+}   
 
-    {'gd','肝帝',60},
-    
-    
-}
-ac.mall = item 
+
 
 --@设计 从网易读取并保存到map_test 只有商城、地图等级。
 --  字段需要
@@ -87,6 +88,8 @@ local cus_key = {
     {'cnt_zqwz','最强王者'},
     {'cntrywz','荣耀王者'},
     {'cntdfwz','巅峰王者'},
+    --10
+
     {'cntxlms','修罗模式'}, -- 星数
     {'cntdpcq','斗破苍穹'}, -- 星数
     {'cntpkms','武林大会'}, -- 星数
@@ -142,80 +145,116 @@ local cus_key = {
     {'today_wjsyldrank','今日深渊乱斗无尽排名'},
 
     {'bwllc','霸王莲龙锤'},
+
     {'hhxyj','幻海雪饮剑'},
-    -- {'hjblj','惊虹奔雷剑',20},
+    -- {'hhxyj','幻海雪饮剑'},
     
     {'mdxy','梦蝶仙翼'},
+
     {'tgcyy','天罡苍羽翼'},
-    -- {'xyxyy','玄羽绣云翼',30},
+    -- {'tgcyy','天罡苍羽翼'},
+
+
     {'lysxy','龙吟双形翼'},
+    -- {'lysxy','龙吟双形翼'},
     {'jlsxy','金鳞双型翼'},
+    -- {'jlsxy','金鳞双型翼'},
     {'cmsxy','赤魔双形翼'},
+    -- {'cmsxy','赤魔双形翼'},
     
+    {'sbkd','势不可挡'},
+    --记得添加
+
 
     {'lhcq','炉火纯青'},
-    {'sbkd','势不可挡'},
     {'htmd','毁天灭地'},
     {'dfty','风驰电掣'},
+    -- {'lhcq','炉火纯青'},
+    
+    --     {'htmd','毁天灭地'},
+    --     {'dfty','风驰电掣'},
+        
     {'jltx','君临天下'},
     {'jstj','无双魅影'},
     {'sd','神帝'},
     {'wzgl','傲世天下'},
+    --4
 
-    {'nsl','耐瑟龙'},
+    -- {'nsl','耐瑟龙'},
     {'bl','冰龙'},
-    {'jll','精灵龙'},
-    {'qml','奇美拉'},
+
+    -- {'jll','精灵龙'},
+
+    -- {'qml','奇美拉'},
+
     {'my','魅影'},
     {'zsyhly','紫霜幽幻龙鹰'},
+
     {'tmxk','天马行空'},
     
 
-    {'spnsl','耐瑟龙碎片'},
-    {'spbl','冰龙碎片'},
-    {'spjll','精灵龙碎片'},
-    {'spqml','奇美拉碎片'},
-    {'spmy','魅影碎片'},
-    {'spzsyhly','紫霜幽幻龙鹰碎片'},
+    -- {'spnsl','耐瑟龙碎片'},
+    -- {'spbl','冰龙碎片'},
+    -- {'spjll','精灵龙碎片'},
+    -- {'spqml','奇美拉碎片'},
+    -- {'spmy','魅影碎片'},
+    -- {'spzsyhly','紫霜幽幻龙鹰碎片'},
     
 
     {'zzl','赵子龙'},
+    -- {'zzl','赵子龙'},
+    
     {'pa','Pa'},
     {'xln','手无寸铁的小龙女'},
     {'gy','关羽'},
+
     {'wzj','王昭君'},
 
-    {'sppa','Pa碎片'},
-    {'spxln','手无寸铁的小龙女碎片'},
-    {'spgy','关羽碎片'},
+    -- {'sppa','Pa碎片'},
+    -- {'spxln','手无寸铁的小龙女碎片'},
+    -- {'spgy','关羽碎片'},
 
-    {'spbwllc','霸王莲龙锤碎片'},
-    {'spmdxy','梦蝶仙翼碎片'},
+    -- {'spbwllc','霸王莲龙锤碎片'},
+    -- {'spmdxy','梦蝶仙翼碎片'},
 
     {'wbjf','挖宝积分'},
     {'cwtf','宠物天赋'},
     {'yshz','勇士徽章'},
+    --17
 
     {'dhll','力量'},
     {'dhmj','敏捷'},
     {'dhzl','智力'},
     {'dhqsx','全属性'},
+    --21
 
     {'sjjh','杀鸡儆猴'},
+    --22
 
     {'xwly','血雾领域'},
-    {'gjjj','攻击减甲'},
 
+    {'gjjj','攻击减甲'},
+--23
     
     {'zsas','紫色哀伤'},
     {'blnsy','白龙凝酥翼'},
+    -- {'zsas','紫色哀伤'},
+    -- {'blnsy','白龙凝酥翼'},
+
     {'szas','霜之哀伤'},
+    -- {'szas','霜之哀伤'},
+
     {'fthj','方天画戟'},
+    -- {'fthj','方天画戟'},
     {'sswsj','圣神无双剑'},
+    -- {'sswsj','圣神无双剑'},
     {'mszxj','灭神紫霄剑'},
+    -- {'mszxj','灭神紫霄剑'},
 
     {'tszg','天使之光'},
+    -- {'tszg','天使之光'},
     {'byshly','白云四海领域'},
+    -- {'byshly','白云四海领域'},
     {'zwqyly','真武青焰领域'},
     
 
@@ -224,12 +263,19 @@ local cus_key = {
     {'wlgs','武林高手'},
     {'jsqc','绝世奇才'},
     {'wzsj','威震三界'},
+    
 
     {'wljf','比武积分'},
-    {'ydss','缘定三生'},
+--24
+
+--27 
     
     {'lhjyly','烈火金焰领域'},  
+    -- {'lhjyly','烈火金焰领域'},  
     {'hsslly','烈火天翔领域'},
+    -- {'hsslly','烈火天翔领域'},
+
+    {'ydss','缘定三生'},
 
     {'jdzw','井底之蛙'},
     {'swldddr','食物链顶端的人'},
@@ -252,6 +298,7 @@ local cus_key = {
     -- {'hdfn','愤怒'},
     -- {'hdyw','厌恶'},
     -- {'hdkj','恐惧'},
+
     {'hdmnlsdwx','蒙娜丽莎的微笑'},
     {'hdshgty','四海共团圆'},
     {'hddygcpxdr','第一个吃螃蟹的人'},
@@ -286,37 +333,106 @@ local cus_key = {
     {'jzdw','九洲帝王'},
     {'qspt','庆生蟠桃'},
     {'ydn','雅典娜'},
+
     
+    {'ntgm','逆天改命'},
+    {'qcfh','七彩凤凰'},
+    {'lsywly','罗刹夜舞领域'},
+    -- {'ntgm','逆天改命'},
+    -- {'qcfh','七彩凤凰'},
+    -- {'lsywly','罗刹夜舞领域'},
     
 }
-ac.cus_server_key = cus_key
 
-ac.server_key = {}
-local function init_server_key()
-    for i,v in ipairs(item) do
-        v[4] = 1 --表示商城道具
-        table.insert(ac.server_key,v)
-    end
-end;
-init_server_key()
+--11存档信息
+if record_11 then 
+    item = {
+        {'vip','满赞'},
+        {'20000956','金币礼包'},
+        {'20000955','木材礼包'},
+        {'20000939','永久赞助'},
+        {'20000936','永久超级赞助'},
+        {'20000945','皇帝剑'},
+        {'20000944','皇帝刀'},
+        {'20000942','绝世阳炎翼'},
+        {'20000947','轮迴幻魔翼'},
+        -- {'XLSF','限量首充'},
+        {'20000937','首充大礼包'},
+    
+        {'20000943','骨龙'},
+        {'20000941','小悟空'},
+    
+        {'20000932','至尊宝'},
+        {'20000934','鬼厉'},
+        {'20000933','剑仙'},
+        -- {'YXZSB','剑仙直升包'},
+    
+        {'20000940','神仙水'},
+        {'20000946','神装大礼包'},
+        {'20000948','神技大礼包'},
+        {'20000938','寻宝小飞侠'},
+        
+        {'20000949','孤风青龙领域'},
+        {'20000950','远影苍龙领域'},
+    
+        {'20001055','真龙天子'},
+        {'20001056','齐天大圣'},
+        -- {'QTDSB','齐天大圣B'},
+
+
+        {'20000935','百变英雄礼包'},
+        -- {'SJBCLB','赛季补偿礼包'},
+    
+        --key,key_name,地图等级要求
+        {'WXHP','五星好评礼包',3},
+        {'XHB','夏侯霸',5},
+        {'YJ','虞姬',10},
+        {'TJXM','太极熊猫',15},
+        {'DRJ','狄仁杰',25},
+        {'YND','伊利丹',32},
+
+        {'hjblj','惊虹奔雷剑',20},
+        {'xyxyy','玄羽绣云翼',30},
+        
+        {'ltly','龙腾领域',13},
+        {'fsrlly','飞沙热浪领域',17},
+        {'lxytly','灵霄烟涛领域',22},
+    
+        {'fxlhj','飞星雷火剑',26},
+        {'byjhy','白羽金虹翼',28},
+    
+        {'gg','关公',35},
+        {'jbl','加百列',42},
+        {'cxwxly','赤霞万象领域',37},
+        
+    -- {'gd','肝帝',60},
+    }
+    -- print(item[1][1],item[1][2],ac.player(1):Map_HasMallItem(item[1][1]))
+    table.insert(cus_key,{'exp','地图经验'})
+    table.insert(cus_key,{'level','地图等级'})
+    print(ac.player(1):Map_GetServerValue('sjjh'))
+end 
+
+ac.cus_server_key = cus_key
+ac.mall = item 
 
 --通过key取 name 和 是否商城道具
 function ac.server.key2name(key)
     local res
     local is_mall
-    --取网易key,value
-    for i,v in ipairs(ac.server_key) do
-        if v[1] == key then 
-            res = v[2]
-            is_mall = v[4]
-            break
-        end    
-    end 
     --取自定义key,value
     for i,v in ipairs(ac.cus_server_key) do 
         if v[1] == key then 
             res = v[2]
             is_mall = v[4]
+            break
+        end
+    end  
+    --取自定义key,value)
+    for i,v in ipairs(ac.mall) do 
+        if v[1] == key then 
+            res = v[2]
+            is_mall = 1
             break
         end
     end  
@@ -326,20 +442,20 @@ end
 --通过 name 取 key
 function ac.server.name2key(name) 
     local res
-    local is_mall
-    --取网易key,value
-    for i,v in ipairs(ac.server_key) do
-        if v[2] == name then 
-            res = v[1]
-            is_mall = v[4]
-            break
-        end    
-    end 
+    local is_mall 
     --取自定义key,value
     for i,v in ipairs(ac.cus_server_key) do 
         if v[2] == name then 
             res = v[1]
             is_mall = v[4]
+            break
+        end
+    end  
+    --取自定义key,value
+    for i,v in ipairs(ac.mall) do 
+        if v[2] == name then 
+            res = v[1]
+            is_mall = 1
             break
         end
     end  

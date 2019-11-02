@@ -290,7 +290,7 @@ tip = [[
 |cff00ff00+488   攻击减甲|r
 |cff00ff00+488%  全伤加深|r
 |cff00ffff+50%   每秒回血|r
-|cff00ffff+10%  闪避|r
+|cff00ffff+10%   闪避|r
 |cffff0000+15%   会心几率|r
 |cffff0000+150%  会心伤害|r
 
@@ -312,7 +312,7 @@ effect = [[zhenlongtianzi.mdx]],
 ['攻击减甲'] = function(self) 
     local val = 488 
     local p = self.owner:get_owner()
-    if (p.mall and p.mall['齐天大圣A'] or 0) >=1 or (p.mall and p.mall['齐天大圣B'] or 0) >=1  then 
+    if (p.mall and p.mall['齐天大圣'] or 0) >=1  then 
         val = val + 288
     end    
     return val
@@ -320,7 +320,7 @@ end,
 ['全伤加深'] = function(self) 
     local val = 488 
     local p = self.owner:get_owner()
-    if (p.mall and p.mall['齐天大圣A'] or 0) >=1 or (p.mall and p.mall['齐天大圣B'] or 0) >=1  then 
+    if (p.mall and p.mall['齐天大圣'] or 0) >=1  then 
         val = val + 288
     end    
     return val
@@ -388,7 +388,7 @@ art = [[dgqb.blp]],
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff进入|cffffff00修罗模式/斗破苍穹/无上之境/乱斗/挖宝/比武-今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
+|cff00ffff进入|cffffff00挖宝/比武-今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
 |cffcccccc（非永久存档称号，掉出排行榜将失去称号）|r
 
 |cffFFE799【称号属性】：|r
@@ -399,6 +399,7 @@ tip = [[
 |cff00ff00+168%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+-- 修罗模式/斗破苍穹/无上之境/乱斗/
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 368,
@@ -422,9 +423,42 @@ function mt:on_add()
 end    
 
 
+local mt = ac.skill['逆天改命']
+mt{
+--等级
+level = 0, 
+--图标
+art = [[ntgm.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff深渊乱斗25星
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+1250 杀怪加攻击|r
+|cff00ff00+50% 技暴加深|r
+|cff00ff00+50% 技能伤害加深|r
+|cff00ff00+50% 会心伤害|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 1250,
+['技暴加深'] = 50,
+['技能伤害加深'] = 50,
+['会心伤害'] = 50,
+
+need_map_level = 17,
+--特效
+effect = [[CH_nitiangaiming.mdx]]
+}
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','九洲帝王','独孤求败'}) do
+
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','九洲帝王','独孤求败','逆天改命'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

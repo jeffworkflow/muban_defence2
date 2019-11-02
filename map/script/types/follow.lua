@@ -125,6 +125,8 @@ function mt:next()
 	end
 	if self.face_follow then
 		self.mover:set_facing(self.face + face)
+	else	
+		self.mover:set_facing(self.face,true)
 	end
 	--跟随运动
 	self.next_point = self.target:get_point() - {angle, self.distance}

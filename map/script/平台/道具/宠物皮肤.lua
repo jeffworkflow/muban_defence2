@@ -50,7 +50,6 @@ art = [[ReplaceableTextures\CommandButtons\BTNAzureDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 50 自动获得，已拥有碎片：|r%skin_cnt% 或者
 |cff00ffff挖宝积分超过 1W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
@@ -274,8 +273,7 @@ art = [[meiying.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff神龙碎片超过 400  自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挖宝积分超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【属性】：|r
 |cff00ff00+148  杀怪加全属性|r
@@ -320,8 +318,7 @@ art = [[zsyhly.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+188  杀怪加全属性|r
@@ -353,89 +350,89 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[Hero_Phoenix_N1_purple.mdx]],
 }
 
+-- local mt = ac.skill['齐天大圣']
+-- mt{
+-- is_skill = 1,
+-- --等级
+-- level = 0,
+-- is_spellbook = 1,
+-- is_order = 2,
+-- --图标
+-- art = [[cwqtds.blp]],
+-- --说明
+-- tip = [[
+
+-- 查看 齐天大圣皮肤
+--  ]],
+-- }
+-- mt.skills = {
+--     '齐天大圣A','齐天大圣B',
+-- }
+
+-- function mt:on_add()
+--     local hero = self.owner 
+--     local player = hero:get_owner()
+--     -- print('打开魔法书')
+--     for index,skill in ipairs(self.skill_book) do 
+--         local has_mall = player.mall[skill.name] 
+--         -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
+--         if has_mall and has_mall > 0 then 
+--             skill:set_level(1)
+--         end
+--     end 
+
+-- end    
+
+-- local mt = ac.skill['齐天大圣A']
+-- mt{
+-- is_skill = 1,
+-- --等级
+-- level = 0,
+-- strong_hero = 1, --作用在人身上
+-- --图标
+-- art = [[cwqtds.blp]],
+-- title = [[齐天大圣A（绝版）]],
+-- --说明
+-- tip = [[
+
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff商城购买后自动激活
+
+-- |cffFFE799【宠物属性】：|r
+-- |cff00ff00+488  杀怪加全属性|r
+-- |cff00ff00+40 每秒加护甲|r
+-- |cff00ff00杀敌数额外+1|r
+-- |cff00ff00练功房怪物数量+3|r
+
+-- |cffff0000【唯一被动】每秒减少宠物周围敌人血量的5%
+
+-- |cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
+
+-- |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 488,
+-- ['每秒加护甲'] = 40,
+-- ['额外杀敌数'] = 1,  
+-- --特效
+-- effect = [[qtds.mdx]],
+-- }
+-- function mt:on_add()
+--     --唯一被动
+--     self.owner:add_skill('火焰','隐藏')
+--     --练功房数量
+--     local p = self.owner:get_owner()
+--     p.more_unit = (p.more_unit or 0) + 3
+-- end    
+
+
 local mt = ac.skill['齐天大圣']
 mt{
 is_skill = 1,
 --等级
 level = 0,
-is_spellbook = 1,
-is_order = 2,
---图标
-art = [[cwqtds.blp]],
---说明
-tip = [[
-
-查看 齐天大圣皮肤
- ]],
-}
-mt.skills = {
-    '齐天大圣A','齐天大圣B',
-}
-
-function mt:on_add()
-    local hero = self.owner 
-    local player = hero:get_owner()
-    -- print('打开魔法书')
-    for index,skill in ipairs(self.skill_book) do 
-        local has_mall = player.mall[skill.name] 
-        -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
-        if has_mall and has_mall > 0 then 
-            skill:set_level(1)
-        end
-    end 
-
-end    
-
-local mt = ac.skill['齐天大圣A']
-mt{
-is_skill = 1,
---等级
-level = 0,
 strong_hero = 1, --作用在人身上
---图标
-art = [[cwqtds.blp]],
-title = [[齐天大圣A（绝版）]],
---说明
-tip = [[
-
-|cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
-
-|cffFFE799【宠物属性】：|r
-|cff00ff00+488  杀怪加全属性|r
-|cff00ff00+40 每秒加护甲|r
-|cff00ff00杀敌数额外+1|r
-|cff00ff00练功房怪物数量+3|r
-
-|cffff0000【唯一被动】每秒减少宠物周围敌人血量的5%
-
-|cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
-
-|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 488,
-['每秒加护甲'] = 40,
-['额外杀敌数'] = 1,  
---特效
-effect = [[qtds.mdx]],
-}
-function mt:on_add()
-    --唯一被动
-    self.owner:add_skill('火焰','隐藏')
-    --练功房数量
-    local p = self.owner:get_owner()
-    p.more_unit = (p.more_unit or 0) + 3
-end    
-
-
-local mt = ac.skill['齐天大圣B']
-mt{
-is_skill = 1,
---等级
-level = 0,
-strong_hero = 1, --作用在人身上
-title ='齐天大圣B（新版）',
+title ='齐天大圣',
 --图标
 art = [[cwqtds.blp]],
 --说明
@@ -452,9 +449,7 @@ tip = [[
 |cff00ffff+50%  会心伤害|r
 |cffff0000+40 每秒加护甲|r
 |cffff0000杀敌数额外+1|r
-|cffff0000练功房怪物数量+3|r
-
-|cffdf19d0【唯一被动】每秒减少宠物周围敌人血量的5%（对BOSS无效）
+|cffff0000练功房怪物数量+5|r
 
 |cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
 
@@ -473,10 +468,10 @@ effect = [[qtds.mdx]],
 }
 function mt:on_add()
     --唯一被动
-    self.owner:add_skill('火焰1','隐藏')
+    -- self.owner:add_skill('火焰1','隐藏')
     --练功房数量
     local p = self.owner:get_owner()
-    p.more_unit = (p.more_unit or 0) + 3
+    p.more_unit = (p.more_unit or 0) + 5
 end    
 
 
@@ -573,8 +568,46 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
 effect = [[RabbitGold2_BC.mdx]],
 } 
+
+local mt = ac.skill['七彩凤凰']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+--图标
+art = [[qcfh.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff深渊乱斗|cffff0000累计|cff00ffff无尽波数=300波
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+288  杀怪加全属性|r
+|cff00ff00+288  攻击减甲|r
+|cff00ff00+35%  暴击加深|r
+|cff00ff00+35%  物理伤害加深|r
+|cff00ff00+35%  会心伤害|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 38,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 288,
+['攻击减甲'] = 288,
+['暴击加深'] = 35,
+['物理伤害加深'] = 35,
+['会心伤害'] = 35,
+
+--特效
+effect = [[FH.mdx]],
+} 
+
 --统一加方法
-for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','小悟空','齐天大圣A','齐天大圣B'}) do
+for i,name in ipairs({'魅影','紫霜幽幻龙鹰','天马行空','玉兔','七彩凤凰','骨龙','小悟空','齐天大圣'}) do
+    -- '耐瑟龙','冰龙','奇美拉','精灵龙',
     local mt = ac.skill[name]
 
     function mt:on_cast_start()
@@ -618,8 +651,9 @@ mt{
     ]],
 }
 mt.skills = {
-    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','小悟空','齐天大圣'
+    '冰龙','魅影','紫霜幽幻龙鹰','天马行空','骨龙','小悟空','齐天大圣',
 }
+-- '耐瑟龙','精灵龙','奇美拉','宠物皮肤-下一页','齐天大圣B',
 function mt:on_add()
     local hero = self.owner 
     local player = hero:get_owner()
@@ -627,10 +661,10 @@ function mt:on_add()
     for index,skill in ipairs(self.skill_book) do 
 
         local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
-        if skill.name == '齐天大圣' then 
-            print( player.mall[skill.name..'A'], player.mall[skill.name..'B'])
-            has_mall = player.mall[skill.name..'A'] or player.mall[skill.name..'B']
-        end    
+        -- if skill.name == '齐天大圣' then 
+        --     print( player.mall[skill.name..'A'], player.mall[skill.name..'B'])
+        --     has_mall = player.mall[skill.name..'A'] or player.mall[skill.name..'B']
+        -- end    
         if has_mall and has_mall > 0 then 
             skill:set_level(1)
         end
@@ -638,3 +672,27 @@ function mt:on_add()
 end  
 
 
+local mt = ac.skill['宠物皮肤-下一页']
+mt{
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+查看 下一页
+    ]], 
+    is_spellbook = 1,
+    is_order = 2,
+}
+mt.skills = {'玉兔','七彩凤凰',}
+
+function mt:on_add()
+    local hero = self.owner 
+    local player = hero:get_owner()
+    -- print('打开魔法书')
+    for index,skill in ipairs(self.skill_book) do 
+        local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        if has_mall and has_mall > 0 then 
+            skill:set_level(1)
+        end
+    end 
+end  

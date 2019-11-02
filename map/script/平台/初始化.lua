@@ -29,7 +29,7 @@ end
 -- end    
 
 --初始化2 读取自定义服务器的数据 并同步 p.cus_server2[jifen] = 0 | 读取有延迟
-ac.wait(1*1000,function()
+ac.wait(100,function()
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
@@ -61,25 +61,29 @@ end)
 
 
 --初始化2 读取网易服务器的数据 p.cus_server[jifen] = 0 | 读取有延迟
-for i=1,10 do
-    local player = ac.player[i]
-    if player:is_player() then
-       for index,data in ipairs(ac.cus_server_key) do
-            local key = data[1]
-            local key_name = data[2]
-            local val = player:Map_GetServerValue(key)
-            if not player.cus_server then 
-                player.cus_server = {}
+ac.wait(1100,function()
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+        for index,data in ipairs(ac.cus_server_key) do
+                local key = data[1]
+                local key_name = data[2]
+                local val = player:Map_GetServerValue(key)
+                if not player.cus_server then 
+                    player.cus_server = {}
+                end
+                player.cus_server[key_name] = val
+                -- print('存档数据:',key,key_name,val)
             end
-            player.cus_server[key_name] = val
-            -- print('存档数据:',key,key_name,val)
+            ac.wait(900,function()
+                print(player,' 2获取满赞：',player.mall and player.mall['满赞'])
+                print(player,' 2获取地图等级：',player:Map_GetMapLevel())
+                player:event_notify '读取存档数据'
+                player:event_notify '读取存档数据后'
+            end)
         end
-        ac.wait(1100,function()
-            player:event_notify '读取存档数据'
-            player:event_notify '读取存档数据后'
-        end)
     end
-end
+end)
 
 --初始化3 商城数据 → 业务端
 for i=1,10 do
@@ -185,9 +189,28 @@ ac.wait(10,function()
         {'sswsj','圣神无双剑'},
         {'jlsxy','金鳞双型翼'},
         {'mszxj','灭神紫霄剑'},
-        
         {'cmsxy','赤魔双形翼'},
+        
+        {'ntgm','逆天改命'},
+        {'qcfh','七彩凤凰'},
+        {'lsywly','罗刹夜舞领域'},
 
+        {'xwly','血雾领域'},
+        {'bwllc','霸王莲龙锤'},
+        {'mdxy','梦蝶仙翼'},
+        {'my','魅影'},
+        {'zsyhly','紫霜幽幻龙鹰'},
+        {'tmxk','天马行空'},
+
+        {'pa','Pa'},
+        {'xln','手无寸铁的小龙女'},
+        {'gy','关羽'},
+
+        {'jhxx','江湖小虾'},
+        {'mrzx','明日之星'},
+        {'wlgs','武林高手'},
+        {'jsqc','绝世奇才'},
+        {'wzsj','威震三界'},
     }
     for i,data in ipairs(ac.mall) do 
         table.insert(temp_mall,data)
@@ -265,6 +288,10 @@ local star2award = {
 
     ['赤魔双形翼'] = {'无限乱斗无尽累计',300,36},
     ['真武青焰领域'] = {'无限乱斗无尽累计',800,39},
+
+    ['逆天改命'] = {'深渊乱斗',25,17},
+    ['七彩凤凰'] = {'深渊乱斗无尽累计',300,38},
+    ['罗刹夜舞领域'] = {'深渊乱斗无尽累计',800,42},
 }
 
 --保存修罗模式 星数
@@ -405,11 +432,11 @@ for i=1,10 do
                 then 
                     local key = ac.server.name2key(name)
                     -- player:SetServerValue(key,1) 自定义服务器
-                    if finds(name,'Pa','小龙女','关羽') then 
-                       player:Map_SaveServerValue(key,1) --网易服务器
-                    else 
+                    -- if finds(name,'Pa','小龙女','关羽') then 
+                    --    player:Map_SaveServerValue(key,1) --网易服务器
+                    -- else 
                        player.cus_server[name] = 1
-                    end      
+                    -- end      
                     -- player:sendMsg('激活成功：'..key)
                 end   
             end   
@@ -452,7 +479,8 @@ local function wabao2award()
                         then 
                             local key = ac.server.name2key(name)
                             -- player:SetServerValue(key,1) 自定义服务器
-                            player:Map_SaveServerValue(key,1) --网易服务器
+                            -- player:Map_SaveServerValue(key,1) --网易服务器
+                            player.cus_server[name] = 1
                             -- player:sendMsg('激活成功：'..key)
                         end    
                     end    
@@ -605,7 +633,9 @@ local function wldh2award()
                     then 
                         local key = ac.server.name2key(name)
                         -- player:SetServerValue(key,1) 自定义服务器
-                        player:Map_SaveServerValue(key,1) --网易服务器
+                        -- player:Map_SaveServerValue(key,1) --网易服务器
+                        
+                        player.cus_server[name] = 1
                         -- player:sendMsg('激活成功：'..key)
                     end    
                 end   
@@ -617,48 +647,62 @@ wldh2award()
 
 --开始进行地图等级集中过滤
 ac.server.need_map_level = {}
-local function init_need_map_level()
-    for i,data in ipairs(ac.cus_server_key) do
-        if data[3] then 
-            -- print(data[2],data[3])
-            ac.server.need_map_level[data[2]] = data[3]
+for i,data in ipairs(ac.cus_server_key) do
+    if data[3] then 
+        -- print(data[2],data[3])
+        ac.server.need_map_level[data[2]] = data[3]
+    end    
+end
+for name,data in pairs(star2award) do
+    ac.server.need_map_level[name] = data[3]
+end
+for name,data in pairs(wabao2award_data) do
+    ac.server.need_map_level[name] = data[2]
+end
+for name,data in pairs(shenlong2award_data) do
+    ac.server.need_map_level[name] = data[2]
+end
+for name,data in pairs(ttxd2award1) do
+    ac.server.need_map_level[name] = data[2]
+end
+
+for name,data in pairs(wldh2award_data) do
+    ac.server.need_map_level[name] = data[2]
+end
+
+function ac.player.__index:restrict_map_level() 
+    local p = self
+    for name,val in pairs(p.cus_server) do 
+        local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
+        if name ~= '全属性' then 
+            -- print('地图等级',p:Map_GetMapLevel(),name,val,real_val)
+            -- print('经过地图等级之后的数据：',name,val,real_val)
+            p.cus_server[name] = real_val
         end    
-    end
-
-    for name,data in pairs(star2award) do
-        ac.server.need_map_level[name] = data[3]
-    end
-    for name,data in pairs(wabao2award_data) do
-        ac.server.need_map_level[name] = data[2]
-    end
-    for name,data in pairs(shenlong2award_data) do
-        ac.server.need_map_level[name] = data[2]
-    end
-    for name,data in pairs(ttxd2award1) do
-        ac.server.need_map_level[name] = data[2]
-    end
-
-    for name,data in pairs(wldh2award_data) do
-        ac.server.need_map_level[name] = data[2]
-    end
-
+    end 
+end 
+--全部初始化
+local function init_need_map_level()
     for i=1,10 do 
         local p = ac.player(i)
         if p:is_player() then 
-            for name,val in pairs(p.cus_server) do 
-                local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
-                if name ~= '全属性' then 
-                    -- print('地图等级',p:Map_GetMapLevel(),ac.server.need_map_level[name],val)
-                    -- print('经过地图等级之后的数据：',name,val,real_val)
-                    p.cus_server[name] = real_val
-                end    
-            end    
+            p:restrict_map_level()
         end   
     end
 end;
-ac.init_need_map_level =init_need_map_level
+ac.init_need_map_level =init_need_map_level 
+--读取存档后 重新根据地图等级进行限制
+for i=1,10 do 
+    local p = ac.player(i)
+    if p:is_player() then 
+        p:event '读取存档数据后' (function()
+            p:restrict_map_level()
+        end)
+    end   
+end
 
-ac.wait(1300,function()
-    ac.init_need_map_level()
-end)
+
+-- ac.wait(1300,function()
+--     ac.init_need_map_level()
+-- end)
 

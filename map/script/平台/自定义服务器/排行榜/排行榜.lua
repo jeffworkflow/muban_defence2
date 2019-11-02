@@ -11,7 +11,9 @@ class.phb_panel = extends(class.panel){
 
         --左边菜单 
         panel.menu_titles = {
-            '深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            -- '深渊乱斗','无限乱斗','无上之境','斗破苍穹',
+            '修罗模式', 
+            '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -77,7 +79,7 @@ class.phb_panel = extends(class.panel){
         local more_tip2 = panel:add_button([[image\排行榜\icon_wenhao.blp]],440+menu_width+main_box_width+off_left ,off_top,32,32) 
         local info = {
             name ='',
-            tip = '每小时刷新一次'
+            tip = '每小时刷新一次,地图等级>=3才能上榜'
         }
         function more_tip1:on_button_mouse_enter()
             if info then 
@@ -332,10 +334,10 @@ local rank = {
     {'cntrywz','荣耀王者'},
     {'cntdfwz','巅峰王者'},
     {'cntxlms','修罗模式'},
-    {'cntdpcq','斗破苍穹'},
-    {'cntwszj','无上之境'},
-    {'cntwxld','无限乱斗'},
-    {'cntsyld','深渊乱斗'},
+    -- {'cntdpcq','斗破苍穹'},
+    -- {'cntwszj','无上之境'},
+    -- {'cntwxld','无限乱斗'},
+    -- {'cntsyld','深渊乱斗'},
 
     
     {'time_qt','青铜时长'},
@@ -349,10 +351,10 @@ local rank = {
     {'time_rywz','荣耀王者时长'},
     {'time_dfwz','巅峰王者时长'},
     {'time_xlms','修罗模式时长'},
-    {'time_dpcq','斗破苍穹时长'},
-    {'time_wszj','无上之境时长'},
-    {'time_wxld','无限乱斗时长'},
-    {'time_syld','深渊乱斗时长'},
+    -- {'time_dpcq','斗破苍穹时长'},
+    -- {'time_wszj','无上之境时长'},
+    -- {'time_wxld','无限乱斗时长'},
+    -- {'time_syld','深渊乱斗时长'},
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -375,9 +377,9 @@ ac.wait(5*1000,function()
                     end  
 
                     --首次刷新最强王者
-                    if finds(content[2] ,'深渊乱斗') then 
-                        panel:fresh('深渊乱斗')
-                    end   
+                    -- if finds(content[2] ,'深渊乱斗') then 
+                    --     panel:fresh('深渊乱斗')
+                    -- end   
 
                     --发起同步请求
                     local tab_str = ui.encode(panel.rank[content[2]])  
