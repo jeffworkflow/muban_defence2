@@ -237,6 +237,7 @@
         --购买上限
         if not it.player_buy_cnt then 
             it.player_buy_cnt = {} 
+            it.player_buy_cnt[player] = 0
         end
         if it.max_buy_cnt  then
             if it.player_buy_cnt[player] and (it.player_buy_cnt[player] > (it.max_buy_cnt or 9999999)) then
@@ -267,8 +268,8 @@
         --给单位添加物品时，会进行一系列逻辑处理，处理完后会改变 buy_suc 状态
         if u.buy_suc then 
             --记录每个玩家的购买次数
-            it.player_buy_cnt[player] = it.player_buy_cnt[player] or 0 + 1
-
+            it.player_buy_cnt[player] = it.player_buy_cnt[player]  + 1   
+    
             if has_raffle then 
                 u_raffle:add_item_count(-need_cnt)
             else
