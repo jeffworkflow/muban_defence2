@@ -18,6 +18,7 @@ function ac.item.create_skill_item(name,poi,is)
     local title = skill:get_title(ac.dummy,1)
     local art = skill:get_art()
     item.gold = skill.gold
+    item.color = skill.color
     skill:remove()
 
     item:set_name(name) 
@@ -33,12 +34,14 @@ function ac.item.create_skill_item(name,poi,is)
 		item.owner = nil
     end
     
-    item:set_tip(item.tip)
+	--设置技能模型
+	if item.color and item.cus_type == '技能' then 
+		-- print('改变技能模型',item.color,ac.skill_model[item.color])
+		item._model = ac.skill_model[item.color]
+    end
     
-    -- print(skill.name,item.tip,art,item.art)
-	-- if not is then 
-	-- 	item._eff = ac.effect(item:get_point(),item._model,270,1,'origin')
-    -- end
+    item:set_tip(item.tip)
+    item:set_model() --刷新model
     
     item.item_type = '消耗品'
     --设置使用次数

@@ -29,6 +29,7 @@ mt{
     art = [[kulotou.blp]],
     value = 10,
     value1 = 20,
+    area = 3000,
 }
 function mt:on_upgrade()
     local skill = self
@@ -80,14 +81,13 @@ mt.effect = [[]]
 function mt:on_add()
     local target = self.target
     self.eff = target:add_effect('origin',self.effect)
-    target:add('每秒加护甲',-self.value)
+    target:add('护甲',-self.value)
 
 end
 
 function mt:on_remove()
     local target = self.target
     if self.eff then self.eff:remove() end
-    target:add('每秒加护甲',self.value)
 end
 function mt:on_cover(new)
 	return new.value > self.value

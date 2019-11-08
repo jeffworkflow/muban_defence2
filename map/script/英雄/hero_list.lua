@@ -5,13 +5,28 @@ local japi = require 'jass.japi'
 local slk = require 'jass.slk'
 
 hero.hero_list = {
-	'阿尔塞斯','大地','剑圣','希尔瓦娜斯','吉安娜','炼金术士',
-
-	'赵子龙','Pa','手无寸铁的小龙女','太极熊猫','虞姬','夏侯霸',
-
-	'至尊宝','关羽','关公','加百列','伊利丹','狄仁杰',
-	'','雅典娜','鬼厉','剑仙','王昭君'
+	'亚瑟王','撼地神牛','不朽剑圣','暗夜寒星',
+	'诸葛亮','布莱特','吕布','梅卡托克',
+	'张飞','金克丝','貂蝉','杰拉米','黄盖',
+	'关羽','堕落天使','加百列','王昭君','雅典娜',
+	'剑仙','天尊'
 }
+local free_heros = {
+	'亚瑟王','撼地神牛','不朽剑圣','暗夜寒星',
+    '诸葛亮'
+}
+--初始化免费英雄
+for i=1,10 do 
+	local p = ac.player(i)
+	if p:is_player() then 
+		if not p.mall then 
+			p.mall = {}
+		end 
+		for i ,name in ipairs(free_heros) do 
+			p.mall[name] = 1	
+		end 
+	end	
+end		
 
 --加载英雄的数据
 function load_heroes()
@@ -26,7 +41,7 @@ function load_heroes()
 			-- print(hero_data)
 			if hero_data ~= nil then 
 				hero.hero_list[name] = hero_data
-				select(2, xpcall(require, runtime.error_handle ,('英雄.%s.init'):format(name)))
+				-- select(2, xpcall(require, runtime.error_handle ,('英雄.%s.init'):format(name)))
 				
 				hero.hero_list[name].data = hero_data
 				hero_data.name = name

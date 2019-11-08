@@ -109,7 +109,6 @@ local color_code = {
     ['红'] = 'ff0000',
     ['绿'] = '00ff00', 
     ['蓝'] = '00bdec',--浅蓝
-    ['黄'] = 'ffff00',
     ['青'] = '00ffff',
     ['紫'] = 'df19d0',
     ['橙'] = 'FFCC00',
@@ -120,7 +119,15 @@ local color_code = {
     ['金'] = 'ffff00',
 	['灰'] = 'cccccc',
 	['淡黄'] = 'FFE799',
-    ['神'] = 'df19d0', --91007F 860202
+	['神'] = 'df19d0', --91007F 860202
+
+    ['天赋'] = 'df19d0',--紫
+    ['真天阶'] = 'df19d0',--紫
+    ['天'] = 'ff0000',--红
+    ['地'] = 'ffff00',--金
+    ['玄'] = '00bdec',--浅蓝
+    ['黄'] = 'ffffff',--白
+	
 	
 }
 ac.color_code = color_code
@@ -145,6 +152,17 @@ local zb_color_model = {
     ['书'] = [[ArcaneTome.mdx]],
 }
 ac.zb_color_model = zb_color_model
+
+--技能model
+local skill_model = {
+    ['天赋'] = 'lvbianshu.mdx',--紫
+    ['真天阶'] = 'lvbianshu.mdx',--紫
+    ['天'] = 'hongbianshu.mdx',--红
+    ['地'] = 'zongbianshu.mdx',--金
+    ['玄'] = 'lanbianshu.mdx',--浅蓝
+    ['黄'] = 'lvbianshu.mdx',--白
+}
+ac.skill_model = skill_model
 
 
 local drop_flag = false
@@ -413,6 +431,14 @@ function mt:is_show()
 	return ((jass.IsItemVisible(self.handle) == true))
 end
 
+--单位改变模型
+function mt:set_model(model)
+	local model = model or self._model
+	if self._eff then 
+		japi.SetUnitModel(self._eff.unit.handle,model)
+		self._model = model
+	end		
+end
 --获取物品在地上的坐标
 function mt:get_point()
 	local x,y = jass.GetItemX(self.handle),jass.GetItemY(self.handle)
@@ -562,7 +588,7 @@ local function register_item_destroy_event(item_handle)
 	end)
 	
 end
-
+	
 --单位获得物品 添加属性
 function mt:on_add_state()
 	local hero = self.owner

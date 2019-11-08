@@ -90,14 +90,14 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		end	
 	end	
 	
-	for k,val in ipairs(ac.devil_deal) do
-		for _,data in ipairs(val) do    
-			local name = data[1]
-			local skl = hero:find_skill(name,nil,true)
-            skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')
-			skl:set('tip','%extr_tip% \n\n|cffFFE799【奖励】：|r|cff00ff00+'..(finds(ac.base_attr,data[3]) and data[4] or (data[4]..'%'))..data[3]..'|r\n\n')
-			-- print(skl.tip,skl.data.tip)
-			skl:fresh_tip()
-		end	
-	end	
+	-- for k,val in ipairs(ac.devil_deal) do
+	-- 	for _,data in ipairs(val) do    
+	-- 		local name = data[1]
+	-- 		local skl = hero:find_skill(name,nil,true)
+    --         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')
+	-- 		skl:set('tip','%extr_tip% \n\n|cffFFE799【奖励】：|r|cff00ff00+'..(finds(ac.base_attr,data[3]) and data[4] or (data[4]..'%'))..data[3]..'|r\n\n')
+	-- 		-- print(skl.tip,skl.data.tip)
+	-- 		skl:fresh_tip()
+	-- 	end	
+	-- end	
 end)

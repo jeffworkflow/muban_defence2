@@ -222,10 +222,7 @@ local function start()
 			-- print(hero_name,p.mall[hero_name])
 			local has_mall = ( p.mall and  p.mall[hero_name] )or (p.cus_server and p.cus_server[hero_name])
 			-- print(hero_name,ac.server.need_map_level[hero_name])
-			if (has_mall and has_mall > 0)
-			--    and p:Map_GetMapLevel() >= (ac.server.need_map_level[hero_name] or 0)) 
-			   or finds(hero_name,'剑圣','吉安娜','大地','希尔瓦娜斯','炼金术士','阿尔塞斯')
-			--    and p.flag_get_map_test
+			if has_mall and has_mall > 0
 			then 
 				p:event_notify('玩家-选择英雄', p, hero_name)
 			else	

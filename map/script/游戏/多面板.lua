@@ -43,7 +43,7 @@ local color = {
 local function get_text(hero,book_skill)
 	local str = ''
 	local skl = hero:find_skill(book_skill,nil,true)
-	if not skl or  #skl.skill_book ==0 then return str end 
+	if not skl or  not skl.skill_book  then return str end 
 	for i=#skl.skill_book,1,-1 do
 		local skill = skl.skill_book[i]
 		if skill.level>=1 then 

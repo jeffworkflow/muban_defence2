@@ -56,28 +56,28 @@ ac.wait(100,function ()
     -- light(3)
 
     --开局创建英雄
-    local point = ac.map.rects['出生点']:get_point()
-    local p = ac.player(1)
-    local hero = p:createHero('大地',point);
-    p.hero = hero
-    p:event_notify('玩家-注册英雄', p, p.hero)
+    -- local point = ac.map.rects['出生点']:get_point()
+    -- local p = ac.player(1)
+    -- local hero = p:createHero('亚瑟王',point);
+    -- p.hero = hero
+    -- p:event_notify('玩家-注册英雄', p, p.hero)
     
-    --创建木桩
-	local cnt = 1 
-	local point = ac.point(-200,0)
-	for i=1,cnt do 
-		local unit = ac.player(12):create_unit('甲虫',point)
-		unit:set('生命上限',100000000000000)
-		unit:set('生命恢复',100000000000000)
-		unit:set('护甲',10000)
-		unit:set('攻击',0)
-		unit:add_restriction '定身'
-		unit:add_restriction '缴械'
-		unit:set_size(2)
-	end
+    -- --创建木桩
+	-- local cnt = 1 
+	-- local point = ac.point(-200,0)
+	-- for i=1,cnt do 
+	-- 	local unit = ac.player(12):create_unit('甲虫',point)
+	-- 	unit:set('生命上限',100000000000000)
+	-- 	unit:set('生命恢复',100000000000000)
+	-- 	unit:set('护甲',10000)
+	-- 	unit:set('攻击',0)
+	-- 	unit:add_restriction '定身'
+	-- 	unit:add_restriction '缴械'
+	-- 	unit:set_size(2)
+	-- end
 
     --创建测试商店
-    local shop = ac.shop.create('杀敌数兑换',0,500,90)  
+    -- local shop = ac.shop.create('杀敌数兑换',0,500,90)  
 
 
     -- hero:add_skill('神兵','英雄')
