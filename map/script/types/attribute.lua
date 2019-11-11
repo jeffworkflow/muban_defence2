@@ -82,8 +82,8 @@ local attribute = {
 	['技能基础伤害']	 =	true, --默认表示为基础值
 
 	['伤害减少']		    =	true, --默认表示为基础值
-	['免伤']			=	true, --默认表示为%
-	['免伤极限']			=	true, --默认表示为%
+	['减伤']			=	true, --默认表示为%
+	['减伤极限']			=	true, --默认表示为%
 	['免伤几率']			=	true, --默认表示为%
 	['免伤几率极限']		=	true, --默认%
 
@@ -852,9 +852,9 @@ on_get['免伤几率'] = function(self, reduce_rate)
 end
 
 
-on_get['免伤'] = function(self, reduce_damage)
+on_get['减伤'] = function(self, reduce_damage)
 	if reduce_damage > 90 then
-		reduce_damage = math.min(reduce_damage,90 + self:get('免伤极限')) 
+		reduce_damage = math.min(reduce_damage,90 + self:get('减伤极限')) 
 	end
 	return reduce_damage
 end

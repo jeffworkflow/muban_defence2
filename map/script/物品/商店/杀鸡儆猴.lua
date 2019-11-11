@@ -397,7 +397,7 @@ local task_detail = {
         end    
     end,     
          
-    ['免伤极限守卫'] = function(killer,target)
+    ['减伤极限守卫'] = function(killer,target)
         --召唤物杀死也继承
         local p = killer:get_owner()
         if p.flag_msjx then return end
@@ -419,7 +419,7 @@ local task_detail = {
             if p.msjx_cnt == max_kill_cnt then
                 --boss事件
                 local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
-                local unit = ac.player(12):create_unit('免伤极限BOSS',point)
+                local unit = ac.player(12):create_unit('减伤极限BOSS',point)
                 unit:add_buff '定身'{
                     time = 2
                 }
@@ -427,9 +427,9 @@ local task_detail = {
                     time = 2
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
-                    hero:add('免伤',5)
-                    hero:add('免伤极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000免伤+5%（无视免伤上限）|r',6)
+                    hero:add('减伤',5)
+                    hero:add('减伤极限',5)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000减伤+5%（无视减伤上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_msjx = true

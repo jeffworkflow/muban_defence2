@@ -68,7 +68,7 @@ mt{
 local mt = ac.skill['墨翟的祝福']
 mt{
     ['护甲%'] = 35,
-    ['免伤'] = 35,
+    ['减伤'] = 35,
     ['闪避'] = 35,
     ['免伤几率'] = 35,
     ['每秒回血'] = 35,
@@ -247,7 +247,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
         end    
         if name == '墨翟的祝福' then
             local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff墨翟的祝福|r|cffffe799
-【祝福属性】|cff00ff00护甲/免伤/免伤几率/闪避/每秒回血+35% |cffff0000杀怪/攻击/每秒加护甲+75]]
+【祝福属性】|cff00ff00护甲/减伤/免伤几率/闪避/每秒回血+35% |cffff0000杀怪/攻击/每秒加护甲+75]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '虚灵的祝福' then

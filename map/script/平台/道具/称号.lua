@@ -165,14 +165,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+100 杀怪加全属性|r
-|cff00ff00+5%  免伤|r
+|cff00ff00+5%  减伤|r
 |cff00ff00+25%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
-['免伤'] = 5,
+['减伤'] = 5,
 ['全伤加深'] = 25,
 need_map_level = 8,
 

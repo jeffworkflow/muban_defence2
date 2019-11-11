@@ -50,17 +50,58 @@ end,
 	effect = [[LvBuPiFu3.mdx]],
 	--特效4
 	effect4 = [[持续时间13秒]],
+	time =13,
+	unit_id = '魔神'
 }
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local source = hero:get_point()
+	local attribute = {
+		['攻击%'] = 50,
+		['攻击速度'] = 500,
+		['分裂伤害'] = 50,
+		['减伤'] = 50,
+	}
+	self.buf = hero:add_buff '变身'{
+		time =skill.time,
+		unit_id = skill.unit_id,
+		attribute = attribute
+	}
+    
+end
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-    local p = hero:get_owner()
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
-    local p = hero:get_owner()
     if self.trg then
         self.trg:remove()
         self.trg = nil
+    end
+    if self.buf then
+        self.buf:remove()
+        self.buf = nil
     end
 end

@@ -1,5 +1,5 @@
 local config = {
-    --品阶 =  颜色,全伤加深 全属性 免伤 触发概率
+    --品阶 =  颜色,全伤加深 全属性 减伤 触发概率
                 
     ['凡'] = {'绿',25,5000000,1,1},
     ['玄'] = {'蓝',50,7000000,2,2},
@@ -20,7 +20,7 @@ mt{
 |cffFFE799【基本属性】
 |cffffff00+%全属性%  |cff00ff00全属性
 |cffffff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深
-|cffffff00+%免伤% |cffffff00%  |cff00ff00免伤
+|cffffff00+%减伤% |cffffff00%  |cff00ff00减伤
 |cffffff00+%触发概率% |cffffff00%  |cff00ff00触发概率|r
 ]],
     xxzhtip = function(self)
@@ -63,7 +63,7 @@ mt{
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][3] 
     end,
-    ['免伤'] = function (self)
+    ['减伤'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][4] 
     end,

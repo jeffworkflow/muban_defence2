@@ -26,7 +26,7 @@ local mt = ac.skill['英雄属性面板']
 分裂伤害:  %splash% %  
 攻击减甲:    %pene%    
 吸血:    %life_steal% %
-免伤几率:  %wtf_rate% %  免伤:  %defence_rate% %  
+免伤几率:  %wtf_rate% %  减伤:  %defence_rate% %  
 
 闪避:    %miss% %  攻击丢失:    %attack_drop% %
 
@@ -300,7 +300,7 @@ function mt:defence()
 end
 
 function mt:defence_rate()
-	return ('|cffF9C801%.2f|r'):format(self.owner:get '免伤')
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '减伤')
 end
 
 function mt:block_chance()

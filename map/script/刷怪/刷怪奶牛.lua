@@ -119,8 +119,8 @@ function mt:on_change_creep(unit,lni_data)
     unit:set_search_range(1000)
 end  
 
-local mt = ac.creep['免伤极限']{    
-    creeps_datas = '免伤极限守卫*15',
+local mt = ac.creep['减伤极限']{    
+    creeps_datas = '减伤极限守卫*15',
     region = 'tsjx88',
     cool = 1,
     create_unit_cool = 0,

@@ -767,7 +767,7 @@ end
 --计算减伤
 function mt:Injury()
 	local target = self.target
-	local dmg = target:get '免伤'
+	local dmg = target:get '减伤'
 
 	if dmg <=0 then 
 		dmg = 0

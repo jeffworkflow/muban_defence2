@@ -451,11 +451,11 @@ local devil_deal ={
 
 
 [7] = {
-{'脚踩祥云lv1',false,'免伤',2.5,'木头',2000,[[liliang.blp]],[[
+{'脚踩祥云lv1',false,'减伤',2.5,'木头',2000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv1|r
     
-|cffFFE799【奖励】|r|cff00ff00+2.5%免伤|r
+|cffFFE799【奖励】|r|cff00ff00+2.5%减伤|r
     ]]},
 
 {'脚踩祥云lv2',false,'每秒回血',10,'木头',4000,[[liliang.blp]],[[

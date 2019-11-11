@@ -91,7 +91,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+3000W 生命|r
 |cff00ff00+3000   护甲
 |cff00ff00+5%   每秒回血|r
-|cff00ff00+2.5%   免伤|r
+|cff00ff00+2.5%   减伤|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -100,7 +100,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 150,
 ['生命上限'] = 30000000,
 ['护甲'] = 3000,
-['免伤'] = 2.5,
+['减伤'] = 2.5,
 ['每秒回血'] = 5,
 need_map_level = 10,
 --特效
@@ -381,7 +381,7 @@ tip = [[
 |cff00ff00+488    攻击加全属性|r
 |cff00ff00+788    每秒加全属性|r
 |cff00ff00+10    每秒加护甲|r
-|cff00ff00+10%   免伤|r
+|cff00ff00+10%   减伤|r
 |cff00ff00+10%   免伤几率|r
 |cff00ff00+10%   对BOSS额外伤害|r
 
@@ -397,7 +397,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加护甲'] = 10,
 ['免伤几率'] = 10,
 ['对BOSS额外伤害'] = 10,
-['免伤'] = 10,
+['减伤'] = 10,
 --特效
 effect = [[chibang7.mdx]]
 }

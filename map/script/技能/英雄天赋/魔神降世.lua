@@ -50,18 +50,25 @@ end,
 	effect = [[LvBuPiFu3.mdx]],
 	--特效4
 	effect4 = [[类似变身技能]],
-	value = 1.5,--最大生命值
-	time =8
+	time =8,
+	unit_id = '魔神'
 }
 function mt:atk_pas_shot(target)
     local skill = self
     local hero = self.owner
 
 	local source = hero:get_point()
-
-	-- hero:add_buff '变身'{
-	-- 	time =skill.time
-	-- }
+	local attribute = {
+		['攻击%'] = 50,
+		['攻击速度'] = 500,
+		['分裂伤害'] = 50,
+		['减伤'] = 50,
+	}
+	self.buf = hero:add_buff '变身'{
+		time =skill.time,
+		unit_id = skill.unit_id,
+		attribute = attribute
+	}
     
 end
 
@@ -93,9 +100,9 @@ function mt:on_remove()
         self.trg:remove()
         self.trg = nil
     end
-    if self.trg1 then
-        self.trg1:remove()
-        self.trg1 = nil
+    if self.buf then
+        self.buf:remove()
+        self.buf = nil
     end
 end
 

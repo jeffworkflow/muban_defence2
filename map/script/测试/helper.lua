@@ -855,7 +855,7 @@ function helper:tt()
 	-- self.flag_dodge = true --突破极限
 	self:add('闪避极限',5)
 	self:add('闪避',100)
-	self:add('免伤',90)
+	self:add('减伤',90)
 	self:add('免伤几率',90)
 	self:add('全伤加深',10030000000)
 	self:add('暴击伤害',1003000)
