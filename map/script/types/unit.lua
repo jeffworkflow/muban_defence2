@@ -1085,56 +1085,19 @@ function mt:create_illusion(p, no_item)
 		dummy:event_notify('单位-创建', dummy)
 	end
 
-	if self:is_hero() then 
-		for k, v in sortpairs(self.hero_data.attribute) do
-			if not finds(k,'力量','敏捷','智力')then
-				dummy:set(k, v)
-			end	
-		end
-
-		for k, v in sortpairs(self.hero_data.attribute) do
-			if finds(k,'力量','敏捷','智力')then
-				dummy:add(k, v)
-			end	
-		end
-	else
-		--复制属性 1 复制与当前匹配的属性，如果是受光环影响 则最新属性将又受到光环、技能影响
-		--复制属性 2 一个一个属性复制，boss为喽喽的5倍，需要在这里不断加，代码直接加的都需要在这边添加
-		--先用属性 2 
-		for k, v in sortpairs(self.data.attribute) do
-			dummy:set(k, v)
-		end
-		 --设置  属性倍数
-		 if self.data.attr_mul  then
-            --属性
-            dummy:set('攻击',self.data.attribute['攻击'] * self.data.attr_mul)
-            dummy:set('护甲',self.data.attribute['护甲'] * self.data.attr_mul)
-            dummy:set('生命上限',self.data.attribute['生命上限'] * self.data.attr_mul)
-            dummy:set('魔法上限',self.data.attribute['魔法上限'] * self.data.attr_mul)
-            dummy:set('生命恢复',self.data.attribute['生命恢复'] * self.data.attr_mul)
-            dummy:set('魔法恢复',self.data.attribute['魔法恢复'] * self.data.attr_mul)
-        end  
-
-	end	
-
 	--复制等级
-	for i = 1 + 1, self:get_level() do
-		dummy:event_dispatch('单位-英雄升级', dummy)
-	end
+	-- for i = 1 + 1, self:get_level() do
+	-- 	dummy:event_dispatch('单位-英雄升级', dummy)
+	-- end
 
 	--复制技能
-	for skl in self:each_skill() do
-		if not skl.never_copy then
-			local skl2 = dummy:add_skill(skl.name, skl:get_type(), skl:get_slotid())
-			skl2:set_level(skl:get_level(), false)
-		end
-	end
+	-- for skl in self:each_skill() do
+	-- 	if not skl.never_copy then
+	-- 		local skl2 = dummy:add_skill(skl.name, skl:get_type(), skl:get_slotid())
+	-- 		skl2:set_level(skl:get_level(), false)
+	-- 	end
+	-- end
 
-	--敌我识别标记
-	dummy:add_enemy_tag()
-	--当前生命值与魔法值
-	dummy:set('生命', life)
-	dummy:set('魔法', self:get '魔法')
 	
 	return dummy
 end

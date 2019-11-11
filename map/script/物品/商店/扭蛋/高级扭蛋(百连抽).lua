@@ -96,7 +96,7 @@ function mt:add_content()
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000物理伤害加深+50%，暴击几率+5%，暴击加深+50%，+500W全属性|r',6)
+            ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000物理伤害加深+50%，暴击几率+5%，暴击伤害+50%，+500W全属性|r',6)
         else
             player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end  
@@ -116,7 +116,7 @@ function mt:add_content()
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000技暴几率+5%，技暴加深+50%，+500W全属性|r',6)
+            ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000技暴几率+5%，技暴伤害+50%，+500W全属性|r',6)
         else
             player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end
@@ -190,8 +190,8 @@ function mt:add_content()
                 tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2) 
             end
         end 
-    elseif  rand_name == '火灵' then
-        self.owner:add_fire_seed(12500)
+    elseif  rand_name == '魔丸' then
+        self.owner:add_rec_ex(12500)
         if tran_player then 
         tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+12500|r',2) 
         end 

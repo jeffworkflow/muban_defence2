@@ -17,7 +17,7 @@ tip = [[
 |cffcccccc耶路撒冷发现的一件迷人的小护身符，是人们一直痴迷于抵御传说中的邪恶之眼
 
 |cff00ff00智力+35%
-|cff00ffff技暴加深+800%
+|cff00ffff技暴伤害+800%
 |cff00ffff会心伤害+400%
 |cff00ffff技能伤害加深+200%
 |cffffff00全伤加深+100%
@@ -26,7 +26,7 @@ tip = [[
 --物品技能
 is_skill = true,
 ['智力%'] = 35,
-['技暴加深'] = 800,
+['技暴伤害'] = 800,
 ['会心伤害'] = 400,
 ['技能伤害加深'] = 200,
 ['全伤加深'] = 100,
@@ -88,7 +88,7 @@ tip = [[
 |cffcccccc祖妖昆吾死后,全身精血骨骸凝聚成了一把剑型武器，月圆之夜就会对月咆哮，似欲贯月一般！
 
 |cff00ff00敏捷+35%
-|cff00ffff暴击加深+800%
+|cff00ffff暴击伤害+800%
 |cff00ffff会心伤害+400%
 |cff00ffff物理伤害加深+200%
 |cffffff00全伤加深+100%
@@ -97,7 +97,7 @@ tip = [[
 --物品技能
 is_skill = true,
 ['敏捷%'] = 35,
-['暴击加深'] = 800,
+['暴击伤害'] = 800,
 ['会心伤害'] = 400,
 ['物理伤害加深'] = 200,
 ['全伤加深'] = 100,
@@ -347,8 +347,8 @@ tip = [[
 
 |cffcccccc女娲为救族人以自身神位为代价，于昆仑山之巅化成了一面可以穿越时空界限，可以回到过去，穿越未来的镜子
 
-|cff00ff00暴击加深+800%
-技暴加深+800%
+|cff00ff00暴击伤害+800%
+技暴伤害+800%
 会心伤害+800%
 
 |cff00ffff唯一被动-穿越：攻击1%几率让敌人回到过去，并造成大量伤害
@@ -365,8 +365,8 @@ function mt:on_add()
     local hero = self.owner
     local p = hero:get_owner()
     local skill = self
-    hero:add('暴击加深',800)
-    hero:add('技暴加深',800)
+    hero:add('暴击伤害',800)
+    hero:add('技暴伤害',800)
     hero:add('会心伤害',800)
 
     self.trg = hero:event '造成伤害效果' (function(_,damage)
@@ -406,8 +406,8 @@ function mt:on_remove()
     local hero = self.owner
     local p = hero:get_owner()
     local skill = self
-    hero:add('暴击加深',-800)
-    hero:add('技暴加深',-800)
+    hero:add('暴击伤害',-800)
+    hero:add('技暴伤害',-800)
     hero:add('会心伤害',-800)
     
     if self.trg then 

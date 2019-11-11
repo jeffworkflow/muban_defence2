@@ -213,8 +213,8 @@ function mt:add_content()
                 tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2) 
             end
         end  
-    elseif  rand_name == '火灵' then
-        self.owner:add_fire_seed(500)
+    elseif  rand_name == '魔丸' then
+        self.owner:add_rec_ex(500)
         if tran_player then 
         tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+500|r',2) 
         end 

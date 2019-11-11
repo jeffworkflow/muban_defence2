@@ -17,7 +17,7 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【主动施放】增加 |cffffff00技暴几率+5%*Lv 技暴加深+50%*Lv|r |cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加 |cffffff00技暴几率+5%*Lv 技暴伤害+50%*Lv|r |cff00bdec持续5秒|r
     
 ]],
 	--技能图标
@@ -65,13 +65,13 @@ function mt:on_add()
     local target = self.target
     local hero = self.target
     target:add('技暴几率',self.skill_rate)   
-    target:add('技暴加深',self.skill_damage)   
+    target:add('技暴伤害',self.skill_damage)   
 end
 
 function mt:on_remove()
     local target = self.target 
     target:add('技暴几率',-self.skill_rate)   
-    target:add('技暴加深',-self.skill_damage)   
+    target:add('技暴伤害',-self.skill_damage)   
     if self.eff then self.eff:remove() self.eff = nil   end
     if self.trg then self.trg:remove() self.trg = nil end
 end

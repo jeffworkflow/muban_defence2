@@ -40,32 +40,32 @@ ac.game:event '玩家-金币变化' (function(_,data)
 	end	
 end)
 
---火灵相关
-player.__index.fire_seed = 0
-function player.__index:get_fire_seed()
-	return (self.fire_seed or 0) 
+--魔丸相关
+player.__index.rec_ex = 0
+function player.__index:get_rec_ex()
+	return (self.rec_ex or 0) 
 end	
---获得火灵
---	火灵数量
+--获得魔丸
+--	魔丸数量
 --	[漂浮文字显示位置]
 --	[不抛出加木头事件]
-function player.__index:add_fire_seed(fire_seed, where, flag)
-	if not fire_seed or tonumber(fire_seed) == 0  then 
+function player.__index:add_rec_ex(rec_ex, where, flag)
+	if not rec_ex or tonumber(rec_ex) == 0  then 
 		return 
 	end	
-	local fire_seed = tonumber(string.format( "%.2f",fire_seed))
-	local data = {player = self, fire_seed = fire_seed}
-	if fire_seed > 0 and not flag then
-		self:event_notify('玩家-即将获得火灵', data)
-		fire_seed = data.fire_seed
+	local rec_ex = tonumber(string.format( "%.2f",rec_ex))
+	local data = {player = self, rec_ex = rec_ex}
+	if rec_ex > 0 and not flag then
+		self:event_notify('玩家-即将获得魔丸', data)
+		rec_ex = data.rec_ex
 	end
-	local fire_seed = tonumber(string.format( "%.2f",fire_seed))
-	self.fire_seed = (self.fire_seed or 0) + fire_seed
-	-- self.fire_seed = jass.I2R(self.fire_seed)
-	if self.fire_seed < 0 then 
-		self.fire_seed = 0
+	local rec_ex = tonumber(string.format( "%.2f",rec_ex))
+	self.rec_ex = (self.rec_ex or 0) + rec_ex
+	-- self.rec_ex = jass.I2R(self.rec_ex)
+	if self.rec_ex < 0 then 
+		self.rec_ex = 0
 	end	
-	self:event_notify('玩家-火灵变化', data)
+	self:event_notify('玩家-魔丸变化', data)
 
 	if not where  then
 		return
@@ -81,10 +81,10 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 	local position = ac.point(x - 30, y, z + 30)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
-	if fire_seed < 0 then 
-		 str =  fire_seed
+	if rec_ex < 0 then 
+		 str =  rec_ex
 	else
-		 str = '+' .. fire_seed
+		 str = '+' .. rec_ex
 	end	
 	ac.texttag
 	{
@@ -99,9 +99,9 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 		show = ac.texttag.SHOW_SELF
 	}
 end
---单位获得火灵
-function Unit.__index:add_fire_seed(num)
-	self:get_owner():add_fire_seed(num, where or self, flag)
+--单位获得魔丸
+function Unit.__index:add_rec_ex(num)
+	self:get_owner():add_rec_ex(num, where or self, flag)
 end
 local function findunit_byname(name)
 	local unit
@@ -128,6 +128,7 @@ end)
 --游戏说明 被玩家12攻击则无敌5秒
 ac.game:event '游戏-开始' (function()
 	local unit = ac.game.findunit_byname('游戏说明')
+    if not unit then return end
 	unit:event '受到伤害效果'(function(_,damage)
 		if damage.source:get_owner().id >=11 then 
 			damage.target:add_buff '无敌'{

@@ -19,7 +19,7 @@ mt{
 |cffFFE799【基本属性】
 |cffffff00+%全属性%  |cff00ff00全属性
 |cffffff00+%暴击几率% |cffffff00%  |cff00ff00暴击几率
-|cffffff00+%暴击加深% |cffffff00% |cff00ff00暴击加深
+|cffffff00+%暴击伤害% |cffffff00% |cff00ff00暴击伤害
 |cffffff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深
 |cffffff00+%免伤几率% |cffffff00%  |cff00ff00免伤几率|r
 ]],
@@ -55,7 +55,7 @@ mt{
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
-    ['暴击加深'] = function (self)
+    ['暴击伤害'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][2] 
     end,

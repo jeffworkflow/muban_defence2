@@ -26,7 +26,7 @@ local function init_attribute(unit)
     unit.index= data.index
     unit.gold= data.gold
     unit.wood= data.wood
-    unit.fire_seed= data.fire_seed
+    unit.rec_ex= data.rec_ex
     unit.exp= data.exp
     unit.fall_rate= data.fall_rate
 
@@ -44,7 +44,7 @@ local function init_attribute(unit)
         unit:set('护甲',(data.attribute['护甲']or 0) *  (attr_mul or 1))
         unit:set('魔抗',(data.attribute['护甲']or 0) * (attr_mul or 1))
 
-        unit:set('暴击加深',(data.attribute['暴击加深'] or 0) * (attr_mul or 1))
+        unit:set('暴击伤害',(data.attribute['暴击伤害'] or 0) * (attr_mul or 1))
     end    
 
     --单独增强最终boss

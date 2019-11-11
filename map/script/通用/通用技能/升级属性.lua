@@ -90,9 +90,9 @@ end)
 -- 	max_level = 5,
 -- 	tip = [[
 -- 		|cff00ccff被动|r:
--- 		暴击几率+%暴击几率% % ，暴击加深+%physical_damage% % 
+-- 		暴击几率+%暴击几率% % ，暴击伤害+%physical_damage% % 
 -- 		会心几率+%physical_rate% % ，会心伤害+%physical_damage% %
--- 		技暴几率+%physical_rate% % ，技暴加深+%physical_damage% %]],
+-- 		技暴几率+%physical_rate% % ，技暴伤害+%physical_damage% %]],
 -- 	--技能图标
 -- 	art = [[ReplaceableTextures\PassiveButtons\PASBTNCriticalStrike.blp]],
 -- 	['暴击几率'] = {2,4,6,8,10},

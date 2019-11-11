@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('敏捷')*5+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['杀怪加敏捷'] = {20,400},
  ['攻击速度'] = 20,
@@ -35,16 +39,81 @@ end,
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标
-	art = [[sheshoutianfu.blp]],
+    art = [[sheshoutianfu.blp]],
+    value = function(self)
+        return 20 * self.level 
+    end ,
+    time = 1
+        
 }
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local source = hero:get_point()
+    hero:add_buff '射手天赋'{
+        time = skill.time,
+        skill = skill,
+        value = skill.value
+    }
+
+	
+    
+end
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then
         self.trg:remove()
         self.trg = nil
     end
+    if self.trg1 then
+        self.trg1:remove()
+        self.trg1 = nil
+    end
+end
+
+local mt = ac.buff['射手天赋']
+mt.cover_type = 1
+
+function mt:on_add()
+	self.target:add('攻击速度',self.value)
+	self.target:add('攻击减甲',self.value)
+end
+
+function mt:on_remove()
+	if self.eff then
+		self.eff:remove()
+	end
+	self.target:add('攻击速度',-self.value)
+	self.target:add('攻击减甲',-self.value)
+end
+
+function mt:on_cover(new)
+	if new.time > self:get_remaining() then
+		self:set_remaining(new.time)
+	end
+	return false
 end

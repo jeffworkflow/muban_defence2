@@ -13,7 +13,7 @@ tip = [[
 |cffFFE799【礼包奖励】|r
 |cff00ff00杀怪加88全属性，攻击加188全属性，每秒加588全属性
 |cff00ffff杀敌数加成+30% 木头加成+30% 
-物品获取率+30% 火灵加成+30% |r
+物品获取率+30% 魔丸加成+30% |r
 |cffff0000攻击减甲+25 减少周围护甲1000|r
 
 |cffffff00地图等级>=10，永久赞助的资源属性效果翻倍|r
@@ -53,7 +53,7 @@ end,
     end    
     return value 
 end,
-['火灵加成'] = function(self)
+['魔丸加成'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local value = 30

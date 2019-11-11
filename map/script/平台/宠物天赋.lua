@@ -78,7 +78,7 @@ mt{
     effect =  [[Hero_CrystalMaiden_N2_V_boom.mdx]],   
 	
 }
-mt.skills = {'宠物-杀敌数加成','宠物-木头加成','宠物-物品获取率加成','宠物-火灵加成','宠物-分裂伤害加成','宠物-攻击速度加成','宠物-杀怪力量成长','宠物-杀怪敏捷成长','宠物-杀怪智力成长','宠物-杀怪全属性成长','宠物-杀怪攻击成长'}
+mt.skills = {'宠物-杀敌数加成','宠物-木头加成','宠物-物品获取率加成','宠物-魔丸加成','宠物-分裂伤害加成','宠物-攻击速度加成','宠物-杀怪力量成长','宠物-杀怪敏捷成长','宠物-杀怪智力成长','宠物-杀怪全属性成长','宠物-杀怪攻击成长'}
 
 --每次升级增加 宠物模型大小
 function mt:on_upgrade()
@@ -117,7 +117,7 @@ local peon_skill = {
     ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前杀敌数加成 +%杀敌数加成%|cff00ff00 %|r|n|n]]},
     ['宠物-木头加成'] = {'木头加成','木头加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
     ['宠物-物品获取率加成'] = {'物品获取率加成','物品获取率',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前物品获取率加成 +%物品获取率%|cff00ff00 %|r|n|n]]},
-    ['宠物-火灵加成'] = {'火灵加成','火灵加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前火灵加成 +%火灵加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-魔丸加成'] = {'魔丸加成','魔丸加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前魔丸加成 +%魔丸加成%|cff00ff00 %|r|n|n]]},
     ['宠物-分裂伤害加成'] = {'分裂伤害加成','分裂伤害',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前分裂伤害加成 +%分裂伤害%|cff00ff00 %|r|n|n]]},
     ['宠物-攻击速度加成'] = {'攻击速度加成','攻击速度',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前攻击速度加成 +%攻击速度%|cff00ff00 %|r|n|n]]},
     ['宠物-杀怪力量成长'] = {'宠物-杀怪力量成长','杀怪加力量',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加力量 +%杀怪加力量%|cff00ff00|r|n|n]]},

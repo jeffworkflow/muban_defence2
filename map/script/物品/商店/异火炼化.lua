@@ -1,6 +1,6 @@
 --异火升级
 local fire = {
-    --技能名 = 商店名，火灵基本价格，留空,培养，图标,tip
+    --技能名 = 商店名，魔丸基本价格，留空,培养，图标,tip
     ['星星之火'] = {'|cffff0000炼化|r 星星之火',20000,'',[[huo1.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]},
     ['陨落心炎'] = {'|cffff0000炼化|r 陨落心炎',50000,'',[[huo2.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]},
     ['三千焱炎火'] = {'|cffff0000炼化|r 三千焱炎火',100000,'',[[huo3.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]},
@@ -26,7 +26,7 @@ for key,val in pairs(fire) do
     --目标类型
     target_type = ac.skill.TARGET_TYPE_NONE,
     --购买价格
-    fire_seed = val[2],
+    rec_ex = val[2],
     --物品技能
     is_skill = true,
     }

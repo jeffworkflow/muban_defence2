@@ -49,7 +49,7 @@ local kill_text = japi.CreateFrame('mtp_kill_text',currency,0)
 japi.FrameSetPoint(kill_text,3,kill_icon,5,0.003,0)
 --japi.FrameSetText(kill_text,'123450')
 
---火灵
+--魔丸
 local fire_icon = japi.CreateFrame('mtp_fire_icon',currency,0)
 japi.FrameSetSize(fire_icon,0.0103,0.0104)
 japi.FrameSetPoint(fire_icon,3,kill_text,5,0.0054,0)
@@ -124,15 +124,15 @@ mtp_tip.set_skill_tip = function(button)
         -- end    
 
         local jifen,show_jifen,player_jifen = item:buy_jifen()
-        local fire_seed,show_fire_seed,player_fire = item:buy_fire_seed()
+        local rec_ex,show_rec_ex,player_fire = item:buy_rec_ex()
         gold = player_gold or gold
         wood = player_wood or wood
         kill_count = player_kill or kill_count
         jifen = player_jifen or jifen
-        fire_seed = player_fire or fire_seed
+        rec_ex = player_fire or rec_ex
 
 
-        if gold<=0 and wood<=0 and kill_count<=0 and jifen <= 0 and fire_seed<=0 then 
+        if gold<=0 and wood<=0 and kill_count<=0 and jifen <= 0 and rec_ex<=0 then 
             japi.FrameShow(currency,false)
             japi.FrameSetPoint(backdrop,0,tip_text,0,-0.0054,0.0265)
         else
@@ -151,7 +151,7 @@ mtp_tip.set_skill_tip = function(button)
         japi.FrameShow(jifen_icon,false)
         japi.FrameShow(jifen_text,false)
         
-        -- print(show_kill_count,show_jifen,show_fire_seed)
+        -- print(show_kill_count,show_jifen,show_rec_ex)
         if gold and gold >0 then
             japi.FrameShow(gold_icon,true)
             japi.FrameShow(gold_text,true)
@@ -175,12 +175,12 @@ mtp_tip.set_skill_tip = function(button)
             japi.FrameSetText(gold_text,show_kill_count)
         end
         --暂不支持 2个以上币种一起
-        if fire_seed and fire_seed >0 then
+        if rec_ex and rec_ex >0 then
             japi.FrameShow(gold_icon,true)
             japi.FrameShow(gold_text,true)
-            japi.FrameSetTexture(gold_icon,[[UI\small_fire_seed.blp]],0) --0为拉伸
+            japi.FrameSetTexture(gold_icon,[[UI\small_rec_ex.blp]],0) --0为拉伸
             --设置价格
-            japi.FrameSetText(gold_text,show_fire_seed)
+            japi.FrameSetText(gold_text,show_rec_ex)
         end
         --暂不支持 2个以上币种一起
         if jifen and jifen >0 then

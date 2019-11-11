@@ -2,7 +2,7 @@
 local rect = require 'types.rect'
 -- 传送 快速达到
 ac.quick_arrive ={
-    --商品名 = 目的区域,图标,说明,消费钱,消费木头，火灵，杀敌数，积分，商店名字
+    --商品名 = 目的区域,图标,说明,消费钱,消费木头，魔丸，杀敌数，积分，商店名字
     ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','\n挑战BOSS并获得|cff00ff00 【一阶神兵】-凝脂剑|r\n',0,20,0,0,0,} ,
     ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','\n挑战BOSS并获得|cff00ff00 【二阶神兵】-元烟剑|r\n',0,50,0} ,
     ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','\n挑战BOSS并获得|cff00ffff 【三阶神兵】-暗影|r\n',0,125,0} ,
@@ -37,14 +37,14 @@ ac.quick_arrive ={
     ['洗练石boss3'] = {ac.map.rects['传送-洗练石3'],'xilianshi.blp','\n挑战BOSS并获得|cffffff00 【三号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,12000,0,0,0,nil,0,450} ,
     ['洗练石boss4'] = {ac.map.rects['传送-洗练石4'],'xilianshi.blp','\n挑战BOSS并获得|cffff0000 【四号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,18000,0,0,0,nil,0,450} ,
 
-    ['境界-小斗气'] = {ac.map.rects['传送-境界1'],'tupo1.blp','\n挑战BOSS并突破境界至|cff00ff00 【小斗气】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+200w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击加深\n+10%    每秒回血\n|r',0,0,5000,0,0,nil,0,500} ,
-    ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','\n挑战BOSS并突破境界至|cff00ff00 【斗者】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+300w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴加深\n+5      攻击减甲\n|r',0,0,10000,0,0,nil,0,500} ,
+    ['境界-小斗气'] = {ac.map.rects['传送-境界1'],'tupo1.blp','\n挑战BOSS并突破境界至|cff00ff00 【小斗气】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+200w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击伤害\n+10%    每秒回血\n|r',0,0,5000,0,0,nil,0,500} ,
+    ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','\n挑战BOSS并突破境界至|cff00ff00 【斗者】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+300w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴伤害\n+5      攻击减甲\n|r',0,0,10000,0,0,nil,0,500} ,
     ['境界-斗师'] = {ac.map.rects['传送-境界3'],'tupo3.blp','\n挑战BOSS并突破境界至|cff00ffff 【斗师】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+400w 全属性\n+2.5%  免伤几率\n+2.5%  全伤加深\n+5%    触发概率加成\n|r',0,0,20000,0,0,nil,0,500} ,
-    ['境界-斗灵'] = {ac.map.rects['传送-境界4'],'tupo4.blp','\n挑战BOSS并突破境界至|cff00ffff 【斗灵】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+500w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击加深\n-5%    技能冷却\n|r',0,0,30000,0,0,nil,0,500} ,
-    ['境界-斗王'] = {ac.map.rects['传送-境界5'],'tupo5.blp','\n挑战BOSS并突破境界至|cffffff00 【斗王】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+600w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴加深\n+5      攻击减甲\n|r',0,0,40000,0,0,nil,0,500} ,
+    ['境界-斗灵'] = {ac.map.rects['传送-境界4'],'tupo4.blp','\n挑战BOSS并突破境界至|cff00ffff 【斗灵】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+500w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击伤害\n-5%    技能冷却\n|r',0,0,30000,0,0,nil,0,500} ,
+    ['境界-斗王'] = {ac.map.rects['传送-境界5'],'tupo5.blp','\n挑战BOSS并突破境界至|cffffff00 【斗王】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+600w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴伤害\n+5      攻击减甲\n|r',0,0,40000,0,0,nil,0,500} ,
     ['境界-斗皇'] = {ac.map.rects['传送-境界6'],'tupo6.blp','\n挑战BOSS并突破境界至|cffffff00 【斗皇】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+700w 全属性\n+2.5%  免伤几率\n+2.5%  全伤加深\n+5%    触发概率加成\n|r',0,0,50000,0,0,nil,0,0} ,
-    ['境界-斗宗'] = {ac.map.rects['传送-境界7'],'tupo7.blp','\n挑战BOSS并突破境界至|cffff0000 【斗宗】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+750w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击加深\n-5%    技能冷却\n|r',0,0,60000,0,0,nil,0,500} ,
-    ['境界-斗尊'] = {ac.map.rects['传送-境界8'],'tupo8.blp','\n挑战BOSS并突破境界至|cffff0000 【斗尊】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+800w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴加深\n+5      攻击减甲\n|r',0,0,70000,0,0,nil,0,500} ,
+    ['境界-斗宗'] = {ac.map.rects['传送-境界7'],'tupo7.blp','\n挑战BOSS并突破境界至|cffff0000 【斗宗】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+750w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击伤害\n-5%    技能冷却\n|r',0,0,60000,0,0,nil,0,500} ,
+    ['境界-斗尊'] = {ac.map.rects['传送-境界8'],'tupo8.blp','\n挑战BOSS并突破境界至|cffff0000 【斗尊】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+800w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴伤害\n+5      攻击减甲\n|r',0,0,70000,0,0,nil,0,500} ,
     ['境界-斗圣'] = {ac.map.rects['传送-境界9'],'tupo9.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗圣】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+850w 全属性\n+2.5%  免伤几率\n+2.5%  全伤加深\n-0.05   攻击间隔\n|r',0,0,80000,0,0,nil,0,500} ,
     ['境界-斗帝'] = {ac.map.rects['传送-境界10'],'tupo10.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗帝】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1000w 全属性\n+5%    全伤加深\n|r',0,0,100000,0,0,nil,0,500} ,
     ['境界-斗神'] = {ac.map.rects['传送-境界11'],'doushen.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗神】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1500w 全属性\n+5%    对BOSS额外伤害\n|r',0,0,150000,0,0,nil,0,500} ,
@@ -109,7 +109,7 @@ for key,value in pairs(ac.quick_arrive) do
         mt.wood = value[5]
     end
     if value[6] then 
-        mt.fire_seed = value[6]
+        mt.rec_ex = value[6]
     end
     if value[7] then 
         mt.kill_count = value[7]

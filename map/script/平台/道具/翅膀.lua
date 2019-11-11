@@ -124,7 +124,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+5    每秒加护甲|r
 |cff00ff00+20%  触发概率加成
 |cff00ff00+5%   技暴几率|r
-|cff00ff00+50%  技暴加深|r
+|cff00ff00+50%  技暴伤害|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -134,7 +134,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加护甲'] = 5,
 ['触发概率加成'] = 20,
 ['技暴几率'] = 5,
-['技暴加深'] = 50,
+['技暴伤害'] = 50,
 need_map_level = 15,
 --特效
 effect = [[chibang9.mdx]]
@@ -190,7 +190,7 @@ tip = [[
 |cff00ff00+2500W  初始生命|r
 |cff00ff00+2500   初始护甲|r
 |cff00ff00+20%  对BOSS额外伤害|r
-|cff00ff00+25   每秒加火灵|r
+|cff00ff00+25   每秒加魔丸|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -200,7 +200,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['初始生命'] = 25000000,
 ['护甲'] = 2500,
 ['对BOSS额外伤害'] = 20,
-['每秒加火灵'] = 25,
+['每秒加魔丸'] = 25,
 need_map_level = 28,
 --特效
 effect = [[chibang03.mdx]]
@@ -289,7 +289,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+400  攻击减甲|r
 |cff00ff00+5    每秒加杀敌数|r
 |cff00ff00+15   每秒加木头|r
-|cff00ff00+25   每秒加火灵|r
+|cff00ff00+25   每秒加魔丸|r
 |cff00ff00+40%  全伤加深|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -300,7 +300,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击减甲'] = 400,
 ['每秒加杀敌数'] = 5,
 ['每秒加木头'] = 15,
-['每秒加火灵'] = 25,
+['每秒加魔丸'] = 25,
 ['全伤加深'] = 40,
 need_map_level = 36,
 --特效

@@ -378,70 +378,70 @@ local devil_deal ={
 },
 
 [6] = {
- {'身披圣衣lv1',false,'护甲',300,'火灵',2500,[[liliang.blp]],[[
+ {'身披圣衣lv1',false,'护甲',300,'魔丸',2500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv1|r
         
 |cffFFE799【奖励】|r|cff00ff00+300护甲|r
         ]]},
     
-    {'身披圣衣lv2',false,'全属性',1500000,'火灵',5000,[[liliang.blp]],[[
+    {'身披圣衣lv2',false,'全属性',1500000,'魔丸',5000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv2|r
         
 |cffFFE799【奖励】|r|cff00ff00+150w全属性|r
         ]]},
     
-    {'身披圣衣lv3',false,'护甲',500,'火灵',7500,[[liliang.blp]],[[
+    {'身披圣衣lv3',false,'护甲',500,'魔丸',7500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv3|r
         
 |cffFFE799【奖励】|r|cff00ff00+500护甲|r
         ]]},
     
-    {'身披圣衣lv4',false,'杀怪加全属性',200,'火灵',10000,[[liliang.blp]],[[
+    {'身披圣衣lv4',false,'杀怪加全属性',200,'魔丸',10000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv4|r
         
 |cffFFE799【奖励】|r|cff00ff00+200杀怪加全属性|r
         ]]},
     
-    {'身披圣衣lv5',false,'攻击加全属性',1000,'火灵',12500,[[liliang.blp]],[[
+    {'身披圣衣lv5',false,'攻击加全属性',1000,'魔丸',12500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv5|r
         
 |cffFFE799【奖励】|r|cff00ff00+1000攻击加全属性|r
         ]]},
     
-    {'身披圣衣lv6',false,'全属性',2000000,'火灵',15000,[[liliang.blp]],[[
+    {'身披圣衣lv6',false,'全属性',2000000,'魔丸',15000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv6|r
         
 |cffFFE799【奖励】|r|cff00ff00+200w全属性|r
         ]]},
     
-     {'身披圣衣lv7',false,'杀怪加攻击',800,'火灵',17500,[[liliang.blp]],[[
+     {'身披圣衣lv7',false,'杀怪加攻击',800,'魔丸',17500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv7|r
         
 |cffFFE799【奖励】|r|cff00ff00+800杀怪加攻击|r
         ]]},
     
-    {'身披圣衣lv8',false,'每秒加攻击',8000,'火灵',20000,[[liliang.blp]],[[
+    {'身披圣衣lv8',false,'每秒加攻击',8000,'魔丸',20000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv8|r
         
 |cffFFE799【奖励】|r|cff00ff00+8000每秒加攻击|r
         ]]},
     
-    {'身披圣衣lv9',false,'全属性',3000000,'火灵',22500,[[liliang.blp]],[[
+    {'身披圣衣lv9',false,'全属性',3000000,'魔丸',22500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv9|r
         
 |cffFFE799【奖励】|r|cff00ff00+300w全属性|r
         ]]},
     
-    {'身披圣衣lvmax',false,'攻击速度',50,'火灵',25000,[[liliang.blp]],[[
+    {'身披圣衣lvmax',false,'攻击速度',50,'魔丸',25000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lvmax|r
         
@@ -507,11 +507,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
     ]]},
 
-{'脚踩祥云lv9',false,'技暴加深',50,'木头',18000,[[liliang.blp]],[[
+{'脚踩祥云lv9',false,'技暴伤害',50,'木头',18000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv9|r
     
-|cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
+|cffFFE799【奖励】|r|cff00ff00+50%技暴伤害|r
     ]]},
 
 {'脚踩祥云lvmax',false,'全伤加深',5,'木头',20000,[[liliang.blp]],[[
@@ -523,70 +523,70 @@ local devil_deal ={
 },
 
 [8] = {
-{'头顶乾坤lv1',false,'触发概率加成',5,'火灵',10000,[[liliang.blp]],[[
+{'头顶乾坤lv1',false,'触发概率加成',5,'魔丸',10000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv1|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
     ]]},
 
-{'头顶乾坤lv2',false,'物理伤害加深',25,'火灵',25000,[[liliang.blp]],[[
+{'头顶乾坤lv2',false,'物理伤害加深',25,'魔丸',25000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
     
 |cffFFE799【奖励】|r|cff00ff00+25%物理伤害加深|r
     ]]},
 
-{'头顶乾坤lv3',false,'全属性',4000000,'火灵',40000,[[liliang.blp]],[[
+{'头顶乾坤lv3',false,'全属性',4000000,'魔丸',40000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv3|r
     
 |cffFFE799【奖励】|r|cff00ff00+400w全属性|r
     ]]},
 
-{'头顶乾坤lv4',false,'攻击减甲',20,'火灵',55000,[[liliang.blp]],[[
+{'头顶乾坤lv4',false,'攻击减甲',20,'魔丸',55000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv4|r
     
 |cffFFE799【奖励】|r|cff00ff00+20攻击减甲|r
     ]]},
 
-{'头顶乾坤lv5',false,'技暴加深',50,'火灵',70000,[[liliang.blp]],[[
+{'头顶乾坤lv5',false,'技暴伤害',50,'魔丸',70000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv5|r
     
-|cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
+|cffFFE799【奖励】|r|cff00ff00+50%技暴伤害|r
     ]]},
 
-{'头顶乾坤lv6',false,'全属性',8000000,'火灵',85000,[[liliang.blp]],[[
+{'头顶乾坤lv6',false,'全属性',8000000,'魔丸',85000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv6|r
     
 |cffFFE799【奖励】|r|cff00ff00+800w全属性|r
     ]]},
 
- {'头顶乾坤lv7',false,'暴击加深',150,'火灵',100000,[[liliang.blp]],[[
+ {'头顶乾坤lv7',false,'暴击伤害',150,'魔丸',100000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv7|r
     
-|cffFFE799【奖励】|r|cff00ff00+150%暴击加深|r
+|cffFFE799【奖励】|r|cff00ff00+150%暴击伤害|r
     ]]},
 
-{'头顶乾坤lv8',false,'技暴加深',150,'火灵',125000,[[liliang.blp]],[[
+{'头顶乾坤lv8',false,'技暴伤害',150,'魔丸',125000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv8|r
     
-|cffFFE799【奖励】|r|cff00ff00+150%技暴加深|r
+|cffFFE799【奖励】|r|cff00ff00+150%技暴伤害|r
     ]]},
 
-{'头顶乾坤lv9',false,'全属性',10000000,'火灵',150000,[[liliang.blp]],[[
+{'头顶乾坤lv9',false,'全属性',10000000,'魔丸',150000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv9|r
     
 |cffFFE799【奖励】|r|cff00ff00+1000w全属性|r
     ]]},
 
-{'头顶乾坤lvmax',false,'对BOSS额外伤害',5,'火灵',200000,[[liliang.blp]],[[
+{'头顶乾坤lvmax',false,'对BOSS额外伤害',5,'魔丸',200000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lvmax|r
     
@@ -699,8 +699,8 @@ for _,tab in ipairs(devil_deal) do
             if self.cost_allattr then 
                 str = '' .. self.cost_allattr .. '全属性'
             end    
-            if self.fire_seed then 
-                str = '' .. self.fire_seed .. '火灵'
+            if self.rec_ex then 
+                str = '' .. self.rec_ex .. '魔丸'
             end    
             return str
         end,
@@ -720,8 +720,8 @@ for _,tab in ipairs(devil_deal) do
         if value[5]=='全属性' then
             mt.cost_allattr = tonumber(value[6])
         end   
-        if value[5]=='火灵' then
-            mt.fire_seed = tonumber(value[6])
+        if value[5]=='魔丸' then
+            mt.rec_ex = tonumber(value[6])
         end   
 
         local function add_next_skill(skill,seller,hero)

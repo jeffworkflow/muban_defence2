@@ -51,8 +51,8 @@ for name,data in pairs(ac.table.ItemData) do
         if data.coin == '杀敌数' then 
             data.kill_count = data.coin_val
         end
-        if data.coin == '火灵' then 
-            data.fire_seed = data.coin_val
+        if data.coin == '魔丸' then 
+            data.rec_ex = data.coin_val
         end
 
         --商品名称

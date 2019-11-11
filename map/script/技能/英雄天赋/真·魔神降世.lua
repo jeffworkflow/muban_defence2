@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('智力')*10+10001)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['杀怪加力量'] = {40,800},
  ['吸血'] = 10,
@@ -50,9 +54,11 @@ end,
 function mt:on_add()
     local skill = self
     local hero = self.owner
+    local p = hero:get_owner()
 end
 function mt:on_remove()
     local hero = self.owner
+    local p = hero:get_owner()
     if self.trg then
         self.trg:remove()
         self.trg = nil

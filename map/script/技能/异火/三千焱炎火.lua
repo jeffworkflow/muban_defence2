@@ -1,5 +1,5 @@
 local config = {
-    --品阶 =  颜色,技暴加深 技暴几率 全属性 闪避 攻击间隔
+    --品阶 =  颜色,技暴伤害 技暴几率 全属性 闪避 攻击间隔
     ['凡'] = {'绿',100,1,4000000,1,-0.01},
     ['玄'] = {'蓝',200,2,6000000,2,-0.02},
     ['地'] = {'金',300,3,9000000,3,-0.03},
@@ -19,7 +19,7 @@ mt{
 |cffFFE799【基本属性】
 |cffffff00+%全属性%  |cff00ff00全属性
 |cffffff00+%技暴几率% |cffffff00%  |cff00ff00技暴几率
-|cffffff00+%技暴加深% |cffffff00% |cff00ff00技暴加深
+|cffffff00+%技暴伤害% |cffffff00% |cff00ff00技暴伤害
 |cffffff00+%闪避% |cffffff00%  |cff00ff00闪避
 |cffffff00%攻击间隔%  |cff00ff00攻击间隔|r
 ]],
@@ -56,7 +56,7 @@ mt{
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
-    ['技暴加深'] = function (self)
+    ['技暴伤害'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][2] 
     end,

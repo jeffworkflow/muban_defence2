@@ -214,8 +214,8 @@ local task_detail = {
 
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.bjjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.bjjx_cnt % per_kill_cnt == 0 then 
-                hero:add('暴击加深',50)
-                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000暴击加深+50%|r',2)
+                hero:add('暴击伤害',50)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000暴击伤害+50%|r',2)
             end
 
             if p.bjjx_cnt == max_kill_cnt then
@@ -293,8 +293,8 @@ local task_detail = {
 
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.jbjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.jbjx_cnt % per_kill_cnt == 0 then 
-                hero:add('技暴加深',50)
-                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000技暴加深+50%|r',2)
+                hero:add('技暴伤害',50)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000技暴伤害+50%|r',2)
             end
 
             if p.jbjx_cnt == max_kill_cnt then

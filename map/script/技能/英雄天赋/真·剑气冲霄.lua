@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*150+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['杀怪加全属性'] = {250,5000},
  ['攻击减甲'] = 488,
@@ -40,15 +44,19 @@ end,
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标
 	art = [[jqcx.blp]],
-	--特效4
-	effect4 = [[伤害公式：全属性*150*Lv+0.5%敌人的最大生命值]],
+	--特效
+	effect = [[Abilities\Spells\Orc\Shockwave\ShockwaveMissile.mdl]],
+	--特效1
+	effect1 = [[ShockwaveMissile.mdx]],
 }
 function mt:on_add()
     local skill = self
     local hero = self.owner
+    local p = hero:get_owner()
 end
 function mt:on_remove()
     local hero = self.owner
+    local p = hero:get_owner()
     if self.trg then
         self.trg:remove()
         self.trg = nil

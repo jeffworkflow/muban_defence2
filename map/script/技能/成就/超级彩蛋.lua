@@ -268,12 +268,12 @@ mt{
 +100%  杀敌数加成
 +100%  物品获取率
 +100%  木头加成
-+100%  火灵加成
++100%  魔丸加成
     ]],
     ['全属性'] = 50000000,
     ['杀敌数加成'] = 100,
     ['木头加成'] = 100,
-    ['火灵加成'] = 100,
+    ['魔丸加成'] = 100,
     ['物品获取率'] = 100
 }
 
@@ -337,6 +337,7 @@ end)
 
 ac.game:event '游戏-开始' (function()
     local unit = ac.game.findunit_byname('游戏说明')
+    if not unit then return end
     unit:event '受到伤害效果'(function(_,damage)
         if not damage.source:is_hero() then 
             return 

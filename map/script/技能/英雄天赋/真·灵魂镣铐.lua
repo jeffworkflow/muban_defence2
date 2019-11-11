@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('智力')*20+10009)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['每秒加木头'] = {5,100},
  ['每秒加魔丸'] = {5,100},
@@ -44,15 +48,87 @@ end,
 	effect = [[desecrate.mdx]],
 	--特效4
 	effect4 = [[0.5秒后再触发一次]],
+    time = 2,
+    pulse_time = 0.5,
+    cool = 2,
 }
+
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local source = hero:get_point()
+
+    for i=1,2 do 
+        if i==2 then 
+            ac.wait(0.1*1000,function()
+                ac.effect_ex{
+                    point = target:get_point(),
+                    model = skill.effect,
+                }:remove()
+            end)
+        else
+            ac.effect_ex{
+                point = target:get_point(),
+                model = skill.effect,
+            }:remove()  
+        end      
+    end    
+	--计时器
+	self.trg1 = hero:timer(self.pulse_time * 1000,math.floor(self.time/self.pulse_time),function()
+		for i, u in ac.selector()
+        : in_range(target,skill.area)
+        : is_enemy(hero)
+        : ipairs()
+        do 
+            --技能伤害
+            u:damage
+            {
+                source = hero,
+                skill = self,
+                damage = skill.damage,
+                damage_type = '法术'
+            }
+		end	
+
+	end)
+    
+end
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+			--0.5秒后再触发一次
+			ac.wait(500,function()
+				self:atk_pas_shot(damage.target)
+			end)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then
         self.trg:remove()
         self.trg = nil
+    end
+    if self.trg1 then
+        self.trg1:remove()
+        self.trg1 = nil
     end
 end

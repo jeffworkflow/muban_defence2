@@ -348,29 +348,29 @@ function mt:sell_jifen()
 	return jifen
 end
 
---获取购买火灵
-function mt:buy_fire_seed()
-	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.fire_seed or 0)
-	-- self.fire_seed = gold
-	self.fire_seed = self.fire_seed or 0 
+--获取购买魔丸
+function mt:buy_rec_ex()
+	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.rec_ex or 0)
+	-- self.rec_ex = gold
+	self.rec_ex = self.rec_ex or 0 
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
-			gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.fire_seed or '0')..')|r'
+			gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.rec_ex or '0')..')|r'
 		end	
 	end
-	self.show_fire_seed = gold
-	return self.fire_seed,self.show_fire_seed,self.player_fire and self.player_fire[ac.player.self] 
+	self.show_rec_ex = gold
+	return self.rec_ex,self.show_rec_ex,self.player_fire and self.player_fire[ac.player.self] 
 end
 
---获取出售火灵
-function mt:sell_fire_seed()
+--获取出售魔丸
+function mt:sell_rec_ex()
 	local count = self:get_item_count()
-	local fire_seed = self.fire_seed  or 0
+	local rec_ex = self.rec_ex  or 0
 	if count > 1 then
-		fire_seed = fire_seed * count
+		rec_ex = rec_ex * count
 	end
-	fire_seed = math.floor(fire_seed * self.discount)
-	return fire_seed
+	rec_ex = math.floor(rec_ex * self.discount)
+	return rec_ex
 end
 
 --增加物品层数
@@ -963,7 +963,7 @@ function unit.__index:add_item(it,is_fall)
 			-- it:buy_wood()
 			-- it:buy_kill_count()
 			-- it:buy_jifen()
-			-- it:buy_fire_seed()
+			-- it:buy_rec_ex()
 		end)
 	end
 	self:event_notify('单位-获得物品后',self, it)
@@ -1120,16 +1120,16 @@ function item.create_item(name,poi,is)
 	local items = setmetatable({},item)
 	
 	--在继承skill的属性(如果带技能的话,不存在技能时遍历一下也无所谓)
-	-- local data = ac.skill[name]
-	-- for k, v in pairs(data) do
-	-- 	items[k] = v
-	-- end	
-	local skl = ac.dummy:add_skill(name,'英雄')
-	for k, v in sortpairs(skl) do
+	local data = ac.skill[name]
+	for k, v in pairs(data) do
 		items[k] = v
-	end
+	end	
+	-- local skl = ac.dummy:add_skill(name,'英雄')
+	-- for k, v in sortpairs(skl) do
+	-- 	items[k] = v
+	-- end
 	items.owner = nil
-	skl:remove()
+	-- skl:remove()
 	-- print_r(items.old_status or {})
 	--如果存在lni则继承lni的属性
 	local data = ac.table.ItemData[name]

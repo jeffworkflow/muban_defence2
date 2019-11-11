@@ -19,7 +19,7 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【主动施放】增加|r |cffffff00暴击几率+10%*Lv 暴击加深+100%*Lv|r|cff00bdec 持续5秒|r
+|cff00bdec【主动施放】增加|r |cffffff00暴击几率+10%*Lv 暴击伤害+100%*Lv|r|cff00bdec 持续5秒|r
     
 ]],
 	--技能图标
@@ -67,13 +67,13 @@ function mt:on_add()
     local target = self.target
     local hero = self.target
     target:add('暴击几率',self.crit_rate)   
-    target:add('暴击加深',self.crit_damage)   
+    target:add('暴击伤害',self.crit_damage)   
 end
 
 function mt:on_remove()
     local target = self.target 
     target:add('暴击几率',-self.crit_rate)   
-    target:add('暴击加深',-self.crit_damage)    
+    target:add('暴击伤害',-self.crit_damage)    
     if self.eff then self.eff:remove() self.eff = nil   end
     if self.trg then self.trg:remove() self.trg = nil end
 end

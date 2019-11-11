@@ -23,7 +23,7 @@ area = 750,
 damage = function(self)
     return self.owner:get('攻击')
 end,  
--- self.owner:get('暴击加深')* 
+-- self.owner:get('暴击伤害')* 
 --晕眩
 stun = 1,
 damage_type = '物理',

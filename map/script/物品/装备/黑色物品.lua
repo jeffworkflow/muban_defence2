@@ -109,12 +109,12 @@ tip = [[
 
 |cffcccccc金矿被魔鬼占据之后，侍僧才可以从中采集黄金资源。
 
-|cff00ff00杀敌数加成+60% 物品获取率+60% 木头加成+60% 火灵加成+60%
+|cff00ff00杀敌数加成+60% 物品获取率+60% 木头加成+60% 魔丸加成+60%
 ]],
 ['杀敌数加成'] = 60,
 ['物品获取率'] = 60,
 ['木头加成'] = 60,
-['火灵加成'] = 60,
+['魔丸加成'] = 60,
 --物品技能
 is_skill = true,
 --物品详细介绍的title
@@ -224,12 +224,12 @@ tip = [[
 
 |cffcccccc秒进斗金？
 
-|cff00ff00每秒加木头+750，每秒加火灵+1500
+|cff00ff00每秒加木头+750，每秒加魔丸+1500
 ]],
 --物品技能
 is_skill = true,
 ['每秒加木头'] = 750,
-['每秒加火灵'] = 1500,
+['每秒加魔丸'] = 1500,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 } 
@@ -470,7 +470,7 @@ tip = [[
 
 |cff00ff00+1亿   力量
 +200% 分裂伤害
-+500% 暴击加深
++500% 暴击伤害
 +100% 物理伤害加深
 
 |cffff0000战士专属（仅战士携带有效）]],
@@ -480,7 +480,7 @@ end,
 ['分裂伤害'] =  function(self)
     return self.owner.production=='战士'  and  200 or 0
 end,
-['暴击加深'] = function(self)
+['暴击伤害'] = function(self)
     return self.owner.production=='战士'  and  500 or 0
 end,
 ['物理伤害加深'] = function(self)
@@ -506,7 +506,7 @@ tip = [[
 |cff00ff00+1亿   智力
 +15%  技能冷却
 +25%  触发概率加成
-+500% 技暴加深
++500% 技暴伤害
 
 |cffff0000法师专属（仅法师携带有效）]],
 ['智力'] = function(self)
@@ -518,7 +518,7 @@ end,
 ['触发概率加成'] = function(self)
     return self.owner.production=='法师'  and  25 or 0
 end,
-['技暴加深'] = function(self)
+['技暴伤害'] = function(self)
     return self.owner.production=='法师'  and  500 or 0
 end,
 is_skill = true,
@@ -578,18 +578,18 @@ tip = [[
 |cffcccccc暗月洒下第一滩污血，时空之神的瞳孔即将打开。
 
 |cff00ff00+5000万 全属性
-+350% 暴击加深
-+350% 技暴加深
++350% 暴击伤害
++350% 技暴伤害
 +350% 会心伤害
 
 |cffff0000杀手专属（仅杀手携带有效）]],
 ['全属性'] = function(self)
     return self.owner.production=='杀手' and  50000000 or 0
 end,
-['暴击加深'] =  function(self)
+['暴击伤害'] =  function(self)
     return self.owner.production=='杀手'  and  350 or 0
 end,
-['技暴加深'] = function(self)
+['技暴伤害'] = function(self)
     return self.owner.production=='杀手'  and  350 or 0
 end,
 ['会心伤害'] = function(self)

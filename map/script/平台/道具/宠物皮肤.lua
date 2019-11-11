@@ -142,7 +142,7 @@ tip = [[
 |cffFFE799【宠物属性】：|r
 |cff00ff00+88   杀怪加全属性|r
 |cff00ff00+35% 物品获取率|r
-|cff00ff00+35% 火灵加成|r
+|cff00ff00+35% 魔丸加成|r
 |cff00ffff+35   攻击减甲|r
 |cff00ffff+15% 触发概率加成|r
 |cff00ffff-10% 技能冷却|r
@@ -153,7 +153,7 @@ tip = [[
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 88,
 ['物品获取率'] = 35,
-['火灵加成'] = 35,
+['魔丸加成'] = 35,
 ['攻击减甲'] = function(self) 
     local val = 35 
     local p = self.owner:get_owner()
@@ -200,7 +200,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+128    杀怪加全属性|r
-|cff00ff00+25%  火灵加成|r
+|cff00ff00+25%  魔丸加成|r
 |cff00ff00+25%  物品获取率|r
 |cff00ff00-0.05  攻击间隔|r
 
@@ -215,7 +215,7 @@ need_sp_cnt = 400,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 128,
-['火灵加成'] = 25,
+['魔丸加成'] = 25,
 ['物品获取率'] = 25,
 ['攻击间隔'] = -0.05,
 --特效
@@ -492,7 +492,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【宠物属性】：|r
 |cff00ff00+288  杀怪加全属性|r
 |cff00ff00+288  攻击减甲|r
-|cff00ff00+35%  技暴加深|r
+|cff00ff00+35%  技暴伤害|r
 |cff00ff00+35%  技能伤害加深|r
 |cff00ff00+35%  会心伤害|r
 
@@ -514,7 +514,7 @@ need_sp_cnt = 850,
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 288,
 ['攻击减甲'] = 288,
-['技暴加深'] = 35,
+['技暴伤害'] = 35,
 ['技能伤害加深'] = 35,
 ['会心伤害'] = 35,
 --特效
@@ -544,7 +544,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【成就属性】：|r
 |cff00ff00+26.8   杀怪加全属性|r
 |cff00ff00+26.8   攻击减甲|r
-|cff00ff00+26.8%  火灵加成|r
+|cff00ff00+26.8%  魔丸加成|r
 |cff00ff00+26.8%  全伤加深|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
@@ -563,7 +563,7 @@ need_sp_cnt = 850,
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 26.8,
 ['攻击减甲'] = 26.8,
-['火灵加成'] = 26.8,
+['魔丸加成'] = 26.8,
 ['全伤加深'] = 26.8,
 --特效
 effect = [[RabbitGold2_BC.mdx]],
@@ -586,7 +586,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【宠物属性】：|r
 |cff00ff00+288  杀怪加全属性|r
 |cff00ff00+288  攻击减甲|r
-|cff00ff00+35%  暴击加深|r
+|cff00ff00+35%  暴击伤害|r
 |cff00ff00+35%  物理伤害加深|r
 |cff00ff00+35%  会心伤害|r
 
@@ -597,7 +597,7 @@ need_map_level = 38,
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 288,
 ['攻击减甲'] = 288,
-['暴击加深'] = 35,
+['暴击伤害'] = 35,
 ['物理伤害加深'] = 35,
 ['会心伤害'] = 35,
 

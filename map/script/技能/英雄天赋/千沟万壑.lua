@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('力量')*5+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['攻击力%'] = 30,
  ['护甲'] = 500,
@@ -42,17 +46,106 @@ end,
 	--特效1
 	effect1 = [[ImpaleMissTarget.mdx]],
 	--特效4
-	effect4 = [[范围200*1800，目标特效：ImpaleHitTarget.mdx
-播放特效：ImpaleMissTarget.mdx]],
+	effect4 = [[类似牛头人的沟壑，从英雄到敌人的方向，播放地刺特效，特效移动距离1800，伤害范围200
+
+目标特效：ImpaleHitTarget.mdx
+地刺特效：ImpaleMissTarget.mdx]],--持续时间
+	time = 1 ,
+	--碰撞范围
+	hit_area = 200,
+	--特效移动速度
+	speed = 5000,
+	--距离
+	distance =1000,
 }
+
+
+function mt:atk_pas_shot(target)
+	local skill = self
+	local hero = self.owner
+	local source = hero:get_point()
+	local target = target:get_point()
+	local angle = source / target
+	local mvr = ac.mover.line
+	{
+		source = hero,
+		start = hero,
+		angle = angle,
+		speed = skill.speed,
+		distance = skill.distance,
+		skill = skill,
+		high = 110,
+		model = '', 
+		hit_area = skill.hit_area,
+		size = 1
+	}
+	if not mvr then 
+		return
+	end
+
+	function mvr:on_move()
+		--创建特效
+		ac.effect_ex{
+			point = self.mover:get_point(),
+			model = skill.effect1
+		}:remove()  
+	end	
+	function mvr:on_hit(dest)
+		local u = dest
+		u:add_effect('origin',skill.effect):remove()
+		u:add_buff '晕眩'
+		{
+			time = skill.time,
+			skill = skill,
+			source = hero,
+		}
+		
+		u:add_buff '高度'
+		{
+			time = 0.3,
+			speed = 1200,
+			skill = skill,
+			reduction_when_remove = true
+		}
+		u:damage
+		{
+			skill = skill,
+			source = hero,
+			damage = skill.damage,
+			damage_type = '法术'
+		}	
+	end	
+	
+end	
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end   
+
 function mt:on_remove()
-    local hero = self.owner
-    if self.trg then
-        self.trg:remove()
-        self.trg = nil
-    end
+	local hero = self.owner
+	if self.trg then
+		self.trg:remove()
+		self.trg = nil
+	end
 end
+
+

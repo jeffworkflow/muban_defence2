@@ -12,7 +12,7 @@ tip = [[
 
 |cffFFE799【领取条件】|r给此图来个|cffff0000五星好评|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击加深+30%， 技暴加深+15% |r
+|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击伤害+30%， 技暴伤害+15% |r
  ]],
 --物品类型
 item_type = '神符',
@@ -38,8 +38,8 @@ function mt:on_cast_start()
     local name = self.name
     if p.mall[name] and not p.mall_flag[name] then 
         --添加给英雄
-        hero:add('暴击加深',self.award_physical_damage)
-        hero:add('技暴加深',self.award_magic_damage)
+        hero:add('暴击伤害',self.award_physical_damage)
+        hero:add('技暴伤害',self.award_magic_damage)
 
         --受到 伤害几率 加全属性
         hero:event '受到伤害效果' (function(trg, damage)
@@ -50,7 +50,7 @@ function mt:on_cast_start()
         end)
         p.mall_flag[name] = true
         
-        local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000五星好评礼包|r |cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击加深+30%， 技暴加深+15% |r'
+        local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000五星好评礼包|r |cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击伤害+30%， 技暴伤害+15% |r'
         p:sendMsg(tip,3)
     else
         p:sendMsg('条件不足或已领取过',2)    

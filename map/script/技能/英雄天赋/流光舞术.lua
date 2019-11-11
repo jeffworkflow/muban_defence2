@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('敏捷')*30+10006)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['杀怪加敏捷'] = {120,2400},
  ['移动速度'] = 200,
@@ -42,16 +46,75 @@ end,
 	--特效
 	effect = [[gongjitexiao.mdx]],
 	--特效4
-	effect4 = [[英雄范围500，gongjitexiao.mdx]],
+	effect4 = [[目标位置播放特效，伤害范围500码]],
+	value = 1.2,--最大生命值
 }
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local source = hero:get_point()
+
+	ac.effect_ex{
+		point = target:get_point(),
+		model = skill.effect,
+	}:remove()  
+
+	for i, u in ac.selector()
+	: in_range(target,skill.area)
+	: is_enemy(hero)
+	: ipairs()
+	do 
+		--技能伤害
+		u:damage
+		{
+			source = hero,
+			skill = self,
+			damage = skill.damage,
+			damage_type = '法术'
+		}
+		--真伤（最大生命值）
+		u:damage
+		{
+			source = hero,
+			skill = self,
+			damage = u:get('生命上限') * self.value /100,
+			real_damage = true
+		}
+	end	
+    
+end
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then
         self.trg:remove()
         self.trg = nil
+    end
+    if self.trg1 then
+        self.trg1:remove()
+        self.trg1 = nil
     end
 end

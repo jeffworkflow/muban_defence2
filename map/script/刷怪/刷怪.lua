@@ -152,7 +152,7 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     local gold 
     local exp =0 
     local wood  =0
-    local fire_seed =0
+    local rec_ex =0
     
     -- 英雄的召唤物 打死的怪，也给英雄加钱加经验
     -- 英雄召唤物享有 英雄的金币、经验加成
@@ -172,12 +172,12 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     if unit.exp  then
         exp = unit.exp * ( 1 + killer:get('经验加成')/100)
     end  
-    --加木头 加火灵
+    --加木头 加魔丸
     if unit.wood then 
         wood = unit.wood * ( 1 + killer:get('木头加成')/100)
     end    
-    if unit.fire_seed then 
-        fire_seed = unit.fire_seed * ( 1 + killer:get('火灵加成')/100)
+    if unit.rec_ex then 
+        rec_ex = unit.rec_ex * ( 1 + killer:get('魔丸加成')/100)
     end   
     --杀敌数加成
     local kill_cnt = 1 + killer:get('杀敌数加成')/100 + killer:get('额外杀敌数')
@@ -191,7 +191,7 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     --加资源
     player:addGold(gold,unit)
     player:add_wood(wood,unit)
-    player:add_fire_seed(fire_seed,unit)
+    player:add_rec_ex(rec_ex,unit)
     player:add_kill_count(kill_cnt)
     
 

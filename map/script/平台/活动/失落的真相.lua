@@ -273,6 +273,6 @@ reg:event '区域-进入' (function(trg,unit)
         end 
         --播放特效
         hero:add_effect('chest','Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx'):remove()
-        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%火灵加成|r |cff00ff00+23.8%全伤加深|r',6)
+        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%魔丸加成|r |cff00ff00+23.8%全伤加深|r',6)
     end
 end)
