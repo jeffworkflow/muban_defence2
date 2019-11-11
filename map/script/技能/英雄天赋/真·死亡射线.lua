@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('智力')*10+10002)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['每秒加木头'] = {3,60},
  ['每秒加魔丸'] = {3,60},
@@ -41,15 +45,99 @@ end,
 	art = [[swsx.blp]],
 	--特效4
 	effect4 = [[0.5秒后再触发一次]],
+	effect =[[AZ_SSCrow_R.mdx]],
+	count = 6, --空间连锁数量
 }
+
+--计算高度
+local function get_hith(u)
+    local weapon_launch = u.weapon and u.weapon['弹道出手']
+    local launch_z = weapon_launch and weapon_launch[3] or u:get_slk('launchZ', 0)
+    launch_z = u:get_high() + launch_z
+    return launch_z
+end
+
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local ln = ac.lightning('LN07', hero, target,get_hith(hero),get_hith(target))
+	ln:fade(-3)
+	target:add_effect('origin',skill.effect):remove()
+	target:damage
+	{
+		source = hero,
+		skill = skill,
+		damage = skill.damage,
+		damage_type = '法术',
+	}
+
+	local count = self.count
+
+	--已造成闪电链的单位保存进去
+	local group = {}
+	table.insert(group,target)
+	ac.timer(200,count,function()
+		u = ac.selector():in_range(target,700):is_enemy(hero)
+		for index, value in ipairs(group) do
+			u:is_not(value)
+		end
+		u = u:random()
+		if not u then
+			return
+		end
+		local ln = ac.lightning('LN07', target, u, get_hith(target),get_hith(u))
+		ln:fade(-3)
+		target = u
+		target:add_effect('origin',skill.effect):remove()
+		table.insert(group,target)
+		target:damage
+		{
+			source = hero,
+			skill = self,
+			damage = skill.damage,
+			damage_type = '法术',
+		}
+	end)
+end
+
+
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+			--0.5秒后再触发一次
+			ac.wait(500,function()
+				self:atk_pas_shot(damage.target)
+			end)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then
         self.trg:remove()
         self.trg = nil
     end
+    if self.trg1 then
+        self.trg1:remove()
+        self.trg1 = nil
+    end
 end
+

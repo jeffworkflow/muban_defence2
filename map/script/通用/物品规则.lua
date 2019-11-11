@@ -136,7 +136,7 @@
         local woods = it:sell_wood()
         local kill_counts = it:sell_kill_count()
         local jifens = it:sell_jifen()
-        local fire_seeds = it:sell_fire_seed()
+        local rec_exs = it:sell_rec_ex()
         -- print(it.name,woods)
         if golds > 0  then
             player:addGold(golds,u)
@@ -147,8 +147,8 @@
         if kill_counts > 0  then
             player:add_kill_count(kill_counts)
         end
-        if fire_seeds > 0  then
-            player:add_fire_seed(fire_seeds)
+        if rec_exs > 0  then
+            player:add_rec_ex(rec_exs)
         end
 
         if jifens > 0 then 
@@ -172,19 +172,19 @@
         if player.jifen then 
             jifen= tonumber(player.jifen) or 0
         end
-        local fire_seed = player.fire_seed or 0
+        local rec_ex = player.rec_ex or 0
 
         local golds = it:buy_price()
         local woods = it:buy_wood()
         local kill_counts = it:buy_kill_count()
         local jifens = it:buy_jifen()
-        local fire_seeds = it:buy_fire_seed()
+        local rec_exs = it:buy_rec_ex()
         --如果有玩家自身价格，则售价为玩家自身价
         golds = (it.player_gold and it.player_gold[player]) or golds
         woods = (it.player_wood and it.player_wood[player]) or woods
         kill_counts = (it.player_kill and it.player_kill[player]) or kill_counts
         jifens = (it.player_jifen and it.player_jifen[player]) or jifens
-        fire_seeds = (it.player_fire and it.player_fire[player]) or fire_seeds
+        rec_exs = (it.player_fire and it.player_fire[player]) or rec_exs
          
         --处理 兑奖券
         local has_raffle
@@ -220,14 +220,14 @@
                 return
             end
         end   
-        if fire_seed < fire_seeds and not has_raffle then
-            u:get_owner():sendMsg('火灵不够',3)
+        if rec_ex < rec_exs and not has_raffle then
+            u:get_owner():sendMsg('魔丸不够',3)
             ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end 
         --只能用兑换券 兑换的物品，没有兑换券时的处理 
         if it.raffle then
-            if  fire_seeds == 0 and jifens == 0 and kill_counts == 0 and woods == 0 and golds == 0  and not has_raffle then
+            if  rec_exs == 0 and jifens == 0 and kill_counts == 0 and woods == 0 and golds == 0  and not has_raffle then
                 u:get_owner():sendMsg('|cffffe799【系统消息】|r|cff00ff00条件不符',3)
                 ac.game:event_notify('单位-货币不足',seller,u,it)
                 return
@@ -277,8 +277,8 @@
                 player:add_wood( - woods)
                 --扣杀敌数 
                 player:add_kill_count( -kill_counts)
-                --扣火灵
-                player:add_fire_seed( -fire_seeds)
+                --扣魔丸
+                player:add_rec_ex( -rec_exs)
 
                 if jifens > 0 then 
                     --扣除积分

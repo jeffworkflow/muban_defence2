@@ -569,7 +569,7 @@ function helper:power()
 	player:addGold(599999)
 	player:add_wood(599999)
 	player:add_kill_count(599999)
-	player:add_fire_seed(599999)
+	player:add_rec_ex(599999)
 end
 
 --强制游戏结束
@@ -858,11 +858,11 @@ function helper:tt()
 	self:add('免伤',90)
 	self:add('免伤几率',90)
 	self:add('全伤加深',10030000000)
-	self:add('暴击加深',1003000)
+	self:add('暴击伤害',1003000)
 	self:add('攻击速度',500)
 	self:add('攻击间隔',-1)
 	self:add_wood(10000000)
-	self:add_fire_seed(10000000)
+	self:add_rec_ex(10000000)
 	-- if not ac.wtf then
 	-- 	helper.wtf(self)
 	-- end
@@ -992,6 +992,19 @@ end
 
 function helper:gsp()
 	ac.func_give_suipian(self:get_point())
+end
+--模糊添加技能
+function helper:as(str)
+	if not str or str =='' then 
+		return 
+	end	
+	for i,data in pairs(ac.skill) do 
+		if type(data) == 'table' then 
+			if finds(data.name,str) then 
+				ac.item.add_skill_item(data.name,self)
+			end	
+		end	
+	end	
 end
 
 --测试 

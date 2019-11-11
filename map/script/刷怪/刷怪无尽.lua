@@ -33,7 +33,7 @@ local base_attr = {
     ['攻击距离'] = 200,
     ['攻击速度'] = 300,
     ['暴击几率'] = 20,
-    ['暴击加深'] = 20000,
+    ['暴击伤害'] = 20000,
     ['会心几率'] = 20,
     ['会心伤害'] = 200,
 }
@@ -51,7 +51,7 @@ local function change_attr(unit,index,factor)
     -- print('无尽系数',endless_attr_mul)
     --设置属性
     for key,value in sortpairs(base_attr) do 
-        if finds('攻击 护甲 魔抗 生命上限 暴击加深',key) then 
+        if finds('攻击 护甲 魔抗 生命上限 暴击伤害',key) then 
             unit:set(key, value * degree_attr_mul * endless_attr_mul*boss_mul)
         else
             unit:set(key, value)

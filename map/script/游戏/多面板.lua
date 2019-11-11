@@ -76,7 +76,7 @@ local function add_color(str,book_skill)
 end
 
 
-local title =  {'玩家','|cff00ff00杀敌数|r','|cff00ffff火灵|r','|cff00ff00魔鬼的交易|r','|cff00ffff境界|r','|cffffff00异火|r','|cffff0000其它|r'}
+local title =  {'玩家','|cff00ff00杀敌数|r','|cff00ffff魔丸|r','|cff00ff00魔鬼的交易|r','|cff00ffff境界|r','|cffffff00异火|r','|cffff0000其它|r'}
 
 local function init()
 
@@ -142,7 +142,7 @@ local function fresh(player,hero)
 	-- print(1111111111)
 	--刷新杀敌数
 	mtb:setText( 2, player.ix, bignum2string(player.kill_count))
-	mtb:setText( 3, player.ix, bignum2string(player.fire_seed))
+	mtb:setText( 3, player.ix, bignum2string(player.rec_ex))
 	--刷新字段
 	-- print(get_text(hero,'魔鬼的交易'))
 	for i,book_skill in ipairs(title) do 

@@ -652,8 +652,8 @@ end
 --计算物理暴击
 function mt:on_physicals_crit_damage()
 	local source = self.source
-	local dmg = source:get '暴击加深'   
-	--暴击加深 <=0 ,返回0
+	local dmg = source:get '暴击伤害'   
+	--暴击伤害 <=0 ,返回0
 	if dmg <= -100 then
 		self.current_damage = 0
 	end 
@@ -674,8 +674,8 @@ end
 --计算法术暴击
 function mt:on_spells_crit_damage()
 	local source = self.source
-	local dmg = source:get '技暴加深'
-	--技暴加深 <=0 ,返回0
+	local dmg = source:get '技暴伤害'
+	--技暴伤害 <=0 ,返回0
 	if dmg <=  -100 then
 		self.current_damage = 0
 	end 

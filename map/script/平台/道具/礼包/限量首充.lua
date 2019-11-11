@@ -13,7 +13,7 @@ tip = [[
 |cffFFE799【礼包奖励】|r
 |cff00ff00杀怪加38全属性，攻击加68全属性，每秒加108全属性 
 |cff00ffff杀敌数加成+15% 木头加成+15% 
-物品获取率+15% 火灵加成+15% |r
+物品获取率+15% 魔丸加成+15% |r
 |cffff0000对BOSS额外伤害+5%|r
 
 |cffcccccc（限量首充，限量1000个，已卖光！可与首充大礼包相叠加）|r]],
@@ -49,7 +49,7 @@ end,
     end    
     return value 
 end,
-['火灵加成'] = function(self)
+['魔丸加成'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local value = 15

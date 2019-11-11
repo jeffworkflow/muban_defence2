@@ -166,7 +166,7 @@ local unit_reward = {
     },
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
-    if not finds(unit:get_name(),'经验怪','金币','木头','火灵') then 
+    if not finds(unit:get_name(),'经验怪','金币','木头','魔丸') then 
         return
     end    
     local p = killer:get_owner()

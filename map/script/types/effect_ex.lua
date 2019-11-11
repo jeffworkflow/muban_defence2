@@ -218,6 +218,7 @@ ac.effect_ex = function(data)
     --size
     --speed
     --time
+    --on_finish
     if data.point == nil then
 
         print('点为空',debug.traceback())
@@ -225,9 +226,12 @@ ac.effect_ex = function(data)
     local effect = point_effect_simple(data, data.point)
     if data.time then
         ac.timer(data.time*1000,1,function()
+            if data.on_finish then 
+                data:on_finish(effect) 
+            end   
             if effect then
                 effect:remove()
-            end
+            end 
         end)
     end
     if data.follow then

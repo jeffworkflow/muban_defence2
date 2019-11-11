@@ -384,7 +384,7 @@ function mt:next()
             end    
             u.exp = data.exp
             u.wood = data.wood
-            u.fire_seed = data.fire_seed
+            u.rec_ex = data.rec_ex
 
             u.data = data
 

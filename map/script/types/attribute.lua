@@ -56,7 +56,6 @@ local attribute = {
 	['格挡']       = true,  --默认%
 	['格挡伤害']    = true,  --默认%
 	['暴击']       = true,   --默认%
-	['暴击伤害']    = true,  --默认%
 	['闪避'] = true,  --默认表示为%
 	['闪避极限']		=	true, --默认%
 	['攻击丢失'] = true,  --默认表示为%
@@ -69,7 +68,7 @@ local attribute = {
 
 	['暴击几率']		=	true, --默认%
 	['暴击几率极限']		=	true, --默认%
-	['暴击加深']		=	true,--默认%
+	['暴击伤害']		=	true,--默认%
 
 	['会心几率']		=	true,--默认%
 	['会心几率极限']		=	true, --默认%
@@ -77,7 +76,7 @@ local attribute = {
 
 	['技暴几率']		=	true,--默认%
 	['技暴几率极限']		=	true, --默认%
-	['技暴加深']		=	true,--默认%
+	['技暴伤害']		=	true,--默认%
 
 	['技能伤害']		=	true, --默认表示为%
 	['技能基础伤害']	 =	true, --默认表示为基础值
@@ -95,7 +94,7 @@ local attribute = {
 	['经验加成']		=	true,--默认表示为%
 	['木头加成']		=	true,--默认表示为%
 	['杀敌数加成']		=	true,--默认表示为%
-	['火灵加成']		=	true,--默认表示为%
+	['魔丸加成']		=	true,--默认表示为%
 
 	['天赋触发几率']	=	true,--默认表示为%
 	['多重射']	=	true,--默认表示为基础值
@@ -131,7 +130,7 @@ local attribute = {
 
 	['每秒加金币'] = true,  --默认表示为基础值
 	['每秒加木头'] = true,  --默认表示为基础值
-	['每秒加火灵'] = true,  --默认表示为基础值
+	['每秒加魔丸'] = true,  --默认表示为基础值
 	['每秒加杀敌数'] = true,  --默认表示为基础值
 	
 	['每秒加力量'] = true,  --默认表示为基础值
@@ -181,7 +180,7 @@ local base_attr =[[
 攻击减甲
 减少周围护甲
 额外杀敌数
-每秒加火灵 
+每秒加魔丸 
 局内地图等级
 ]]
 ac.base_attr = base_attr
@@ -353,9 +352,9 @@ function mt:set_resource(type, value)
 	self:set(type, value)
 end
 
--- 每点力量增加8点生命上限，0.08点生命恢复，0.1%暴击加深，如果是主属性，每点力量还增加4点攻击力
+-- 每点力量增加8点生命上限，0.08点生命恢复，0.1%暴击伤害，如果是主属性，每点力量还增加4点攻击力
 -- 每点敏捷增加0点护甲，0.05%攻击速度，0.1%会心伤害，如果是主属性，每点敏捷还增加4点攻击力
--- 每点智力增加8点魔法上限，0.08点魔法恢复，0.1%技暴加深，如果是主属性，每点智力还增加4点攻击力
+-- 每点智力增加8点魔法上限，0.08点魔法恢复，0.1%技暴伤害，如果是主属性，每点智力还增加4点攻击力
 
 --每点力量增加5点生命上限，如果是主属性，每点力量还增加1点攻击力
 --每点敏捷增加0.5点攻击力，如果是主属性，每点敏捷还增加1点攻击力
@@ -429,8 +428,8 @@ on_set['力量'] = function(self)
 		self:add('生命上限',  value * str_hp)
 		-- 增加生命恢复
 		self:add('生命恢复',  value * str_hp_recover)
-		-- 增加暴击加深
-		self:add('暴击加深',  value * str_phy_split_damage)
+		-- 增加暴击伤害
+		self:add('暴击伤害',  value * str_phy_split_damage)
 	end	
 -- end
 end
@@ -520,8 +519,8 @@ on_set['智力'] = function(self,old_value)
 		self:add('魔法上限', value * int_mp)
 		-- 增加魔法恢复
 		self:add('魔法恢复', value * int_mp_recover)
-		-- 增加技暴加深
-		self:add('技暴加深', value * int_explosion)
+		-- 增加技暴伤害
+		self:add('技暴伤害', value * int_explosion)
 		-- 增加技能基础伤害
 		self:add('技能基础伤害', value * int_skill_base_damage)
 	end
@@ -923,9 +922,9 @@ ac.loop(1*1000,function(t)
 			--每秒加木头
 			local wood = player.hero:get('每秒加木头') 
 			player:add_wood(wood) 
-			--每秒加火灵
-			local fire_seed = player.hero:get('每秒加火灵') 
-			player:add_fire_seed(fire_seed) 
+			--每秒加魔丸
+			local rec_ex = player.hero:get('每秒加魔丸') 
+			player:add_rec_ex(rec_ex) 
 			--每秒加杀敌数
 			local kill_count = player.hero:get('每秒加杀敌数') 
 			player:add_kill_count(kill_count) 

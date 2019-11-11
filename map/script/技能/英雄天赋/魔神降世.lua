@@ -18,10 +18,14 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
+	--冷却时间
+	cool = 12,
 	--伤害
 	damage = function(self)
   return (self.owner:get('智力')*10+10001)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
  ['杀怪加力量'] = {40,800},
  ['吸血'] = 10,
@@ -45,16 +49,53 @@ end,
 	--特效
 	effect = [[LvBuPiFu3.mdx]],
 	--特效4
-	effect4 = [[吕布 变身模型 LvBuPiFu3.mdx]],
+	effect4 = [[类似变身技能]],
+	value = 1.5,--最大生命值
+	time =8
 }
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local source = hero:get_point()
+
+	-- hero:add_buff '变身'{
+	-- 	time =skill.time
+	-- }
+    
+end
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
-end
+    
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+		if math.random(100) <= self.chance then
+            self:atk_pas_shot(damage.target)
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then
         self.trg:remove()
         self.trg = nil
     end
+    if self.trg1 then
+        self.trg1:remove()
+        self.trg1 = nil
+    end
 end
+

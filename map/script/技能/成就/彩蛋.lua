@@ -19,7 +19,7 @@ mt{
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+16888 木头
-+16888 火灵
++16888 魔丸
 +16888 杀敌数|r
 
 ]],
@@ -33,7 +33,7 @@ function mt:on_add()
     hero = player.hero
     
     hero:add_wood(self.add_wood)
-    hero:add_fire_seed(self.add_fire)
+    hero:add_rec_ex(self.add_fire)
     hero:add_kill_count(self.add_kill)
 end    
 
@@ -258,7 +258,7 @@ mt{
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+500W 全属性
-+10W  火灵|r
++10W  魔丸|r
 
 ]],
     ['全属性'] = 5000000,
@@ -338,12 +338,12 @@ ac.game:event '单位-杀死单位'(function(_,killer,target)
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','浴火重生')
                 player.is_show_nickname = '浴火重生'
-                --加火灵
-                hero:add_fire_seed(100000)
+                --加魔丸
+                hero:add_rec_ex(100000)
                 --给全部玩家发送消息
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W魔丸|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W魔丸|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W魔丸|r',6)
             end
         end    
     end    

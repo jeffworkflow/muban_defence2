@@ -43,7 +43,7 @@ end
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
 
     hero:event '单位-死亡' (function(trg,unit,killer)
-        if not finds(killer:get_name(),'火灵','金币','木头怪') then 
+        if not finds(killer:get_name(),'魔丸','金币','木头怪') then 
             return 
         end
         -- print(11111111111111111111111)

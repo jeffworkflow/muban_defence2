@@ -39,17 +39,17 @@ function mt:on_add()
 		local hero = player.hero
 		local attr_mul = self.attr_mul or 0
 		if not hero then 
-			self.attr_mul = attr_mul * 100 or 0
+			self.attr_mul = attr_mul 
 		else
-			self.attr_mul =  (hero:get('召唤物属性') + attr_mul * 100 ) or 0
+			self.attr_mul =  hero:get('召唤物属性') + attr_mul
 		end	
+
 		if self.attr_mul then 
-			self.target:add('攻击',self.target:get('攻击')*self.attr_mul/100)
-			self.target:add('护甲',self.target:get('护甲')*self.attr_mul/100)
-			self.target:add('生命上限',self.target:get('生命上限')*self.attr_mul/100)
-			self.target:add('魔法上限',self.target:get('魔法上限')*self.attr_mul/100)
-			self.target:add('生命恢复',self.target:get('生命恢复')*self.attr_mul/100)
-			self.target:add('魔法恢复',self.target:get('魔法恢复')*self.attr_mul/100)
+			for k, v in sortpairs(self.attribute) do
+				if not finds(k,'移动速度','攻击间隔') then
+					self.target:add(k..'%', self.attr_mul)
+				end	
+			end
 		end	
 	end	
 
@@ -99,12 +99,11 @@ function mt:on_remove()
 		self.target:set_size(self.old_size)
 		--还原属性
 		if self.attr_mul then 
-			self.target:add('攻击%',-self.attr_mul)
-			self.target:add('护甲%',-self.attr_mul)
-			self.target:add('生命上限%',-self.attr_mul)
-			self.target:add('魔法上限%',-self.attr_mul)
-			self.target:add('生命恢复%',-self.attr_mul)
-			self.target:add('魔法恢复%',-self.attr_mul)
+			for k, v in sortpairs(self.attribute) do
+				if not finds(k,'移动速度','攻击间隔') then
+					self.target:add(k..'%', -self.attr_mul)
+				end	
+			end
 		end	
 	end		
 end

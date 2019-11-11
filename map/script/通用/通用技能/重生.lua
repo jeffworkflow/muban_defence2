@@ -2,8 +2,6 @@ local mt = ac.skill['重生']
 
 mt.title = "重生"
 mt.tip = [[
-    被动1：死亡后，原地0.5S重生一次
-    被动2：降低自己的三维27.5%
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
@@ -28,8 +26,17 @@ function mt:on_add()
     --重生相关
     self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
         local point = hero:get_point()
+        --额外特效
+        if self.effect1 then 
+            ac.effect_ex{
+                time = self.time,
+                model = self.effect1,
+                point = point
+            }
+        end    
+
+
         local effect = ac.effect(point,self.effect,0,1,'origin')
-        -- local effect = hero:add_effect('origin',self.effect)
         --发送红色信号
         if unit:get_name() == '基地' then
             local f1 = ac.player.self:cinematic_filter

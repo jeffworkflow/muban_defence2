@@ -30,12 +30,12 @@ local mt = ac.skill['英雄属性面板']
 
 闪避:    %miss% %  攻击丢失:    %attack_drop% %
 
-暴击几率: %physical_rate% %  暴击加深:  %physical_damage% %
-技暴几率: %magic_rate% %  技暴加深:  %magic_damage% %
+暴击几率: %physical_rate% %  暴击伤害:  %physical_damage% %
+技暴几率: %magic_rate% %  技暴伤害:  %magic_damage% %
 会心几率: %heart_rate% %  会心伤害:  %heart_damage% %
 
 金币加成：   %moregold% %  木头加成： %morewood% %
-经验加成：   %moreexp% %  火灵加成： %morefireseed% %
+经验加成：   %moreexp% %  魔丸加成： %morefireseed% %
 物品获取率： %item_rate% %  杀敌数加成： %morekillcount% %
 
 杀怪加力量： %kill_str%     每秒加金币:   %per_gold%  
@@ -60,7 +60,7 @@ function mt:morewood()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '木头加成')
 end
 function mt:morefireseed()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '火灵加成')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '魔丸加成')
 end
 function mt:morekillcount()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '杀敌数加成')
@@ -109,14 +109,14 @@ function mt:physical_rate()
 end
 
 function mt:physical_damage()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '暴击加深'+100)
+	return ('|cffF9C801%.f|r'):format(self.owner:get '暴击伤害'+100)
 end
 
 function mt:magic_rate()
 	return ('|cffF9C801%.2f|r'):format(self.owner:get '技暴几率')
 end
 function mt:magic_damage()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '技暴加深'+100)
+	return ('|cffF9C801%.f|r'):format(self.owner:get '技暴伤害'+100)
 end
 
 function mt:heart_rate()
