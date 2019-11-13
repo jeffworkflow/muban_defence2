@@ -1,40 +1,54 @@
 local mt = ac.skill['火力全开']
-
 mt{
-	--必填
-	is_skill = true,
-	--初始等级
-	level = 1,
-	max_level = 5,
-	passive = true,
-	damage = function(self)
-		return (self.owner:get('敏捷')*15+10000)* self.level*5
-	  end,
-	  ['攻击加敏捷'] = {200,400,600,800,1000},
-	tip = [[
-
-|cffffff00【攻击加敏捷】+200*Lv|r
-
-|cff00bdec【被动效果】每第五次普通攻击时造成范围技能伤害
-【伤害公式】(敏捷*15+1w)*Lv|r
-	]],
-	--技能图标 3（40°扇形分三条，角度20%）+3+3+1+1，一共5波，
-    art = [[hlqk.blp]],
+    --必填
+    is_skill = true,
+    --初始等级
+    level = 1,
+    --最大等级
+   max_level = 20,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+    --伤害范围
+   damage_area = 500,
+	--技能品阶
+	color = "地阶",
 	--技能类型
 	skill_type = "被动,敏捷",
+	--被动
+	passive = true,
+	--耗蓝
+	cost = 0,
 	--冷却时间
-    cool = 1,
-	--技能目标类型 无目标
-	target_type = ac.skill.TARGET_TYPE_NONE,
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
+	--伤害
+	damage = function(self)
+  return (self.owner:get('敏捷')*20+10000)* self.level
+end,
+	--施法范围
+	area = 500,
+	--属性加成
+['攻击加敏捷'] = {240,4800},
+	--介绍
+	tip = [[|cffffff00【攻击加敏捷】+240*Lv
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*20+10000）*Lv]],
+	--技能图标
+	art = [[hlqk.blp]],
+	--特效
+	effect = [[E_MissileCluster.mdx]],
+	--特效4
+	effect4 = [[参考赤灵的火力全开，同一方向再发射两枚导弹]],
 	--被动，第几次攻击触发特殊攻击
 	attack_stack = 5,
 	--被动，距离1600
 	distance = 1600,
 	--被动，撞击范围
 	hit_area = 250,
-	--特效模型
-	effect2 = [[E_MissileCluster.mdx]],
-	damage_type = '法术'
+	damage_type = '法术',
+	count =2
 }
 
 local function on_texttag(self,hero)
@@ -82,7 +96,7 @@ local function beidong_damage(self,damage_target)
 	local mvr = ac.mover.line
 	{
 		source = self.owner,
-		model = self.effect2,
+		model = self.effect,
 		speed = 1200,
 		angle = self.owner:get_point()/damage_target:get_point(),
 		distance = self.distance,
@@ -127,6 +141,10 @@ function mt:on_add()
 		if self:get_stack() >= self.attack_stack then 
 			self:set_stack(0)
 			beidong_damage(self,damage_target)
+			ac.timer(100,skill.count - 1 ,function()
+				beidong_damage(self,damage_target)
+			end)
+			hero:event_notify('技能-触发被动', self)
 		end		
 	end)	
 

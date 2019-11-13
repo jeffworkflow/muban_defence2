@@ -117,16 +117,17 @@ local color_code = {
     ['白'] = 'ffffff',
     ['黑'] = '883A00',
     ['金'] = 'ffff00',
+    ['黄'] = 'ffff00',--白
 	['灰'] = 'cccccc',
 	['淡黄'] = 'FFE799',
 	['神'] = 'df19d0', --91007F 860202
 
     ['天赋'] = 'df19d0',--紫
     ['真天阶'] = 'df19d0',--紫
-    ['天'] = 'ff0000',--红
-    ['地'] = 'ffff00',--金
-    ['玄'] = '00bdec',--浅蓝
-    ['黄'] = 'ffffff',--白
+    ['天阶'] = 'ff0000',--红
+    ['地阶'] = 'ffff00',--金
+    ['玄阶'] = '00bdec',--浅蓝
+    ['黄阶'] = 'ffffff',--白
 	
 	
 }
@@ -157,10 +158,10 @@ ac.zb_color_model = zb_color_model
 local skill_model = {
     ['天赋'] = 'lvbianshu.mdx',--紫
     ['真天阶'] = 'lvbianshu.mdx',--紫
-    ['天'] = 'hongbianshu.mdx',--红
-    ['地'] = 'zongbianshu.mdx',--金
-    ['玄'] = 'lanbianshu.mdx',--浅蓝
-    ['黄'] = 'lvbianshu.mdx',--白
+    ['天阶'] = 'hongbianshu.mdx',--红
+    ['地阶'] = 'zongbianshu.mdx',--金
+    ['玄阶'] = 'lanbianshu.mdx',--浅蓝
+    ['黄阶'] = 'lvbianshu.mdx',--白
 }
 ac.skill_model = skill_model
 

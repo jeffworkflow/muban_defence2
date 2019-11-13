@@ -5,36 +5,71 @@ mt{
     --初始等级
     level = 1,
     --最大等级
-   max_level = 5,
+   max_level = 20,
     --触发几率
-   chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
+	--技能品阶
+	color = "黄阶",
 	--技能类型
 	skill_type = "被动,全属性",
 	--被动
 	passive = true,
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*7+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*2+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
- ['杀怪加全属性'] = {35,70,105,140,175},
+['杀怪加全属性'] = {5,100},
 	--介绍
-	tip = [[
-		
-|cffffff00【杀怪加全属性】+35*Lv|r
+	tip = [[|cffffff00【杀怪加全属性】+5*Lv
 
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(全属性*7+1w)*Lv|r
-
-]],
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*2+10000）*Lv]],
+	--技能图标
+	art = [[xzsy.blp]],
 	--特效
 	effect = [[AZ_TS_V2.MDX]],
-	art = [[xysz.blp]],
-	--cd
-	cool = 1,
+	--特效4
+	effect4 = [[参考赤灵血焰神脂]],
 }
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+
+	local source = hero:get_point()
+
+	ac.effect_ex{
+		point = target:get_point(),
+		model = skill.effect,
+	}:remove()  
+
+	for i, u in ac.selector()
+	: in_range(target,skill.area)
+	: is_enemy(hero)
+	: ipairs()
+	do 
+		--技能伤害
+		u:damage
+		{
+			source = hero,
+			skill = self,
+			damage = skill.damage,
+			damage_type = '法术'
+		}
+	end	
+    
+end
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
@@ -49,32 +84,24 @@ function mt:on_add()
 		end
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
-			--创建特效
-			local angle = damage.source:get_point() / damage.target:get_point()
-			ac.effect(damage.target:get_point(),skill.effect,angle,1,'origin'):remove()
-			--计算伤害
-			for _,unit in ac.selector()
-			: in_range(hero,self.damage_area)
-			: is_enemy(hero)
-			: ipairs()
-			do 
-				unit:damage
-				{
-					source = hero,
-					damage = skill.damage,
-					skill = skill,
-					damage_type = '法术'
-				}
-			end 
-			--激活cd
-			skill:active_cd()
+            self:atk_pas_shot(damage.target)
+            hero:event_notify('技能-触发被动', self)
+            --激活cd
+            skill:active_cd()
         end
     end)
-end
+
+end    
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then
         self.trg:remove()
         self.trg = nil
     end
+    if self.trg1 then
+        self.trg1:remove()
+        self.trg1 = nil
+    end
 end
+

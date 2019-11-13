@@ -58,7 +58,7 @@ ac.wait(100,function ()
     --开局创建英雄
     local point = ac.map.rects['出生点']:get_point()
     local p = ac.player(1)
-    local hero = p:createHero('撼地神牛',point);
+    local hero = p:createHero('诸葛亮',point);
     p.hero = hero
     p:event_notify('玩家-注册英雄', p, p.hero)
     p.hero:add('攻击间隔',-1)

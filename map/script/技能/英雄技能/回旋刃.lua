@@ -5,37 +5,46 @@ mt{
     --初始等级
     level = 1,
     --最大等级
-   max_level = 5,
+   max_level = 20,
     --触发几率
-   chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
-   cool = 1,
+	--技能品阶
+	color = "黄阶",
 	--技能类型
 	skill_type = "被动,力量",
 	--被动
 	passive = true,
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*15+10000)* self.level
+  return (self.owner:get('力量')*5+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
- ['每秒加力量'] = {50,100,150,200,250},
- ['攻击加力量'] = {50,100,150,200,250},
- ['杀怪加力量'] = {50,100,150,200,250},
+['杀怪加力量'] = {5,100},
+['攻击加力量'] = {5,100},
+['每秒加力量'] = {5,100},
 	--介绍
-	tip = [[
-        
-|cffffff00【每秒加力量】+50*Lv
-【攻击加力量】+50*Lv
-【杀怪加力量】+50*Lv|r
+	tip = [[|cffffff00【杀怪加力量】+5*Lv
+【攻击加力量】+5*Lv
+【每秒加力量】+5*Lv
 
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(力量*15+1w)*Lv|r
-
-]],
-    --图标
-    art = [[huixuanren.blp]],
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（力量*5+10000）*Lv]],
+	--技能图标
+	art = [[huixuanren.blp]],
+	--特效
+	effect = [[SentinelMissile.mdx]],
+	--特效4
+	effect4 = [[参考赤灵传说的回旋刃，投射物数量=2]],
     --投射物数量
     count = 2,
     --move_distance
@@ -46,8 +55,6 @@ end,
     stay_time = 0.5,
     --回旋伤害比
     cycle_round_damage = 25,
-    --投射物模型
-    model = [[SentinelMissile.mdx]],
     damage_type = '法术'
 
 }
@@ -56,10 +63,6 @@ end,
 function mt:on_add()
     local skill = self
     local hero = self.owner
-    --记录默认攻击方式
-    if not hero.oldfunc then
-        hero.oldfunc = hero.range_attack_start
-    end
 
     --新的攻击方式
     local function range_attack_start(hero,damage)
@@ -68,10 +71,9 @@ function mt:on_add()
         end
 
         local target = damage.target
-        local max_damage = self.current_damage
+        local max_damage = self.damage
         --投射物数量
         local count = hero:get '额外投射物数量' + self.count 
-       
 		local unit_mark = {}
 
 		for i,u in ac.selector()
@@ -87,8 +89,9 @@ function mt:on_add()
 				{
 					source = hero,
 					target = u,
-					model = self.model,
+					model = self.effect,
 					speed = 1500,
+					high =120,
 					skill = skill,
 				}
 				if not mvr then
@@ -112,21 +115,17 @@ function mt:on_add()
                         local source = u:get_point():copy()
                         local stay_time = skill.stay_time 
 
-                        -- local circle_target = ac.selector():in_range(u,skill.boom_area): is_enemy(hero):is_not(u): of_not_building(): random()
                         local angle = angle + (count / 2 - count - 0.5 + i) * 17.5
-
-
-
-
                         local mvr = ac.mover.target
                         {
                             source = hero,
                             start = source,
                             target = hero,
-                            model = self.model,
+                            model = skill.effect,
                             angle =  angle,
                             turn_speed = 0,
                             speed = -1000,
+							high =120,
                             skill = skill,
                             stay_time = skill.stay_time ,
                             hit_area = skill.hit_area,
@@ -201,8 +200,6 @@ function mt:on_add()
 			end	
 		end
 
-      --还原默认攻击方式
-      hero.range_attack_start = hero.oldfunc
     end    
 
 	self.trg = hero:event '造成伤害效果' (function(_,damage)
@@ -215,13 +212,9 @@ function mt:on_add()
 		end
         --触发时修改攻击方式
         if math.random(100) <= self.chance then
-            self = self:create_cast()
-            --当前伤害要在回调前初始化
-            self.current_damage = self.damage
-            hero:event_notify('触发天赋技能', self)
 
-            --hero.range_attack_start = range_attack_start
             range_attack_start(hero,damage)
+            hero:event_notify('技能-触发被动', self)
             --激活cd
             skill:active_cd()
         end 
@@ -235,6 +228,8 @@ end
 
 function mt:on_remove()
     local hero = self.owner
-    hero.range_attack_start = hero.oldfunc
-    self.trg:remove()
+	if self.trg then 
+		self.trg:remove()
+		self.trg = nil 
+	end	
 end

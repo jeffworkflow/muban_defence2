@@ -5,53 +5,58 @@ mt{
     --初始等级
     level = 1,
     --最大等级
-   max_level = 5,
+   max_level = 20,
     --触发几率
-   chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
+	--技能品阶
+	color = "地阶",
 	--技能类型
-    skill_type = "被动,全属性",
-    --cd
-    cool = 1,
+	skill_type = "被动,全属性",
 	--被动
 	passive = true,
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*7+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*8+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
- ['每秒加全属性'] = {25,50,75,100,125},
- ['攻击加全属性'] = {25,50,75,100,125},
- ['杀怪加全属性'] = {25,50,75,100,125},
+['杀怪加全属性'] = {10,200},
+['攻击加全属性'] = {10,200},
+['每秒加全属性'] = {10,200},
 	--介绍
-	tip = [[
-        
-|cffffff00【每秒加全属性】+25*Lv
-【攻击加全属性】+25*Lv
-【杀怪加全属性】+25*Lv|r
+	tip = [[|cffffff00【杀怪加全属性】+10*Lv
+【攻击加全属性】+10*Lv
+【每秒加全属性】+10*Lv
 
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(全属性*7+1w)*Lv|r
-
-]],
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*8+10000）*Lv]],
+	--技能图标
+	art = [[ltzj.blp]],
+	--特效
+	effect = [[leitingzhijian.mdx]],
+	--特效1
+	effect1 = [[AZ_CocoChristmas_D_Impact.mdx]],
+	--特效4
+	effect4 = [[参考赤灵雷霆之剑，投射物数量=6]],
 
     --爆炸范围
     boom_area = 200,
     --投射物数量
-    count = 5,
-    model = [[leitingzhijian.mdx]],
-    effect = [[AZ_CocoChristmas_D_Impact.mdx]],
-    art = [[leitingzhijian.blp]],
+    count = 6,
     damage_type = '法术'
 }
 function mt:on_add()
     local hero = self.owner
     local skill = self
-    --记录默认攻击方式
-    if not hero.oldfunc then
-        hero.oldfunc = hero.range_attack_start
-    end
 
     --新的攻击方式
     local function range_attack_start(hero,damage)
@@ -79,7 +84,7 @@ function mt:on_add()
 				{
 					source = hero,
 					target = u,
-					model = self.model,
+					model = self.effect,
 					speed = 1500,
 					skill = skill,
 				}
@@ -87,7 +92,7 @@ function mt:on_add()
 					return
 				end
 				function mvr:on_finish()
-                    ac.effect(u:get_point(),skill.effect,0,3,'origin'):remove()
+                    ac.effect(u:get_point(),skill.effect1,0,3,'origin'):remove()
 					for _,target in ac.selector()
 						: in_range(u,skill.boom_area)
 						: is_enemy(hero)
@@ -113,40 +118,33 @@ function mt:on_add()
 				end
 			end	
 		end
-
-      --还原默认攻击方式
-      hero.range_attack_start = hero.oldfunc
     end    
 
-    self.trg = hero:event '造成伤害效果' (function(_, damage)
+	self.trg = hero:event '造成伤害效果' (function(_,damage)
 		if not damage:is_common_attack()  then 
 			return 
 		end 
 		--技能是否正在CD
-        if skill:is_cooling() then
+		if skill:is_cooling() then
 			return 
 		end
-        --触发时修改攻击方式
-        if math.random(100) <= self.chance then
-            self = self:create_cast()
-            --当前伤害要在回调前初始化
-            self.current_damage = self.damage
-            hero:event_notify('触发天赋技能', self)
-            --hero.range_attack_start = range_attack_start
-            range_attack_start(hero,damage)
-            --激活cd
-            skill:active_cd()
-        end 
+		--触发时修改攻击方式
+		if math.random(100) <= self.chance then
+			range_attack_start(hero,damage)
+			hero:event_notify('技能-触发被动', self)
+			--激活cd
+			skill:active_cd()
+		end 
 
-        return false
-    end)
+	end)
 
 end
 
 
-
 function mt:on_remove()
-    local hero = self.owner
-    hero.range_attack_start = hero.oldfunc
-    self.trg:remove()
+	local hero = self.owner
+	if self.trg then 
+		self.trg:remove()
+		self.trg=nil
+	end
 end

@@ -7,7 +7,7 @@ mt.is_skill = true
 mt.cus_type = '技能' --类型
 mt.item_type = '技能' --类型
 mt.skill_cnt =8 --一共技能数量
-mt.color_tip = ''
+mt.item_type_tip= ''
 -- mt.time_removed = 180
 function mt:on_cast_shot()
     local hero = self.owner 

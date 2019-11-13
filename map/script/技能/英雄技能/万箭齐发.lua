@@ -5,41 +5,46 @@ mt{
     --初始等级
     level = 1,
     --最大等级
-   max_level = 5,
+   max_level = 20,
     --触发几率
-   chance = function(self) return (self.level+5) *(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
+	--技能品阶
+	color = "地阶",
 	--技能类型
 	skill_type = "被动,敏捷",
 	--被动
 	passive = true,
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*15+10000)* self.level
+  return (self.owner:get('敏捷')*20+10000)* self.level
 end,
+	--施法范围
+	area = 500,
 	--属性加成
- ['每秒加敏捷'] = {50,100,150,200,250},
- ['攻击加敏捷'] = {50,100,150,200,250},
- ['杀怪加敏捷'] = {50,100,150,200,250},
+['杀怪加敏捷'] = {20,400},
+['攻击加敏捷'] = {20,400},
+['每秒加敏捷'] = {20,400},
 	--介绍
-    tip = [[
+	tip = [[|cffffff00【杀怪加敏捷】+20*Lv
+【攻击加敏捷】+20*Lv
+【每秒加敏捷】+20*Lv
 
-|cffffff00【每秒加敏捷】+50*Lv
-【攻击加敏捷】+50*Lv
-【杀怪加敏捷】+50*Lv|r
-
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(敏捷*15+1w)*Lv|r
-
-]],
-    
-    --图标
-    art = 'wanjianqifa.blp',
-    --暗影之箭范围
-    area =  700,
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*20+10000）*Lv]],
+	--技能图标
+	art = [[wanjianqifa.blp]],
+	--特效4
+	effect4 = [[参考赤灵的万箭齐发，投射物数量=4]],
     --数量
-    count = {6,7,8,9,10},
+    count = 4,
     --投射物碰撞距离
     hit_area = 150,
     --主伤害比
@@ -56,10 +61,6 @@ end,
 function mt:on_add()
     local skill = self
     local hero = self.owner
-    --记录默认攻击方式
-    if not hero.oldfunc then
-        hero.oldfunc = hero.range_attack_start
-    end
 
     --新的攻击方式
     local function range_attack_start(hero,damage)
@@ -144,9 +145,6 @@ function mt:on_add()
 
         end
 
-
-      --还原默认攻击方式
-      hero.range_attack_start = hero.oldfunc
     end    
 
 	self.trg = hero:event '造成伤害效果' (function(_,damage)
@@ -163,9 +161,8 @@ function mt:on_add()
             self = self:create_cast()
             --当前伤害要在回调前初始化
             self.current_damage = self.damage
-            hero:event_notify('触发天赋技能', self)
-            -- hero.range_attack_start = range_attack_start
             range_attack_start(hero,damage)
+            hero:event_notify('技能-触发被动', self)
             --激活cd
             skill:active_cd()
         end 
@@ -179,6 +176,5 @@ end
 
 function mt:on_remove()
     local hero = self.owner
-    hero.range_attack_start = hero.oldfunc
     self.trg:remove()
 end

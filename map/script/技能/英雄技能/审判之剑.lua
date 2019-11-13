@@ -5,41 +5,65 @@ mt{
     --初始等级
     level = 1,
     --最大等级
-   max_level = 5,
+   max_level = 20,
     --触发几率
-   chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 800,
+   damage_area = 500,
+	--技能品阶
+	color = "玄阶",
 	--技能类型
 	skill_type = "被动,敏捷",
 	--被动
 	passive = true,
-	--伤害
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-		return (self.owner:get('敏捷')*30+10000)* self.level
-	  end,
---属性加成
-['每秒加敏捷'] = {100,200,300,400,500},
-['攻击加敏捷'] = {100,200,300,400,500},
-['杀怪加敏捷'] = {100,200,300,400,500},
+  return (self.owner:get('敏捷')*10+10000)* self.level
+end,
+	--施法范围
+	area = 500,
+	--属性加成
+['攻击加敏捷'] = {120,2400},
 	--介绍
-	tip = [[
-		
-|cffffff00【杀怪加敏捷】+100*Lv|r
-|cffffff00【攻击加敏捷】+100*Lv|r
-|cffffff00【每秒加敏捷】+100*Lv|r
+	tip = [[|cffffff00【攻击加敏捷】+120*Lv
 
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(敏捷*30+1w)*Lv|r
-
-]],
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*10+10000）*Lv]],
+	--技能图标
+	art = [[spzj.blp]],
 	--特效
 	effect = [[Hero_Slayer_N5S_T_Blast.mdx]],
-	art = [[spzj.blp]],
-	--cd
-	cool = 1,
+	--特效4
+	effect4 = [[参考赤灵的审判之剑]],
 }
+function mt:atk_pas_shot(target)
+    local skill = self
+    local hero = self.owner
+	--创建特效
+	local angle = hero:get_point() / target:get_point()
+	ac.effect(target:get_point(),skill.effect,angle,1,'origin'):remove()
+	--计算伤害
+	for _,unit in ac.selector()
+	: in_range(target,self.damage_area)
+	: is_enemy(hero)
+	: ipairs()
+	do 
+		unit:damage
+		{
+			source = hero,
+			damage = skill.damage,
+			skill = skill,
+			damage_type = '法术'
+		}
+	end 
+end	
+
 function mt:on_add()
     local skill = self
     local hero = self.owner
@@ -54,23 +78,8 @@ function mt:on_add()
 		end
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
-			--创建特效
-			local angle = damage.source:get_point() / damage.target:get_point()
-			ac.effect(damage.target:get_point(),skill.effect,angle,1,'origin'):remove()
-			--计算伤害
-			for _,unit in ac.selector()
-			: in_range(damage.target,self.damage_area)
-			: is_enemy(hero)
-			: ipairs()
-			do 
-				unit:damage
-				{
-					source = hero,
-					damage = skill.damage,
-					skill = skill,
-					damage_type = '法术'
-				}
-			end 
+            self:atk_pas_shot(damage.target)
+            hero:event_notify('技能-触发被动', self)
 			--激活cd
 			skill:active_cd()
         end
