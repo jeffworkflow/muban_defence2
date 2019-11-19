@@ -18,7 +18,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-wood = 1,
+wood = 0,
 --物品技能
 is_skill = true,
 }
@@ -40,7 +40,7 @@ function mt:on_cast_start()
         return
     end    
     -- skill_list2 英雄技能库
-    local list = ac.skill_list2
+    local list = ac.all_skill
     --添加给英雄
     local name = list[math.random(#list)]
     ac.item.add_skill_item(name,hero)

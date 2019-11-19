@@ -86,14 +86,6 @@ function mt:atk_pas_shot(target)
 				damage = skill.damage,
 				damage_type = '法术'
 			}
-			--真伤（最大生命值）
-			u:damage
-			{
-				source = hero,
-				skill = self,
-				damage = u:get('生命上限') * self.value /100,
-				real_damage = true
-			}
 		end	
 
 	end)

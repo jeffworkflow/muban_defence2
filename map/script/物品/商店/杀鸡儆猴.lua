@@ -173,7 +173,7 @@ local task_detail = {
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.qhjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.qhjx_cnt % per_kill_cnt == 0 then 
                 --奖励随机技能书
-                local skl_name = ac.skill_list2[math.random(#ac.skill_list2)]
+                local skl_name = ac.all_skill[math.random(#ac.all_skill)]
                 hero:add_skill_item(skl_name)
                 p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000随机技能书|r',2)
             end

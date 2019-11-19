@@ -92,7 +92,7 @@ local function give_award(hero,unit)
         if not rand_name then 
             return
         end    
-        local list = ac.skill_list2
+        local list = ac.all_skill
         --添加给购买者
         local name = list[math.random(#list)]
         local it 

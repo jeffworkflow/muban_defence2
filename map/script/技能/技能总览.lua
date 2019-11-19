@@ -1,51 +1,35 @@
 
---[[
+ac.quality_skill = {}
+ac.all_skill = {}
+--总技能 
+ac.wait(0,function()
+    for i,data in pairs(ac.skill) do 
+        if type(data) == 'table' then 
+            if data.color and finds(data.color,'阶','天赋') then 
+                if not ac.quality_skill[data.color] then 
+                    ac.quality_skill[data.color] ={}
+                end    
+                table.insert(ac.quality_skill[data.color],data.name)
 
-    在F9打开的任务栏中 显示所有技能图标 名字 跟 说明
-
-]]
-
---野怪技能列表
-ac.skill_list = {
-    '肥胖','强壮',
-    '神盾','闪避+','闪避++','眩晕','生命回复',
-    '刺猬',
-    '抗魔','魔抗++','净化',
-    -- '远程攻击',
-    '幽灵','善恶有报',
-    '皮肤硬化','特别强壮',
-    '快速','特别快速',
-    -- '多重射击',
-    '火焰强化',
-    '冰冻强化',
-    '闪电强化',
-    --'沉默光环','减速光环' '重生','火焰','流血','灵丹妙药','钱多多','经验多多','物品多多','死亡一指','腐烂',
-}
---技能列表
-ac.skill_list2 = {
-    --'万箭齐发',
-    '交叉闪电','闪电链','阳光枪','回旋刃','巨浪','御甲','炎爆术',
-    '暴风雪','火焰雨','风暴之力','飞焰','雷霆之剑','空间之力','天罗地网',
-    '血焰神脂','神威','刀刃旋风','痛苦尖叫',
-    '死亡脉冲','践踏','穿刺',
-    '水舞','缠绕','疾步风',
-    '神圣护甲','不灭佛隐','血雾神隐','绝对领域','招架之力',
-    '水疗术','生生不息','硬化皮肤','闪避','财富','贪婪者的心愿',
-    '龙凤佛杀','凰燃天成','狂龙爆','红莲爆','暴击','渡业妖爆','技暴',
-    '蚀魂魔舞','赤焰魔舞','望远镜','剑空破','吸血鬼','分裂伤害','嗜血术','碧涛妖变',
-    '邪灵变','暗之领域','迷之领域',
-    '审判之剑',
-    '憎恶',
-    'X射线',
-    '剑刃风暴',
-    '星落',
-    '火力全开',
-    '火力支援'
+                if not finds(data.color,'天赋','真天阶') then
+                    -- print(data.name,data.color)
+                    table.insert(ac.all_skill,data.name)
+                end    
+            end 
+        end	
+    end	
     
+    --排序
+    for color,list in pairs(ac.quality_skill) do 
+        table.sort(list,function (a,b)
+            return a < b
+        end)
+    end 
+    table.sort(ac.all_skill,function (strA,strB)
+        return strA<strB
+    end)
+end)
 
-    -- '强化后的神威','强化后的刀刃旋风','强化后的痛苦尖叫','强化后的死亡脉冲','强化后的践踏', '强化后的穿刺','强化后的水舞','强化后的疾步风','强化后的神圣护甲',
-    -- '强化后的不灭佛隐','强化后的水疗术','强化后的招架之力','强化后的狂龙爆','强化后的红莲爆','强化后的渡业妖爆','强化后的蚀魂魔舞','强化后的暗之领域','强化后的迷之领域','强化后的缠绕',
-}
 --boss技能列表
 ac.skill_list3 = {
     '无敌','撕裂大地',
@@ -71,7 +55,7 @@ ac.skill_list6 = {
 }
 --不受技能冷却影响
 local temp = {}
-for i,name in ipairs(ac.skill_list2) do 
+for i,name in ipairs(ac.all_skill) do 
     table.insert(temp,name)
 end    
 for i,name in ipairs(ac.skill_list4) do 
@@ -87,7 +71,7 @@ ac.wait(1000,function()
     end    
 end)
 --统一定 技能价格 技能售价
-for _,name in ipairs(ac.skill_list2) do
+for _,name in ipairs(ac.all_skill) do
     ac.skill[name].gold = 2000
 end    
 
@@ -95,7 +79,7 @@ end
 local function initialize()
     local unit = ac.player(16):create_dummy('e001',ac.point(0,0),0)
 
-    local list = ac.skill_list2
+    local list = ac.all_skill
 
     table.sort(list,function (a,b) return a < b end)
     

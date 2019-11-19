@@ -68,7 +68,7 @@ function mt:on_cast_start()
     if not p.mall_flag[self.name] then 
         self.owner:add_item('恶魔果实',true)
         --给英雄随机添加随机技能
-        local name = ac.skill_list2[math.random(1,#ac.skill_list2)]
+        local name = ac.all_skill[math.random(1,#ac.all_skill)]
         ac.item.add_skill_item(name,self.owner)
         --添加4本技能书
         for i=1,4 do

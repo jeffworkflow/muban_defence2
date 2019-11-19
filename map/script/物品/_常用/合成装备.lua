@@ -23,19 +23,14 @@ for name,data in pairs(ac.table.ItemData) do
 
     end 
 end 
-ac.wait(10,function()
-    --处理技能 （青）
-    quality_item['青'] ={}
-    for i,name in ipairs(ac.skill_list2) do
-        table.insert(quality_item['青'],name)
-    end    
+ac.wait(10,function()   
 
     -- --处理黑色物品 （黑）
     -- quality_item['黑'] ={}
-    -- for i,name in ipairs(ac.black_item) do
-    --     print(name)
-    --     table.insert(quality_item['黑'],name)
-    -- end   
+    for color,data in pairs(ac.quality_skill) do
+        print(color,data[1])
+        quality_item[color] = data 
+    end   
     --排序
     for color,list in pairs(quality_item) do 
         table.sort(list,function (a,b)
@@ -87,7 +82,13 @@ local streng_item_list = {
     {'无尽火域','无尽火域碎片*100'},
 
     {'恶魔果实','格里芬*1 黑暗项链*1 最强生物心脏*1 白胡子的大刀*1'},
-    {'青','青*1 青*1 青*1 技能融合*1'},
+
+    {'玄阶^100','黄阶*1 黄阶*1 黄阶*1 黄阶*1'},
+    {'地阶^100','玄阶*1 玄阶*1 玄阶*1 玄阶*1'},
+    {'天阶^100','地阶*1 地阶*1 地阶*1 地阶*1'},
+    {'天阶^100','天阶*1 天阶*1 '},
+
+    -- {'青','青*1 青*1 青*1 技能融合*1'},
     
 }
 ac.streng_item_list = streng_item_list
@@ -342,11 +343,16 @@ local function streng_item(alltable,unit,it)
 
             -- ac.game:event_dispatch('物品-合成成功前', dest_str,source_names,del_item) 
             -- print('最终概率',dest_rate)
-            local data = ac.table.ItemData[dest_str]
-            local color =ac.color_code['青']
-            if data then  
-                color= ac.color_code[data.color or '白'] 
-            end
+            local color = '白'
+            local data = ac.table.ItemData[dest_str] --正常物品
+            if data then 
+                color = ac.color_code[data.color or '白'] 
+            else 
+                --技能
+                local skill_color = ac.skill[dest_str].color
+                color = ac.color_code[skill_color] 
+            end    
+
             --倒霉 人的合成概率100%
             if dest_rate and p.unlucky then 
                 dest_rate = 100

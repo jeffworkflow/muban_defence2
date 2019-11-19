@@ -79,7 +79,7 @@ ac.wait(100,function ()
 	end
 
     --创建测试商店
-    -- local shop = ac.shop.create('杀敌数兑换',0,500,90)  
+    local shop = ac.shop.create('测试商店',0,500,90)  
 
 
     -- hero:add_skill('神兵','英雄')

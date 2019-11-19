@@ -17,7 +17,6 @@ local force_cool = 60
 if global_test then 
     force_cool = 60
 end    
-local skill_list = ac.skill_list
 
 --无尽怪物改变所有属性
 local base_attr = {
@@ -177,7 +176,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
         return
     end    
     if ac.g_game_degree_attr >=12 then 
-        ac.rand_skill_name = ac.skill_list[math.random(#ac.skill_list)]  
+        -- ac.rand_skill_name = ac.skill_list[math.random(#ac.skill_list)]  
     end    
 end)
 

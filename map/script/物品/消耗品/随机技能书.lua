@@ -41,7 +41,7 @@ function mt:on_cast_start()
     -- if not self.skill_list_xs then 
         self.skill_list_xs = {}
         for i=1,self.cnt do 
-            local skl_list = ac.skill_list2
+            local skl_list = ac.all_skill
             local name = skl_list[math.random(#skl_list)]
             table.insert(self.skill_list_xs,name)
         end 

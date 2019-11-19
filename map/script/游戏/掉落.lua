@@ -138,7 +138,7 @@ local reward = {
         end 
     end,
     ['随机技能'] = function (player,hero,unit,is_on_hero)
-        local list = ac.skill_list2
+        local list = ac.all_skill
         if list == nil then 
             print('没有任何技能')
             return 

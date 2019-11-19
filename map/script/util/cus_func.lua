@@ -32,7 +32,9 @@ end
 --字符串是否包含 字符串 字符串 字符串
 function finds(str,...)
 	local flag = false
-	
+	if not str or type(str) =='table' or  type(str) =='function' then 
+		return flag
+	end	
 	for key , value in sortpairs{...} do
 		local _, q=string.find(str, value)
 		if _ then 
