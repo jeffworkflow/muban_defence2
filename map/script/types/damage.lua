@@ -458,12 +458,12 @@ local function on_texttag(self)
 	local size = 8
 	local str = ' '
 	
-	--致命一击 颜色 橙色
+	--致命一击 颜色 红色
 	if self:is_physicals_crit() then
 	--	angle = 45 --暴击类的，文字漂浮右边
-		color['r'] = 255
-		color['g'] = 152
-		color['b'] = 0
+		color['r'] = 238
+		color['g'] = 31
+		color['b'] = 39
 		size = 10
 		str = '暴击'
 	end		
@@ -476,10 +476,10 @@ local function on_texttag(self)
 		str = '技暴'
 	end		
 	--会心一击 颜色 红色
-	if self:is_heart_crit() then
-		color['r'] = 238
-		color['g'] = 31
-		color['b'] = 39
+	if self:is_heart_crit() then 
+		color['r'] = 255
+		color['g'] = 255
+		color['b'] = 0
 		size = 10
 		str = '会心'
 	end		
@@ -905,6 +905,28 @@ function mt:on_reduce_defence()
 	end	
 end
 
+--多重暴击
+function mt:on_mul_crite()
+	if self.skill ~= '多重暴击' then
+		local source = self.source
+		local target = self.target
+		local cnt = source:get '多重暴击'
+		if cnt > 0 then 
+			source:timer(0.1*1000,cnt,function()
+				target:damage
+				{
+					source = source,
+					damage = self.current_damage,
+					skill = self.skill,
+					real_damage = true,
+                    physicals_crit_flag=self.physicals_crit_flag,
+                    spells_crit_flag=self.spells_crit_flag,
+                    heart_crit_flag=self.heart_crit_flag,
+				}
+			end)
+		end	
+	end	
+end
 
 
 --创建伤害
@@ -1099,6 +1121,8 @@ function damage:__call()
 			on_splash(self)
 			--攻击减甲
 			self:on_reduce_defence()
+			--多重暴击
+			self:on_mul_crite()
 		end
 		
 		--伤害效果

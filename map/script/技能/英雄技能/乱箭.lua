@@ -162,7 +162,7 @@ function mt:on_add()
             --当前伤害要在回调前初始化
             self.current_damage = self.damage
             range_attack_start(hero,damage)
-            hero:event_notify('技能-触发被动', self)
+            hero:event_notify('单位-触发被动', hero,self)
             --激活cd
             skill:active_cd()
         end 

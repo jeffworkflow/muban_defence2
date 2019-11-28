@@ -159,7 +159,7 @@ function mt:on_add()
 			ac.wait(100,function()
 				range_attack_start(hero,damage)
 			end)
-            hero:event_notify('技能-触发被动', self)
+            hero:event_notify('单位-触发被动', hero,self)
             --激活cd
             skill:active_cd()
         end 

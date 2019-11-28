@@ -3,7 +3,7 @@ local mt = ac.buff['召唤物']
 
 mt.cover_type = 1
 mt.cover_max = 1
-mt.remove_target = true
+mt.remove_target = false
 mt.dead_event = false
 mt.search_area = 600
 mt.ref = 'origin'
@@ -35,7 +35,7 @@ function mt:on_add()
 		end
 	end
 	--调整属性加成
-	if self.skill then 
+	if self.attribute then 
 		local hero = player.hero
 		local attr_mul = self.attr_mul or 0
 		if not hero then 
@@ -67,6 +67,7 @@ function mt:on_add()
 	{
 		skill = self.skill,
 	}
+	-- print('添加水元素',self.time)
 	--设置水元素类型的生命周期
 	-- @目标handle，水元素类型，持续时间
 	jass.UnitApplyTimedLife(self.target.handle,base.string2id('BHwe'),self.time+0.1)
@@ -80,7 +81,7 @@ function mt:on_remove()
 	--还原单位类型
 	self.target.unit_type = self.old_unit_type
 	--暂停生命周期
-	-- jass.UnitPauseTimedLife(self.target.handle,true)  
+	jass.UnitPauseTimedLife(self.target.handle,true)  
 	jass.UnitApplyTimedLife(self.target.handle,base.string2id('BHwe'),0)
 	--移除水元素技能
 	-- self.target:remove_ability 'BHwe'

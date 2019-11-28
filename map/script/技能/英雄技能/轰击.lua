@@ -146,7 +146,7 @@ function mt:on_add()
 					beidong_damage(self,damage_target)
 				end)
 			end	
-			hero:event_notify('技能-触发被动', self)
+			hero:event_notify('单位-触发被动', hero,self)
 		end		
 	end)	
 
