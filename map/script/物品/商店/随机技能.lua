@@ -4,6 +4,7 @@ local mt = ac.skill['随机技能']
 mt{
 --等久
 level = 1,
+is_order = 2,
 --图标
 art = [[other\suijijineng.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
@@ -18,7 +19,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-wood = 0,
+wood = 1,
 --物品技能
 is_skill = true,
 }

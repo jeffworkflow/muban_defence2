@@ -102,6 +102,7 @@ function mt:atk_pas_shot(target)
         time = self.time,
         attribute = attribute,
         attr_mul=self.attr_mul,
+        remove_target = true,
         skill = self,
         follow = true,
         search_area = 500, --搜敌路径

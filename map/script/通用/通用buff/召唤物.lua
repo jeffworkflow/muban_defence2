@@ -125,7 +125,6 @@ end
 local mt = ac.buff['召唤物跟随']
 mt.pulse = 2
 function mt:on_add()
-	self.target:set_search_range(self.search_area)
 end	
 function mt:on_pulse()
 	local target = self.target

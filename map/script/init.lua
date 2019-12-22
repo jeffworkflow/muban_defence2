@@ -15,6 +15,7 @@ require 'ac'
 require '框架拓展'
 -- print(4)
 require 'ui'
+require '界面'
 -- print(5)
 require '通用'
 require '平台'
@@ -56,13 +57,13 @@ ac.wait(100,function ()
     -- light(3)
 
     --开局创建英雄
-    local point = ac.map.rects['出生点']:get_point()
-    local p = ac.player(1)
-    local hero = p:createHero('诸葛亮',point);
-    p.hero = hero
-    p:event_notify('玩家-注册英雄', p, p.hero)
-    p.hero:add('攻击间隔',-1)
-    p.hero:add('攻击速度',400)
+    -- local point = ac.map.rects['出生点']:get_point()
+    -- local p = ac.player(1)
+    -- local hero = p:createHero('诸葛亮',point);
+    -- p.hero = hero
+    -- p:event_notify('玩家-注册英雄', p, p.hero)
+    -- p.hero:add('攻击间隔',-1)
+    -- p.hero:add('攻击速度',400)
     
     --创建木桩
 	local cnt = 1 

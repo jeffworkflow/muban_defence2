@@ -217,12 +217,8 @@ function mt:set_name(name)
 	end	
 
 	local str = '|cff'..color..tostring(name)..show_lv..'|r'
-	if not self.store_name then 
-		self.store_name = str
-	end	
-	if not self.color_name then 
-		self.color_name = str
-	end	
+	self.store_name = str
+	self.color_name = str
 	japi.EXSetItemDataString(base.string2id(id),4,str)
 end
 --获取商店物品显示名字

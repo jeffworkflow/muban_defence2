@@ -11,16 +11,19 @@ ui.hashtable = {}
 ui.init = function () --预存数据表里的物的名字
     for file_type,file_data in pairs(ac.table) do
         for name,value in pairs(file_data) do
-            local hash = ui.get_hash(name)
-            local value = ui.hashtable[hash]   
-            if value ~= nil and value ~= name then 
-                print('哈希值发生碰撞了',name,value)
-            else 
-                ui.hashtable[hash] = name
-            end
+            ui.add_str(name)
         end
     end
 end
+ui.add_str = function (str)
+    local hash = ui.get_hash(str)
+    local value = ui.hashtable[hash]   
+    if value ~= nil and value ~= str then 
+        print('哈希值发生碰撞了',str,value)
+    else 
+        ui.hashtable[hash] = str
+    end
+end 
 
 ui.get_str = function (hash)
     return ui.hashtable[hash]
@@ -133,7 +136,7 @@ ui.encode = function (tbl)
                     buf[#buf+1] = format('[%s]=', k)
                 end 
             elseif tp == 'string' then
-                if find(k, '[^%w_]') or find(k,'[%d*]')  then
+                if find(k, '[^%w_]') then
                     buf[#buf+1] = format('[%q]=', k)
                 else
                     buf[#buf+1] = k..'='

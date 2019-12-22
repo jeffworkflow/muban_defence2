@@ -5,15 +5,17 @@ local rect = require 'types.rect'
 local circle = require 'types.circle'
 local fogmodifier = require 'types.fogmodifier'
 local texttag
-local mouse
-
+register_japi([[
+    native EXGetPlayerRealName takes player p returns string
+]])
+-- print('测试获取真实玩家名：',japi.EXGetPlayerRealName(ac.player(1).handle))
 local player = {}
 
 setmetatable(player, player)
 ac.player = player
 
 function player:__tostring()
-    return ('玩家%02d|%s|%s'):format(self.id, self.base_name, jass.GetPlayerName(self.handle))
+    return ('玩家%02d|%s|%s'):format(self.id, self.name, jass.GetPlayerName(self.handle))
 end
 
 local camera_state = {
@@ -674,6 +676,10 @@ function player.create(id, jPlayer)
 	if str then
 		local name = string.sub(str,11,-3)
 		p.name = name
+	end
+	--11版本
+	if japi.GetGameVersion() < 7000 then 
+		p.name=japi.EXGetPlayerRealName(jPlayer)
 	end
 
 	player[id] = p
