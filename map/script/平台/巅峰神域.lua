@@ -217,7 +217,7 @@ mt.skills = {'真武青焰领域','罗刹夜舞领域',}
 --循环遍历 skill_book 的技能
 local function upgrade_skill(player,skill)
     local self = skill
-    for index,skill in ipairs(self.skill_book) do 
+    for index,skill in ipairs(self.skill_book) do
         if skill.is_spellbook == 1 then  
             upgrade_skill(player,skill)
         else

@@ -271,7 +271,6 @@ local function start()
 			p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 			-- p:setCameraBounds('sg001')
 			--把镜头移动过去
-	
 			--敌我识别特效
 			p.hero:add_enemy_tag()
 			
@@ -288,7 +287,6 @@ local function start()
 	
 				--允许框选
 				p:enableDragSelect()
-				
 				--选中英雄
 				p:selectUnit(p.hero)
 	

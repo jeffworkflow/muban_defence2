@@ -24,7 +24,7 @@ local rect = require 'types.rect'
 local creeps = {}
 creeps.group = {
 	--区域,怪名*1,重生时间,面向,出生时间
-	{'测试','甲虫*30',2},
+	-- {'测试','甲虫*30',2},
     
 	-- {'sjjh1', '鸡*15', 10, 2},
 	-- {'sjjh2', '鸡*15', 10, 2},

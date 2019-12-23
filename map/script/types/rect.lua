@@ -30,6 +30,7 @@ end
 -- true 只返回可通行点
 function mt:get_random_point(flag)
 	local minx, miny, maxx, maxy = self:get()
+	if minx==0 and  miny==0 and  maxx==0 and  maxy==0 then return ac.point(0,0) end
 	local point 
 	if flag then 
 		while true do
