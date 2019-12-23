@@ -60,6 +60,7 @@ function creeps.start()
                 for i = 1, count do
                     local point = rct:get_random_point()
                     local u = ac.player(player_id or 13):create_unit(name, point, 270)
+                    print(name,u)
                     --不主动进攻
                     -- u:add_ability 'A00V'
                     -- u:set_class('模拟死亡') --设置为模拟死亡

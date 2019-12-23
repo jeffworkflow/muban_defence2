@@ -2,7 +2,8 @@ local panel = ac.ui.client.panel
 local message = require 'jass.message'
 --把魔兽自带的提示框移出屏幕外
 -- japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0.3,0.16)
-
+--还原魔兽自带的位置 
+-- japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0,0.16)  
 --当前指向的按钮
 local MouseButton = nil
 local shop_icon ={
@@ -44,6 +45,8 @@ local tool = class.panel:builder
 
 function tool:hide()
     class.panel.hide(self)
+    --还原魔兽自带的位置 
+    japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0,0.16)
 end 
 
 
@@ -218,6 +221,8 @@ end
 function panel:on_button_mouse_enter(button)
     MouseButton = button
     panel.updateToolTip(button)
+    --把魔兽自带的提示框移出屏幕外
+    japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0.3,0.16)
 end
 --鼠标离开事件
 function panel:on_button_mouse_leave(button)

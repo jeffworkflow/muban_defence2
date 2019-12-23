@@ -203,11 +203,6 @@ ac.wait(20,function()
     ac.choose_degree = choose_degree
     local function choose_degree()
         local p = ac.player.self
-		local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
-		p:setCameraBounds(minx+900, miny+900, maxx-900, maxy-900)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
-		p:setCamera(ac.map.rects['选人区域'])
-		--禁止框选
-        p:disableDragSelect()
 
         local function create_choose_dialog()
             local player = get_first_player()

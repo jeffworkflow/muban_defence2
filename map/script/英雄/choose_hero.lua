@@ -19,6 +19,21 @@ local radius
 local last_target
 local map = ac.map
 
+--设置各种镜头
+for i = 1, 10 do
+	local p = player[i]
+	--在选人区域创建可见度修整器(对每个玩家,永久)
+	fogmodifier.create(p, map.rects['选人区域'])
+	--设置镜头属性
+	p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000)
+	local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
+	p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+	local x,y = ac.map.rects['选人区域']:get_point():get()
+	p:setCamera(ac.point(x,y-300))
+	--禁止框选
+	p:disableDragSelect()
+end
+
 --多面板
 local mb = nil
 local flygroup = {}
@@ -148,17 +163,10 @@ local function start()
 			local where = ac.rect.j_rect('yingxiong'..i):get_point()
 			--创建特效
 			if name ~='' then 
+				-- print(name,ac.player.self,ac.player.self.mall and ac.player.self.mall['天尊'])
 				local name, hero_data = name,hero.hero_list[name].data
-				ac.effect(where,[[xrdh.mdx]],270,1,'origin'):remove()
 				local hero = player[16]:createHero(name, where,270)
-				--添加淡化buff
-				-- hero:add_buff '淡化*改'
-				-- {
-				-- 	source_alpha = 0,
-				-- 	target_alpha = 100,
-				-- 	time = 0.4,
-				-- 	remove_when_hit = false,
-				-- }
+				
 				hero.name = name
 				hero:remove_ability 'Amov'
 				hero:add_restriction '缴械'
@@ -169,29 +177,27 @@ local function start()
 
 				hero:add_effect('origin',[[modeldekan\ui\DEKAN_Tag_Ally.mdl]])
 				hero_types[name] = hero
-			end
+				--定制相关
+				if finds(name,'魔瞳·哪吒','魔神·吕布','魔尘·绝影','终极斗士')  then 
+					if not ac.tz_point then 
+						ac.tz_point = where 
+					end	
+					local has_mall = (ac.player.self.mall and ac.player.self.mall[name] or 0)
+					local has_mall2 = (ac.player.self.mall and ac.player.self.mall[name..'1'] or 0)
+					if has_mall == 0 and has_mall2 == 0 then 
+						japi.SetUnitModel(hero.handle,[[]])
+    				    -- hero:add_restriction '隐藏' 会掉线
+					end	
+					hero:blink(ac.tz_point)
+				else 
+					ac.effect(where,[[xrdh.mdx]],270,1,'origin'):remove()	
+				end	
+			end	
 		end)
 	end
 	-- ac.game.hero_lists = flygroup
 	-- ac.wait(#hero.hero_list*200,function()
 	-- end)
-
-	
-	for i = 1, 10 do
-		local p = player[i]
-		--在选人区域创建可见度修整器(对每个玩家,永久)
-		fogmodifier.create(p, map.rects['选人区域'])
-		--设置镜头属性
-		p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000)
-		local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
-		p:setCameraBounds(minx+900, miny+900, maxx-900, maxy-900)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
-		-- p:setCameraBounds('xr')  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
-		p:setCamera(map.rects['选人区域'])
-		--禁止框选
-		p:disableDragSelect()
-	end
-
-	
 
 	local player_hero_count = 0
 
