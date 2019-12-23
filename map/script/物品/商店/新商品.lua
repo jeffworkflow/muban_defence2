@@ -9,6 +9,21 @@ local rect = require 'types.rect'
 --简单的逻辑，统一这边处理
 --复杂逻辑可以通过 ac.table.ItemData data.class =='' 去做一个for循环的逻辑处理
 local shop_item_detail = {
+    ['通用'] = { --传送
+        on_cast_finish = function(self)
+            -- print('施法完成:',self.rect,self.x,self.y)
+            local hero = self.owner
+            local p = hero:get_owner()
+            if self.rect then 
+                local rect = ac.rect.j_rect(self.rect)
+                hero = p.hero
+                hero:blink(rect,true,false)
+            end    
+            --镜头偏移
+            local x,y=hero:get_point():get()
+            p:setCamera(ac.point(x+(self.x or 0),y+(self.y or 0)))
+        end, 
+    } ,
     ['杀敌数兑换'] = {
         real_kill_cnt = 500,
         on_cast_start = function(self)
@@ -57,9 +72,12 @@ for name,data in pairs(ac.table.ItemData) do
 
         --商品名称
         local mt = ac.skill[name]
+        for key,val in pairs(shop_item_detail['通用']) do 
+            mt[key] = val
+        end
         if data.class and shop_item_detail[data.class] then 
             for key,val in pairs(shop_item_detail[data.class]) do 
-                data[key] = val
+                mt[key] = val
             end    
         end    
     end

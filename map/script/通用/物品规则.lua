@@ -57,7 +57,10 @@
             it.owner = u
             --为物品添加技能
             it:item_init_skill()
-
+            --施法准备 应用在新商品通用里面
+            if it.on_cast_ready then 
+                it:on_cast_ready()
+            end    
             --进入施法流程
             if it:_call_event 'on_cast_start' then 
                 it.owner = nil
