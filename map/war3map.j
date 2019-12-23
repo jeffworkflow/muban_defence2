@@ -1411,7 +1411,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_yingxiong18=Rect(- 9920.0, 26048.0, - 9888.0, 26080.0)
     set gg_rct_yingxiong19=Rect(- 11008.0, 26400.0, - 10944.0, 26464.0)
     set gg_rct_yingxiong20=Rect(- 10656.0, 26400.0, - 10592.0, 26464.0)
-    set gg_rct_xuanrenjingtou=Rect(- 10816.0, 25760.0, - 10752.0, 25824.0)
+    set gg_rct_xuanrenjingtou=Rect(- 11872.0, 25024.0, - 9728.0, 26944.0)
     set gg_rct_kaishi=Rect(- 12224.0, 21408.0, - 11904.0, 21632.0)
     set gg_rct_NPC1=Rect(- 12192.0, 22208.0, - 11968.0, 22432.0)
     set gg_rct_zxzw=Rect(5504.0, - 6400.0, 5888.0, - 5984.0)

@@ -136,15 +136,16 @@ local function start()
 			jass.DestroyImage(shadow01)
 			jass.DestroyImage(shadow02)
 
-			if ix > rowx   then 
-				--print(i,ix,iy)
-				iy = iy + 1 
-				ix = 0
-			end    
-			local x = minx + area * ix +75
-			local y = miny + area* iy +150
-			local where = ac.point(x,y)
-			ix = ix + 1 
+			-- if ix > rowx   then 
+			-- 	--print(i,ix,iy)
+			-- 	iy = iy + 1 
+			-- 	ix = 0
+			-- end    
+			-- local x = minx + area * ix +75
+			-- local y = miny + area* iy +150
+			-- local where = ac.point(x,y)
+			-- ix = ix + 1 
+			local where = ac.rect.j_rect('yingxiong'..i):get_point()
 			--创建特效
 			if name ~='' then 
 				local name, hero_data = name,hero.hero_list[name].data

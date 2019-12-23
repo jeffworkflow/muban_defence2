@@ -31,9 +31,9 @@ creeps.group = {
     -- {'sjjh3', '鸡*15', 10, 2},
 }
 --插入 lua物编 刷怪信息
--- for i,data in ipairs(ac.creep_list) do 
---     table.insert(creeps.group,data)
--- end    
+for i,data in ipairs(ac.creep_list) do 
+    table.insert(creeps.group,data)
+end    
 
 --开始刷野
 function creeps.start()

@@ -149,7 +149,7 @@ ac.map.rects={
 	['游戏结束'] = rect.j_rect('jg2_jd') ,
 	
     ['刷怪-boss'] = rect.j_rect('cgboss4') ,
-	['选人区域'] =rect.j_rect('xuanren') ,
+	['选人区域'] =rect.j_rect('xuanrenjingtou') ,
 	['武林大会'] =rect.j_rect('wldh') ,
 
 	['npc1'] =rect.j_rect('npc1') ,
