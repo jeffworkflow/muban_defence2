@@ -48,8 +48,8 @@ for i,key in ipairs(ac.pratice_man) do
                 player:event '玩家-注册英雄后'(function()
                     local name = key..i
                     local mt = ac.creep[key]{    
-                        creeps_datas = key..'*'..(15 + (player.more_unit or 0)),
-                        cool = finds(ac.g_game_degree_name,'乱斗') and 0.5 or 1,
+                        creeps_datas = key..'*'..(10 + player:get('练功房怪')),
+                        cool = 0.5,
                         create_unit_cool = 0,
                         first_wait_time = 0.6, --调整切换练功怪首次出现时间
                         is_leave_region_replace = true,

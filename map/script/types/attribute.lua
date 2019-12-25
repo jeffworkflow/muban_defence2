@@ -183,7 +183,7 @@ local base_attr =[[
 减少周围护甲
 额外杀敌数
 每秒加魔丸 
-局内地图等级
+多重暴击
 ]]
 ac.base_attr = base_attr
 

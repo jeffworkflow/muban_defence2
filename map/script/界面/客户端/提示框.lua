@@ -190,6 +190,8 @@ function panel.updateToolTip()
     if button.type_name == '技能栏' then 
         local skill
         if unit.unit_type == '商店' and unit.sell_item_list then 
+            --把魔兽自带的提示框移出屏幕外
+            japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0.3,0.16)
             -- unit:print_item()
             local item = unit.sell_item_list[button.old_slot_id]
             skill = ac.item.shop_item_map[item and item.name] --再根据名字取shop_item_map的物品
@@ -221,8 +223,6 @@ end
 function panel:on_button_mouse_enter(button)
     MouseButton = button
     panel.updateToolTip(button)
-    --把魔兽自带的提示框移出屏幕外
-    japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0.3,0.16)
 end
 --鼠标离开事件
 function panel:on_button_mouse_leave(button)
@@ -278,7 +278,7 @@ local function init()
     itemPanel.buttonList = buttonList
     panel.itemPanel = itemPanel
 
-    local button = create_button(panel,491+492,934+25,65,49)
+    local button = create_button(panel,989,908,65,49)
     button.type_name = '属性栏'
 end
 init()

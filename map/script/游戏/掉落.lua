@@ -678,11 +678,12 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         return 
     end 
     --无尽后，死亡不掉落任何东西
-    if type(ac.creep['刷怪-无尽1']) == 'function' or ac.creep['刷怪-无尽1'].index >= 1 then 
+    if type(ac.creep['刷怪-无尽1']) == 'table' and ac.creep['刷怪-无尽1'].index >= 1 then 
         return 
     end
     local player = killer:get_owner()
     local dummy_unit = player.hero or ac.dummy
+    -- print(unit,unit.category)
     -- 进攻怪 和 boss 掉落 日常掉落物品
     if unit.category and unit.category =='进攻怪' or unit.category =='boss'  then
         local fall_rate = unit.fall_rate *( 1 + dummy_unit:get('物品获取率')/100 )

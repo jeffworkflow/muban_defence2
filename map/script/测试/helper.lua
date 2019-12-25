@@ -1007,6 +1007,18 @@ function helper:as(str)
 	end	
 end
 
+--模糊添加物品
+function helper:ai(str)
+	if not str or str =='' then 
+		return 
+	end	
+	
+	for name,data in pairs(ac.table.ItemData) do 
+		if finds(name,str) and data.category ~='商品' then 
+			self:add_item(name,true)
+		end	
+	end	
+end
 --测试 
 function helper:test_uu()
 	print('当前怪物数量：',ac.unit_cnt)

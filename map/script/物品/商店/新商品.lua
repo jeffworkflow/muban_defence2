@@ -18,10 +18,10 @@ local shop_item_detail = {
                 local rect = ac.rect.j_rect(self.rect)
                 hero = p.hero
                 hero:blink(rect,true,false)
+                --镜头偏移
+                local x,y=hero:get_point():get()
+                p:setCamera(ac.point(x+(self.x or 0),y+(self.y or 0)))
             end    
-            --镜头偏移
-            local x,y=hero:get_point():get()
-            p:setCamera(ac.point(x+(self.x or 0),y+(self.y or 0)))
         end, 
     } ,
     ['杀敌数兑换'] = {
@@ -72,8 +72,16 @@ for name,data in pairs(ac.table.ItemData) do
 
         --商品名称
         local mt = ac.skill[name]
-        for key,val in pairs(shop_item_detail['通用']) do 
+        for key,val in pairs(data) do 
             mt[key] = val
+        end    
+        for key,val in pairs(shop_item_detail['通用']) do 
+            if not mt[key] then 
+                mt[key] = val
+            end    
+            if key == 'store_name' then 
+                mt.title = val
+            end    
         end
         if data.class and shop_item_detail[data.class] then 
             for key,val in pairs(shop_item_detail[data.class]) do 

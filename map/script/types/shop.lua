@@ -73,7 +73,8 @@ function shop.create(name,x,y,face,is_selling,player)
 	end  
 
 	shop.unit_list[unit.handle] = unit
-
+	
+	ac.game:event_notify('单位-创建商店', unit)
 	return unit
 end
 
