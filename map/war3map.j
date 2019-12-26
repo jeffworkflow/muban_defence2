@@ -209,6 +209,9 @@ rect gg_rct_ronglian22= null
 rect gg_rct_ronglian2= null
 rect gg_rct_ronglian11= null
 rect gg_rct_ronglian1= null
+rect gg_rct_zxzw4= null
+rect gg_rct_zxzw5= null
+rect gg_rct_zxzw6= null
 trigger gg_trg_______u= null
 
 endglobals
@@ -1529,6 +1532,9 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_ronglian2=Rect(- 2944.0, 25088.0, - 2656.0, 25376.0)
     set gg_rct_ronglian11=Rect(96.0, 25792.0, 384.0, 26080.0)
     set gg_rct_ronglian1=Rect(96.0, 25088.0, 384.0, 25376.0)
+	set gg_rct_zxzw4=Rect(6016.0, - 4576.0, 6560.0, - 4064.0)
+    set gg_rct_zxzw5=Rect(6688.0, - 5536.0, 7232.0, - 5024.0)
+    set gg_rct_zxzw6=Rect(6784.0, - 6624.0, 7328.0, - 6112.0)
 endfunction
 
 //===========================================================================
