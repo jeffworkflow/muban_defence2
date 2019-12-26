@@ -24,7 +24,7 @@ local function init_shop()
                     ac.wait(i*300 + ix*200,function()
                         local id
                         local player
-                        if name == '夭夭' then
+                        if finds(name,'夭夭','小仙女')  then
                            id = tonumber(string.sub(str,7,7))
                            player = id and ac.player(id)
                         end

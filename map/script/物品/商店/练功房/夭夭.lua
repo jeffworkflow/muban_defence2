@@ -169,7 +169,7 @@ for _,tab in ipairs(devil_deal) do
             end
 
             local item = setmetatable(self,ac.item)
-            print(name,self.name,self.gold,self.wood,item.gold)
+            -- print(name,self.name,self.gold,self.wood,item.gold)
             item.name = name
             if hero:is_alive() then 
                 hero:event_notify('单位-点击商店物品',seller,hero,item)

@@ -111,7 +111,7 @@ local function give_award(hero,unit)
             local skl = hero:find_skill(rand_name,nil,true) 
             if skl  then 
                 skl:set_level(1) 
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r |cff00ff00放烟花一时爽，一直放一直爽，惊喜获得|cffff0000【可存档称号】'..rand_name..'|r |cff00ff00属性可在巅峰神域-荣耀称号中查看',6) 
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r |cff00ff00放烟花一时爽，一直放一直爽，惊喜获得|cffff0000【可存档称号】'..rand_name..'|r |cff00ff00属性可在最强魔灵-荣耀称号中查看',6) 
             end 
         else   
             --重新来一次

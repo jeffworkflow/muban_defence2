@@ -55,10 +55,13 @@ for i,key in ipairs(ac.pratice_man) do
                         is_leave_region_replace = true,
                         is_region_replace = true,
                     }
+                    function mt:on_next()
+                        self.creeps_datas = key..'*'..(10 + player:get('练功房怪'))
+                        self:set_creeps_datas()
+                    end    
                     function mt:on_change_creep(unit,lni_data)
                         --设置搜敌范围
                         unit:set_search_range(1000)
-
                     end  
                 end)  
             end    

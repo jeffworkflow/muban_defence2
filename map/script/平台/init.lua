@@ -7,7 +7,7 @@ require '平台.初始化'
 require '平台.道具'
 require '平台.宠物天赋'
 
-require '平台.巅峰神域'
+require '平台.最强魔灵'
 require '平台.神龙'
 require '平台.替天行道'
 require '平台.勇士徽章'

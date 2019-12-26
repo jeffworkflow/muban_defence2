@@ -1,4 +1,4 @@
-local mt = ac.skill['技能升级']
+local mt = ac.skill['功法升级']
 mt{
     --等久
     level = 1,
@@ -29,10 +29,11 @@ function mt:on_cast_start()
     for i=1,self.skill_cnt do 
         local skill = hero:find_skill(i,'英雄')
         if skill and skill.level < skill.max_level then 
-            skill.gold = skill.level > 10 and 1000 or  500
+            skill.rec_ex = skill.level > 10 and 10000 or  1000
             local key = skill:get_hotkey() 
+            local str = clean_color(skill:get_title())
             local info = {
-                name = '升级 ' .. skill:get_title() .. ' ( 金币:' .. skill.gold .. ' )',
+                name = '升级 |cff'..ac.color_code[skill.color].. str .. ' |r( 魔丸:' .. skill.rec_ex .. ' )',
                 skill = skill,
             }
             table.insert(list,info)
@@ -53,13 +54,13 @@ function mt:on_cast_start()
         self.dialog = create_dialog(player,'升级技能',list,function (index)
             local skl = list[index].skill
             if skl then 
-                if p.gold > skl.gold then 
+                if p.rec_ex > skl.rec_ex then 
                     --扣钱
-                    hero:addGold(-skl.gold)
+                    hero:add_rec_ex(-skl.rec_ex)
                     --升级技能
                     skl:upgrade(1)
                 else 
-                    p:sendMsg('金币不足，升级失败')
+                    p:sendMsg('魔丸不足，升级失败')
                 end    
                 --再执行一遍
                 hero:event_notify('单位-点击商店物品',self.seller,hero,self)

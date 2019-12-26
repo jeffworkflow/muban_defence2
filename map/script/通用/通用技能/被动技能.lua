@@ -11,6 +11,7 @@ local event_name = {
     ['受到伤害效果'] = true,
     ['单位-杀死单位'] = true,
     ['单位-死亡'] = true,
+    ['单位-即将死亡'] = true,
 }
 
 local api = {}
@@ -79,10 +80,9 @@ end
 --条件检查
 function mt:can_passive(source,target,damage)
     --同一个技能
-    if damage.skill and (self.skill == damage.skill or self.skill.name == damage.skill.name) then
+    if damage and damage.skill and (self.skill == damage.skill or self.skill.name == damage.skill.name) then
         return
     end
-
     if math_random(100) > self.random or not self:do_filter() then
         return
     end
@@ -121,41 +121,39 @@ function mt:init()
         self:add_filter(self.can_damage)
     end
 
-    if self.event_name == '单位-杀死单位' or self.event_name == '单位-死亡' then
+    if self.event_name == '单位-杀死单位' or self.event_name == '单位-死亡' or self.event_name == '单位-即将死亡' then
         self.trg = self.owner:event(self.event_name)(function(_,source,target,damage)
             --被动开始
-            if self:can_passive(source,target,damage) and self.damage_start(self.skill,source,target,damage) ~= false then
+            if self:can_passive(source,target,damage) then
+                self.is_success = self.damage_start(self.skill,source,target,damage)
                 self:finish()
-    
             elseif self.damage_failure then
                 --被动失败
                 self.damage_failure(self.skill,source,target,damage)
-                self.is_success = false
             end
     
             --被动完成
             if self.damage_finish then
                 self.damage_finish(self.skill,source,target,damage)
             end
-            
+            return self.is_success
         end)
     else
         self.trg = self.owner:event(self.event_name)(function(_,damage)
             --被动开始
-            if self:can_passive(_,_,damage) and self.damage_start(self.skill,damage) ~= false then
+            if self:can_passive(_,_,damage)  then
+                self.is_success = self.damage_start(self.skill,source,target,damage)
                 self:finish()
-    
             elseif self.damage_failure then
                 --被动失败
                 self.damage_failure(self.skill,damage)
-                self.is_success = false
             end
     
             --被动完成
             if self.damage_finish then
                 self.damage_finish(self.skill,damage)
             end
-    
+            return self.is_success
         end)
     end
 
@@ -212,7 +210,7 @@ ac.game:event '技能-获得' (function (_,hero,self)
     local hero = self.owner
     local skill = self 
 
-    if self.event_name and skill.damage_start then 
+    if skill.event_name and skill.damage_start then 
         ac.damage(self.event_name){
             skill = skill,
             cool = true,

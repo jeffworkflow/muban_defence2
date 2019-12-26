@@ -15,7 +15,7 @@ require '物品.商店.游戏说明'
 
 
 require '物品.商店.新商品'
-require '物品.商店.技能升级'
+require '物品.商店.功法升级'
 
 
 

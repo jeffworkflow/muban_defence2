@@ -288,9 +288,9 @@ function helper:reload_mall(flag)
 		ac.init_need_map_level()
 	end	
 
-	local skl = self:find_skill('巅峰神域')
+	local skl = self:find_skill('最强魔灵')
 	if skl then skl:remove() end
-	self:add_skill('巅峰神域','英雄',12)	
+	self:add_skill('最强魔灵','英雄',12)	
 	
 	local skl = peon:find_skill('宠物皮肤')
 	if skl then skl:remove() end
@@ -694,7 +694,12 @@ function helper:add(str,cnt)
 end
 --读取 属性
 function helper:get(key)
-	print(self:get(key))
+	local str = table.concat( ac.player_attr,' ' )
+	if finds(str,key) then 
+		print('玩家属性：',key,self.owner:get(key))
+	else 
+		print('英雄属性：',key,self:get(key))
+	end	
 end	
 
 --读取 单位属性
@@ -861,6 +866,7 @@ function helper:tt()
 	self:add('暴击伤害',1003000)
 	self:add('攻击速度',500)
 	self:add('攻击间隔',-1)
+	self:add_kill_count(10000000)
 	self:add_wood(10000000)
 	self:add_rec_ex(10000000)
 	-- if not ac.wtf then

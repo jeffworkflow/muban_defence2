@@ -12,6 +12,6 @@ require '英雄.hero_list'
 --加载英雄列表
 require '英雄.hero_info'
 --加载选择英雄
-require '英雄.成长之路'
+require '英雄.圣龙气运'
 --加载选择英雄
 require '英雄.choose_hero'

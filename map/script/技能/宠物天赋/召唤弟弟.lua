@@ -46,7 +46,7 @@ function mt:on_add()
     local p = self.owner.owner
     local hero = p.hero
     -- local 
-    self.trg = hero:event '触发被动'(function(_,skl,target)
+    self.trg = hero:event '单位-触发被动'(function(_,skl,target)
         --技能是否正在CD
         if skill:is_cooling() then
 			return 

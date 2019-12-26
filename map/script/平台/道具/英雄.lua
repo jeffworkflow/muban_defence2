@@ -155,7 +155,7 @@ tip = [[
 -- mt.skills = {
 --     '至尊宝皮肤A','至尊宝皮肤B',
 -- }
--- -- mt.on_add = ac.skill['巅峰神域'].on_add
+-- -- mt.on_add = ac.skill['最强魔灵'].on_add
 -- function mt:on_add()
 --     local hero = self.owner 
 --     local player = hero:get_owner()

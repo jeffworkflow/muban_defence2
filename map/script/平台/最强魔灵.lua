@@ -1,13 +1,13 @@
 local jass = require 'jass.common'
-local mt = ac.skill['巅峰神域']
+local mt = ac.skill['最强魔灵']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[dfsy.blp]],
-    title = '巅峰神域',
+    title = '最强魔灵',
     tip = [[
 
-点击查看 |cff00ffff巅峰神域|r
+点击查看 |cff00ffff最强魔灵|r
     ]],
     
 }
@@ -291,5 +291,5 @@ end
 
 --注册添加给英雄
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
-    hero:add_skill('巅峰神域','英雄',12)
+    hero:add_skill('最强魔灵','英雄',12)
 end) 

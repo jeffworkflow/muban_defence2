@@ -142,7 +142,7 @@ function mt:on_cast_start()
     local skl = hero:find_skill(save_name,nil,true) 
     if not skl  then 
         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','第一个吃螃蟹的人')
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了“肥美的螃蟹”，成为本局|cffff0000'..save_name..'（可存档成就）|r 成就属性可在“巅峰神域-精彩活动”中查看',6) 
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了“肥美的螃蟹”，成为本局|cffff0000'..save_name..'（可存档成就）|r 成就属性可在“最强魔灵-精彩活动”中查看',6) 
     else
         skl:upgrade(1)
         p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6)  

@@ -8,6 +8,7 @@ local Care = {
     '翻倍', 
     '练功房怪'
 }
+ac.player_attr = Care
 
 local Show = {
     ['金币'] = function (player, v)

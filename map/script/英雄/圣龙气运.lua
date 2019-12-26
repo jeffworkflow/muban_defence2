@@ -1,17 +1,21 @@
 
 --魔法书
-local mt = ac.skill['成长之路']
+local mt = ac.skill['圣龙气运']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[czzl.blp]],
-    title = '成长之路',
+    title = '圣龙气运',
     tip = [[
 
-点击查看 |cff00ff00成长之路|r
+点击查看 |cff00ff00圣龙气运|r
     ]],
 }
-mt.skills = {'神魂修炼','神兵利器','护天神甲','套装洗练','境界突破','异火','吞噬神丹','神技入体','扭蛋','彩蛋','超级彩蛋',}
+mt.skills = {
+    '神魂修炼','古老的铭文',nil,nil,
+    nil,nil,nil,nil,
+    nil,'彩蛋','超级彩蛋',
+}
 
 local mt = ac.skill['彩蛋']
 mt{
@@ -82,16 +86,8 @@ for attr_k,attr_v in pairs(ac.unit.attribute) do
     all_attr = all_attr ..attr_k..' '
 end    
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
-	hero:add_skill('成长之路','英雄',11)
+	hero:add_skill('圣龙气运','英雄',11)
 	-- hero:add_skill('魔法书demo','英雄')
-	--开始处理神兵神甲额外文本提示
-	for k,val in sortpairs(ac.magic_item) do
-		for _,name in ipairs(val) do
-			-- print(name)
-			local skl = hero:find_skill(name,nil,true)
-            skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')
-		end	
-	end	
 	
 	for k,val in ipairs(ac.devil_deal) do
 		for _,data in ipairs(val) do    
