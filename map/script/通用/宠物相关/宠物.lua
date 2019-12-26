@@ -14,8 +14,10 @@ local player = require 'ac.player'
 
 function player.__index:create_pets(name)
     local name =name or '宠物'
-    local x,y = ac.map.rects['出生点']:get_point():get()
-    local u = self:create_unit(name,ac.point(x-500,y))
+    -- local x,y = ac.map.rects['出生点']:get_point():get()
+    -- local u = self:create_unit(name,ac.point(x-500,y))
+
+    local u = self:create_unit(name,ac.rect.j_rect('chongwu'))
     u.unit_type = '宠物'
     u:set('移动速度',522)
     self.peon = u

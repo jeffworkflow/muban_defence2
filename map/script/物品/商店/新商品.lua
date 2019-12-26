@@ -74,14 +74,14 @@ for name,data in pairs(ac.table.ItemData) do
         local mt = ac.skill[name]
         for key,val in pairs(data) do 
             mt[key] = val
+            if key == 'store_name' then 
+                mt.title = val
+            end  
         end    
         for key,val in pairs(shop_item_detail['通用']) do 
             if not mt[key] then 
                 mt[key] = val
-            end    
-            if key == 'store_name' then 
-                mt.title = val
-            end    
+            end      
         end
         if data.class and shop_item_detail[data.class] then 
             for key,val in pairs(shop_item_detail[data.class]) do 

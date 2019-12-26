@@ -84,11 +84,34 @@ for _,tab in ipairs(devil_deal) do
         table.insert(mt2.skills,value[1])
         --物品名称
         local mt = ac.skill[value[1]]
-        mt.level = 0
+        mt{
+            level = 0,
+            --施法动作
+            -- cast_animation = '',
+            content_tip = '',
+            show_tip = function(self) --不可删，否则消耗good 会有问题。
+                local str = ''
+                if self.gold then 
+                    str = '' .. self.gold .. '金币'
+                end   
+                if self.kill_count then 
+                    str = '杀敌数' .. self.kill_count 
+                end   
+                if self.wood then 
+                    str = '' .. self.wood .. '木头'
+                end    
+                if self.cost_allattr then 
+                    str = '' .. self.cost_allattr .. '全属性'
+                end    
+                if self.fire_seed then 
+                    str = '' .. self.fire_seed .. '火灵'
+                end    
+                return str
+            end,
+        }
         if value[2]=='全属性' then
             mt.cost_allattr = tonumber(value[3])
         end   
-        
         local function add_next_skill(skill,seller,hero)
             local self = skill
             seller:remove_skill(self.name)
@@ -146,6 +169,7 @@ for _,tab in ipairs(devil_deal) do
             end
 
             local item = setmetatable(self,ac.item)
+            print(name,self.name,self.gold,self.wood,item.gold)
             item.name = name
             if hero:is_alive() then 
                 hero:event_notify('单位-点击商店物品',seller,hero,item)

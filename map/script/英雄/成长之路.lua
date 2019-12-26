@@ -77,7 +77,10 @@ mt{
     ]],
 }
 mt.skills = {}
-
+local all_attr = ''
+for attr_k,attr_v in pairs(ac.unit.attribute) do 
+    all_attr = all_attr ..attr_k..' '
+end    
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	hero:add_skill('成长之路','英雄',11)
 	-- hero:add_skill('魔法书demo','英雄')
@@ -90,14 +93,21 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		end	
 	end	
 	
-	-- for k,val in ipairs(ac.devil_deal) do
-	-- 	for _,data in ipairs(val) do    
-	-- 		local name = data[1]
-	-- 		local skl = hero:find_skill(name,nil,true)
-    --         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')
-	-- 		skl:set('tip','%extr_tip% \n\n|cffFFE799【奖励】：|r|cff00ff00+'..(finds(ac.base_attr,data[3]) and data[4] or (data[4]..'%'))..data[3]..'|r\n\n')
-	-- 		-- print(skl.tip,skl.data.tip)
-	-- 		skl:fresh_tip()
-	-- 	end	
-	-- end	
+	for k,val in ipairs(ac.devil_deal) do
+		for _,data in ipairs(val) do    
+			local name = data[1]
+            local skl = hero:find_skill(name,nil,true)
+            for k1,v1 in pairs(skl) do 
+                if type(k1) == 'string' and finds(all_attr,k1) then 
+                    data[3] = k1
+                    data[4] = v1
+                    break
+                end
+            end      
+
+            skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')
+			skl:set('tip','%extr_tip% \n\n|cffFFE799【奖励】：|r|cff00ff00+'..(finds(ac.base_attr,data[3]) and data[4] or (data[4]..'%'))..data[3]..'|r\n\n')
+			skl:fresh_tip()
+		end	
+	end	
 end)

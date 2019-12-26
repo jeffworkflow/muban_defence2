@@ -8,6 +8,7 @@ require '物品.商店.练功房.夭夭'
 require '物品.商店.练功房.真魔鬼的交易'
 require '物品.商店.练功房.魔鬼的合成'
 
+-- require '物品.商店.练功房.魔鬼的交易'
 --注册魔兽事件 区域不可其他进入
 for i =1 ,6 do 
     local p = ac.player(i)

@@ -41,16 +41,23 @@ function creeps.start()
 	local creep_player = ac.player[13]
 	--对每个野怪点分别计算
 	for _, data in ipairs(creeps.group) do
-		local rect_name, creeps_names, revive_time,face, start_time,player_id = table.unpack(data)
+		local rect_name, creeps_names, revive_time,face, start_time,player_id,fall_item = table.unpack(data)
 		--刷怪区域
 		local rct = rect_name == '测试' and ac.rect.create(1000,-500,2000,500) or rect.j_rect(rect_name)
 		--野怪单位组
         local creep_groop = {}
         local creeps_datas = {}
+        local fall_datas = {}
 		--野怪数据
         for k,v in creeps_names:gmatch '(%S+)%*(%d+%s-)' do
             creeps_datas[k]=v
         end
+        --掉落物品
+        if fall_item then
+            for k,v in fall_item:gmatch '(%S+)%*(%d+%s-)' do
+                fall_datas[k]=v
+            end
+        end    
 		--创建该野怪点的野怪
 		local function create()
             for k,v in sortpairs(creeps_datas) do 
@@ -70,6 +77,14 @@ function creeps.start()
                     table.insert(creep_groop, u)
                     --监听这个单位挂掉
                     u:event '单位-死亡' (function(_,unit,killer)
+                        --掉落物品
+                        if fall_item then
+                            for k,v in sortpairs(fall_datas) do 
+                                for i=1,v do 
+                                    ac.item.create_item(k,u:get_point())
+                                end    
+                            end    
+                        end    
                         for _, uu in ipairs(creep_groop) do
                             if uu.handle == unit.handle then 
                                 table.remove(creep_groop,_)
