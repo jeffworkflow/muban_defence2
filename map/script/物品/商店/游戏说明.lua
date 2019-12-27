@@ -231,7 +231,7 @@ mt{
  ]],
 }
 
-local mt = ac.skill['宠物天赋说明']
+local mt = ac.skill['宠物技能说明']
 mt{
     --类型
     item_type = "神符",
@@ -241,19 +241,19 @@ mt{
     content_tip = '',
     store_affix ='',
     tip = [[ 
-|cff00ff00宠物等级可存档，升级时获得一点宠物天赋，宠物天赋可学习技能，每局都会重置宠物天赋，记得开局点一下|r 
+|cff00ff00宠物等级可存档，升级时获得一点宠物技能，宠物技能可学习技能，每局都会重置宠物技能，记得开局点一下|r 
 
-|cffffE7991点宠物天赋|r 奖励 |cff00ff00【杀敌数加成5%】
-|cffffE7991点宠物天赋|r 奖励 |cff00ff00【木头加成5%】
-|cffffE7991点宠物天赋|r 奖励 |cff00ff00【物品获取率加成5%】
-|cffffE7991点宠物天赋|r 奖励 |cff00ffff【魔丸加成5%】
-|cffffE7991点宠物天赋|r 奖励 |cff00ffff【分裂伤害加成5%】
-|cffffE7991点宠物天赋|r 奖励 |cff00ffff【攻击速度加成5%】
-|cffffE7991点宠物天赋|r 奖励 |cffffff00【杀怪20力量成长】
-|cffffE7991点宠物天赋|r 奖励 |cffffff00【杀怪20敏捷成长】
-|cffffE7991点宠物天赋|r 奖励 |cffffff00【杀怪20智力成长】
-|cffffE7991点宠物天赋|r 奖励 |cffff0000【杀怪10全属性成长】
-|cffffE7991点宠物天赋|r 奖励 |cffff0000【杀怪35攻击成长】
+|cffffE7991点宠物技能|r 奖励 |cff00ff00【杀敌数加成5%】
+|cffffE7991点宠物技能|r 奖励 |cff00ff00【木头加成5%】
+|cffffE7991点宠物技能|r 奖励 |cff00ff00【物品获取率加成5%】
+|cffffE7991点宠物技能|r 奖励 |cff00ffff【魔丸加成5%】
+|cffffE7991点宠物技能|r 奖励 |cff00ffff【分裂伤害加成5%】
+|cffffE7991点宠物技能|r 奖励 |cff00ffff【攻击速度加成5%】
+|cffffE7991点宠物技能|r 奖励 |cffffff00【杀怪20力量成长】
+|cffffE7991点宠物技能|r 奖励 |cffffff00【杀怪20敏捷成长】
+|cffffE7991点宠物技能|r 奖励 |cffffff00【杀怪20智力成长】
+|cffffE7991点宠物技能|r 奖励 |cffff0000【杀怪10全属性成长】
+|cffffE7991点宠物技能|r 奖励 |cffff0000【杀怪35攻击成长】
  ]],
 }
 

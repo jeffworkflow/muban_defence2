@@ -296,9 +296,9 @@ function helper:reload_mall(flag)
 	if skl then skl:remove() end
 	peon:add_skill('宠物皮肤','英雄',12)
 
-	local skl = peon:find_skill('宠物天赋')
+	local skl = peon:find_skill('宠物技能')
 	if skl then skl:remove() end
-	peon:add_skill('宠物天赋','英雄',8)
+	peon:add_skill('宠物技能','英雄',8)
 
 
 
@@ -491,7 +491,7 @@ function helper:test_n3()
     p:Map_SaveServerValue('sjjh',50) --网易服务器
     p:Map_SaveServerValue('yshz',20) --网易服务器
     p:Map_SaveServerValue('wbjf',2000) --网易服务器
-    p:Map_SaveServerValue('cwtf',60000) --网易服务器
+    p:Map_SaveServerValue('cwjn',60000) --网易服务器
 
 end	
 

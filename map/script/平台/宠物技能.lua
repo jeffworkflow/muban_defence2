@@ -2,7 +2,7 @@ local japi = require("jass.japi")
 local dbg = require 'jass.debug'
 local unit = require 'types.unit'
 
-local mt = ac.skill['宠物天赋']
+local mt = ac.skill['宠物技能']
 mt{
     is_spellbook = 1,
     -- is_order = 2,
@@ -97,9 +97,9 @@ function mt:on_add()
     hero:set_size(self.model_size) 
 
     --处理 皮肤碎片相关
-    local value = tonumber(p.cus_server['宠物天赋'])
+    local value = tonumber(p.cus_server['宠物技能'])
     -- print(value)
-    -- print('宠物天赋',value)
+    -- print('宠物技能',value)
     if not value or value == '' or value == "" then
         value = 0 
     end
@@ -111,7 +111,7 @@ function mt:on_add()
     end )
 end
 
---宠物天赋里面的技能，
+--宠物技能里面的技能，
 local peon_skill = {
     --技能，技能显示的名字，属性名，数值，图标，tip
     ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前杀敌数加成 +%杀敌数加成%|cff00ff00 %|r|n|n]]},
@@ -151,7 +151,7 @@ for k,v in sortpairs(peon_skill) do
         art = v[4],
         tip = function(self)
             local hero = self.owner
-            local skl = hero:find_skill('宠物天赋',nil,true)
+            local skl = hero:find_skill('宠物技能',nil,true)
             -- print(skl.remain_point)
             local str = '|cff00ffff可用天赋点:|r |cffffff00'..(skl and skl.remain_point or 0)..'|r\n'
             return str..v[5]
@@ -168,7 +168,7 @@ for k,v in sortpairs(peon_skill) do
             return
         end    
         
-        local skl = hero:find_skill('宠物天赋',nil,true)
+        local skl = hero:find_skill('宠物技能',nil,true)
         local up_level = skl.level >=40 and 10 or 1 
         up_level = skl.remain_point >=10 and 10 or 1
 
@@ -227,7 +227,7 @@ end
 
 --额外宠物等级
 function unit.__index:peon_add_lv()
-    local skill = self:find_skill('宠物天赋')
+    local skill = self:find_skill('宠物技能')
     if not skill then 
         return 
     end
@@ -243,8 +243,8 @@ function unit.__index:peon_add_xp(xp)
     local player = self:get_owner()
     self.peon_xp = (self.peon_xp or 0) + xp 
     --保存经验到服务器存档
-    -- player:SetServerValue('cwtf',tonumber(self.peon_xp)) 自定义服务器
-    player:Map_SaveServerValue('cwtf',tonumber(self.peon_xp)) --网易服务器
+    -- player:SetServerValue('cwjn',tonumber(self.peon_xp)) 自定义服务器
+    player:Map_SaveServerValue('cwjn',tonumber(self.peon_xp)) --网易服务器
     --升级
     self.peon_lv = self.peon_lv or 1
     local flag = true 
@@ -255,9 +255,9 @@ function unit.__index:peon_add_xp(xp)
         -- name = name ..'-Lv'..self.peon_lv ..'(升级所需经验：'..need_xp..')'
         -- name = '升级所需经验：'..'|cff'..ac.color_code['红']..need_xp..'|r'
         -- print(name)
-        local skill = self:find_skill('宠物天赋')
+        local skill = self:find_skill('宠物技能')
         if skill then
-            --更改宠物天赋的tip显示
+            --更改宠物技能的tip显示
             skill:set('need_xp',need_xp)
             skill:fresh_tip()
         end 

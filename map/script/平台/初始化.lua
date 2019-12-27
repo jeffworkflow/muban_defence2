@@ -134,10 +134,15 @@ for i=1,10 do
                     for name,data in sortpairs(tab[3]) do 
                         local has_item = (player.cus_server[key_name] or 0 ) >= data[1] and 1 
                         local map_level= data[2] or 0
+                        local val = 1
+                        if data.value then 
+                            val = data:value(player) or 0
+                        end    
+                        print('111111111111111111',key_name,val)
                         if has_item and has_item > 0 
                         and player:Map_GetMapLevel() >= map_level
                         then 
-                            player.cus_server[name] = 1
+                            player.cus_server[name] = val
                         end   
                     end    
                 end    

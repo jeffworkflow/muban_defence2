@@ -8,7 +8,7 @@ local devil_deal ={
 --从 lni 数据读取 到变量
 for name,data in sortpairs(ac.table.ItemData) do 
     if data.class == '夭夭' then 
-        print(name,data.num)
+        -- print(name,data.num)
         if not devil_deal[data.num] then 
             devil_deal[data.num] = {}
         end      

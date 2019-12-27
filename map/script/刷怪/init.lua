@@ -11,6 +11,7 @@ require '刷怪.刷怪无尽'
 -- require '刷怪.杀鸡儆猴'
 require '刷怪.境界'
 require '刷怪.难度选择'
+require '刷怪.任务'
 
 -- require '刷怪.野怪'
 -- require '刷怪.武林大会'

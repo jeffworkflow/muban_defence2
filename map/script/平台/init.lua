@@ -5,7 +5,7 @@ require '平台.自定义服务器'
 require '平台.初始化'
 
 require '平台.道具'
-require '平台.宠物天赋'
+require '平台.宠物技能'
 
 require '平台.最强魔灵'
 require '平台.神龙'
@@ -23,6 +23,7 @@ require '平台.精彩活动'
 
 require '平台.赛季奖励'
 
+require '平台.隐藏成就'
 
 
 

@@ -620,7 +620,7 @@ for i,name in ipairs({'魅影','紫霜幽幻龙鹰','天马行空','玉兔','七
         end     
         ac.wait(10,function() 
             --改变大小
-            local skl = hero:find_skill('宠物天赋',nil,true)
+            local skl = hero:find_skill('宠物技能',nil,true)
             local base_size = skl.level * 0.5/100
             if name == '骨龙' then 
                 hero:set_size(2.5 *(1+base_size))
