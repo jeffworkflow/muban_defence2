@@ -6,7 +6,7 @@ level = 0, --要动态插入
 max_level = 10,
 title = '魔剑获得（N1）',
 --图标
-art = [[jueshimojian.blp]],
+art = [[damotou.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -32,7 +32,7 @@ local mt = ac.skill['隐藏成就']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[jchd.blp]],
+    art = [[yincangchengjiu.blp]],
     title = '隐藏成就',
     tip = [[
 

@@ -212,6 +212,7 @@ rect gg_rct_ronglian1= null
 rect gg_rct_zxzw4= null
 rect gg_rct_zxzw5= null
 rect gg_rct_zxzw6= null
+rect gg_rct_F2cs= null
 trigger gg_trg_______u= null
 
 endglobals
@@ -1395,7 +1396,7 @@ function CreateRegions takes nothing returns nothing
     local weathereffect we
     set gg_rct_yingxiong1=Rect(- 11712.0, 25248.0, - 11648.0, 25312.0)
     set gg_rct_yingxiong2=Rect(- 11360.0, 25248.0, - 11296.0, 25312.0)
-    set gg_rct_yingxiong3=Rect(- 11008.0, 25248.0, - 10944.0, 25312.0)
+    set gg_rct_yingxiong3=Rect(- 10976.0, 25248.0, - 10912.0, 25312.0)
     set gg_rct_yingxiong4=Rect(- 10656.0, 25248.0, - 10592.0, 25312.0)
     set gg_rct_yingxiong5=Rect(- 10304.0, 25248.0, - 10240.0, 25312.0)
     set gg_rct_yingxiong6=Rect(- 9952.0, 25248.0, - 9888.0, 25312.0)
@@ -1509,7 +1510,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_chiyanjia=Rect(7776.0, 18048.0, 8096.0, 18272.0)
     set gg_rct_chiyanjia1=Rect(7776.0, 18912.0, 8096.0, 19136.0)
     set gg_rct_chiyanjia2=Rect(6848.0, 17344.0, 8992.0, 19584.0)
-    set gg_rct_chongwu=Rect(- 12864.0, 21888.0, - 12576.0, 22144.0)
+    set gg_rct_chongwu=Rect(- 11712.0, 22048.0, - 11424.0, 22304.0)
     set gg_rct_lgfbh1=Rect(704.0, 2688.0, 3104.0, 5152.0)
     set gg_rct_lgfbh2=Rect(3392.0, 2720.0, 5792.0, 5184.0)
     set gg_rct_lgfbh3=Rect(6048.0, 2720.0, 8448.0, 5184.0)
@@ -1535,6 +1536,7 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_zxzw4=Rect(6016.0, - 4576.0, 6560.0, - 4064.0)
     set gg_rct_zxzw5=Rect(6688.0, - 5536.0, 7232.0, - 5024.0)
     set gg_rct_zxzw6=Rect(6784.0, - 6624.0, 7328.0, - 6112.0)
+	set gg_rct_F2cs=Rect(4640.0, 7744.0, 4704.0, 7808.0)
 endfunction
 
 //===========================================================================

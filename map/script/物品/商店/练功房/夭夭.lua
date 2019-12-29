@@ -55,7 +55,7 @@ local mt = ac.skill['神魂修炼']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[mgdjy.blp]],
+    art = [[xiulian10.blp]],
     title = name,
     tip = '\n点击查看 |cff00ff00神魂修炼\n|r',
 }

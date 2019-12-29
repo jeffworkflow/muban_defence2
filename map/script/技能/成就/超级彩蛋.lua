@@ -303,7 +303,7 @@ local mt = ac.skill['超级彩蛋']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[cjcd.blp]],
+    art = [[cjcaidan.blp]],
     title = '超级彩蛋',
     tip = [[
 

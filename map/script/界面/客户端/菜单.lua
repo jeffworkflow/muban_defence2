@@ -43,17 +43,17 @@ class.screen_button = extends(class.button){
         end
     end,
 
-    on_button_mouse_enter = function (self)
-        if self.info then 
-            if self.info.name == '神奇的五分钟' then 
-                self:tooltip('|cffffe799神奇的五分钟|r',self.info.tip,-1,300,84)
+    -- on_button_mouse_enter = function (self)
+    --     if self.info then 
+    --         if self.info.name == '神奇的五分钟' then 
+    --             self:tooltip('|cffffe799神奇的五分钟|r',self.info.tip,-1,300,84)
 
-            else
-                self:tooltip(self.info.name,self.info.tip,0,200,84)
-            end    
+    --         else
+    --             self:tooltip(self.info.name,self.info.tip,0,200,84)
+    --         end    
 
-        end
-    end,
+    --     end
+    -- end,
 }
 
 
@@ -70,14 +70,14 @@ local ui_info = {
         key = 'F3', 
         tip = "F3进入练功房"
     },
-    {
-        name = '神奇的五分钟',  
-        path = 'wfz.blp',
-        -- key = 'F3', 
-        tip = "|cff00ff00开局五分钟自动获得|cffff0000攻击减甲+1 （可存档）|r|n|cffcccccc上限受地图等级影响|r",
-        x = 1800,
-        y = 638
-    },
+    -- {
+    --     name = '神奇的五分钟',  
+    --     path = 'wfz.blp',
+    --     -- key = 'F3', 
+    --     tip = "|cff00ff00开局五分钟自动获得|cffff0000攻击减甲+1 （可存档）|r|n|cffcccccc上限受地图等级影响|r",
+    --     x = 1800,
+    --     y = 638
+    -- },
 
 }
 
@@ -88,7 +88,7 @@ for index,info in ipairs(ui_info) do
     else      
         button = class.screen_button.create(10,50 + index*84*1.2,info)
     end    
-    if info.name =='神奇的五分钟' then 
-        button:fresh_name()
-    end    
+    -- if info.name =='神奇的五分钟' then 
+    --     button:fresh_name()
+    -- end    
 end 

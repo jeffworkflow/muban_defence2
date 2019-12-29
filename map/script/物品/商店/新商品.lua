@@ -20,6 +20,7 @@ local shop_item_detail = {
                 hero:blink(rect,true,false)
                 --镜头偏移
                 local x,y=hero:get_point():get()
+                -- print(1111,self.y)
                 p:setCamera(ac.point(x+(self.x or 0),y+(self.y or 0)))
             end    
         end, 

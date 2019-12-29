@@ -107,7 +107,7 @@ local mt = ac.skill['古老的铭文']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[mgdjy.blp]],
+    art = [[mingwen8.blp]],
     title = '古老的铭文',
     tip = '\n点击查看 |cff00ff00古老的铭文\n|r',
 }

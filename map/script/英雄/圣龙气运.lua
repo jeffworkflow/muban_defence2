@@ -4,7 +4,7 @@ local mt = ac.skill['圣龙气运']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[czzl.blp]],
+    art = [[slqy.blp]],
     title = '圣龙气运',
     tip = [[
 
@@ -14,14 +14,14 @@ mt{
 mt.skills = {
     '神魂修炼','古老的铭文',nil,nil,
     nil,nil,nil,nil,
-    nil,'彩蛋','超级彩蛋',
+    '吞噬神丹','彩蛋','超级彩蛋',
 }
 
 local mt = ac.skill['彩蛋']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[xsgl.blp]],
+    art = [[caidan.blp]],
     title = '彩蛋',
     tip = [[
 

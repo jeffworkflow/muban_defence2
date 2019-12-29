@@ -36,13 +36,23 @@ function player.__index:create_pets(name)
     u:add_skill('一键拾取','英雄')
     u:add_skill('装备合成','英雄')
     -- u:add_skill('荣耀称号','英雄',8)
-    u:add_skill('宠物纪念册','英雄',12)
+    -- u:add_skill('宠物纪念册','英雄',12)
     u:add_skill('宠物技能','英雄',8)
     u:add_skill('一键出售','英雄',7)
     -- u:add_skill('一键合成','英雄',9)
-    
     -- u:add_skill('商城管理','英雄')
-    
+
     -- 测试魔法书
     -- u:add_skill('魔法书demo','英雄')
 end
+
+-- local n = 0
+-- local point = ac.rect.j_rect('chongwu')
+-- ac.game:event '玩家-聊天' (function(self, player, str)
+--     for i =1,5 do
+--         n=n+1
+--         local name = ac.peon_list[n]
+--         local u = player:create_unit(name,point)
+--         u.unit_type = '宠物'
+--     end
+-- end)

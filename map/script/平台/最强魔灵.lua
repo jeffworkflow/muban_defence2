@@ -3,7 +3,7 @@ local mt = ac.skill['最强魔灵']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[dfsy.blp]],
+    art = [[zuiqiangmoling.blp]],
     title = '最强魔灵',
     tip = [[
 
@@ -12,7 +12,7 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','武林大会',
+    -- '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','武林大会',
     -- ,'精彩活动'
     '隐藏成就'
 } 

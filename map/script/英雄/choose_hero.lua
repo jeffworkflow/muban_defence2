@@ -269,7 +269,15 @@ local function start()
 			local pnt	= map.rects['选人出生点']:get_point()
 			-- local r		= 360 / 5 * p:get()
 			p.hero = p:createHero(hero_name, pnt, 270)
-	
+
+			-- hero = p.hero
+			-- hero:blink(rect,true,false)
+			-- --镜头偏移
+			-- local x,y=hero:get_point():get()
+			-- -- print(1111,self.y)
+			-- p:setCamera(ac.point(x,y+500))
+
+			
 			player_hero_count = player_hero_count + 1
 			p:event_notify('玩家-注册英雄', p, p.hero)
 			p:event_notify('玩家-注册英雄后', p, p.hero)
@@ -282,7 +290,8 @@ local function start()
 			p.hero:add_enemy_tag()
 			
 			ac.wait(1000, function()
-				p:setCamera(p.hero)
+				local x,y=p.hero:get_point():get()
+				p:setCamera(ac.point(x,y+500))
 				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1000)
 				p:setCameraField('CAMERA_FIELD_ANGLE_OF_ATTACK', 304)
 				p:setCameraField('CAMERA_FIELD_ZOFFSET', 0)

@@ -69,8 +69,8 @@ local function hero_register_main()
 		-- hero:add_skill('保持原位','英雄',11)
 		
 		
-		hero:add_item('新手攻略') 
-		hero:add_item('随机技能书') 
+		-- hero:add_item('新手攻略') 
+		-- hero:add_item('随机技能书') 
 		
 		--武器
 		-- hero:add_effect('hand',[[Abilities\Weapons\PhoenixMissile\Phoenix_Missile.mdl]])
@@ -90,6 +90,7 @@ local function hero_register_main()
 		-- --随机创建一个宠物 随机： ac.clock()
 		-- ac.wait(os.clock()*1000 % 1000 ,function()
 		-- end)
+		
 		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 		player:selectUnit(player.peon)
 		
