@@ -24,7 +24,7 @@ mt{
  ['技暴几率'] = 5,
     ex_peon_lv = 5,
 	--介绍
-	tip = [[
+	tip = [[ 
 |cffffe799【技暴几率】+5%
 
 |cff00ff00宠物等级加|cffffff005级

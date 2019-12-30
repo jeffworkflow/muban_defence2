@@ -51,19 +51,16 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[shuaishen.blp]], 
+    art = [[datusha.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+16888 木头
-+16888 火灵
-+16888 杀敌数|r
+|cff00ff00+30W 全属性
++25% 杀敌数加成|r
 
 ]],
-  ['金币加成'] = 15, 
-  ['木头加成'] = 15,
-  ['经验加成'] = 15,
-  ['魔灵加成'] = 15,
+  ['全属性'] = 300000, 
+  ['杀敌数加成'] = 25,
 }
 function mt:on_add()
     local hero  = self.owner
@@ -75,9 +72,14 @@ end
 
 local task_detail = {
     ['血魔'] = {
-        rate = 30,
+        rate = 0.2,
         award = '大屠杀',
-        sendMsg = {'【系统消息】获得大屠杀',5},
+        sendMsg = function(p)
+            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+        end,
     },
     
 }
@@ -95,7 +97,18 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
         local skl = hero:find_skill(award,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',award)
-            p:sendMsg(sendMsg[1],sendMsg[2])
+            if type(sendMsg) == 'function' then 
+                sendMsg(p)
+            elseif sendMsg[3] then 
+                ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
+                ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
+                ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
+                
+            else 
+                p:sendMsg(sendMsg[1],sendMsg[2])
+                p:sendMsg(sendMsg[1],sendMsg[2])
+                p:sendMsg(sendMsg[1],sendMsg[2])
+            end
         end   
     end    
 end)    

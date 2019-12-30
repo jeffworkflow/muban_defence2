@@ -12,7 +12,7 @@ mt{
 %ugrade_tip%]],
 
     --技能图标
-    art = [[qiu305.blp]],
+    art = [[shihunzhu.blp]],
     ugrade_tip = function(self)
         local str =''
         if self.level >= self.max_level then 
