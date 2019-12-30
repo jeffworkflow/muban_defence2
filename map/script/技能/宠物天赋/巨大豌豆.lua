@@ -14,7 +14,7 @@ mt{
     damage = function(self)
         local p = self.owner.owner
         local hero = p.hero
-        return (hero:get('智力')*5)
+        return (hero:get('智力')*10)
     end,
 	--流派
 	skill_type = "范围攻击",
@@ -29,7 +29,12 @@ mt{
 	--属性加成
  ['攻击速度'] = 50,
 	--介绍
-	tip = [[|cff00ff00使得主人攻击时，5%几率吐出|cffffff00巨大豌豆]],--使得主人攻击时，有5%几率吐出一颗巨大豌豆，伤害：智力*5，范围500，内置CD1秒
+	tip = [[
+|cffffe799【攻击速度】+50%
+
+|cff00ff00使得主人攻击时，5%几率吐出|cffffff00巨大豌豆
+
+]],--使得主人攻击时，有5%几率吐出一颗巨大豌豆，伤害：智力*5，范围500，内置CD1秒
 	--技能图标
 	art = [[wandou.blp]],
 	--特效
@@ -58,7 +63,8 @@ function mt:on_add()
             ac.effect_ex
             {
                 point = damage.target:get_point(),
-                model = skill.effect,
+				model = skill.effect,
+				size = 2,
             }:remove()
 
 			--计算伤害

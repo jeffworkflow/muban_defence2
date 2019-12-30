@@ -27,8 +27,13 @@ mt{
 	--属性加成
  ['全属性%'] = 5,
 	--介绍
-	tip = [[|cff00ff00可以对最菜的队友辅导，让之获得|cffffff0050%攻速
-|cff00ff00如果对自己主人施放，|cffffff00效果减半]],
+	tip = [[
+|cffffe799【全属性】+5%
+
+|cff00ff00可以对最菜的队友辅导，让之获得|cffffff0050%攻速
+|cff00ff00如果对自己主人施放，|cffffff00效果减半
+
+]],
 	--技能图标
 	art = [[shilaimu.blp]],
 	value = 50,

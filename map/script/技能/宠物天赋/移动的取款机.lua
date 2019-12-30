@@ -21,7 +21,12 @@ mt{
 	--属性加成
  ['敏捷%'] = 10,
 	--介绍
-	tip = [[|cff00ff00到处送，所有玩家获得|cffffff00250木头]],
+	tip = [[
+|cffffe799【敏捷】+10%
+
+|cff00ff00到处送，所有玩家获得|cffffff00250木头
+
+]],
 	--技能图标
     art = [[jinbiguai.blp]],
     value = 250,

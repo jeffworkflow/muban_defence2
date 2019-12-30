@@ -25,7 +25,12 @@ mt{
 	--属性加成
  ['攻击速度'] = 50,
 	--介绍
-    tip = [[|cff00ff00可以秒杀小怪并额外获得|cffffff00250木]],
+    tip = [[
+|cffffe799【攻击速度】+50%
+
+|cff00ff00可以秒杀小怪并额外获得|cffffff00250木
+
+]],
     ex_wood = 250,
 	--技能图标
 	art = [[dianjinshou.blp]],

@@ -21,7 +21,12 @@ mt{
 	--属性加成
  ['智力%'] = 10,
 	--介绍
-	tip = [[|cff00ff00点击从兜里掏出一件|cffffff00随机物品]],
+	tip = [[
+|cffffe799【智力】+10%
+
+|cff00ff00点击从兜里掏出一件|cffffff00随机物品
+
+]],
 	--技能图标
 	art = [[xiaodingdang.blp]],
 }

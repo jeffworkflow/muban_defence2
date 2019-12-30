@@ -24,7 +24,12 @@ mt{
  ['技暴几率'] = 5,
     ex_peon_lv = 5,
 	--介绍
-	tip = [[|cff00ff00宠物等级加|cffffff005级]],
+	tip = [[
+|cffffe799【技暴几率】+5%
+
+|cff00ff00宠物等级加|cffffff005级
+
+]],
 	--技能图标
 	art = [[gaojiji.blp]],
 }

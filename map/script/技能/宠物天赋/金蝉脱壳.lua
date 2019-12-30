@@ -21,7 +21,12 @@ mt{
 	--属性加成
  ['全属性%'] = 5,
 	--介绍
-	tip = [[|cff00ff00获得|cffffff00【5%当前属性值】|cff00ff00的属性]],
+	tip = [[
+|cffffe799【全属性】+5%
+
+|cff00ff00获得|cffffff00【5%当前属性值】|cff00ff00的属性
+
+]],
 	--技能图标
 	art = [[jinchan.blp]],
 }

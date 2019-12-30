@@ -23,8 +23,13 @@ mt{
 	--属性加成
  ['力量%'] = 10,
 	--介绍
-	tip = [[|cff00ffff所有队友|cffffff00【每秒加护甲+2.5】
-|cff00ffff基地|cffffff00【每秒加护甲+5】]],
+	tip = [[
+|cffffe799【力量】+10%
+
+|cff00ffff所有队友|cffffff00【每秒加护甲+2.5】
+|cff00ffff基地|cffffff00【每秒加护甲+5】
+
+]],
 	--技能图标
     art = [[wugui.blp]],
     

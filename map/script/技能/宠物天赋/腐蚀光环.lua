@@ -23,8 +23,13 @@ mt{
 	--属性加成
  ['暴击几率'] = 5,
 	--介绍
-	tip = [[|cff00ffff所有小怪|cffffff00【每秒加护甲-10】
-|cff00ffff所有boss|cffffff00【每秒加护甲-20】]],
+	tip = [[
+|cffffe799【暴击几率】+5%
+
+|cff00ffff所有小怪|cffffff00【每秒加护甲-10】
+|cff00ffff所有boss|cffffff00【每秒加护甲-20】
+
+]],
 	--技能图标
     art = [[kulotou.blp]],
     value = 10,

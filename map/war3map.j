@@ -111,7 +111,7 @@ rect gg_rct_npc12= null
 rect gg_rct_npc13= null
 rect gg_rct_npc14= null
 rect gg_rct_npc15= null
-rect gg_rct_jidi= null
+rect gg_rct_jg2_jd= null
 rect gg_rct_sylh= null
 rect gg_rct_sylh1= null
 rect gg_rct_yanhuang= null
@@ -213,6 +213,11 @@ rect gg_rct_zxzw4= null
 rect gg_rct_zxzw5= null
 rect gg_rct_zxzw6= null
 rect gg_rct_F2cs= null
+rect gg_rct_cg1= null
+rect gg_rct_cg2= null
+rect gg_rct_cg3= null
+rect gg_rct_cgboss4= null
+rect gg_rct_jg1= null
 trigger gg_trg_______u= null
 
 endglobals
@@ -1435,7 +1440,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_npc13=Rect(5728.0, 7520.0, 5792.0, 7584.0)
     set gg_rct_npc14=Rect(5728.0, 7968.0, 5792.0, 8032.0)
     set gg_rct_npc15=Rect(5728.0, 8416.0, 5792.0, 8480.0)
-    set gg_rct_jidi=Rect(4640.0, 7520.0, 4704.0, 7584.0)
+   set gg_rct_jg2_jd=Rect(4640.0, 7520.0, 4704.0, 7584.0)
     set gg_rct_sylh=Rect(- 9280.0, 21280.0, - 8960.0, 21504.0)
     set gg_rct_sylh1=Rect(- 9280.0, 22144.0, - 8960.0, 22368.0)
     set gg_rct_yanhuang=Rect(- 6240.0, 21376.0, - 5920.0, 21600.0)
@@ -1533,10 +1538,15 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_ronglian2=Rect(- 2944.0, 25088.0, - 2656.0, 25376.0)
     set gg_rct_ronglian11=Rect(96.0, 25792.0, 384.0, 26080.0)
     set gg_rct_ronglian1=Rect(96.0, 25088.0, 384.0, 25376.0)
-	set gg_rct_zxzw4=Rect(6016.0, - 4576.0, 6560.0, - 4064.0)
+    set gg_rct_zxzw4=Rect(6016.0, - 4576.0, 6560.0, - 4064.0)
     set gg_rct_zxzw5=Rect(6688.0, - 5536.0, 7232.0, - 5024.0)
     set gg_rct_zxzw6=Rect(6784.0, - 6624.0, 7328.0, - 6112.0)
-	set gg_rct_F2cs=Rect(4640.0, 7744.0, 4704.0, 7808.0)
+    set gg_rct_F2cs=Rect(4640.0, 8032.0, 4704.0, 8096.0)
+    set gg_rct_cg1=Rect(2016.0, 14912.0, 2336.0, 15264.0)
+    set gg_rct_cg2=Rect(4352.0, 14912.0, 4672.0, 15264.0)
+    set gg_rct_cg3=Rect(6912.0, 14848.0, 7232.0, 15200.0)
+    set gg_rct_cgboss4=Rect(4352.0, 14528.0, 4672.0, 14880.0)
+    set gg_rct_jg1=Rect(4224.0, 12256.0, 4832.0, 12800.0)
 endfunction
 
 //===========================================================================
