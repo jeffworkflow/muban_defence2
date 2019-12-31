@@ -16,34 +16,34 @@ mt{
     ugrade_tip = function(self)
         local str =''
         if self.level >= self.max_level then 
-            str = '|cffcccccc【更多玩法在高难度开放】|r'
+            str = ''
         else 
-            str = '|cffFFE799【进阶】|r杀死 %kill_cnt% 个敌人，自动进阶'
+            str = '\n|cffFFE799【进阶】|r杀满 %kill_cnt% 只怪后，点击前往杀死心魔BOSS'
         end        
       
         return str
     end,    
     --全属性
-    ['全属性'] = {100,500,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
+    ['全属性'] = {12000000,14000000,16000000,18000000,20000000,},
     --每秒加全属性
-    ['每秒加全属性'] = {0,1,3,10,30,100,300,900,1800,3600,7200,},
-    --攻击
-    ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
-    --护甲
-    ['护甲'] = {1,5,10,15,25,50,100,200,500,1500,5000,},
+    ['每秒加全属性'] = {60000,80000,100000,120000,150000,},
+    -- --攻击
+    -- ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
+    -- --护甲
+    -- ['护甲'] = {1,5,10,15,25,50,100,200,500,1500,5000,},
     --每秒加金币
-    ['每秒加金币'] = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
+    -- ['每秒加金币'] = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
     --每秒加木头
-    ['每秒加木头']  = {0,0,0,0,0,0,1,2,5,25,50,},
+    ['每秒加木头']  = {300,400,500,600,750,},
     --会心几率
-    ['会心几率']  = {0,0,0,1,2,3,4,5,6,8,10,},
+    ['减少周围护甲']  = {2500,3000,3500,4000,4500,},
     --会心伤害
-    ['会心伤害'] = {0,0,0,10,20,30,40,50,60,80,100,},
+    ['多重暴击几率'] = {12,14,16,18,20,},
     --吸血
-    ['吸血'] = 10,
+    ['吸血'] = 12,
     --杀敌个数
-    -- kill_cnt = {500,2000,3500,5000,6500,8000,9500,11000,12500,14000,15500},
-    kill_cnt = {10,100},
+    kill_cnt = {25000,50000,75000,100000,},
+    -- kill_cnt = {10,100},
     --唯一
     unique = true,
     --显示等级
@@ -57,26 +57,32 @@ mt{
         if self['每秒加全属性'] >0 then 
             str = str ..'+|cffffff00'..bignum2string(self['每秒加全属性'])..'|r 每秒加全属性'..'\n'
         end    
-        if self['攻击'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['攻击'])..'|r 攻击'..'\n'
-        end    
-        if self['护甲'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['护甲'])..'|r 护甲'..'\n'
-        end    
-        if self['每秒加金币'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['每秒加金币'])..'|r 每秒加金币'..'\n'
-        end   
+        -- if self['攻击'] >0 then 
+        --     str = str ..'+|cffffff00'..bignum2string(self['攻击'])..'|r 攻击'..'\n'
+        -- end    
+        -- if self['护甲'] >0 then 
+        --     str = str ..'+|cffffff00'..bignum2string(self['护甲'])..'|r 护甲'..'\n'
+        -- end    
+        -- if self['每秒加金币'] >0 then 
+        --     str = str ..'+|cffffff00'..bignum2string(self['每秒加金币'])..'|r 每秒加金币'..'\n'
+        -- end   
         if self['每秒加木头'] >0 then 
             str = str ..'+|cffffff00'..bignum2string(self['每秒加木头'])..'|r 每秒加木头'..'\n'
         end    
-        if self['会心几率'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['会心几率'])..'%|r 会心几率'..'\n'
-        end    
-        if self['会心伤害'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['会心伤害'])..'%|r 会心伤害'..'\n'
-        end     
+        if self['减少周围护甲'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['减少周围护甲'])..'|r 减少周围护甲'..'\n'
+        end   
+        if self['多重暴击几率'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['多重暴击几率'])..'|r 多重暴击几率'..'\n'
+        end  
+        -- if self['会心几率'] >0 then 
+        --     str = str ..'+|cffffff00'..bignum2string(self['会心几率'])..'%|r 会心几率'..'\n'
+        -- end    
+        -- if self['会心伤害'] >0 then 
+        --     str = str ..'+|cffffff00'..bignum2string(self['会心伤害'])..'%|r 会心伤害'..'\n'
+        -- end     
         if self['吸血'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..''
         end     
         return str
     end,   
@@ -137,11 +143,21 @@ function mt:on_cast_start()
         --创建升级怪 
         local rect = ac.rect.j_rect('shixiezhu1')
         local point = rect:get_point()
-        ac.wait(100,function()
+        ac.wait(150,function()
             ac.effect_ex{
                 model = self.effect2,
+                size = 3,
                 point = point
             }:remove()
+        
+        end)
+        ac.wait(500,function()
+            ac.effect_ex{
+                model = self.effect2,
+                size = 3,
+                point = point
+            }:remove()
+        
         end)
         ac.wait(1*1000,function()
             local u = ac.player(12):create_unit('心魔BOSS'..(self.level+ac.skill['噬血珠'].max_level),point)

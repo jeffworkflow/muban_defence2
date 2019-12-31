@@ -65,7 +65,7 @@ function mt:atk_pas_shot(target)
 		hit_area = skill.hit_area,
 		distance = skill.distance,
 		high = 120,
-		size = 1,
+		size = 2,
 		on_hit = function(self,u)
             --技能伤害
             u:damage

@@ -35,7 +35,7 @@ end,
 【每秒加魔丸】+1*Lv
 【物品获取率】+25%
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人（0.3秒）
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人
 【伤害公式】（智力*5+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
@@ -67,7 +67,7 @@ function mt:atk_pas_shot(target)
 		hit_area = skill.hit_area,
 		distance = skill.distance,
 		high = 120,
-		size = 1,
+		size = 2,
 		on_hit = function(self,u)
             --技能伤害
             u:damage
