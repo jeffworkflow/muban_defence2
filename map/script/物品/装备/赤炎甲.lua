@@ -11,38 +11,42 @@ mt{
 %ugrade_tip%]],
 
     --技能图标
-    art = [[qiu305.blp]],
+    art = [[chiyanjia.blp]],
     ugrade_tip = function(self)
         local str =''
         if self.level >= self.max_level then 
-            str = '|cffcccccc【更多玩法在高难度开放】|r'
+            str = ''
         else 
-            local t_str = self.level%5 == 0 and ',并成功挑战BOSS ' or ''
-            str = '|cffFFE799【进阶】|r消耗 %wood_cnt% 木头'..t_str..' 升级'
+            local t_str = self.level%5 == 0 and '前往|cffff0000杀死BOSS|r' or ''
+            str = '\n|cffFFE799【升级】|r点击消耗 %wood_cnt% 木头'..t_str..' '
         end        
       
         return str
     end,    
+    
     --全属性
-    ['全属性'] = {100,500,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
+    ['全属性'] = {25000,50000,75000,100000,125000,250000,375000,500000,625000,750000,1000000,1250000,1500000,1750000,2000000,2250000,2625000,3000000,3375000,3750000,4125000,4625000,5125000,5625000,6125000,6625000,},
     --每秒加全属性
-    ['每秒加全属性'] = {0,1,3,10,30,100,300,900,1800,3600,7200,},
+    -- ['每秒加全属性'] = {0,1,3,10,30,100,300,900,1800,3600,7200,},
     --攻击
-    ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
+    -- ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
     --护甲
-    ['护甲'] = {1,5,10,15,25,50,100,200,500,1500,5000,},
+    ['护甲'] = {10,20,30,40,50,100,150,200,250,300,400,500,600,700,800,900,1050,1200,1350,1500,1650,1850,2050,2250,2450,2650,},
     --每秒加金币
-    ['每秒加金币'] = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
+    ['伤害减少'] = {0,0,0,0,0,60000,80000,100000,120000,160000,200000,240000,280000,320000,360000,420000,480000,540000,600000,660000,740000,820000,900000,980000,1060000,1060000,},
     --每秒加木头
-    ['每秒加木头']  = {0,0,0,0,0,0,1,2,5,25,50,},
+    ['生命恢复']  = {0,0,0,0,0,60000,80000,100000,120000,160000,200000,240000,280000,320000,360000,420000,480000,540000,600000,660000,740000,820000,900000,980000,1060000,1060000,},
     --会心几率
-    ['会心几率']  = {0,0,0,1,2,3,4,5,6,8,10,},
+    -- ['每秒回血']  = {0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,6,7,8,9,10,10,10,10,10,10,10,},
     --会心伤害
-    ['会心伤害'] = {0,0,0,10,20,30,40,50,60,80,100,},
+    ['减伤'] = {0,0,0,0,0,0,0,0,0,0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5,5,5,5,5,5,},
+    ['免伤几率'] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5,},
+    ['闪避'] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,5,},
     --吸血
-    ['吸血'] = 10,
+    ['每秒回血'] = 5,
     --消耗木头
-    wood_cnt = {10,100},
+    wood_cnt = {1,2,3,4,5,10,20,30,40,50,110,120,130,140,150,220,240,260,280,300,320,340,360,380,400,0,},
+    -- wood_cnt = {10,100},
     --唯一
     unique = true,
     --显示等级
@@ -53,30 +57,30 @@ mt{
         if self['全属性'] >0 then 
             str = str ..'+|cffffff00'..bignum2string(self['全属性'])..'|r 全属性'..'\n'
         end    
-        if self['每秒加全属性'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['每秒加全属性'])..'|r 每秒加全属性'..'\n'
-        end    
-        if self['攻击'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['攻击'])..'|r 攻击'..'\n'
-        end    
         if self['护甲'] >0 then 
             str = str ..'+|cffffff00'..bignum2string(self['护甲'])..'|r 护甲'..'\n'
         end    
-        if self['每秒加金币'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['每秒加金币'])..'|r 每秒加金币'..'\n'
+        if self['伤害减少'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['伤害减少'])..'|r 伤害减少'..'\n'
+        end    
+        if self['生命恢复'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['生命恢复'])..'|r 生命恢复'..'\n'
+        end    
+        if self['减伤'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['减伤'])..'|r 减伤'..'\n'
         end   
-        if self['每秒加木头'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['每秒加木头'])..'|r 每秒加木头'..'\n'
+        if self['免伤几率'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['免伤几率'])..'|r 免伤几率'..'\n'
         end    
-        if self['会心几率'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['会心几率'])..'%|r 会心几率'..'\n'
+        if self['闪避'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['闪避'])..'%|r 闪避'..'\n'
         end    
-        if self['会心伤害'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['会心伤害'])..'%|r 会心伤害'..'\n'
+        if self['每秒回血'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['每秒回血'])..'%|r 每秒回血'..''
         end     
-        if self['吸血'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..'\n'
-        end     
+        -- if self['吸血'] >0 then 
+        --     str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..''
+        -- end     
         return str
     end,   
     --升级特效
@@ -122,11 +126,21 @@ function mt:on_cast_start()
             --创建升级怪 
             local rect = ac.rect.j_rect('chiyanjia1')
             local point = rect:get_point()
-            ac.wait(100,function()
+            ac.wait(150,function()
                 ac.effect_ex{
                     model = self.effect2,
+                    size = 3,
                     point = point
                 }:remove()
+            
+            end)
+            ac.wait(500,function()
+                ac.effect_ex{
+                    model = self.effect2,
+                    size = 3,
+                    point = point
+                }:remove()
+            
             end)
             ac.wait(1*1000,function()
                 local u = ac.player(12):create_unit('焰皇BOSS'..math.ceil(self.level/5),point)
@@ -156,7 +170,7 @@ function mt:on_cast_start()
 
         end    
     else 
-        p:sendMsg('木材不够，或是已经在挑战boss',5)
+        p:sendMsg('|cffffe799【系统消息】|cff00ff00木材不足，或已有玩家正在挑战',5)
     end    
 
 
