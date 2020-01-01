@@ -420,7 +420,32 @@
             item.slot_id = target_id
         end
     end)
+    local function item_on_finish(item)
+        if item.item_type == '消耗品'  then
+            -- print('使用消耗品',item.name,item.type_id)
+            -- 数量-1
+            item._count = item._count - 1
+            if item.no_use then 
+                -- print(item.name)
+                ac.wait(0,function()
+                    item:add_item_count(1)
+                end)  
+            end  
+            --消耗品使用 增加对应的属性值
+            item:on_use_state()
 
+            if not item.no_use and item._count < 1 then 
+                item:item_remove()
+            end
+        else 
+            if item._count > 0 then 
+                item._count = item._count - 1
+                ac.wait(0,function()
+                    item:add_item_count(1)
+                end)  
+            end
+        end    
+    end
     --使用物品
     local it_id = {
         ['使用第1格物品'] = 1,
@@ -458,7 +483,10 @@
             end
 
             if item:_call_event 'on_cast_start' then 
-                item._count = item._count - 1
+                item_on_finish(item)
+                if item.item_type == '消耗品' and item._count < 1  then
+                    hero:add_item(item.name,true)
+                end    
                 return 
             end   
             --额外支持施法出手
@@ -471,30 +499,7 @@
             end
             
             -- print('调用物品施法：',slot_id,item.name)
-            if item.item_type == '消耗品'  then
-                -- print('使用消耗品',item.name,item.type_id)
-                -- 数量-1
-                item._count = item._count - 1
-                if item.no_use then 
-                    -- print(item.name)
-                    ac.wait(0,function()
-                        item:add_item_count(1)
-                    end)  
-                end  
-                --消耗品使用 增加对应的属性值
-                item:on_use_state()
-
-                if not item.no_use and item._count < 1 then 
-                    item:item_remove()
-                end
-            else 
-                if item._count > 0 then 
-                    item._count = item._count - 1
-                    ac.wait(0,function()
-                        item:add_item_count(1)
-                    end)  
-                end
-            end    
+            item_on_finish(item)
 
             hero:event_notify('物品-施法完成', hero,item)
         end)

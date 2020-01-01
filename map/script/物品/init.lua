@@ -10,18 +10,22 @@ local unit = require 'types.unit'
 
 --创建技能物品
 function ac.item.create_skill_item(name,poi,is)
-
-    local item = ac.item.create_item('学习技能',poi,is)
     -- 技能需要被添加时部分信息才能被调用
     local skill = ac.dummy:add_skill(name,'隐藏')
     local tip = skill:get_simple_tip(ac.dummy,1)
     local title = skill:get_title(ac.dummy,1)
     local art = skill:get_art()
-    item.gold = skill.gold
-    item.color = skill.color
+    local gold = skill.gold
+    local color = skill.color
     skill:remove()
 
-    item:set_name(name) 
+    local skl = ac.skill['学习技能']
+    skl._model = ac.skill_model[color]
+    local item = ac.item.create_item('学习技能',poi,is)
+    item.gold = gold
+    item.color = color
+    item.name = name
+    item:set_name(name)
     item.skill_name = name
     item.tip =  (tip or '') .. '|cff808080当技能学满后，点击可替换已学技能|r' 
     item:set_art(art)
@@ -35,13 +39,13 @@ function ac.item.create_skill_item(name,poi,is)
     end
     
 	--设置技能模型
-	if item.color and item.cus_type == '技能' then 
-		-- print('改变技能模型',item.color,ac.skill_model[item.color])
-		item._model = ac.skill_model[item.color]
-    end
+	-- if item.color and item.cus_type == '技能' then 
+	-- 	-- print('改变技能模型',item.color,ac.skill_model[item.color])
+	-- 	item._model = ac.skill_model[item.color]
+    -- end
     
     item:set_tip(item.tip)
-    item:set_model() --刷新model
+    -- item:set_model() --刷新model
     
     item.item_type = '消耗品'
     --设置使用次数

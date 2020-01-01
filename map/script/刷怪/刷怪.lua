@@ -5,14 +5,34 @@
 -- ac.special_boss = {
 -- '挑战怪10','挑战怪20','挑战怪30','挑战怪40','挑战怪50','挑战怪60','挑战怪70','挑战怪80','挑战怪90','挑战怪100'
 -- }
-ac.attack_unit = {
-    '民兵','甲虫','镰刀手','剪刀手','狗头人','步兵','长牙兽','骷髅战士','巨魔','食人鬼战士','骑士',
-    '牛头人','混沌骑士','屠夫','德鲁伊','娜迦暴徒','龙卵领主','潮汐','血恶魔','火凤凰','九头怪','黑龙',
-    '蜥蜴领主','地狱火','末日'
-}
-ac.attack_boss = {
-    '肉山','梦魇','戈登的激情','焰皇','毁灭者'
-}  
+ac.attack_unit = {}
+ac.attack_boss = {}
+local temp_boss = {}
+for name,data in pairs(ac.table.UnitData) do 
+    if data.unit_type =='小怪' and data.index then 
+        ac.attack_unit[data.index] = name
+    end     
+    if data.unit_type =='boss' and data.index then 
+        table.insert(temp_boss,{index = data.index,name = name})
+    end     
+end 
+--排序 
+table.sort(temp_boss,function(a,b)
+    return a.index < b.index
+end)
+for i,tab in ipairs(temp_boss) do 
+    table.insert(ac.attack_boss,tab.name)
+end    
+
+
+-- ac.attack_unit = {
+--     '民兵','甲虫','镰刀手','剪刀手','狗头人','步兵','长牙兽','骷髅战士','巨魔','食人鬼战士','骑士',
+--     '牛头人','混沌骑士','屠夫','德鲁伊','娜迦暴徒','龙卵领主','潮汐','血恶魔','火凤凰','九头怪','黑龙',
+--     '蜥蜴领主','地狱火','末日'
+-- }
+-- ac.attack_boss = {
+--     '一棒男','戴瑟提克','格里弗','克尔苏加德','虚空诺亚'
+-- }  
 local force_cool = 3*60
 if global_test then 
     force_cool = 180
@@ -54,6 +74,15 @@ for i =1,3 do
         local index = self.index
         self.creeps_datas = ac.attack_unit[index]..'*20'
         self:set_creeps_datas()
+
+        --20波以后，加快进攻速度
+        if index >=20 then 
+            self.force_cool = 30
+            self.creeps_datas = ac.attack_unit[index]..'*40'
+            self:set_creeps_datas()
+            ac.player.self:sendMsg("|cffff0000 进攻怪 加速进攻，请全体成员牢牢守住基地。|r",5)
+            ac.player.self:sendMsg("|cffff0000 进攻怪 加速进攻，请全体成员牢牢守住基地。|r",5)
+        end    
 
     end
 

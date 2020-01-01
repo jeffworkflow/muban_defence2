@@ -688,7 +688,8 @@ function mt:get_title(hero)
 	if self.is_order then
 		return  (title or '') .. self:get_hotkey_tip(hero)
 	end
-	title = (title or '') .. self:get_hotkey_tip(hero) .. self:get_level_tip(hero)
+	local str = self.color and '|cff'..ac.color_code[self.color or '白']..'['..self.color ..']|r' or ''
+	title = (title or '')..str.. self:get_hotkey_tip(hero) .. self:get_level_tip(hero)
 	return title
 end
 

@@ -5,9 +5,12 @@ local all_item ={}
 local equipment ={}
 local consumable_item ={}
 
+local save_item ={}
+local all_save_item ={}
+
 for name,data in pairs(ac.table.ItemData) do 
     local color = data.color 
-    if color then 
+    if color and data.category ~= '存档' then 
         local list = quality_item[color] or {}
         quality_item[color] = list 
         table.insert(list,name)
@@ -19,9 +22,24 @@ for name,data in pairs(ac.table.ItemData) do
         end    
         if data.item_type =='消耗品' then
             table.insert(consumable_item,name)
-        end   
-
+        end      
     end 
+
+    if color and data.category == '存档' then 
+        if not save_item[data.lv] then 
+            save_item[data.lv] = {}
+        end    
+        if not save_item[data.lv][color] then 
+            save_item[data.lv][color]  = {}
+        end
+        table.insert(save_item[data.lv][color],name)
+        if all_save_item[tonumber(data.s_id)] then 
+            print('重复存档物品id')
+        else    
+            all_save_item[tonumber(data.s_id)] = name
+        end    
+        
+    end    
 end 
 ac.wait(10,function()   
 
@@ -41,21 +59,27 @@ ac.wait(10,function()
         return strA<strB
     end)
 
+    --排序
+    for lv,data in pairs(save_item) do 
+        for color,list in pairs(data) do 
+            table.sort(list,function (a,b)
+                return a < b
+            end)
+        end    
+    end 
     --全局
     ac.quality_item = quality_item
     ac.all_item = all_item
     ac.equipment = equipment
     ac.consumable_item = consumable_item
+    ac.save_item = save_item
+    ac.all_save_item = all_save_item
     
+   
+    -- print_r(quality_item)
+    -- print_r(ac.all_save_item)
 end)
 
-
-
--- for k,v in pairs(quality_item) do
---     print(k,v[1])
--- end
--- local dest_str = '蓝'
--- print('蓝色随机装备:',quality_item[dest_str][math.random(1,#quality_item[dest_str])])
 
 
 

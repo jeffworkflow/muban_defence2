@@ -1,4 +1,5 @@
 
+local function table_copy(tbl) local res = {} if tbl then for k, v in pairs(tbl) do res[k] = v end end return res end
 
 local function item_self_skill(item,unit,time)
     local timer = ac.wait((time or 100) * 1000,function (timer)
@@ -31,6 +32,7 @@ local function on_texttag(string,color,hero)
         ['粉'] = { r = 188, g = 143, b = 143,},
         ['白'] = { r = 255, g = 255, b = 255,},
         ['黑'] = { r = 136, g = 58, b = 0,},
+        ['暗金'] = { r = 136, g = 58, b = 0,},
         ['金'] = { r = 255, g = 255, b = 0,},
         ['黄'] = { r = 255, g = 255, b = 0,},
         ['灰'] = { r = 204, g = 204, b = 204,},
@@ -197,6 +199,34 @@ local reward = {
             hero:add_item(name,true)    
         end 
     end,
+    ['级物品'] = function (player,hero,unit,is_on_hero,str)
+        local lv = string.sub(str,1,1)
+        local color = ac.get_reward_name(ac.unit_reward['存档物品'])
+        if not color then 
+            return 
+        end    
+        local rand = math.random(#ac.save_item[lv][color])
+        local name = ac.save_item[lv][color][rand]
+        
+        local x,y = unit:get_point():get()
+        local point = ac.point(math.random(x-300,x+300),math.random(y-300,y+300))
+        --运动
+        local mvr = ac.mover.target
+        {
+            source = unit:get_point(),
+            target = point,
+            model = [[RedCrystalShard.mdx]],
+            height = 400,
+            speed = 600,
+            skill = '碎片运动'
+        }
+        if not mvr then
+            return
+        end
+        function mvr:on_finish()
+            ac.item.create_item(name,point)
+        end    
+    end,
 
 
 }
@@ -204,45 +234,30 @@ ac.reward = reward
 
 
 local unit_reward = {
-    ['武器boss1'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss2'] = {{rand =100,name = '元烟剑'}},
-    ['武器boss3'] = {{rand =100,name = '暗影'}},
-    ['武器boss4'] = {{rand =100,name = '青涛魔剑'}},
-    ['武器boss5'] = {{rand =100,name = '青虹紫霄剑'}},
-    ['武器boss6'] = {{rand =100,name = '熔炉炎刀'}},
-    ['武器boss7'] = {{rand =100,name = '紫炎光剑'}},
-    ['武器boss8'] = {{rand =100,name = '封神冰心剑'}},
-    ['武器boss9'] = {{rand =100,name = '冰莲穿山剑'}},
-    ['武器boss10'] = {{rand =100,name = '十绝冰火剑'}},
-    ['武器boss11'] = {{rand =100,name = '九幽白蛇剑'}},
-
-    ['防具boss1'] = {{rand =100,name = '芙蓉甲'}},
-    ['防具boss2'] = {{rand =100,name = '鱼鳞甲'}},
-    ['防具boss3'] = {{rand =100,name = '碧云甲'}},
-    ['防具boss4'] = {{rand =100,name = '青霞甲'}},
-    ['防具boss5'] = {{rand =100,name = '飞霜辉铜甲'}},
-    ['防具boss6'] = {{rand =100,name = '天魔苍雷甲'}},
-    ['防具boss7'] = {{rand =100,name = '金刚断脉甲'}},
-    ['防具boss8'] = {{rand =100,name = '丹霞真元甲'}},
-    ['防具boss9'] = {{rand =100,name = '血焰赤阳甲'}},
-    ['防具boss10'] = {{rand =100,name = '神魔蚀日甲'}},
-    ['防具boss11'] = {{rand =100,name = '皇龙阴阳甲'}},
-
-    ['技能BOSS1'] = {{rand =100,name = '技能升级书Lv1'}},
-    ['技能BOSS2'] = {{rand =100,name = '技能升级书Lv2'}},
-    ['技能BOSS3'] = {{rand =100,name = '技能升级书Lv3'}},
-    ['技能BOSS4'] = {{rand =100,name = '技能升级书Lv4'}},
+    ['存档物品'] = {
+        { rand = 50,      name = '白'},
+        { rand = 30,      name = '蓝'},
+        { rand = 15,      name = '金'},
+        { rand = 5,      name = '暗金'},
+    },
+    ['难1'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难2'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难3'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难4'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难5'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难6'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难7'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
 
     ['洗练石boss1'] = {{rand =100,name = '一号洗练石'}},
     ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
     ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
     ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
 
-    ['肉山'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['梦魇'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['戈登的激情'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['焰皇'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['毁灭者'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['一棒男'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['戴瑟提克'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['格里弗'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['克尔苏加德'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['虚空诺亚'] =  {{ rand = 25,      name = '吞噬丹'}},
 
     ['奶牛'] = {
         {rand =0.3,name = '初级扭蛋券(十连抽)'},
@@ -274,19 +289,6 @@ local unit_reward = {
                 { rand = 0.7, name = '随机红装'},
             }
         }
-    },
-    ['钥匙怪'] =  {
-        {    rand = 30, name = '金币30' },
-        {    rand = 30, name = '经验30',},
-        {    rand = 5, name = '召唤boss',},
-        {    rand = 1, name = '吞噬丹',},
-        {    rand = 5, name = '杀怪加全属性5',},
-        {    rand = 5, name = '全属性1000',},
-        {    rand = 1, name = '全属性10000',},
-        {    rand = 8, name = '护甲加50',},
-        {    rand = 5, name = '杀怪加力量10',},
-        {    rand = 5, name = '杀怪加敏捷10',},
-        {    rand = 5, name = '杀怪加智力10',},
     },
 
     ['商店随机技能'] =  {
@@ -651,26 +653,26 @@ end
 ac.get_reward_name_list = get_reward_name_list
 
 
-local function hero_kill_unit(player,hero,unit,fall_rate,is_on_hero)
+local function hero_kill_unit(tab,player,hero,unit,fall_rate,is_on_hero)
 
-    local change_unit_reward = unit_reward['进攻怪']
-    --吞噬丹几率过高
+    local change_unit_reward = tab or unit_reward['进攻怪']
     change_unit_reward[1].rand = fall_rate
-    -- for index,info in ipairs(change_unit_reward) do 
-    --     change_unit_reward[1].rand = fall_rate
-    -- end    
     local name = get_reward_name(change_unit_reward)
     if name then 
-        -- print('掉落物品类型',name)
-        local func = reward[name]
+        local func
+        for key,val in pairs(reward) do 
+            if finds(name,key) then 
+                func = reward[key]
+                break
+            end  
+        end 
         if func then 
             -- print('掉落',name)
-            func(player,hero,unit,is_on_hero)
+            func(player,hero,unit,is_on_hero,name)
         end 
     end 
     return name 
 end 
-ac.hero_kill_unit = hero_kill_unit
 
 --死亡掉落
 ac.game:event '单位-死亡' (function (_,unit,killer)  
@@ -688,7 +690,17 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit.category and unit.category =='进攻怪' or unit.category =='boss'  then
         local fall_rate = unit.fall_rate *( 1 + dummy_unit:get('物品获取率')/100 )
         -- print('装备掉落概率：',fall_rate,unit.fall_rate)
-        hero_kill_unit(player,killer,unit,fall_rate)
+        hero_kill_unit(unit_reward['进攻怪'],player,killer,unit,fall_rate)
+
+        --存档型装备处理
+        if finds(ac.attack_boss,unit:get_name()) then
+            local fall_save_rate = unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 )
+            --多次获得
+            local cnt = math.floor(3+get_player_count()/2)
+            ac.timer(200,cnt,function()
+                hero_kill_unit(unit_reward['难'..ac.g_game_degree_attr],player,killer,unit,fall_save_rate)
+            end)
+        end
     end
 
     --boss 额外掉落物品
