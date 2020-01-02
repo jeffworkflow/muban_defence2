@@ -78,7 +78,7 @@ end
 local mt = ac.skill['抽取【长生】铭文']
 mt{
     --触发几率
-   chance = 100,
+   chance = 15,
    effect = [[Abilities\Spells\Human\Resurrect\ResurrectCaster.mdl]],
    event_name = '单位-即将死亡',
 }
@@ -148,7 +148,7 @@ for _,name in ipairs(fairy) do
                     --删除技能
                     self:remove()
                 end 
-                p:sendMsg('系统消息，激活成功',5)   
+                p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中了该铭文|cff00ff00，属性可在圣龙气运-古老的铭文中查看',5)   
                 --创建真小仙女
                 p.fw_cnt =  (p.fw_cnt or 0) + 1
                 if p.fw_cnt == #fairy then 
@@ -161,9 +161,11 @@ for _,name in ipairs(fairy) do
             else
                 --抽取失败 提升概率
                 self:set('rate',self.rate + self.up_rate)
-                p:sendMsg('系统消息，抽取失败，成功概率加5,下次抽中概率:'..self.rate + self.up_rate,5)  
+                p:sendMsg('|cffffe799【系统消息】|cff00ff00差一点就抽中了该铭文，祝你下次好运|cffffff00（下次抽取的命中率提升了5%）',5)  
+                -- 下次抽中概率:'..self.rate + self.up_rate,5)  
+               
                 --概率激活彩蛋
-                local rate = 80.5 
+                local rate = 1
                 local real_name = '错臂之交'
                 if math.random(10000)/100 <= rate then 
                     local skl = hero:find_skill(real_name,nil,true) 
@@ -173,7 +175,7 @@ for _,name in ipairs(fairy) do
                 end    
             end 
         else 
-            p:sendMsg('杀敌数不够',5)    
+            p:sendMsg('|cffffe799【系统消息】|cff00ff00杀敌数不足',5)    
         end
     end  
 end     

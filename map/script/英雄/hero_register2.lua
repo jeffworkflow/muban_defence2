@@ -35,7 +35,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 			end	
 		end)
 		--文字提醒
-		ac.player.self:sendMsg('玩家 |cffff0000'..hero:get_owner():get_name()..' 已阵亡|r，8秒后复活',5)
+		ac.player.self:sendMsg('|cffffe799【系统消息】|r |cffff0000'..hero:get_owner():get_name()..' |cff00ff00已阵亡 等待复活中',5)
 	end)
 
 	
