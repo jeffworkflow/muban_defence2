@@ -1,4 +1,5 @@
 --起始id
+--存档物品库
 local start_id = 1 
 local item_list = {
     --名字 = 生成个数 装备类型 装备等级 图标 基础属性

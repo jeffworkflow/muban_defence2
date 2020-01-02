@@ -59,8 +59,10 @@ for key,u_name in pairs(ac.kangfu) do
                         unit:event '单位-死亡'(function(_,unit,killer)
                             local p = killer.owner
                             local hero = p.hero
-                            local per_cnt = 50
-                            local max_cnt = 1000
+                            -- local per_cnt = 50
+                            -- local max_cnt = 1000
+                            local per_cnt = 5
+                            local max_cnt = 100
                             p.kangfu[skl_color] = (p.kangfu[skl_color] or 0) +1
                             if p.kangfu[skl_color] % per_cnt == 0 then 
                                 p:sendMsg(skl_color..'怪进度 '..p.kangfu[skl_color]..'/1000',5)
