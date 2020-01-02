@@ -174,7 +174,7 @@ category = '存档']]
                 --生成tip
                 lni_str = lni_str .. 'tip = [['..'\n'
                 lni_str = lni_str .. '装备评分：'..pf..'\n'
-                lni_str = lni_str .. '地图等级需求：'..need_map_level..'\n'
+                lni_str = lni_str .. '%map_level_tip%'..'\n'
                 lni_str = lni_str .. '主要属性：'..'\n'
                 for i,tab in ipairs(main_attr_tab)do
                     lni_str = lni_str  .."+"..bignum2string(tab[2])..' '.. tab[1] ..'\n'

@@ -200,23 +200,22 @@ local reward = {
         end 
     end,
     ['级物品'] = function (player,hero,unit,is_on_hero,str)
-        local lv = string.sub(str,1,1)
+        local lv = tonumber(string.sub(str,1,1))
         local color = ac.get_reward_name(ac.unit_reward['存档物品'])
         if not color then 
             return 
         end    
         local rand = math.random(#ac.save_item[lv][color])
         local name = ac.save_item[lv][color][rand]
-        
-        local x,y = unit:get_point():get()
-        local point = ac.point(math.random(x-300,x+300),math.random(y-300,y+300))
+        -- print('存档物品：',name,lv,color)
+        local point = unit:get_point() - {math.random(360),math.random(200,500)}
         --运动
         local mvr = ac.mover.target
         {
             source = unit:get_point(),
             target = point,
-            model = [[RedCrystalShard.mdx]],
-            height = 400,
+            model = ac.table.ItemData[name].specail_model,
+            height = 600,
             speed = 600,
             skill = '碎片运动'
         }
@@ -693,11 +692,15 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         hero_kill_unit(unit_reward['进攻怪'],player,killer,unit,fall_rate)
 
         --存档型装备处理
-        if finds(ac.attack_boss,unit:get_name()) then
-            local fall_save_rate = unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 )
+        local str = table.concat( ac.attack_boss, " ")
+        if finds(str,unit:get_name()) then
+            local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
+            fall_save_rate = 80 --测试
+            
             --多次获得
             local cnt = math.floor(3+get_player_count()/2)
             ac.timer(200,cnt,function()
+                print('存档物品掉落：',fall_save_rate)
                 hero_kill_unit(unit_reward['难'..ac.g_game_degree_attr],player,killer,unit,fall_save_rate)
             end)
         end

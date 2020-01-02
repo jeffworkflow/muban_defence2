@@ -383,7 +383,6 @@ function mt:set_item_count(count)
 	self._count = count
 	if count > 0 then 
 		jass.SetItemCharges(self.handle,count)
-		self:set_tip(self:get_tip())
 	else 
 		self:item_remove()	
 	end	

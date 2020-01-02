@@ -76,7 +76,7 @@ for i =1,3 do
         self:set_creeps_datas()
 
         --20波以后，加快进攻速度
-        if index >=20 then 
+        if index == 20 then 
             self.force_cool = 30
             self.creeps_datas = ac.attack_unit[index]..'*40'
             self:set_creeps_datas()
