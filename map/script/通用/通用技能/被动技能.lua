@@ -142,7 +142,7 @@ function mt:init()
         self.trg = self.owner:event(self.event_name)(function(_,damage)
             --被动开始
             if self:can_passive(_,_,damage)  then
-                self.is_success = self.damage_start(self.skill,source,target,damage)
+                self.is_success = self.damage_start(self.skill,damage)
                 self:finish()
             elseif self.damage_failure then
                 --被动失败
@@ -209,7 +209,6 @@ end
 ac.game:event '技能-获得' (function (_,hero,self)
     local hero = self.owner
     local skill = self 
-
     if skill.event_name and skill.damage_start then 
         ac.damage(self.event_name){
             skill = skill,

@@ -11,7 +11,7 @@ for ix =1 ,4 do
     else 
         affix = '四' 
     end          
-    local mt = ac.skill[affix..'号洗练石']
+    local mt = ac.skill[affix..'号熔炼石']
     mt{
         --等久
         level = 0,
@@ -21,9 +21,9 @@ for ix =1 ,4 do
         tip = [[%change_tip%]],
         change_tip = [[
 
-|cff00ffff可洗练出装备的套装属性，但合成材料会消失，激活的属性可在套装系统中查看|r
+|cff00ffff可熔炼出装备的套装属性，但合成材料会消失，激活的属性可在套装系统中查看|r
                 
-|cff00ff00【合成材料】5个同套装装备+洗练石|r
+|cff00ff00【合成材料】5个同套装装备+熔炼石|r
 
 |cffcccccc【同一套装属性只能激活一次】|r]],
         --物品类型
@@ -35,8 +35,6 @@ for ix =1 ,4 do
         --物品详细介绍的title
         skill_cnt = 8,
         content_tip = '|cffffe799使用说明：|r',
-        --最大使用次数
-        max_use_count = 1
     }
         
     function mt:on_add()
@@ -48,7 +46,7 @@ for ix =1 ,4 do
         local player = hero:get_owner()
         --宠物也帮忙升级
         -- hero = player.hero
-        --优化:优先选择所有者身上的套装进行洗练，再没有再选择人身上的。
+        --优化:优先选择所有者身上的套装进行熔炼，再没有再选择人身上的。
         local item_owner_has_suit 
         if not hero.suit then 
             item_owner_has_suit = false
@@ -66,7 +64,7 @@ for ix =1 ,4 do
         end    
 
         if not hero.suit then 
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 请检查合成材料',2)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000熔炼失败|r 请检查合成材料',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
                 
@@ -105,7 +103,7 @@ for ix =1 ,4 do
                         player.hero:add(k,v)
                     end 
                     player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可以在套装系统中查看',2)
-                    --标记已经洗练过（不可洗练两套海贼王）
+                    --标记已经熔炼过（不可熔炼两套海贼王）
                     player.hero.flag_suit[key] =true
                     break
                 end     
@@ -120,7 +118,7 @@ for ix =1 ,4 do
                 end    
             end  
         else
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 合成材料出错或者该套装已被激活',2)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000熔炼失败|r 合成材料出错或者该套装已被激活',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    
@@ -134,17 +132,17 @@ for ix =1 ,4 do
 end    
 
 --魔法书
-local mt = ac.skill['套装洗练']
+local mt = ac.skill['套装熔炼']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[xilianshi.blp]],
-    title = '套装洗练',
+    title = '套装熔炼',
     tip = [[
         
-点击查看 |cff00ff00套装洗练|r
+点击查看 |cff00ff00套装熔炼|r
     ]],
 }
 mt.skills = {
-    '一号洗练石','二号洗练石','三号洗练石','四号洗练石'
+    '一号熔炼石','二号熔炼石','三号熔炼石','四号熔炼石'
 }

@@ -115,16 +115,14 @@ mt.skills = fairy
 for _,name in ipairs(fairy) do 
     --物品名称
     local mt = ac.skill[name]
-    mt{
-        level = 0,
+    mt.level = 0
         --施法动作
-        -- cast_animation = '',
+    mt.cast_animation = ''
         --初始概率
-        rate = 10,
+    mt.rate = 10
         --概率增加
-        up_rate = 5,
+    mt.up_rate = 5
         
-    } 
     function mt:on_cast_shot()
         local hero = self.owner
         local p = hero:get_owner()
@@ -146,6 +144,7 @@ for _,name in ipairs(fairy) do
                 local skl = hero:find_skill(self.name,nil,true)
                 if skl then 
                     skl:set_level(1) 
+                    skl.passive = true
                     --删除技能
                     self:remove()
                 end 

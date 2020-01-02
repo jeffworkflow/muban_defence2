@@ -9,7 +9,7 @@ require '物品.消耗品.抽奖券'
 
 require '物品.消耗品.神兵神甲'
 require '物品.消耗品.技能升级书'
-require '物品.消耗品.洗练石'
+require '物品.消耗品.熔炼石'
 
 require '物品.消耗品.恶魔果实'
 require '物品.消耗品.藏宝图'
@@ -26,3 +26,6 @@ require '物品.消耗品.点金石'
 require '物品.消耗品.抵用券'
 require '物品.消耗品.龙之血珠'
 require '物品.消耗品.无谓因果'
+
+require '物品.消耗品.强化石'
+require '物品.消耗品.天谕'
