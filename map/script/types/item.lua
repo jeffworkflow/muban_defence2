@@ -156,12 +156,12 @@ ac.zb_color_model = zb_color_model
 
 --技能model
 local skill_model = {
-    ['天赋'] = 'lvbianshu.mdx',--紫
-    ['真天阶'] = 'lvbianshu.mdx',--紫
+    ['天赋'] = 'zibianshu.mdx',--紫
+    ['真天阶'] = 'zibianshu.mdx',--紫
     ['天阶'] = 'hongbianshu.mdx',--红
     ['地阶'] = 'zongbianshu.mdx',--金
     ['玄阶'] = 'lanbianshu.mdx',--浅蓝
-    ['黄阶'] = 'lvbianshu.mdx',--白
+    ['黄阶'] = 'huibianshu.mdx',--白
 }
 ac.skill_model = skill_model
 
