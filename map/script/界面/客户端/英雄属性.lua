@@ -138,6 +138,7 @@ class.hero_info_panel = extends(class.panel){
         --设置图片
         -- print(it:get_art())
         btn:set_normal_image(it:get_art())
+        btn:add_frame(38,-42,1.24,{1,1.38,1})
         --设置tip 
         self.items[it.type1] =it
 
@@ -204,7 +205,6 @@ class.hero_info_panel = extends(class.panel){
             button:tooltip("关闭","暂时关闭棋子图鉴,按F3可以再次打开",-1,nil,64)
         end 
     end,
-    
 }
 
 local panel = class.hero_info_panel.get_instance()

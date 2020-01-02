@@ -128,6 +128,9 @@ local attribute = {
 	['杀怪加护甲'] = true,  --默认表示为基础值
 	['杀怪加攻击'] = true,  --默认表示为基础值
 
+	['杀死进攻怪加木头'] = true,  --默认表示为基础值
+	
+
 	['每秒加金币'] = true,  --默认表示为基础值
 	['每秒加木头'] = true,  --默认表示为基础值
 	['每秒加魔丸'] = true,  --默认表示为基础值
@@ -184,6 +187,7 @@ local base_attr =[[
 额外杀敌数
 每秒加魔丸 
 多重暴击
+杀死进攻怪加木头
 ]]
 ac.base_attr = base_attr
 
@@ -254,6 +258,7 @@ function mt:add(name, value)
 	if f then
 		f()
 	end
+    self:eventNotify('单位-属性变化', self, name, value)
 	-- 增加10%时: 攻击200，攻击加10% ， 200*(1+0.1) = 220 , attr[key1]=200,  attr[key2] = 10%
 	-- 减少10%时: 攻击220，攻击 -10% , attr[key1]=200,  attr[key2] = 10% -10% , 攻击200  
 	-- 先增加10,再加10%时, 攻击200 ，attr[key1]=200 +10 , attr[key1] =10%， 最终增加 210*1.1 231
@@ -294,6 +299,7 @@ function mt:set(name, value)
 	if f then
 		f()
 	end
+    self:eventNotify('单位-属性变化', self, name, value)
 end
 
 function mt:get(name)
@@ -911,6 +917,11 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	local wood = player.hero:get('杀怪加木头') 
 	player:add_wood(wood) 
 	
+	--处理杀死进攻怪加木头
+	if finds(ac.attack_unit_str or '',target:get_name()) then 
+		local wood = player.hero:get('杀死进攻怪加木头') 
+		player:add_wood(wood) 
+	end
 end) 
 
 --每秒加金币
@@ -954,7 +965,8 @@ ac.loop(1*1000,function(t)
 						}
 					end	
 				end
-			end		
+			end	
+			
 
 		end	
 	end	

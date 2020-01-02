@@ -23,7 +23,8 @@ end)
 for i,tab in ipairs(temp_boss) do 
     table.insert(ac.attack_boss,tab.name)
 end    
-
+ac.attack_unit_str = table.concat(ac.attack_unit,' ')
+ac.attack_boss_str = table.concat(ac.attack_boss,' ')
 
 -- ac.attack_unit = {
 --     '民兵','甲虫','镰刀手','剪刀手','狗头人','步兵','长牙兽','骷髅战士','巨魔','食人鬼战士','骑士',
