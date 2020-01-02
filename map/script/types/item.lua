@@ -97,7 +97,8 @@ local blend_file = {
     ['棕'] = nil,
     ['粉'] = nil,
     ['白'] = 'bai',
-    ['黑'] = nil,
+	['黑'] = nil,
+	['暗金'] = 'anjin',
     ['金'] = 'huang',
 	['灰'] = nil,
 	['淡黄'] = nil,	
@@ -116,6 +117,7 @@ local color_code = {
     ['粉'] = 'bc8f8f',
     ['白'] = 'ffffff',
     ['黑'] = '883A00',
+    ['暗金'] = '883A00',
     ['金'] = 'ffff00',
     ['黄'] = 'ffff00',--白
 	['灰'] = 'cccccc',
@@ -201,7 +203,7 @@ end
 
 --设置物品名 增加显示等级
 function mt:set_name(name)
-	self.name = name
+	-- self.name = name
 	local id = self.type_id
 	local color = color_code[self.color or '白']
 	local show_lv = ''
@@ -1204,7 +1206,8 @@ function item.create_item(name,poi,is)
 	items.not_dis = true
 	-- print(items.name,items.item_type,items._count)
 	--设置物品名
-	items:set_name(name)
+	items.name = name 
+	items:set_name(items.title or name)
 	-- print(items.tip)
 	--设置tip
 	items:set_tip(items:get_tip())

@@ -13,15 +13,29 @@ class.hero_info_panel = extends(class.panel){
         -- local line = panel:add_texture('image\\提示框\\line.tga',45,90,panel.w - 90,2)
         -- line:set_alpha(0xff*0.6)
         
-        panel.hero_img = panel:add_texture('image\\hero.blp',35,25,158,194) 
+        panel.hero_img = panel:add_texture('image\\hero.blp',35,25,146,173) 
         local title_background = panel:add_texture('image\\角色信息\\line.tga',213,25,586,22)
         title_background:set_alpha(0xff*0.1)
 
-        local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
-        local tip = skl and skl:get_tip() or ''
-        local tf_text = '|cffcccccc'.. (hero and hero:get_name()..'天赋' or '')..'|r'
-        panel.hero_tf = panel:add_text(tf_text,213,25,586,194,12,'auto_newline')
-        panel.hero_tip = panel:add_text(tip,213,55,586,170,10,'auto_newline')
+        local tf_text = '|cffFDC000装备总评分：2323232|r'
+        panel.item_pf = panel:add_text(tf_text,213,25,586,194,12,'auto_newline')
+        local btn_name = {'武器','腰带','鞋子','衣服','头盔','项链'}
+        panel.btn_items = {}
+        panel.items = {}
+        --存档物品
+        for i=1,6 do 
+            local x = 213 + 18*(i-1) + 80*(i-1)
+            local btn_it = panel:add_button('image\\bg_save_item1.blp',x,85,80,80)
+            panel.btn_items[btn_name[i]] = btn_it
+
+            function btn_it:on_button_mouse_enter()  
+                local info = panel.items[btn_name[i]]
+                if info then 
+                    self:tooltip(info.title,info:get_tip(),-1,200,84,10)
+                end
+            end   
+        end 
+
         --属性加背景
         for i=1,7 do 
             local y = 241 + 30*(i*2-1) -30
@@ -66,16 +80,16 @@ class.hero_info_panel = extends(class.panel){
         --属性列数
         local col ={
             --x,y,w,h,字体大小，对齐方式
-            {35,241,250,30,12,'right'},
-            {319,241,106,30,12,'left'},
-            {428,241,111,30,12,'right'},
-            {577,241,224,30,12,'left'},
+            {35,211,250,30,12,'right'},
+            {319,211,106,30,12,'left'},
+            {428,211,111,30,12,'right'},
+            {577,211,224,30,12,'left'},
         }
         local cre_height = 30
         local base_y = 0
         local ix = 1 
         panel.attrs = {}
-        for i=1,26 do 
+        for i=1,28 do 
             local name = panel.titles[i]
             if not name then break end
             --颜色相关   
@@ -105,9 +119,9 @@ class.hero_info_panel = extends(class.panel){
             end   
             local attr_value = panel:add_text(value,x2,y2,w2,h2,line_height2,align2)
             table.insert(panel.attrs,{attr_name,attr_value}) 
-            if i % 13 == 0 then 
+            if i % 14 == 0 then 
                 ix = ix + 2
-                base_y = cre_height *13
+                base_y = cre_height *14
             end 
             
         end 
@@ -116,18 +130,24 @@ class.hero_info_panel = extends(class.panel){
 
         return panel
     end,
+    add_save_item = function(self,p,it)
+        if not it.type1 then 
+            return 
+        end 
+        local btn = self.btn_items[it.type1] 
+        --设置图片
+        -- print(it:get_art())
+        btn:set_normal_image(it:get_art())
+        --设置tip 
+        self.items[it.type1] =it
 
+    end,    
     fresh = function(self)
         local hero = ac.player.self.hero
         if not hero then return end
 
-        local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
-        if skl then
-            local tip = skl and skl:get_tip() or ''
-            self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')
-            self.hero_tip:set_text(tip)
-        end    
-        if hero.tab_art then 
+        if hero.tab_art and not self.img_flag then 
+            self.img_flag = true
             self.hero_img:set_normal_image(hero.tab_art)
         end    
 
@@ -187,11 +207,64 @@ class.hero_info_panel = extends(class.panel){
     
 }
 
-local panel
+local panel = class.hero_info_panel.get_instance()
+function ac.unit.__index:add_save_item(it)
+    local p = self.owner 
+    if type(it) =='string'  then 	
+		--不创建特效
+		it = ac.item.create_item(it,nil,true)
+		it:hide()
+        it.recycle = true
+        it.owner = self
+        --删除物品
+        ac.wait(0,function()
+            if it.owner then 
+                it:item_remove()  
+            end    
+        end)
+    end	
+    --地图等级限制
+    if p:Map_GetMapLevel()< it.need_map_level then 
+        p:sendMsg('地图等级不够',5)
+        return 
+    end    
 
-ac.wait(1000,function ()
-    panel = class.hero_info_panel.get_instance()
-end)
+    if not p.save_item_list then 
+        p.save_item_list = {}
+    end  
+    --该部位已经装备则先减少属性，再填添加给英雄
+    if p.save_item_list[it.type1] then 
+        local has_item = p.save_item_list[it.type1]
+        --减属性
+        for key,val in sortpairs(has_item.attr) do 
+            -- print('减属性',key,-val)
+            p.hero:add(key,-val)
+        end
+        --等待0秒后给物品
+        ac.wait(0,function()
+            self:add_item(has_item.name,true)
+        end)
+    end    
+    p.save_item_list[it.type1] = it
+
+    --增加属性
+    if it.attr then 
+        for key,val in sortpairs(it.attr) do 
+            -- print('加属性',key,-val)
+            p.hero:add(key,val)
+        end
+    end     
+    --刷新到ui 显示和界面。
+    if p:is_self() then 
+        panel:add_save_item(p,it)
+    end  
+    --保存到网易服务器
+    local key = ac.server.name2key('存档'..it.type1)
+    p:Map_SaveServerValue(key,it.s_id) 
+
+    return it
+end 
+
 game.loop(2*1000,function() 
     panel:fresh()
 end)
@@ -217,3 +290,22 @@ game_event.on_key_up = function (code)
 end 
 
 game.register_event(game_event)
+
+--统一增加所有的存档物品方法
+ac.wait(100,function()
+    for i,name in ipairs(ac.all_save_item) do 
+        print(name)
+        local mt = ac.skill[name]
+        mt.cus_type = '存档物品'
+        mt.content_tip = ''
+        function mt:on_cast_start()
+            local hero = self.owner 
+            local p = self.owner 
+            -- print(self.attr)
+            local ok = hero:add_save_item(self)
+            if not ok then 
+                return true
+            end    
+        end  
+    end      
+end)

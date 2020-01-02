@@ -68,6 +68,7 @@ ac.wait(1000,function()
         if mt.passive then 
             mt.ignore_cool_save = true
         end    
+        
     end    
 end)
 --统一定 技能价格 技能售价

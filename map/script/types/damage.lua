@@ -331,7 +331,7 @@ local function on_splash(self)
 		: is_not(target)
 		: ipairs()
 	do	
-		if u:get_name() =='毁灭者' then 
+		if u:get_name() =='虚空诺亚' then 
 			dmg = 0
 		end	
 		u:damage
@@ -889,6 +889,9 @@ end
 
 --攻击减甲 双抗
 function mt:on_reduce_defence()
+	if finds(self.target:get_name(),'爱我你就爆了我') then 
+		return 
+	end	
 	if self:is_common_attack() or self.skill == '多重射' then
 		local source = self.source
 		local target = self.target

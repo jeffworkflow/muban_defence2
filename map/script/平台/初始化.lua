@@ -149,7 +149,29 @@ for i=1,10 do
             end   
         end)  
     end
-end    
+end       
+
+--处理存档物品
+for i=1,10 do
+    local player = ac.player[i]
+    if player:is_player() then   
+        player:event '玩家-注册英雄' (function(_,p,hero)
+            for i,data in ipairs(ac.cus_server_key) do 
+                if finds(data[2] ,'存档') then 
+                    local name = player.cus_server[data[2]] and ac.all_save_item[player.cus_server[data[2]]]
+                    if name then
+                        hero:add_save_item(name)
+                    end    
+                end    
+            end
+        end)
+    end
+end
+
+
+
+
+
 
 
 --开始进行地图等级集中过滤
