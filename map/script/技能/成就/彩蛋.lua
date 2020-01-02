@@ -14,15 +14,15 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[shuaishen.blp]], 
+    art = [[cbzj.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+16888 木头
-+16888 火灵
-+16888 杀敌数|r
+|cff00ff00+50万 全属性
++15% 练功房资源加成|r
 
 ]],
+['全属性'] = 500000, 
   ['金币加成'] = 15, 
   ['木头加成'] = 15,
   ['经验加成'] = 15,
@@ -30,9 +30,12 @@ mt{
 }
 function mt:on_add()
     local hero  = self.owner
-    local p = hero:get_owner()
-    hero = p.hero
-    p:sendMsg('【系统消息】玩家XXX 抽取铭文时与铭文经常失之交臂，惊喜获得隐藏彩蛋',5)
+    
+    local player = hero:get_owner()
+    hero = player.hero
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff'..player:get_name()..'|r |cff00ff00抽取铭文时与铭文经常失之交臂，获得成就|cffff0000“错臂之交”|cff00ff00,奖励|cffffff00全属性50万，练功房资源加成+15%',5)
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff'..player:get_name()..'|r |cff00ff00抽取铭文时与铭文经常失之交臂，获得成就|cffff0000“错臂之交”|cff00ff00,奖励|cffffff00全属性50万，练功房资源加成+15%',5)
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff'..player:get_name()..'|r |cff00ff00抽取铭文时与铭文经常失之交臂，获得成就|cffff0000“错臂之交”|cff00ff00,奖励|cffffff00全属性50万，练功房资源加成+15%',5)
 end   
 
 local mt = ac.skill['大屠杀']

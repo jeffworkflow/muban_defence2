@@ -17,9 +17,11 @@ function player.__index:create_pets(name)
     -- local x,y = ac.map.rects['出生点']:get_point():get()
     -- local u = self:create_unit(name,ac.point(x-500,y))
 
-    local u = self:create_unit(name,ac.rect.j_rect('chongwu'))
+    local u = self:create_unit(name,ac.rect.j_rect('chongwu'),270)
     u.unit_type = '宠物'
     u:set('移动速度',522)
+
+
     self.peon = u
     if u.data and u.data.skill_name then 
         u:add_skill(u.data.skill_name ,'英雄',9)
