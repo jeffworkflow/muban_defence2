@@ -22,48 +22,83 @@ player.force = {}
 		player[4],
 		player[5],
 		player[6],
+	}
+
+	player.force[2] = {
+		[0] = player.com[2],
 		player[7],
 		player[8],
 		player[9],
 		player[10],
 	}
 
-	player.force[2] = {
-		[0] = player.com[2],
-	}
-
---玩家结盟
-for x = 0, 10 do
-	for y = 0, 10 do
-		player.force[1][x]:setAllianceSimple(player.force[1][y], true)
-		player.force[1][x]:setAllianceSimple(player.force[2][0], false)
-		player.force[2][0]:setAllianceSimple(player.force[1][y], false)
-		player.force[2][0]:setAllianceSimple(player.force[2][0], true)
+--玩家敌对
+for x = 0, 6 do
+	for y = 0, 4 do
+		player.force[1][x]:setAllianceSimple(player.force[2][y], false)
+		player.force[2][y]:setAllianceSimple(player.force[1][x], false)
 	end
-	player.force[1][x]:setTeam(1)
-	player.force[2][0]:setTeam(2)
 	--允许控制中立被动的单位
+	player.force[1][x]:setTeam(1)
 	player.force[1][x]:enableControl(player[16])
-	player.force[2][0]:enableControl(player[16])
 end 
+
+--队伍一 相互结盟
+for x = 0, 6 do
+	for y = 0,4 do
+		player.force[1][x]:setAllianceSimple(player.force[1][y], true)
+	end
+end
+
+--队伍二 相互结盟
+for x = 0, 6 do
+	for y = 0,4 do
+		player.force[2][y]:setAllianceSimple(player.force[2][x], true)
+	end
+end
+--允许控制中立被动的单位
+for y = 0,4 do
+	player.force[2][y]:setTeam(2)
+	player.force[2][y]:enableControl(player[16])
+end	
+
 
 --玩家结盟
 ac.init_alliance = function()
-	for x = 0, 10 do
-		for y = 0, 10 do
-			player.force[1][x]:setAllianceSimple(player.force[1][y], true)
-			player.force[1][x]:setAllianceSimple(player.force[2][0], false)
-			player.force[2][0]:setAllianceSimple(player.force[1][y], false)
-			player.force[2][0]:setAllianceSimple(player.force[2][0], true)
+	--玩家敌对
+	for x = 0, 6 do
+		for y = 0,4 do
+			player.force[1][x]:setAllianceSimple(player.force[2][y], false)
+			player.force[2][y]:setAllianceSimple(player.force[1][x], false)
 		end
+		--允许控制中立被动的单位
 		player.force[1][x]:setTeam(1)
-		player.force[2][0]:setTeam(2)
+		player.force[1][x]:enableControl(player[16])
 	end 
+	
+	--队伍一 相互结盟
+	for x = 0, 6 do
+		for y = 0,4 do
+			player.force[1][x]:setAllianceSimple(player.force[1][y], true)
+		end
+	end
+	
+	--队伍二 相互结盟
+	for x = 0, 6 do
+		for y = 0,4 do
+			player.force[2][y]:setAllianceSimple(player.force[2][x], true)
+		end
+	end
+	--允许控制中立被动的单位
+	for y = 0,4 do
+		player.force[2][y]:setTeam(2)
+		player.force[2][y]:enableControl(player[16])
+	end	
 end
 --玩家敌对
 ac.init_enemy = function() 
-	for x = 1, 10 do
-		for y = 1, 10 do
+	for x = 1, 6 do
+		for y = 1, 6 do
 			if x == y then 
 				player.force[1][x]:setAllianceSimple(player.force[1][y], true)
 			else

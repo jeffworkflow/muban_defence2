@@ -44,7 +44,7 @@ for i =1,3 do
         creeps_datas = '',
         force_cool = force_cool,
         max_index = 25,
-        creep_player = ac.player.com[2],
+        creep_player = ac.player(i+6),
         create_unit_cool = 0.5,
         -- tip ="|cffff0000怪物开始进攻！！！|r"
 
@@ -89,41 +89,43 @@ for i =1,3 do
 
     --改变怪物
     function mt:on_change_creep(unit,lni_data)
+        -- print(unit:get_owner())
         --设置搜敌范围
         unit:set_search_range(1000)
         local point = ac.map.rects['主城']:get_point()
         unit:issue_order('attack',point)
+        unit:add_buff '攻击英雄'{}
 
     end
     --每3秒刷新一次攻击目标 原地不动才发起攻击
-    function mt:attack_hero() 
-        self.attack_hero_timer = ac.loop(3 * 1000 ,function ()
-            -- print('野怪区的怪数量',#mt.group)
-            local point = ac.map.rects['主城']:get_point()
-            for _, unit in ipairs(self.group) do
-                if unit:is_alive() then 
-                    if unit.last_point then 
-                        local distance =  unit.last_point * unit:get_point()
-                        local hero = ac.find_hero(unit)
-                        local hero_distance = 0
-                        if hero then 
-                            hero_distance = hero:get_point() * unit:get_point()
-                        end    
-                        if hero_distance <= 10 then
-                            --1500码内，优先攻击英雄，英雄死亡则攻向基地点
-                            unit:issue_order('attack',point)
-                        elseif hero_distance <= 1500  then
-                            unit:issue_order('attack',hero)
-                        else    
-                            unit:issue_order('attack',point)
-                        end      
-                    end  
-                    unit.last_point = unit:get_point()
-                end   
-            end 
-        end) 
-        self.attack_hero_timer:on_timer()
-    end    
+    -- function mt:attack_hero() 
+    --     self.attack_hero_timer = ac.loop(3 * 1000 ,function ()
+    --         -- print('野怪区的怪数量',#mt.group)
+    --         local point = ac.map.rects['主城']:get_point()
+    --         for _, unit in ipairs(self.group) do
+    --             if unit:is_alive() then 
+    --                 if unit.last_point then 
+    --                     local distance =  unit.last_point * unit:get_point()
+    --                     local hero = ac.find_hero(unit)
+    --                     local hero_distance = 0
+    --                     if hero then 
+    --                         hero_distance = hero:get_point() * unit:get_point()
+    --                     end    
+    --                     if hero_distance <= 10 then
+    --                         --1500码内，优先攻击英雄，英雄死亡则攻向基地点
+    --                         unit:issue_order('attack',point)
+    --                     elseif hero_distance <= 1500  then
+    --                         unit:issue_order('attack',hero)
+    --                     else    
+    --                         unit:issue_order('attack',point)
+    --                     end      
+    --                 end  
+    --                 unit.last_point = unit:get_point()
+    --             end   
+    --         end 
+    --     end) 
+    --     self.attack_hero_timer:on_timer()
+    -- end    
 
     --刷怪结束
     function mt:on_finish()  

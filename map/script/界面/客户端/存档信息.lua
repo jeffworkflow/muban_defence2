@@ -133,7 +133,7 @@ class.player_info_panel = extends(class.panel){
         if not hero then return end
         if not peon then return end
 
-        local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
+        local skl = hero and hero:find_skill(hero.skill_names) 
         if skl then
             local tip = skl and skl:get_tip() or ''
             self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')

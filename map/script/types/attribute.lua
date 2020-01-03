@@ -216,6 +216,9 @@ function mt:add_tran(name, value)
 end	
 --默认or false add('攻速%'，10) 先*再+，若攻速为200，最终值为220
 function mt:add(name, value)
+	if tonumber(value) == 0 then 
+		return 
+	end	
 	local v1, v2 = 0, 0
 	if name:sub(-1, -1) == '%' then
 		v2 = value
@@ -258,7 +261,7 @@ function mt:add(name, value)
 	if f then
 		f()
 	end
-    self:eventNotify('单位-属性变化', self, name, value)
+    self:event_notify('单位-属性变化', self, name, value)
 	-- 增加10%时: 攻击200，攻击加10% ， 200*(1+0.1) = 220 , attr[key1]=200,  attr[key2] = 10%
 	-- 减少10%时: 攻击220，攻击 -10% , attr[key1]=200,  attr[key2] = 10% -10% , 攻击200  
 	-- 先增加10,再加10%时, 攻击200 ，attr[key1]=200 +10 , attr[key1] =10%， 最终增加 210*1.1 231

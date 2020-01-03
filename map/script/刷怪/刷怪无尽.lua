@@ -67,7 +67,7 @@ for i =1,3 do
         region = 'cg'..i,
         creeps_datas = '',
         force_cool = force_cool,
-        creep_player = ac.player.com[2],
+        creep_player = ac.player(i+6),
         create_unit_cool = 0.5,
         -- tip ="|cffff0000怪物开始进攻！！！|r"
 
@@ -107,6 +107,7 @@ for i =1,3 do
     --改变怪物
     function mt:on_change_creep(unit,lni_data)
         change_attr(unit,self.index)
+        unit:add_buff '攻击英雄'{}
     end
     --每3秒刷新一次攻击目标 原地不动才发起攻击
     function mt:attack_hero() 
@@ -259,7 +260,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
             for i=1 ,3 do 
                 local creep = ac.creep['刷怪-无尽'..i] 
                 creep:start()
-                creep:attack_hero() 
+                -- creep:attack_hero() 
             end  
         end,
     }

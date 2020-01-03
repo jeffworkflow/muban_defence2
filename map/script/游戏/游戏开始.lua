@@ -3,10 +3,13 @@ ac.game:event '游戏-开始' (function()
 
     print('游戏开始1')
     --游戏开始，不允许控制中立被动（钥匙怪）
-    for x = 0, 10 do
+    for x = 0, 6 do
         --不允许控制中立被动的单位
         ac.player.force[1][x]:disableControl(ac.player[16])
-        ac.player.force[2][0]:disableControl(ac.player[16])
+    end
+    for x = 0, 4 do
+        --不允许控制中立被动的单位
+        ac.player.force[2][x]:disableControl(ac.player[16])
     end
     print('游戏开始2')
 

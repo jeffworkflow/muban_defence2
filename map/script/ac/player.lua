@@ -144,6 +144,9 @@ end
 	end
 
 	function mt:setAllianceSimple(dest, flag)
+		if not dest then 
+			return 
+		end	
 		jass.SetPlayerAlliance(self.handle, dest.handle, jass.ConvertUnitState(0), flag)		--ALLIANCE_PASSIVE
 		jass.SetPlayerAlliance(self.handle, dest.handle, jass.ConvertUnitState(1), false)	--ALLIANCE_HELP_REQUEST
 		jass.SetPlayerAlliance(self.handle, dest.handle, jass.ConvertUnitState(2), false)	--ALLIANCE_HELP_RESPONSE

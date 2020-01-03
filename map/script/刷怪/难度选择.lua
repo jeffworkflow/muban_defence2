@@ -87,9 +87,9 @@ ac.wait(1200,function()
     ac.game:event '游戏-开始' (function()
         --游戏开始后 刷怪时间
         local time = 180
-        -- if global_test then 
-        --     time = 20
-        -- end    
+        if global_test then 
+            time = 20
+        end    
         BJDebugMsg(time .. "秒后开始第1波怪物进攻",10)
         ac.timer_ex 
         {
@@ -101,7 +101,7 @@ ac.wait(1200,function()
                 for i=1 ,3 do 
                     local creep = ac.creep['刷怪'..i] 
                     creep:start()
-                    creep:attack_hero() 
+                    -- creep:attack_hero() 
                 end 
             end,
         }

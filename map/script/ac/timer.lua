@@ -183,9 +183,9 @@ function ac.timer(timeout, count, on_timer)
 			t.cnt = 0
 		end
 		t.cnt = t.cnt + 1	
+		count = count - 1
 		t.count = count
 		on_timer(t)
-		count = count - 1
 		if count <= 0 then
 			if t.on_timeout then 
 				t:on_timeout()

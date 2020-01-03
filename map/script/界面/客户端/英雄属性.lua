@@ -17,8 +17,11 @@ class.hero_info_panel = extends(class.panel){
         local title_background = panel:add_texture('image\\角色信息\\line.tga',213,25,586,22)
         title_background:set_alpha(0xff*0.1)
 
-        local tf_text = '|cffFDC000装备总评分：2323232|r'
-        panel.item_pf = panel:add_text(tf_text,213,25,586,194,12,'auto_newline')
+        local tf_text = '|cffFDC000装备总评分：|r'
+        panel:add_text(tf_text,213,25,120,194,12,'auto_newline') 
+        panel.item_pf = panel:add_text('2323232',333,25,100,194,12,'auto_newline')
+        panel.item_pf:set_color(0xffFDC000)
+
         local btn_name = {'武器','腰带','鞋子','衣服','头盔','项链'}
         panel.btn_items = {}
         panel.items = {}
@@ -31,7 +34,7 @@ class.hero_info_panel = extends(class.panel){
             function btn_it:on_button_mouse_enter()  
                 local info = panel.items[btn_name[i]]
                 if info then 
-                    self:tooltip(info.title,info:get_tip(),-1,200,84,10)
+                    self:tooltip(info.title,info:get_tip(),0,400,84,10)
                 end
             end   
         end 
@@ -139,9 +142,15 @@ class.hero_info_panel = extends(class.panel){
         -- print(it:get_art())
         btn:set_normal_image(it:get_art())
         btn:add_frame(38,-42,1.24,{1,1.38,1})
-        --设置tip 
+        --设置hover tip 
         self.items[it.type1] =it
 
+        --设置装备总评分
+        local all_pf = 0 
+        for key,item in pairs(self.items) do 
+            all_pf = all_pf + item.pf
+        end    
+        self.item_pf:set_text(('%.f'):format(all_pf))
     end,    
     fresh = function(self)
         local hero = ac.player.self.hero
