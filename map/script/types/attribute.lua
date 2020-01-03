@@ -299,7 +299,7 @@ function mt:set(name, value)
 	if f then
 		f()
 	end
-    self:eventNotify('单位-属性变化', self, name, value)
+    self:event_notify('单位-属性变化', self, name, value)
 end
 
 function mt:get(name)
