@@ -22,10 +22,10 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*15+10008)* self.level
+  return (self.owner:get('力量')*30+10008)* self.level
 end,
 	--施法范围
-	area = 1000,
+	area = 500,
 	--属性加成
  ['杀怪加力量'] = {70,1400},
  ['移动速度'] = 125,
@@ -38,8 +38,8 @@ end,
 【攻击速度】+75%
 【物理伤害加深】+100%
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人0.3秒
-【伤害公式】（力量*15+10000）*Lv+1.5%敌人的最大生命值
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人
+【伤害公式】（力量*30+10000）*Lv+1%敌人的最大生命值
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标
@@ -47,8 +47,8 @@ end,
 	--特效
 	effect = [[AZ_CoCoGuanyu_E2.mdx]],
 	--特效4
-	effect4 = [[范围+500]],
-	value = 1.5,--最大生命值
+	effect4 = [[目标位置播放特效，伤害范围500码]],
+	value = 1,--最大生命值
 	time =0.3
 }
 function mt:atk_pas_shot(target)

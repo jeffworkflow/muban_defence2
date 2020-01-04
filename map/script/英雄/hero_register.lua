@@ -93,8 +93,8 @@ local function hero_register_main()
 		
 		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 		
-		--创建宠物
-		-- player:create_pets('雷电球')
+		-- 创建宠物
+		-- player:create_pets('乔巴')
 
 		player:selectUnit(player.peon)
 		

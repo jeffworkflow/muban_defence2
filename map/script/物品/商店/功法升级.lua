@@ -6,7 +6,9 @@ mt{
     art = [[gongfashengji.blp]],
     --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
     --说明
-    tip = [[|n获得 |cffff0000随机技能|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
+    tip = [[|cff00ff00点击选择要升级的功法
+
+|cffffff00【升级功法需消耗一定数量的魔丸】]],
 
     content_tip = '|cffFFE799【说明】：|r|n',
     --物品类型
@@ -29,11 +31,11 @@ function mt:on_cast_start()
     for i=1,self.skill_cnt do 
         local skill = hero:find_skill(i,'英雄')
         if skill and skill.level < skill.max_level then 
-            skill.rec_ex = skill.level > 10 and 10000 or  1000
+            skill.rec_ex = skill.level > 10 and skill.level*10000 or  skill.level*1000
             local key = skill:get_hotkey() 
             local str = clean_color(skill:get_title())
             local info = {
-                name = '升级 |cff'..ac.color_code[skill.color].. str .. ' |r( 魔丸:' .. skill.rec_ex .. ' )',
+                name = '|cff00ff00升级 |cff'..ac.color_code[skill.color].. str .. ' |r|cffff0000( 魔丸:' .. skill.rec_ex .. ' )',
                 skill = skill,
             }
             table.insert(list,info)
@@ -60,7 +62,7 @@ function mt:on_cast_start()
                     --升级技能
                     skl:upgrade(1)
                 else 
-                    p:sendMsg('魔丸不足，升级失败')
+                    p:sendMsg('|cffffe799【系统消息】|cff00ff00魔丸不足',5)
                 end    
                 --再执行一遍
                 hero:event_notify('单位-点击商店物品',self.seller,hero,self)

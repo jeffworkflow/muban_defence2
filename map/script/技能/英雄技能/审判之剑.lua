@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*10+10000)* self.level
+  return (self.owner:get('敏捷')*10+100000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -34,7 +34,8 @@ end,
 	tip = [[|cffffff00【攻击加敏捷】+120*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*10+10000）*Lv]],
+【伤害公式】（敏捷*10+100000）*Lv
+ ]],
 	--技能图标
 	art = [[spzj.blp]],
 	--特效

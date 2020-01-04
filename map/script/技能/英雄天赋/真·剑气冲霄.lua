@@ -22,7 +22,10 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*150+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*20)* self.level
+end,
+dead_damage = function(self)
+return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*50+10000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -37,9 +40,10 @@ end,
 【攻击减甲】+488
 【攻击间隔】-0.25
 【全伤加深】+488%
-【强大的永生系统】死亡后1秒原地重生，死亡时候对周围500码敌人造成伤害（全属性*75+10000）*Lv
+【强大的永生系统】
 
-|cff00ffff【被动效果】攻击10%几率造成超大范围技能伤害（伤害公式：全属性*150*Lv+0.5%敌人的最大生命值）
+|cff00ffff【被动效果】攻击10%几率造成超大范围技能伤害 
+【伤害公式】（全属性*150*Lv+1%敌人的最大生命值）
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标

@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*20+10000)* self.level
+  return (self.owner:get('智力')*20+1000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -34,13 +34,14 @@ end,
 	tip = [[|cffffff00【攻击加智力】+240*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（智力*20+10000）*Lv]],
+【伤害公式】（智力*20+1000000）*Lv
+ ]],
 	--技能图标
 	art = [[fengbaozhili.blp]],
 	--特效
 	effect = [[AZ_Kaer_X1.mdx]],
 	--特效1
-	effect1 = [[Abilities\Weapons\FireBallMissile\FireBallMissile.mdl]],
+	effect1 = [[AZ_Kaer_X1.mdx]],
 	--特效4
 	effect4 = [[参考赤灵传说的风暴之力]],
     --自由碰撞时的碰撞半径

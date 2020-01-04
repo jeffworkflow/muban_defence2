@@ -20,7 +20,7 @@ mt{
 	cost = 0,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*25+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*4+10000)* self.level
 end,
 	--属性加成
  ['杀怪加全属性'] = {120,2400},
@@ -34,8 +34,8 @@ end,
 【技能伤害加深】+100%
 【全伤加深】+25%
 
-|cff00ffff【被动效果】攻击10%几率造成大范围技能伤害，每0.2秒造成一次，持续2秒
-【伤害公式】（全属性*25+10000）*Lv+2.5%敌人的最大生命值
+|cff00ffff【被动效果】攻击10%几率造成大范围技能伤害
+【伤害公式】（全属性*25+10000）*Lv+1%敌人的最大生命值
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标
@@ -44,9 +44,9 @@ end,
 	--特效4
     effect4 = [[目标范围 500，jn_sq1_gh2.mdx]],
     time = 4,
-    pulse_time = 0.2,
+    pulse_time = 0.5,
     area = 500,
-    value = 2.5,
+    value = 0.13,
     cool = 1,
 }
 
@@ -56,7 +56,7 @@ function mt:atk_pas_shot(target)
 
 	local source = hero:get_point()
 
-    for i=1,2 do 
+    for i=1,1 do 
         if i==2 then 
             ac.wait(0.1*1000,function()
                 ac.effect_ex{

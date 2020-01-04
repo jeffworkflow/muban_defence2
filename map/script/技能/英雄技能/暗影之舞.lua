@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 700,
 	--技能品阶
 	color = "地阶",
 	--技能类型
@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*20+10000)* self.level
+  return (self.owner:get('敏捷')*20+1000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -34,7 +34,8 @@ end,
 	tip = [[|cffffff00【每秒加敏捷】+800*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*20+10000）*Lv]],
+【伤害公式】（敏捷*20+1000000）*Lv
+ ]],
 	--技能图标
 	art = [[anyingzhiwu.blp]],
 	--特效

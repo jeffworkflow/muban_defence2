@@ -37,7 +37,7 @@ end,
 【技暴伤害】+50%
 【技能伤害加深】+40%
 
-|cff00ffff【被动效果】攻击10%几率触发法阵，闪避+50%,触发概率加成+50%,技能冷却+50%，持续8秒，内置CD12秒；法阵生成及消失时都会造成范围技能伤害
+|cff00ffff【被动效果】攻击10%几率触发法阵， 闪避+50%, 触发概率加成+50%, 技能冷却+50%，持续8秒；法阵生成及消失时都会造成范围技能伤害
 【伤害公式】（智力*25+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
@@ -50,9 +50,9 @@ end,
 	kill_int = function(self)
 		return self.level * 100
 	end,
-	skl_crit_rate = 5,
+	skl_crit_rate = 50,
 	skl_crit_damage = 50,
-	skl_more_damage = 40,
+	skl_more_damage = 50,
 	time = 8,
 }
 function mt:atk_pas_shot(target)
@@ -137,10 +137,9 @@ function mt:on_add()
 		model = self.model,
 		point = self.target:get_point()
 	}
-	self.target:add('杀怪加智力',self.kill_int)
-	self.target:add('技暴几率',self.skl_crit_rate)
-	self.target:add('技暴伤害',self.skl_crit_damage)
-	self.target:add('技能伤害加深',self.skl_more_damage)
+	self.target:add('闪避',self.kill_int)
+	self.target:add('触发概率加成',self.skl_crit_rate)
+	self.target:add('技能冷却',self.skl_crit_damage)
 	-- self.eff = self.target:add_effect('chest', self.effect)
 	if self.start_damage then 
 		self:start_damage()
@@ -151,10 +150,9 @@ function mt:on_remove()
 	if self.eff then
 		self.eff:remove()
 	end
-	self.target:add('杀怪加智力',-self.kill_int)
-	self.target:add('技暴几率',-self.skl_crit_rate)
-	self.target:add('技暴伤害',-self.skl_crit_damage)
-	self.target:add('技能伤害加深',-self.skl_more_damage)
+	self.target:add('闪避',-self.kill_int)
+	self.target:add('触发概率加成',-self.skl_crit_rate)
+	self.target:add('技能冷却',-self.skl_crit_damage)
 	if self.start_damage then 
 		self:start_damage()
 	end

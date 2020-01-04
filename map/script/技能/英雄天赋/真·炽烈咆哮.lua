@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 800,
 	--技能品阶
 	color = "天赋",
 	--技能类型
@@ -22,10 +22,10 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*30+10003)* self.level
+  return (self.owner:get('力量')*30+10000)* self.level
 end,
 	--施法范围
-	area = 1000,
+	area = 500,
 	--属性加成
  ['杀怪加力量'] = {60,1200},
  ['分裂伤害'] = 25,
@@ -46,7 +46,9 @@ end,
 	--特效
 	effect = [[Hero_Axe_N3S_E_Source.mdx]],
 	--特效4
-	effect4 = [[伤害范围+500]],
+	effect4 = [[类似大喝，英雄头顶播放，伤害范围750
+
+模型Hero_Axe_N3S_E_Source.mdx]],
 }
 function mt:atk_pas_shot(target)
     local skill = self

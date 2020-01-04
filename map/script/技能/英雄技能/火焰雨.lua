@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*10+10000)* self.level
+  return (self.owner:get('智力')*12+100000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -33,9 +33,9 @@ end,
 	--介绍
 	tip = [[|cffffff00【杀怪加智力】+20*Lv
 
-
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（智力*20+10000）*Lv]],
+【伤害公式】（智力*20+100000）*Lv
+ ]],
 	--技能图标
 	art = [[card1_9.blp]],
 	--特效
@@ -45,7 +45,7 @@ end,
 	--特效4
 	effect4 = [[参考赤灵传说的火焰雨]],
 	--波次
-	tm = 1
+	tm = 2
 }
 
 function mt:atk_pas_shot(damage)

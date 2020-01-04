@@ -34,11 +34,12 @@ end,
 	tip = [[|cffffff00【攻击加全属性】+30*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*2+10000）*Lv]],
+【伤害公式】（全属性*2+10000）*Lv
+ ]],
 	--技能图标
 	art = [[sqzc.blp]],
 	--特效
-	effect = [[Abilities\Spells\Other\BlackArrow\BlackArrowMissile.mdl]],
+	effect = [[Abilities\Spells\Human\StormBolt\StormBoltMissile.mdl]],
 	--特效1
 	effect1 = [[Abilities\Spells\Human\Thunderclap\ThunderClapCaster.mdl]],
 	--特效4

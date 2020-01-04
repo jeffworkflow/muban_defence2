@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*80+10000)* self.level
+  return (self.owner:get('敏捷')*40+100000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -34,7 +34,7 @@ end,
 	tip = [[|cffffff00【攻击加敏捷】+960*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*80+10000）*Lv]],
+【伤害公式】（敏捷*80+100000000）*Lv]],
 	--技能图标
 	art = [[hlqk.blp]],
 	--特效
@@ -42,7 +42,7 @@ end,
 	--特效4
 	effect4 = [[参考赤灵的火力全开，同一方向再发射四枚导弹]],
 	--被动，第几次攻击触发特殊攻击
-	attack_stack = 5,
+	attack_stack = 8,
 	--被动，距离1600
 	distance = 1600,
 	--被动，撞击范围

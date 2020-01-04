@@ -14,9 +14,9 @@ local function create_unit(p,lv,point)
         ac.wait(1*1000,function()
             create_unit(p,lv + 1,point)
         end)
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00阁下内功精进，连练功柱子都能打爆，奖励 |cffffff00练功房怪物数量+1',5)
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00阁下内功精进，连练功柱子都能打爆，奖励 |cffffff00练功房怪物数量+1',5)
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00阁下内功精进，连练功柱子都能打爆，奖励 |cffffff00练功房怪物数量+1',5)
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00阁下内功精进，连练功柱子都能打爆，奖励 |cffffff00练功房怪物数量+1',10)
+        -- p:sendMsg('|cffffe799【系统消息】|r|cff00ff00阁下内功精进，连练功柱子都能打爆，奖励 |cffffff00练功房怪物数量+1',5)
+        -- p:sendMsg('|cffffe799【系统消息】|r|cff00ff00阁下内功精进，连练功柱子都能打爆，奖励 |cffffff00练功房怪物数量+1',5)
     end)
 end
 for i=1,6 do 

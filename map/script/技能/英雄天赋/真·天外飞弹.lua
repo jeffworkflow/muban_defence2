@@ -22,7 +22,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*60+10010)* self.level
+  return (self.owner:get('敏捷')*60+10000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -38,7 +38,7 @@ end,
 【攻击减甲】+50
 【多重射】+2
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，造成2次，每1秒造成一次伤害
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（敏捷*60+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],

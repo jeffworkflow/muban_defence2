@@ -18,27 +18,25 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
-	--冷却时间
-	cool = 1,
+
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*20+10009)* self.level
+  return (self.owner:get('智力')*15+10009)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
- ['每秒加木头'] = {5,100},
- ['每秒加魔丸'] = {5,100},
+ ['每秒加木头'] = {4,80},
+ ['每秒加魔丸'] = {4,80},
  ['物品获取率'] = 100,
- ['吸血'] = 25
-,
+ ['吸血'] = 25,
 	--介绍
 	tip = [[|cffffff00【每秒加木头】+5*Lv
 【每秒加魔丸】+5*Lv
 【物品获取率】+100%
 【吸血】+25%
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，每0.5秒造成一次伤害，持续时间2秒
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（智力*20+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
@@ -47,7 +45,7 @@ end,
 	--特效
 	effect = [[desecrate.mdx]],
 	--特效4
-	effect4 = [[0.5秒后再触发一次]],
+	effect4 = [[目标位置播放特效，伤害范围500码]],
     time = 2,
     pulse_time = 0.5,
     cool = 2,
@@ -111,7 +109,7 @@ function mt:on_add()
 		if math.random(100) <= self.chance then
             self:atk_pas_shot(damage.target)
 			--0.5秒后再触发一次
-			ac.wait(500,function()
+			ac.wait(1000,function()
 				self:atk_pas_shot(damage.target)
 			end)
             --激活cd

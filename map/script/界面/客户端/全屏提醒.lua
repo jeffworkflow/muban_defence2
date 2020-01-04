@@ -45,15 +45,15 @@ local new_ui = class.panel:builder
     h = 1080,
     level = 5,
     is_show = false,
-    normal_image = 'woniu.blp',
+    normal_image = 'woniu1.blp',
     --蜗牛出品
     danhua = function(self)
         self:show()
         --停留时长
-        local stu_time = 2
+        local stu_time = 0.25
         ac.wait(stu_time*1000,function()
             --淡化时长
-            local time = 2
+            local time = 1
             local cnt = time/0.1
             ac.timer(100,cnt,function(t)
                 local per_rate = 100/cnt

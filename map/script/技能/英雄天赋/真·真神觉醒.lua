@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 1.5,
 	--伤害
 	damage = function(self)
   return (self.owner:get('敏捷')*40+10012)* self.level
@@ -35,9 +35,9 @@ end,
 	tip = [[|cffffff00【杀怪加敏捷】+160*Lv
 【移动速度】+200
 【物理伤害加深】+200%
-【强大的永生系统】死亡后2秒原地重生，死亡时候对周围500码敌人造成伤害，（敏捷*40+10000）*Lv
+【强大的永生系统】
 
-|cff00ffff【被动效果】攻击10%几率造成多次突袭伤害，造成5次，每0.1秒造成一次伤害并晕眩0.1秒，500范围内随机一个敌人（可以是同一个敌人），如果没有敌人就暂停
+|cff00ffff【被动效果】攻击10%几率造成多次突袭伤害
 【伤害公式】（敏捷*40+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
@@ -50,10 +50,16 @@ end,
 	--特效2
 	effect2 = [[Mx_yetiliujing.mdx]],
 	--特效4
-	effect4 = [[冲锋次数调整到10次，0.05秒一次，晕眩0.05秒]],
+	effect4 = [[1.英雄在球里冲锋
+
+冲锋模型：Valiant Charge Royal.mdx
+
+2.英雄死亡时在原地同时创建英雄模型和冰晶模型，英雄重生后消失
+
+英雄模型hero_hc04.mdx
+冰晶模型Mx_yetiliujing.mdx]],
 	max_cnt =10,
-	time = 0.05,
-	pulse_time = 0.05 --0.05一次
+	time = 0.05
 }
 
 function mt:atk_pas_shot(target)

@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 2,
 	--伤害
 	damage = function(self)
   return (self.owner:get('力量')*5+10000)* self.level
@@ -35,7 +35,7 @@ end,
 【护甲】+500
 【伤害减少】+5000
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人（0.25秒）
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人
 【伤害公式】（力量*5+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
@@ -50,7 +50,7 @@ end,
 
 目标特效：ImpaleHitTarget.mdx
 地刺特效：ImpaleMissTarget.mdx]],--持续时间
-	time = 1 ,
+	time = 0.5 ,
 	--碰撞范围
 	hit_area = 200,
 	--特效移动速度

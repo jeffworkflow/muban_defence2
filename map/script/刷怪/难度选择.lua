@@ -87,9 +87,9 @@ ac.wait(1200,function()
     ac.game:event '游戏-开始' (function()
         --游戏开始后 刷怪时间
         local time = 180
-        if global_test then 
-            time = 20
-        end    
+        -- if global_test then 
+        --     time = 20
+        -- end    
         BJDebugMsg(time .. "秒后开始第1波怪物进攻",10)
         ac.timer_ex 
         {

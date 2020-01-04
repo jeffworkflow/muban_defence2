@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*2+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*1+10000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -33,16 +33,17 @@ end,
 	--介绍
 	tip = [[|cffffff00【每秒加全属性】+100*Lv
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，每0.5秒造成一次，持续1秒
-【伤害公式】（全属性*2+10000）*Lv]],
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*2+10000）*Lv
+]],
 	--技能图标
 	art = [[xcff.blp]],
 	--特效
 	effect = [[eff.MDX]],
 	--特效4
 	effect4 = [[目标位置播放特效，伤害范围500码]],
-	time = 1,
-	pulse_time = 0.5,
+	time = 4,
+	pulse_time = 1,
 }
 
 function mt:atk_pas_shot(target)

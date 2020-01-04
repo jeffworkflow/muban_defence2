@@ -38,7 +38,7 @@ end,
 【物理伤害加深】+80%
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*20+10000）*Lv+1.5%敌人的最大生命值
+【伤害公式】（敏捷*20+10000）*Lv+1%敌人的最大生命值
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标
@@ -47,7 +47,7 @@ end,
 	effect = [[AZ_AurelVlaicu_C4.MDX]],
 	--特效4
 	effect4 = [[目标位置播放特效，伤害范围500码]],
-	value = 1.5,--最大生命值
+	value = 1,--最大生命值
 }
 function mt:atk_pas_shot(target)
     local skill = self

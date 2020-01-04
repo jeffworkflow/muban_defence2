@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*4+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*4+100000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -38,7 +38,8 @@ end,
 【每秒加全属性】+5*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*4+10000）*Lv]],
+【伤害公式】（全属性*4+100000）*Lv
+ ]],
 	--技能图标
 	art = [[ltzj.blp]],
 	--特效

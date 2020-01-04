@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*16+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*16+10000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -34,7 +34,8 @@ end,
 	tip = [[|cffffff00【攻击加全属性】+40*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*16+10000）*Lv]],
+【伤害公式】（全属性*16+10000000）*Lv
+ ]],
 	--技能图标
 	art = [[longxiaojiutian.blp]],
 	--特效
@@ -42,7 +43,7 @@ end,
 	--特效4
 	effect4 = [[类似希尔瓦娜斯的巨浪，移动距离1200]],
 	--范围
-	distance = 1500,
+	distance = 1200,
 	hit_area = 125,
 	--概率%
 	cool = 1,
@@ -65,12 +66,12 @@ function mt:atk_pas_shot(damage)
 			source = hero,
 			skill = skill,
 			model =  skill.effect,
-			speed = 600,
+			speed = 1000,
 			angle = hero:get_point()/target:get_point() + 360/num * i,
 			hit_area = skill.hit_area,
 			distance = skill.distance,
 			high = 120,
-			size = 3,
+			size = 0.9,
 		}
 		if mvr then
 			function mvr:on_hit(u)

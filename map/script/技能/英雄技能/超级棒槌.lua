@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*8+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*8+1000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -34,11 +34,12 @@ end,
 	tip = [[|cffffff00【攻击加全属性】+120*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*8+10000）*Lv]],
+【伤害公式】（全属性*8+1000000）*Lv
+ ]],
 	--技能图标
 	art = [[sqzc.blp]],
 	--特效
-	effect = [[Abilities\Spells\Other\BlackArrow\BlackArrowMissile.mdl]],
+	effect = [[AAbilities\Spells\Human\StormBolt\StormBoltMissile.mdl]],
 	--特效1
 	effect1 = [[Abilities\Spells\Human\Thunderclap\ThunderClapCaster.mdl]],
 	--特效4
@@ -49,7 +50,7 @@ end,
     --投射物数量
     count = 1,
     --碰撞范围
-    hit_area = 250,
+    hit_area = 300,
     --主伤害伤害比
     main_damage = 100,
     --主伤害伤害比

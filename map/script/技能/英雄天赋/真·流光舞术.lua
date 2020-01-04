@@ -22,7 +22,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*30+10006)* self.level
+  return (self.owner:get('敏捷')*30+10000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -37,17 +37,17 @@ end,
 【吸血】+20%
 【物理伤害加深】+160%
 
-|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，每0.2秒造成一次，持续1秒
-【伤害公式】（敏捷*30+10000）*Lv+2%敌人的最大生命值
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*30+10000）*Lv+1%敌人的最大生命值
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标
 	art = [[lgws.blp]],
 	--特效
-	effect = [[gongjitexiao.mdx]],
+	effect = [[BloodSlam.mdx]],
 	--特效4
-	effect4 = [[0.5秒后再触发一次]],
-	value = 1.2,--最大生命值
+	effect4 = [[目标位置播放特效，伤害范围500码]],
+	value = 1,--最大生命值
 }
 function mt:atk_pas_shot(target)
     local skill = self
@@ -101,7 +101,7 @@ function mt:on_add()
 		if math.random(100) <= self.chance then
             self:atk_pas_shot(damage.target)
 			--0.5秒后再触发一次
-			ac.wait(500,function()
+			ac.wait(1000,function()
 				self:atk_pas_shot(damage.target)
 			end)
             --激活cd

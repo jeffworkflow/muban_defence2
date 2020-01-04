@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 75*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 50*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--流派
@@ -15,7 +15,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 180,
+	cool = 1,
 	--作用在人身上
 	strong_hero = true,
 	--属性加成
@@ -24,7 +24,7 @@ mt{
 	tip = [[ 
 |cffffe799【生命上限】+20%
 
-|cff00ff00对乔巴进行一顿称赞，75%概率可获得它|cffffff00精心研制的药水
+|cff00ff00对乔巴进行一顿称赞，50%概率可获得它|cffffff00精心研制的药水
 
 ]],
 	--技能图标

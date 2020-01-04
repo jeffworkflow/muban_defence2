@@ -37,7 +37,7 @@ end,
 【技暴伤害】+50%
 【技能伤害加深】+40%
 
-|cff00ffff【被动效果】攻击10%几率触发法阵，闪避+50%,触发概率加成+50%,技能冷却+50%，持续8秒，内置CD12秒；法阵生成及消失时都会造成范围技能伤害
+|cff00ffff【被动效果】攻击10%几率触发法阵， 闪避+50%, 触发概率加成+50%, 技能冷却+50%，持续12秒；法阵生成及消失时都会造成范围技能伤害
 【伤害公式】（智力*25+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
@@ -46,13 +46,13 @@ end,
 	--特效
 	effect = [[AZ_CMpink_F_OriginMageP.mdx]],
 	--特效4
-	effect4 = [[持续时间13秒]],
+	effect4 = [[模型再英雄脚下添加，8秒后消失，伤害范围400]],
 	kill_int = function(self)
 		return self.level * 100
 	end,
-	skl_crit_rate = 5,
+	skl_crit_rate = 50,
 	skl_crit_damage = 50,
-	skl_more_damage = 40,
+	skl_more_damage = 50,
 	time = 13,
 }
 function mt:atk_pas_shot(target)
