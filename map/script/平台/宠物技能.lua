@@ -178,7 +178,10 @@ for k,v in sortpairs(peon_skill) do
 
             -- self:upgrade(up_level)
             local t_skl = hero:find_skill(self.name,nil,true)
-            if t_skl then t_skl:upgrade(up_level) end
+            if t_skl then 
+                t_skl:upgrade(up_level) 
+                --刷新tip 没效果
+            end
             
         end    
     end    
@@ -258,7 +261,11 @@ function unit.__index:peon_add_xp(xp)
         local skill = self:find_skill('宠物技能')
         if skill then
             --更改宠物技能的tip显示
-            skill:set('need_xp',need_xp)
+            if need_xp > 0 then 
+                skill:set('need_xp',need_xp)
+            else 
+                skill:set('need_xp',need_xp..' (地图等级不够)')
+            end    
             skill:fresh_tip()
         end 
 

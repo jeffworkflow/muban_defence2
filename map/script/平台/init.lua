@@ -24,6 +24,7 @@ require '平台.精彩活动'
 require '平台.赛季奖励'
 
 require '平台.隐藏成就'
+require '平台.宠物纪念册'
 
 
 

@@ -2,13 +2,14 @@ ac.peon_list = {}
 for name,data in pairs(ac.table.UnitData) do 
     local color = data.unit_type 
     if data.unit_type == '宠物' and data.name ~='宠物' then 
-        table.insert(ac.peon_list,name)
+        ac.peon_list[tonumber(data.cid)] = name
+        -- table.insert(ac.peon_list,name)
     end 
 end 
 
-table.sort(ac.peon_list,function (strA,strB)
-    return strA<strB
-end)
+-- table.sort(ac.peon_list,function (strA,strB)
+--     return strA<strB
+-- end)
 
 local player = require 'ac.player'
 
@@ -38,7 +39,7 @@ function player.__index:create_pets(name)
     u:add_skill('一键拾取','英雄')
     u:add_skill('装备合成','英雄')
     -- u:add_skill('荣耀称号','英雄',8)
-    -- u:add_skill('宠物纪念册','英雄',12)
+    u:add_skill('宠物纪念册','英雄',12)
     u:add_skill('宠物技能','英雄',8)
     u:add_skill('一键出售','英雄',7)
     -- u:add_skill('一键合成','英雄',9)
