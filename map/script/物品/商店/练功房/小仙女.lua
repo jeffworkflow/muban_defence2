@@ -116,11 +116,11 @@ for _,name in ipairs(fairy) do
     --物品名称
     local mt = ac.skill[name]
     mt.level = 0
-        --施法动作
-    mt.cast_animation = ''
-        --初始概率
+    --施法动作
+    -- mt.cast_animation = ''
+    --初始概率
     mt.rate = 10
-        --概率增加
+    --概率增加
     mt.up_rate = 5
         
     function mt:on_cast_shot()

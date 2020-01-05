@@ -120,11 +120,11 @@ local peon_skill = {
     ['宠物-魔丸加成'] = {'魔丸加成','魔丸加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前魔丸加成 +%魔丸加成%|cff00ff00 %|r|n|n]]},
     ['宠物-分裂伤害加成'] = {'分裂伤害加成','分裂伤害',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前分裂伤害加成 +%分裂伤害%|cff00ff00 %|r|n|n]]},
     ['宠物-攻击速度加成'] = {'攻击速度加成','攻击速度',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前攻击速度加成 +%攻击速度%|cff00ff00 %|r|n|n]]},
-    ['宠物-杀怪力量成长'] = {'宠物-杀怪力量成长','杀怪加力量',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加力量 +%杀怪加力量%|cff00ff00|r|n|n]]},
-    ['宠物-杀怪敏捷成长'] = {'宠物-杀怪敏捷成长','杀怪加敏捷',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加敏捷 +%杀怪加敏捷%|cff00ff00|r|n|n]]},
-    ['宠物-杀怪智力成长'] = {'宠物-杀怪智力成长','杀怪加智力',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加智力 +%杀怪加智力%|cff00ff00|r|n|n]]},
-    ['宠物-杀怪全属性成长'] = {'宠物-杀怪全属性成长','杀怪加全属性',10,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升10，当前杀怪加全属性 +%杀怪加全属性%|cff00ff00|r|n|n]]},
-    ['宠物-杀怪攻击成长'] = {'宠物-杀怪攻击成长','杀怪加攻击',35,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升35，当前杀怪加攻击 +%杀怪加攻击%|cff00ff00|r|n|n]]},
+    ['宠物-杀怪力量成长'] = {'杀怪加力量','杀怪加力量',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加力量 +%杀怪加力量%|cff00ff00|r|n|n]]},
+    ['宠物-杀怪敏捷成长'] = {'杀怪加敏捷','杀怪加敏捷',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加敏捷 +%杀怪加敏捷%|cff00ff00|r|n|n]]},
+    ['宠物-杀怪智力成长'] = {'杀怪加智力','杀怪加智力',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前杀怪加智力 +%杀怪加智力%|cff00ff00|r|n|n]]},
+    ['宠物-杀怪全属性成长'] = {'杀怪加全属性','杀怪加全属性',10,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升10，当前杀怪加全属性 +%杀怪加全属性%|cff00ff00|r|n|n]]},
+    ['宠物-杀怪攻击成长'] = {'杀怪加攻击','杀怪加攻击',35,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升35，当前杀怪加攻击 +%杀怪加攻击%|cff00ff00|r|n|n]]},
 }
 for k,v in sortpairs(peon_skill) do 
     local mt = ac.skill[k]
@@ -178,7 +178,10 @@ for k,v in sortpairs(peon_skill) do
 
             -- self:upgrade(up_level)
             local t_skl = hero:find_skill(self.name,nil,true)
-            if t_skl then t_skl:upgrade(up_level) end
+            if t_skl then 
+                t_skl:upgrade(up_level) 
+                --刷新tip 没效果
+            end
             
         end    
     end    
@@ -258,7 +261,11 @@ function unit.__index:peon_add_xp(xp)
         local skill = self:find_skill('宠物技能')
         if skill then
             --更改宠物技能的tip显示
-            skill:set('need_xp',need_xp)
+            if need_xp > 0 then 
+                skill:set('need_xp',need_xp)
+            else 
+                skill:set('need_xp',need_xp..' (地图等级不够)')
+            end    
             skill:fresh_tip()
         end 
 
