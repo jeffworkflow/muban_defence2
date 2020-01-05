@@ -4,7 +4,7 @@ mt{
     --颜色
     color = '紫',
     tip = [[ 
-|cff00ff00可炼化顶级的烧火棍和赤炎甲
+|cff00ff00可熔炼顶级的烧火棍和赤炎甲
  ]],
     --技能图标
     art = [[jingpo.blp]],
@@ -39,7 +39,7 @@ function mt:on_cast_start()
 
         local skl = hero:add_skill('赤炎甲','隐藏')
         skl:upgrade(skl.max_level)
-        p:sendMsg('炼化成功')
+        p:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看',5)
         return
     end
      
@@ -56,7 +56,7 @@ function mt:on_cast_start()
         local skl = hero:add_skill('赤炎甲','隐藏')
         skl:upgrade(skl.max_level)
         
-        p:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜炼化成功，炼化后的属性可在圣龙气运-吞噬神丹中查看',5)
+        p:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看',5)
     else
         p:sendMsg('|cffffe799【系统提示】|r|cff00ff00请检查烧火棍和赤炎甲是否已经升至|cffffff00顶级',5)    
     end

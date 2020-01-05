@@ -176,7 +176,7 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
             return 
         end       
         local zdl = ((hero:get('力量')+hero:get('智力')+hero:get('敏捷'))/1200 + hero:get('护甲')/1.1+ hero:get('攻击')/2400
-        +(hero:get('攻击减甲')/hero:get('攻击间隔')*(1+hero:get('攻击速度')*3))) *(
+        +(hero:get('攻击减甲')/hero:get('攻击间隔')*(1+hero:get('攻击速度')/100)*2)) *(
             1 + (hero:get('减伤')+hero:get('免伤几率')+hero:get('闪避'))/3
             + (hero:get('暴击几率')+hero:get('技暴几率')+hero:get('会心几率'))/3
             + (hero:get('暴击伤害')+hero:get('技暴伤害')+hero:get('会心伤害'))/100000
