@@ -18,7 +18,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
    time =15,
-   model = [[units\creeps\GrizzlyBear\GrizzlyBear.mdl]],
+--    model = [[units\creeps\GrizzlyBear\GrizzlyBear.mdl]],
    event_name = '造成伤害效果',
 }
 function mt:on_add()
@@ -35,7 +35,7 @@ function mt:damage_start(damage)
     local skill =self
     local target = damage.target
 
-    local u = p:create_unit('幻象马甲',hero:get_point() - {math.random(360),100})
+    local u = p:create_unit('狗熊',hero:get_point() - {math.random(360),100})
     u:add_restriction '无敌'
     
 
@@ -66,7 +66,7 @@ function mt:damage_start(damage)
     }
     
     u:add_buff "召唤物"{
-        model = self.model,
+        -- model = self.model,
         time = self.time,
         attribute = attribute,
         remove_target = true,
@@ -167,7 +167,7 @@ for _,name in ipairs(fairy) do
                 -- 下次抽中概率:'..self.rate + self.up_rate,5)  
                
                 --概率激活彩蛋
-                local rate = 1
+                local rate = 2
                 local real_name = '错臂之交'
                 if math.random(10000)/100 <= rate then 
                     local skl = hero:find_skill(real_name,nil,true) 
