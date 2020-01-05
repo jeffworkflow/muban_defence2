@@ -66,8 +66,8 @@ function mt:atk_pas_shot(target)
         ['魔法恢复'] = hero:get('魔法恢复'),
         ['移动速度'] = hero:get('移动速度'),
 
-        ['分裂伤害'] = hero:get('分裂伤害'),
-        ['攻击减甲'] = hero:get('攻击减甲'),
+        -- ['分裂伤害'] = hero:get('分裂伤害'),
+        -- ['攻击减甲'] = hero:get('攻击减甲'),
         ['暴击几率'] = hero:get('暴击几率'),
         ['暴击伤害'] = hero:get('暴击伤害'),
         ['会心几率'] = hero:get('会心几率'),

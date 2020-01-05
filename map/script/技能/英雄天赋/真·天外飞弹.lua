@@ -50,6 +50,7 @@ end,
 	effect1 = [[calldown_flydown.mdx]],
 	--特效2
 	effect2 = [[calldown_flyup.mdx]],
+	effect3 = [[AZ_AurelVlaicu_C4.MDX]],
 }
 function mt:atk_pas_shot(target)
     local skill = self
@@ -70,6 +71,11 @@ function mt:atk_pas_shot(target)
 				size = 2
 			}:remove() 
 			ac.wait(500,function()
+				ac.effect_ex{
+					point = target:get_point(),
+					model = skill.effect3,
+					size = 2
+				}:remove() 
 				for i, u in ac.selector()
 				: in_range(target,skill.area)
 				: is_enemy(hero)

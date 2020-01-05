@@ -50,6 +50,7 @@ end,
 	effect1 = [[calldown_flydown.mdx]],
 	--特效2
 	effect2 = [[calldown_flyup.mdx]],
+	effect3 = [[AZ_AurelVlaicu_C4.MDX]],
 	--特效4
 	effect4 = [[伤害范围500码
 1.目标位置先播放瞄准特效
@@ -81,6 +82,12 @@ function mt:atk_pas_shot(target)
 				size = 2
 			}:remove() 
 			ac.wait(500,function()
+				ac.effect_ex{
+					point = target:get_point(),
+					model = skill.effect3,
+					size = 2
+				}:remove() 
+
 				for i, u in ac.selector()
 				: in_range(target,skill.area)
 				: is_enemy(hero)

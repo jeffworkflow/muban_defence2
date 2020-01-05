@@ -4,17 +4,17 @@ local rect = require 'types.rect'
 -- 传送 快速达到 兑换
 ac.exchange_kill ={
     --商品名（map.table.单位.商店） = 属性名，数值，上限次数，耗费杀敌数，图标,说明
-    ['杀敌数加成'] = {'杀敌数加成',5,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%杀敌数加成|r|n|n'} ,
-    ['木头加成'] = {'木头加成',5,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%木头加成|r|n|n'} ,
-    ['物品获取率加成'] = {'物品获取率',5,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%物品获取率|r|n|n'} ,
-    ['魔丸加成'] = {'魔丸加成',5,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%魔丸加成|r|n|n'} ,
-    ['杀怪全属性成长'] = {'杀怪加全属性',25,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+25杀怪加全属性|r|n'} ,
-    ['杀怪力量成长'] = {'杀怪加力量',60,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加力量|r|n'} ,
-    ['杀怪敏捷成长'] = {'杀怪加敏捷',60,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加敏捷|r|n'} ,
-    ['杀怪智力成长'] = {'杀怪加智力',60,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加智力|r|n'} ,
-    ['杀怪攻击成长'] = {'杀怪加攻击',100,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+100杀怪加攻击|r|n'} ,
-    ['攻击减甲'] = {'攻击减甲',15,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+15攻击减甲|r|n'} ,
-    ['每秒加护甲'] = {'每秒加护甲',1,999999,600,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+1每秒加护甲|r|n'} ,
+    ['杀敌数加成'] = {'杀敌数加成',5,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%杀敌数加成|r|n'} ,
+    ['木头加成'] = {'木头加成',5,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%木头加成|r|n'} ,
+    ['物品获取率加成'] = {'物品获取率',5,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%物品获取率|r|n'} ,
+    ['魔丸加成'] = {'魔丸加成',5,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5%魔丸加成|r|n'} ,
+    ['杀怪全属性成长'] = {'杀怪加全属性',25,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+25杀怪加全属性|r|n'} ,
+    ['杀怪力量成长'] = {'杀怪加力量',60,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加力量|r|n'} ,
+    ['杀怪敏捷成长'] = {'杀怪加敏捷',60,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加敏捷|r|n'} ,
+    ['杀怪智力成长'] = {'杀怪加智力',60,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加智力|r|n'} ,
+    ['杀怪攻击成长'] = {'杀怪加攻击',100,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+100杀怪加攻击|r|n'} ,
+    ['攻击减甲'] = {'攻击减甲',15,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+15攻击减甲|r|n'} ,
+    ['每秒加护甲'] = {'每秒加护甲',1,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+1每秒加护甲|r|n'} ,
     -- ['杀怪护甲成长'] = {'杀怪加护甲',0.1,999999,400,[[sdsdh.blp]],'挑着boss'} ,
 }
 
@@ -46,7 +46,7 @@ for key,value in pairs(ac.exchange_kill) do
     store_affix = '兑换 ',
     --物品技能
     is_skill = true,
-    real_kill_cnt = 400    
+    real_kill_cnt = 500    
     -- auto_fresh_tip = true,
     }
   
@@ -68,7 +68,7 @@ for key,value in pairs(ac.exchange_kill) do
         shop_item.player_buy_cnt[player] = (shop_item.player_buy_cnt[player] or 1) + 1
         -- print(shop_item.player_buy_cnt[player])
         --改变价格
-        if shop_item.player_buy_cnt[player] >20 then
+        if shop_item.player_buy_cnt[player] >40 then
             shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + 50
         else
             shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + self.cre  
@@ -81,7 +81,7 @@ for key,value in pairs(ac.exchange_kill) do
         hero:add(self.attr_name,self.attr_val)
 
         --文字提醒
-        p:sendMsg('|cff00ff00兑换 '..self.name..' 成功|r',5)
+        p:sendMsg('|cffffe799【系统消息】|cff00ff00兑换 '..self.name..' 成功|r',5)
         
     end
 

@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 5*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--流派
@@ -58,6 +58,7 @@ function mt:on_add()
             {
                 point = damage.target:get_point(),
                 model = skill.effect,
+                size = 2,
             }:remove()
 
             --计算伤害

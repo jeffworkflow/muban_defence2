@@ -4,20 +4,19 @@ mt{
     level = 1 ,
     --颜色
     color = '紫',
-    tip = [[
-杀怪增加灵魂，当灵魂达到2500，完成任务，移除物品，奖励一个随机红装，【系统提示】XXXX
-
-每个人只能触发一次
+    tip = [[ 
+        
+|cff00ff00一个可以收集灵魂的箱子，性能不详
     ]],
     --技能图标
-    art = [[qiu305.blp]],
-    kill_cnt = 100,
+    art = [[tkdbz.blp]],
+    kill_cnt = 2500,
     --唯一
     unique = true,
     --升级特效
     effect2 = [[Void Teleport Target.mdx]],
     --物品详细介绍的title
-    content_tip = '|cffFFE799基本属性：|r',
+    content_tip = '|cffFFE799说明：|r',
 }
 
 function mt:on_add()
@@ -69,20 +68,19 @@ mt{
     level = 1 ,
     --颜色
     color = '紫',
-    tip = [[
-杀怪增加灵魂，当灵魂达到2500，完成任务，移除物品，奖励一个随机红装，【系统提示】XXXX
+    tip = [[ 
 
-每个人只能触发一次
+|cff00ff00一本可以收集灵魂的功法，性能不详
     ]],
     --技能图标
-    art = [[qiu305.blp]],
-    kill_cnt = 100,
+    art = [[gongfa.blp]],
+    kill_cnt = 2500,
     --唯一
     unique = true,
     --升级特效
     effect2 = [[Void Teleport Target.mdx]],
     --物品详细介绍的title
-    content_tip = '|cffFFE799基本属性：|r',
+    content_tip = '|cffFFE799说明：|r',
 }
 
 function mt:on_add()

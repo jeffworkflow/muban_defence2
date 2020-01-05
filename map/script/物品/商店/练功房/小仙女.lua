@@ -36,6 +36,8 @@ function mt:damage_start(damage)
     local target = damage.target
 
     local u = p:create_unit('幻象马甲',hero:get_point() - {math.random(360),100})
+    u:add_restriction '无敌'
+    
 
     local attribute ={
         ['攻击'] = hero:get('攻击'),
@@ -48,8 +50,8 @@ function mt:damage_start(damage)
         ['魔法恢复'] = hero:get('魔法恢复'),
         ['移动速度'] = hero:get('移动速度'),
 
-        ['分裂伤害'] = hero:get('分裂伤害'),
-        ['攻击减甲'] = hero:get('攻击减甲'),
+        -- ['分裂伤害'] = hero:get('分裂伤害'),
+        -- ['攻击减甲'] = hero:get('攻击减甲'),
         ['暴击几率'] = hero:get('暴击几率'),
         ['暴击伤害'] = hero:get('暴击伤害'),
         ['会心几率'] = hero:get('会心几率'),
@@ -148,7 +150,7 @@ for _,name in ipairs(fairy) do
                     --删除技能
                     self:remove()
                 end 
-                p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中了该铭文|cff00ff00，属性可在圣龙气运-古老的铭文中查看',5)   
+                p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中|cff00ff00，铭文属性可在圣龙气运-古老的铭文中查看',5)   
                 --创建真小仙女
                 p.fw_cnt =  (p.fw_cnt or 0) + 1
                 if p.fw_cnt == #fairy then 
@@ -161,7 +163,7 @@ for _,name in ipairs(fairy) do
             else
                 --抽取失败 提升概率
                 self:set('rate',self.rate + self.up_rate)
-                p:sendMsg('|cffffe799【系统消息】|cff00ff00差一点就抽中了该铭文，祝你下次好运|cffffff00（下次抽取的命中率提升了5%）',5)  
+                p:sendMsg('|cffffe799【系统消息】|cff00ff00差一点就抽中了，祝你下次好运|cffffff00（下次抽取的命中率提升了5%）',5)  
                 -- 下次抽中概率:'..self.rate + self.up_rate,5)  
                
                 --概率激活彩蛋

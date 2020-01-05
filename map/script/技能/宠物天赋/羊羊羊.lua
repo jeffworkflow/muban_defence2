@@ -33,8 +33,8 @@ mt{
 	art = [[xiyangyang.blp]],
 	--特效
 	effect = [[units\critters\Sheep\Sheep.mdl]],
-	time = 5,
-	cool = 1,
+	time = 0.3,
+	cool = 2,
 }
 function mt:on_add()
     local skill = self
