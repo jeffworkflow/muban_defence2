@@ -33,8 +33,8 @@ mt{
 	art = [[pikaqiu.blp]],
 	--特效
 	effect = [[Abilities\Spells\Orc\Purge\PurgeBuffTarget.mdl]],
-	time = 5,
-	cool = 1,
+	time = 0.3,
+	cool = 2,
 }
 function mt:on_add()
     local skill = self

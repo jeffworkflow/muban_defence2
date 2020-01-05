@@ -13,7 +13,8 @@ tip = [[
  ]],
 ['每秒加护甲'] = function(self)
     local p = self.owner:get_owner()
-    local value = 0.1
+    local value = 0
+    -- local value = 0.1
     local map_level = p:Map_GetMapLevel()
     return value * map_level* (ac.g_game_degree_attr or 1)
 end,

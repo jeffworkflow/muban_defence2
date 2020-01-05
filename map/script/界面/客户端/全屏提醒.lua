@@ -68,10 +68,14 @@ new_ui:danhua()
 --业务：战斗力
 local new_ui = class.panel:builder
 {
-    x = 728,--假的
-    y = 770,--假的
+    x = 360,--假的
+    y = 815,--假的
+    -- x = 728,--假的
+    -- y = 770,--假的
     w = 512,
-    h = 96,
+    h = 100,
+    -- w = 512,
+    -- h = 96,
     level = 5,
     is_show = true,
     normal_image = [[ui\battle_power\ui-a10.tga]],
@@ -140,7 +144,7 @@ local new_ui = class.panel:builder
         self.pics = {}
         local font_space = 0 --字间距
         for i =1,10 do 
-            local pic = self:add_texture([[Transparent.tga]], 295 -(i-1)*(font_space+26), 48, 32, 32)
+            local pic = self:add_texture([[Transparent.tga]], 295 -(i-1)*(font_space+26), 50, 32, 32)
             table.insert(self.pics,pic)
         end    
     end,
@@ -171,14 +175,13 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
         if not finds(str,name) then 
             return 
         end       
-        local zdl = ((hero:get('力量')+hero:get('智力')+hero:get('敏捷'))/1000 + hero:get('护甲')) *(
+        local zdl = ((hero:get('力量')+hero:get('智力')+hero:get('敏捷'))/1200 + hero:get('护甲')/1.1+ hero:get('攻击')/2400
+        +(hero:get('攻击减甲')/hero:get('攻击间隔')*(1+hero:get('攻击速度')/100)*2)) *(
             1 + (hero:get('减伤')+hero:get('免伤几率')+hero:get('闪避'))/3
             + (hero:get('暴击几率')+hero:get('技暴几率')+hero:get('会心几率'))/3
             + (hero:get('暴击伤害')+hero:get('技暴伤害')+hero:get('会心伤害'))/100000
             + (hero:get('物理伤害加深')+hero:get('技能伤害加深')+hero:get('会心伤害'))/20000
-            + (hero:get('全伤加深'))/10000
-            + (hero:get('攻击减甲')/hero:get('攻击间隔')*hero:get('攻击速度'))/50000
-        )
+            + (hero:get('全伤加深'))/10000)
         zdl = math.floor(zdl)
         -- print('战斗力',zdl,name,value)
         if hero.owner:is_self()then 

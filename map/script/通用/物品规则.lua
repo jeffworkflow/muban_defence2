@@ -84,14 +84,14 @@
 
         --判断物品类型数量
         if u:get_type_count(it) then
-            u:get_owner():sendMsg('该类型的物品只能携带一个')
+            u:get_owner():sendMsg('|cffffe799【系统消息】|cff00ff00已拥有相同装备')
             return true
         end
 
         --判断物品是否唯一
         if it.unique then
             if u:get_unique_name(it) then
-                u:get_owner():sendMsg('该物品唯一,只能携带一个')
+                u:get_owner():sendMsg('|cffffe799【系统消息】|cff00ff00已拥有相同装备')
                 return true
             end
         end

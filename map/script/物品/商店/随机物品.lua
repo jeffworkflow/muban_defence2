@@ -5,7 +5,7 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[other\suiji101.blp]],
+art = [[suijiwupin.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
 --说明
 tip = [[|n获得 |cffff0000随机物品|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],

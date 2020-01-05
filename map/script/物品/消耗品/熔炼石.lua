@@ -16,7 +16,7 @@ for ix =1 ,4 do
         --等久
         level = 0,
         --图标
-        art = [[xilianshi.blp]],
+        art = [[ronglianshi.blp]],
         --说明
         tip = [[%change_tip%]],
         change_tip = [[
@@ -136,7 +136,7 @@ local mt = ac.skill['套装熔炼']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[xilianshi.blp]],
+    art = [[ronglianshi.blp]],
     title = '套装熔炼',
     tip = [[
         
