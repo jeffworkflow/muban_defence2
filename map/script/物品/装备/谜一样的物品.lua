@@ -10,7 +10,7 @@ mt{
     ]],
     --技能图标
     art = [[tkdbz.blp]],
-    kill_cnt = 2500,
+    kill_cnt = 10,
     --唯一
     unique = true,
     --升级特效
@@ -46,6 +46,8 @@ function mt:on_add()
                     hero:add_item(name,true)
                     p:sendMsg('恭喜 '..p:get_name()..' 获得红色物品: '..name,5)
                     -- ac.item.create_item(name,point)
+
+                    
                 end    
             end    
         end)

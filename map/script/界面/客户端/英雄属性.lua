@@ -22,7 +22,7 @@ class.hero_info_panel = extends(class.panel){
         panel.item_pf = panel:add_text('2323232',333,25,100,194,12,'auto_newline')
         panel.item_pf:set_color(0xffFDC000)
 
-        local btn_name = {'武器','腰带','鞋子','衣服','头盔','项链'}
+        local btn_name = {'武器','衣服','头盔','手套','腰带','鞋子'}
         panel.btn_items = {}
         panel.items = {}
         --存档物品

@@ -6,7 +6,7 @@ local item_list = {
 ['霓光甲']={num=20,type1 = '衣服',lv = 1,art = 'yiji2.blp',attr = {['护甲']=1000}},
 ['霓光面罩']={num=20,type1 = '头盔',lv = 1,art = 'yiji3.blp',attr = {['技能基础伤害']=1000000}},
 ['霓光靴']={num=20,type1 = '鞋子',lv = 1,art = 'yiji4.blp',attr = {['移动速度']=25,['护甲']=500}},
-['霓光腰带']={num=20,type1 = '腰带',lv = 1,art = 'yiji5.blp',attr = {['上限']=3000000}},
+['霓光腰带']={num=20,type1 = '腰带',lv = 1,art = 'yiji5.blp',attr = {['生命上限']=3000000}},
 ['霓光之钩']={num=20,type1 = '手套',lv = 1,art = 'yiji6.blp',attr = {['攻击速度']=25,['护甲']=500}},
 
 ['血腥三月镰']={num=20,type1 = '武器',lv = 2,art = 'erji1.blp',attr = {['攻击']=4000000}},
@@ -254,7 +254,13 @@ category = '存档']]
                 lni_str = lni_str .. '%map_level_tip%'..'\n'
                 lni_str = lni_str .. '|cffffe799属性：|r'..'\n'
                 for i,tab in ipairs(main_attr_tab)do
-                    lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..' |r'.. tab[1] ..'\n'
+                    -- lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..' |r'.. tab[1] ..'\n'
+                    local per_str = finds(base_attr,tab[1])  and '' or '%'
+                    if tonumber(tab[2]) < 0 then 
+                        lni_str = lni_str  .."|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                    else     
+                        lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                    end 
                 end
                 if #item > 0 then 
                     lni_str = lni_str .. ''
