@@ -20,10 +20,12 @@ ac.game:event '技能-获得' (function (_,hero,self)
                 book = self,
             })
             skill_map[name] = skill
-            table.insert(skill_list,skill)
-            table.insert(skill_book,skill)
+            skill_list[i] = skill 
+            skill_book[i] = skill 
+            -- table.insert(skill_list,skill)
+            -- table.insert(skill_book,skill)
             --记录一下所在位置
-            skill.book_slot_id = #skill_list
+            skill.book_slot_id = i
         end    
     end 
     local skill = hero:add_skill('关闭',page_type,slots[12],{
@@ -55,6 +57,7 @@ ac.game:event '技能-获得' (function (_,hero,self)
 end)
 local function get_nil_slot(tab)
     for i=1,11 do 
+        -- print(i,tab[i])
         if not tab[i]  then 
             return i 
         end 
@@ -82,7 +85,7 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
         print('该魔法书已满',self.name,name)
         return
     end
-
+    -- print('插入魔法书',index,slots[index],name)
     local skill = hero:add_skill(name,page_type,slots[index],{
             book = self,
         })

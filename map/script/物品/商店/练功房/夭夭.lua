@@ -103,8 +103,8 @@ for _,tab in ipairs(devil_deal) do
                 if self.cost_allattr then 
                     str = '' .. self.cost_allattr .. '全属性'
                 end    
-                if self.fire_seed then 
-                    str = '' .. self.fire_seed .. '魔丸'
+                if self.rec_ex then 
+                    str = '' .. self.rec_ex .. '魔丸'
                 end    
                 return str
             end,

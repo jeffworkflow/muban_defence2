@@ -253,8 +253,13 @@ category = '存档']]
                 lni_str = lni_str .. '|cffffe799评分：|r'..pf..'\n'
                 lni_str = lni_str .. '%map_level_tip%'..'\n'
                 lni_str = lni_str .. '|cffffe799属性：|r'..'\n'
-                for i,tab in ipairs(main_attr_tab)do
-                    lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..' |r'.. tab[1] ..'\n'
+                for i,tab in ipairs(main_attr_tab)do 
+                    local per_str = finds(base_attr,tab[1])  and '' or '%'
+                    if tonumber(tab[2]) < 0 then 
+                        lni_str = lni_str  .."|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                    else     
+                        lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                    end    
                 end
                 if #item > 0 then 
                     lni_str = lni_str .. ''

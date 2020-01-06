@@ -215,7 +215,7 @@ function mt:on_add()
         if math.random(100) <= self.chance then
 
             range_attack_start(hero,damage)
-            hero:event_notify('单位-触发被动', hero,self)
+            hero:event_notify('单位-触发被动', hero,self,damage.target,damage)
             --激活cd
             skill:active_cd()
         end 

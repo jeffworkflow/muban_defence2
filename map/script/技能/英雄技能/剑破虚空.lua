@@ -87,7 +87,7 @@ function mt:on_add()
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
             self:atk_pas_shot(damage.target)
-            hero:event_notify('单位-触发被动', hero,self)
+            hero:event_notify('单位-触发被动', hero,self,damage.target,damage)
             --激活cd
             skill:active_cd()
         end

@@ -100,6 +100,9 @@ function mt:damage_start(unit,killer)
         size = 10,
         heal = hero:get('生命上限'),
     }	
+    hero:add_buff '无敌'{
+        time =0.5
+    }
     -- hero:add('护甲',1000000000)
     return true
 end    

@@ -162,8 +162,12 @@ local attribute = {
 	['额外杀敌数'] =	true, --默认表示基础值
 	-- ['局内地图等级'] =	true, --默认表示基础值
 
-	['多重暴击'] = true,  --默认表示为基础值 永久性攻击减甲
-	
+	['多重暴击几率'] = true,  --默认表示为% 
+	['多重暴击几率极限'] = true,  --默认表示为% 
+	['多重暴击'] = true,  --默认表示为基础值 
+
+	['韧性'] = true,  --默认表示为% 
+	['韧性极限'] = true,  --默认表示为% 
 	
 }
 ac.unit.attribute = attribute
@@ -851,6 +855,20 @@ end
 on_get['会心几率'] = function(self, heart_rate)
 	if heart_rate > 90 then
 		heart_rate = math.min(heart_rate,90 + self:get('会心几率极限')) 
+	end
+	return heart_rate
+end
+
+on_get['韧性'] = function(self, heart_rate)
+	if heart_rate > 90 then
+		heart_rate = math.min(heart_rate,90 + self:get('韧性极限')) 
+	end
+	return heart_rate
+end
+
+on_get['多重暴击几率'] = function(self, heart_rate)
+	if heart_rate > 90 then
+		heart_rate = math.min(heart_rate,90 + self:get('多重暴击几率极限')) 
 	end
 	return heart_rate
 end

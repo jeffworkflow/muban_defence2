@@ -142,7 +142,11 @@ class.hero_info_panel = extends(class.panel){
         --设置图片
         -- print(it:get_art())
         btn:set_normal_image(it:get_art())
-        btn:add_frame(38,-42,1.24,{1,1.38,1})
+        if it.color == '暗金' then 
+            btn:add_frame(38,-42,1.24,{1,1.38,1},true)
+        else   
+            btn:add_frame(38,-42,1.24,{1,1.38,1})
+        end    
 
         local iit = {}
         iit.title = it.color_name or it.title

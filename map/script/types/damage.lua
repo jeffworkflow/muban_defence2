@@ -56,6 +56,8 @@ mt.physicals_crit_flag = nil
 mt.spells_crit_flag = nil
 --是否是会心一击
 mt.heart_crit_flag = nil
+--是否是多重暴击
+mt.mul_crit_flag = nil
 --是否触发攻击回血
 mt.damage_hp = false
 
@@ -80,6 +82,10 @@ function mt:is_heart_crit()
 	return self.heart_crit_flag
 end
 
+--是否是多重暴击
+function mt:is_mul_crit()
+	return self.mul_crit_flag
+end
 --伤害是否是技能造成的
 function mt:is_skill()
 	return self.skill
@@ -198,6 +204,11 @@ function mt:on_attribute_attack()
 	--会心一击
 	if self.heart_crit_flag == nil then
 		self.heart_crit_flag =  (source:get '会心几率' >= math.random(100)) or (source:get '会心几率' >100)
+	end
+	
+	--多重暴击
+	if self.mul_crit_flag == nil then
+		self.mul_crit_flag =  (source:get '多重暴击几率' >= math.random(100)) or (source:get '多重暴击几率' >100)
 	end
 end
 
@@ -1125,7 +1136,9 @@ function damage:__call()
 			--攻击减甲
 			self:on_reduce_defence()
 			--多重暴击
-			self:on_mul_crite()
+			if self:is_mul_crit() then 
+				self:on_mul_crite()
+			end	
 		end
 		
 		--伤害效果

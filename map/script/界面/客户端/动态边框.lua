@@ -2,6 +2,7 @@
 local tools ={
     add_frame = function (self,off_x,off_y,size,off_size,is_show)
         if self.model_frame then 
+            self.model_frame.is_show1 = is_show
             self.model_frame:show()
             return
         end
@@ -15,13 +16,20 @@ local tools ={
             level = 5,
             is_show = false,
             normal_image = 'Transparent.tga',
-            
+            btn = {
+                type = 'button',
+            },
             model = {
                 type = 'model',
                 size = 1,
                 model = [[tx6.mdx]],
             },
+            get_show = function(self)
+                -- print('动态边框',self.is_show1)
+                return self.is_show1
+            end
         }
+        new_ui.is_show1 = is_show
         --默认为传进来控件的坐标
         new_ui:set_real_position(self:get_real_position())
         -- print('边框位置：',self:get_real_position())
@@ -39,16 +47,10 @@ local tools ={
             local x,y,z = table.unpack(off_size)
             new_ui.model:set_scale(x,y,z)
         end    
-        new_ui:show()
-        if self.on_button_mouse_enter  then 
-            self.old_on_button_mouse_enter = self.on_button_mouse_enter
-        end    
+        new_ui:show()   
         --如果外部有传参，会有问题。
-        function self:on_button_mouse_enter()  
-            if self.old_on_button_mouse_enter then 
-                self:old_on_button_mouse_enter()
-            end    
-            if not is_show then 
+        function new_ui.btn:on_button_mouse_enter()  
+            if not new_ui:get_show() then 
                 new_ui:hide()
             end     
         end   
@@ -63,31 +65,4 @@ for name, func in pairs(tools) do
 end 
 
 
-
---业务 ： 至凶之物 1分钟内加动态边框
-local time = 60 
-ac.game:event '玩家-选择单位' (function(self, player, hero)
-    if hero:get_name() ~= '第一幕·圣龙气运' then 
-        return 
-    end    
-    if ac.g_game_time >= time then 
-        self:remove()
-        return
-    end    
-    if player:is_self()then
-        ac.ui.client.panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},true)
-    end 
-end)
-ac.game:event '玩家-取消选择单位' (function(self, player, hero)
-    if hero:get_name() ~= '第一幕·圣龙气运' then 
-        return 
-    end    
-    if ac.g_game_time >= time then 
-        self:remove()
-        return
-    end   
-    if player:is_self()then
-        ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
-    end 
-end)
 
