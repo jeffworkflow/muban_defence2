@@ -77,7 +77,7 @@ local new_ui = class.panel:builder
     -- w = 512,
     -- h = 96,
     level = 5,
-    is_show = true,
+    is_show = false,
     normal_image = [[ui\battle_power\ui-a10.tga]],
 
     target_val = 0,
@@ -121,9 +121,9 @@ local new_ui = class.panel:builder
         if type(val) == 'string' then 
             return 
         end	
-        if val < 10000 then
+        if val < 100000 then
             val =  math.tointeger(val) or ('%.2f'):format(val)
-        elseif val < 100000000 then
+        elseif val < 1000000000 then
             val =  ('%.0f'):format(val/10000)..'w'
         else
             val =  ('%.0f'):format(val/100000000)..'y' 
@@ -190,7 +190,52 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
     end)
 end)    
 
+ac.game:event '玩家-选择单位' (function(self, player, hero)
+    if hero ~= player.hero then 
+        return 
+    end    
+     
+    if player:is_self()then
+        new_ui:show()
+    end 
+end)
+ac.game:event '玩家-取消选择单位' (function(self, player, hero)
+    if hero ~= player.hero then 
+        return 
+    end    
+     
+    if player:is_self()then
+        new_ui:hide()
+    end 
+end)
 
 
+
+--业务 ： 至凶之物 1分钟内加动态边框
+local time = 60 
+ac.game:event '玩家-选择单位' (function(self, player, hero)
+    if hero:get_name() ~= '第一幕·圣龙气运' then 
+        return 
+    end    
+    if ac.g_game_time >= time then 
+        self:remove()
+        return
+    end    
+    if player:is_self()then
+        ac.ui.client.panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},true)
+    end 
+end)
+ac.game:event '玩家-取消选择单位' (function(self, player, hero)
+    if hero:get_name() ~= '第一幕·圣龙气运' then 
+        return 
+    end    
+    if ac.g_game_time >= time then 
+        self:remove()
+        return
+    end   
+    if player:is_self()then
+        ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
+    end 
+end)
 
 

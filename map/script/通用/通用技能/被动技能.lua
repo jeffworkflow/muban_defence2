@@ -102,7 +102,7 @@ end
 
 --触发成功做的处理
 function mt:finish()
-    self.owner:event_notify('单位-触发被动',self.owner,self.skill)
+    self.owner:event_notify('单位-触发被动',self.owner,self.skill,self.target,self.damage)
 
     --进入CD
     if self.cool then
@@ -123,9 +123,13 @@ function mt:init()
 
     if self.event_name == '单位-杀死单位' or self.event_name == '单位-死亡' or self.event_name == '单位-即将死亡' then
         self.trg = self.owner:event(self.event_name)(function(_,source,target,damage)
+            self.source =source
+            self.target = target 
+            self.damage =damage
+            local is_success 
             --被动开始
             if self:can_passive(source,target,damage) then
-                self.is_success = self.damage_start(self.skill,source,target,damage)
+                is_success = self.damage_start(self.skill,source,target,damage)
                 self:finish()
             elseif self.damage_failure then
                 --被动失败
@@ -136,13 +140,16 @@ function mt:init()
             if self.damage_finish then
                 self.damage_finish(self.skill,source,target,damage)
             end
-            return self.is_success
+            -- print('触发被动',is_success,self.random)
+            return is_success
         end)
     else
         self.trg = self.owner:event(self.event_name)(function(_,damage)
+            self.damage =damage
+            local is_success 
             --被动开始
             if self:can_passive(_,_,damage)  then
-                self.is_success = self.damage_start(self.skill,damage)
+                is_success = self.damage_start(self.skill,damage)
                 self:finish()
             elseif self.damage_failure then
                 --被动失败
@@ -153,7 +160,7 @@ function mt:init()
             if self.damage_finish then
                 self.damage_finish(self.skill,damage)
             end
-            return self.is_success
+            return is_success
         end)
     end
 

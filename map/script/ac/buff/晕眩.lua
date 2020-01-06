@@ -14,6 +14,8 @@ function mt:on_add()
 	end
 	self.target:add_restriction '晕眩'
 	self.target:cast_stop()
+	local time = self.time * (1 - self.target:get('韧性')/100)
+	self:set_remaining(time)
 end
 
 function mt:on_remove(new)

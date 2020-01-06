@@ -144,7 +144,7 @@ function mt:on_add()
 			ac.timer(100,skill.count - 1 ,function()
 				beidong_damage(self,damage_target)
 			end)
-			hero:event_notify('单位-触发被动', hero,self)
+			hero:event_notify('单位-触发被动', hero,self,damage.target,damage)
 		end		
 	end)	
 

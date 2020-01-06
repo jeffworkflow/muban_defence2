@@ -95,7 +95,7 @@ function mt:on_add()
 		local rand = math.random(1,100)
 		if rand <= self.chance then 
 			skill:atk_pas_shot(damage)
-            hero:event_notify('单位-触发被动', hero,self)
+            hero:event_notify('单位-触发被动', hero,self,damage.target,damage)
             --激活cd
             skill:active_cd()
 		end

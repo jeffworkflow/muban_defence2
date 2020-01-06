@@ -51,13 +51,17 @@ function mt:on_add()
     local p = self.owner.owner
     local hero = p.hero
     -- local 
-    self.trg = hero:event '单位-触发被动'(function(_,skl,target)
+    self.trg = hero:event '单位-触发被动'(function(_,unit,skl,target,damage)
         --技能是否正在CD
         if skill:is_cooling() then
 			return 
 		end 
         --触发时修改攻击方式
-		if math.random(100) <= self.chance then
+        if math.random(100) <= self.chance then
+            local target = target or (damage and damage.target )
+            if not target then 
+                print('触发被动技能没有目标',skl.name)
+            end    
 			--创建特效
             ac.effect_ex
             {
