@@ -145,7 +145,7 @@ class.hero_info_panel = extends(class.panel){
         btn:add_frame(38,-42,1.24,{1,1.38,1})
 
         local iit = {}
-        iit.title = it.title
+        iit.title = it.color_name or it.title
         iit.tip = it:get_tip()
         iit.pf = it.pf
 
@@ -306,35 +306,37 @@ function ac.unit.__index:add_save_item(it)
 end 
 --统一增加所有的存档物品方法
 ac.wait(100,function()
-    for i,name in ipairs(ac.all_save_item) do 
-        -- print(name)
-        local mt = ac.skill[name]
-        mt{
-            item_type_tip = '', 
-            content_tip = '',
-            map_level_tip = function(self)
+    for i=1,#ac.all_save_item do 
+        local name = ac.all_save_item[i]
+        if name then 
+            local mt = ac.skill[name]
+            mt{
+                item_type_tip = '', 
+                content_tip = '',
+                map_level_tip = function(self)
 
-                if not self.owner then 
-                     return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
-                end  
+                    if not self.owner then 
+                        return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
+                    end  
 
-                local p=self.owner.owner 
-                if p:Map_GetMapLevel() > self.need_map_level then
-                -- local color  =  p:Map_GetMapLevel() > self.need_map_level and '绿' or '红'
-                    return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
-                else 
-                    return '|cff'..ac.color_code['红']..'需求地图等级: '..self.need_map_level .. '|r|cffffff00（可提前穿戴保存）|r'
+                    local p=self.owner.owner 
+                    if p:Map_GetMapLevel() > self.need_map_level then
+                    -- local color  =  p:Map_GetMapLevel() > self.need_map_level and '绿' or '红'
+                        return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
+                    else 
+                        return '|cff'..ac.color_code['红']..'需求地图等级: '..self.need_map_level .. '|r|cffffff00（可提前穿戴保存）|r'
+                    end
                 end
-            end
-        }
-        function mt:on_cast_start()
-            local hero = self.owner 
-            local p = self.owner 
-            -- print(self.attr)
-            local ok = hero:add_save_item(self)
-            -- if not ok then 
-            --     return true
-            -- end    
-        end  
+            }
+            function mt:on_cast_start()
+                local hero = self.owner 
+                local p = self.owner 
+                -- print(self.attr)
+                local ok = hero:add_save_item(self)
+                -- if not ok then 
+                --     return true
+                -- end    
+            end  
+        end
     end      
 end)

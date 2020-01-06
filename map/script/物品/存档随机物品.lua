@@ -1,10 +1,8 @@
 --起始id
 --存档物品库
-local start_id = 1 
 local item_list = {
     --名字 = 生成个数 装备类型 装备等级 图标 基础属性
-    
-    ['霓光刀']={num=20,type1 = '武器',lv = 1,art = 'yiji1.blp',attr = {['攻击']=2000000}},
+['霓光刀']={num=20,type1 = '武器',lv = 1,art = 'yiji1.blp',attr = {['攻击']=2000000}},
 ['霓光甲']={num=20,type1 = '衣服',lv = 1,art = 'yiji2.blp',attr = {['护甲']=1000}},
 ['霓光面罩']={num=20,type1 = '头盔',lv = 1,art = 'yiji3.blp',attr = {['技能基础伤害']=1000000}},
 ['霓光靴']={num=20,type1 = '鞋子',lv = 1,art = 'yiji4.blp',attr = {['移动速度']=25,['护甲']=500}},
@@ -31,10 +29,30 @@ local item_list = {
 ['菲普斯的鞋子']={num=20,type1 = '鞋子',lv = 4,art = 'siji4.blp',attr = {['移动速度']=200,['护甲']=4000}},
 ['菲普斯的护腰']={num=20,type1 = '腰带',lv = 4,art = 'siji5.blp',attr = {['生命上限']=24000000}},
 ['菲普斯的护手']={num=20,type1 = '手套',lv = 4,art = 'siji6.blp',attr = {['攻击速度']=200,['护甲']=4000}},
-
-	
-
 }
+--起始id
+local start_id = 1 
+local max = 0
+for name, data in pairs(item_list) do 
+    max = data.num * 4 + max
+end   
+max = max + start_id
+local ids = {}
+for i=start_id,max do 
+	ids[i] = i
+end	
+
+for i=start_id,max do 
+	local randindex = math.random(start_id,max)
+	local temp = ids[randindex];
+	ids[randindex] = ids[i];
+	ids[i] = temp;
+end
+
+-- for i = start_id,max do 
+--     print(i,ids[i])
+-- end    
+
 
 local com_func = {
     -- '（0.6+装备等级*0.4）*特殊属性加成b（查看工作表“品质”）'
@@ -169,8 +187,8 @@ category = '存档']]
         --每个物品 的物品数量  ['霞光刀']={num=20,type1 = '武器',lv = 1,art = 'al.tip',['攻击']=2,['护甲'] = 3},
         for i=1,data.num do
             for color,color_tab in pairs(color_attr) do 
-                lni_str = lni_str .. "['"..name..start_id.."']"..'\n'
-                lni_str = lni_str .. "s_id = "..start_id..""..'\n'
+                lni_str = lni_str .. "['"..name..ids[start_id].."']"..'\n'
+                lni_str = lni_str .. "s_id = "..ids[start_id]..""..'\n'
                 start_id = start_id + 1
                 lni_str = lni_str .. "title = "..name..""..'\n'
                 lni_str = lni_str .. "type1 = '"..data.type1.."'"..'\n'
