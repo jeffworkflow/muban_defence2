@@ -3,8 +3,35 @@
 local start_id = 1 
 local item_list = {
     --名字 = 生成个数 装备类型 装备等级 图标 基础属性
-	['刀']={num=20,type1 = '武器',lv = 1,art = 'sshixiezhu.blp',attr = {['攻击']=2,['护甲'] = 3}},
-	['甲']={num=20,type1 = '衣服',lv = 1,art = 'sshixiezhu.blp',attr = {['攻击']=2,['护甲'] = 3}},
+    
+    ['霓光刀']={num=20,type1 = '武器',lv = 1,art = 'yiji1.blp',attr = {['攻击']=2000000}},
+['霓光甲']={num=20,type1 = '衣服',lv = 1,art = 'yiji2.blp',attr = {['护甲']=1000}},
+['霓光面罩']={num=20,type1 = '头盔',lv = 1,art = 'yiji3.blp',attr = {['技能基础伤害']=1000000}},
+['霓光靴']={num=20,type1 = '鞋子',lv = 1,art = 'yiji4.blp',attr = {['移动速度']=25,['护甲']=500}},
+['霓光腰带']={num=20,type1 = '腰带',lv = 1,art = 'yiji5.blp',attr = {['上限']=3000000}},
+['霓光之钩']={num=20,type1 = '手套',lv = 1,art = 'yiji6.blp',attr = {['攻击速度']=25,['护甲']=500}},
+
+['血腥三月镰']={num=20,type1 = '武器',lv = 2,art = 'erji1.blp',attr = {['攻击']=4000000}},
+['血腥三月甲']={num=20,type1 = '衣服',lv = 2,art = 'erji2.blp',attr = {['护甲']=2000}},
+['血腥三月面罩']={num=20,type1 = '头盔',lv = 2,art = 'erji3.blp',attr = {['技能基础伤害']=2000000}},
+['血腥三月鞋']={num=20,type1 = '鞋子',lv = 2,art = 'erji4.blp',attr = {['移动速度']=50,['护甲']=1000}},
+['血腥三月腰带']={num=20,type1 = '腰带',lv = 2,art = 'erji5.blp',attr = {['生命上限']=6000000}},
+['血腥三月护手']={num=20,type1 = '手套',lv = 2,art = 'erji6.blp',attr = {['攻击速度']=50,['护甲']=1000}},
+
+['银霜法杖']={num=20,type1 = '武器',lv = 3,art = 'sanji1.blp',attr = {['攻击']=8000000}},
+['银霜甲']={num=20,type1 = '衣服',lv = 3,art = 'sanji2.blp',attr = {['护甲']=4000}},
+['银霜头盔']={num=20,type1 = '头盔',lv = 3,art = 'sanji3.blp',attr = {['技能基础伤害']=4000000}},
+['银霜鞋']={num=20,type1 = '鞋子',lv = 3,art = 'sanji4.blp',attr = {['移动速度']=100,['护甲']=2000}},
+['银霜腰带']={num=20,type1 = '腰带',lv = 3,art = 'sanji5.blp',attr = {['生命上限']=12000000}},
+['银霜护手']={num=20,type1 = '手套',lv = 3,art = 'sanji6.blp',attr = {['攻击速度']=100,['护甲']=2000}},
+
+['菲普斯的法杖']={num=20,type1 = '武器',lv = 4,art = 'siji1.blp',attr = {['攻击']=16000000}},
+['菲普斯的战甲']={num=20,type1 = '衣服',lv = 4,art = 'siji2.blp',attr = {['护甲']=8000}},
+['菲普斯的面具']={num=20,type1 = '头盔',lv = 4,art = 'siji3.blp',attr = {['技能基础伤害']=8000000}},
+['菲普斯的鞋子']={num=20,type1 = '鞋子',lv = 4,art = 'siji4.blp',attr = {['移动速度']=200,['护甲']=4000}},
+['菲普斯的护腰']={num=20,type1 = '腰带',lv = 4,art = 'siji5.blp',attr = {['生命上限']=24000000}},
+['菲普斯的护手']={num=20,type1 = '手套',lv = 4,art = 'siji6.blp',attr = {['攻击速度']=200,['护甲']=4000}},
+
 	
 
 }
@@ -27,30 +54,59 @@ local color_attr = {
 }
 
 local max_attribute = {
-	['力量']	=	10000,--默认基础值  
-	['敏捷']	=	10000,--默认基础值
-	['智力']	=	10000,--默认基础值
-	['生命上限']    = 100000,--默认基础值
-	['生命恢复']    = 500,--默认基础值
-	['魔法上限']    = 100000,--默认基础值
-	['魔法恢复']    = 500,--默认基础值
-	['攻击']       = 100000, --默认基础值
-	['护甲']       = 1000, --默认基础值
-	['魔抗']	   = 1000, --默认基础值
-	['攻击间隔']    = -0.5, --默认基础值
-	['攻击速度']    = 2000, --默认基础值
-	['攻击距离']    = 2000, --默认基础值
-	['移动速度']    = 522, --默认基础值 
-	['减耗']       = 200,  --默认基础值 减少扣篮量
-	['吸血']       = 100,  --默认%
-	['溅射']       = 100,  --默认%
-	['格挡']       = 100,  --默认%
-	['格挡伤害']    = 100,  --默认%
-	['暴击']       = 100,   --默认%
-	['暴击伤害']    = 100,  --默认%
-	['破甲']       = 100,  --默认表示为基础值  破加伤害计算时，默认0,增加属性时，若用add[破甲%]，将无效。伤害计算时，直接扣掉点数
-	['穿透']       = 100,  --默认表示为% 穿透，伤害计算时，穿透/100 再扣除
-	['护盾']       = 1000,  --默认表示为基础值 
+	['杀敌数加成']= 10,
+['木头加成']= 10,
+['魔丸加成']= 10,
+['物品获取率']= 10,
+['吸血']= 10,
+['暴击几率']= 2.5,
+['技暴几率']= 2.5,
+['暴击伤害']= 5,
+['技暴伤害']= 5,
+['全伤加深']= 7.5,
+['减伤']= 2.5,
+['免伤几率']= 2.5,
+['闪避']= 2.5,
+['每秒回血']= 5,
+['触发概率加成']= 5,
+['技能冷却']= 5,
+['攻击速度']= 25,
+['分裂伤害']= 20,
+['物理伤害加深']= 15,
+['技能伤害加深']= 15,
+['对BOSS额外伤害']= 7.5,
+['全属性']= 500000,
+['杀怪加全属性']= 20,
+['攻击加全属性']= 120,
+['每秒加全属性']= 400,
+['力量']= 1000000,
+['杀怪加力量']= 40,
+['攻击加力量']= 240,
+['每秒加力量']= 800,
+['敏捷']= 1000000,
+['杀怪加敏捷']= 40,
+['攻击加敏捷']= 240,
+['每秒加敏捷']= 800,
+['智力']= 1000000,
+['杀怪加智力']= 40,
+['攻击加智力']= 240,
+['每秒加智力']= 800,
+['攻击']= 2000000,
+['杀怪加攻击']= 80,
+['每秒加攻击']= 1600,
+['护甲']= 1000,
+['每秒加护甲']= 1,
+['攻击减甲']= 35,
+['攻击间隔']= -0.03,
+['生命恢复']= 350000,
+['攻击回血']= 350000,
+['杀怪回血']= 350000,
+['减少周围护甲']= 200,
+['伤害减少']= 350000,
+['攻击距离']= 25,
+['移动速度']= 25,
+['多重射']= 1,
+
 }
 
 local base_attr =[[
@@ -87,7 +143,8 @@ function bignum2string(value)
 	local value = tonumber(value)
 	if type(value) == 'string' then 
 		return 
-	end	
+    end	
+    --每个装备的评分
     if value < 10000 then
         return math.tointeger(value) or ('%.2f'):format(value)
 	elseif value < 100000000 then
@@ -166,31 +223,34 @@ category = '存档']]
                 end	
                 --装备评分 装备评分公式=100*等级*（主要属性波动百分比）+100*附加属性数量*（0.6+装备等级*0.4）*特殊属性加成b（查看工作表“品质”）
                 local pf = com_func['装备评分'][1] * data.lv * main_attr_per/100 + com_func['装备评分'][2]*attr_num*(com_func['特殊属性百分比'][1] + data.lv*com_func['特殊属性百分比'][1])*color_tab[5]
+                pf = string.format('%.f',pf)
                 lni_str = lni_str .. "pf = "..pf..""..'\n'
                 --地图等级需求 '（（装备等级-1）*6+（装备品质-1）*3'
                 local need_map_level = (data.lv-1)*com_func['地图等级需求'][1] + (color_tab[1]-1)*com_func['地图等级需求'][2]
+                
                 lni_str = lni_str .. "need_map_level = "..need_map_level..""..'\n'
 
                 --生成tip
                 lni_str = lni_str .. 'tip = [['..'\n'
-                lni_str = lni_str .. '装备评分：'..pf..'\n'
+                lni_str = lni_str .. '|cffffe799评分：|r'..pf..'\n'
                 lni_str = lni_str .. '%map_level_tip%'..'\n'
-                lni_str = lni_str .. '主要属性：'..'\n'
+                lni_str = lni_str .. '|cffffe799属性：|r'..'\n'
                 for i,tab in ipairs(main_attr_tab)do
-                    lni_str = lni_str  .."+"..bignum2string(tab[2])..' '.. tab[1] ..'\n'
+                    lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..' |r'.. tab[1] ..'\n'
                 end
                 if #item > 0 then 
-                    lni_str = lni_str .. '附加属性：'..'\n'
+                    lni_str = lni_str .. ''
+                    -- lni_str = lni_str .. '\n|cffffe799额外属性：|r'..'\n'
                 end
                 for i,tab in ipairs(item) do    
                     local per_str = finds(base_attr,tab[1])  and '' or '%'
-                    if tab[1] == '攻击间隔' then 
-                        lni_str = lni_str  ..""..bignum2string(tab[2])..per_str..' '.. tab[1] ..'\n'
+                    if tonumber(tab[2]) < 0 then 
+                        lni_str = lni_str  .."|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
                     else     
-                        lni_str = lni_str  .."+"..bignum2string(tab[2])..per_str..' '.. tab[1] ..'\n'
+                        lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
                     end    
                 end
-                lni_str = lni_str .. '点击进行穿戴，按Tab查看穿戴效果'..'\n'
+                lni_str = lni_str .. '\n|cff00ff00点击进行穿戴存档|cffffff00（只存档穿戴后的装备）|cff00ff00，按Tab查看效果'..'\n'
                 lni_str = lni_str .. ']]'..'\n'
 
                 --合并属性条

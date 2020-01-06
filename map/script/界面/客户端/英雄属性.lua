@@ -34,7 +34,8 @@ class.hero_info_panel = extends(class.panel){
             function btn_it:on_button_mouse_enter()  
                 local info = panel.items[btn_name[i]]
                 if info then 
-                    self:tooltip(info.title,info:get_tip(),0,400,84,10)
+                    local tip = string.sub(info.tip,1,-112)
+                    self:tooltip(info.title,tip,0,400,84,10)
                 end
             end   
         end 
@@ -142,8 +143,14 @@ class.hero_info_panel = extends(class.panel){
         -- print(it:get_art())
         btn:set_normal_image(it:get_art())
         btn:add_frame(38,-42,1.24,{1,1.38,1})
+
+        local iit = {}
+        iit.title = it.title
+        iit.tip = it:get_tip()
+        iit.pf = it.pf
+
         --设置hover tip 
-        self.items[it.type1] =it
+        self.items[it.type1] =iit
 
         --设置装备总评分
         local all_pf = 0 
@@ -257,7 +264,7 @@ function ac.unit.__index:add_save_item(it)
     end	
     --地图等级限制
     if p:Map_GetMapLevel() < it.need_map_level then 
-        p:sendMsg('地图等级不够,装备属性不生效',5)
+        p:sendMsg('|cffffe799【系统消息】|cffff0000地图等级不够,装备属性不生效',5)
     end  
 
     if not p.save_item_list then 
@@ -303,15 +310,21 @@ ac.wait(100,function()
         -- print(name)
         local mt = ac.skill[name]
         mt{
-            cus_type = '存档物品', 
+            item_type_tip = '', 
             content_tip = '',
             map_level_tip = function(self)
+
                 if not self.owner then 
-                    return '|cff'..ac.color_code['淡黄']..'地图等级需求:'..self.need_map_level .. '|r' 
-                end
+                     return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
+                end  
+
                 local p=self.owner.owner 
-                local color  =  p:Map_GetMapLevel() > self.need_map_level and '绿' or '红'
-                return '|cff'..ac.color_code[color]..'地图等级需求:'..self.need_map_level .. '|r'
+                if p:Map_GetMapLevel() > self.need_map_level then
+                -- local color  =  p:Map_GetMapLevel() > self.need_map_level and '绿' or '红'
+                    return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
+                else 
+                    return '|cff'..ac.color_code['红']..'需求地图等级: '..self.need_map_level .. '|r|cffffff00（可提前穿戴保存）|r'
+                end
             end
         }
         function mt:on_cast_start()

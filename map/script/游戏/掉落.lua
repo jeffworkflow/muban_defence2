@@ -234,18 +234,23 @@ ac.reward = reward
 
 local unit_reward = {
     ['存档物品'] = {
-        { rand = 50,      name = '白'},
-        { rand = 30,      name = '蓝'},
-        { rand = 15,      name = '金'},
-        { rand = 5,      name = '暗金'},
+        { rand = 65,      name = '白'},
+        { rand = 25,      name = '蓝'},
+        { rand = 8,      name = '金'},
+        { rand = 2,      name = '暗金'},
     },
     ['难1'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-    ['难2'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-    ['难3'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-    ['难4'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-    ['难5'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-    ['难6'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-    ['难7'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难2'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
+    ['难3'] =  {{ rand = 1.5, name = {{ rand = 85,   name = '1级物品'},{ rand = 15,   name = '2级物品'}}}},
+    ['难4'] =  {{ rand = 1.5, name = {{ rand = 75,   name = '1级物品'},{ rand = 20,   name = '2级物品'},{ rand = 5,   name = '3级物品'}}}},
+    ['难5'] =  {{ rand = 1.5, name = {{ rand = 65,   name = '1级物品'},{ rand = 25,   name = '2级物品'},{ rand = 10,   name = '3级物品'}}}},
+    ['难6'] =  {{ rand = 1.5, name = {{ rand = 55,   name = '1级物品'},{ rand = 30,   name = '2级物品'},{ rand = 15,   name = '3级物品'}}}},
+    ['难7'] =  {{ rand = 1.5, name = {{ rand = 45,   name = '1级物品'},{ rand = 35,   name = '2级物品'},{ rand = 20,   name = '3级物品'}}}},
+    ['难8'] =  {{ rand = 1.5, name = {{ rand = 30,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 25,   name = '3级物品'},{ rand = 5,   name = '4级物品'}}}},
+    ['难9'] =  {{ rand = 1.5, name = {{ rand = 20,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 30,   name = '3级物品'},{ rand = 10,   name = '4级物品'}}}},
+    ['难10'] =  {{ rand = 1.5, name = {{ rand = 10,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 35,   name = '3级物品'},{ rand = 15,   name = '4级物品'}}}},
+    ['难11'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'}}}},
+
 
     ['洗练石boss1'] = {{rand =100,name = '一号洗练石'}},
     ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
@@ -695,7 +700,8 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         local str = table.concat( ac.attack_boss, " ")
         if finds(str,unit:get_name()) then
             local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
-            fall_save_rate = 80 --测试
+            
+            -- fall_save_rate = 80 --测试
             
             --多次获得
             local cnt = math.floor(3+get_player_count()/2)
