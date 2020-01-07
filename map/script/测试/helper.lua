@@ -866,6 +866,7 @@ function helper:tt()
 	self:add('暴击伤害',1003000)
 	self:add('攻击速度',500)
 	self:add('攻击间隔',-1)
+	self:addGold(300000)
 	self:add_kill_count(10000000)
 	self:add_wood(10000000)
 	self:add_rec_ex(10000000)
@@ -999,6 +1000,12 @@ end
 function helper:gsp()
 	ac.func_give_suipian(self:get_point())
 end
+function helper:fmi(num)
+	local num = tonumber(num) or 1
+	for i=1,num do 
+		ac.fall_move('新手剑',self:get_point())
+	end	
+end	
 --模糊添加技能
 function helper:as(str)
 	if not str or str =='' then 

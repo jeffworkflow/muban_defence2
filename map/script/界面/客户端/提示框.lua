@@ -326,6 +326,7 @@ local tool2 = class.panel:builder
     h = 200,
     level = 5,
     is_show = false,
+    alpha = 0.8,
 
     title = {type = 'text',x = 16,y = 16,font_size = 15,},
     -- off_tip_x = 

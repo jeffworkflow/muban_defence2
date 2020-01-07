@@ -3,10 +3,11 @@ local slk = require 'jass.slk'
 class.hero_info_panel = extends(class.panel){
     create = function ()
         local hero = ac.player.self.hero
-        local panel = class.panel.create('image\\提示框\\BJ.tga',541,123,838,666)
+        local panel = class.panel.create('image\\提示框\\bj2.tga',541,123,838,666)
         panel.__index = class.hero_info_panel 
 
         panel:add_button('',0,0,panel.w,panel.h)
+        panel:set_alpha(0.7)
         -- local title_text = panel:add_text('棋子图鉴',0,0,panel.w,100,25,'center')
         -- title_text:set_color(243,246,4,1)
 

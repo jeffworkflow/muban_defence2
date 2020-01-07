@@ -63,7 +63,7 @@ function mt:on_cast_shot()
         if skill then 
             local key = skill:get_hotkey() 
             local info = {
-                name = '更换 ' .. skill:get_name() .. ' (' .. key .. ')',
+                name = '|cff00ff00更换 |cff'..ac.color_code[skill.color].. clean_color(skill:get_title()) .. ' ( ' .. key.. ' )',
                 key = key:byte(),
                 skill = skill,
             }

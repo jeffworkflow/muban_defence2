@@ -70,7 +70,9 @@ for key,u_name in pairs(ac.kangfu) do
                             if p.kangfu[skl_color]  == max_cnt then 
                                 p:sendMsg('【系统提示】恭喜获得黄阶功法',5)
                                 local name = ac.quality_skill[skl_color][math.random(#ac.quality_skill[skl_color])]
-                                ac.item.create_skill_item(name,unit:get_point())
+                                -- ac.item.create_skill_item(name,unit:get_point())
+                                --掉落运动 
+                                ac.fall_move(name,unit:get_point(),ac.skill_model[ ac.skill[name].color or '黄阶' ],true)
                                 p.kangfu[skl_color] = 0
                             end    
                         
