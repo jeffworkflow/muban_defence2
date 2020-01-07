@@ -219,6 +219,47 @@ rect gg_rct_cg3= null
 rect gg_rct_cgboss4= null
 rect gg_rct_jg1= null
 trigger gg_trg_______u= null
+rect gg_rct_cbg1= null
+rect gg_rct_cbg3= null
+rect gg_rct_cbg2= null
+rect gg_rct_cbg4= null
+rect gg_rct_cbt2= null
+rect gg_rct_cjg1= null
+rect gg_rct_cjg2= null
+rect gg_rct_cjg3= null
+rect gg_rct_cjg4= null
+rect gg_rct_cjg5= null
+rect gg_rct_cjg6= null
+rect gg_rct_jianzhong1= null
+rect gg_rct_jianzhong2= null
+rect gg_rct_jianzhong3= null
+rect gg_rct_jianzhong4= null
+rect gg_rct_bhg1= null
+rect gg_rct_bhg2= null
+rect gg_rct_bhg3= null
+rect gg_rct_bhg4= null
+rect gg_rct_bhg5= null
+rect gg_rct_bhg7= null
+rect gg_rct_bhg6= null
+rect gg_rct_longgong1= null
+rect gg_rct_longgong2= null
+rect gg_rct_longgong3= null
+rect gg_rct_longgong8= null
+rect gg_rct_longgong7= null
+rect gg_rct_longgong6= null
+rect gg_rct_longgong5= null
+rect gg_rct_longgong4= null
+rect gg_rct_zeds1= null
+rect gg_rct_zeds2= null
+rect gg_rct_zeds3= null
+rect gg_rct_zeds4= null
+rect gg_rct_zeds5= null
+rect gg_rct_zeds7= null
+rect gg_rct_zeds6= null
+rect gg_rct_zeds8= null
+rect gg_rct_tupo= null
+rect gg_rct_tupo1= null
+rect gg_rct_tupo2= null
 
 endglobals
 
@@ -1399,7 +1440,7 @@ endfunction
 //***************************************************************************
 function CreateRegions takes nothing returns nothing
     local weathereffect we
-set gg_rct_yingxiong1=Rect(- 11712.0, 25248.0, - 11648.0, 25312.0)
+    set gg_rct_yingxiong1=Rect(- 11712.0, 25248.0, - 11648.0, 25312.0)
     set gg_rct_yingxiong2=Rect(- 11360.0, 25248.0, - 11296.0, 25312.0)
     set gg_rct_yingxiong3=Rect(- 10976.0, 25248.0, - 10912.0, 25312.0)
     set gg_rct_yingxiong4=Rect(- 10656.0, 25248.0, - 10592.0, 25312.0)
@@ -1547,6 +1588,47 @@ set gg_rct_yingxiong1=Rect(- 11712.0, 25248.0, - 11648.0, 25312.0)
     set gg_rct_cg3=Rect(6912.0, 14848.0, 7232.0, 15200.0)
     set gg_rct_cgboss4=Rect(4352.0, 14528.0, 4672.0, 14880.0)
     set gg_rct_jg1=Rect(4224.0, 12256.0, 4832.0, 12800.0)
+    set gg_rct_cbg1=Rect(- 10784.0, 11584.0, - 10720.0, 11648.0)
+    set gg_rct_cbg3=Rect(- 11488.0, 12672.0, - 10048.0, 13408.0)
+    set gg_rct_cbg2=Rect(- 11488.0, 11776.0, - 10048.0, 12512.0)
+    set gg_rct_cbg4=Rect(- 10784.0, 13696.0, - 10720.0, 13760.0)
+    set gg_rct_cbt2=Rect(3264.0, 6464.0, 6080.0, 8768.0)
+    set gg_rct_cjg1=Rect(- 4672.0, 12160.0, - 4608.0, 12224.0)
+    set gg_rct_cjg2=Rect(- 5504.0, 12704.0, - 5120.0, 13056.0)
+    set gg_rct_cjg3=Rect(- 4096.0, 12704.0, - 3712.0, 13056.0)
+    set gg_rct_cjg4=Rect(- 5600.0, 13792.0, - 5216.0, 14144.0)
+    set gg_rct_cjg5=Rect(- 4064.0, 13792.0, - 3680.0, 14144.0)
+    set gg_rct_cjg6=Rect(- 4672.0, 14656.0, - 4608.0, 14720.0)
+    set gg_rct_jianzhong1=Rect(- 10720.0, 5152.0, - 10688.0, 5184.0)
+    set gg_rct_jianzhong2=Rect(- 11776.0, 5760.0, - 11328.0, 6176.0)
+    set gg_rct_jianzhong3=Rect(- 10080.0, 5792.0, - 9632.0, 6208.0)
+    set gg_rct_jianzhong4=Rect(- 10720.0, 7040.0, - 10688.0, 7072.0)
+    set gg_rct_bhg1=Rect(- 5024.0, 4480.0, - 4960.0, 4544.0)
+    set gg_rct_bhg2=Rect(- 5184.0, 5792.0, - 4832.0, 6176.0)
+    set gg_rct_bhg3=Rect(- 3648.0, 6400.0, - 3296.0, 6784.0)
+    set gg_rct_bhg4=Rect(- 5408.0, 6624.0, - 5056.0, 7008.0)
+    set gg_rct_bhg5=Rect(- 4448.0, 7456.0, - 4096.0, 7840.0)
+    set gg_rct_bhg7=Rect(- 5856.0, 7744.0, - 5696.0, 7904.0)
+    set gg_rct_bhg6=Rect(- 4448.0, 6624.0, - 4096.0, 7008.0)
+    set gg_rct_longgong1=Rect(- 11264.0, - 1696.0, - 11136.0, - 1568.0)
+    set gg_rct_longgong2=Rect(- 12448.0, - 1088.0, - 12032.0, - 672.0)
+    set gg_rct_longgong3=Rect(- 12192.0, 320.0, - 11776.0, 768.0)
+    set gg_rct_longgong8=Rect(- 8000.0, - 928.0, - 7648.0, - 512.0)
+    set gg_rct_longgong7=Rect(- 8448.0, 64.0, - 8032.0, 480.0)
+    set gg_rct_longgong6=Rect(- 9312.0, 832.0, - 8896.0, 1312.0)
+    set gg_rct_longgong5=Rect(- 9920.0, - 1280.0, - 9536.0, - 832.0)
+    set gg_rct_longgong4=Rect(- 10688.0, - 320.0, - 10240.0, 128.0)
+    set gg_rct_zeds1=Rect(- 768.0, - 992.0, - 704.0, - 896.0)
+    set gg_rct_zeds2=Rect(- 2304.0, - 1184.0, - 1920.0, - 768.0)
+    set gg_rct_zeds3=Rect(- 3008.0, - 320.0, - 2528.0, 224.0)
+    set gg_rct_zeds4=Rect(- 2112.0, 832.0, - 1696.0, 1312.0)
+    set gg_rct_zeds5=Rect(- 4192.0, - 192.0, - 3680.0, 192.0)
+    set gg_rct_zeds7=Rect(- 4736.0, 800.0, - 4384.0, 1184.0)
+    set gg_rct_zeds6=Rect(- 3584.0, 960.0, - 3200.0, 1312.0)
+    set gg_rct_zeds8=Rect(- 4384.0, - 1824.0, - 4000.0, - 1440.0)
+	set gg_rct_tupo=Rect(10336.0, 18112.0, 10656.0, 18336.0)
+    set gg_rct_tupo1=Rect(10336.0, 18592.0, 10656.0, 18816.0)
+    set gg_rct_tupo2=Rect(9408.0, 17408.0, 11552.0, 19648.0)
 endfunction
 
 //===========================================================================
