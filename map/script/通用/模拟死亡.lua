@@ -116,6 +116,10 @@ end)
 --真正移除，移除模拟死亡
 function unit.__index:real_remove()
     self._last_point = ac.point(jass.GetUnitX(self.handle), jass.GetUnitY(self.handle))
+    
+    if self:has_restriction '隐藏' then 
+        self:remove_restriction '隐藏'
+    end	
     self:removeAllEffects()
     --移除单位的所有Buff
     if self.buffs then

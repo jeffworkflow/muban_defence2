@@ -112,7 +112,7 @@ function mt:on_cast_start()
                     local cnt = ac.get_reward_name(temp['天谕'])
                     cnt = tonumber(cnt)
                     cnt = (10 - item.level) > cnt and cnt or (10 - item.level)
-                    print('提升了等级：',cnt)
+                    -- print('提升了等级：',cnt)
                     for i = 1,cnt do
                         up_item(item,player)
                     end    
@@ -125,9 +125,9 @@ function mt:on_cast_start()
                     end    
                 end    
                 if self._count > 0 then  
+                    ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调
                     self:on_cast_start()
                     self:add_item_count(-1)
-                    ac.game:event_notify('触发锻造事件',hero,item) --发布事件回调
                 end  
             else
                 -- print('取消更换技能')

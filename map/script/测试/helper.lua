@@ -689,8 +689,16 @@ function helper:ads_u(unit,str)
 	end	
 end
 --增加 属性
-function helper:add(str,cnt)
-	print(self:add(str,tonumber(cnt)))
+function helper:add(key,cnt)
+	local str = table.concat( ac.player_attr,' ' )
+	if finds(str,key) then 
+		self.owner:add(key,tonumber(cnt))
+		print('玩家属性：',key,self.owner:get(key))
+	else 
+		self:add(key,tonumber(cnt))
+		print('英雄属性：',key,self:get(key))
+	end	
+
 end
 --读取 属性
 function helper:get(key)
@@ -1021,14 +1029,16 @@ function helper:as(str)
 end
 
 --模糊添加物品
-function helper:ai(str)
+function helper:ai(str,cnt)
 	if not str or str =='' then 
 		return 
 	end	
 	
 	for name,data in pairs(ac.table.ItemData) do 
 		if finds(name,str) and data.category ~='商品' then 
-			self:add_item(name,true)
+			for i=1,tonumber(cnt) or 1 do 
+				self:add_item(name,true)
+			end	
 		end	
 	end	
 end

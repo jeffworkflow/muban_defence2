@@ -1,17 +1,14 @@
 
-require '物品.商店.扭蛋.初级扭蛋'
-require '物品.商店.扭蛋.初级扭蛋(十连抽)'
-require '物品.商店.扭蛋.初级扭蛋(百连抽)'
+require '物品.商店.扭蛋.扭蛋'
+require '物品.商店.扭蛋.扭蛋(十连抽)'
+require '物品.商店.扭蛋.扭蛋(百连抽)'
 
-require '物品.商店.扭蛋.高级扭蛋'
-require '物品.商店.扭蛋.高级扭蛋(十连抽)'
-require '物品.商店.扭蛋.高级扭蛋(百连抽)'
+require '物品.商店.扭蛋.超级扭蛋'
+require '物品.商店.扭蛋.超级扭蛋(十连抽)'
+require '物品.商店.扭蛋.超级扭蛋(百连抽)'
 
 
-require '物品.商店.扭蛋.木头翻倍'
-require '物品.商店.扭蛋.杀敌数翻倍'
-require '物品.商店.扭蛋.魔丸翻倍'
-require '物品.商店.扭蛋.全部翻倍'
+require '物品.商店.扭蛋.翻倍'
 
 --扭蛋发送文本相关特殊处理
 local player = require 'ac.player'

@@ -58,16 +58,16 @@ local shop_item_detail = {
 
 for name,data in pairs(ac.table.ItemData) do 
     if data.category == '商品' then 
-        if data.coin == '金币' then 
+        if data.coin == '金币' and data.coin_val ~= 0 then 
             data.gold = data.coin_val
         end
-        if data.coin == '木头' then 
+        if data.coin == '木头' and data.coin_val ~= 0  then 
             data.wood = data.coin_val
         end
-        if data.coin == '杀敌数' then 
+        if data.coin == '杀敌数' and data.coin_val ~= 0  then 
             data.kill_count = data.coin_val
         end
-        if data.coin == '魔丸' then 
+        if data.coin == '魔丸' and data.coin_val ~= 0  then 
             data.rec_ex = data.coin_val
         end
 

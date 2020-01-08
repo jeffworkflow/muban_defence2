@@ -1,5 +1,17 @@
 
-local function table_copy(tbl) local res = {} if tbl then for k, v in pairs(tbl) do res[k] = v end end return res end
+local function table_copy(tbl) 
+    local res = {} 
+    if tbl then 
+        for k, v in pairs(tbl) do 
+            if type(v) == 'table' then
+                res[k] = table_copy(v)
+            else
+                res[k] = v
+            end
+        end 
+    end 
+    return res 
+end
 
 local function item_self_skill(item,unit,time)
     local timer = ac.wait((time or 100) * 1000,function (timer)
@@ -239,6 +251,24 @@ end
 ac.fall_move = fall_move
 
 local unit_reward = {
+    ['进攻怪'] =  {
+        { rand = 2.5,      name = {
+                { rand = 75, name = '随机白装'},
+                { rand = 20, name = '随机蓝装'},
+                { rand = 4, name = '随机金装'},
+                { rand = 1, name = '随机红装'},
+            }
+        },
+        { rand = 0.01,      name = '吞噬丹'},
+        { rand = 0.01,      name = '随机技能'}
+    },
+    
+    ['一棒男'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['戴瑟提克'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['格里弗'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['克尔苏加德'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['虚空诺亚'] =  {{ rand = 25,      name = '吞噬丹'}},
+
     ['存档物品'] = {
         { rand = 65,      name = '白'},
         { rand = 25,      name = '蓝'},
@@ -257,89 +287,17 @@ local unit_reward = {
     ['难10'] =  {{ rand = 1.5, name = {{ rand = 10,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 35,   name = '3级物品'},{ rand = 15,   name = '4级物品'}}}},
     ['难11'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'}}}},
 
-
-    ['洗练石boss1'] = {{rand =100,name = '一号洗练石'}},
-    ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
-    ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
-    ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
-
-    ['一棒男'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['戴瑟提克'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['格里弗'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['克尔苏加德'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['虚空诺亚'] =  {{ rand = 25,      name = '吞噬丹'}},
-
-    ['奶牛'] = {
-        {rand =0.3,name = '初级扭蛋券(十连抽)'},
-        {rand =0.3,name = '初级扭蛋券(百连抽)'},
-        {rand =0.3,name = '高级扭蛋券'},
-        {rand =0.3,name = '高级扭蛋券(十连抽)'},
-        {rand =0.3,name = '高级扭蛋券(百连抽)'},
-    },
-
-    
-    ['进攻怪'] =  {
-        -- { rand = 97.5,         name = '无'},
-        { rand = 2.5,      name = {
-                { rand = 75, name = '随机白装'},
-                { rand = 20, name = '随机蓝装'},
-                { rand = 4, name = '随机金装'},
-                { rand = 1, name = '随机红装'},
-            }
-        },
-        { rand = 0.01,      name = '吞噬丹'},
-        { rand = 0.04,      name = '点金石'},
-        { rand = 0.01,      name = '随机技能'}
-    },
-    ['随机物品'] =  {
-        { rand = 100,      name = {
-                { rand = 80, name = '随机白装'},
-                { rand = 16, name = '随机蓝装'},
-                { rand = 3.3, name = '随机金装'},
-                { rand = 0.7, name = '随机红装'},
-            }
-        }
-    },
-
-    ['商店随机技能'] =  {
-        { rand = 100,      name = '随机技能'}
-    },
-    ['商店随机物品'] =  {
-        { rand = 100,      name = {
-                { rand = 80, name = '白'},
-                { rand = 16, name = '蓝'},
-                { rand = 3.3, name = '金'},
-                { rand = 0.7, name = '红'},
-            }
-        }
-    },
-    ['随机神符'] =  {
-        {    rand = 11, name = '无敌' },
-        {    rand = 11, name = '治疗',},
-        {    rand = 11, name = '暴击',},
-        {    rand = 11, name = '攻击',},
-        {    rand = 11, name = '法术',},
-        {    rand = 11, name = '减甲',},
-        {    rand = 11, name = '中毒',},
-        {    rand = 11, name = '沉默',},
-        {    rand = 12, name = '定身',},
-    },
-    ['藏宝图'] =  {
-        -- 75	什么事情都没有发生，挖宝经验（可存档）+1，当前挖宝经验XX		
-        -- 10	随机物品，全随机，不分品质		
-        -- 10	随机技能		
-        -- 0.75	杀怪加力量+5	攻击加力量+15	每秒加力量+25
-        -- 0.75	杀怪加敏捷+5	攻击加敏捷+15	每秒加敏捷+25
-        -- 0.75	杀怪加智力+5	攻击加智力+15	每秒加智力+52
-        -- 0.75	杀怪加攻击+5	每秒加攻击+50	
-        -- 0.75	每秒加护甲0.25		
-        -- 0.5	宠物经验书（小）		
-        -- 0.5	宠物经验书（大）		
-        -- 0.25	挖宝达人：500万全属性，物品获取率+50%		
-
+    ['藏宝阁小弟'] = {{rand =1.5,name = '藏宝图'}},
+    ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
+    ['藏宝图'] =  {	
         {    rand = 51, name = '无' },
         {    rand = 10, name = '随机物品',},
-        {    rand = 15, name = '随机技能',},
+        {    rand = 15, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+                { rand = 55, name = '黄阶'},
+                { rand = 30, name = '玄阶'},
+                { rand = 12, name = '地阶'},
+                { rand = 3, name = '天阶'},
+        }}, 
         {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
         {    rand = 1.5, name = '杀怪加敏捷+400 攻击加敏捷+1200 每秒加敏捷+2000',},
         {    rand = 1.5, name = '杀怪加智力+400 攻击加智力+1200 每秒加智力+2000',},
@@ -347,39 +305,149 @@ local unit_reward = {
         {    rand = 1.5, name = '杀怪加攻击+600 每秒加攻击+3000',},
         {    rand = 1.5, name = '每秒加护甲+5',},
         {    rand = 1.5, name = '攻击减甲+30',},
-        {    rand = 1, name = '宠物经验书（小）',},
-        {    rand = 1, name = '宠物经验书（大）',},
+        {    rand = 1, name = '宠物经验书(小)*1',},
+        {    rand = 1, name = '宠物经验书(大)*1',},
         {    rand = 2, name = '魔丸',},
         {    rand = 2, name = '木头',},
         {    rand = 1.5, name = '挖宝达人',}, --500万全属性，物品获取率+50%	
-        {    rand = 0.5, name = '格里芬',}, --lv1
-        {    rand = 0.5, name = '黑暗项链',}, --lv2
-        {    rand = 0.5, name = '最强生物心脏',}, --lv1
-        {    rand = 0.5, name = '白胡子的大刀',}, --lv2
+        {    rand = 0.5, name = '格里芬*1',}, --lv1
+        {    rand = 0.5, name = '黑暗项链*1',}, --lv2
+        {    rand = 0.5, name = '最强生物心脏*1',}, --lv1
+        {    rand = 0.5, name = '白胡子的大刀*1',}, --lv2
         {    rand = 1, name = '碎片幼儿园',}, --lv2
         {    rand = 1, name = 'ONE_PIECE',}, --lv2
         {    rand = 1, name = '法老的遗产',}, --lv2
-
         {    rand = 1, name = '家里有矿',}, --超级彩蛋
         
     },
-    ['抽奖券'] =  {
-        {    rand = 70,  name ={
-                { rand = 0.5, name = '欧皇达人'},
-                { rand = 99.5, name = '无'}, 
-            }
-        },
-        {    rand = 5, name = '金币' },
-        {    rand = 5, name = '经验',},
-        {    rand = 10, name = '随机物品',},
-        {    rand = 4, name = '随机技能',},
-        {    rand = 1, name = '召唤boss',},
-        {    rand = 1, name = '召唤练功怪',},
-        {    rand = 1, name = '吞噬丹',},
-        {    rand = 1, name = '宠物经验书',},
-        {    rand = 2, name = '随机恶魔果实',},
+    ['藏经阁小弟'] = {{rand =1.5,name = '羊皮纸'},{rand =0.1,name = '无字天书'}},
+    ['藏经阁少阁主'] = {{rand =90,name = '羊皮纸'},{rand =10,name = '无字天书'}},
+    ['羊皮纸'] =  {	
+        {    rand = 51, name = '无' },
+        {    rand = 20, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+                { rand = 55, name = '黄阶'},
+                { rand = 30, name = '玄阶'},
+                { rand = 12, name = '地阶'},
+                { rand = 3, name = '天阶'},
+        }}, 
+        {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
+        {    rand = 1.5, name = '杀怪加敏捷+400 攻击加敏捷+1200 每秒加敏捷+2000',},
+        {    rand = 1.5, name = '杀怪加智力+400 攻击加智力+1200 每秒加智力+2000',},
+        {    rand = 1.5, name = '杀怪加全属性+200 攻击加全属性+600 每秒加全属性+1000',},
+        {    rand = 1.5, name = '杀怪加攻击+600 每秒加攻击+3000',},
+        {    rand = 1.5, name = '每秒加护甲+5',},
+        {    rand = 1.5, name = '攻击减甲+30',},
+        {    rand = 1, name = '宠物经验书(小)*1',},
+        {    rand = 1, name = '宠物经验书(大)*1',},
+        {    rand = 2, name = '魔丸',},
+        {    rand = 2, name = '木头',},
+
+        {    rand = 10, name = '功法升级书*1',}, --lv2
+        {    rand = 1, name = '功法连升书*1',}, --lv2
+        {    rand = 0.25, name = '地魂融血丹*1',},
+        {    rand = 0.25, name = '天魂融血丹*1',},
+        {    rand = 0.25, name = '三眼赤痕*1',}, 
+        {    rand = 0.25, name = '火龙气息*1',},
+
+        {    rand = 2, name = '百佛图',}, --lv2
+        {    rand = 1.5, name = '洗髓经',}, --超级彩蛋
+        {    rand = 1, name = '易筋经',}, --超级彩蛋
+        {    rand = 0.25, name = '鉴宝大师',}, --超级彩蛋
+        
     },
-    ['初级扭蛋'] = {
+    ['无字天书'] =  {	
+        {    rand = 51, name = '无' },
+        {    rand = 20, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+                { rand = 55, name = '黄阶'},
+                { rand = 30, name = '玄阶'},
+                { rand = 12, name = '地阶'},
+                { rand = 3, name = '天阶'},
+        }}, 
+        {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
+        {    rand = 1.5, name = '杀怪加敏捷+400 攻击加敏捷+1200 每秒加敏捷+2000',},
+        {    rand = 1.5, name = '杀怪加智力+400 攻击加智力+1200 每秒加智力+2000',},
+        {    rand = 1.5, name = '杀怪加全属性+200 攻击加全属性+600 每秒加全属性+1000',},
+        {    rand = 1.5, name = '杀怪加攻击+600 每秒加攻击+3000',},
+        {    rand = 1.5, name = '每秒加护甲+5',},
+        {    rand = 1.5, name = '攻击减甲+30',},
+        {    rand = 1, name = '宠物经验书(小)*1',},
+        {    rand = 1, name = '宠物经验书(大)*1',},
+        {    rand = 2, name = '魔丸',},
+        {    rand = 2, name = '木头',},
+
+        {    rand = 10, name = '功法升级书*1',}, --lv2
+        {    rand = 1, name = '功法连升书*1',}, --lv2
+        {    rand = 0.25, name = '地魂融血丹*1',},
+        {    rand = 0.25, name = '天魂融血丹*1',},
+        {    rand = 0.25, name = '三眼赤痕*1',}, 
+        {    rand = 0.25, name = '火龙气息*1',},
+
+        {    rand = 2, name = '百佛图',}, --lv2
+        {    rand = 1.5, name = '洗髓经',}, --超级彩蛋
+        {    rand = 1, name = '易筋经',}, --超级彩蛋
+        {    rand = 0.25, name = '鉴宝大师',}, --超级彩蛋
+        
+    },
+    
+    ['剑冢小弟'] = {{rand =1.5,name = '强化石*1'},{rand =0.1,name = '天谕*1'}},
+    ['剑魔'] = {{rand =90,name = '强化石*1'},{rand =10,name = '天谕*1'}},
+    ['装备升级'] =  {	
+        {    rand = 50.5, name = '真·复制装备',},
+        {    rand = 51, name = '无' },
+        {    rand = 10, name = '随机物品',},
+        {    rand = 0.5, name = '吞噬丹*1',},
+        {    rand = 0.5, name = '复制装备',},
+    },
+    ['百花宫宫女'] = {{rand =1.5,name = '一颗神奇的种子*1'}},
+    ['苏若颜'] = {{rand =100,name = '一颗神奇的种子*1'}},
+    ['一颗神奇的种子'] =  {	
+        {    rand = 51, name = '无' },
+        {    rand = 10, name = '随机物品',},
+        {    rand = 20, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+                { rand = 55, name = '黄阶'},
+                { rand = 30, name = '玄阶'},
+                { rand = 12, name = '地阶'},
+                { rand = 3, name = '天阶'},
+        }}, 
+        {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
+        {    rand = 1.5, name = '杀怪加敏捷+400 攻击加敏捷+1200 每秒加敏捷+2000',},
+        {    rand = 1.5, name = '杀怪加智力+400 攻击加智力+1200 每秒加智力+2000',},
+        {    rand = 1.5, name = '杀怪加全属性+200 攻击加全属性+600 每秒加全属性+1000',},
+        {    rand = 1.5, name = '杀怪加攻击+600 每秒加攻击+3000',},
+        {    rand = 1.5, name = '每秒加护甲+5',},
+        {    rand = 1.5, name = '攻击减甲+30',},
+        {    rand = 1, name = '宠物经验书(小)*1',},
+        {    rand = 1, name = '宠物经验书(大)*1',},
+        {    rand = 2, name = '魔丸',},
+        {    rand = 2, name = '木头',},
+
+        {    rand = 10, name = '功法升级书*1',}, --lv2
+        {    rand = 1, name = '功法连升书*1',}, --lv2
+        {    rand = 0.25, name = '地魂融血丹*1',},
+        {    rand = 0.25, name = '天魂融血丹*1',},
+        {    rand = 0.25, name = '三眼赤痕*1',}, 
+        {    rand = 0.25, name = '火龙气息*1',},
+
+        {    rand = 2, name = '我爱养花种树',}, --lv2
+        {    rand = 1.5, name = '果实累累',}, --超级彩蛋
+        {    rand = 1, name = '辛勤的园丁',}, --超级彩蛋
+        {    rand = 0.25, name = '冷月葬花魂',}, --超级彩蛋
+        {    rand = 0.25, name = '园艺大师',}, --超级彩蛋
+        
+    },
+    
+    ['龙宫守卫'] = {{rand =1.5,name = '扭蛋券(十连抽)*1'},{rand =0.1,name = '超级扭蛋券(十连抽)*1'}},
+    ['哪吒'] = {{rand =90,name = '扭蛋券(十连抽)*1'},{rand =10,name = '超级扭蛋券(十连抽)*1'}},
+
+    ['扭蛋券'] =  {	
+        {    rand = 50.5, name = '多抽百次',},
+        {    rand = 51, name = '无' },
+        {    rand = 0.5, name = '吞噬丹*1',},
+        {    rand = 0.5, name = '多抽十次',},
+        {    rand = 10, name = '多抽一次',},
+
+    },
+    ['扭蛋'] = {
         {    rand = 31.341, name = '空蛋' },
 
         {    rand = 4, name = '魔丸',},
@@ -460,7 +528,8 @@ local unit_reward = {
         {    rand = 0.02, name = '倒霉蛋',},--木头+5555，魔丸+5555，杀敌数+5555
         {    rand = 0.1, name = '矮人的火枪',},--木头+5555，魔丸+5555，杀敌数+5555
     },
-    ['高级扭蛋'] = {
+
+    ['超级扭蛋'] = {
         {    rand = 29.481, name = '空蛋' },
 
         {    rand = 2.5, name = '魔丸',},
@@ -547,6 +616,121 @@ local unit_reward = {
         {    rand = 0.02, name = '游戏王',},--木头+5555，魔丸+5555，杀敌数+5555
         {    rand = 0.1, name = '龙族血统',},--木头+5555，魔丸+5555，杀敌数+5555
     },
+    
+    ['城堡守卫'] = {{rand =1.5,name = '黑暗骰子*1'}},
+    ['牛头马面'] = {{rand =100,name = '黑暗骰子*1'}},
+
+    ['黑暗骰子'] =  {	
+        {    rand = 51, name = '无' },
+        {    rand = 10, name = '随机物品',},
+        {    rand = 20, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+                { rand = 55, name = '黄阶'},
+                { rand = 30, name = '玄阶'},
+                { rand = 12, name = '地阶'},
+                { rand = 3, name = '天阶'},
+        }}, 
+        {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
+        {    rand = 1.5, name = '杀怪加敏捷+400 攻击加敏捷+1200 每秒加敏捷+2000',},
+        {    rand = 1.5, name = '杀怪加智力+400 攻击加智力+1200 每秒加智力+2000',},
+        {    rand = 1.5, name = '杀怪加全属性+200 攻击加全属性+600 每秒加全属性+1000',},
+        {    rand = 1.5, name = '杀怪加攻击+600 每秒加攻击+3000',},
+        {    rand = 1.5, name = '每秒加护甲+5',},
+        {    rand = 1.5, name = '攻击减甲+30',},
+        {    rand = 1, name = '宠物经验书(小)*1',},
+        {    rand = 1, name = '宠物经验书(大)*1',},
+        {    rand = 2, name = '魔丸',},
+        {    rand = 2, name = '木头',},
+
+        {    rand = 0.5, name = '杀敌数保本卡*1' },
+        {    rand = 0.5, name = '木头保本卡*1' },
+        {    rand = 0.5, name = '魔丸保本卡*1' },
+        {    rand = 0.5, name = '全属性保本卡*1' },
+        {    rand = 0.5, name = '杀敌数翻倍卡*1' },
+        {    rand = 0.5, name = '木头翻倍卡*1' },
+        {    rand = 0.5, name = '魔丸翻倍卡*1' },
+        {    rand = 0.5, name = '全属性翻倍卡*1' },
+        {    rand = 0.5, name = '炸弹卡*1' },
+        {    rand = 0.5, name = '大炸弹卡*1' },
+        {    rand = 0.5, name = '猜拳卡*1' },
+        {    rand = 0.5, name = 'gg卡*1' },
+
+
+        {    rand = 2, name = '一笔巨款',}, --lv2
+        {    rand = 1.5, name = '玄远之学',}, --超级彩蛋
+        {    rand = 0.25, name = '三冬暖',}, --超级彩蛋
+        {    rand = 0.25, name = '源不断的本钱',}, --超级彩蛋
+
+    },
+    
+
+
+
+
+    ------旧概率------------------
+    ['洗练石boss1'] = {{rand =100,name = '一号洗练石'}},
+    ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
+    ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
+    ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
+
+
+    ['奶牛'] = {
+        {rand =0.3,name = '扭蛋券(十连抽)'},
+        {rand =0.3,name = '扭蛋券(百连抽)'},
+        {rand =0.3,name = '超级扭蛋券'},
+        {rand =0.3,name = '超级扭蛋券(十连抽)'},
+        {rand =0.3,name = '超级扭蛋券(百连抽)'},
+    },
+
+    ['随机物品'] =  {
+        { rand = 100,      name = {
+                { rand = 80, name = '随机白装'},
+                { rand = 16, name = '随机蓝装'},
+                { rand = 3.3, name = '随机金装'},
+                { rand = 0.7, name = '随机红装'},
+            }
+        }
+    },
+
+    ['商店随机技能'] =  {
+        { rand = 100,      name = '随机技能'}
+    },
+    ['商店随机物品'] =  {
+        { rand = 100,      name = {
+                { rand = 80, name = '白'},
+                { rand = 16, name = '蓝'},
+                { rand = 3.3, name = '金'},
+                { rand = 0.7, name = '红'},
+            }
+        }
+    },
+    ['随机神符'] =  {
+        {    rand = 11, name = '无敌' },
+        {    rand = 11, name = '治疗',},
+        {    rand = 11, name = '暴击',},
+        {    rand = 11, name = '攻击',},
+        {    rand = 11, name = '法术',},
+        {    rand = 11, name = '减甲',},
+        {    rand = 11, name = '中毒',},
+        {    rand = 11, name = '沉默',},
+        {    rand = 12, name = '定身',},
+    },
+    ['抽奖券'] =  {
+        {    rand = 70,  name ={
+                { rand = 0.5, name = '欧皇达人'},
+                { rand = 99.5, name = '无'}, 
+            }
+        },
+        {    rand = 5, name = '金币' },
+        {    rand = 5, name = '经验',},
+        {    rand = 10, name = '随机物品',},
+        {    rand = 4, name = '随机技能',},
+        {    rand = 1, name = '召唤boss',},
+        {    rand = 1, name = '召唤练功怪',},
+        {    rand = 1, name = '吞噬丹',},
+        {    rand = 1, name = '宠物经验书',},
+        {    rand = 2, name = '随机恶魔果实',},
+    },
+    
 
     ['炼化异火'] =  {
         {    rand = 20, name = '凡' },
@@ -585,8 +769,6 @@ local unit_reward = {
         {rand =50,name = '无尽火域碎片*8'},
     },
 
-    ['强盗领主'] = {{rand =100,name = '藏宝图'}},
-    ['强盗'] = {{rand =3,name = '藏宝图'}},
     
     ['红发'] = {{rand =100,name = '格里芬'}},
     ['黑胡子'] = {{rand =100,name = '黑暗项链'}},
@@ -683,7 +865,6 @@ local function hero_kill_unit(tab,player,hero,unit,fall_rate,is_on_hero)
     end 
     return name 
 end 
-
 --死亡掉落
 ac.game:event '单位-死亡' (function (_,unit,killer)  
     if unit:is_hero() then 
@@ -722,11 +903,32 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local tab = unit_reward[unit:get_name()]
     if not tab then 
         return 
+    end      
+    local tab = table_copy(tab)
+    --概率提升
+    for i,data in pairs(tab) do 
+        if data.name == '藏宝图' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('藏宝图掉落概率') or 0)/100)
+            print('藏宝图掉落概率：',tab[i].rand)
+        elseif data.name == '羊皮纸' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('羊皮纸掉落概率') or 0)/100)
+        elseif data.name == '无字天书' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('无字天书掉落概率') or 0)/100)
+        elseif data.name == '强化石' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('强化石掉落概率') or 0)/100)
+        elseif data.name == '天谕' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('天谕掉落概率') or 0)/100)
+        elseif data.name == '一颗神奇的种子' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('一颗神奇的种子掉落概率') or 0)/100)
+        elseif data.name == '扭蛋券(十连抽)' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('扭蛋券(十连抽)掉落概率') or 0)/100)
+        elseif data.name == '超级扭蛋券(十连抽)' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('超级扭蛋券(十连抽)掉落概率') or 0)/100)
+        elseif data.name == '黑暗骰子' then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('黑暗骰子掉落概率') or 0)/100)
+        end 
     end    
-    --藏宝图概率提升
-    if unit:get_name() == '强盗' then 
-        tab[1].rand  = 2 * (1 + (player.up_fall_wabao or 0)/100)
-    end    
+
     local name = get_reward_name(tab) 
     if name then 
         if finds(name,'*') then 

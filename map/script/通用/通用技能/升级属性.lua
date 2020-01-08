@@ -9,13 +9,14 @@ ac.game:event '技能-升级' (function (_,hero,self)
     -- print(hero.name,self.item_type,self.item_type)
 	if not hero or self.item_type =='消耗品' then 
 		return
-	end	
+    end	
+    local p = hero:get_owner()
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
     local name = self.name
-    if self.level == 1 then 
-        self.old_status =  self.old_status or {} 
+    -- if self.level == 1 then 
+    self.old_status =  self.old_status or {} 
         --self.old_status or
-    end
+    -- end
     -- print_r(self.old_status)
     -- print('老值:',self.old_status)
     -- self.old_status = self.old_status or {}
@@ -45,7 +46,36 @@ ac.game:event '技能-升级' (function (_,hero,self)
         self.old_status[key] = value
 
         -- self:set('old_status',self.old_status)
-	end
+    end
+    
+	--玩家的属性表
+    for i,key in ipairs(ac.player_attr) do 
+        -- print('玩家属性',key,self[key])
+        --处理基础值
+        local value = self[key]
+        local old_value = self.old_status[key]
+        if old_value then 
+            p:add(key,-old_value)
+		end 
+        if value then 
+            p:add(key,value)
+        end 
+        self.old_status[key] = value
+        --处理%值
+		key = key..'%'
+		value = self[key]
+        old_value = self.old_status[key]
+		if old_value then 
+            p:add(key,-old_value)
+		end 
+		if value then 
+            p:add(key,value)
+        end 
+        self.old_status[key] = value
+
+        -- self:set('old_status',self.old_status)
+    end
+    
 end)
 
 --神符类的技能获取时会自动失去，所以要排除在外，属性才能加上
@@ -59,6 +89,7 @@ ac.game:event '技能-失去' (function (_,hero,self)
 	if not hero  or self.item_type =='消耗品' or self.item_type =='神符'    then 
 		return
     end	
+    local p = hero:get_owner()
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 
@@ -74,7 +105,23 @@ ac.game:event '技能-失去' (function (_,hero,self)
 		if value then 
             hero:add_tran(key,-value)
         end 
-	end
+    end
+    
+	--玩家的属性表
+    for i,key in ipairs(ac.player_attr) do 
+        --处理基础值
+        local value = self[key]
+		if value then 
+            p:add(key,value)
+        end 
+       
+        --处理%值
+		key = key..'%'
+		value = self[key]
+		if value then 
+            p:add(key,value)
+        end 
+    end
 end)    
 
 -- local mt = ac.skill['bj']

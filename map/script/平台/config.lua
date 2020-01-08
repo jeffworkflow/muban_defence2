@@ -89,6 +89,11 @@ local cus_key = {
     {'cdyf','存档衣服'},
     {'cdtk','存档头盔'},
     {'cdst','存档手套'},
+
+    {'wbjf','挖宝积分'},
+    {'cntwb','挖宝'},
+    {'today_cntwb','今日挖宝'},
+    {'today_cntwbrank','今日挖宝排名'},
 }
 
 --11存档信息

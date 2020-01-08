@@ -103,6 +103,7 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
         end
     end
     ac.game:event_notify('技能-插入魔法书后',hero,book_skill,skl)
+    return skill
 end)
 
 

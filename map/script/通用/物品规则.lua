@@ -274,6 +274,8 @@
             it.player_buy_cnt[player] = it.player_buy_cnt[player]  + 1   
     
             if has_raffle then 
+                --卖家，买家，购买物品，抵用券
+                ac.game:event_notify('单位-触发抵用券',seller,u,it,u_raffle)
                 u_raffle:add_item_count(-need_cnt)
             else
                 player:addGold( - golds,u)

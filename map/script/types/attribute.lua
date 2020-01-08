@@ -171,6 +171,7 @@ local attribute = {
 	
 }
 ac.unit.attribute = attribute
+ac.unit.attribute_str = table.concat( attribute, " ")
 local set = {}
 local get = {}
 local on_add = {}

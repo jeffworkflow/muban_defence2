@@ -463,7 +463,7 @@ function mt:item_init_skill()
 	-- end
 	-- 用 item.not_dis = true 替换
 	japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, self.cool or 0)
-	-- self.is_skill_init = true
+	self.is_skill_init = true
 end
 function mt:get_item_lni_tip(str)
 	local item_tip = str or (self.lni_data and self.lni_data.tip ) or ''
@@ -681,18 +681,9 @@ function mt:on_use_state()
 
 	--单位的属性表
 	local data = ac.unit.attribute
-
 	local state = {}
 	for key in sortpairs(data) do 
-		local value 
-		if self.random then 
-			value = self.randm_data[key]
-			if value then 
-				value = math.random(value[1],value[2])
-			end 
-		else 
-			value = self[key]
-		end 
+		local value = self[key]
 		if value then 
 			table.insert(state,{name = key,value = value})
 		end 
@@ -706,26 +697,37 @@ function mt:on_use_state()
 		return a.name < b.name
 	end) 
 
-	local is_show_text = self:get_type() == '神符'
 	for index,value in ipairs(state) do 
-		if is_show_text then 
-			ac.texttag
-			{
-				string = value.name .. ' +' .. value.value,
-				size = 10,
-				position = hero:get_point(),
-				speed = 86,
-				red = (self.color[1] / 255 * 100),
-				green = (self.color[2] / 255 * 100),
-				blue = (self.color[3] / 255 * 100),
-				player = hero:get_owner()
-			}
-		end
 		if self.item_type == '消耗品' or self.item_type == '神符' then
-			-- print('使用物品,增加属性：',name,value.name,value.value)
 			hero:add_tran(value.name,value.value)
 		end	
 	end 
+	
+	--单位的属性表
+	local data = ac.player_attr
+	local state = {}
+	for i,key in ipairs(data) do 
+		local value = self[key]
+		if value then 
+			table.insert(state,{name = key,value = value})
+		end 
+		key = key..'%'
+		value = self[key]
+		if value then 
+			table.insert(state,{name = key,value = value})
+		end 
+	end
+	table.sort(state,function (a,b)
+		return a.name < b.name
+	end) 
+
+	for index,value in ipairs(state) do 
+        -- print('玩家属性',value.name,value.value)
+		if self.item_type == '消耗品' or self.item_type == '神符' then
+			hero.owner:add(value.name,value.value)
+		end	
+	end 
+
 	self:set_tip(self:get_tip())
 
 end
@@ -936,11 +938,13 @@ function unit.__index:add_item(it,is_fall)
 	it.is_discard_event = false 
 
 	-- print(it.owner,self.handle,it.is_skill_init)
-	-- if not it.is_skill_init then
-	it:item_init_skill()
-	-- else
-	-- 	it:_call_event 'on_add'
-	-- end
+	if not it.is_skill_init then
+		it:item_init_skill()
+	else
+		it:_call_event 'on_add'
+		it:_call_event 'on_upgrade'	
+		-- ac.game:event_notify('技能-升级',self,it) --属性（刷新）
+	end
 			
 	-- it:on_add_state() 
 
@@ -956,19 +960,9 @@ function unit.__index:add_item(it,is_fall)
 			end
 			--设置tip
 			it:set_tip(it:get_tip())
-			--刷新货币
-			-- it:buy_price()
-			-- it:buy_wood()
-			-- it:buy_kill_count()
-			-- it:buy_jifen()
-			-- it:buy_rec_ex()
 		end)
 	end
 	self:event_notify('单位-获得物品后',self, it)
-	-- self:print_item(true)
-	--刷新tip
-	-- it:fresh_tip()
-	-- print(it:get_tip())
 	return it
 end
 --打印单位身上的物品 ，打印全部 或是 当前页

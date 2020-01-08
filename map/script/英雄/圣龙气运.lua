@@ -12,11 +12,79 @@ mt{
     ]],
 }
 mt.skills = {
-    '神魂修炼','古老的铭文','套装熔炼','第二幕',
+    '神魂修炼','古老的铭文','套装熔炼','踢馆',
     '第三幕','第四幕','第五幕','吞噬神丹',
     '神技入体','彩蛋','超级彩蛋',
     --第六幕、扭蛋、赌博
 }
+
+local mt = ac.skill['踢馆']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[caidan.blp]],
+    title = '踢馆',
+    tip = [[
+
+点击查看 |cff00ff00踢馆|r
+    ]],
+}
+mt.skills = {
+    '藏宝阁','藏经阁','剑冢','百花宫'
+}
+
+local mt = ac.skill['藏宝阁']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[caidan.blp]],
+    title = '藏宝阁',
+    tip = [[
+
+点击查看 |cff00ff00藏宝阁|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['藏经阁']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[caidan.blp]],
+    title = '藏经阁',
+    tip = [[
+
+点击查看 |cff00ff00藏经阁|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['剑冢']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[caidan.blp]],
+    title = '剑冢',
+    tip = [[
+
+点击查看 |cff00ff00剑冢|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['百花宫']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[caidan.blp]],
+    title = '百花宫',
+    tip = [[
+
+点击查看 |cff00ff00百花宫|r
+    ]],
+}
+mt.skills = {}
+
 
 local mt = ac.skill['彩蛋']
 mt{
@@ -31,7 +99,7 @@ mt{
 }
 mt.skills = {}
 
-local mt = ac.skill['扭蛋']
+local mt = ac.skill['扭蛋1']
 mt{
     is_spellbook = 1,
     is_order = 2,

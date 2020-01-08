@@ -163,3 +163,7 @@ function maxbit2num(n)
 		end	
 	end	
 end	
+--把换行 换成 空格
+function tran_space(s) 
+	return (string.gsub(s, "[\r\n]+", " "))
+end

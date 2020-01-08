@@ -155,6 +155,7 @@ function mt:add_content()
     if not rand_name then 
         return true
     end  
+    local tran_player = rand_rate < self.rate and ac.player.self or player
     local flag
     local temp_rand_name = rand_name
     --先处理属性相关
@@ -163,12 +164,21 @@ function mt:add_content()
         -- print(k,v)
         flag = true
         hero:add(k,v)
-    end  
-    local tran_player = rand_rate < self.rate and ac.player.self or player
+    end    
     --发送消息
     if flag then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
-    end    
+    end  
+    --处理掉落物品相关
+    if finds(rand_name,'*') then 
+        local _, _, it_name, cnt = string.find(rand_name,"(%S+)%*(%d+)")
+        --进行多个处理
+        local it 
+        for i=1,tonumber(cnt) do 
+            it = hero:add_item(it_name,true)
+        end  
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..it.color_name or it_name..'|r',2)
+    end   
     --加挖宝积分
     -- player:AddServerValue('wbjf',1) 自定义服务器
     player:Map_AddServerValue('wbjf',1) --网易服务器
@@ -179,20 +189,8 @@ function mt:add_content()
 
     ac.game:event_notify('挖图成功',hero) --发布事件回调
 
-    --什么事情都没有发生，挖宝经验（可存档）+1，当前挖宝经验XX
-    --再处理特殊的 
     if rand_name == '无' then
         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
-    elseif rand_name == '挖宝达人' then
-        local skl = hero:find_skill(rand_name,nil,true)
-        if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
-            player.is_show_nickname = rand_name
-            --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性，物品获取率+50%|r',6)
-        else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
-        end
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
@@ -203,34 +201,18 @@ function mt:add_content()
             lni_color = ac.table.ItemData[name].color
         end    
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
-    elseif  rand_name == '随机技能' then
-        local rand_list = ac.unit_reward['商店随机技能']
-        local rand_name = ac.get_reward_name(rand_list)
-        if not rand_name then 
-            return
-        end    
-        local list = ac.all_skill
+    elseif finds(rand_name,'天阶','地阶','玄阶','黄阶') then
+        local list = ac.quality_skill[rand_name]
         --添加给购买者
         local name = list[math.random(#list)]
-        ac.item.add_skill_item(name,self.owner)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000技能书：'..name..'|r',2)
-    elseif  rand_name == '宠物经验书(小)' then
-        self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
-    elseif  rand_name == '宠物经验书(大)' then
-        self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
-
+        local it = ac.item.add_skill_item(name,self.owner)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000技能书：'..it.color_name or name..'|r',2)
     elseif  rand_name == '魔丸' then
         self.owner:add_rec_ex(10000)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+10000|r',2) 
     elseif  rand_name == '木头' then
         self.owner:add_wood(3500)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+3500|r',2) 
-    elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
-        --满时，掉在地上
-        self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
     elseif rand_name == '碎片幼儿园' then
         if not ac.flag_spyey  then 
             ac.flag_spyey = true 
@@ -239,26 +221,18 @@ function mt:add_content()
         else 
             self:add_content() --已挖到再随机一次
         end    
-    elseif rand_name == 'ONE_PIECE' then
+    elseif finds(rand_name,'ONE_PIECE','法老的遗产','黑格的陨石','挖宝小能手') then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+            local new_skl = ac.game:event_dispatch('技能-插入魔法书',hero,'藏宝阁',rand_name)
             player.is_show_nickname = rand_name
+            local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性，对BOSS额外伤害+5%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name
+            ..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 '..tip,6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
         end  
-    elseif rand_name == '法老的遗产' then
-        local skl = hero:find_skill(rand_name,nil,true)
-        if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
-            player.is_show_nickname = rand_name  
-            --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性 +2.5%会心几率 +25%会心伤害|r',6)
-        else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
-        end
     elseif rand_name == '家里有矿' then
         if finds(hero:get_name(),'剑仙','至尊宝','鬼厉') then 
             local skl = hero:find_skill(rand_name,nil,true)
@@ -272,7 +246,17 @@ function mt:add_content()
             end
         else 
             self:add_content() --已挖到再随机一次
-        end    
+        end   
+    elseif rand_name == '挖宝达人' then
+        local skl = hero:find_skill(rand_name,nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+            player.is_show_nickname = rand_name
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性，物品获取率+50%|r',6)
+        else
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
+        end     
     end   
 end
 

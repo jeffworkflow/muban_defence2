@@ -98,14 +98,14 @@ local function skill_tooltip(skill,unit)
         end
 
         local icon = shop_icon[skill.coin]
-        if not icon then   
-            tool.icon:hide()
-            tool.tip:set_position(16,35+22)
-        else
+        if  icon and gold>0 then   
+            tool.icon.text:set_text(gold)
             tool.icon:show()
             tool.icon:set_normal_image(icon)
-        end    
-        tool.icon.text:set_text(gold)
+        else
+            tool.icon:hide()
+            tool.tip:set_position(16,35+22)
+        end      
     elseif skill:get_cost() > 0 then
         tool.icon:show()
         tool.icon:set_normal_image([[image\ManaIcon.blp]])

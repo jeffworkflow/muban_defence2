@@ -22,7 +22,7 @@ range = 99999,
 blink_range = 1000,
 --新目标点
 new_point =nil,
-
+['力量'] = 100000
 
 }
 

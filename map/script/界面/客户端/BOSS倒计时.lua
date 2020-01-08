@@ -52,7 +52,4 @@ function ac.unit.__index:create_texttag_timer(time)
         trg:remove()
     end)
     
-    ac.game:event '玩家-聊天'(function()
-        self:kill()
-    end)
 end
