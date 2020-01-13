@@ -153,7 +153,7 @@ function mt:add_content()
         local name = list[math.random(#list)]
         ac.item.add_skill_item(name,self.owner)
         if tran_player then 
-        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000技能书：'..name..'|r',2)
+        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffffff00【技能书】'..name..'|r',2)
         end
     elseif  finds(rand_name,'技能升级书') then
         self.owner:add_item(rand_name,true)

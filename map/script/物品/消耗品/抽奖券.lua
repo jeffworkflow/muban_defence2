@@ -108,7 +108,7 @@ function mt:add_content()
             --添加给英雄
             local name = list[math.random(#list)]
             ac.item.add_skill_item(name,hero)
-            ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r |cff00ffff抽奖|r, |cffff0000奖励 技能书：'..name..'|r',10)
+            ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r |cff00ffff抽奖|r, 奖励 |cffffff00【技能书】'..name..'|r',10)
         end    
     elseif  rand_name == '召唤练功怪' then
         local mul = player.flag_ouhuang == true and 2 or 1  --有欧皇达人就2否则1

@@ -64,7 +64,7 @@ local mt = ac.skill['踢馆']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[tiguan1.blp]],
     title = '踢馆',
     tip = [[
 
@@ -79,7 +79,7 @@ local mt = ac.skill['藏宝阁']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[cangbaoge.blp]],
     title = '藏宝阁',
     tip = [[
 
@@ -92,7 +92,7 @@ local mt = ac.skill['藏经阁']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[cangjingge.blp]],
     title = '藏经阁',
     tip = [[
 
@@ -105,7 +105,7 @@ local mt = ac.skill['剑冢']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[jianzhong.blp]],
     title = '剑冢',
     tip = [[
 
@@ -118,7 +118,7 @@ local mt = ac.skill['百花宫']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[baihuacun.blp]],
     title = '百花宫',
     tip = [[
 
@@ -127,6 +127,31 @@ mt{
 }
 mt.skills = {}
 
+local mt = ac.skill['龙宫']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[longgong.blp]],
+    title = '龙宫',
+    tip = [[
+
+点击查看 |cff00ff00龙宫|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['罪恶城堡']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[lswjs.blp]],
+    title = '罪恶城堡',
+    tip = [[
+
+点击查看 |cff00ff00罪恶城堡|r
+    ]],
+}
+mt.skills = {}
 
 local mt = ac.skill['彩蛋']
 mt{
