@@ -1,12 +1,14 @@
-local mt = ac.skill['羊皮纸']
+local mt = ac.skill['无字天书']
 mt{
     --等久
     level = 1,
     --图标
-    art = [[cangbaotu.blp]],
+    art = [[wuzitianshu.blp]],
     --说明
     tip = [[
-羊皮纸上记录着一些神秘的古字，点击耗费1000魔丸解密
+
+
+无字天书上封印着一股强大的神秘气息|cffdf19d0(点击耗费10000魔丸解开封印)|r
 ]],
     --物品类型
     item_type = '消耗品',
@@ -19,6 +21,10 @@ mt{
     time_removed = 100,
     --物品详细介绍的title
     content_tip = '|cffffe799使用说明：|r',
+
+    specail_model = [[ArcaneTome.mdx]],
+    model_size = 1.3, 
+    
    
 }
     
@@ -48,10 +54,10 @@ function mt:add_content()
     --初始化
     player.achievement = player.achievement or {}
     -- print('使用了命运花')
-    local rand_list = ac.unit_reward['羊皮纸']
+    local rand_list = ac.unit_reward['无字天书']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
     -- print(rand_list,rand_name)  
-    print('羊皮纸掉落：',rand_name)
+    print('无字天书掉落：',rand_name)
     if not rand_name then 
         return true
     end  

@@ -8,11 +8,12 @@ max_level =9,
 --售价
 gold = 5000,
 --图标
-art = [[item\shou204.blp]],
+art = [[tianyu.blp]],
 --类型
 item_type = "消耗品",
 --模型
-specail_model = [[EarthCrystal.mdx]],
+specail_model = [[EmeraldCore.mdx]],
+model_size = 1.1,
 --品质
 color = "紫",
 --冷却
@@ -20,9 +21,9 @@ cool = 0,
 --描述
 tip = [[ 
 
-|cff00ff00点击可对指定物品进行一次强化！
+|cff00ff00可对|cffffff00高等级装备（10级以上）|cff00ff00进行一次强化，最高强化至15级！
 
-|cffcccccc每个物品最多强化10次，无法强化黑色品质物品|r]],
+|cffcccccc如果对低等级装备（1-9级）使用，有概率获得多次强化|r]],
 
 --物品技能
 is_skill = true,

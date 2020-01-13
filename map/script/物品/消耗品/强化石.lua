@@ -8,11 +8,12 @@ max_level =9,
 --售价
 gold = 5000,
 --图标
-art = [[item\shou204.blp]],
+art = [[qianghuashi.blp]],
 --类型
 item_type = "消耗品",
 --模型
-specail_model = [[EarthCrystal.mdx]],
+specail_model = [[EmeraldCore_blue.mdx]],
+model_size = 0.7,
 --品质
 color = "紫",
 --冷却
@@ -20,9 +21,8 @@ cool = 0,
 --描述
 tip = [[ 
 
-|cff00ff00点击可对指定物品进行一次强化！
-
-|cffcccccc每个物品最多强化10次，无法强化黑色品质物品|r]],
+|cff00ff00可对装备进行一次强化，最高强化至10级！
+]],
 
 --物品技能
 is_skill = true,
@@ -109,7 +109,7 @@ function mt:on_cast_start()
                         self:add_item_count(-1)
                     end  
                 else 
-                    player:sendMsg(item.color_name..' |cffffff00请使用 天谕 继续升级|r')
+                    player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)
                     if self._count > 1 then 
                         -- print('数量')
                         self:set_item_count(self._count+1)

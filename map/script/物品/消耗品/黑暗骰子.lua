@@ -4,14 +4,14 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[zhongzi.blp]],
+art = [[anheishaizi.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff在地上，埋下一颗蟠桃种子，数千年后可以收取蟠桃
+|cff00ff00我命由天不由我，请小心使用，以免gg|r
 
-|cffcccccc国庆活动物品|r]],
+]],
 --品质
 color = '紫',
 --物品类型

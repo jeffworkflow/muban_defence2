@@ -3,10 +3,12 @@ mt{
     --等久
     level = 1,
     --图标
-    art = [[cangbaotu.blp]],
+    art = [[yangpizhi.blp]],
     --说明
     tip = [[
-羊皮纸上记录着一些神秘的古字，点击耗费1000魔丸解密
+
+
+羊皮纸上记录着一些神秘的古字|cffdf19d0(点击耗费1000魔丸解密)|r
 ]],
     --物品类型
     item_type = '消耗品',
@@ -19,6 +21,9 @@ mt{
     time_removed = 100,
     --物品详细介绍的title
     content_tip = '|cffffe799使用说明：|r',
+
+    specail_model = [[scrollyellow.mdx]],
+    model_size = 0.8, 
    
 }
     
