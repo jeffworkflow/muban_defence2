@@ -79,7 +79,7 @@ local function upgrade_last_skill(hero,page_type,page_id,book)
     if page_id == max_page_count or (page_id+1)*11 == table.maxnum(book.skills) then 
         end_name = '关闭'
     end
-    print('改变了了最后一个技能：',end_name,page_id)
+    -- print('改变了了最后一个技能：',end_name,page_id)
     local skl = hero:add_skill(end_name,page,slots[12],{
         book = book,
         page_count = old_max_page2,
@@ -182,7 +182,7 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
         page = page_type .. '_0' .. page_id
     end 
     local i = index - page_id * 12 + old_max_page 
-    print('插入魔法书',index,index + old_max_page,name,page_id,max_page_count)
+    -- print('插入魔法书',index,index + old_max_page,name,page_id,max_page_count)
     local skill = hero:add_skill(name,page,slots[i],{
         book = self,
         page_count = old_max_page2,
@@ -347,6 +347,7 @@ function mt:close()
 end 
 
 local mt = ac.skill['下一页']
+mt.art =[[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]]
 
 function mt:on_cast_start()
     local hero = self.owner
@@ -400,20 +401,20 @@ ac.game:event '玩家-选择单位' (function (_,player,unit)
 end)
 
 --临时测试
-local i=0
-ac.game:event '玩家-聊天' (function(self, player, str)
-    local hero = player.hero
-    local p = player
-    local peon = player.peon
-    if str =='1' then 
-        print('插入魔法书')
-        i=i+1
-        local name = '测1试技能'..i
-        ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
-    else 
-        print('删除魔法书')
-        local name = '测1试技能'..str
-        ac.game:event_notify('技能-删除魔法书',hero,'精彩活动',name)
-    end
+-- local i=0
+-- ac.game:event '玩家-聊天' (function(self, player, str)
+--     local hero = player.hero
+--     local p = player
+--     local peon = player.peon
+--     if str =='1' then 
+--         print('插入魔法书')
+--         i=i+1
+--         local name = '测1试技能'..i
+--         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
+--     else 
+--         print('删除魔法书')
+--         local name = '测1试技能'..str
+--         ac.game:event_notify('技能-删除魔法书',hero,'精彩活动',name)
+--     end
 
-end)
+-- end)

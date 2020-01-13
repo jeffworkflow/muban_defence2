@@ -185,10 +185,10 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         --进行多个处理
         local it 
         for i=1,tonumber(v) do 
-            it = hero:add_item(it_name,true)
+            it = hero:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..it.color_name or it_name..'|r',2)
-    end   
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..it.color_name or it.name..'|r',2)
+    end
 
     local skl = u:find_skill(__it.name,nil,true)
     if not skl then 
