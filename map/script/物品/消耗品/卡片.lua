@@ -4,11 +4,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[shadidubo.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“杀敌数翻倍”|cff00ff00失败时，不损失本金|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -22,11 +22,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[eplaceableTextures\CommandButtons\BTNGrabTree.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“木头翻倍”|cff00ff00失败时，不损失本金|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -41,11 +41,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNGlyph.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“魔丸翻倍”|cff00ff00失败时，不损失本金|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -60,11 +60,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[quanshuxing.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“全属性翻倍”|cff00ff00失败时，不损失本金|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -79,11 +79,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[shadidubo.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“杀敌数翻倍”|cff00ff00时，必定成功|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -98,11 +98,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“木头翻倍”|cff00ff00时，必定成功|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -117,11 +117,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNGlyph.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“魔丸翻倍”|cff00ff00时，必定成功|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -136,11 +136,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[uanshuxing.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“全属性翻倍”|cff00ff00时，必定成功|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -157,11 +157,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[zhadan.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“杀敌数/木头/魔丸/全属性翻倍”|cff00ff00时，45%翻两倍，55%概率凉凉|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -176,11 +176,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[zhadan.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00当物品栏有此卡时,|cff00ff00下一次玩|cffffff00“杀敌数/木头/魔丸/全属性翻倍”|cff00ff00时，40%翻三倍，60%概率凉凉|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -195,11 +195,14 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[caiquan.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(百连抽)的机会|r
+|cff00ff00点击使用后，在10秒内输入|cffffff00“剪刀”、“石头”、“布”|cff00ff00，进行猜拳:
+|cff00ff00如果|cffffff00赢了|cff00ff00，杀敌数/木头/魔丸/全属性全部翻倍；
+|cff00ff00如果|cffffff00平手|cff00ff00，杀敌数/木头/魔丸/全属性全部翻0.5倍；
+|cff00ff00如果|cffffff00输了|cff00ff00，杀敌数/木头/魔丸/全属性全部凉凉
 ]],
 --物品类型
 item_type = '消耗品',
@@ -214,11 +217,13 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[gjnd.blp]],
+art = [[ggka.blp]],
 --说明
 tip = [[ 
-使用后，50%概率全属性翻倍，50%全属性归零（实际归100）
-]],
+|cff00ff00点击使用：
+|cffffff0050%概率全属性翻倍 |cffff000050%全属性归零
+
+|cffcccccc建议送给队友使用]],
 --物品类型
 item_type = '消耗品',
 rate = 50,

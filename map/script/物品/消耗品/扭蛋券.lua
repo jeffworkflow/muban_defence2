@@ -8,7 +8,7 @@ art = [[cjnd.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次扭蛋(十连抽)的机会|r
+|cff00ff00可以在扭蛋处兑换一次|cffffff00扭蛋(十连抽)|cff00ff00的机会|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -20,6 +20,8 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 1,
 --物品数量
 _count = 1,
+specail_model = [[WP4.mdx]],
+model_size = 0.8,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -84,10 +86,12 @@ art = [[gjnd.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次超级扭蛋(十连抽)的机会|r
+|cff00ff00可以在扭蛋处兑换一次|cffffff00超级扭蛋(十连抽)|cff00ff00的机会|r
 ]],
 --物品类型
 item_type = '消耗品',
+specail_model = [[WP3.mdx]],
+model_size = 1.3,
 --不可点击
 no_use = true,
 --目标类型
