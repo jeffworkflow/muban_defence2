@@ -169,7 +169,9 @@ local event = {
         if not player.cus_server2 then 
             player.cus_server2 = {}
         end    
+        if not key then return end 
         local name = ac.server.key2name(key)
+        -- print('12121212',key,name)
         player.cus_server2[name] = tonumber(val)
         -- print('自定义服务器读取完后同步的数据',key,name,val)
         if key =='jifen' then 

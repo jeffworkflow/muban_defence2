@@ -175,46 +175,46 @@ end
 
 
 --开始进行地图等级集中过滤
-ac.server.need_map_level = {}
-for i,tab in ipairs(ac.cus_server_key) do
-    if tab[3] then 
-        for name,data in sortpairs(tab[3]) do 
-            print(name,data[2])
-            ac.server.need_map_level[name] = data[2]
-        end    
-    end    
-end
+-- ac.server.need_map_level = {}
+-- for i,tab in ipairs(ac.cus_server_key) do
+--     if tab[3] then 
+--         for name,data in sortpairs(tab[3]) do 
+--             print(name,data[2])
+--             ac.server.need_map_level[name] = data[2]
+--         end    
+--     end    
+-- end
 
-function ac.player.__index:restrict_map_level() 
-    local p = self
-    for name,val in pairs(p.cus_server) do 
-        local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
-        if name ~= '全属性' then 
-            -- print('地图等级',p:Map_GetMapLevel(),name,val,real_val)
-            -- print('经过地图等级之后的数据：',name,val,real_val)
-            p.cus_server[name] = real_val
-        end    
-    end 
-end 
---全部初始化
-local function init_need_map_level()
-    for i=1,10 do 
-        local p = ac.player(i)
-        if p:is_player() then 
-            p:restrict_map_level()
-        end   
-    end
-end;
-ac.init_need_map_level =init_need_map_level 
---读取存档后 重新根据地图等级进行限制
-for i=1,10 do 
-    local p = ac.player(i)
-    if p:is_player() then 
-        p:event '读取存档数据后' (function()
-            p:restrict_map_level()
-        end)
-    end   
-end
+-- function ac.player.__index:restrict_map_level() 
+--     local p = self
+--     for name,val in pairs(p.cus_server) do 
+--         local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
+--         if name ~= '全属性' then 
+--             -- print('地图等级',p:Map_GetMapLevel(),name,val,real_val)
+--             -- print('经过地图等级之后的数据：',name,val,real_val)
+--             p.cus_server[name] = real_val
+--         end    
+--     end 
+-- end 
+-- --全部初始化
+-- local function init_need_map_level()
+--     for i=1,10 do 
+--         local p = ac.player(i)
+--         if p:is_player() then 
+--             p:restrict_map_level()
+--         end   
+--     end
+-- end;
+-- ac.init_need_map_level =init_need_map_level 
+-- --读取存档后 重新根据地图等级进行限制
+-- for i=1,10 do 
+--     local p = ac.player(i)
+--     if p:is_player() then 
+--         p:event '读取存档数据后' (function()
+--             p:restrict_map_level()
+--         end)
+--     end   
+-- end
 
 
 

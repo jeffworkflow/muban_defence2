@@ -88,6 +88,7 @@ local task_detail = {
 
         --加属性
         local hero = p.hero
+        if not hero then return end 
         local skl = hero:add_skill(skill_name..'1','隐藏')
         if finds(skill_name,'侍卫') then
             p:sendMsg('|cffFFE799【系统消息】|r完成屠魔任务：|cffff0000'..p.task_cnt[task_name].. '|r/4，获得|cffff0000'..skl:get_tip()..'|r',2)

@@ -1015,14 +1015,16 @@ function helper:fmi(num)
 	end	
 end	
 --模糊添加技能
-function helper:as(str)
+function helper:as(str,cnt)
 	if not str or str =='' then 
 		return 
 	end	
 	for i,data in pairs(ac.skill) do 
 		if type(data) == 'table' then 
 			if finds(data.name,str) then 
-				ac.item.add_skill_item(data.name,self)
+				for i=1,tonumber(cnt) or 1 do 
+					ac.item.add_skill_item(data.name,self)
+				end	
 			end	
 		end	
 	end	
