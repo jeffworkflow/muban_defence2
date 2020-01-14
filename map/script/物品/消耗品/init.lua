@@ -33,6 +33,7 @@ require '物品.消耗品.功法升级书'
 require '物品.消耗品.羊皮纸'
 require '物品.消耗品.无字天书'
 require '物品.消耗品.卡片'
+require '物品.消耗品.一颗神奇的种子'
 require '物品.消耗品.黑暗骰子'
 require '物品.消耗品.扭蛋券'
 

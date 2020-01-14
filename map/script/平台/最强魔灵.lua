@@ -14,7 +14,7 @@ mt{
 mt.skills = {
     -- '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','武林大会',
     -- ,'精彩活动'
-    '隐藏成就'
+    '隐藏成就','精彩活动'
 } 
 -- '全服奖励','赛季奖励'
 
@@ -218,45 +218,48 @@ mt.skills = {'真武青焰领域','罗刹夜舞领域',}
 --循环遍历 skill_book 的技能
 local function upgrade_skill(player,skill)
     local self = skill
-    for index,skill in ipairs(self.skill_book) do
-        if skill.is_spellbook == 1 then  
-            upgrade_skill(player,skill)
-        else
-            local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
-            -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
-            if has_mall and has_mall > 0 then 
-                skill:set_level(1)
-            end
-            if skill.name =='独孤求败' then 
-                local has_rank
-                -- print(player.cus_server2['今日斗破苍穹无尽排名'],player.cus_server2['今日修罗模式无尽排名'])
-                if player.cus_server2  then 
-                    if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
-                        or
-                        ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
-                        or
-                        ((player.cus_server2['今日无上之境无尽排名'] or 0) >0 and (player.cus_server2['今日无上之境无尽排名'] or 0) <= 10)
-                        or
-                        ((player.cus_server2['今日无限乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日无限乱斗无尽排名'] or 0) <= 10)
-                        or
-                        ((player.cus_server2['今日深渊乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日深渊乱斗无尽排名'] or 0) <= 10)
-                        or
-                        ((player.cus_server2['今日挖宝排名'] or 0) >0 and (player.cus_server2['今日挖宝排名'] or 0) <= 10)
-                        or
-                        ((player.cus_server2['今日比武排名'] or 0) >0 and (player.cus_server2['今日比武排名'] or 0) <= 10)
-                    then 
+    for index=1,table.maxnum(self.skill_book) do 
+        local skill = self.skill_book[index]
+        if skill then 
+            if skill.is_spellbook == 1 then  
+                upgrade_skill(player,skill)
+            else
+                local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+                -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
+                if has_mall and has_mall > 0 then 
+                    skill:set_level(1)
+                end
+                if skill.name =='独孤求败' then 
+                    local has_rank
+                    -- print(player.cus_server2['今日斗破苍穹无尽排名'],player.cus_server2['今日修罗模式无尽排名'])
+                    if player.cus_server2  then 
+                        if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server2['今日无上之境无尽排名'] or 0) >0 and (player.cus_server2['今日无上之境无尽排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server2['今日无限乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日无限乱斗无尽排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server2['今日深渊乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日深渊乱斗无尽排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server2['今日挖宝排名'] or 0) >0 and (player.cus_server2['今日挖宝排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server2['今日比武排名'] or 0) >0 and (player.cus_server2['今日比武排名'] or 0) <= 10)
+                        then 
+                            skill:set_level(1)
+                        end
+                    end    
+                end   
+                --特殊处理 英雄 类别的
+                if finds(self.name ,'英雄','英雄-下一页','至尊宝') then 
+                    local has_baibian = player.mall and player.mall['百变英雄礼包'] or 0
+                    if has_baibian and has_baibian > 0 then 
                         skill:set_level(1)
                     end
                 end    
-            end   
-            --特殊处理 英雄 类别的
-            if finds(self.name ,'英雄','英雄-下一页','至尊宝') then 
-                local has_baibian = player.mall and player.mall['百变英雄礼包'] or 0
-                if has_baibian and has_baibian > 0 then 
-                    skill:set_level(1)
-                end
             end    
-        end    
+        end
     end    
 end    
 ac.upgrade_skill = upgrade_skill

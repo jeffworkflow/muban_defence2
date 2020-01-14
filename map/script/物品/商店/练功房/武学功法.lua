@@ -72,7 +72,7 @@ for key,u_name in pairs(ac.kangfu) do
                                 local name = ac.quality_skill[skl_color][math.random(#ac.quality_skill[skl_color])]
                                 -- ac.item.create_skill_item(name,unit:get_point())
                                 --掉落运动 
-                                ac.fall_move(name,unit:get_point(),ac.skill_model[ ac.skill[name].color or '黄阶' ],true)
+                                ac.fall_move(name,unit:get_point(),ac.skill_model[ ac.skill[name].color or '黄阶' ],true,p)
                                 p.kangfu[skl_color] = 0
                             end    
                         
