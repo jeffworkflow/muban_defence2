@@ -16,7 +16,9 @@ tip = [[
 --物品类型
 item_type = '消耗品',
 rate =3,
-specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],
+specail_model = [[OrbofDarkness.mdx]],
+model_size = 1.15,
+
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }

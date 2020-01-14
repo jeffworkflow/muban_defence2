@@ -9,9 +9,8 @@ art = [[zhongzi.blp]],
 tip = [[
 
 
-|cff00ffff在地上，埋下一颗蟠桃种子，数千年后可以收取蟠桃
-
-|cffcccccc国庆活动物品|r]],
+|cff00ff00在地上，埋下一颗神奇的种子，数千年后可获得果实
+]],
 --品质
 color = '紫',
 owner_ship = true,
@@ -32,8 +31,9 @@ function mt:on_cast_start()
     local u = p:create_unit('一颗神奇的种子',self.target)
     u:set('生命',1)
     u:add_restriction('无敌')
+    u:add_restriction('定身')
     --动画
-    local time = 15
+    local time = 5
     u:add_buff '缩放' {
 		time = time,
 		origin_size = 0.1,

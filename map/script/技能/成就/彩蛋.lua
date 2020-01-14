@@ -130,6 +130,37 @@ mt{
     ['全属性'] = 5000000,
 }
 
+local mt = ac.skill['鬼斧神工']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[guifushengong.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+500W 全属性
++50%  木头加成
++2.5%  强化成功概率|r
+
+]],
+    ['全属性'] = 5000000,
+    ['强化成功概率'] = 2.5,
+    ['木头加成'] = 50,
+}
+
+
 local task_detail = {
     ['血魔'] = {
         rate = 0.11,
