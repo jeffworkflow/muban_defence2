@@ -98,7 +98,8 @@ function mt:on_cast_start()
                         item.max_level = 15
                         item:upgrade(1)
                         item:set_name(item.name)
-                        player:sendMsg('|cffffe799强化成功:|r '..item.color_name..' |cffffff00+'..item.level -1 ..'|r ')
+                        player:sendMsg('|cffffe799强化成功:|r '..item.color_name..'')
+                        -- |cffffff00+'..item.level -1 ..'|r 
                     else 
                         player:sendMsg('|cffff0000强化失败:|r '..item.color_name)
                     end    

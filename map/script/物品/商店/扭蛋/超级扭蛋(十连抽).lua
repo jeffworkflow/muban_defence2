@@ -12,6 +12,7 @@ mt{
 ]],
     --物品类型
     item_type = '神符',
+    
     --目标类型
     target_type = ac.skill.TARGET_TYPE_NONE,
     --冷却
