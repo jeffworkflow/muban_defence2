@@ -755,6 +755,15 @@ function mt:on_remove_state()
 	end
 end
 
+--物品 回收或显示在获得者脚下
+function mt:on_recycle(where)
+	if self.recycle then
+		self:item_remove()
+	elseif not self:is_show() then 
+		self:setPoint(where:get_point())
+		self:show(true)
+	end
+end
 --删除物品
 function mt:item_remove(is)
 	-- print('即将移除物品：',self.slot_id,self.name,self.handle)
@@ -871,8 +880,10 @@ function unit.__index:add_item(it,is_fall)
 		return it
 	end	
 	--如果物品指定所有者，不是所有者就返回
-	if it.owner_ship and it.owner_ship:get_owner() ~= self:get_owner() then 
+	if it.owner_ship and it.owner_ship ~= self:get_owner() then 
 	   self.owner:showSysWarning('不是你的')
+	   it.recycle = false 
+	   it:on_recycle(self)
 	   return 
 	end   	
 	--为了合成装备
@@ -883,15 +894,8 @@ function unit.__index:add_item(it,is_fall)
 	end
 	
 	if self:event_dispatch('单位-即将获得物品', self, it) then
-		--装备唯一时，要求掉落在地上 如果代码直接添加，无法被加在地上。
-		-- if is_fall then
-		-- 	it:setPoint(self:get_point())
-		-- end	
-		--消耗品 就算 掉地上也要回收
-		if it.recycle then
-			it:item_remove()
-		end	
-		 
+
+		it:on_recycle(self)
 		--给与 时的处理逻辑
 		-- 唯一装备可能要处理下。
 		if it.geiyu then
@@ -909,15 +913,8 @@ function unit.__index:add_item(it,is_fall)
 	local slot = self:get_nil_slot()
 	if not slot then
 		self.owner:showSysWarning('物品栏已满')
-		--满格时，掉落地上
-		if is_fall then
-			it:setPoint(self:get_point())
-			it.recycle = false
-		elseif it.recycle then
-			--物品栏已满，需要回收
-			-- @应用在 购买商店物品 、 代码直接添加物品给英雄
-			it:item_remove()
-		end		
+		it.recycle = false
+		it:on_recycle(self)
 		return it
 	end
 	--单位真正获得物品时的处理
@@ -1107,7 +1104,7 @@ end
 --物品名称
 --位置
 --是否创建特效，默认创建,true 不创建， false 创建
-function item.create_item(name,poi,is)
+function item.create_item(name,poi,is,p)
 	--创建一个物品
 	local items = setmetatable({},item)
 	
@@ -1224,7 +1221,9 @@ function item.create_item(name,poi,is)
 
 	local skill_id = items:get_item_skillid()
 	items.ability_id = skill_id
-
+	if p then 
+		items.owner_ship = p 
+	end
 	--绑定 物品被A时，地上特效删除 的事件
 	-- 会引起掉线 不用
 	-- register_item_destroy_event(item_handle)

@@ -94,6 +94,9 @@ local reward = {
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
             -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
         else
             --宠物打死的也掉人身上
             hero = hero:get_owner().hero
@@ -111,6 +114,9 @@ local reward = {
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
             -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -129,6 +135,9 @@ local reward = {
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
             -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -146,6 +155,9 @@ local reward = {
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
             -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -162,6 +174,9 @@ local reward = {
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_skill_item(name,unit:get_point())
             -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
         else
             hero = hero:get_owner().hero
             ac.item.add_skill_item(name,hero)
@@ -173,6 +188,9 @@ local reward = {
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
             -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -220,12 +238,12 @@ local reward = {
         local rand = math.random(#ac.save_item[lv][color])
         local name = ac.save_item[lv][color][rand]
         --掉落运动
-        ac.fall_move(name,unit:get_point(),ac.table.ItemData[name].specail_model)
+        ac.fall_move(name,unit:get_point(),ac.table.ItemData[name].specail_model,player)
         
     end,
 }
 ac.reward = reward
-local function fall_move(it_name,where,model,is_skill)
+local function fall_move(it_name,where,model,is_skill,player)
     local point = where:get_point() - {math.random(360),math.random(200,500)}
     --运动
     local mvr = ac.mover.target
@@ -241,11 +259,16 @@ local function fall_move(it_name,where,model,is_skill)
         return
     end
     function mvr:on_finish()
+        local it 
         if is_skill then 
-            ac.item.create_skill_item(it_name,point)
+            it = ac.item.create_skill_item(it_name,point)
         else
-            ac.item.create_item(it_name,point)
+            it = ac.item.create_item(it_name,point)
         end
+        
+        if it.owner_ship then 
+            it.owner_ship = player
+        end  
     end
 end    
 ac.fall_move = fall_move
@@ -953,10 +976,16 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
             local _, _, it_name, cnt = string.find(name,"(%S+)%*(%d+)")
             --进行多个处理
             for i=1,tonumber(cnt) do 
-                ac.item.create_item(it_name,unit:get_point()) 
+                local it = ac.item.create_item(it_name,unit:get_point()) 
+                if it.owner_ship then 
+                    it.owner_ship = player
+                end
             end    
         else
-            ac.item.create_item(name,unit:get_point())     
+            local it = ac.item.create_item(name,unit:get_point())   
+            if it.owner_ship then 
+                it.owner_ship = player
+            end  
         end    
     end    
 

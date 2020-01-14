@@ -14,6 +14,7 @@ tip = [[
 |cffcccccc国庆活动物品|r]],
 --品质
 color = '紫',
+owner_ship = true,
 --物品类型
 item_type = '消耗品',
 specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],
@@ -40,7 +41,8 @@ function mt:on_cast_start()
     }
     ac.wait((time+1)*1000,function()
         --创建蟠桃
-        ac.item.create_item('一颗神奇的树',u:get_point())
+        local it = ac.item.create_item('一颗神奇的树',u:get_point())
+        it.owner_ship = p
         --移除桃树
         u:remove()
     
@@ -65,7 +67,7 @@ item_type = '神符',
 specail_model = [[Objects\InventoryItems\Shimmerweed\Shimmerweed.mdl]],
 --Objects\InventoryItems\CrystalShard\CrystalShard.mdl
 model_size = 1.5,
-
+rate =3,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,

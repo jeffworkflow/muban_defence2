@@ -948,6 +948,18 @@ end)
 
 --每秒加金币
 ac.loop(1*1000,function(t)
+	if ac.main_unit then 
+		local u = ac.main_unit
+		local str = u:get('每秒加力量') + u:get('每秒加全属性')
+		local int = u:get('每秒加智力') + u:get('每秒加全属性')
+		local agi = u:get('每秒加敏捷') + u:get('每秒加全属性')
+		local defence = u:get('每秒加护甲') 
+		u:add('力量',str)
+		u:add('智力',int)
+		u:add('敏捷',agi)
+		u:add('护甲',defence)
+		u:add('攻击',u:get('每秒加攻击'))
+	end
 	for i = 1,10 do 
 		local player= ac.player(i)
 		if player:is_player() and player.hero then 
@@ -988,8 +1000,6 @@ ac.loop(1*1000,function(t)
 					end	
 				end
 			end	
-			
-
 		end	
 	end	
 end)

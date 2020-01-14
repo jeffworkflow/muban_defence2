@@ -15,6 +15,7 @@ tip = [[
 -- color = '紫',
 --物品类型
 item_type = '消耗品',
+rate =3,
 specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
