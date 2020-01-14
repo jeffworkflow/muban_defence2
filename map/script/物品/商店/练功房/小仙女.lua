@@ -35,6 +35,10 @@ function mt:damage_start(damage)
     local skill =self
     local target = damage.target
 
+	if not damage:is_common_attack()  then 
+		return 
+    end 
+    
     local u = p:create_unit('狗熊',hero:get_point() - {math.random(360),100})
     u:add_restriction '无敌'
     

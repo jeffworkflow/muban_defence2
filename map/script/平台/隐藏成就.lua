@@ -79,6 +79,10 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 
     local p = killer.owner
     local hero = p.hero
+    if not hero then 
+        print('没有玩家英雄，可能是玩家7-16单位杀死的。')
+        return 
+    end
     if not p.flag_yccj then 
         p.flag_yccj = {} 
     end    

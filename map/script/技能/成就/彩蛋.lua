@@ -152,6 +152,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
     if math.random(10000)/100 < rate then 
         local p = killer.owner
         local hero = p.hero
+        if not hero then return end
         local skl = hero:find_skill(award,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',award)
