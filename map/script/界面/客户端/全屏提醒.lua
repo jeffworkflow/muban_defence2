@@ -214,7 +214,7 @@ end)
 --业务 ： 至凶之物 1分钟内加动态边框
 local time = 60 
 ac.game:event '玩家-选择单位' (function(self, player, hero)
-    if hero:get_name() ~= '第一幕·圣龙气运' then 
+    if hero:get_name() ~= '第一幕·圣龙气运 ' then 
         return 
     end    
     if ac.g_game_time >= time then 
@@ -226,7 +226,7 @@ ac.game:event '玩家-选择单位' (function(self, player, hero)
     end 
 end)
 ac.game:event '玩家-取消选择单位' (function(self, player, hero)
-    if hero:get_name() ~= '第一幕·圣龙气运' then 
+    if hero:get_name() ~= '第一幕·圣龙气运 ' then 
         return 
     end    
     if ac.g_game_time >= time then 

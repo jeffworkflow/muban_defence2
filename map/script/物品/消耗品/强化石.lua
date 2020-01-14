@@ -6,7 +6,7 @@ mt{
 level = 1,
 max_level =9,
 --售价
-gold = 5000,
+-- gold = 5000,
 --图标
 art = [[qianghuashi.blp]],
 --类型
@@ -15,7 +15,7 @@ item_type = "消耗品",
 specail_model = [[EmeraldCore_blue.mdx]],
 model_size = 0.7,
 --品质
-color = "紫",
+-- color = "紫",
 --冷却
 cool = 0,
 --描述

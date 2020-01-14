@@ -38,6 +38,7 @@ function mt:on_cast_start()
     --需要先增加一个，否则消耗品点击则无条件先消耗
     if p.rec_ex >= self.rec_ex then 
         self:add_content()
+        hero:add_rec_ex(-self.rec_ex)
     else 
         self:add_item_count(1) 
         p:sendMsg('魔丸不足',2)

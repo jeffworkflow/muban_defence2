@@ -10,10 +10,9 @@ tip = [[
 
 
 |cff00ff00我命由天不由我，请小心使用，以免gg|r
-
 ]],
 --品质
-color = '紫',
+-- color = '紫',
 --物品类型
 item_type = '消耗品',
 specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],
