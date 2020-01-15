@@ -26,8 +26,12 @@ mt{
 ['杀怪加全属性'] = {5,100},
 ['触发概率加成'] = {5.1,7},
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+5*Lv|r
-|cffffff00【触发概率加成】+（5+0.1*Lv)%|r]],
+	tip = [[
+
+|cffffff00【杀怪加全属性】+5*Lv|r
+|cffffff00【触发概率加成】+（5+0.1*Lv)%|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\PassiveButtons\PASBTNMagicalSentry.blp]],
 }

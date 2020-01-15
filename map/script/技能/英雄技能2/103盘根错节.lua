@@ -25,8 +25,12 @@ end,
 	--施法范围
 	area = 500,
 	--介绍
-	tip = [[|cff00bdec【主动施放】对周围敌人造成范围技能伤害，并晕眩1S
-【伤害公式】（全属性*8+1000000）*Lv*5|r]],
+	tip = [[
+
+|cff00bdec【主动施放】对周围敌人造成范围技能伤害，并晕眩1S
+【伤害公式】（全属性*8+1000000）*Lv*5|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNEntanglingRoots.blp]],
 	--特效

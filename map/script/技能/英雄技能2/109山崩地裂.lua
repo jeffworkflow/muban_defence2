@@ -25,8 +25,12 @@ end,
 	--施法范围
 	area = 500,
 	--介绍
-	tip = [[|cff00bdec【主动施放】对周围敌人造成范围技能伤害，并晕眩1S
-【伤害公式】(力量*32+1000w)*Lv*5|r]],
+	tip = [[
+
+|cff00bdec【主动施放】对周围敌人造成范围技能伤害，并晕眩1S
+【伤害公式】(力量*32+1000w)*Lv*5|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNWarStomp.blp]],
 	--特效

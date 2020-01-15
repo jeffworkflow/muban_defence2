@@ -29,10 +29,14 @@ mt{
 	--属性加成
 ['护甲'] = {150,3000},
 	--介绍
-	tip = [[|cffffff00【护甲】+150*Lv|r
+	tip = [[
+
+|cffffff00【护甲】+150*Lv|r
 
 |cff00bdec【被动效果】被攻击5%几率对敌人造成额外伤害
-【伤害公式】（敌人攻击*1%+1W）*Lv]],
+【伤害公式】（敌人攻击*1%+1W）*Lv
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\PassiveButtons\PASBTNThornShield.blp]],
 	damage_rate = 1,

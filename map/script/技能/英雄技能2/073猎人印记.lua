@@ -27,9 +27,13 @@ mt{
 ['攻击速度'] = {10,200},
 ['攻击间隔'] = {-0.01,-0.2},
 	--介绍
-	tip = [[|cffffff00【杀怪加攻击】+40*Lv|r
+	tip = [[
+
+|cffffff00【杀怪加攻击】+40*Lv|r
 |cffffff00【攻击速度】+10%*Lv|r
-|cffffff00【攻击间隔】-0.01*Lv|r]],
+|cffffff00【攻击间隔】-0.01*Lv|r
+
+]],
 	--技能图标
 	art = [[kuangzhanshi.blp]],
 }

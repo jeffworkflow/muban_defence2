@@ -29,12 +29,16 @@ end,
 ['攻击加敏捷'] = {20,400},
 ['每秒加敏捷'] = {20,400},
 	--介绍
-	tip = [[|cffffff00【杀怪加敏捷】+20*Lv
+	tip = [[
+
+|cffffff00【杀怪加敏捷】+20*Lv
 【攻击加敏捷】+20*Lv
 【每秒加敏捷】+20*Lv
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害
-【伤害公式】(敏捷*16+100w)*Lv*5|r]],
+【伤害公式】(敏捷*16+100w)*Lv*5|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNFanOfKnives.blp]],
 	--特效

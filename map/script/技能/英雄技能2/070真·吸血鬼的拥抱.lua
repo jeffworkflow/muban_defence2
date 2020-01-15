@@ -27,9 +27,13 @@ mt{
 ['攻击减甲'] = {5,100},
 ['吸血'] = {5,100},
 	--介绍
-	tip = [[|cffffff00【每秒加攻击】+3200*Lv|r
+	tip = [[
+
+|cffffff00【每秒加攻击】+3200*Lv|r
 |cffffff00【攻击减甲】+5*Lv|r
-|cffffff00【吸血】+5*Lv|r]],
+|cffffff00【吸血】+5*Lv|r
+
+]],
 	--技能图标
 	art = [[xxg.blp]],
 }

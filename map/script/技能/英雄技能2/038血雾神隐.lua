@@ -25,9 +25,13 @@ mt{
 	--属性加成
 ['护甲%'] = 10,
 	--介绍
-	tip = [[|cffffff00【护甲】+10%
+	tip = [[
 
-|cff00bdec【唯一被动】被攻击（45-Lv）次后开启一下技能|r|cffffff00（0.5秒内免疫任何伤害）|r]],
+|cffffff00【护甲】+10%
+
+|cff00bdec【唯一被动】被攻击（45-Lv）次后开启一下技能|r|cffffff00（0.5秒内免疫任何伤害）|r
+
+]],
 	--技能图标
 	art = [[xwsy.blp]],
     wtf_cnt = function(self)
