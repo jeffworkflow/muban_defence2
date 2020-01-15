@@ -86,7 +86,7 @@ function mt:add_content()
     elseif rand_name == '红色小水滴' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
+            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+100w，吸血+10%，攻击回血+50W|r',6)
@@ -107,7 +107,7 @@ function mt:add_content()
             --自动寻宝
             hero.wabao_auto = true 
 
-            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
+            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000藏宝图10张，挖宝积分100点，特殊技能：自动寻宝（点击藏宝图试试）|r',6)
@@ -117,7 +117,7 @@ function mt:add_content()
     elseif rand_name == '发光的草药' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
+            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+100w，免伤几率+5%，每秒回血+5%|r',6)
@@ -128,7 +128,7 @@ function mt:add_content()
     elseif rand_name == '奇美拉的头颅' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
+            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+100w，分裂伤害+50%，攻击速度+50%|r',6)
@@ -183,7 +183,7 @@ function mt:add_content()
         if tran_player then 
         tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
         end 
-    elseif finds(rand_name,'洗练石') then
+    elseif finds(rand_name,'熔炼石') then
         self.owner:add_item(rand_name,true)
         if tran_player then 
         tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
@@ -226,7 +226,7 @@ function mt:add_content()
     elseif  rand_name == '矮人的火枪' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
+            ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000时来运转!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得成就 |cffff0000"'..rand_name..'" |r，奖励 |cffff0000+100w全属性 +50攻击距离 +15攻击减甲|r',6)

@@ -84,7 +84,7 @@ ac.wait(100,function ()
 
 
     -- hero:add_skill('神兵','英雄')
-    -- local book_skl = hero:add_skill('洗练石','英雄')
+    -- local book_skl = hero:add_skill('熔炼石','英雄')
     -- hero:add_skill('境界','英雄')
 
     -- hero:add_skill('阿尔塞斯天赋','英雄')

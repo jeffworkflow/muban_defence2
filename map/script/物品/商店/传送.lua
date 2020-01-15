@@ -32,10 +32,10 @@ ac.quick_arrive ={
     ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji3.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,4000,0,0,0,nil,0,450} ,
     ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji4.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,8000,0,0,0,nil,0,450} ,
     
-    ['洗练石boss1'] = {ac.map.rects['传送-洗练石1'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【一号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,150,0,0,0,nil,0,450} ,
-    ['洗练石boss2'] = {ac.map.rects['传送-洗练石2'],'xilianshi.blp','\n挑战BOSS并获得|cff00ffff 【二号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,1500,0,0,0,nil,0,450} ,
-    ['洗练石boss3'] = {ac.map.rects['传送-洗练石3'],'xilianshi.blp','\n挑战BOSS并获得|cffffff00 【三号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,12000,0,0,0,nil,0,450} ,
-    ['洗练石boss4'] = {ac.map.rects['传送-洗练石4'],'xilianshi.blp','\n挑战BOSS并获得|cffff0000 【四号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,18000,0,0,0,nil,0,450} ,
+    ['熔炼石boss1'] = {ac.map.rects['传送-熔炼石1'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【一号熔炼石】|r\n\n|cffcccccc【可熔炼出装备的套装属性】|r',0,150,0,0,0,nil,0,450} ,
+    ['熔炼石boss2'] = {ac.map.rects['传送-熔炼石2'],'xilianshi.blp','\n挑战BOSS并获得|cff00ffff 【二号熔炼石】|r\n\n|cffcccccc【可熔炼出装备的套装属性】|r',0,1500,0,0,0,nil,0,450} ,
+    ['熔炼石boss3'] = {ac.map.rects['传送-熔炼石3'],'xilianshi.blp','\n挑战BOSS并获得|cffffff00 【三号熔炼石】|r\n\n|cffcccccc【可熔炼出装备的套装属性】|r',0,12000,0,0,0,nil,0,450} ,
+    ['熔炼石boss4'] = {ac.map.rects['传送-熔炼石4'],'xilianshi.blp','\n挑战BOSS并获得|cffff0000 【四号熔炼石】|r\n\n|cffcccccc【可熔炼出装备的套装属性】|r',0,18000,0,0,0,nil,0,450} ,
 
     ['境界-小斗气'] = {ac.map.rects['传送-境界1'],'tupo1.blp','\n挑战BOSS并突破境界至|cff00ff00 【小斗气】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+200w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击伤害\n+10%    每秒回血\n|r',0,0,5000,0,0,nil,0,500} ,
     ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','\n挑战BOSS并突破境界至|cff00ff00 【斗者】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+300w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴伤害\n+5      攻击减甲\n|r',0,0,10000,0,0,nil,0,500} ,

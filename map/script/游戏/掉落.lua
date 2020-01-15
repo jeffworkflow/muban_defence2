@@ -481,15 +481,15 @@ local unit_reward = {
     ['哪吒'] = {{rand =90,name = '扭蛋券(十连抽)*1'},{rand =10,name = '超级扭蛋券(十连抽)*1'}},
 
     ['扭蛋券'] =  {	
-        {    rand = 50.5, name = '多抽百次',},
-        {    rand = 51, name = '无' },
+        {    rand = 0.15, name = '多抽百次',},
+        {    rand = 97.85, name = '无' },
         {    rand = 0.5, name = '吞噬丹*1',},
         {    rand = 0.5, name = '多抽十次',},
-        {    rand = 10, name = '多抽一次',},
+        {    rand = 1, name = '多抽一次',},
 
     },
     ['扭蛋'] = {
-        {    rand = 31.341, name = '空蛋' },
+        {    rand = 31.641, name = '空蛋' },
 
         {    rand = 4, name = '魔丸',},
         {    rand = 4, name = '木头',},
@@ -554,12 +554,12 @@ local unit_reward = {
         -- {    rand = 0.01, name = '吞噬丹',},
         {    rand = 0.01, name = '随机技能',},
         {    rand = 0.8, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
-        {    rand = 0.1, name = '神兵',},--lv1-lv5
-        {    rand = 0.1, name = '神甲',},--lv1-lv5
-        {    rand = 0.15, name = '技能升级书Lv1',}, --lv1
-        {    rand = 0.15, name = '技能升级书Lv2',}, --lv2
-        {    rand = 0.02, name = '一号洗练石',},
-        {    rand = 0.02, name = '二号洗练石',},
+        -- {    rand = 0.1, name = '神兵',},--lv1-lv5
+        -- {    rand = 0.1, name = '神甲',},--lv1-lv5
+        {    rand = 0.15, name = '功法升级书',}, --lv1
+        {    rand = 0.05, name = '功法连升书',}, --lv2
+        {    rand = 0.02, name = '一号熔炼石',},
+        {    rand = 0.02, name = '二号熔炼石',},
 
         {    rand = 0.12, name = '红色小水滴',},--红色小水滴 吸血+10% 攻击回血+500000
         {    rand = 0.12, name = '黄金罗盘',},--暴击几率+2.5%，暴击伤害+35%
@@ -571,7 +571,7 @@ local unit_reward = {
     },
 
     ['超级扭蛋'] = {
-        {    rand = 29.481, name = '空蛋' },
+        {    rand = 29.681, name = '空蛋' },
 
         {    rand = 2.5, name = '魔丸',},
         {    rand = 2.5, name = '木头',},
@@ -636,17 +636,17 @@ local unit_reward = {
         {    rand = 0.05, name = '吞噬丹',},
         {    rand = 0.2, name = '随机技能',},
         {    rand = 2, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
-        {    rand = 0.1, name = '神兵',},--lv6-lv10
-        {    rand = 0.1, name = '神甲',},--lv6-lv10
-        {    rand = 0.15, name = '技能升级书Lv3',}, --lv1
-        {    rand = 0.15, name = '技能升级书Lv4',}, --lv2
-        {    rand = 0.02, name = '三号洗练石',},
-        {    rand = 0.02, name = '四号洗练石',},
+        -- {    rand = 0.1, name = '神兵',},--lv6-lv10
+        -- {    rand = 0.1, name = '神甲',},--lv6-lv10
+        {    rand = 0.15, name = '功法升级书',}, --lv1
+        {    rand = 0.15, name = '功法连升书',}, --lv2
+        {    rand = 0.02, name = '三号熔炼石',},
+        {    rand = 0.02, name = '四号熔炼石',},
 
-        {    rand = 0.5, name = '格里芬',}, --lv1
-        {    rand = 0.5, name = '黑暗项链',}, --lv2
-        {    rand = 0.5, name = '最强生物心脏',}, --lv1
-        {    rand = 0.5, name = '白胡子的大刀',}, --lv2
+        {    rand = 0.5, name = '地魂融血丹',}, --lv1
+        {    rand = 0.5, name = '天魂融血丹',}, --lv2
+        {    rand = 0.5, name = '三眼赤痕',}, --lv1
+        {    rand = 0.5, name = '火龙气息',}, --lv2
 
 
         {    rand = 0.12, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000
@@ -708,10 +708,10 @@ local unit_reward = {
 
 
     ------旧概率------------------
-    ['洗练石boss1'] = {{rand =100,name = '一号洗练石'}},
-    ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
-    ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
-    ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
+    ['熔炼石boss1'] = {{rand =100,name = '一号熔炼石'}},
+    ['熔炼石boss2'] = {{rand =100,name = '二号熔炼石'}},
+    ['熔炼石boss3'] = {{rand =100,name = '三号熔炼石'}},
+    ['熔炼石boss4'] = {{rand =100,name = '四号熔炼石'}},
 
 
     ['奶牛'] = {

@@ -270,16 +270,16 @@ ac.map.rects={
 	['boss-技能3'] =rect.j_rect('jn33') ,
 	['boss-技能4'] =rect.j_rect('jn44') ,
 
-	--洗练石
-	['传送-洗练石1'] =rect.j_rect('xls1') ,
-	['传送-洗练石2'] =rect.j_rect('xls2') ,
-	['传送-洗练石3'] =rect.j_rect('xls3') ,
-	['传送-洗练石4'] =rect.j_rect('xls4') ,
+	--熔炼石
+	['传送-熔炼石1'] =rect.j_rect('xls1') ,
+	['传送-熔炼石2'] =rect.j_rect('xls2') ,
+	['传送-熔炼石3'] =rect.j_rect('xls3') ,
+	['传送-熔炼石4'] =rect.j_rect('xls4') ,
 	
-	['boss-洗练石1'] =rect.j_rect('xls11') ,
-	['boss-洗练石2'] =rect.j_rect('xls22') ,
-	['boss-洗练石3'] =rect.j_rect('xls33') ,
-	['boss-洗练石4'] =rect.j_rect('xls44') ,
+	['boss-熔炼石1'] =rect.j_rect('xls11') ,
+	['boss-熔炼石2'] =rect.j_rect('xls22') ,
+	['boss-熔炼石3'] =rect.j_rect('xls33') ,
+	['boss-熔炼石4'] =rect.j_rect('xls44') ,
 
 	--境界
 	['传送-境界1'] =rect.j_rect('jj1') ,

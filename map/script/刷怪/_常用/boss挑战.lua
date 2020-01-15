@@ -31,10 +31,10 @@ ac.challenge_boss = {
     ['技能BOSS3'] = {ac.map.rects['boss-技能3'],270,nil,nil,8},
     ['技能BOSS4'] = {ac.map.rects['boss-技能4'],270,nil,nil,8},
     
-    ['洗练石boss1'] = {ac.map.rects['boss-洗练石1'],270},
-    ['洗练石boss2'] = {ac.map.rects['boss-洗练石2'],270},
-    ['洗练石boss3'] = {ac.map.rects['boss-洗练石3'],270},
-    ['洗练石boss4'] = {ac.map.rects['boss-洗练石4'],270},
+    ['熔炼石boss1'] = {ac.map.rects['boss-熔炼石1'],270},
+    ['熔炼石boss2'] = {ac.map.rects['boss-熔炼石2'],270},
+    ['熔炼石boss3'] = {ac.map.rects['boss-熔炼石3'],270},
+    ['熔炼石boss4'] = {ac.map.rects['boss-熔炼石4'],270},
 
     ['小斗气'] = {ac.map.rects['boss-境界1'],270},
     ['斗者'] = {ac.map.rects['boss-境界2'],270},
