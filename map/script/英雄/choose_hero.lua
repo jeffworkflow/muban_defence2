@@ -227,7 +227,7 @@ local function start()
 				show_animation(hero)
 			end
 			-- print(hero_name,p.mall[hero_name])
-			local has_mall = ( p.mall and  p.mall[hero_name] )or (p.cus_server and p.cus_server[hero_name])
+			local has_mall = ( p.mall and  p.mall[hero_name] )or (p.server and p.server[hero_name])
 			-- print(hero_name,ac.server.need_map_level[hero_name])
 			if has_mall and has_mall > 0
 			then 

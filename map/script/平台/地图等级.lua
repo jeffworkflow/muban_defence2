@@ -41,7 +41,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击加全属性'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['青铜'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 2 then 
         value = 20 * dw_star
@@ -51,7 +51,7 @@ end,
 ['杀怪加金币'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['青铜'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 2 then 
         value = 50 * dw_star
@@ -62,7 +62,7 @@ end,
 ['每秒加护甲'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['青铜'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 3 then 
         value = 0.5 * dw_star
@@ -72,7 +72,7 @@ end,
 ['每秒加全属性'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['青铜'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 3 then 
         value = 250 * dw_star
@@ -84,7 +84,7 @@ end,
 ['金币加成'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['白银'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 4 then 
         value = 25 * dw_star
@@ -94,7 +94,7 @@ end,
 ['杀敌数加成'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['白银'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 4 then 
         value = 10 * dw_star
@@ -106,7 +106,7 @@ end,
 ['木头加成'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['白银'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 5 then 
         value = 7.5 * dw_star
@@ -116,7 +116,7 @@ end,
 ['魔丸加成'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['白银'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 5 then 
         value = 7.5 * dw_star
@@ -128,7 +128,7 @@ end,
 ['减少周围护甲'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['黄金'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['黄金'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 6 then 
         value = 100 * dw_star
@@ -140,7 +140,7 @@ end,
 ['杀怪加全属性'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['黄金'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['黄金'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 8 then 
         value = 50 * dw_star
@@ -151,7 +151,7 @@ end,
 ['攻击减甲'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['铂金'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['铂金'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 9 then 
         value = 15 * dw_star
@@ -162,7 +162,7 @@ end,
 ['暴击伤害'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['铂金'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['铂金'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 10 then 
         value = 50 * dw_star
@@ -173,7 +173,7 @@ end,
 ['技暴伤害'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['钻石'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['钻石'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 11 then 
         value = 50 * dw_star
@@ -184,7 +184,7 @@ end,
 ['全伤加深'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['钻石'] or 0) > 0  and 2 or 1
+    local dw_star = (p.server and p.server['钻石'] or 0) > 0  and 2 or 1
     local value = 0
     if map_level >= 12 then 
         value = 5 * dw_star

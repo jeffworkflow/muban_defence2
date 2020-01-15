@@ -52,7 +52,7 @@ end,
 now_server_val = function(self)
     local key = ac.server.name2key(self.name)
     local p = self.owner.owner
-    return p.cus_server[self.name]
+    return p.server[self.name]
 end,
 
 }
@@ -85,7 +85,7 @@ function mt:on_add()
     local player = hero:get_owner()
     for i=1,#self.skill_name do 
         local name = self.skill_name[i]
-        local has_mall = player.mall[name] or (player.cus_server and player.cus_server[name])
+        local has_mall = player.mall[name] or (player.server and player.server[name])
       
         if has_mall and has_mall > 0 then 
             ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)

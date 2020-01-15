@@ -161,7 +161,7 @@ tip = [[
 --     local player = hero:get_owner()
 --     -- print('打开魔法书')
 --     for index,skill in ipairs(self.skill_book) do 
---         local has_mall = player.mall[self.name] or (player.cus_server and player.cus_server[self.name])
+--         local has_mall = player.mall[self.name] or (player.server and player.server[self.name])
 --         -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
 --         if has_mall and has_mall > 0 then 
 --             skill:set_level(1)
@@ -438,7 +438,7 @@ tip = [[
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -483,7 +483,7 @@ tip = [[
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,

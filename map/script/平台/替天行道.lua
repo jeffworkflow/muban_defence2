@@ -230,9 +230,9 @@ for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝
         hero = p.hero
         local real_name = string.gsub(self.name,'兑换%-','')
         -- print(real_name)
-        local has_yshz = p.cus_server and (p.cus_server['勇士徽章'] or 0 )
+        local has_yshz = p.server and (p.server['勇士徽章'] or 0 )
         local map_level = p:Map_GetMapLevel()
-        local has_mall = p.mall[real_name] or (p.cus_server and p.cus_server[real_name])
+        local has_mall = p.mall[real_name] or (p.server and p.server[real_name])
     
         --已有物品的处理
         if has_mall > 0 then 
@@ -280,9 +280,9 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
         hero = p.hero
 
         local real_name = string.gsub(self.name,'兑换%-','')
-        local has_yshz = p.cus_server and (p.cus_server['勇士徽章'] or 0 )
+        local has_yshz = p.server and (p.server['勇士徽章'] or 0 )
         local map_level = p:Map_GetMapLevel() * 2
-        local has_mall = p.cus_server and (p.cus_server[real_name] or 0 )
+        local has_mall = p.server and (p.server[real_name] or 0 )
 
         --处理上限问题
         if has_mall >= map_level then 

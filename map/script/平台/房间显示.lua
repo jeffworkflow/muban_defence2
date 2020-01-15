@@ -6,7 +6,7 @@ local function set_fj_data(player)
     --     '最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
     -- }
     local yxj =  ac.g_game_degree_list
-    for key,value in pairs(player.cus_server) do
+    for key,value in pairs(player.server) do
         for i,name in ipairs(yxj) do
             if key == name then
                 if value > 0 then 

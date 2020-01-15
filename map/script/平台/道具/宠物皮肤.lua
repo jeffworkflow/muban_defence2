@@ -24,7 +24,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 10,
@@ -62,12 +62,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['挖宝积分'] or 0
+    return p.server['挖宝积分'] or 0
 end,
 
 --所需激活碎片
@@ -108,7 +108,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 8,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 250,
@@ -208,7 +208,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 13,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 400,
@@ -289,12 +289,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 15,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['挖宝积分'] or 0
+    return p.server['挖宝积分'] or 0
 end,
 
 ['杀怪加全属性'] = 148,
@@ -331,11 +331,11 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 17,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['挖宝积分'] or 0
+    return p.server['挖宝积分'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 650,
@@ -502,11 +502,11 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 33,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['挖宝积分'] or 0
+    return p.server['挖宝积分'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 850,
@@ -551,11 +551,11 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.server[self.name..'碎片'] or 0
 end,
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['挖宝积分'] or 0
+    return p.server['挖宝积分'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 850,
@@ -660,7 +660,7 @@ function mt:on_add()
     -- print('打开魔法书')
     for index,skill in ipairs(self.skill_book) do 
 
-        local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
         -- if skill.name == '齐天大圣' then 
         --     print( player.mall[skill.name..'A'], player.mall[skill.name..'B'])
         --     has_mall = player.mall[skill.name..'A'] or player.mall[skill.name..'B']
@@ -690,7 +690,7 @@ function mt:on_add()
     local player = hero:get_owner()
     -- print('打开魔法书')
     for index,skill in ipairs(self.skill_book) do 
-        local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
         if has_mall and has_mall > 0 then 
             skill:set_level(1)
         end

@@ -7,8 +7,8 @@ for i=1,10 do
     if not p.mall then 
         p.mall = {}
     end  
-    if not p.cus_server then 
-        p.cus_server ={}
+    if not p.server then 
+        p.server ={}
     end    
     if not p.mall_flag then 
         p.mall_flag = {}
@@ -24,7 +24,7 @@ for i=1,10 do
 end
 
 
---初始化2 读取自定义服务器的数据 并同步 p.cus_server2[jifen] = 0 | 读取有延迟
+--初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0 | 读取有延迟
 ac.wait(100,function()
     for i=1,10 do
         local player = ac.player[i]
@@ -55,7 +55,7 @@ ac.game:event '游戏-开始' (function()
 end)
 
 
---初始化2 读取网易服务器的数据 p.cus_server[jifen] = 0 | 读取有延迟
+--初始化2 读取网易服务器的数据 p.server[jifen] = 0 | 读取有延迟
 ac.wait(1100,function()
     for i=1,10 do
         local player = ac.player[i]
@@ -64,10 +64,10 @@ ac.wait(1100,function()
                 local key = data[1]
                 local key_name = data[2]
                 local val = player:Map_GetServerValue(key)
-                if not player.cus_server then 
-                    player.cus_server = {}
+                if not player.server then 
+                    player.server = {}
                 end
-                player.cus_server[key_name] = val
+                player.server[key_name] = val
                 -- print('存档数据:',key,key_name,val)
             end
             ac.wait(900,function()
@@ -132,7 +132,7 @@ for i=1,10 do
                 local key_name = tab[2]
                 if tab[3] then 
                     for name,data in sortpairs(tab[3]) do 
-                        local has_item = (player.cus_server[key_name] or 0 ) >= data[1] and 1 
+                        local has_item = (player.server[key_name] or 0 ) >= data[1] and 1 
                         local map_level= data[2] or 0
                         local val = 1
                         if data.value then 
@@ -142,7 +142,7 @@ for i=1,10 do
                         if has_item and has_item > 0 
                         and player:Map_GetMapLevel() >= map_level
                         then 
-                            player.cus_server[name] = val
+                            player.server[name] = val
                         end   
                     end    
                 end    
@@ -158,7 +158,7 @@ for i=1,10 do
         player:event '玩家-注册英雄' (function(_,p,hero)
             for i,data in ipairs(ac.cus_server_key) do 
                 if finds(data[2] ,'存档') then 
-                    local name = player.cus_server[data[2]] and ac.all_save_item[player.cus_server[data[2]]]
+                    local name = player.server[data[2]] and ac.all_save_item[player.server[data[2]]]
                     if name then
                         hero:add_save_item(name)
                     end    
@@ -187,12 +187,12 @@ end
 
 -- function ac.player.__index:restrict_map_level() 
 --     local p = self
---     for name,val in pairs(p.cus_server) do 
+--     for name,val in pairs(p.server) do 
 --         local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
 --         if name ~= '全属性' then 
 --             -- print('地图等级',p:Map_GetMapLevel(),name,val,real_val)
 --             -- print('经过地图等级之后的数据：',name,val,real_val)
---             p.cus_server[name] = real_val
+--             p.server[name] = real_val
 --         end    
 --     end 
 -- end 

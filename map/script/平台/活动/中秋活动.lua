@@ -217,7 +217,7 @@ reg:event '区域-进入' (function(trg,unit)
     if p.id>=11 then 
         return 
     end
-    if not p.cus_server then 
+    if not p.server then 
         return 
     end  
     local hero = p.hero 

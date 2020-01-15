@@ -23,7 +23,7 @@ tip = [[
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 10,
@@ -60,7 +60,7 @@ tip = [[
 need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -97,7 +97,7 @@ tip = [[
 need_map_level = 8,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 250,
@@ -134,7 +134,7 @@ tip = [[
 need_map_level = 13,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 350,
@@ -171,7 +171,7 @@ tip = [[
 need_map_level = 15,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 500,
@@ -207,7 +207,7 @@ tip = [[
 need_map_level = 17,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 500,
@@ -242,7 +242,7 @@ tip = [[
 need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 30,
@@ -280,7 +280,7 @@ tip = [[
 need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 75,
@@ -320,7 +320,7 @@ tip = [[
 need_map_level = 10,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 250,
@@ -357,7 +357,7 @@ tip = [[
 need_map_level = 10,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 150,
@@ -397,7 +397,7 @@ tip = [[
 need_map_level = 10,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+    return p.server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 200,
@@ -456,7 +456,7 @@ for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战
                 local key = ac.server.name2key(name)
                 player:Map_AddServerValue(key,ac.g_game_degree_attr) --网易服务器
                 
-                player:sendMsg('|cffffe799【系统消息】|r|cff00ff00挑战成功|r 获得|cff00ffff'..ac.g_game_degree_attr..'个'..name..'|r 还差|cff00ffff'..self.need_sp_cnt - player.cus_server[name]..'个碎片|r即可激活')
+                player:sendMsg('|cffffe799【系统消息】|r|cff00ff00挑战成功|r 获得|cff00ffff'..ac.g_game_degree_attr..'个'..name..'|r 还差|cff00ffff'..self.need_sp_cnt - player.server[name]..'个碎片|r即可激活')
                 -- player:sendMsg('游戏胜利!30秒之后退出游戏！',3)
                 ac.game:event_notify('游戏-大胜利',true)
                

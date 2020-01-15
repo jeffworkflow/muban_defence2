@@ -49,8 +49,8 @@ ac.wait(1200,function()
             table.insert(ac.g_game_degree_list,name)  
         end  
         local list3 = {}
-        local _,bit = math.frexp((player.cus_server['无限难度'] or 0))
-        print(player.cus_server['无限难度'],_,bit)
+        local _,bit = math.frexp((player.server['无限难度'] or 0))
+        print(player.server['无限难度'],_,bit)
         local max_degree = bit + 1
         for i=1,max_degree do 
             if list[i] then 

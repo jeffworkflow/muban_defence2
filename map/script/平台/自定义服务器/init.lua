@@ -9,7 +9,7 @@ require("平台.自定义服务器.排行榜")
 
 -- function player.__index:test_send_message()
 --     local info = {
---         type = 'cus_server',
+--         type = 'server',
 --         func_name = 'read_key_from_server',
 --         params = {
 --             [1] = '12131',
@@ -30,7 +30,7 @@ require("平台.自定义服务器.排行榜")
 
 --     end,
 -- }
--- ui.register_event('cus_server',event)
+-- ui.register_event('server',event)
 
 -- for i=1,10 do
 --     local player = ac.player[i]

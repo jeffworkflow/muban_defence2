@@ -51,7 +51,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['挖宝积分'] or 0
+    return p.server['挖宝积分'] or 0
 end,
 
 ['杀怪加攻击'] = 50,

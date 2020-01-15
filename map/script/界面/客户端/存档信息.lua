@@ -157,62 +157,62 @@ class.player_info_panel = extends(class.panel){
                         new_value = peon:find_skill('宠物技能') and peon:find_skill('宠物技能').level
                     elseif name =='小龙女碎片' then
                         name = '手无寸铁的小龙女碎片' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                     elseif finds(name,'深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
-                        new_value = string.format("%.f",player.cus_server[name] or 0)
+                        new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value..' 星'
                     elseif name =='杀猴次数' then
                         name = '杀鸡儆猴' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                     elseif name =='神奇的五分钟' then
                         name = '攻击减甲' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                     elseif name =='修罗(无尽-最高)' then
                         name = '修罗模式无尽' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='修罗(无尽-累计)' then
                         name = '修罗模式无尽累计' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'  
                     elseif name =='斗破(无尽-最高)' then
                         name = '斗破苍穹无尽' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='斗破(无尽-累计)' then
                         name = '斗破苍穹无尽累计' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='无上(无尽-最高)' then
                         name = '无上之境无尽' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='无上(无尽-累计)' then
                         name = '无上之境无尽累计' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='乱斗(无尽-最高)' then
                         name = '无限乱斗无尽' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='乱斗(无尽-累计)' then
                         name = '无限乱斗无尽累计' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='深渊(无尽-最高)' then
                         name = '深渊乱斗无尽' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='深渊(无尽-累计)' then
                         name = '深渊乱斗无尽累计' 
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='评论数' then
                         new_value = string.format("%.f",player:Map_CommentCount())  
                     -- elseif name =='地图总评论数' then
                     --     new_value = string.format("%.f",player:Map_CommentTotalCount())  
                     else
-                        new_value = string.format("%.f",player.cus_server[name] or 0)
+                        new_value = string.format("%.f",player.server[name] or 0)
                     end    
                     name_text:set_text(show_name) 
                     value_text:set_text(new_value)

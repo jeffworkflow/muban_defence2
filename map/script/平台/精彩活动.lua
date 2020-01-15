@@ -425,7 +425,7 @@ function mt:on_add()
     local player = hero:get_owner()
 
     local name = '庆生蟠桃'
-    local has_mall = player.mall[name] or (player.cus_server and player.cus_server[name])
+    local has_mall = player.mall[name] or (player.server and player.server[name])
 
     for index,skill in ipairs(self.skill_book) do 
         local need_guoshi = skill.need_guoshi
@@ -467,9 +467,9 @@ function mt:on_add()
         local name = self.skill_name[i]
         local has_mall
         if  name == '庆生蟠桃 ' then 
-            has_mall = player.mall['庆生蟠桃'] or (player.cus_server and player.cus_server['庆生蟠桃'])
+            has_mall = player.mall['庆生蟠桃'] or (player.server and player.server['庆生蟠桃'])
         else 
-            has_mall = player.mall[name] or (player.cus_server and player.cus_server[name])
+            has_mall = player.mall[name] or (player.server and player.server[name])
         end
         if has_mall and has_mall > 0 then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
@@ -479,7 +479,7 @@ function mt:on_add()
     end 
     --特殊处理 博饼活动
     local key = 'bobing'
-    local server_value = player.cus_server and player.cus_server[ac.server.key2name(key)] or 0
+    local server_value = player.server and player.server[ac.server.key2name(key)] or 0
     if server_value > 0 then 
         local name = bobing_str[server_value]
         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)

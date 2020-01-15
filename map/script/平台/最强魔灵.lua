@@ -23,7 +23,7 @@ mt.skills = {
 --     local player = hero:get_owner()
 --     -- print('打开魔法书')
 --     for index,skill in ipairs(self.skill_book) do 
---         local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+--         local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
 --         -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
 --         if has_mall and has_mall > 0 then 
 --             skill:set_level(1)
@@ -224,28 +224,28 @@ local function upgrade_skill(player,skill)
             if skill.is_spellbook == 1 then  
                 upgrade_skill(player,skill)
             else
-                local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+                local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
                 -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
                 if has_mall and has_mall > 0 then 
                     skill:set_level(1)
                 end
                 if skill.name =='独孤求败' then 
                     local has_rank
-                    -- print(player.cus_server2['今日斗破苍穹无尽排名'],player.cus_server2['今日修罗模式无尽排名'])
-                    if player.cus_server2  then 
-                        if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
+                    -- print(player.cus_server['今日斗破苍穹无尽排名'],player.cus_server['今日修罗模式无尽排名'])
+                    if player.cus_server  then 
+                        if  ((player.cus_server['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server['今日斗破苍穹无尽排名'] or 0) <= 10)
                             or
-                            ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server['今日修罗模式无尽排名'] or 0) <= 10)
                             or
-                            ((player.cus_server2['今日无上之境无尽排名'] or 0) >0 and (player.cus_server2['今日无上之境无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日无上之境无尽排名'] or 0) >0 and (player.cus_server['今日无上之境无尽排名'] or 0) <= 10)
                             or
-                            ((player.cus_server2['今日无限乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日无限乱斗无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日无限乱斗无尽排名'] or 0) >0 and (player.cus_server['今日无限乱斗无尽排名'] or 0) <= 10)
                             or
-                            ((player.cus_server2['今日深渊乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日深渊乱斗无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日深渊乱斗无尽排名'] or 0) >0 and (player.cus_server['今日深渊乱斗无尽排名'] or 0) <= 10)
                             or
-                            ((player.cus_server2['今日挖宝排名'] or 0) >0 and (player.cus_server2['今日挖宝排名'] or 0) <= 10)
+                            ((player.cus_server['今日挖宝排名'] or 0) >0 and (player.cus_server['今日挖宝排名'] or 0) <= 10)
                             or
-                            ((player.cus_server2['今日比武排名'] or 0) >0 and (player.cus_server2['今日比武排名'] or 0) <= 10)
+                            ((player.cus_server['今日比武排名'] or 0) >0 and (player.cus_server['今日比武排名'] or 0) <= 10)
                         then 
                             skill:set_level(1)
                         end
@@ -271,18 +271,18 @@ for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄
         -- print('打开魔法书')
         upgrade_skill(player,self)
         -- for index,skill in ipairs(self.skill_book) do 
-        --     local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        --     local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
         --     -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
         --     if has_mall and has_mall > 0 then 
         --         skill:set_level(1)
         --     end
         --     if skill.name =='独孤求败' then 
         --         local has_rank
-        --         -- print(player.cus_server2['今日斗破苍穹无尽排名'],player.cus_server2['今日修罗模式无尽排名'])
-        --         if player.cus_server2  then 
-        --             if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
+        --         -- print(player.cus_server['今日斗破苍穹无尽排名'],player.cus_server['今日修罗模式无尽排名'])
+        --         if player.cus_server  then 
+        --             if  ((player.cus_server['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server['今日斗破苍穹无尽排名'] or 0) <= 10)
         --                 or
-        --                 ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
+        --                 ((player.cus_server['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server['今日修罗模式无尽排名'] or 0) <= 10)
         --             then 
         --                 skill:set_level(1)
         --             end

@@ -38,7 +38,7 @@ function player.__index:GetServerValue(KEY,f)
                     -- --发起同步请求
                     ac.wait(0,function()
                         local info = {
-                            type = 'cus_server',
+                            type = 'server',
                             func_name = 'on_get',
                             params = {
                                 [1] = KEY,
@@ -84,7 +84,7 @@ local function sync_t(temp_tab)
             ac.wait(500*(i-1),function()
                 --发起同步请求
                 local info = {
-                    type = 'cus_server',
+                    type = 'server',
                     func_name = 'read_key_from_server',
                     params = {
                         [1] = tab_str,
@@ -166,13 +166,13 @@ local event = {
     end,
     on_get = function (key,val)
         local player = ui.player 
-        if not player.cus_server2 then 
-            player.cus_server2 = {}
+        if not player.cus_server then 
+            player.cus_server = {}
         end    
         if not key then return end 
         local name = ac.server.key2name(key)
         -- print('12121212',key,name)
-        player.cus_server2[name] = tonumber(val)
+        player.cus_server[name] = tonumber(val)
         -- print('自定义服务器读取完后同步的数据',key,name,val)
         if key =='jifen' then 
             player.jifen = tonumber(val)
@@ -186,8 +186,8 @@ local event = {
     --从自定义服务器读取数据
     read_key_from_server = function (tab_str)
         local player = ui.player 
-        if not player.cus_server2 then 
-            player.cus_server2 = {}
+        if not player.cus_server then 
+            player.cus_server = {}
         end    
         if not player.mall then 
             player.mall = {}
@@ -200,10 +200,10 @@ local event = {
             else    
                 local name = ac.server.key2name(key)
                 if name then 
-                    player.cus_server2[name] = tonumber(val)
+                    player.cus_server[name] = tonumber(val)
                     player.mall[name] = tonumber(val)
 
-                    -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
+                    -- print('同步后的数据：',player:get_name(),name,player.cus_server[name])
                     if key =='jifen' then 
                         player.jifen =  tonumber(val)
                     end  
@@ -221,7 +221,7 @@ local event = {
         if ok then 
             --进行初始化
             for i,data in ipairs(ac.cus_server_key) do 
-                player.cus_server2[data[2]] = player.cus_server2[data[2]] or 0
+                player.cus_server[data[2]] = player.cus_server[data[2]] or 0
             end 
             player.flag_read_server = true
             if ac.clock() > 2000 then 
@@ -235,10 +235,10 @@ local event = {
 
     end,
 }
-ui.register_event('cus_server',event)
+ui.register_event('server',event)
 
 --保存到 map_test 
--- 保存本局数据 p.cus_server[key] = value
+-- 保存本局数据 p.server[key] = value
 function player.__index:SetServerValue(key,value,f)
     if not self:is_self() then 
         return 
@@ -280,32 +280,32 @@ function player.__index:SetServerValue(key,value,f)
     end)
 
     --保存本局数据
-    if not self.cus_server2 then 
-        self.cus_server2 ={}
+    if not self.cus_server then 
+        self.cus_server ={}
     end    
     local key_name = ac.server.key2name(key)
-    self.cus_server2[key_name] = tonumber(value)
+    self.cus_server[key_name] = tonumber(value)
 end
 
 --增加数据到 map_test 
--- 保存本局数据 p.cus_server[key] = value
+-- 保存本局数据 p.server[key] = value
 function player.__index:AddServerValue(key,value,f)
     if not self:is_self() then 
         return 
     end    
-    if not self.cus_server2 then 
-        self.cus_server2 ={}
+    if not self.cus_server then 
+        self.cus_server ={}
     end    
     --保存
     local key_name = ac.server.key2name(key)
-    -- print(key_name,self.cus_server2[key_name])
-    if not self.cus_server2[key_name] then 
+    -- print(key_name,self.cus_server[key_name])
+    if not self.cus_server[key_name] then 
         print('读取存档不成功，中断保存！')
         self:sendMsg('读取存档不成功，中断保存！',5)
         return 
     end    
-    self.cus_server2[key_name] = (self.cus_server2[key_name] or 0 ) + tonumber(value)
-    self:SetServerValue(key,self.cus_server2[key_name])
+    self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
+    self:SetServerValue(key,self.cus_server[key_name])
 end
 --初始化自定义服务器的数据 暂时不用字段太多。
 function player.__index:initCusServerValue()
@@ -451,7 +451,7 @@ function player.__index:sp_get_map_flag(f)
                 local flag_map = tbl.data[1][1].flag
                 ac.wait(10,function()
                     local info = {
-                        type = 'cus_server',
+                        type = 'server',
                         func_name = 'onoff',
                         params = {
                             [1] = tonumber(flag_map),

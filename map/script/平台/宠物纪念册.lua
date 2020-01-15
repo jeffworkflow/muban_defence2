@@ -24,7 +24,7 @@ function mt:on_add()
         local ok_cnt = 0 
         for i = min,max do 
             --有毕业 则 cid ac.peon_list
-            if has_flag(p.cus_server['宠物纪念册'],2^(i-1)) and ac.peon_list[i] then 
+            if has_flag(p.server['宠物纪念册'],2^(i-1)) and ac.peon_list[i] then 
                 content = content ..'|cff00ff00【'..string.format('%03d',i)..'】'..ac.peon_list[i]..'|r \n'
                 ok_cnt = ok_cnt + 1
             else
@@ -84,7 +84,7 @@ local function save_cwjnc()
         if p:is_player() then 
             local val = 2^(p.peon.data.cid -1)
             local key = ac.server.name2key('宠物纪念册')
-            if not has_flag(p.cus_server['宠物纪念册'],val) then 
+            if not has_flag(p.server['宠物纪念册'],val) then 
                 -- print('宠物毕业:',p.peon.data.cid,p.peon:get_name())
                 p:Map_AddServerValue(key,val)
             end    

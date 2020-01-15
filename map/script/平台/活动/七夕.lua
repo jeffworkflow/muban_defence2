@@ -252,7 +252,7 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
         local has_cnt = (first_item and first_item._count or 0) + (second_item and  second_item._count or 0 )
 
         if real_name =='缘定三生' then 
-            local has_mall = p.mall[real_name] or (p.cus_server and p.cus_server[real_name])
+            local has_mall = p.mall[real_name] or (p.server and p.server[real_name])
             --已有物品的处理
             if has_mall > 0 then 
                 p:sendMsg('【系统消息】已有'..real_name)    

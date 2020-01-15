@@ -50,7 +50,7 @@ content_tip = '|cffFFE799【兑换说明】：|r\n',
 
 has_material = function(self)
     local p = ac.player.self
-    return p.cus_server['高兴'] or 0
+    return p.server['高兴'] or 0
 end,
 --物品技能
 is_skill = true,
@@ -79,7 +79,7 @@ content_tip = '|cffFFE799【兑换说明】：|r\n',
 
 has_material = function(self)
     local p = ac.player.self
-    return p.cus_server['厌恶'] or 0
+    return p.server['厌恶'] or 0
 end,
 --物品技能
 is_skill = true,
@@ -107,7 +107,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 has_material = function(self)
     local p = ac.player.self
-    return p.cus_server['恐惧'] or 0
+    return p.server['恐惧'] or 0
 end,
 --物品技能
 is_skill = true,
@@ -134,7 +134,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 has_material = function(self)
     local p = ac.player.self
-    return p.cus_server['愤怒'] or 0
+    return p.server['愤怒'] or 0
 end,
 --物品技能
 is_skill = true,
@@ -178,7 +178,7 @@ for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实
         local real_name = string.gsub(self.name,'真相%-','') 
         local _, _, it_name, cnt = string.find(self.need_material,"(%S+)%*(%d+)")
         cnt = tonumber(cnt)
-        local has_cnt = (p.cus_server and p.cus_server[it_name]) or 0
+        local has_cnt = (p.server and p.server[it_name]) or 0
         --处理兑换
         if has_cnt >= cnt  then 
             if (p.max_cnt[real_name] or 0 ) < self.max_cnt then 
@@ -232,7 +232,7 @@ reg:event '区域-进入' (function(trg,unit)
     if p.id>=11 then 
         return 
     end
-    if not p.cus_server then 
+    if not p.server then 
         return 
     end  
     local hero = p.hero 
@@ -252,7 +252,7 @@ reg:event '区域-进入' (function(trg,unit)
     local flag = true 
     --其中有一项不满足就跳出
     for i,data in ipairs(temp) do 
-        if p.cus_server[data[1]] < data[2] then 
+        if p.server[data[1]] < data[2] then 
             flag = false 
             break
         end

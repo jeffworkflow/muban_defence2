@@ -29,7 +29,7 @@ need_map_level = 5,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['比武积分'] or 0
+    return p.server['比武积分'] or 0
 end,
 
 }
@@ -63,7 +63,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['比武积分'] or 0
+    return p.server['比武积分'] or 0
 end,
 
 }
@@ -97,7 +97,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['比武积分'] or 0
+    return p.server['比武积分'] or 0
 end,
 
 }
@@ -131,7 +131,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['比武积分'] or 0
+    return p.server['比武积分'] or 0
 end,
 
 }
@@ -164,7 +164,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server['比武积分'] or 0
+    return p.server['比武积分'] or 0
 end,
 
 }

@@ -112,7 +112,7 @@ function mt:on_cast_start()
     p:Map_AddServerValue(key,1)
     p:sendMsg('|cffffe799【系统消息】|r|cff00ff00庆生蟠桃+1，总量可在“F4-可存档面板”查看',5) 
     --特殊处理
-    local has_mall = p.cus_server['庆生蟠桃'] or 0
+    local has_mall = p.server['庆生蟠桃'] or 0
     if has_mall >=1000 then 
         local key =ac.server.name2key('雅典娜')
         p:Map_SaveServerValue(key,1)

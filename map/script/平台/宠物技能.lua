@@ -97,7 +97,7 @@ function mt:on_add()
     hero:set_size(self.model_size) 
 
     --处理 皮肤碎片相关
-    local value = tonumber(p.cus_server['宠物技能'])
+    local value = tonumber(p.server['宠物技能'])
     -- print(value)
     -- print('宠物技能',value)
     if not value or value == '' or value == "" then

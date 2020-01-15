@@ -26,7 +26,7 @@ max_cnt = 30,
 function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
-    local wabao_jifen = p.cus_server and p.cus_server['挖宝积分']  or 0 
+    local wabao_jifen = p.server and p.server['挖宝积分']  or 0 
     if wabao_jifen >= self.need_wbjf then
         if (p.djs_cnt or 0 ) < self.max_cnt then 
             local key = ac.server.name2key('挖宝积分')

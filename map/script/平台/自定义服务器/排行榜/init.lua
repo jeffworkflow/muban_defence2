@@ -114,16 +114,16 @@ local event = {
     --从自定义服务器读取数据
     season = function (tab_str)
         local player = ui.player  
-        if not player.cus_server2 then 
-            player.cus_server2 = {}
+        if not player.cus_server then 
+            player.cus_server = {}
         end   
-        -- player.cus_server2['S0赛季王者'] = 1
+        -- player.cus_server['S0赛季王者'] = 1
 
         local data = ui.decode(tab_str) 
         for key,val in sortpairs(data) do 
-            player.cus_server2[key..'王者'] = 1
+            player.cus_server[key..'王者'] = 1
             player['局内地图等级'] = (player['局内地图等级'] or 0) +1
-            -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
+            -- print('同步后的数据：',player:get_name(),name,player.cus_server[name])
         end    
     end,
 }
