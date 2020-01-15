@@ -116,7 +116,7 @@ function mt:on_cast_start()
             if skill.level>=skill.max_level and skill.color == '真天阶' and not flag then 
                 count = count + 1
                 local info = {
-                    name = "|cff"..ac.color_code['紫']..'吞噬'.. skill:get_name() .. '  (' .. skill:get_hotkey() ..')' ,
+                    name = "|cff"..ac.color_code['淡黄']..'吞噬 '..'|cff'..ac.color_code[skill.color].. clean_color(skill:get_title()),
                     skill = skill
                 }
                 table.insert(list,info)
@@ -125,7 +125,7 @@ function mt:on_cast_start()
     end 
 
     if count < 1 then 
-        player:sendMsg('没有可强化的技能')
+        player:sendMsg('没有可吞噬的技能')
         if self._count > 1 then 
             -- print('数量')
             self:set_item_count(self._count+1)

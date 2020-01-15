@@ -27,6 +27,38 @@ attack_gap = 1,
 skill_attack = 2,
 }
 
+local mt = ac.skill['黄金矿工']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 10,
+title = '黄金矿工',
+--图标
+art = [[damotou.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00 存档值：%server_val% 
+激活值：%now_server_val%
+]],
+
+server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p:Map_GetServerValue(key)
+end,
+now_server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p.cus_server[self.name]
+end,
+
+}
+
+
+
 
 local mt = ac.skill['隐藏成就']
 mt{
@@ -41,7 +73,7 @@ mt{
     
 }
 mt.skill_name ={
-    '我是大魔头',
+    '我是大魔头','黄金矿工',
 }
 
 mt.skills = {
@@ -69,7 +101,19 @@ local task_detail = {
     ['血魔'] = {
         rate = 30,
         award = '我是大魔头',
-        sendMsg = {'【系统消息】获得我是大魔头',5},
+        sendMsg = function(p)
+            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+        end,
+        --存档升级
+        sendMsg1 = function(p)
+            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+        end,
     },
     
 }
@@ -99,15 +143,18 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
         --存档
         local key = ac.server.name2key(award)
         if ac.g_game_degree_attr > p:Map_GetServerValue(key) then 
+            --加存档值
             p:Map_AddServerValue(key,1)
+            --升级技能
+            local skl = hero:find_skill(award,nil,true) 
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',award)
+                sendMsg(p)
+            else 
+                skl:upgrade(1)    
+                sendMsg1(p)
+            end    
         end    
 
-        local skl = hero:find_skill(award,nil,true) 
-        if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',award)
-            p:sendMsg(sendMsg[1],sendMsg[2])
-        else 
-            skl:upgrade(1)    
-        end    
     end    
 end)    

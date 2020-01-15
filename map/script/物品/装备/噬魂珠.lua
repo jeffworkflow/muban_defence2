@@ -159,8 +159,9 @@ function mt:on_cast_start()
             }:remove()
         
         end)
-        ac.wait(1*1000,function()
-            local u = ac.player(12):create_unit('心魔BOSS'..(self.level+ac.skill['噬血珠'].max_level),point)
+        local u  
+        local trg_t = ac.wait(1*1000,function(t)
+            u = ac.player(12):create_unit('心魔BOSS'..(self.level+ac.skill['噬血珠'].max_level),point)
             u:event '单位-死亡'(function(_,unit,killer)
                 p.flag_sxz = false 
                 --物品升级
@@ -174,20 +175,24 @@ function mt:on_cast_start()
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
                 hero:blink(point,true,false,true)
             end)
-            --创建区域离开事件
-            local reg = ac.region.create(ac.rect.j_rect('shixiezhu2'))
-            reg:event '区域-离开'(function(trg,unit)
-                if hero ~= unit then 
-                    return 
-                end  
-                if not u:is_alive() then 
-                    return 
-                end    
-                p.flag_sxz = false 
+        end)
+        --创建区域离开事件
+        local reg = ac.region.create(ac.rect.j_rect('shixiezhu2'))
+        reg:event '区域-离开'(function(trg,unit)
+            if hero ~= unit then 
+                return 
+            end  
+            if u and u:is_alive() then 
                 u:remove()
-                --删除自己的
-                trg:remove()  
-            end)
+            end
+            if trg_t then 
+                trg_t:remove()
+                trg_t = nil 
+            end 
+            p.flag_sxz = false 
+            u:remove()
+            --删除自己的
+            trg:remove()  
         end)
         
     end    

@@ -73,8 +73,9 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
         
         end)
 
-        ac.wait(1*1500,function()
-            local u = ac.player(12):create_unit(real_name,point)
+        local u  
+        local trg_t = ac.wait(1*1500,function(t)
+            u = ac.player(12):create_unit(real_name,point)
             u:event '单位-死亡'(function(_,unit,killer)
                 --激活属性
                 local skl = hero:find_skill(real_name,nil,true)
@@ -86,19 +87,23 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
                 hero:blink(point,true,false,true)
             end)
-            --创建区域离开事件
-            local reg = ac.region.create(ac.rect.j_rect('topo2'))
-            reg:event '区域-离开'(function(trg,unit)
-                if hero ~= unit then 
-                    return 
-                end  
-                if not u:is_alive() then 
-                    return 
-                end    
+        end)
+        --创建区域离开事件
+        local reg = ac.region.create(ac.rect.j_rect('topo2'))
+        reg:event '区域-离开'(function(trg,unit)
+            if hero ~= unit then 
+                return 
+            end  
+            if u and u:is_alive() then 
                 u:remove()
-                --删除自己的
-                trg:remove()  
-            end)
+            end
+            if trg_t then 
+                trg_t:remove()
+                trg_t = nil 
+            end 
+            u:remove()
+            --删除自己的
+            trg:remove()  
         end)
 
     end

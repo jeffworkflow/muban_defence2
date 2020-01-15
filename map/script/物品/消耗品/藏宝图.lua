@@ -53,6 +53,7 @@ end
 function mt:on_cast_start()
     local hero = self.owner
     local player = hero:get_owner()
+    local p = hero:get_owner()
     local item = self 
     local list = {}
     --需要先增加一个，否则消耗品点击则无条件先消耗
@@ -146,6 +147,7 @@ function mt:add_content()
 
     local hero = self.owner
     local player = self.owner:get_owner()
+    local p = self.owner:get_owner()
     hero = player.hero 
     --初始化
     player.achievement = player.achievement or {}
@@ -306,8 +308,35 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1000万，物品获取率+50%，每秒回血+5%|r',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
-        end     
+        end   
+        
+    elseif rand_name == '黄金矿工' then
+        if not p.flag_yccj then 
+            p.flag_yccj = {} 
+        end    
+        if p.flag_yccj[rand_name] then 
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
+            return 
+        end   
+        p.flag_yccj[rand_name] = true --一局只能获得一次
+        --存档
+        local key = ac.server.name2key(rand_name)
+        if ac.g_game_degree_attr > p:Map_GetServerValue(key) then 
+            p:Map_AddServerValue(key,1)
+            local skl = hero:find_skill(rand_name,nil,true) 
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',rand_name)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1000万，物品获取率+50%，每秒回血+5%|r',6)
+            else 
+                skl:upgrade(1)  
+                p:sendMsg('存档 '..rand_name..'+1 ',2)  
+            end   
+        else 
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
+        end           
     end   
+
+    
 end
 
 

@@ -79,7 +79,7 @@ function mt:on_cast_start()
         if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红')  and item.level < (item.max_level or 999)  then 
             count = count + 1
             local info = {
-                name = "|cff"..ac.color_code[item.color or '白']..'强化 '.. item:get_name() .. '|r  (第' .. item.slot_id .. '格)',
+                name = "|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r ',
                 item = item
             }
             table.insert(list,info)

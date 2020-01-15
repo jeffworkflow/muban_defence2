@@ -42,9 +42,9 @@ function mt:on_add()
                     p.flag_myydxz = true
                     --给红装 删物品
                     item:item_remove()
-                    local name = ac.quality_item['红'][math.random(#ac.quality_item['红'])]
-                    hero:add_item(name,true)
-                    p:sendMsg('恭喜 '..p:get_name()..' 获得红色物品: '..name,5)
+                    local name = ac.all_item[math.random(#ac.all_item)]
+                    local it = hero:add_item(name)
+                    p:sendMsg('恭喜 获得 '..it.color..'色物品 ： '..it.color_name,5)
                     -- ac.item.create_item(name,point)
 
                     
@@ -108,9 +108,9 @@ function mt:on_add()
                     p.flag_myydts = true
                     --给红装 删物品
                     item:item_remove()
-                    local name = ac.quality_skill['天阶'][math.random(#ac.quality_skill['天阶'])]
-                    ac.item.add_skill_item(name,hero)
-                    p:sendMsg('恭喜 '..p:get_name()..' 获得天阶功法: '..name,5)
+                    local name = ac.all_skill[math.random(#ac.all_skill)]
+                    local it = ac.item.add_skill_item(name,hero)
+                    p:sendMsg('恭喜 获得 '..it.color..' 技能： '..it.color_name,5)
                     -- ac.item.create_item(name,point)
                 end    
             end    

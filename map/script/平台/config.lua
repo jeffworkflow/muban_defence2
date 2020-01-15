@@ -82,6 +82,7 @@ local cus_key = {
     {'cwjn','宠物技能'},
     {'cwjnc','宠物纪念册'},
     {'wsdmt','我是大魔头',{ ['我是大魔头'] = {1,1,value = function(self,p) return p.cus_server['我是大魔头'] and math.min(p:Map_GetMapLevel()*1,p.cus_server['我是大魔头']) end}}},
+    {'hjkg','黄金矿工',{ ['黄金矿工'] = {1,1,value = function(self,p) return p.cus_server['黄金矿工'] and math.min(p:Map_GetMapLevel()*1,p.cus_server['黄金矿工']) end}}},
     
     {'cdwq','存档武器'},
     {'cdyd','存档腰带'},

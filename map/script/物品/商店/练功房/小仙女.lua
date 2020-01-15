@@ -20,6 +20,8 @@ mt{
    time =15,
 --    model = [[units\creeps\GrizzlyBear\GrizzlyBear.mdl]],
    event_name = '造成伤害效果',
+   unit_name ='狗熊',
+   mul = 1
 }
 function mt:on_add()
     local hero = self.owner
@@ -39,19 +41,19 @@ function mt:damage_start(damage)
 		return 
     end 
     
-    local u = p:create_unit('狗熊',hero:get_point() - {math.random(360),100})
+    local u = p:create_unit(self.unit_name,hero:get_point() - {math.random(360),100})
     u:add_restriction '无敌'
     
 
     local attribute ={
-        ['攻击'] = hero:get('攻击'),
-        ['护甲'] = hero:get('护甲'),
+        ['攻击'] = hero:get('攻击')*self.mul,
+        ['护甲'] = hero:get('护甲')*self.mul,
         ['攻击间隔'] = hero:get('攻击间隔'),
         ['攻击速度'] = hero:get('攻击速度'),
-        ['生命上限'] = hero:get('生命上限'),
+        ['生命上限'] = hero:get('生命上限')*self.mul,
         ['魔法上限'] = hero:get('魔法上限'),
-        ['生命恢复'] = hero:get('生命恢复'),
-        ['魔法恢复'] = hero:get('魔法恢复'),
+        ['生命恢复'] = hero:get('生命恢复')*self.mul,
+        ['魔法恢复'] = hero:get('魔法恢复')*self.mul,
         ['移动速度'] = hero:get('移动速度'),
 
         -- ['分裂伤害'] = hero:get('分裂伤害'),
@@ -111,6 +113,26 @@ function mt:damage_start(unit,killer)
     return true
 end    
 
+local mt = ac.skill['铭文就是力量']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[mingwenjiushililiang.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+100W 全属性
++30   攻击减甲
++1000  护甲|r
+
+]],
+    ['全属性'] = 1000000,
+    ['攻击减甲'] = 30,
+    ['护甲'] = 1000,
+}
+
 
 local mt = ac.skill['古老的铭文']
 mt{
@@ -152,6 +174,15 @@ for _,name in ipairs(fairy) do
                 --概率激活铭文
                 local skl = hero:find_skill(self.name,nil,true)
                 if skl then 
+                    if finds(self.name, '召唤') then 
+                        --概率激活变异狗熊
+                        local rate = 2
+                        if math.random(10000)/100 <= rate then 
+                            skl.unit_name = '变异狗熊'
+                            skl.mul = 3
+                            ac.player.self:sendMsg('|cffffe799【系统消息】恭喜 '..p:get_name()..' 抽中|cffffff00 变异狗熊|r',5)   
+                        end    
+                    end
                     skl:set_level(1) 
                     skl.passive = true
                     --删除技能
@@ -166,6 +197,13 @@ for _,name in ipairs(fairy) do
                     seller:remove()
                     --新增新的小仙女
                     ac.shop.create('真·小仙女',x,y,270)
+
+                    -- 铭文就是力量
+                    local skl = hero:find_skill('铭文就是力量',nil,true) 
+                    if not skl  then 
+                        ac.game:event_notify('技能-插入魔法书',hero,'古老的铭文','铭文就是力量')
+                        p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中|cff00ff00 铭文就是力量',5)  
+                    end   
                 end
             else
                 --抽取失败 提升概率

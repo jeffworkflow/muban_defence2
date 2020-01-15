@@ -753,10 +753,10 @@ function helper:upgrade(str,lv)
 	end	
 end
 --增加物品
-function helper:add_item(str,cnt)
+function helper:add_item(str,cnt,flag)
 	local cnt = cnt or 1
 	for i=1,cnt do
-		self:add_item(str,true)
+		self:add_item(str,true,flag and self.owner)
 	end	
 end
 --增加套装 可能掉线

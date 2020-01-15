@@ -18,7 +18,7 @@ cnt = function(self)
     if self and self.owner and self.owner:is_hero() then 
         local hero = self.owner
         local player = hero:get_owner()
-        cnt = player.ruti_cnt or 0 
+        cnt = player.qh_skill_cnt or 0 
     end    
     return cnt
 end,
@@ -27,7 +27,7 @@ max_cnt = function(self)
     if self and self.owner and self.owner:is_hero() then 
         local hero = self.owner
         local player = hero:get_owner()
-        cnt = player.max_ruti_cnt or 8
+        cnt = player.max_qh_skill_cnt or 8
     end    
     return cnt
 end,
@@ -37,8 +37,8 @@ content = function(self)
     if self and self.owner  then 
         local hero = self.owner
         local player = hero:get_owner()
-        if player.ruti then 
-            for i,item in ipairs(player.ruti) do
+        if player.qh then 
+            for i,item in ipairs(player.qh) do
                 content = content ..'\n'.. item.name
             end
         end    
@@ -86,10 +86,10 @@ function mt:on_cast_start()
     hero = player.hero
     local list = {}
     --超越极限
-    player.max_ruti_cnt = player.max_ruti_cnt or 8
+    player.max_qh_skill_cnt = player.max_qh_skill_cnt or 8
     --只能吞噬 10 个 物品类的，没法更新数据
-    local cnt = player.max_ruti_cnt 
-    if (player.ruti_cnt or 0) >= cnt then 
+    local cnt = player.max_qh_skill_cnt 
+    if (player.qh_skill_cnt or 0) >= cnt then 
         self:add_item_count(1)
         player:sendMsg('无法食用更多的恶魔果实')
         return 
@@ -98,8 +98,8 @@ function mt:on_cast_start()
         local skill = hero:find_skill(i,'英雄')
         if skill then 
             local flag
-            if player.ruti then 
-                for i,item in ipairs(player.ruti) do
+            if player.qh then 
+                for i,item in ipairs(player.qh) do
                     if item.name == skill.name then 
                         flag =true 
                         break
@@ -109,7 +109,7 @@ function mt:on_cast_start()
             if skill.level>=skill.max_level and skill.color == '天阶' and not flag then 
                 count = count + 1
                 local info = {
-                    name = "|cff"..ac.color_code['紫']..'强化'.. skill:get_name() .. '  (' .. skill:get_hotkey() ..')' ,
+                    name = "|cff"..ac.color_code['淡黄']..'强化 '..'|cff'..ac.color_code[skill.color].. clean_color(skill:get_title()),
                     skill = skill
                 }
                 table.insert(list,info)
@@ -141,19 +141,19 @@ function mt:on_cast_start()
                 --进行强化处理
                 self:on_strong(skill)
                 --吞噬个数 +1
-                if not player.ruti_cnt then 
-                    player.ruti_cnt =0
+                if not player.qh_skill_cnt then 
+                    player.qh_skill_cnt =0
                 end    
-                player.ruti_cnt = player.ruti_cnt + 1
+                player.qh_skill_cnt = player.qh_skill_cnt + 1
 
                 --吞噬名
-                if not player.ruti then 
-                    player.ruti = {}
+                if not player.qh then 
+                    player.qh = {}
                 end    
-                table.insert(player.ruti,skill)
+                table.insert(player.qh,skill)
                 
                 --触发超级彩蛋
-                -- if player.ruti_cnt  == 8 then 
+                -- if player.qh_skill_cnt  == 8 then 
                 --     ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','霸王色的霸气')
                 --     ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用恶魔果实|r 惊喜获得技能|cffff0000 "霸王色的霸气" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*30的伤害，并晕眩0.8秒|r',6)
                 -- end   

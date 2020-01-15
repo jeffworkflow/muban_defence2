@@ -850,12 +850,12 @@ end
 --添加物品
 --true,满格掉地上。默认是阻止添加。
 --应用： 合成装备时，满格掉落地上,给与装备，满格掉落
-function unit.__index:add_item(it,is_fall)
+function unit.__index:add_item(it,is_fall,p)
 
 	--如果没有初始化则创建
 	if type(it) =='string'  then 	
 		--不创建特效
-		it = ac.item.create_item(it,nil,true)
+		it = ac.item.create_item(it,nil,true,p)
 		it:hide()
 		it.recycle = true
 	end	
