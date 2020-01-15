@@ -23,9 +23,13 @@ mt{
 	--属性加成
 ['减伤'] = {6.2,10},
 	--介绍
-	tip = [[|cffffff00【减伤】+（6+0.2*Lv）%
+	tip = [[
 
-|cff00bdec【主动施放】让自己无敌3秒]],
+|cffffff00【减伤】+（6+0.2*Lv）%
+
+|cff00bdec【主动施放】让自己无敌3秒
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNDivineIntervention.blp]],
 	--特效

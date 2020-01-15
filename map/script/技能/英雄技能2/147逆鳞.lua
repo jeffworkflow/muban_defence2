@@ -23,9 +23,13 @@ mt{
 	--属性加成
 ['每秒加敏捷'] = {400,8000},
 	--介绍
-	tip = [[|cffffff00【每秒加敏捷】+400*Lv|r
+	tip = [[
 
-|cff00bdec【主动施放】增加 |cffffff00会心几率+(10+0.6*Lv)%  会心伤害+(100+6*Lv)%  |r |cff00bdec持续3秒|r]],
+|cffffff00【每秒加敏捷】+400*Lv|r
+
+|cff00bdec【主动施放】增加 |cffffff00会心几率+(10+0.6*Lv)%  会心伤害+(100+6*Lv)%  |r |cff00bdec持续3秒|r
+
+]],
 	--技能图标
 	art = [[honglianbao.blp]],
 	--特效4
