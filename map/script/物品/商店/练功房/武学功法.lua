@@ -71,10 +71,10 @@ for key,u_name in pairs(ac.kangfu) do
                             p.kangfu[skl_color] = (p.kangfu[skl_color] or 0) +1
 
                             if p.kangfu[skl_color] % per_cnt == 0 then 
-                                p:sendMsg(skl_color..'功法怪进度 '..p.kangfu[skl_color]..'/'..max_cnt,5)
+                                p:sendMsg('|cffffe799【系统消息】|r|cff00ff00当前击杀|cffffff00'..skl_color..'功法怪|cff00ff00进度 |cffffff00'..p.kangfu[skl_color]..'/'..max_cnt,5)
                             end    
                             if p.kangfu[skl_color]  == max_cnt then 
-                                p:sendMsg('【系统提示】恭喜获得 |cff'..ac.color_code[skl_color]..skl_color..'功法',5)
+                                p:sendMsg('|cffffe799【系统消息】|r |cff'..ac.color_code[skl_color]..skl_color..'功法 |cff00ff00掉落在练功房的地板上,请尽快拾取',5)
                                 local name = ac.quality_skill[skl_color][math.random(#ac.quality_skill[skl_color])]
                                 -- ac.item.create_skill_item(name,unit:get_point())
                                 --掉落运动 

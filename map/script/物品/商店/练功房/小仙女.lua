@@ -123,14 +123,13 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+100W 全属性
-+30   攻击减甲
-+1000  护甲|r
+|cff00ff00+100W 力量
++35%   攻击速度|r
 
 ]],
-    ['全属性'] = 1000000,
-    ['攻击减甲'] = 30,
-    ['护甲'] = 1000,
+    ['力量'] = 1000000,
+    ['攻击速度'] = 35,
+    
 }
 
 
@@ -176,11 +175,11 @@ for _,name in ipairs(fairy) do
                 if skl then 
                     if finds(self.name, '召唤') then 
                         --概率激活变异狗熊
-                        local rate = 2
+                        local rate = 10
                         if math.random(10000)/100 <= rate then 
                             skl.unit_name = '变异狗熊'
                             skl.mul = 3
-                            ac.player.self:sendMsg('|cffffe799【系统消息】恭喜 '..p:get_name()..' 抽中|cffffff00 变异狗熊|r',5)   
+                            ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 触发事件-|cffff0000变异|r',5)   
                         end    
                     end
                     skl:set_level(1) 
@@ -202,7 +201,7 @@ for _,name in ipairs(fairy) do
                     local skl = hero:find_skill('铭文就是力量',nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'古老的铭文','铭文就是力量')
-                        p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中|cff00ff00 铭文就是力量',5)  
+                        p:sendMsg('|cffffe799【系统消息】|cff00ff00终于全部抽到了！获得成就|cffffff00 铭文就是力量 |cff00ff00奖励 |cffff0000力量+100万，攻击速度+35%',5)  
                     end   
                 end
             else

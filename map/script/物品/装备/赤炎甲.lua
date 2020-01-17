@@ -70,7 +70,7 @@ mt{
             str = str ..'+|cffffff00'..bignum2string(self['减伤'])..'%|r 减伤'..'\n'
         end   
         if self['免伤几率'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['免伤几率'])..'|r 免伤几率'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['免伤几率'])..'%|r 免伤几率'..'\n'
         end    
         if self['闪避'] >0 then 
             str = str ..'+|cffffff00'..bignum2string(self['闪避'])..'%|r 闪避'..'\n'

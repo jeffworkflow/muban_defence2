@@ -105,7 +105,8 @@ function mt:damage_start(damage)
 	do
 		ac.effect_ex{
 			model = skill.effect,
-			point = damage.target:get_point(),
+            point = damage.target:get_point(),
+            model_size = 4,
         }:remove()
         
         u:damage

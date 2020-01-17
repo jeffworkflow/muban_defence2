@@ -10,7 +10,7 @@ mt{
     ]],
     --技能图标
     art = [[tkdbz.blp]],
-    kill_cnt = 10,
+    kill_cnt = 1000,
     --唯一
     unique = true,
     --升级特效
@@ -76,7 +76,7 @@ mt{
     ]],
     --技能图标
     art = [[gongfa.blp]],
-    kill_cnt = 2500,
+    kill_cnt = 1000,
     --唯一
     unique = true,
     --升级特效
