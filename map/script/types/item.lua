@@ -1274,7 +1274,8 @@ function item.create(name,pos,seller)
 
 	items.handle = item_handle
 	--设置物品名
-	items:set_name(name)
+	items.name = name
+	items:set_name(items.title or name)
 	--设置贴图
 	items:set_art(items.art)
 	

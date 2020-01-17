@@ -81,9 +81,9 @@ function mt:addXp(xp)
 	--modify by jeff 经验小于0 也显示文字出来
 	local str = nil
 	if xp < 0 then 
-		 str =  'EXP ' .. math.floor(xp)
+		 str =  'EXP ' .. bignum2string(xp)
 	else
-		 str = 'EXP +' .. math.floor(xp)
+		 str = 'EXP +' ..  bignum2string(xp)
 	end	
 	ac.texttag
 	{
@@ -94,6 +94,8 @@ function mt:addXp(xp)
 		red = 9,
 		green = 211,
 		blue = 7,
+		fade = 1,
+		life = 1.5,
 		player = self:get_owner(),
 		show = ac.texttag.SHOW_SELF
 	}

@@ -53,7 +53,6 @@ function player.__index:add_rec_ex(rec_ex, where, flag)
 	if not rec_ex or tonumber(rec_ex) == 0  then 
 		return 
 	end	
-	local rec_ex = tonumber(string.format( "%.2f",rec_ex))
 	local data = {player = self, rec_ex = rec_ex}
 	if rec_ex > 0 and not flag then
 		self:event_notify('玩家-即将获得魔丸', data)
@@ -82,20 +81,22 @@ function player.__index:add_rec_ex(rec_ex, where, flag)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
 	if rec_ex < 0 then 
-		 str =  rec_ex
+		 str =  bignum2string(rec_ex)
 	else
-		 str = '+' .. rec_ex
+		 str = '+' .. bignum2string(rec_ex)
 	end	
 	ac.texttag
 	{
 		string = str,
-		size = 12,
+		size = 10,
 		position = position,
 		speed = 86,
 		red = 223,
 		green = 25,
 		blue = 208,
 		player = self,
+		fade =1,
+		life =1.5,
 		show = ac.texttag.SHOW_SELF
 	}
 end

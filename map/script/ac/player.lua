@@ -280,20 +280,22 @@ function mt:addGold(gold, where, flag)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
 	if gold < 0 then 
-		 str =  math.floor(gold)
+		 str =  bignum2string(gold)
 	else
-		 str = '+' .. math.floor(gold)
+		 str = '+' .. bignum2string(gold)
 	end	
 	ac.texttag
 	{
 		string = str,
-		size = 12,
+		size = 10,
 		position = position,
 		speed = 86,
 		red = 100*2.55,
 		green = 100*2.55,
 		blue = 20*2.55,
 		player = self,
+		life = 1.5,
+		fade = 1,
 		show = ac.texttag.SHOW_SELF
 	}
 	if where.type == 'unit' then
@@ -375,20 +377,22 @@ function mt:add_wood(wood, where, flag)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
 	if wood < 0 then 
-		 str = wood
+		 str = wood(bignum2string)
 	else
-		 str = '+' .. wood
+		 str = '+' .. bignum2string(wood)
 	end	
 	ac.texttag
 	{
 		string = str,
-		size = 12,
+		size = 10,
 		position = position,
 		speed = 86,
 		red = 9,
 		green = 211,
 		blue = 7,
 		player = self,
+		life = 1.5,
+		fade = 1,
 		show = ac.texttag.SHOW_SELF
 	}
 	
@@ -682,7 +686,7 @@ function player.create(id, jPlayer)
 	end
 	--11版本
 	if japi.GetGameVersion() < 7000 then 
-		p.name=japi.EXGetPlayerRealName(jPlayer)
+		p.name= japi.EXGetPlayerRealName(jPlayer) ~= '' and japi.EXGetPlayerRealName(jPlayer) or p.name
 	end
 
 	player[id] = p

@@ -33,9 +33,6 @@ local tools ={
         --默认为传进来控件的坐标
         new_ui:set_real_position(self:get_real_position())
         -- print('边框位置：',self:get_real_position())
-        -- print('text位置：',new_ui.txt:get_real_position())
-        -- print('model1位置：',new_ui.model:get_real_position())
-        -- print('model2位置：',new_ui.model:get_model_offset())
 
         if off_x and off_y then 
             new_ui.model:set_model_offset(off_x,off_y)
