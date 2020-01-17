@@ -191,7 +191,7 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
         local hero =p.hero 
         -- p.flag_all = p.flag_all or {}
         local real_name = string.sub(name,1,-2)
-        print(real_name)
+        -- print(real_name)
         --创建升级怪 
         local rect = ac.rect.j_rect('tupo1')
         local point = rect:get_point()
@@ -229,7 +229,7 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
             end)
         end)
         --创建区域离开事件
-        local reg = ac.region.create(ac.rect.j_rect('topo2'))
+        local reg = ac.region.create(ac.rect.j_rect('tupo2'))
         reg:event '区域-离开'(function(trg,unit)
             if hero ~= unit then 
                 return 
@@ -241,7 +241,6 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
                 trg_t:remove()
                 trg_t = nil 
             end 
-            u:remove()
             --删除自己的
             trg:remove()  
         end)

@@ -168,7 +168,6 @@ function mt:on_cast_start()
                     trg_t = nil 
                 end
                 p.flag_cyj = false 
-                u:remove()
                 --删除自己的
                 trg:remove()  
             end)

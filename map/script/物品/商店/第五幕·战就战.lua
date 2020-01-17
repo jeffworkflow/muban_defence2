@@ -77,7 +77,6 @@ for i,name in ipairs({'火炎之力 ','水寒之力 ','暴风之力 ','天雷之
                 trg_t:remove()
                 trg_t = nil 
             end   
-            u:remove()
             --删除自己的
             trg:remove()  
         end)
