@@ -377,7 +377,7 @@ function mt:add_wood(wood, where, flag)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
 	if wood < 0 then 
-		 str = wood(bignum2string)
+		 str = bignum2string(wood)
 	else
 		 str = '+' .. bignum2string(wood)
 	end	

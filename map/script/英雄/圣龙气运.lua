@@ -52,7 +52,7 @@ local mt = ac.skill['突破']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[tupo.blp]],
     title = '突破',
     tip = [[
 
