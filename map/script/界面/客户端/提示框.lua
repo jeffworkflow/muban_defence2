@@ -101,7 +101,7 @@ local function skill_tooltip(skill,unit)
             show_gold = show_jifen
         end
 
-        -- print('是否含有拥有多少',gold,show_gold, gold)
+        -- print('是否含有拥有多少',wood,show_wood, wood)
         local icon = shop_icon[skill.coin]
         if  icon and gold>0 then   
             tool.icon.text:set_text(show_gold)
@@ -130,7 +130,8 @@ end
 
 local function item_tooltip(item,unit)
     local title = item.color_name
-    local tip = item:get_tip()
+    local tip = item:get_tip()..(item.suit_tip or '')
+    -- print('物品tip',item.name,item.suit_tip)
     tool.tip:set_position(16,65+22)
 
     local gold,show_gold,player_gold = item:sell_price()

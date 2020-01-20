@@ -28,26 +28,19 @@ is_skill = true,
 function mt:on_cast_start()
     -- print('施法-随机技能',self.name)
     local hero = self.owner
+    local player = hero.owner
     local shop_item = ac.item.shop_item_map[self.name]
-    if not hero.buy_item_cnt then 
-        hero.buy_item_cnt = 0
-    end 
+    --限定购买次数
+    if not shop_item.player_buy_cnt then 
+        shop_item.player_buy_cnt = {}
+    end
     if not shop_item.player_wood then 
         shop_item.player_wood = {}
     end
 
-    local old_wood = shop_item.wood
     --可能会异步
-    --改变商店物品物价
-    hero.buy_item_cnt = hero.buy_item_cnt + 1
-    shop_item.wood = math.min(shop_item.wood + self.cre_wood * hero.buy_item_cnt,500000)
-
-    -- print( shop_item.wood,self.buy_cnt)
-    if hero:get_owner() == ac.player.self then 
-        shop_item:set_tip(shop_item:get_tip())
-    end
-    shop_item.player_wood[hero:get_owner()] = shop_item.wood
-    shop_item.wood = old_wood  
+    shop_item.player_buy_cnt[player] = (shop_item.player_buy_cnt[player] or 1) + 1
+    shop_item.player_wood[hero:get_owner()] =  math.min(shop_item.wood + self.cre_wood * shop_item.player_buy_cnt[player],500000)
 
     --给英雄随机添加物品
     local rand_list = ac.unit_reward['商店随机物品']
