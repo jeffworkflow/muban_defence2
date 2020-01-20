@@ -1124,8 +1124,8 @@ function damage:__call()
 	--音效
 	on_sound(self)
 	--漂浮文字
-	-- on_texttag(self)
-	ac.game:event_notify('显示伤害特效', self)
+	on_texttag(self)
+	-- ac.game:event_notify('显示伤害特效', self)
 	if not self.real_damage then
 
 		if not target:is_type('建筑') then

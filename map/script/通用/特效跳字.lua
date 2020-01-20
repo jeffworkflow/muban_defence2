@@ -42,13 +42,9 @@ ac.texttag_jump = function(data)
         mst = nil
     end 
     --随机位置
-    if math.random(2) == 1 then
-        x_base = math.random(-90,-40)
-    else
-        x_base = math.random(30)
-    end 
+    x_base = math.random(15,30)
     --随机高度
-    local h = 100 + math.random(-20,50)
+    local h = 120 + math.random(50)
 
     local str = '' .. val
     local name = list[data.type][1]
@@ -69,7 +65,7 @@ ac.texttag_jump = function(data)
     end
 end
  
-ac.game:event '显示伤害特效'(function(_,damage)
+ac.game:event '造成伤害结束'(function(_,damage)
     -- print('加载跳字')
     local type = '物理'
     local is_crit 

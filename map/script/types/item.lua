@@ -214,11 +214,16 @@ function mt:set_name(name)
 			show_lv = 'Lv'..self.level 
 		end		
 	end	
+	local suit_name =''
 	if self.suit_type then 
-		color = color_code['绿']
+		for n1,n2 in name:gmatch('(【[^\r\n]+】)([^\r\n]+)') do
+			suit_name = n1
+			name = n2
+		end
+		suit_name = '|cff'..color_code['绿']..suit_name..'|r'
 	end	
 
-	local str = '|cff'..color..tostring(name)..show_lv..'|r'
+	local str = suit_name..'|cff'..color..tostring(name)..show_lv..'|r'
 	self.store_name = str
 	self.color_name = str
 	japi.EXSetItemDataString(base.string2id(id),4,str)
@@ -265,7 +270,7 @@ end
 
 --获取购买价格
 function mt:buy_price()
-	return self.gold or 0,(self.show_gold or 0),self.player_gold and self.player_gold[ac.player.self] 
+	return self.gold or 0,(self.show_gold or self.gold or 0),self.player_gold and self.player_gold[ac.player.self] 
 end
 
 --获取出售价格
@@ -281,7 +286,7 @@ end
 
 --获取购买木头
 function mt:buy_wood()
-	return self.wood or 0,(self.show_wood or 0),self.player_wood and self.player_wood[ac.player.self] 
+	return self.wood or 0,(self.show_wood or self.wood or 0),self.player_wood and self.player_wood[ac.player.self] 
 end
 
 --获取出售木头
@@ -349,7 +354,7 @@ end
 
 --获取购买魔丸
 function mt:buy_rec_ex()
-	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.rec_ex or 0)
+	local gold = (self.player_rec_ex and self.player_rec_ex[ac.player.self]) and self.player_rec_ex[ac.player.self] or (self.rec_ex or 0)
 	-- self.rec_ex = gold
 	self.rec_ex = self.rec_ex or 0 
 	for i=1,10 do
@@ -358,7 +363,7 @@ function mt:buy_rec_ex()
 		end	
 	end
 	self.show_rec_ex = gold
-	return self.rec_ex,self.show_rec_ex,self.player_fire and self.player_fire[ac.player.self] 
+	return self.rec_ex,self.show_rec_ex,self.player_rec_ex and self.player_rec_ex[ac.player.self] 
 end
 
 --获取出售魔丸
@@ -476,7 +481,7 @@ function mt:get_item_lni_tip(str)
 			tp = type(value)
 		end
 		if tp =='number' then 
-			value = ac.format_number_tip(value)
+			value = self.is_small_num and ac.format_number(value) or ac.format_number_tip(value)
 			color_flag = true 
 		end
 		if color_flag then 

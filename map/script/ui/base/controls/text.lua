@@ -156,6 +156,9 @@ class.text = extends(class.panel){
     end,
 
     set_text = function (self,text)
+        if self:get_text() == text then 
+            return 
+        end
         japi.FrameSetText(self._id,text)
 
         if self.align < -1 then 

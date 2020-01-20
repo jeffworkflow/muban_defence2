@@ -23,7 +23,7 @@ local tool = class.panel:builder
     h = 400,
     level = 5,
     is_show = false,
-
+    alpha = 0.8 ,
     title = {type = 'text',x = 16,y = 16,font_size = 15,},
 
     icon = {
@@ -40,7 +40,7 @@ local tool = class.panel:builder
         },
     },
     -- off_tip_x = 
-    tip = {type = 'text',x = 16,y = 65+22,align = 'auto_height',font_size = 11,},
+    tip = {type = 'text',x = 16,y = 65+22,align = 'auto_height',font_size = 11},
 }
 
 function tool:hide()
@@ -68,38 +68,43 @@ local function skill_tooltip(skill,unit)
         local wood,show_wood,player_wood = item:buy_wood()
         local kill_count,show_kill_count,player_kill = item:buy_kill_count()  
         local jifen,show_jifen,player_jifen = item:buy_jifen()
-        local rec_ex,show_rec_ex,player_fire = item:buy_rec_ex()
+        local rec_ex,show_rec_ex,player_rec_ex = item:buy_rec_ex()
         gold = player_gold or gold
         wood = player_wood or wood
         kill_count = player_kill or kill_count
         jifen = player_jifen or jifen
-        rec_ex = player_fire or rec_ex
-        
+        rec_ex = player_rec_ex or rec_ex
         if gold >0 then 
             skill.coin = '金币'
             gold = gold
+            show_gold = show_gold
         end
         if wood >0 then 
             skill.coin = '木头'
             gold = wood
+            show_gold = show_wood
         end
         if kill_count >0 then 
             skill.coin = '杀敌数'
             gold = kill_count
+            show_gold = show_kill_count
         end
         if rec_ex >0 then 
             skill.coin = '魔丸'
             gold = rec_ex
+            show_gold = show_rec_ex
         end
 
         if jifen >0 then 
             skill.coin = '积分'
             gold = jifen
+            show_gold = show_jifen
         end
 
+        -- print('是否含有拥有多少',gold,show_gold, gold)
         local icon = shop_icon[skill.coin]
         if  icon and gold>0 then   
-            tool.icon.text:set_text(gold)
+            tool.icon.text:set_text(show_gold)
             tool.icon:show()
             tool.icon:set_normal_image(icon)
         else
@@ -132,12 +137,12 @@ local function item_tooltip(item,unit)
     local wood,show_wood,player_wood = item:sell_wood()
     local kill_count,show_kill_count,player_kill = item:sell_kill_count()  
     local jifen,show_jifen,player_jifen = item:sell_jifen()
-    local rec_ex,show_rec_ex,player_fire = item:sell_rec_ex()
+    local rec_ex,show_rec_ex,player_rec_ex = item:sell_rec_ex()
     gold = player_gold or gold
     wood = player_wood or wood
     kill_count = player_kill or kill_count
     jifen = player_jifen or jifen
-    rec_ex = player_fire or rec_ex
+    rec_ex = player_rec_ex or rec_ex
     
     if gold >0 then 
         item.coin = '金币'
@@ -204,16 +209,15 @@ function panel.updateToolTip()
             return 
         end 
         skill_tooltip(skill,unit)
-    -- elseif button.type_name == '物品栏' then
-    --     --如果是商店 取出当前选择的单位
-    --     if unit.type_unit == '商店' and unit.select_unit then
-    --         unit = unit.select_unit
-    --     end
-    --     local item = unit:get_slot_item(button.slot_id)
-    --     if item  == nil then 
-    --         return
-    --     end
-    --     item_tooltip(item,unit)
+    elseif button.type_name == '物品栏' then
+        local item = unit:get_slot_item(button.slot_id)
+        --把魔兽自带的提示框移出屏幕外
+        japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0.3,0.16)
+        if item  == nil then 
+            tool:hide()
+            return
+        end
+        item_tooltip(item,unit)
     -- elseif button.type_name == '属性栏' then
     --     sttr_tooltip()
     end

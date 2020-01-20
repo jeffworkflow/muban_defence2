@@ -190,7 +190,7 @@
         woods = (it.player_wood and it.player_wood[player]) or woods
         kill_counts = (it.player_kill and it.player_kill[player]) or kill_counts
         jifens = (it.player_jifen and it.player_jifen[player]) or jifens
-        rec_exs = (it.player_fire and it.player_fire[player]) or rec_exs
+        rec_exs = (it.player_rec_ex and it.player_rec_ex[player]) or rec_exs
          
         --处理 兑奖券
         local has_raffle

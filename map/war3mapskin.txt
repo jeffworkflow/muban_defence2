@@ -16,11 +16,17 @@ MinimapNeutralTexture=minimap\minimap-hero.blp
 TextTagFont=resource\fonts\fonts.ttf
 
 ConsoleButtonBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
-EscMenuEditBoxBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+ConsoleButtonBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
 ToolTipBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
-
-EscMenuEditBoxBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+ToolTipBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
 QuestDialogBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+QuestDialogBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+MultiboardBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+
+
+
+EscMenuEditBoxBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuEditBoxBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
 EscMenuButtonBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
 EscMenuButtonDisabledBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
 EscMenuButtonPushedBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
@@ -30,12 +36,10 @@ EscMenuButtonBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
 EscMenuButtonDisabledBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
 EscMenuButtonPushedBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
 EscMenuButtonDisabledPushedBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
-MultiboardBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
 EscMenuBorder=UI\Widgets\EscMenu\Human\editbox-background.blp
 
-ConsoleButtonBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
-QuestDialogBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
-ToolTipBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+
+
 
 [FrameDef]
 BONUS_ATTACK_SPEED= - 每点提高|cffffff00 0 |r攻击速度
