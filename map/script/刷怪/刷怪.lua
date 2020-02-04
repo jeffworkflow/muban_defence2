@@ -81,8 +81,9 @@ for i =1,3 do
             self.force_cool = 30
             self.creeps_datas = ac.attack_unit[index]..'*40'
             self:set_creeps_datas()
-            ac.player.self:sendMsg("|cffff0000 进攻怪 加速进攻，请全体成员牢牢守住基地。|r",5)
-            ac.player.self:sendMsg("|cffff0000 进攻怪 加速进攻，请全体成员牢牢守住基地。|r",5)
+            ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
+            ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
+            ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
         end    
 
     end

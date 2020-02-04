@@ -221,7 +221,7 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
                 local skl = hero:find_skill(real_name,nil,true)
                 if skl and skl.level<1 then 
                     skl:set_level(1)
-                    p:sendMsg('激活成功')
+                    p:sendMsg('|cffffe799【系统消息】|cff00ff00突破成功')
                 end    
                 --传送回练功房
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()

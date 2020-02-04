@@ -56,18 +56,18 @@ function mt:atk_pas_shot(target)
     local u =  hero:create_illusion(source-{math.random(360),100})
 
     local attribute ={
-        ['攻击'] = hero:get('攻击'),
-        ['护甲'] = hero:get('护甲'),
+        ['攻击'] = hero:get('攻击') * (0.8+self.level * 0.1),
+        ['护甲'] = hero:get('护甲') * (0.8+self.level * 0.1),
         ['攻击间隔'] = hero:get('攻击间隔'),
         ['攻击速度'] = hero:get('攻击速度'),
-        ['生命上限'] = hero:get('生命上限'),
-        ['魔法上限'] = hero:get('魔法上限'),
-        ['生命恢复'] = hero:get('生命恢复'),
-        ['魔法恢复'] = hero:get('魔法恢复'),
+        ['生命上限'] = hero:get('生命上限')* (0.8+self.level * 0.1),
+        ['魔法上限'] = hero:get('魔法上限')* (0.8+self.level * 0.1),
+        ['生命恢复'] = hero:get('生命恢复')* (0.8+self.level * 0.1),
+        ['魔法恢复'] = hero:get('魔法恢复')* (0.8+self.level * 0.1),
         ['移动速度'] = hero:get('移动速度'),
 
         -- ['分裂伤害'] = hero:get('分裂伤害'),
-        -- ['攻击减甲'] = hero:get('攻击减甲'),
+        -- ['攻击减甲'] = hero:get('攻击减甲'), 
         ['暴击几率'] = hero:get('暴击几率'),
         ['暴击伤害'] = hero:get('暴击伤害'),
         ['会心几率'] = hero:get('会心几率'),

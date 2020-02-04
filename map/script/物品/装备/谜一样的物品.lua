@@ -44,7 +44,7 @@ function mt:on_add()
                     item:item_remove()
                     local name = ac.all_item[math.random(#ac.all_item)]
                     local it = hero:add_item(name)
-                    p:sendMsg('恭喜 获得 '..it.color..'色物品 ： '..it.color_name,5)
+                    p:sendMsg('|cffffe799【系统消息】|cff00ff00百思终得其解，|cffffff00谜一样的物品|cff00ff00原来是 '..it.color..''..it.color_name,5)
                     -- ac.item.create_item(name,point)
 
                     
@@ -110,7 +110,7 @@ function mt:on_add()
                     item:item_remove()
                     local name = ac.all_skill[math.random(#ac.all_skill)]
                     local it = ac.item.add_skill_item(name,hero)
-                    p:sendMsg('恭喜 获得 '..it.color..' 技能： '..it.color_name,5)
+                    p:sendMsg('|cffffe799【系统消息】|cff00ff00百思终得其解，|cffffff00谜一样的天书|cff00ff00原来是 '..it.color..''..it.color_name,5)
                     -- ac.item.create_item(name,point)
                 end    
             end    

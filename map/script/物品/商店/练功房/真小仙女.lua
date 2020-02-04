@@ -13,7 +13,7 @@ ac.exchange_kill ={
     ['杀怪敏捷成长'] = {'杀怪加敏捷',60,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加敏捷|r|n'} ,
     ['杀怪智力成长'] = {'杀怪加智力',60,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+60杀怪加智力|r|n'} ,
     ['杀怪攻击成长'] = {'杀怪加攻击',100,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+100杀怪加攻击|r|n'} ,
-    ['攻击减甲'] = {'攻击减甲',15,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+15攻击减甲|r|n'} ,
+    ['攻击减甲'] = {'攻击减甲',8,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+8攻击减甲|r|n'} ,
     ['每秒加护甲'] = {'每秒加护甲',1,999999,500,[[mingwen9.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+1每秒加护甲|r|n'} ,
     -- ['杀怪护甲成长'] = {'杀怪加护甲',0.1,999999,400,[[sdsdh.blp]],'挑着boss'} ,
 }

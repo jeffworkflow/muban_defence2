@@ -32,11 +32,11 @@ content_tip = '|cffffe799使用说明：|r',
 auto_fresh_tip = true,
 
 }
-
 --概率
-local rate ={100,100,100,100,80,80,55,55,45,60,55,50,40,30}
+local rate ={90,90,90,90,75,75,55,50,45,60,55,50,40,30}
 --强化属性百分比
-local strong_attr ={2.5,5,7.5,10,15,20,25,30,35,40,45,50,55,60}
+local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115,145,180,220,260,300}
+
 local temp = {
     ['天谕'] = {
         { rand = 65,      name = '1'},
@@ -61,7 +61,8 @@ local function up_item(item,player)
     item.max_level = 15
     item:upgrade(1)
     item:set_name(item.name)
-    player:sendMsg('|cffffe799强化成功:|r '..item.color_name..' |cffffff00+'..item.level -1 ..'|r ')
+    player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r')
+    -- 物品升级为 '..item.color_name..'
 
 end    
 
@@ -122,7 +123,7 @@ function mt:on_cast_start()
                         --改变属性
                         up_item(item,player)
                     else 
-                        player:sendMsg('|cffff0000强化失败:|r '..item.color_name)
+                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r')
                     end    
                 end    
                 if self._count > 0 then  

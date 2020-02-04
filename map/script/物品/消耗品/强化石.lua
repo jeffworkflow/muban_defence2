@@ -22,7 +22,8 @@ cool = 0,
 tip = [[ 
 
 |cff00ff00可对装备进行一次强化，最高强化至10级！
-]],
+
+|cffcccccc强化成功几率和装备等级相关]],
 
 --物品技能
 is_skill = true,
@@ -33,9 +34,9 @@ auto_fresh_tip = true,
 }
 
 --概率
-local rate ={100,100,100,100,80,80,55,55,45}
+local rate ={90,90,90,90,75,75,55,50,45}
 --强化属性百分比
-local strong_attr ={2.5,5,7.5,10,15,20,25,30,35}
+local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115}
 
 function mt:on_cast_start()
     local unit = self.owner
@@ -98,10 +99,11 @@ function mt:on_cast_start()
                         item.max_level = 15
                         item:upgrade(1)
                         item:set_name(item.name)
-                        player:sendMsg('|cffffe799强化成功:|r '..item.color_name..'')
+                        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r')
+                        -- 物品升级为 '..item.color_name..'
                         -- |cffffff00+'..item.level -1 ..'|r 
                     else 
-                        player:sendMsg('|cffff0000强化失败:|r '..item.color_name)
+                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r')
                     end    
 
                     if self._count > 0 then  
@@ -147,16 +149,18 @@ local function insert_book(hero,name)
     local skl = hero:find_skill(name,nil,true)
     if not skl  then 
         ac.game:event_notify('技能-插入魔法书',hero,'剑冢',name)
-        ac.player.self:sendMsg('系统消息：获得'..name,2)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
     end 
 end 
 local temp = {
     ['锻造学徒'] =50,
     ['锻造师傅'] =100,
-    ['锻造匠人'] =200,
-    ['锻造宗师'] =300,
-    ['鬼斧神工'] =400,
+    ['锻造匠人'] =150,
+    ['锻造宗师'] =200,
+    ['天外飞仙'] =350,
 }  
+
+
 ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     local self = skill
     local hero = self.owner
@@ -191,7 +195,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     end    
     --发送消息
     if flag then 
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..rand_name..'|r',2)
     end  
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
@@ -200,7 +204,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         for i=1,tonumber(v) do 
             it = hero:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..it.color_name or it.name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..it.color_name or it.name..'|r',2)
     end
 
     if rand_name == '无' then
@@ -214,17 +218,17 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif rand_name == '复制装备' then
         local it = self.owner:add_item(_item.name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 '..it.color_name or _item.name,2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..it.color_name or _item.name,2)
     elseif rand_name == '真·复制装备' then
         local it = ac.dummy:add_item(_item.name,true)
         it:upgrade(_item.level-1)
         ac.wait(10,function()
             ac.dummy:remove_item(it)
             self.owner:add_item(it,true)
-            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 '..it.color_name or _item.name,2)  
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..it.color_name or _item.name,2)  
         end)
     end   
 
