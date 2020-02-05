@@ -1204,7 +1204,7 @@ function item.create_item(name,poi,is,p)
 	-- print(items.name,items.item_type,items._count)
 	--设置物品名
 	items.name = name 
-	items:set_name(name)
+	items:set_name(items.title or name)
 	-- print(items.tip)
 	--设置tip
 	items:set_tip(items:get_tip())

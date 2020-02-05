@@ -686,7 +686,9 @@ function player.create(id, jPlayer)
 	end
 	--11版本
 	if japi.GetGameVersion() < 7000 then 
+		if japi.EXGetPlayerRealName then 
 		p.name= japi.EXGetPlayerRealName(jPlayer) ~= '' and japi.EXGetPlayerRealName(jPlayer) or p.name
+		end
 	end
 
 	player[id] = p

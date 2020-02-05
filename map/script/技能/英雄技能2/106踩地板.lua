@@ -50,7 +50,7 @@ function mt:on_cast_shot()
     local point = hero:get_point()
 	-- hero:add_effect('origin',self.effect):remove()
 	ac.effect_ex{
-		poing = point,
+		point = point,
 		model=self.effect,
 		size = 2
 	}:remove()
