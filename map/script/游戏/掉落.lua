@@ -196,8 +196,8 @@ local reward = {
             hero:add_item(name,true)    
         end 
     end,
-    ['点金石'] = function (player,hero,unit,is_on_hero)
-        local name = '点金石'
+    ['强化石'] = function (player,hero,unit,is_on_hero)
+        local name = '强化石'
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
@@ -283,6 +283,7 @@ local unit_reward = {
             }
         },
         { rand = 0.01,      name = '吞噬丹'},
+        { rand = 0.05,      name = '强化石'},
         { rand = 0.01,      name = '随机技能'}
     },
     
@@ -507,7 +508,7 @@ local unit_reward = {
 
     },
     ['扭蛋'] = {
-        {    rand = 31.641, name = '空蛋' },
+        {    rand = 31.741, name = '空蛋' },
 
         {    rand = 4, name = '魔丸',},
         {    rand = 4, name = '木头',},
@@ -571,7 +572,7 @@ local unit_reward = {
         {    rand = 1, name = '宠物经验书(小)',},
         -- {    rand = 0.01, name = '吞噬丹',},
         {    rand = 0.01, name = '随机技能',},
-        {    rand = 0.8, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
+        {    rand = 0.7, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
         -- {    rand = 0.1, name = '神兵',},--lv1-lv5
         -- {    rand = 0.1, name = '神甲',},--lv1-lv5
         {    rand = 0.15, name = '功法升级书',}, --lv1
@@ -589,7 +590,7 @@ local unit_reward = {
     },
 
     ['超级扭蛋'] = {
-        {    rand = 29.681, name = '空蛋' },
+        {    rand = 30.181, name = '空蛋' },
 
         {    rand = 2.5, name = '魔丸',},
         {    rand = 2.5, name = '木头',},
@@ -653,7 +654,7 @@ local unit_reward = {
         {    rand = 0.5, name = '宠物经验书(大)',},
         {    rand = 0.05, name = '吞噬丹',},
         {    rand = 0.2, name = '随机技能',},
-        {    rand = 2, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
+        {    rand = 1.5, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
         -- {    rand = 0.1, name = '神兵',},--lv6-lv10
         -- {    rand = 0.1, name = '神甲',},--lv6-lv10
         {    rand = 0.15, name = '功法升级书',}, --lv1
@@ -725,11 +726,11 @@ local unit_reward = {
 
 
 
-    ------旧概率------------------
-    ['熔炼石boss1'] = {{rand =100,name = '一号熔炼石'}},
-    ['熔炼石boss2'] = {{rand =100,name = '二号熔炼石'}},
-    ['熔炼石boss3'] = {{rand =100,name = '三号熔炼石'}},
-    ['熔炼石boss4'] = {{rand =100,name = '四号熔炼石'}},
+    -- ------旧概率------------------
+    -- ['熔炼石boss1'] = {{rand =100,name = '一号熔炼石'}},
+    -- ['熔炼石boss2'] = {{rand =100,name = '二号熔炼石'}},
+    -- ['熔炼石boss3'] = {{rand =100,name = '三号熔炼石'}},
+    -- ['熔炼石boss4'] = {{rand =100,name = '四号熔炼石'}},
 
 
     ['奶牛'] = {

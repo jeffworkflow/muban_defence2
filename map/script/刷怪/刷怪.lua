@@ -81,10 +81,17 @@ for i =1,3 do
             self.force_cool = 30
             self.creeps_datas = ac.attack_unit[index]..'*40'
             self:set_creeps_datas()
+            
+        end  
+        
+        if index == 21 then 
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
-        end    
+
+        end  
+        
+        
 
     end
 

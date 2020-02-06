@@ -38,11 +38,11 @@ local mt = ac.skill['狩猎']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[xingtian.blp]],
     title = '狩猎',
     tip = [[
 
-点击查看 |cff00ff00狩猎|r
+点击查看 |cff00ff00狩猎食材|r
     ]],
 }
 mt.skills = {'狩猎1','狩猎2','狩猎3','狩猎4','狩猎5','狩猎6','狩猎7','狩猎8','狩猎9','狩猎10'}

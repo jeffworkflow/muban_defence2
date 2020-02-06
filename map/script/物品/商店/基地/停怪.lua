@@ -28,7 +28,7 @@ wood = 2000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
-cool = 600,
+cool = 690,
 --停怪时长
 stu_time = 90,
 
