@@ -63,11 +63,11 @@ for key,u_name in pairs(ac.kangfu) do
                         unit:event '单位-死亡'(function(_,unit,killer)
                             local p = killer.owner
                             local hero = p.hero
-                            local per_cnt = 50
+                            local per_cnt = 25
                             if not skl_color  then 
                                 print('功法测试2',skl_color,unit,killer)
                             end
-                            local max_cnt = math.min((p.kangfu_cnt[skl_color] or 1)*100,1000)
+                            local max_cnt = math.min((p.kangfu_cnt[skl_color] or 1)*50,1000)
                             p.kangfu[skl_color] = (p.kangfu[skl_color] or 0) +1
 
                             if p.kangfu[skl_color] % per_cnt == 0 then 

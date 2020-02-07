@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【每秒加智力】+1600*Lv|r
 
-|cff00bdec【主动施放】增加 |cffffff00技暴几率+(15+1*Lv)%  技暴伤害+(150+10*Lv)%  |r |cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加|cffff0000技暴几率+(15+1*Lv)% 技暴伤害+(150+10*Lv)%，|r|cff00bdec持续5秒|r
 
 ]],
 	--技能图标

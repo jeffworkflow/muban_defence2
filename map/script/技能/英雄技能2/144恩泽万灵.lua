@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【每秒加力量】+1600*Lv|r
 
-|cff00bdec【主动施放】增加 |cffffff00暴击几率+(15+1*Lv)%  暴击伤害+(150+10*Lv)%  |r |cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加|cffff0000暴击几率+(15+1*Lv)% 暴击伤害+(150+10*Lv)%|r，|cff00bdec持续5秒|r
 
 ]],
 	--技能图标

@@ -24,11 +24,11 @@ local mt = ac.skill['战就战']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[caidan.blp]],
+    art = [[BTN129.blp]],
     title = '战就战',
     tip = [[
 
-点击查看 |cff00ff00战就战|r
+点击查看 |cff00ff00混沌力量|r
     ]],
     
 }

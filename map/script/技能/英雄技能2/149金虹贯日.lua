@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【每秒加敏捷】+1600*Lv|r
 
-|cff00bdec【主动施放】增加 |cffffff00会心几率+(15+1*Lv)%  会心伤害+(150+10*Lv)%  |r |cff00bdec持续3秒|r
+|cff00bdec【主动施放】增加|cffff0000会心几率+(15+1*Lv)% 会心伤害+(150+10*Lv)%|r，|cff00bdec持续3秒|r
 
 ]],
 	--技能图标

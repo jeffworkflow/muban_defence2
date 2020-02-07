@@ -4,21 +4,195 @@ mt{
     level = 0,
     --魔法书相关
     is_order = 1 ,
-    art = [[fldyc.blp]], 
+    art = [[BTN131.blp]], 
     tip = [[
     
-|cffFFE799【成就属性】：|r
+|cffFFE799【属性】：|r
 |cff00ff00+500W 全属性
-+2.5%  会心几率
++25%  暴击伤害
++25%  技暴伤害
 +25%  会心伤害|r
 
 ]],
     ['全属性'] = 5000000,
-    ['会心几率'] = 2.5,
+    ['暴击伤害'] = 25,
+    ['技暴伤害'] = 25,
     ['会心伤害'] = 25,
 }
 
+local mt = ac.skill['水寒之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN137.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+600W 全属性
+攻击有10%几率造成全属性*20的范围技能伤害|r
 
+]],
+    ['全属性'] = 6000000,
+    
+}
+
+local mt = ac.skill['暴风之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN167.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+700W 全属性
++25% 攻击距离|r
+
+]],
+    ['全属性'] = 7000000,
+    ['攻击距离%'] = 25,
+    
+}
+
+local mt = ac.skill['天雷之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN142.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+800W 全属性
++50% 物品获取率|r
+
+]],
+    ['全属性'] = 8000000,
+    ['物品获取率'] = 50,
+    
+}
+
+local mt = ac.skill['生命之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN134.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+900W 全属性
++10% 每秒回血|r
+
+]],
+    ['全属性'] = 9000000,
+    ['每秒回血'] = 10,
+    
+}
+
+local mt = ac.skill['死亡之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN138.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+1000W 全属性
+攻击有10%几率秒杀敌人（对BOSS无效）|r
+
+]],
+    ['全属性'] = 10000000,
+    
+    
+}
+
+local mt = ac.skill['光明之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN127.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+1100W 全属性
++50% 物理伤害加深|r
+
+]],
+    ['全属性'] = 11000000,
+    ['物理伤害加深'] = 50,
+    
+    
+}
+
+local mt = ac.skill['黑暗之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN128.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+1200W 全属性
++25% 技能伤害加深|r
+
+]],
+    ['全属性'] = 12000000,
+    ['技能伤害加深'] = 25,
+    
+    
+}
+
+local mt = ac.skill['时间之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN136.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+1300W 全属性
++20W   每秒加全属性|r
+
+]],
+    ['全属性'] = 13000000,
+    ['每秒加全属性'] = 200000,
+    
+    
+}
+
+local mt = ac.skill['空间之力']
+mt{
+    --等级
+    level = 0,
+    --魔法书相关
+    is_order = 1 ,
+    art = [[BTN161.blp]], 
+    tip = [[
+    
+|cffFFE799【属性】：|r
+|cff00ff00+1500W 全属性
++1W    杀怪加全属性|r
+
+]],
+    ['全属性'] = 15000000,
+    ['杀怪加全属性'] = 10000,
+    
+    
+}
 
 for i,name in ipairs({'火炎之力 ','水寒之力 ','暴风之力 ','天雷之力 ','生命之力 ','死亡之力 ','光明之力 ','黑暗之力 ','时间之力 ','空间之力 '}) do 
     local mt = ac.skill[name]
@@ -57,7 +231,7 @@ for i,name in ipairs({'火炎之力 ','水寒之力 ','暴风之力 ','天雷之
                 local skl = hero:find_skill(real_name,nil,true)
                 if skl and skl.level<1 then 
                     skl:set_level(1)
-                    p:sendMsg('激活成功')
+                    p:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-战就战系统中查看',2)
                 end    
                 --传送回练功房
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()

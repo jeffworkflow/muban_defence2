@@ -6,14 +6,14 @@ art = "langxingoufei.blp",
 
 title =[[|cff00ff00狼心狗肺|r]],
 
-extr_tip = '|cffffff00点击可激活【一品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【一品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 3500000,
-['攻击速度'] = 25,
+['护甲'] = 3500,
 tip = [[%extr_tip%
 
 |cffFFE799【食材属性】：|r
 |cff00ff00+350w 全属性|r
-|cff00ff00+25% 攻击速度|r
+|cff00ff00+3500 护甲|r
 ]],
 }
 
@@ -45,7 +45,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -60,14 +60,14 @@ art = "zhengyanxiazi.blp",
 
 title =[[|cff00ff00睁眼虾子|r]],
 
-extr_tip = '|cffffff00点击可激活【二品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【二品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 4000000,
-['分裂伤害'] = 25,
+['护甲%'] = 5,
 tip = [[%extr_tip%
 
 |cffFFE799【食材属性】：|r
 |cff00ff00+400w 全属性|r
-|cff00ff00+25% 分裂伤害|r
+|cff00ff00+5%   护甲|r
 ]],
 }
 
@@ -115,12 +115,12 @@ title =[[|cff00ffff杯弓蛇影|r]],
 
 extr_tip = '|cffffff00点击可激活【三品食材】，激活后可以在狩猎系统中查看',
 ['全属性'] = 4500000,
-['攻击减甲'] = 25,
+['攻击减甲'] = 50,
 tip = [[%extr_tip%
 
 |cffFFE799【食材属性】：|r
 |cff00ff00+450w 全属性|r
-|cff00ff00+25  攻击减甲|r
+|cff00ff00+50  攻击减甲|r
 ]],
 }
 
@@ -152,7 +152,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -165,7 +165,7 @@ art = "taohua.blp",
 
 title =[[|cff00ffff人面桃花|r]],
 
-extr_tip = '|cffffff00点击可激活【四品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【四品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 5000000,
 ['减伤'] = 2.5,
 tip = [[%extr_tip%
@@ -204,7 +204,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -217,7 +217,7 @@ art = "simianchuge.blp",
 
 title =[[|cff00ffff四面楚歌|r]],
 
-extr_tip = '|cffffff00点击可激活【五品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【五品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 5500000,
 ['闪避'] = 2.5,
 tip = [[%extr_tip%
@@ -256,7 +256,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -269,7 +269,7 @@ art = "baxianguohai.blp",
 
 title =[[|cffffff00八鲜过海|r]],
 
-extr_tip = '|cffffff00点击可激活【六品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【六品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 6000000,
 ['免伤几率'] = 2.5,
 tip = [[%extr_tip%
@@ -308,7 +308,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -321,7 +321,7 @@ art = "huangquan.blp",
 
 title =[[|cffffff00黄泉野菜|r]],
 
-extr_tip = '|cffffff00点击可激活【七品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【七品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 6500000,
 ['暴击几率'] = 2.5,
 tip = [[%extr_tip%
@@ -360,7 +360,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -373,7 +373,7 @@ art = "yichouwannian.blp",
 
 title =[[|cffffff00遗臭万年|r]],
 
-extr_tip = '|cffffff00点击可激活【八品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【八品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 7000000,
 ['技暴几率'] = 2.5,
 tip = [[%extr_tip%
@@ -412,7 +412,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -425,7 +425,7 @@ art = "bamianlinglong.blp",
 
 title =[[|cffff0000八面玲珑|r]],
 
-extr_tip = '|cffffff00点击可激活【九品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【九品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 7500000,
 ['会心几率'] = 2.5,
 tip = [[%extr_tip%
@@ -464,7 +464,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在狩猎系统中查看',2)
+        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         
@@ -477,7 +477,7 @@ art = "baiguiyeyan.blp",
 
 title =[[|cffff0000百鬼夜宴|r]],
 
-extr_tip = '|cffffff00点击可激活【帝品食材】，激活后可以在狩猎系统中查看',
+extr_tip = '|cffffff00点击可激活【帝品食材】，激活后可以在圣龙气运-狩猎系统中查看',
 ['全属性'] = 8000000,
 ['攻击间隔'] = -0.05,
 tip = [[%extr_tip%
