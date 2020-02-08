@@ -248,8 +248,8 @@ local reward = {
         end    
         local rand = math.random(#ac.save_item[lv][color])
         local name = ac.save_item[lv][color][rand]
-        --掉落运动
-        ac.fall_move(name,unit:get_point(),ac.table.ItemData[name].specail_model,player)
+        --掉落运动 
+        ac.fall_move(name,unit:get_point(),ac.table.ItemData[name].specail_model)
         
     end,
 }
@@ -457,8 +457,8 @@ local unit_reward = {
     ['剑魔'] = {{rand =45,name = '强化石*1'},{rand =5,name = '天谕*1'}},
 
     ['装备升级'] =  {	
-        {    rand = 0.25, name = '真·复制装备',},
-        {    rand = 97.75, name = '无' },
+        {    rand = 80.25, name = '真·复制装备',},
+        -- {    rand = 97.75, name = '无' },
         {    rand = 1, name = '随机物品',},
         {    rand = 0.5, name = '吞噬丹*1',},
         {    rand = 0.5, name = '复制装备',},
@@ -960,7 +960,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         if finds(str,unit:get_name()) then
             local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
             
-            -- fall_save_rate = 80 --测试
+            fall_save_rate = 80 --测试
             
             --多次获得
             local cnt = math.floor(3+get_player_count()/2)

@@ -85,7 +85,7 @@ function mt:on_remove()
 	self.target.unit_type = self.old_unit_type
 	--暂停生命周期
 	jass.UnitPauseTimedLife(self.target.handle,true)  
-	jass.UnitApplyTimedLife(self.target.handle,base.string2id('BHwe'),0)
+	-- jass.UnitApplyTimedLife(self.target.handle,base.string2id('BHwe'),0)
 	--移除水元素技能
 	-- self.target:remove_ability 'BHwe'
 	-- 召唤物 buff 移除时 ，移除召唤物 ， 不受单位死亡事件

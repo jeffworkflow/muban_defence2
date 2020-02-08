@@ -62,6 +62,9 @@ local function up_item(item,player)
     item:upgrade(1)
     item:set_name(item.name)
     player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r')
+    if item.level == item.max_level then 
+        player:sendMsg('|cffffe799【系统消息】恭喜强化成功，|cff00ff00当前物品已经到达顶级|r')
+    end
     -- 物品升级为 '..item.color_name..'
 
 end    
@@ -118,13 +121,21 @@ function mt:on_cast_start()
                     for i = 1,cnt do
                         up_item(item,player)
                     end    
-                else 
+                elseif item.level < 15 then
                     if math.random(10000)/100 <= rate[item.level] then 
                         --改变属性
                         up_item(item,player)
                     else 
                         player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r')
-                    end    
+                    end   
+                else
+                    player:sendMsg('|cffffe799【系统消息】|cff00ff00当前物品已经到达顶级|r')
+                    if self._count > 1 then 
+                        self:set_item_count(self._count+1)
+                    else
+                        --重新添加给英雄
+                        unit:add_item(name,true)
+                    end  
                 end    
                 if self._count > 0 then  
                     ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调

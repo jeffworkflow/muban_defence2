@@ -75,11 +75,15 @@ local new_ui = class.panel:builder
     w = 512,
     h = 100,
     -- w = 512,
-    -- h = 96,
+    -- h = 96, 
     level = 5,
     is_show = false,
     normal_image = [[ui\battle_power\ui-a10.tga]],
-
+    md = {
+        type = 'model',
+        size = 1,
+        model = [[zhanlixlz.mdx]],
+    },
     target_val = 0,
     current_val = 0,
     get_target_val = function(self)

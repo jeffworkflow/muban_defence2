@@ -35,8 +35,57 @@ mt{
 
 ]],
     ['全属性'] = 6000000,
-    
+	--技能类型
+	skill_type = "被动,全属性",
+	--被动
+	passive = true,
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+    --伤害范围
+   damage_area = 500,
+	--伤害
+	damage = function(self)
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*20)
+end,
+	--被动事件
+	event_name = "造成伤害效果",
+	--特效
+	effect = [[Abilities\Spells\Undead\FrostNova.mdl]],
 }
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+	local target = damage.target
+
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+    ac.effect_ex{
+    	model = skill.effect,
+    	point = u:get_point(),
+    }:remove()
+	for i, u in ac.selector()
+		: in_range(hero,self.damage_area)
+		: is_enemy(hero)
+		: ipairs()
+	do
+        u:damage
+        {
+            source = hero,
+            skill = skill,
+            damage = skill.damage,
+            damage_type = '法术'
+        }
+	end	
+end
 
 local mt = ac.skill['暴风之力']
 mt{
@@ -110,9 +159,41 @@ mt{
 
 ]],
     ['全属性'] = 10000000,
-    
-    
+	--技能类型
+	skill_type = "被动,秒杀",
+	--被动
+	passive = true,
+	--耗蓝
+	cost = 0,
+	--冷却时间
+	cool = 1,
+	--忽略技能冷却
+	ignore_cool_save = true,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+	--被动事件
+	event_name = "造成伤害效果",
+	--特效
+	effect = [[AZ_Leviathan_V2.mdx]],
 }
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+	local target = damage.target
+
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+    ac.effect_ex{
+    	model = skill.effect,
+    	point = u:get_point(),
+    }:remove()
+    if not target:is_type('boss') then 
+        target:kill(hero)
+    end
+end
 
 local mt = ac.skill['光明之力']
 mt{
@@ -130,8 +211,6 @@ mt{
 ]],
     ['全属性'] = 11000000,
     ['物理伤害加深'] = 50,
-    
-    
 }
 
 local mt = ac.skill['黑暗之力']

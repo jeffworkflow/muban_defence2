@@ -87,6 +87,8 @@ end,
 damage_area = 500,
 event_name ='造成伤害效果',
 effect =[[Fesh_Final.mdx]],
+hit_area = 300,
+distance = 1200,
 passive = true 
 }
 function mt:damage_start(damage)
@@ -98,25 +100,30 @@ function mt:damage_start(damage)
 	if not damage:is_common_attack()  then 
 		return 
 	end 
-	for i, u in ac.selector()
-		: in_range(damage.target,self.damage_area)
-		: is_enemy(hero)
-		: ipairs()
-	do
-		ac.effect_ex{
-			model = skill.effect,
-            point = damage.target:get_point(),
-            model_size = 4,
-        }:remove()
-        
-        u:damage
-        {
-            source = hero,
-            skill = skill,
-            damage = skill.damage,
-            damage_type = '法术'
-        }
-	end	
+
+	local source = hero:get_point()
+	local mvr = ac.mover.line
+	{
+		source = hero,
+		skill = skill,
+		model =  skill.effect,
+		speed = 800,
+		angle = hero:get_point()/target:get_point() ,
+		hit_area = skill.hit_area,
+		distance = skill.distance,
+		high = 120,
+		size = 4,
+		on_hit = function(self,u)
+            --技能伤害
+            u:damage
+            {
+                source = hero,
+                skill = skill,
+                damage = skill.damage,
+                damage_type = '法术'
+            }
+		end	
+	}
 end
 
 
