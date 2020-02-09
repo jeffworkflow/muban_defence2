@@ -29,7 +29,7 @@ class.hero_info_panel = extends(class.panel){
         --存档物品
         for i=1,6 do 
             local x = 213 + 18*(i-1) + 80*(i-1)
-            local btn_it = panel:add_button('image\\bg_save_item1.blp',x,85,80,80)
+            local btn_it = panel:add_button('image\\PASyiji'..i..'.blp',x,85,80,80)
             panel.btn_items[btn_name[i]] = btn_it
 
             function btn_it:on_button_mouse_enter()  

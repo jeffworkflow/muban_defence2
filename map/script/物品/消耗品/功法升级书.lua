@@ -56,10 +56,12 @@ function mt:on_cast_start()
 
     if not self.dialog  then 
         self.dialog = create_dialog(player,'升级技能',list,function (index)
+            self.dialog = nil
             local skl = list[index].skill
             if skl then 
-                skill:upgrade(self.upgrade_cnt)
+                skl:upgrade(self.upgrade_cnt)
                 if self._count > 0 then  
+                    print(123,'再一次升级')
                     self:on_cast_start()
                     self:add_item_count(-1)
                 end  
@@ -72,7 +74,6 @@ function mt:on_cast_start()
                     owner:add_item(self.name,true)
                 end     
             end
-            self.dialog = nil
         end) 
     else 
         self:add_item_count(1) 
@@ -100,6 +101,6 @@ mt{
     --购买价格
     wood = 0,
     skill_cnt = 8,
-    upgrade_cnt = 8
+    upgrade_cnt = 5
 }
 mt.on_cast_start = ac.skill['功法升级书'].on_cast_start

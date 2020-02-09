@@ -128,9 +128,9 @@ function mt:on_cast_start()
                 --
                 local skl = ac.skill[item.name..' ']
                 skl{
-                    title = item.name,
+                    title = item.color_name,
                     art = item.art,
-                    tip = item:get_tip(),
+                    tip = item:get_tip()
                 }
                 local new_skl_name = item.name..' '
                 if ac.tunshi_black_item and finds(ac.tunshi_black_item,item.name) then 

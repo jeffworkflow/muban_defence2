@@ -72,10 +72,10 @@ function mt:on_cast_start()
         end 
     end    
 
-    if self.eff then 
-        self.eff:remove()
+    if p.eff then 
+        p.eff:remove()
     end    
-    self.eff = ac.effect(self.random_point,self.effect,0,1,'origin')
+    p.eff = ac.effect(self.random_point,self.effect,0,1,'origin')
 
     local tx,ty = self.random_point:get()
     local rect = ac.rect.create( tx - self.area/2, ty-self.area/2, tx + self.area/2, ty + self.area/2)
@@ -141,14 +141,14 @@ function mt:on_cast_start()
 end    
 
 function mt:add_content()
-    if self.eff then 
-        self.eff:remove()
-    end 
 
     local hero = self.owner
     local player = self.owner:get_owner()
     local p = self.owner:get_owner()
     hero = player.hero 
+    if p.eff then 
+        p.eff:remove()
+    end 
     --初始化
     player.achievement = player.achievement or {}
     -- print('使用了命运花')
@@ -179,7 +179,7 @@ function mt:add_content()
         for i=1,tonumber(v) do 
             it = hero:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..it.color_name or it.name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
     --加挖宝积分
     -- player:AddServerValue('wbjf',1) 自定义服务器
@@ -208,7 +208,7 @@ function mt:add_content()
         --添加给购买者
         local name = list[math.random(#list)]
         local it = ac.item.add_skill_item(name,self.owner)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffffff00【技能书】'..it.color_name or name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffffff00【技能书】'..(it.color_name or name)..'|r',2)
     elseif  rand_name == '魔丸' then
         self.owner:add_rec_ex(10000)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+10000|r',2) 

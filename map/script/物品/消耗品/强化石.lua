@@ -100,6 +100,10 @@ function mt:on_cast_start()
                         item:upgrade(1)
                         item:set_name(item.name)
                         player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r')
+
+                        if item.level == 10 then 
+                            player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
+                        end
                         -- 物品升级为 '..item.color_name..'
                         -- |cffffff00+'..item.level -1 ..'|r 
                     else 
@@ -159,6 +163,23 @@ local temp = {
     ['锻造宗师'] =200,
     ['天外飞仙'] =350,
 }  
+local function up_item(item)
+    local lni_data = ac.table.ItemData[item.name]
+    if not lni_data then print('没有取到数据') return end 
+    for key in sortpairs(ac.unit.attribute) do
+        if item[key] and lni_data[key]  then 
+            item[key] = lni_data[key] * (1+strong_attr[item.level]/100)
+        end 
+        if item[key..'%'] and lni_data[key..'%']  then 
+            item[key..'%'] = lni_data[key..'%'] * (1+strong_attr[item.level]/100)
+        end 
+    end
+    item.show_level = true
+    item.qh_max_level = 10
+    item.max_level = 15
+    item.level = item.level + 1
+    item:set_name(item.name)
+end   
 
 
 ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
@@ -204,7 +225,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         for i=1,tonumber(v) do 
             it = hero:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..it.color_name or it.name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 
     if rand_name == '无' then
@@ -221,15 +242,20 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif rand_name == '复制装备' then
         local it = self.owner:add_item(_item.name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..it.color_name or _item.name,2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
     elseif rand_name == '真·复制装备' then
-        local it = ac.dummy:add_item(_item.name,true)
-        it:upgrade(_item.level-1)
-        ac.wait(10,function()
-            ac.dummy:remove_item(it)
-            self.owner:add_item(it,true)
-            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..it.color_name or _item.name,2)  
-        end)
+        -- local it = ac.dummy:add_item(_item.name,true)
+        -- it:upgrade(_item.level-1)
+        -- ac.dummy:remove_item(it)
+        
+        -- ac.wait(10,function()
+            local it = self.owner:add_item(_item.name,true)
+            for i=1,(_item.level-1) do 
+                up_item(it)
+            end
+            print('真复制装备：',it.level)
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)  
+        -- end)
     end   
 
 

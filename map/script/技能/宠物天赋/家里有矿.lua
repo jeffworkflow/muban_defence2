@@ -42,7 +42,7 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local peon = self.owner
     local hero = p.hero
-	ac.func_give_suipian(self:get_point(),temp)
+	ac.func_give_suipian(ac.main_unit:get_point(),temp)
 end
 function mt:on_remove()
     local hero = self.owner
