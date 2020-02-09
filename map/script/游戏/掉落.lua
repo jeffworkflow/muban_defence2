@@ -293,7 +293,7 @@ local unit_reward = {
                 { rand = 1, name = '随机红装'},
             }
         },
-        { rand = 0.01,      name = '吞噬丹'},
+        { rand = 0.007,      name = '吞噬丹'},
         { rand = 0.01,      name = '天谕'},
         { rand = 0.04,      name = '强化石'},
         { rand = 0.01,      name = '随机技能'}

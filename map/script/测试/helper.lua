@@ -584,7 +584,7 @@ end
 function helper:add_sub_skill(skill,book_skill)
 	local hero = self --,'杀鸡狂魔'
 	local temp_skill = {
-		'倒霉蛋','游戏王','挖宝达人','五道杠少年','输出机器','技多不压身','实在是菜','浴火重生','ONE_PIECE','法老的遗产'
+		'倒霉蛋','游戏王','挖宝达人','五道杠少年','输出机器','八个技能的男人','实在是菜','浴火重生','ONE_PIECE','法老的遗产'
 	}
 	for i,name in ipairs(temp_skill) do
 		print(name)
