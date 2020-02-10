@@ -88,7 +88,7 @@ damage_area = 500,
 event_name ='造成伤害效果',
 effect =[[Fesh_Final.mdx]],
 hit_area = 300,
-distance = 1200,
+distance = 700,
 passive = true 
 }
 function mt:damage_start(damage)
@@ -112,7 +112,7 @@ function mt:damage_start(damage)
 		hit_area = skill.hit_area,
 		distance = skill.distance,
 		high = 120,
-		size = 4,
+		size = 4.5,
 		on_hit = function(self,u)
             --技能伤害
             u:damage

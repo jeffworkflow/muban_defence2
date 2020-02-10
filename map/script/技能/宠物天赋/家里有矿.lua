@@ -30,7 +30,7 @@ mt{
 	--技能图标
 	art = [[jinkuang.blp]],
 	--特效
-	effect = [[UAcoin.mdx]],
+	effect = [[Objects\InventoryItems\BundleofLumber\BundleofLumber.mdl]],
 }
 function mt:on_add()
     local skill = self
@@ -66,7 +66,7 @@ tip = [[
 --cd
 cool = 0,
 --模型
-_model = [[UAcoin.mdx]],
+_model = [[Objects\InventoryItems\BundleofLumber\BundleofLumber.mdl]],
 --物品
 item_type = '神符'
 }

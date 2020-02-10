@@ -35,7 +35,8 @@ class.hero_info_panel = extends(class.panel){
             function btn_it:on_button_mouse_enter()  
                 local info = panel.items[btn_name[i]]
                 if info then 
-                    local tip = string.sub(info.tip,1,-112)
+                    local tip = string.sub(info.tip,1,-106)
+                    --尾部扣字
                     self:tooltip(info.title,tip,0,400,84,10)
                 end
             end   

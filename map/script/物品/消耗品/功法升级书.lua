@@ -10,7 +10,6 @@ mt{
     --说明
     tip = [[
 |cff00ff00点击选择要升级的功法，可免费升一级
-
 ]],
 
     content_tip = '|cffFFE799说明：|r|n',

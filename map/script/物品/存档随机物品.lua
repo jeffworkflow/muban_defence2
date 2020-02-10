@@ -273,7 +273,7 @@ category = '存档']]
                         lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
                     end    
                 end
-                lni_str = lni_str .. '\n|cff00ff00点击进行穿戴存档|cffffff00（只存档穿戴后的装备）|cff00ff00，按Tab查看效果'..'\n'
+                lni_str = lni_str .. '\n|cff00ff00点击进行穿戴|cffff0000（只存档穿戴后的装备）|cff00ff00，按Tab查看效果'..'\n'
                 lni_str = lni_str .. ']]'..'\n'
 
                 --合并属性条
