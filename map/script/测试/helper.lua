@@ -759,6 +759,13 @@ function helper:add_item(str,cnt,flag)
 		self:add_item(str,true,flag and self.owner)
 	end	
 end
+
+function helper:create_item(str,cnt,flag)
+	local cnt = cnt or 1
+	for i=1,cnt do
+		ac.item.create_item(str,self:get_point())
+	end	
+end	
 --增加套装 可能掉线
 function helper:add_suit(str)
 	local cnt = 5 
@@ -1095,8 +1102,60 @@ function helper:test_b2(str)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	local hero = p.hero
 	ac.game:event_notify('技能-删除魔法书',hero,'精彩活动',str or '有趣的灵魂')
-	
 end	
+
+function helper:test_i1()
+	local type_id = 'I013'
+	ac.test_nav = {}
+	local x,y = self:get_point():get()
+	for i=1,500 do 
+		local a = jass.CreateItem(base.string2id(type_id),x,y)
+		table.insert( ac.test_nav, a )
+	end	
+end	
+
+function helper:test_i2()
+	local x,y = self:get_point():get()
+	for i=1,500 do 
+		local a = ac.item.create_item('强化石',self:get_point())
+	end	
+end	
+function helper:test_i3(str)
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	local hero = p.hero
+	local it = self:add_item('真圣剑')
+	for i=1,1000 do 
+		self:event_dispatch('单位-合成装备', self, it) 
+	end
+end	
+
+function helper:test_e1()
+	local x,y = self:get_point():get()
+	ac.test_eff = {}
+	for i=1,500 do 
+		local eff = ac.effect_ex{
+			point = self:get_point(),
+			model = ac.skill['强化石'].specail_model
+		}
+		
+		table.insert( ac.test_eff, eff )
+	end	
+end	
+
+
+function helper:test_c1()
+	for i,handle in ipairs(ac.test_nav) do 
+		jass.RemoveItem(handle)
+	end	
+end	
+
+function helper:test_c2()
+	for i,eff in ipairs(ac.test_eff) do 
+		eff:remove()
+		ac.test_eff[i] = nil
+	end	
+end	
+
 --创建 魔兽自带兵
 function helper:u1()
 	local point = ac.map.rects['出生点']

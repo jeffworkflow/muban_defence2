@@ -956,7 +956,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         hero_kill_unit(unit_reward['进攻怪'],player,killer,unit,fall_rate)
 
         --存档型装备处理
-        local str = table.concat( ac.attack_boss, " ")
+        local str = ac.attack_boss and table.concat( ac.attack_boss, " ")
         if finds(str,unit:get_name()) then
             local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
             
