@@ -20,7 +20,7 @@ cool = 0,
 --购买价格
 wood = 100,
 --每次增加
-cre_wood = 200,
+cre_wood = 100,
 --物品技能
 is_skill = true,
 }
