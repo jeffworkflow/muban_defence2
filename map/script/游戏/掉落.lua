@@ -461,7 +461,7 @@ local unit_reward = {
         -- {    rand = 97.75, name = '无' },
         {    rand = 1, name = '随机物品',},
         {    rand = 0.5, name = '吞噬丹*1',},
-        {    rand = 80.5, name = '复制装备',},
+        {    rand = 0.5, name = '复制装备',},
     },
 
 
@@ -517,6 +517,12 @@ local unit_reward = {
         {    rand = 0.5, name = '吞噬丹*1',},
         {    rand = 0.5, name = '多抽十次',},
         {    rand = 1, name = '多抽一次',},
+
+        -- {    rand = 20, name = '多抽百次',},
+        -- {    rand = 20, name = '无' },
+        -- {    rand = 20, name = '吞噬丹*1',},
+        -- {    rand = 20, name = '多抽十次',},
+        -- {    rand = 20, name = '多抽一次',},
 
     },
     ['扭蛋'] = {

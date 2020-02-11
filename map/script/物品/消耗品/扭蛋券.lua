@@ -135,15 +135,16 @@ local function insert_book(hero,name)
     local skl = hero:find_skill(name,nil,true)
     if not skl  then 
         ac.game:event_notify('技能-插入魔法书',hero,'龙宫',name)
-        ac.player.self:sendMsg('系统消息：获得'..name,2)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，扭蛋能成神。获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
     end 
 end 
+
 local temp = {
     ['欢乐扭蛋'] =50,
     ['扭蛋高手'] =100,
-    ['扭蛋天才'] =200,
-    ['扭蛋大魔王'] =300,
-    ['扭蛋大神'] =400,
+    ['扭蛋天才'] =150,
+    ['扭蛋大魔王'] =200,
+    ['扭蛋大神'] =350,
 }  
 
 ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
@@ -191,7 +192,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         for i=1,tonumber(v) do 
             it = hero:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 
     local skl = u:find_skill(__it.name,nil,true)
@@ -200,7 +201,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     end    
 
     if rand_name == '无' then
-        player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.server['挖宝积分']..' )|r',2)
+        -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.server['挖宝积分']..' )|r',2)
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
@@ -210,25 +211,26 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        -- tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
+
     elseif rand_name == '多抽一次' then
         local cnt =1 
         for i=1,cnt do 
             skl:on_cast_start()
         end
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 '..rand_name,2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来十次|cffcccccc（文字部分不做提醒）|r',2)
     elseif rand_name == '多抽十次' then
+        local cnt =5 
+        for i=1,cnt do 
+            skl:on_cast_start()
+        end
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来五十次|cffcccccc（文字部分不做提醒）|r',2)
+    elseif rand_name == '多抽百次' then
         local cnt =10 
         for i=1,cnt do 
             skl:on_cast_start()
         end
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 '..rand_name,2)
-    elseif rand_name == '多抽百次' then
-        local cnt =100 
-        for i=1,cnt do 
-            skl:on_cast_start()
-        end
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 '..rand_name,2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来一百次|cffcccccc（文字部分不做提醒）|r',2)
     end   
 
 end)
