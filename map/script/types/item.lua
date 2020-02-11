@@ -23,6 +23,7 @@ setmetatable(mt, skill)
 
 item.item_map = {}
 item.shop_item_map = {}
+item.removed_items = setmetatable({}, { __mode = 'kv' })
 
 --类型
 mt.type = 'item'
@@ -411,14 +412,21 @@ function mt:show(is)
         -- self.recycle = false
 		if self._eff then
 			self._eff:remove()
+			self._eff = nil
 		end
-		-- print(self:get_point())
-		self._eff = ac.effect(self:get_point(),self._model,270,1,'origin')
+		-- -- print(self:get_point())
+		-- self._eff = ac.effect(self:get_point(),self._model,270,1,'origin')
 		
-		--设置物品模型 套装 模型大小
-		if self.model_size and self._eff then 
-			self._eff.unit:set_size(self.model_size )
-		end
+		-- --设置物品模型 套装 模型大小
+		-- if self.model_size and self._eff then 
+		-- 	self._eff.unit:set_size(self.model_size )
+		-- end
+		self._eff = ac.effect_ex{
+		 	point = self:get_point(),
+		 	model =self._model,
+			size = self.model_size or 1,
+			angle = 270
+		}
 	end
 end
 
@@ -428,6 +436,7 @@ function mt:hide()
 	jass.SetItemVisible(handle,false)
 	if self._eff then
 		self._eff:remove()
+		self._eff = nil
 	end
 end
 
@@ -768,7 +777,6 @@ function mt:on_recycle(where)
 		self:item_remove()
 	elseif not self:is_show() then 
 		self:setPoint(where:get_point())
-		self:show(true)
 	end
 end
 --删除物品
@@ -779,7 +787,7 @@ function mt:item_remove(is)
 	if not self.handle then 
 		return
 	end	
-	
+	self.has_removed = true
 	--移除物品时，如果物品在单位身上，会触发单位丢弃物品事件，会先执行下面代码，再执行单位丢弃。
 	self.is_discard_event = true
 	if self.owner then 
@@ -789,12 +797,14 @@ function mt:item_remove(is)
 	dbg.handle_unref(self.handle)
 
 	ac.item.item_map[self.handle] = nil
+	ac.item.removed_items[self] = self
 	self.handle = nil
 	self.owner = nil
 	self.slot_id = nil
 	ac.remove_item_handle(self.type_id)
 	if self._eff then
 		self._eff:remove()
+		self._eff = nil
 	end
 	
 end
@@ -895,9 +905,12 @@ function unit.__index:add_item(it,is_fall,p)
 	end   	
 	--为了合成装备
 	-- print('装备2',it)
-	if self:event_dispatch('单位-合成装备', self, it) then
-		self.buy_suc = true 
-		return 
+	--获取一个空槽位
+	if it.check_hecheng then 
+		if self:event_dispatch('单位-合成装备', self, it) then
+			self.buy_suc = true 
+			return 
+		end
 	end
 	
 	if self:event_dispatch('单位-即将获得物品', self, it) then
@@ -1185,11 +1198,16 @@ function item.create_item(name,poi,is,p)
 		items._model = items.specail_model
 	end	
 	if not is then 
-		items._eff = ac.effect(ac.point(x,y),items._model,270,1,'origin')
-	end
-	--设置物品模型 套装 模型大小
-	if items.model_size and items._eff then 
-		items._eff.unit:set_size(items.model_size )
+		-- items._eff = ac.effect(ac.point(x,y),items._model,270,1,'origin')
+		-- --设置物品模型 套装 模型大小
+		-- if items.model_size and items._eff then 
+		-- 	items._eff.unit:set_size(items.model_size )
+		-- end
+		-- items._eff = ac.effect_ex{
+		-- 	point = ac.point(x,y),
+		-- 	model =items._model,
+		-- }
+		items:show(true)
 	end
 	
 	--设置使用次数
