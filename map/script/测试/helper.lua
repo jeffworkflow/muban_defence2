@@ -805,7 +805,7 @@ end
 --测试用的木桩
 function helper:tt_unit(where)
 	local cnt = 1 
-	local point = ac.point(-200,0)
+	local point = self:get_point()
 	for i=1,cnt do 
 		local unit = ac.player(12):create_unit('甲虫',point)
 		unit:set('生命上限',100000000000000)
@@ -814,6 +814,8 @@ function helper:tt_unit(where)
 		unit:set('攻击',0)
 		unit:add_restriction '定身'
 		unit:add_restriction '缴械'
+		
+		unit:add_restriction '免死'
 		unit:set_size(2)
 	end	
 end	

@@ -100,7 +100,9 @@ ac.wait(1200,function()
                 print('开始刷兵啦')
                 for i=1 ,3 do 
                     local creep = ac.creep['刷怪'..i] 
-                    creep:start()
+                    if type(creep) == 'table' then 
+                        creep:start()
+                    end
                     -- creep:attack_hero() 
                 end 
             end,

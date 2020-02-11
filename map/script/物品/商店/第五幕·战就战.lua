@@ -56,7 +56,7 @@ end,
 	--被动事件
 	event_name = "造成伤害效果",
 	--特效
-	effect = [[Abilities\Spells\Undead\FrostNova.mdl]],
+	effect = [[Abilities\Spells\Undead\FrostNova\FrostNovaTarget.mdl]],
 }
 
 function mt:damage_start(damage)
@@ -64,13 +64,12 @@ function mt:damage_start(damage)
     local hero = self.owner
     local p = hero:get_owner()
 	local target = damage.target
-
 	if not damage:is_common_attack()  then 
 		return 
 	end 
     ac.effect_ex{
     	model = skill.effect,
-    	point = u:get_point(),
+    	point = target:get_point(),
     }:remove()
 	for i, u in ac.selector()
 		: in_range(hero,self.damage_area)
@@ -188,10 +187,14 @@ function mt:damage_start(damage)
 	end 
     ac.effect_ex{
     	model = skill.effect,
-    	point = u:get_point(),
+    	point = target:get_point(),
     }:remove()
     if not target:is_type('boss') then 
-        target:kill(hero)
+        target:damage
+        {
+            source = hero,
+            skill = skill,
+        }:kill()
     end
 end
 
