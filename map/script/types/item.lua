@@ -901,7 +901,7 @@ function unit.__index:add_item(it,is_fall,p)
 	   self.owner:showSysWarning('不是你的')
 	   it.recycle = false 
 	   it:on_recycle(self)
-	   return 
+	   return it
 	end   	
 	--为了合成装备
 	-- print('装备2',it)
@@ -909,7 +909,7 @@ function unit.__index:add_item(it,is_fall,p)
 	if it.check_hecheng then 
 		if self:event_dispatch('单位-合成装备', self, it) then
 			self.buy_suc = true 
-			return 
+			return it
 		end
 	end
 	
@@ -926,7 +926,7 @@ function unit.__index:add_item(it,is_fall,p)
 				it.recycle = false
 			end	
 		end 
-		return
+		return it
 	end
 	
 	--获取一个空槽位

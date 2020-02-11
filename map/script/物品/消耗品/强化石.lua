@@ -34,9 +34,9 @@ auto_fresh_tip = true,
 }
 
 --概率
-local rate ={90,90,90,90,75,75,55,50,45}
+local rate ={90,90,90,90,75,75,55,50,45,60,55,50,40,30}
 --强化属性百分比
-local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115}
+local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115,145,180,220,260,300}
 
 function mt:on_cast_start()
     local unit = self.owner
