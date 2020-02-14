@@ -1,7 +1,7 @@
 
 local function get_difficult(degree,br)
     local base =1
-    local base_rate = br or 1.45
+    local base_rate = br or 1.5
     local degree = degree or 1 
     if degree == 1 then 
         return base 
