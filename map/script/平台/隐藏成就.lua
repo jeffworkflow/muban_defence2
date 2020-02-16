@@ -63,6 +63,77 @@ end,
 
 }
 
+local mt = ac.skill['书呆子']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 10,
+title = '书呆子',
+--图标
+art = [[wbdmg.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00 存档值：%server_val% 
+激活值：%now_server_val%
+
+获得方式：挖宝图0.2%触发；动态插入最强魔灵-隐藏成就-书呆子，
+成就可升级，最大等级10级，如果之前的成就未激活，将先激活之前的成就存档），说明，
++7.5W*Lv 全属性
++5%*Lv 木头加成
+
+]],
+
+server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p:Map_GetServerValue(key)
+end,
+now_server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p.server[self.name]
+end,
+
+}
+
+local mt = ac.skill['剑瞎子']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 10,
+title = '剑瞎子',
+--图标
+art = [[wbdmg.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00 存档值：%server_val% 
+激活值：%now_server_val%
+
+获得方式：挖宝图0.2%触发；动态插入最强魔灵-隐藏成就-剑瞎子，
+成就可升级，最大等级10级，如果之前的成就未激活，将先激活之前的成就存档），说明，
++7.5W*Lv 全属性
++5%*Lv 木头加成
+
+]],
+
+server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p:Map_GetServerValue(key)
+end,
+now_server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p.server[self.name]
+end,
+
+}
 
 
 
@@ -79,7 +150,7 @@ mt{
     
 }
 mt.skill_name ={
-    '我是大魔头','黄金矿工',
+    '我是大魔头','黄金矿工','书呆子','剑瞎子',
 }
 
 mt.skills = {

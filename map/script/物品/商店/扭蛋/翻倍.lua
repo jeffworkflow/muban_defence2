@@ -1,20 +1,9 @@
 --物品名称
 local mt = ac.skill['木头翻倍']
 mt{
---等级
-level = 1,
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
---说明
-tip = [[
-|cffFFE799【说明】|r（|cff00ffff当前木头:|r%has_vale%）
-
-|cff00ff0050%木头|cff00ff00翻倍|r  |cffff000050%木头|cffff0000归零|r
-]],
 has_vale = function() 
     return ac.player.self.wood
 end ,
-auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 content_tip = '',
@@ -23,25 +12,16 @@ store_affix = '',
 --币种
 coin = '木头',
 --实际概率
-rate = 55 
+rate = function(self)
+    return self.owner.owner:get(self.name..'概率') + 55
+end 
 }
 
 local mt = ac.skill['杀敌数翻倍']
 mt{
---等久
-level = 1,
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
---说明
-tip = [[
-|cffFFE799【说明】|r（|cff00ffff当前杀敌数:|r%has_vale%）
-
-|cff00ff0050%杀敌数|cff00ff00翻倍|r  |cffff000050%杀敌数|cffff0000归零|r
-]],
 has_vale = function() 
     return ac.player.self.kill_count
 end ,
-auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 content_tip = '',
@@ -50,25 +30,16 @@ store_affix = '',
 --币种
 coin = '杀敌数',
 --实际概率
-rate = 55 
+rate = function(self)
+    return self.owner.owner:get(self.name..'概率') + 55
+end 
 }
 
 local mt = ac.skill['魔丸翻倍']
 mt{
---等久
-level = 1,
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
---说明
-tip = [[
-|cffFFE799【说明】|r（|cff00ffff当前魔丸:|r%has_vale%）
-
-|cff00ff0050%魔丸|cff00ff00翻倍|r  |cffff000050%魔丸|cffff0000归零|r
-]],
 has_vale = function() 
     return ac.player.self.rec_ex
 end ,
-auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 content_tip = '',
@@ -77,25 +48,16 @@ store_affix = '',
 --币种
 coin = '杀敌数',
 --实际概率
-rate = 55 
+rate = function(self)
+    return self.owner.owner:get(self.name..'概率') + 55
+end 
 }
 
 local mt = ac.skill['魔丸翻倍']
 mt{
---等久
-level = 1,
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
---说明
-tip = [[
-|cffFFE799【说明】|r（|cff00ffff当前魔丸:|r%has_vale%）
-
-|cff00ff0050%魔丸|cff00ff00翻倍|r  |cffff000050%魔丸|cffff0000归零|r
-]],
 has_vale = function() 
     return ac.player.self.rec_ex
 end ,
-auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 content_tip = '',
@@ -104,26 +66,17 @@ store_affix = '',
 --币种
 coin = '魔丸',
 --实际概率
-rate = 55 
+rate = function(self)
+    return self.owner.owner:get(self.name..'概率') + 55
+end 
 }
 
 local mt = ac.skill['全属性翻倍']
 mt{
---等久
-level = 1,
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
---说明
-tip = [[
-|cffFFE799【说明】|r（|cff00ffff当前全属性:|r%has_vale%）
-
-|cff00ff0050%全属性|cff00ff00翻倍|r  |cffff000050%全属性|cffff0000归零|r
-]],
 has_vale = function() 
     local hero = ac.player.self.hero
     return math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
 end ,
-auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 content_tip = '',
@@ -132,7 +85,9 @@ store_affix = '',
 --币种
 coin = '全属性', 
 --实际概率
-rate = 55 
+rate = function(self)
+    return self.owner.owner:get(self.name..'概率') + 55
+end 
 }
 for i,name in ipairs({'木头翻倍','杀敌数翻倍','魔丸翻倍','全属性翻倍'}) do 
     local mt = ac.skill[name]
@@ -179,6 +134,7 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
 
     local rand = math.random(100)
     local rate = self.rate
+    print('翻倍概率：',rate)
     local mul = self.coin == '全属性' and 0.1 or 1 --要加的倍数
     local base_mul = self.coin == '全属性' and 0.1 or 1 --要加的倍数
     local bb_it = self.owner:has_item(self.coin..'保本卡') 
@@ -215,7 +171,9 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
             bb_it:add_item_count(-1)
             p:sendMsg('|cffff0000凉凉，但有保本卡，资源没变化|r',5)
         else 
-            add_coin(hero,self.coin,-coin_val * base_mul)
+            local return_coin = p:get('返还资源')
+            local val = coin_val * base_mul * (100-return_coin)/100
+            add_coin(hero,self.coin,-val)
             p:sendMsg('|cffff0000凉凉|r',5)
         end    
     end    

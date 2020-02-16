@@ -32,7 +32,14 @@ mt{
 	is_skill = true,
 	--是否开启智能施法 0关闭 1开启 2开启并显示施法指示圈
 	-- smart_type = 1,
-	effect = [[]],
+	effect = function(self)
+		local hero = self.owner
+		local model_path = hero:get_slk 'file'
+		if not getextension(model_path) then 
+			model_path = model_path..'.mdl'
+		end	
+		return model_path
+	end,
 
 	--技能id
 	ability_id = 'AX21',
@@ -94,33 +101,50 @@ function mt:on_cast_shot()
 	local new_point = self.new_point
 	local skill = self
 	local source_point = hero:get_point()
+	
+	if not hero:has_restriction '缴械' then 
+		hero:add_restriction '缴械'
+	end	
+	if not hero:has_restriction '定身' then 
+		hero:add_restriction '定身'
+	end	
+
 	--开始跳跃
 	local mvr = ac.mover.target
 	{
 		source = hero,
 		target = new_point,
 		mover = hero,
-		model = skill.effect,
+		-- missile = true,
 		speed = 2000,
-		min_speed = 522,
 		skill = skill,
 		block = true,
+		-- mover_type ='unit',
 		do_reset_high = true, --还原高度
+		turn_speed =360, --立即转身
 		--高度
 		height = 25,
+		on_move_skip =2,
 	}
 	if not mvr then
 		return
 	end
 	function mvr:on_move()
-		if not hero:has_restriction '缴械' then 
-			hero:add_restriction '缴械'
-		end	
-		if not hero:has_restriction '定身' then 
-			hero:add_restriction '定身'
-		end	
 		local total_distance = new_point *source_point
+		
+		local eff= ac.effect(self.mover:get_point(),skill.effect,self.mover:get_facing(),1,'chest',self.high)
+		eff.unit:setColor(10,10,10)
+		-- eff.unit:setAlpha(70)
+		ac.wait(0.5*1000,function()
+			eff:remove()
+			eff.unit:remove() --特效马上删除，不播放死亡动作
+		end)
 
+		-- ac.effect_ex{
+		-- 	model = skill.effect,
+		-- 	point = self.mover:get_point(),
+		-- 	time = 0.1,
+		-- }
 		-- if  self.moved >= total_distance*0.8 then 
 		-- 	-- print(self.speed)
 		-- 	self.speed = self.speed /1.5

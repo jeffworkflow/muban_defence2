@@ -57,8 +57,8 @@
 						self.angle = self.angle - turn_speed
 					end
 				end
-
-				if self.missile and self.angle then
+				--self.missile and  modify by jeff 20200214
+				if self.angle then
 					self.mover:set_facing(self.angle + self.off_angle)
 				end
 				

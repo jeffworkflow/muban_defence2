@@ -132,11 +132,47 @@ content_tip = '|cffffe799使用说明：|r'
 
 local function insert_book(hero,name)
     local p = hero.owner
-    local skl = hero:find_skill(name,nil,true)
-    if not skl  then 
-        ac.game:event_notify('技能-插入魔法书',hero,'龙宫',name)
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，扭蛋能成神。获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
-    end 
+    local player = hero.owner
+    local skl = hero:find_skill(name,nil,true) 
+    if finds(name,'扭转乾坤') then 
+        if not skl then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
+            ac.wait(0,function()
+                ac.player.self:sendMg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。获得成就'..p:get_name()..'|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            end)
+        end
+    elseif finds(name,'扭蛋人生') then 
+        if not p.flag_yccj then 
+            p.flag_yccj = {} 
+        end    
+        if p.flag_yccj[name] then 
+            return 
+        end   
+        p.flag_yccj[name] = true --一局只能获得一次
+        --存档
+        local key = ac.server.name2key(name)
+        if ac.g_game_degree_attr > p:Map_GetServerValue(key) then 
+            p:Map_AddServerValue(key,1)
+            local skl = hero:find_skill(name,nil,true) 
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
+                ac.wait(0,function()
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..'|r 惊喜获得 |cffff0000'..name..' |r 奖励 |cffff0000全属性+1000万，物品获取率+50%，每秒回血+5%|r',6)
+                end)
+            else 
+                skl:upgrade(1)  
+                p:sendMsg('存档 '..name..'+1 ',6)  
+            end   
+        end   
+    else
+        if not skl then 
+            ac.game:event_notify('技能-插入魔法书',hero,'龙宫',name)
+            ac.wait(0,function()
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            end)
+        end
+    end
+
 end 
 
 local temp = {
@@ -144,7 +180,10 @@ local temp = {
     ['扭蛋高手'] =100,
     ['扭蛋天才'] =150,
     ['扭蛋大魔王'] =200,
+    ['扭转乾坤'] =250,
+    ['扭蛋人生'] =10,
     ['扭蛋大神'] =350,
+    
 }  
 
 ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
