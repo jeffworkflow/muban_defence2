@@ -60,7 +60,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	local name 
 	if flag then 
 		name = '【游戏胜利】'
-		ac.player.self:sendMsg("【游戏胜利】|cff00ff00请尽快挑战神龙 |cffff00005分钟后游戏结束|r")
+		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
+		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
+		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
 		ac.timer_ex
         {
             time = 300,

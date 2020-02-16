@@ -8,9 +8,9 @@ mt{
     art = [[gongfashengji.blp]],
     --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
     --说明
-    tip = [[
-|cff00ff00点击选择要升级的功法，可免费升一级
-]],
+    tip = [[|cff00ff00点击选择要升级的功法，直接升一级
+
+|cffcccccc【无需消耗魔丸】]],
 
     content_tip = '|cffFFE799说明：|r|n',
     --物品类型
@@ -91,9 +91,9 @@ mt{
     art = [[gongfashengji.blp]],
     --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
     --说明
-    tip = [[|cff00ff00点击选择要升级的功法
+    tip = [[|cff00ff00点击选择要升级的功法，直接升五级
 
-|cffffff00【升级功法需消耗一定数量的魔丸】]],
+|cffcccccc【无需消耗魔丸】]],
 
     content_tip = '|cffFFE799【说明】：|r|n',
     --物品类型

@@ -799,8 +799,19 @@ mt{
 
 ]],
     ['全属性'] = 1000000,
-    
+    add_kill = 2500,
+    add_wood = 5000,
+    add_fire = 20000,
 }
+function mt:on_add()
+    local hero  = self.owner
+    local player = hero:get_owner()
+    hero = player.hero
+    
+    hero:add_wood(self.add_wood)
+    hero:add_rec_ex(self.add_fire)
+    hero:add_kill_count(self.add_kill)
+end   
 
 local mt = ac.skill['玄远之学']
 mt{
@@ -822,11 +833,11 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+200W 全属性
+|cff00ff00+300W 全属性
 +2.5%  所有翻倍概率|r
 
 ]],
-    ['全属性'] = 2000000,
+    ['全属性'] = 3000000,
 
     ['木头翻倍概率'] = 2.5,
     ['魔丸翻倍概率'] = 2.5,
@@ -855,11 +866,11 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+300W 全属性
-凉凉的瞬间，返还5%资源|r
+|cff00ff00+500W 全属性
+凉凉时返还5%资源|r
 
-]],
-    ['全属性'] = 3000000,
+|cffcccccc凉凉的瞬间不会感到特别寒冷]],
+    ['全属性'] = 5000000,
 
 }
 
@@ -883,16 +894,48 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+400W 全属性
+|cff00ff00+750W 全属性
 +10  每秒加杀敌数
 +10  每秒加木头
 +10  每秒加魔丸
 +10w  每秒加全属性|r
 
 ]],
-    ['全属性'] = 4000000,
+    ['全属性'] = 7500000,
     ['每秒加杀敌数'] = 10,
     ['每秒加木头'] = 10,
     ['每秒加魔丸'] = 10,
     ['每秒加全属性'] = 100000,
+}
+
+local mt = ac.skill['du神']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[dushen.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+2000W 全属性
++5%   会心几率
++50%  会心伤害
++15%  全伤加深|r
+
+]],
+    ['全属性'] = 20000000,
+    ['会心几率'] = 5,
+    ['会心伤害'] = 50,
+    ['全伤加深'] = 15,
 }

@@ -65,7 +65,7 @@ function mt:atk_pas_shot(target)
 		source = hero,
 		skill = skill,
 		model =  skill.effect,
-		speed = 800,
+		speed = 1200,
 		start = hero:get_point() - {hero:get_point()/target:get_point(),-500}, --身后500码
 		target = target:get_point(),
 		high = 120,

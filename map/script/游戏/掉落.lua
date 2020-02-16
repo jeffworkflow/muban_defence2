@@ -699,9 +699,9 @@ local unit_reward = {
     ['牛头马面'] = {{rand =100,name = '黑暗骰子*1'}},
 
     ['黑暗骰子'] =  {	
-        {    rand = 51, name = '无' },
-        {    rand = 10, name = '随机物品',},
-        {    rand = 20, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+        {    rand = 71.31, name = '无' },
+        {    rand = 0, name = '随机物品',},
+        {    rand = 0, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 55, name = '黄阶'},
                 { rand = 30, name = '玄阶'},
                 { rand = 12, name = '地阶'},
@@ -733,10 +733,15 @@ local unit_reward = {
         {    rand = 0.5, name = 'gg卡*1' },
 
 
-        {    rand = 2, name = '一笔巨款',}, --lv2
-        {    rand = 1.5, name = '玄远之学',}, --超级彩蛋
-        {    rand = 0.25, name = '三冬暖',}, --超级彩蛋
-        {    rand = 0.25, name = '源不断的本钱',}, --超级彩蛋
+        {    rand = 13.2, name = '一笔巨款',}, --成就
+        {    rand = 11.1, name = '玄远之学',}, --成就
+        {    rand = 10.67, name = '三冬暖',}, --成就
+        {    rand = 10.44, name = '源不断的本钱',},--成就
+
+        {    rand = 0.33, name = '骰子王',}, --彩蛋
+
+        {    rand = 0.25, name = 'du徒',}, --可存档
+        {    rand = 10.2, name = 'du神',}, --超级成就
 
     },
     
@@ -966,7 +971,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         if finds(str,unit:get_name()) then
             local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
             
-            fall_save_rate = 80 --测试
+            -- fall_save_rate = 80 --测试存档物品
             
             --多次获得
             local cnt = math.floor(3+get_player_count()/2)
