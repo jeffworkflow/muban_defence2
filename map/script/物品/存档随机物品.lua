@@ -65,10 +65,10 @@ local com_func = {
 
 local color_attr = {
 --品质 = 品质数值 物品模型 最小词条数 最大词条数 词条值因数
-['白'] = {1,[[daFile00000376 - W.mdx]],0,1,1},
-['蓝'] = {2,[[daFile00000376 - B.mdx]],2,3,0.6},
-['金'] = {3,[[daFile00000376 - Y.mdx]],4,5,0.5},
-['暗金'] = {4,[[daFile00000376 - RC.mdx]],6,8,0.45},
+['白'] = {1,[[File00000376 - W.mdx]],0,1,1,2},
+['蓝'] = {2,[[File00000376 - B.mdx]],2,3,0.6,2},
+['金'] = {3,[[File00000376 - Y.mdx]],4,5,0.5,2},
+['暗金'] = {4,[[File00000376 - RC.mdx]],6,8,0.45,2},
 }
 
 local max_attribute = {
@@ -213,6 +213,7 @@ category = '存档']]
                 lni_str = lni_str .. "min_attr_num = "..color_tab[3]..""..'\n'
                 lni_str = lni_str .. "max_attr_num = "..color_tab[4]..""..'\n'
                 lni_str = lni_str .. "attr_a = "..color_tab[5]..""..'\n'
+                lni_str = lni_str .. "model_size = "..color_tab[6]..""..'\n'
 
                 --随机词条：每个物品的 词缀数,重复的话，重复的数值加上去
                 local attr_num = math.random(color_tab[3],color_tab[4])

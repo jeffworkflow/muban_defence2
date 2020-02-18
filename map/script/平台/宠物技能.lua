@@ -7,7 +7,7 @@ mt{
     is_spellbook = 1,
     -- is_order = 2,
     --可能会掉线 math.min(100,ac.player.self:Map_GetMapLevel()),
-    max_level = 100,
+    max_level = 150,
     --标题颜色
     color =  '紫',
 	--介绍
@@ -131,7 +131,7 @@ for k,v in sortpairs(peon_skill) do
     mt{
         --等级
         level = 0,
-        max_level = 10,
+        max_level = 15,
         force_cast = 1, --强制施法
         strong_hero = 1, --作用在人身上
         --魔法书相关
@@ -270,7 +270,7 @@ function unit.__index:peon_add_xp(xp)
         end 
 
         --地图等级限制
-        local map_level = player:Map_GetMapLevel() * 3
+        local map_level = player:Map_GetMapLevel() * 4
         if self.peon_xp >= self:peon_get_upgrade_xp(self.peon_lv) then
             if self.peon_lv <= map_level then 
                 self.peon_lv = self.peon_lv + 1
