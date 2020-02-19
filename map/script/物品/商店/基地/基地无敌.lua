@@ -6,7 +6,7 @@ local mt = ac.skill['基地无敌']
 mt{
 --等久
 level = 1,
-
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNDivineShieldOff.blp]],
 
@@ -21,7 +21,7 @@ tip = [[
 --物品类型
 item_type = '神符',
 --售价 500000
-wood = 500,
+wood = 1000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却

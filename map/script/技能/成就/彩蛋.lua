@@ -19,7 +19,7 @@ mt{
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+50万 全属性
-+15% 练功房资源加成|r
++15%  练功房资源加成|r
 
 ]],
 ['全属性'] = 500000, 
@@ -339,12 +339,42 @@ mt{
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+500W 全属性
-+25%     魔丸加成
++25%  魔丸加成
 
 ]],
     ['魔丸加成'] = 25,
     ['全属性'] = 5000000,
 }
+
+local mt = ac.skill['五道杠少年']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[wdgsn.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+1000W 全属性
++35% 木头加成|r
+
+]],
+    ['木头加成'] = 35,
+    ['全属性'] = 10000000,
+}
+
+
 
 local task_detail = {
     ['血魔'] = {

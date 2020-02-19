@@ -4,6 +4,7 @@ local mt = ac.skill['兑换10木头']
 mt{
 --等久
 level = 1,
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],
 --说明

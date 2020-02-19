@@ -58,7 +58,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         return
     end    
     --玩家12（敌对死亡才掉落） 8 0000  40 *200 8000 10*2000 20000
-    local rate = 0.05
+    local rate = 0.015
     -- local rate = 10 --测试
     local rand = math.random(10000)/100
     if rand <= rate then 

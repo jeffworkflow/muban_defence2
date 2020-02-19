@@ -971,7 +971,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         if finds(str,unit:get_name()) then
             local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
             
-            fall_save_rate = 80 --测试存档物品
+            -- fall_save_rate = 80 --测试存档物品
             
             --多次获得
             local cnt = math.floor(3+get_player_count()/2)

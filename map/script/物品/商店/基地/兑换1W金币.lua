@@ -4,6 +4,7 @@ local mt = ac.skill['兑换1W金币']
 mt{
 --等久
 level = 1,
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],
 --说明

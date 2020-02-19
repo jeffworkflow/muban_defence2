@@ -6,7 +6,7 @@ local mt = ac.skill['基地重生']
 mt{
 --等久
 level = 1,
-
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNImbuedMasonry.blp]],
 
@@ -21,7 +21,7 @@ tip = [[
 --物品类型
 item_type = '神符',
 --售价 500000
-wood = 50000,
+wood = 88888,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
@@ -39,7 +39,7 @@ cnt = function(self)
     return  skl and skl.cnt  or 0
 end    ,
 --全属性
-award_all_attr = 1288888,
+award_all_attr = 2688888,
 content_tip = '|cffFFE799【使用说明】：|r',
 --物品技能
 is_skill = true,
@@ -79,7 +79,7 @@ ac.game:event '单位-创建'(function(_,unit)
     --     -- time = 99999999
     -- } 
 end)  
-local max_cnt = 100
+local max_cnt = 50
 function mt:on_cast_start()
     local hero = self.owner
     local player = hero:get_owner()
@@ -100,7 +100,7 @@ function mt:on_cast_start()
     end   
 
     hero:add('全属性',self.award_all_attr)
-    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 购买了基地重生 奖励|cff00ff001288888全属性|r',2)
+    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 购买了基地重生 奖励|cff00ff002688888全属性|r',2)
     
     --概率得 五道杠少年
     local rate = 10
@@ -111,7 +111,7 @@ function mt:on_cast_start()
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','五道杠少年')
             player.is_show_nickname = '五道杠少年'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 保家爱国 精神可嘉 |r 获得成就|cffff0000 "五道杠青年" |r，奖励 |cffff0000+500w全属性 +25%木头加成|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 保家爱国 精神可嘉 |r 获得成就|cffff0000 "五道杠少年" |r，奖励 |cffff0000+1000w全属性 +35%木头加成|r',6)
             -- ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
         end
     end    

@@ -6,6 +6,7 @@ local mt = ac.skill['进入练功房']
 mt{
 --等久
 level = 1,
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNFootman.blp]],
 --说明

@@ -6,7 +6,7 @@ local mt = ac.skill['停怪']
 mt{
 --等久
 level = 1,
-
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNMagicLariet.blp]],
 
@@ -24,7 +24,7 @@ type_id = 'EX00',
 --物品类型
 item_type = '神符',
 --售价 500000
-wood = 2000,
+wood = 3000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却

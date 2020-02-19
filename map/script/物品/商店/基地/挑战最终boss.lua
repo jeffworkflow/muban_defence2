@@ -8,6 +8,7 @@ mt{
 type_id = 'EX03',    
 --等久
 level = 1,
+is_order = 1,
 --图标
 art = [[tzzzbs.blp]],
 --说明
@@ -23,7 +24,7 @@ item_type = '神符',
 target_type = ac.skill.TARGET_TYPE_NONE,
 shop_count = 0, --初始个数
 --售价 500000
-wood = 50000,
+wood = 99999,
 --冷却
 cool = 0,
 content_tip = '',
