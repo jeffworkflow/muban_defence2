@@ -74,7 +74,7 @@ tip = [[%extr_tip%
 |cff00ff00+100W 攻击|r
 |cff00ff00+30% 暴击伤害
 |cff00ff00+30% 物理伤害加深
-|cff00ff00攻击有10%几率造成|cffffff00（全属性*15）|cff00ff00的范围技能伤害
+|cff00ff00攻击有10%几率造成|cffffff00（全属性*7.5）|cff00ff00的范围技能伤害
 |cff00ff00强化石、天谕的掉落概率翻倍
  ]],
 skill_book_name = '剑冢',
@@ -82,7 +82,7 @@ skill_book_name = '剑冢',
 chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 --伤害
 damage = function(self)
-return (self.owner:get('力量') + self.owner:get('敏捷') + self.owner:get('智力') ) * 15
+return (self.owner:get('力量') + self.owner:get('敏捷') + self.owner:get('智力') ) * 7.5
 end,
 damage_area = 500,
 event_name ='造成伤害效果',

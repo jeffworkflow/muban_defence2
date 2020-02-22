@@ -326,7 +326,7 @@ local unit_reward = {
     ['藏宝阁小弟'] = {{rand =1.5,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
-        {    rand = 60.41, name = '无' },
+        {    rand = 0.41, name = '无' },
         {    rand = 8, name = '随机物品',},
         {    rand = 8, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 55, name = '黄阶'},
@@ -741,7 +741,7 @@ local unit_reward = {
         {    rand = 0.33, name = '骰子王',}, --彩蛋
 
         {    rand = 0.25, name = 'du徒',}, --可存档
-        {    rand = 10.2, name = 'du神',}, --超级成就
+        {    rand = 0.2, name = 'du神',}, --超级成就
 
     },
     

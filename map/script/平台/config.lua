@@ -82,10 +82,10 @@ local cus_key = {
     {'cwjn','宠物技能'},
     {'cwjnc','宠物纪念册'},
     {'wsdmt','我是大魔头',{ ['我是大魔头'] = {1,1,value = function(self,p) return p.server['我是大魔头'] and math.min(p:Map_GetMapLevel()*1,p.server['我是大魔头']) end}}},
+  
     {'hjkg','黄金矿工',{ ['黄金矿工'] = {1,1,value = function(self,p) return p.server['黄金矿工'] and math.min(p:Map_GetMapLevel()*1,p.server['黄金矿工']) end}}},
     {'sdz','书呆子',{ ['书呆子'] = {1,1,value = function(self,p) return p.server['书呆子'] and math.min(p:Map_GetMapLevel()*1,p.server['书呆子']) end}}},
     {'jxz','剑瞎子',{ ['剑瞎子'] = {1,1,value = function(self,p) return p.server['剑瞎子'] and math.min(p:Map_GetMapLevel()*1,p.server['剑瞎子']) end}}},
-
     {'cmgdxgn','采蘑菇的小姑娘',{ ['采蘑菇的小姑娘'] = {1,1,value = function(self,p) return p.server['采蘑菇的小姑娘'] and math.min(p:Map_GetMapLevel()*1,p.server['采蘑菇的小姑娘']) end}}},
     {'ndrs','扭蛋人生',{ ['扭蛋人生'] = {1,1,value = function(self,p) return p.server['扭蛋人生'] and math.min(p:Map_GetMapLevel()*1,p.server['扭蛋人生']) end}}},
     {'dutu','du徒',{ ['du徒'] = {1,1,value = function(self,p) return p.server['du徒'] and math.min(p:Map_GetMapLevel()*1,p.server['du徒']) end}}},

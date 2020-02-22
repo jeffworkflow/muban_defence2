@@ -138,7 +138,7 @@ local function insert_book(hero,name)
         if not skl then 
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
             ac.wait(0,function()
-                ac.player.self:sendMg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。获得成就'..p:get_name()..'|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+                ac.player.self:sendMg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
             end)
         end
     elseif finds(name,'扭蛋人生') then 
@@ -157,18 +157,20 @@ local function insert_book(hero,name)
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
                 ac.wait(0,function()
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..'|r 惊喜获得 |cffff0000'..name..' |r 奖励 |cffff0000全属性+1000万，物品获取率+50%，每秒回血+5%|r',6)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
                 end)
             else 
                 skl:upgrade(1)  
-                p:sendMsg('存档 '..name..'+1 ',6)  
+                p:sendMsg('|cffff0000【可存档成就】'..name..'+1 ',6)  
             end   
         end   
     else
         if not skl then 
             ac.game:event_notify('技能-插入魔法书',hero,'龙宫',name)
             ac.wait(0,function()
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
             end)
         end
     end
@@ -181,7 +183,7 @@ local temp = {
     ['扭蛋天才'] =150,
     ['扭蛋大魔王'] =200,
     ['扭转乾坤'] =250,
-    ['扭蛋人生'] =10,
+    ['扭蛋人生'] =300,
     ['扭蛋大神'] =350,
     
 }  

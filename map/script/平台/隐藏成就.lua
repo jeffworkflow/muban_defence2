@@ -4,27 +4,27 @@ mt{
 --等级
 level = 0, --要动态插入
 max_level = 10,
-title = '魔剑获得（N1）',
+title = '我是大魔头',
 --图标
 art = [[damotou.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ff00无限BOSS模式下，通关|cffffff00难1|cff00ff00获得
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  杀敌数加成
 
-|cffFFE799【魔剑属性】：|r
-|cff00ff00获得一个随从-我是大魔头
-|cff00ffff魔剑攻击力=100%英雄攻击力
-|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*2）
-|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+|cffcccccc杀死血魔获得，获得概率与通关难度/地图等级相关]],
+
+['全属性'] = {75000,750000},
+['杀敌数加成'] = {5,50},
+
 --目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 3,
-attack = 100,
-attack_gap = 1,
-skill_attack = 2,
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- need_map_level = 3,
+-- attack = 100,
+-- attack_gap = 1,
+-- skill_attack = 2,
 }
 
 local mt = ac.skill['黄金矿工']
@@ -37,18 +37,15 @@ title = '黄金矿工',
 art = [[wbdmg.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ff00 存档值：%server_val% 
-激活值：%now_server_val%
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  木头加成
 
-获得方式：挖宝图0.2%触发；动态插入最强魔灵-隐藏成就-黄金矿工，
-成就可升级，最大等级10级，如果之前的成就未激活，将先激活之前的成就存档），说明，
-+7.5W*Lv 全属性
-+5%*Lv 木头加成
+|cffcccccc挖藏宝图获得，获得概率与通关难度/地图等级相关]],
+['全属性'] = {75000,750000},
+['木头加成'] = {5,50},
 
-]],
 
 server_val = function(self)
     local key = ac.server.name2key(self.name)
@@ -70,21 +67,17 @@ level = 0, --要动态插入
 max_level = 10,
 title = '书呆子',
 --图标
-art = [[wbdmg.blp]],
+art = [[shudaizi.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ff00 存档值：%server_val% 
-激活值：%now_server_val%
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  魔丸加成
 
-获得方式：挖宝图0.2%触发；动态插入最强魔灵-隐藏成就-书呆子，
-成就可升级，最大等级10级，如果之前的成就未激活，将先激活之前的成就存档），说明，
-+7.5W*Lv 全属性
-+5%*Lv 木头加成
-
-]],
+|cffcccccc使用羊皮纸/无字天书获得，获得概率与通关难度/地图等级相关]],
+['全属性'] = {75000,750000},
+['魔丸加成'] = {5,50},
 
 server_val = function(self)
     local key = ac.server.name2key(self.name)
@@ -106,21 +99,113 @@ level = 0, --要动态插入
 max_level = 10,
 title = '剑瞎子',
 --图标
-art = [[wbdmg.blp]],
+art = [[jianxiazi.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ff00 存档值：%server_val% 
-激活值：%now_server_val%
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  物品获取率
 
-获得方式：挖宝图0.2%触发；动态插入最强魔灵-隐藏成就-剑瞎子，
-成就可升级，最大等级10级，如果之前的成就未激活，将先激活之前的成就存档），说明，
-+7.5W*Lv 全属性
-+5%*Lv 木头加成
+|cffcccccc使用强化石/天谕获得，获得概率与通关难度/地图等级相关]],
+['全属性'] = {75000,750000},
+['物品获取率'] = {5,50},
 
-]],
+server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p:Map_GetServerValue(key)
+end,
+now_server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p.server[self.name]
+end,
+
+}
+
+local mt = ac.skill['采蘑菇的小姑娘']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 10,
+title = '采蘑菇的小姑娘',
+--图标
+art = [[cmgdxgn.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  杀敌数加成
+
+|cffcccccc砍掉一颗神奇的树获得，获得概率与通关难度/地图等级相关]],
+['全属性'] = {75000,750000},
+['杀敌数加成'] = {5,50},
+
+server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p:Map_GetServerValue(key)
+end,
+now_server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p.server[self.name]
+end,
+
+}
+
+local mt = ac.skill['扭蛋人生']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 10,
+title = '扭蛋人生',
+--图标
+art = [[niudanrensheng.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  木头加成
+
+|cffcccccc兑换扭蛋券获得，获得概率与通关难度/地图等级相关]],
+['全属性'] = {75000,750000},
+['木头加成'] = {5,50},
+
+server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p:Map_GetServerValue(key)
+end,
+now_server_val = function(self)
+    local key = ac.server.name2key(self.name)
+    local p = self.owner.owner
+    return p.server[self.name]
+end,
+
+}
+
+local mt = ac.skill['du徒']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 10,
+title = 'du徒',
+--图标
+art = [[dutu.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+7.5W*Lv 全属性
++5%*Lv  物品获取率
+
+|cffcccccc使用黑暗骰子获得，获得概率与通关难度/地图等级相关]],
+['全属性'] = {75000,750000},
+['物品获取率'] = {5,50},
 
 server_val = function(self)
     local key = ac.server.name2key(self.name)
@@ -150,7 +235,7 @@ mt{
     
 }
 mt.skill_name ={
-    '我是大魔头','黄金矿工','书呆子','剑瞎子',
+    '我是大魔头','黄金矿工','书呆子','剑瞎子','采蘑菇的小姑娘','扭蛋人生','du徒'
 }
 
 mt.skills = {
@@ -177,19 +262,19 @@ end
 local task_detail = {
     ['血魔'] = {
         rate = 0.01,
+        -- rate = 10,
         award = '我是大魔头',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
+
         end,
         --存档升级
         sendMsg1 = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
         end,
     },
     
