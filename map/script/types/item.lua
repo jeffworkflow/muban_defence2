@@ -425,6 +425,7 @@ function mt:show(is)
 		 	point = self:get_point(),
 		 	model =self._model,
 			size = self.model_size or 1,
+			item_show = true,
 			angle = 270
 		}
 	end

@@ -75,7 +75,11 @@ local mt = ac.skill['全属性翻倍']
 mt{
 has_vale = function() 
     local hero = ac.player.self.hero
-    return math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
+    local value =0
+    if hero then 
+        value = math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
+    end
+    return value
 end ,
 --物品类型
 item_type = '神符',

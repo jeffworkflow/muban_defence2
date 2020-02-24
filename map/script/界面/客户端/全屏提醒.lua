@@ -15,23 +15,25 @@ class.screen_animation = extends(class.panel){
     --进攻提示
     up_jingong_title = function(self,title)
         self.title:set_text(title)
-        if not self.old_x then 
-            self.old_x,self.old_y = self:get_position()
-        end
-        -- local start_size = 2
-        -- local start_x = (1920-1400)/2
-        -- local start_y = 150
+        -- if not self.old_x then 
+        --     self.old_x,self.old_y = self:get_position()
+        -- end
+        -- -- local start_size = 2
+        -- -- local start_x = (1920-1400)/2
+        -- -- local start_y = 150
         
-        self:set_position(self.old_x,self.old_y)
-        -- self:set_position(start_x,start_y)
-        -- self:set_relative_size(start_size)
+        -- self:set_position(self.old_x,self.old_y)
+        -- -- self:set_position(start_x,start_y)
+        -- -- self:set_relative_size(start_size)
 
-        -- self:move_animation(self.old_x+500,self.old_y+540,4)
-        self:show()
+        -- -- self:move_animation(self.old_x+500,self.old_y+540,4)
+        -- self:show()
         
-        ac.wait(3*1000,function()
-            self:set_position(self.x,50)
-        end)
+        -- ac.wait(3*1000,function()
+        --     self:set_position(self.x,50)
+        -- end)
+        self:show()
+        self:blink(4,1)
     end,
     
 }
@@ -242,4 +244,20 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
     end 
 end)
 
+
+--业务：刷怪进攻提醒
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if not finds(creep.name,'刷怪1') then
+        return
+    end    
+    
+    print('开始进攻提醒啦')
+    local panel = class.screen_animation.get_instance()
+    if finds(creep.name,'无尽') then 
+        if panel then panel:up_jingong_title(' 第 '..creep.index..' 波 （无尽）') end
+    else
+        if panel then panel:up_jingong_title(' 第 '..creep.index..' 波 ') end
+    end
+
+end)
 

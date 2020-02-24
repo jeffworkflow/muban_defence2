@@ -196,7 +196,11 @@ local function point_effect_simple(self, point)
     self.point = point
     self.model = (self.model == '' or not self.model) and  [[arrow.mdl]] or self.model
     if ac.low == true then
-        self.handle = jass.AddSpecialEffect(ac.low_effect_model,point:get())
+        if self.item_show then 
+            self.handle = jass.AddSpecialEffect(self.model, point:get())
+        else     
+            self.handle = jass.AddSpecialEffect(ac.low_effect_model,point:get())
+        end
     else
         self.handle = jass.AddSpecialEffect(self.model, point:get())
     end
@@ -218,7 +222,6 @@ ac.effect_ex = function(data)
     --size
     --speed
     --time
-    --on_finish
     if data.point == nil then
 
         print('点为空',debug.traceback())
@@ -228,10 +231,10 @@ ac.effect_ex = function(data)
         ac.timer(data.time*1000,1,function()
             if data.on_finish then 
                 data:on_finish(effect) 
-            end   
+            end
             if effect then
                 effect:remove()
-            end 
+            end
         end)
     end
     if data.follow then

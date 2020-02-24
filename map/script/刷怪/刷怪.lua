@@ -62,10 +62,10 @@ for i =1,3 do
            self.timer_ex_title ='距离 第'..(self.index+2)..'波 怪物进攻'
         end   
         --进攻提示
-        if self.name =='刷怪1' then
-            local panel = class.screen_animation.get_instance()
-            if panel then panel:up_jingong_title(' 第 '..self.index..' 波 ') end
-        end    
+        -- if self.name =='刷怪1' then
+        --     local panel = class.screen_animation.get_instance()
+        --     if panel then panel:up_jingong_title(' 第 '..self.index..' 波 ') end
+        -- end    
         --小地图ping
         ac.player.self:pingMinimap(self.region,3,255,0,0)
         ac.player.self:pingMinimap(self.region,3,255,0,0)
