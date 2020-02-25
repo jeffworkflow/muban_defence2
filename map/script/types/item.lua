@@ -1394,6 +1394,69 @@ function mt:conditions(skills,target)
 end
 
 
+
+function mt:set_show_cd()
+	if not self:is_visible() then
+		return
+	end
+	if self.cooldown_mode == 1 then
+		if self.spell_stack < self.last_min_stack then
+			self:set('last_min_stack', self.spell_stack)
+		elseif self.spell_stack >= self.cost_stack then
+			self:set('last_min_stack', self.cost_stack)
+		end
+	end
+	local cool, max_cool = self:get_show_cd()
+	if self.show_cd == 1 then
+		japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, max_cool)
+		japi.EXSetAbilityState(self:get_handle(), 0x01, cool)
+		japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, 0)
+	end
+end
+
+--暂停cd
+function mt:pause_cool()
+	if self.pause_count == 1 and self.cool_timer then
+		self.cool_timer:pause()
+		japi.EXSetAbilityState(self:get_handle(), 0x01, 0)
+		japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, 300)
+		if self.pause_timer then
+			self.pause_timer:remove()
+		end
+		local time = self:get_cd() / self:get_max_cd() * 300
+		self.pause_timer = ac.loop(1000, function(t)
+			if self.pause_count > 0 then
+				japi.EXSetAbilityState(self:get_handle(), 0x01, time)
+			else
+				t:remove()
+			end
+		end)
+		ac.wait(0, function()
+			self.pause_timer:on_timer()
+		end)
+		return true
+	end
+	return false
+end
+
+	--暂停cd 参数 true 暂停冷却 false 继续冷却效果
+function mt:pause(flag)
+	if flag == nil then
+		flag = true
+	end
+	if flag then
+		self.pause_count = self.pause_count + 1
+		self:pause_cool()
+	else
+		self.pause_count = self.pause_count - 1
+		if self.pause_count == 0 and self.cool_timer then
+			japi.EXSetAbilityState(self:get_handle(), 0x01, 0)
+			self:set_show_cd()
+		end
+	end
+end
+
+
 	
 return item
 

@@ -339,6 +339,7 @@ tip = [[
 ]],
 --唯一
 -- unique = true,
+cool = 1,
 --物品技能
 is_skill = true,
 --值
@@ -359,9 +360,9 @@ function mt:on_add()
 			return 
         end 
 		--技能是否正在CD
-        -- if skill:is_cooling() then
-		-- 	return 
-		-- end
+        if skill:is_cooling() then
+			return 
+		end
 		local rand = math.random(1,100)
         if rand <= self.chance then 
             --目标特效
@@ -378,7 +379,7 @@ function mt:on_add()
 
             }
             --激活cd
-            -- skill:active_cd()
+            skill:active_cd()
 		end
     end)    
    

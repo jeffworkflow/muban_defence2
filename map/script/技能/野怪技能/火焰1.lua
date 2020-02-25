@@ -81,38 +81,3 @@ function mt:on_remove()
 end
 
 
-
-local mt = ac.buff['火焰']
-mt.ref = 'origin' 
-mt.cover_type = 0
--- mt.cover_max = 1
--- mt.cover_global = 1
-
-function mt:on_add()
-    --Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl
-    --Abilities\Spells\Other\BreathOfFire\BreathOfFireDamage.mdl
-    --Abilities\Spells\NightElf\Immolation\ImmolationDamage.mdl
-
-    --Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx
-    self.target:add_effect('overhead', [[Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx]]):remove()
-	self.target:damage
-	{
-		source = self.source,
-		damage = self.damage ,
-        skill = self.skill,
-        real_damage = true
-	}
-    
-end
-
-function mt:on_remove()
-	-- self.eff:remove()
-end
-
-function mt:on_pulse()
-end
-
-function mt:on_cover()
-    -- return false
-end
-

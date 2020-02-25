@@ -46,8 +46,8 @@ local temp = {
     }
 }
 local function up_item(item,player)
-    local lni_data = ac.table.ItemData[item.name]
-    if not lni_data then print('没有取到数据') return end 
+    local lni_data = ac.table.ItemData[item.name] or ac.skill[item.name]
+    if not lni_data or type(lni_data) == 'function'  then print('没有取到数据') return end 
     for key in sortpairs(ac.unit.attribute) do
         if item[key] and lni_data[key]  then 
             item[key] = lni_data[key] * (1+strong_attr[item.level]/100)
