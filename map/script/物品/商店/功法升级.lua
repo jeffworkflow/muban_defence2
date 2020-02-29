@@ -31,7 +31,15 @@ function mt:on_cast_start()
     for i=1,self.skill_cnt do 
         local skill = hero:find_skill(i,'英雄')
         if skill and skill.level < skill.max_level then 
-            skill.rec_ex = skill.level > 10 and skill.level*10000 or  skill.level*1000
+            if skill.level <= 5 then 
+                skill.rec_ex = skill.level*500
+            elseif skill.level <= 10 then 
+                skill.rec_ex = skill.level*2500
+            elseif skill.level <= 15 then 
+                skill.rec_ex = skill.level*7500
+            else
+                skill.rec_ex = skill.level*12500
+            end
             local key = skill:get_hotkey() 
             local str = clean_color(skill:get_title())
             local info = {

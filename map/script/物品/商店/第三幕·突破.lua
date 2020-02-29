@@ -33,7 +33,63 @@ mt{
 ]],
     ['全属性'] = 3000000,
     ['分裂伤害'] = 25,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   --范围
+   hit_area = 300,
+   distance = 2000,
+   --伤害
+   damage = function(self)
+        return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*15)
+   end,
+   --冷却
+   cool = 1,
+   effect =[[Abilities\Spells\Other\HowlOfTerror\HowlCaster.mdl]],
+   event_name = '造成伤害效果'
 }
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+    local target = damage.target
+
+	if not damage:is_common_attack()  then 
+		return 
+    end 
+    local mvr = ac.mover.line
+	{
+		source = hero,
+		skill = skill,
+		model = skill.effect,
+		speed = 1800,
+		angle = hero:get_point()/target:get_point(),
+		hit_area = skill.hit_area,
+		distance = skill.distance,
+        size = 1,
+		on_move_skip =10,
+	}
+	if mvr then
+        function mvr:on_move()
+            ac.effect_ex{
+                model = skill.effect,
+                point = self.mover:get_point(),
+                size = 1.5,
+            }:remove()
+        end
+		function mvr:on_hit(u)
+			u:damage
+			{
+				source = hero,
+				target = u,
+				skill = skill,
+				damage = skill.damage,
+				damage_type = '法术',
+			}
+		end
+	end
+end
+
 
 local mt = ac.skill['原魔']
 mt{

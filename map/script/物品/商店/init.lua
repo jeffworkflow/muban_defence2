@@ -2,7 +2,7 @@ require '物品.商店.创建商店'
 require '物品.商店.练功房'
 require '物品.商店.基地'
 -- require '物品.商店.传送'
-require '物品.商店.随机技能'
+require '物品.商店.随机功法'
 require '物品.商店.随机物品'
 require '物品.商店.扭蛋'
 
