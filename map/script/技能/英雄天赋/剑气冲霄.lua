@@ -22,21 +22,21 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*75)* self.level
 end,
 dead_damage = function(self)
-return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*25+10000)* self.level
+return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*75+10000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
- ['杀怪加全属性'] = {250,5000},
+ ['杀怪加全属性'] = {1000,20000},
  ['攻击减甲'] = 488,
  ['攻击间隔'] = -0.25,
  ['全伤加深'] = 488
 ,
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+250*Lv
+	tip = [[|cffffff00【杀怪加全属性】+1000*Lv
 【攻击减甲】+488
 【攻击间隔】-0.25
 【全伤加深】+488%

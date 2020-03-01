@@ -33,14 +33,14 @@ mt{
 
 |cffffff00【闪避】+（10+0.5*Lv）%
 
-|cff00bdec【唯一效果】攻击10%几率触发， 让周围敌人攻击有20%几率丢失，持续1秒|r
+|cff00bdec【唯一效果】攻击10%几率触发， 让周围敌人攻击有30%几率丢失，持续1秒|r
 
 ]],
 	--技能图标
 	art = [[qhmzly.blp]],
 	--特效4
 	effect4 = [[参考赤灵的迷之领域]],
-    value = 20,
+    value = 30,
     time = 1
 }
 function mt:damage_start(damage)

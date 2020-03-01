@@ -36,9 +36,9 @@ function mt:on_cast_start()
             elseif skill.level <= 10 then 
                 skill.rec_ex = skill.level*2500
             elseif skill.level <= 15 then 
-                skill.rec_ex = skill.level*7500
+                skill.rec_ex = skill.level*5000
             else
-                skill.rec_ex = skill.level*12500
+                skill.rec_ex = skill.level*10000
             end
             local key = skill:get_hotkey() 
             local str = clean_color(skill:get_title())

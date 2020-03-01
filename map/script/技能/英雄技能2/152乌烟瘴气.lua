@@ -27,14 +27,14 @@ mt{
 
 |cffffff00【闪避】+（6+0.2*Lv）%
 
-|cff00bdec【唯一效果】使用后周围敌人攻击有20%几率丢失，持续5秒|r
+|cff00bdec【唯一效果】使用后周围敌人攻击有（8+0.6*lv）%几率丢失，持续5秒|r
 
 ]],
 	--技能图标
 	art = [[mzly.blp]],
 	--特效4
 	effect4 = [[参考赤灵的迷之领域]],
-    value = 20,
+    value = {8.6,20},
     time = 5
 }
 mt.on_cast_start = ac.skill['含沙射影'].on_cast_start

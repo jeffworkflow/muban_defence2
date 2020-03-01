@@ -27,14 +27,14 @@ mt{
 
 |cffffff00【减少周围护甲】+（400+40*Lv）
 
-|cff00bdec【唯一效果】使用后降低周围敌人30%护甲，持续8秒|r
+|cff00bdec【唯一效果】使用后降低周围敌人（19+0.8*lv）护甲，持续8秒|r
 
 ]],
 	--技能图标
 	art = [[azly.blp]],
 	--特效4
 	effect4 = [[参考赤灵的暗之领域]],
-    value = 30,
+    value = {19.8,35},
     time = 8
 }
 mt.on_cast_start = ac.skill['暗之领域'].on_cast_start

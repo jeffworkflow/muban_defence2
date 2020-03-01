@@ -33,14 +33,14 @@ mt{
 
 |cffffff00【减少周围护甲】+（800+50*Lv）
 
-|cffffff00【唯一效果】攻击10%几率触发， 降低周围敌人30%护甲，持续1秒|r
+|cffffff00【唯一效果】攻击10%几率触发， 降低周围敌人（19+0.8*lv）护甲，持续1秒|r
 
 ]],
 	--技能图标
 	art = [[qhazly.blp]],
 	--特效4
 	effect4 = [[参考赤灵的暗之领域]],
-    value = 30,
+    value = {19.8,35},
     time = 1
 }
 function mt:damage_start(damage)

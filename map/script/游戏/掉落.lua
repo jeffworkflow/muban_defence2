@@ -218,6 +218,83 @@ local reward = {
             hero:add_item(name,true)    
         end 
     end,
+    ['藏宝图'] = function (player,hero,unit,is_on_hero)
+        local name = '藏宝图'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
+    ['羊皮纸'] = function (player,hero,unit,is_on_hero)
+        local name = '羊皮纸'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
+    ['无字天书'] = function (player,hero,unit,is_on_hero)
+        local name = '无字天书'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
+    ['扭蛋券(十连抽)'] = function (player,hero,unit,is_on_hero)
+        local name = '扭蛋券(十连抽)'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
+    ['超级扭蛋券(十连抽)'] = function (player,hero,unit,is_on_hero)
+        local name = '超级扭蛋券(十连抽)'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
+    ['一颗神奇的种子'] = function (player,hero,unit,is_on_hero)
+        local name = '一颗神奇的种子'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
+    ['黑暗骰子'] = function (player,hero,unit,is_on_hero)
+        local name = '黑暗骰子'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
     ['召唤boss'] = function (player,hero,unit,is_on_hero)
         local name = '召唤boss'
         --英雄死亡时 掉落在地上
@@ -296,14 +373,21 @@ local unit_reward = {
         { rand = 0.007,      name = '吞噬丹'},
         { rand = 0.01,      name = '天谕'},
         { rand = 0.04,      name = '强化石'},
-        { rand = 0.01,      name = '随机技能'}
+        { rand = 0.01,      name = '随机技能'},
+        { rand = 0.01,      name = '藏宝图'},
+        { rand = 0.01,      name = '羊皮纸'},
+        { rand = 0.01,      name = '无字天书'},
+        -- { rand = 10.01,      name = '一颗神奇的种子'},
+        -- { rand = 10.01,      name = '扭蛋券(十连抽)'},
+        -- { rand = 10.01,      name = '超级扭蛋券(十连抽)'},
+        { rand = 0.01,      name = '黑暗骰子'}
     },
     
-    ['一棒男'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['戴瑟提克'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['格里弗'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['克尔苏加德'] =  {{ rand = 25,      name = '吞噬丹'}},
-    ['虚空诺亚'] =  {{ rand = 25,      name = '吞噬丹'}},
+    ['一棒男'] =  {{ rand = 20,      name = '吞噬丹'}},
+    ['戴瑟提克'] =  {{ rand = 20,      name = '吞噬丹'}},
+    ['格里弗'] =  {{ rand = 20,      name = '吞噬丹'}},
+    ['克尔苏加德'] =  {{ rand = 20,      name = '吞噬丹'}},
+    ['虚空诺亚'] =  {{ rand = 20,      name = '吞噬丹'}},
 
     ['存档物品'] = {
         { rand = 65,      name = '白'},

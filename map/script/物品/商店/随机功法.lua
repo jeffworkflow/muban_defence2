@@ -8,7 +8,7 @@ is_order = 2,
 art = [[other\suijijineng.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
 --说明
-tip = [[|n获得 |cffff0000随机技能|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
+tip = [[|n获得 |cffff0000随机功法|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
 
 content_tip = '|cffFFE799【说明】：|r|n',
 --物品类型
@@ -18,7 +18,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-rec_ex = 1,
+rec_ex = 1000,
 --物品技能
 is_skill = true,
 }
@@ -31,8 +31,8 @@ function mt:on_cast_start()
         shop_item.player_rec_ex = {}
     end
     --改变商店物品物价
-    shop_item.player_rec_ex[hero:get_owner()] =  (shop_item.player_rec_ex[hero:get_owner()] or self.rec_ex) * 2
-    shop_item.player_rec_ex[hero:get_owner()] = math.min(shop_item.player_rec_ex[hero:get_owner()],5000) --上限5000
+    shop_item.player_rec_ex[hero:get_owner()] =  (shop_item.player_rec_ex[hero:get_owner()] or self.rec_ex) + 2000
+    shop_item.player_rec_ex[hero:get_owner()] = math.min(shop_item.player_rec_ex[hero:get_owner()],500000) --上限5000
     --给英雄随机添加物品
     local rand_list = ac.unit_reward['商店随机技能']
     local rand_name = ac.get_reward_name(rand_list)

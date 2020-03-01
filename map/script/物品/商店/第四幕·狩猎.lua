@@ -97,7 +97,6 @@ tip = [[%extr_tip%
 |cff00ff00+450w 全属性|r
 |cff00ff00+50    攻击减甲|r
 
-
 ]],
 }
 
@@ -116,7 +115,6 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+500w 全属性|r
 |cff00ff00+2.5% 减伤|r
-
 
 ]],
 }
@@ -137,7 +135,6 @@ tip = [[%extr_tip%
 |cff00ff00+550w 全属性|r
 |cff00ff00+2.5% 闪避|r
 
-
 ]],
 }
 
@@ -156,7 +153,6 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+600w 全属性|r
 |cff00ff00+2.5% 免伤几率|r
-
 
 ]],
 }
@@ -179,7 +175,6 @@ tip = [[%extr_tip%
 |cff00ff00+2.5% 暴击几率
 |cff00ff00+25%  暴击伤害|r
 
-
 ]],
 }
 
@@ -200,7 +195,6 @@ tip = [[%extr_tip%
 |cff00ff00+700w 全属性|r
 |cff00ff00+2.5% 技暴几率|r
 |cff00ff00+25%  技暴伤害|r
-
 
 ]],
 }
@@ -223,7 +217,6 @@ tip = [[%extr_tip%
 |cff00ff00+2.5% 会心几率|r
 |cff00ff00+25%  会心伤害|r
 
-
 ]],
 }
 
@@ -242,7 +235,6 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+800w 全属性|r
 |cff00ff00-0.05  攻击间隔|r
-
 
 ]],
 }

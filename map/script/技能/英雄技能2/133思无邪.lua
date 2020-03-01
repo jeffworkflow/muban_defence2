@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【生命恢复】+200w*Lv|r
         
-|cff00bdec【主动施放1】回复35%生命值 并每秒回复|r|cffffff0010%的生命值|r |cff00bdec持续5秒|r
+|cff00bdec【主动施放1】回复(15+1*Lv)%生命值 并每秒回复|r|cffffff006%的生命值|r |cff00bdec持续5秒|r
 
 |cff00bdec【主动施放2】唯一技能-内伤：对周围敌人造成|r|cffffff00生命恢复效果减少40%|r，|cff00bdec持续5秒|r
 
@@ -44,8 +44,8 @@ mt{
     area = 500,--范围
     value = -35,--减少生命恢复效果值
     --治疗量
-    heal = 35,
-    stu_heal = 7.5,
+    heal = {16,30},
+    stu_heal = 6,
     time = 5
 }
 mt.on_cast_start = ac.skill['黄庭经'].on_cast_start

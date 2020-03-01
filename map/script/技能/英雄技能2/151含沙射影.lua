@@ -27,14 +27,14 @@ mt{
 
 |cffffff00【闪避】+（5+0.1*Lv）%
 
-|cff00bdec【唯一效果】使用后周围敌人攻击有20%几率丢失，持续5秒|r
+|cff00bdec【唯一效果】使用后周围敌人攻击有（5+0.5*lv）%几率丢失，持续5秒|r
 
 ]],
 	--技能图标
 	art = [[mzly.blp]],
 	--特效4
 	effect4 = [[参考赤灵的迷之领域]],
-    value = 20,
+    value = {5.5,15},
     time = 5
 }
 function mt:on_add()
