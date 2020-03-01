@@ -3,6 +3,7 @@ require '物品.消耗品'
 require '物品.杂类'
 require '物品.商店'
 require '物品._常用'
+require '物品.物品技能'
 
 local unit = require 'types.unit'
 

@@ -165,6 +165,13 @@ function mt:init()
     end
 
     self.owner:event '技能-失去'(function(trg,hero,skill)
+        if self.removes then
+            trg:remove()
+            -- print('已经移除',self)
+            return
+        end
+        -- print('技能失去：',self,self.skill,skill)
+        -- print('技能失去2：',self,self.skill.name,skill.name)
         if self.skill == skill then  
             self:remove()
             trg:remove()
@@ -179,7 +186,6 @@ function mt:remove()
         return
     end
     self.removes = true
-
     if self.trg then
         self.trg:remove()
     end
@@ -213,19 +219,76 @@ function ac.damage(name)
 end
 
 
-ac.game:event '技能-获得' (function (_,hero,self)
+ac.game:event '技能-升级' (function (_,hero,self)
     local hero = self.owner
     local skill = self 
     if skill.event_name and skill.damage_start then 
-        ac.damage(self.event_name){
-            skill = skill,
-            cool = true,
-            random = skill.chance,
-            damage_start = skill.damage_start,
-        } 
+        if skill.unique_name then 
+            --生成buff
+            local buff = ac.buff[skill.unique_name]
+            if not buff.on_add then 
+                buff.cover_type = 1
+                buff.cover_max = 1
+                function buff:on_add()
+                    local target = self.target
+                    local hero = self.target
+
+                    self.dmg_trg = ac.damage(skill.event_name){
+                        skill = self.skill,
+                        cool = true,
+                        random = self.chance,
+                        damage_start = self.damage_start,
+                    } 
+                    -- print('添加到buff:',self.dmg_trg,self.dmg_trg.skill)
+                end
+
+                function buff:on_remove()
+                    local target = self.target   
+                    -- print('移除buff:',self.dmg_trg,self.dmg_trg.skill)
+                    if self.dmg_trg then 
+                        self.dmg_trg:remove()
+                        self.dmg_trg = nil 
+                    end
+                end
+                function buff:on_cover(new)
+                    return new.value > self.value
+                end
+            end
+            --添加buff
+            skill.unique_buff = hero:add_buff(skill.unique_name){
+                value = skill.cover,
+                skill = skill,
+                random = skill.chance,
+                damage_start = skill.damage_start,
+            }
+
+        else
+            if skill.flag_passive then 
+                skill.flag_passive:remove()
+                skill.flag_passive = nil
+            end
+            skill.flag_passive = ac.damage(self.event_name){
+                skill = skill,
+                cool = true,
+                random = skill.chance,
+                damage_start = skill.damage_start,
+            } 
+        end
     end    
 end)
 
+ac.game:event '技能-失去' (function (_,hero,self)
+    
+    -- print('技能移除:',self.unique_buff)
+    if self.flag_passive then 
+        self.flag_passive:remove()
+        self.flag_passive = nil 
+    end
+    if self.unique_buff then 
+        self.unique_buff:remove()
+        self.unique_buff = nil 
+    end
+end)
 
 local mt = ac.skill['bd']
 mt{

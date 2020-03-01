@@ -15,12 +15,12 @@ for key in pairs(ac.unit.attribute) do
 		mt.value = 0
 
 		function mt:on_add()
-			self.effect = self.target:add_effect(self.ref, self.model)
+			self.eff = self.target:add_effect(self.ref, self.model)
 			self.target:add(tran_key,self.value)
 		end
 
 		function mt:on_remove()
-			self.effect:remove()
+			self.eff:remove()
 			self.target:add(tran_key,-self.value)
 		end
 
