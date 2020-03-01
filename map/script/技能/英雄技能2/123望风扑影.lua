@@ -17,7 +17,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 20,
+	cool = 25,
 	--施法范围
 	area = 500,
 	--属性加成
@@ -27,14 +27,14 @@ mt{
 
 |cffffff00【免伤几率】+（7+0.3*Lv）%
 
-|cff00bdec【主动施放】使用技能后，接下来5次伤害必定免伤
+|cff00bdec【主动施放】使用技能后，接下来(5+0.2*Lv)次伤害必定免伤
 
 ]],
 	--技能图标
 	art = [[bmfy.blp]],
 	--特效4
 	effect4 = [[参考赤灵的不灭佛隐，同时只能触发一个，不能叠加]],
-    value = 5,
+    value = {5.2,9},
 }
 function mt:on_cast_start()
     local skill = self

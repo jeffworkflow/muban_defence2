@@ -27,9 +27,9 @@ mt{
 
 |cffffff00【生命恢复】+50w*Lv|r
         
-|cff00bdec【主动施放1】回复35%生命值 并每秒回复|r|cffffff005%的生命值|r |cff00bdec持续5秒|r
+|cff00bdec【主动施放1】回复(15+1*Lv)%生命值 并每秒回复|r|cffffff005%的生命值|r |cff00bdec持续5秒|r
 
-|cff00bdec【主动施放2】唯一技能-内伤：对周围敌人造成|r|cffffff00生命恢复效果减少30%|r，|cff00bdec持续5秒|r
+|cff00bdec【主动施放2】唯一技能-内伤：对周围敌人造成|r|cffffff00生命恢复效果减少(15+0.5*Lv)%|r，|cff00bdec持续5秒|r
 
 ]],
 	--技能图标
@@ -42,9 +42,9 @@ mt{
 	effect4 = [[参考赤灵的水疗术]],
     --内伤
     area = 500,--范围
-    value = -30,--减少生命恢复效果值
+    value = {-15.5,-25},--减少生命恢复效果值
     --治疗量
-    heal = 35,
+    heal = {16,35},
     stu_heal = 5,
     time = 5
 }

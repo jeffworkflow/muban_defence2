@@ -17,7 +17,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 20,
+	cool = 25,
 	--施法范围
 	area = 500,
 	--属性加成
@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【减伤】+（5+0.1*Lv）%
 
-|cff00bdec【主动施放】让自己无敌3秒
+|cff00bdec【主动施放】让自己无敌（1+0.1*Lv）秒
 
 ]],
 	--技能图标
@@ -36,7 +36,7 @@ mt{
 	effect = [[Abilities\Spells\Human\DivineShield\DivineShieldTarget.mdl]],
 	--特效4
     effect4 = [[参考赤灵的神圣护甲，同时只能触发一个，不能叠加]],
-    stand_time = 3,
+    stand_time = {1.1,3},
 }
 function mt:on_cast_shot()
     local skill = self

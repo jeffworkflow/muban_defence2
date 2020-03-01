@@ -33,7 +33,7 @@ mt{
 
 |cffffff00【生命恢复】+800w*Lv|r
         
-|cff00bdec【被动效果1】攻击10%几率触发，回复(15+1*Lv)%的生命值|r
+|cff00bdec【被动效果1】攻击10%几率触发，回复(30+1*Lv)%的生命值|r
 
 |cff00bdec【被动效果2】唯一技能-内伤：10%几率对周围敌人造成|r|cffffff00生命恢复效果减少(30+1*Lv)%|r，|cff00bdec持续0.8秒|r
 
@@ -52,7 +52,7 @@ mt{
     time = 0.8,
 
     --补血量
-    heal = {16,35},
+    heal = {31,50},
 }
 function mt:damage_start(damage)
     local skill = self
