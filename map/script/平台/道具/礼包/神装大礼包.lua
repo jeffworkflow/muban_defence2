@@ -61,9 +61,11 @@ ac.wait(11,function()
     for i,name in ipairs(ac.all_item) do 
         table.insert(temp_item,name)
     end    
-    for i,name in ipairs(ac.black_item) do 
-        table.insert(temp_item,name)
-    end   
+    if ac.black_item then
+        for i,name in ipairs(ac.black_item) do 
+            table.insert(temp_item,name)
+        end   
+    end
 end)
 
 function mt:on_cast_start()

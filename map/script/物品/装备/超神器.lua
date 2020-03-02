@@ -426,7 +426,7 @@ ac.wait(10,function()
     local item =[[
 死狱尊吾刀 往生女娲泪 回梦昆仑镜
     ]]
-    ac.tunshi_black_item =ac.tunshi_black_item .. item
+    ac.tunshi_black_item = (ac.tunshi_black_item or '') .. item
 end)
 
 

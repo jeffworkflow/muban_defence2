@@ -41,7 +41,10 @@ local function init_shop()
     end 
 end
 init_shop()
-
+ac.max_sendmsg = 0
+ac.loop(100,function()
+    ac.max_sendmsg = 0
+end)
 ac.game:event '单位-创建商店'(function(trg,shop)
     local name = shop:get_name()
     if name == '基地' then
@@ -66,9 +69,12 @@ ac.game:event '单位-创建商店'(function(trg,shop)
         shop:event '受到伤害结束'(function(trg,damage)
             local source = damage.source
             local target = damage.target
-            ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
-            ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
-            ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+            if ac.max_sendmsg <= 10 then 
+                ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                ac.max_sendmsg = ac.max_sendmsg + 3
+            end
             send_msg()
         end)
     end    

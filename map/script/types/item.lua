@@ -144,6 +144,7 @@ local color_model = {
     ['红'] = [[faguanghong.mdx]],
     ['绿'] = [[faguanglv.mdx]],
     ['紫'] = [[faguangzi.mdx]],
+	['黑'] = [[File00000376 - RC.mdx]],
 }
 
 --颜色模型 目前应用于装备
@@ -152,7 +153,8 @@ local zb_color_model = {
     ['蓝'] = [[File00000376 - B.mdx]],
     ['金'] = [[File00000376 - Y.mdx]],
     ['红'] = [[File00000376 - R.mdx]],
-    ['绿'] = [[File00000376 - G.mdx]],
+	['绿'] = [[File00000376 - G.mdx]],
+	['黑'] = [[File00000376 - RC.mdx]],
     ['书'] = [[ArcaneTome.mdx]],
 }
 ac.zb_color_model = zb_color_model
