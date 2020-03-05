@@ -374,7 +374,7 @@ local unit_reward = {
         { rand = 0.01,      name = '天谕'},
         { rand = 0.04,      name = '强化石'},
         { rand = 0.01,      name = '随机技能'},
-        { rand = 0.01,      name = '藏宝图'},
+        -- { rand = 0.01,      name = '藏宝图'},
         { rand = 0.01,      name = '羊皮纸'},
         { rand = 0.01,      name = '无字天书'},
         -- { rand = 10.01,      name = '一颗神奇的种子'},

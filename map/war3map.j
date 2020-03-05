@@ -323,6 +323,10 @@ rect gg_rct_shoulei93= null
 rect gg_rct_zhanjiuzhan= null
 rect gg_rct_zhanjiuzhan1= null
 rect gg_rct_zhanjiuzhan2= null
+rect gg_rct_moshen1= null
+rect gg_rct_moshen2= null
+rect gg_rct_moshen3= null
+rect gg_rct_dujie1= null
 
 endglobals
 
@@ -1755,6 +1759,10 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_zhanjiuzhan=Rect(10304.0, 20384.0, 10624.0, 20608.0)
     set gg_rct_zhanjiuzhan1=Rect(10304.0, 20864.0, 10624.0, 21088.0)
     set gg_rct_zhanjiuzhan2=Rect(9376.0, 19680.0, 11520.0, 21920.0)
+	set gg_rct_moshen1=Rect(- 6080.0, 26304.0, - 6016.0, 26368.0)
+    set gg_rct_moshen2=Rect(- 6080.0, 27488.0, - 6016.0, 27552.0)
+    set gg_rct_moshen3=Rect(- 6080.0, 25024.0, - 6016.0, 25088.0)
+    set gg_rct_dujie1=Rect(- 8544.0, - 4896.0, - 8480.0, - 4832.0)
 endfunction
 
 //===========================================================================
