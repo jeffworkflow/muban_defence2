@@ -9,9 +9,9 @@ content_tip = '|cffffe799使用说明：|r',
 tip = [[
 
 
-|cff00ffff点击可食用 让|cffff0000满级技能|cff00ffff获得强化！无法强化相同技能！|r
+无谓因果，不惧轮回。|cff00ffff点击可食用 可以让|cffff0000强化后的顶级功法|cff00ffff融合入体！无法融合相同功法！|r
 
-已强化 %cnt%|cffffff00 / %max_cnt%|r 个： %content%]],
+已融合 %cnt%|cffffff00 / %max_cnt%|r 个： %content%]],
 
 cnt = function(self) 
     local cnt = 0
@@ -46,8 +46,8 @@ content = function(self)
     return content
 end,
 --品质
-color = '紫',
-art = [[guoshi.blp]],
+-- color = '紫',
+art = [[rongheyinguo.blp]],
 --物品类型
 item_type = '消耗品',
 --目标类型
@@ -58,9 +58,9 @@ cool = 1,
 --购买价格
 gold = 10000,
 --物品模型
-specail_model = [[acorn.mdx]],
+-- specail_model = [[acorn.mdx]],
 
-model_size = 2,
+-- model_size = 2,
 --物品数量
 _count = 1,
 
