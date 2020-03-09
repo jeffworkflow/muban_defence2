@@ -64,7 +64,7 @@ function mt:on_cast_start()
         self.dialog = create_dialog(player,'升级技能',list,function (index)
             local skl = list[index].skill
             if skl then 
-                if p.rec_ex > skl.rec_ex then 
+                if p.rec_ex >= skl.rec_ex then 
                     --扣钱
                     hero:add_rec_ex(-skl.rec_ex)
                     --升级技能

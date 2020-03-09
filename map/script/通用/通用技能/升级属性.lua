@@ -55,10 +55,10 @@ ac.game:event '技能-升级' (function (_,hero,self)
         local value = self[key]
         local old_value = self.old_status[key]
         if old_value then 
-            p:add(key,-old_value)
+            p:add_tran(key,-old_value)
 		end 
         if value then 
-            p:add(key,value)
+            p:add_tran(key,value)
         end 
         self.old_status[key] = value
         --处理%值
@@ -66,10 +66,10 @@ ac.game:event '技能-升级' (function (_,hero,self)
 		value = self[key]
         old_value = self.old_status[key]
 		if old_value then 
-            p:add(key,-old_value)
+            p:add_tran(key,-old_value)
 		end 
 		if value then 
-            p:add(key,value)
+            p:add_tran(key,value)
         end 
         self.old_status[key] = value
 
@@ -112,14 +112,14 @@ ac.game:event '技能-失去' (function (_,hero,self)
         --处理基础值
         local value = self[key]
 		if value then 
-            p:add(key,value)
+            p:add_tran(key,value)
         end 
        
         --处理%值
 		key = key..'%'
 		value = self[key]
 		if value then 
-            p:add(key,value)
+            p:add_tran(key,value)
         end 
     end
 end)    

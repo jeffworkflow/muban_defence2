@@ -35,6 +35,11 @@ local Care = {
 }
 ac.player_attr = Care
 
+--基础值
+local base_attr =[[
+    金币 木头 食物 食物上限 局内地图等级 宠物等级 练功房怪
+]]
+
 local Show = {
     ['金币'] = function (player, v)
         jass.SetPlayerState(player._handle, 1, math.floor(v))
@@ -94,6 +99,24 @@ function mt:get(k)
     return v
 end
 
+function mt:add_tran(name, value)
+	local base_name = name
+	if name:sub(-1, -1) == '%' then
+		base_name =  name:sub(1, -2)
+		-- print(base_name)
+		--如果是基础值，则调用英萌自带的加%函数，会先*基础值再+
+		if finds(base_attr,base_name) then 
+			self:add(name, value)
+		else
+		--%值 调用英萌自带的加，直接+
+			self:add(base_name, value)
+		end	
+	else	
+		--调用英萌自带的加，直接+
+		self:add(base_name, value)
+	end	
+end
+
 function mt:add(k, v)
     local ext = k:sub(-1)
     if ext == '%' then
@@ -125,6 +148,7 @@ function mt:add(k, v)
         self:add(k, -v)
     end
 end
+
 
 function mt:onShow(k)
     if not Show[k] then

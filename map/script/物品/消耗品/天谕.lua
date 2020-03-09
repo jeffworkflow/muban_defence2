@@ -80,7 +80,7 @@ function mt:on_cast_start()
 
     for i=1,6 do 
         local item = hero:get_slot_item(i)
-        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红')  and item.level < (item.max_level or 999)  then 
+        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  and item.level < (item.max_level or 999)  then 
             count = count + 1
             local info = {
                 name = "|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r ',
@@ -122,7 +122,8 @@ function mt:on_cast_start()
                         up_item(item,player)
                     end    
                 elseif item.level < 15 then
-                    if math.random(10000)/100 <= rate[item.level] then 
+                    local rt = rate[item.level]*(1 + player:get('强化成功概率')/100)
+                    if math.random(10000)/100 <= rt then 
                         --改变属性
                         up_item(item,player)
                     else 

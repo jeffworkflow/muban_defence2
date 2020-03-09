@@ -743,7 +743,7 @@ function mt:on_use_state()
 	for index,value in ipairs(state) do 
         -- print('玩家属性',value.name,value.value)
 		if self.item_type == '消耗品' or self.item_type == '神符' then
-			hero.owner:add(value.name,value.value)
+			hero.owner:add_tran(value.name,value.value)
 		end	
 	end 
 

@@ -8,6 +8,13 @@ ac.kangfu ={
     ['地阶练功'] = '地阶功法怪',
     ['天阶练功'] = '天阶功法怪',
 }
+local temp_reward = {
+    ['功法掉落'] = {
+        { rand = 0.05,      name = '功法升级书'},
+        { rand = 0.01,      name = '功法连升书'}
+    }
+}
+
 
 for key,u_name in pairs(ac.kangfu) do 
     --物品名称
@@ -83,7 +90,12 @@ for key,u_name in pairs(ac.kangfu) do
                                 --完成次数
                                 p.kangfu_cnt[skl_color] = (p.kangfu_cnt[skl_color] or 1) +1
                             end    
-                        
+                            --额外掉落 有0.05%概率掉落功法升级书，0.01%概率掉落功法连升书
+                            local item_name = ac.get_reward_name(temp_reward['功法掉落'])
+                            if item_name then 
+                                ac.fall_move(item_name,unit:get_point())
+                                -- p:sendMsg('恭喜掉落 '..item_name,5)
+                            end
                         end)
                     end  
                 end)  

@@ -14,13 +14,37 @@ mt{
 mt.skills = {
     '神魂修炼','古老的铭文','套装熔炼','踢馆',
     '突破','狩猎','战就战','扭蛋1',
-    '吞噬神丹','彩蛋','超级彩蛋',
+    '吞噬','彩蛋 ',
     -- '神魂修炼','古老的铭文','套装熔炼','踢馆',
     -- '突破','狩猎','战就战',第六幕
     -- '扭蛋1','吞噬','彩蛋',
-    
-
 }
+
+local mt = ac.skill['彩蛋 ']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[slqy.blp]],
+    title = '彩蛋',
+    tip = [[
+
+点击查看 |cff00ff00彩蛋|r
+    ]],
+}
+mt.skills = {'彩蛋','超级彩蛋'}
+
+local mt = ac.skill['吞噬']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[slqy.blp]],
+    title = '吞噬',
+    tip = [[
+
+点击查看 |cff00ff00吞噬|r
+    ]],
+}
+mt.skills = {'吞噬神丹','神技入体'}
 
 --'二郎','七郎','判官','马面','牛头','夜叉','辟邪','狐仙','龙女','刑天'
 local mt = ac.skill['战就战']
@@ -153,19 +177,6 @@ mt{
     tip = [[
 
 点击查看 |cff00ff00罪恶城堡|r
-    ]],
-}
-mt.skills = {}
-
-local mt = ac.skill['扭蛋1']
-mt{
-    is_spellbook = 1,
-    is_order = 2,
-    art = [[gjnd.blp]],
-    title = '扭蛋',
-    tip = [[
-
-点击查看 |cff00ff00扭蛋|r
     ]],
 }
 mt.skills = {}

@@ -49,7 +49,7 @@ function mt:on_cast_start()
 
     for i=1,6 do 
         local item = hero:get_slot_item(i)
-        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红')  and item.level < (item.qh_max_level or 999) then 
+        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  and item.level < (item.qh_max_level or 999) then 
             count = count + 1
             local info = {
                 name = "|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r ',
@@ -82,7 +82,8 @@ function mt:on_cast_start()
             local item = list[index].item
             if item then 
                 if item.level<10 then 
-                    if math.random(10000)/100 <= rate[item.level] then 
+                    local rt = rate[item.level]*(1 + player:get('强化成功概率')/100)
+                    if math.random(10000)/100 <= rt then 
                         --改变属性
                         local lni_data = ac.table.ItemData[item.name] or ac.skill[item.name]
                         if not lni_data or type(lni_data) == 'function'  then print('没有取到数据') return end 

@@ -108,7 +108,7 @@ function mt:on_cast_shot()
 	if not hero:has_restriction '定身' then 
 		hero:add_restriction '定身'
 	end	
-
+	local model_size = hero:get_slk 'modelScale'
 	--开始跳跃
 	local mvr = ac.mover.target
 	{
@@ -132,7 +132,7 @@ function mt:on_cast_shot()
 	function mvr:on_move()
 		local total_distance = new_point *source_point
 		
-		local eff= ac.effect(self.mover:get_point(),skill.effect,self.mover:get_facing(),1,'chest',self.high)
+		local eff= ac.effect(self.mover:get_point(),skill.effect,self.mover:get_facing(),model_size,'chest',self.high)
 		eff.unit:setColor(10,10,10)
 		-- eff.unit:setAlpha(70)
 		ac.wait(0.5*1000,function()

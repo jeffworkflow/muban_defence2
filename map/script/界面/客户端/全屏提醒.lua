@@ -171,8 +171,16 @@ local str = [[
     +（全伤加深）/10000
     +（攻击减甲/（-攻击间隔）*攻击速度）/50000
     ）
+    +天赋技能+1000*（Lv-1）+黄阶技能+1000*Lv+玄阶技能+2000*Lv+地阶技能+4000*Lv+天阶技能+8000*Lv+真天阶技能+16000*Lv
 ]]
-
+local skl_point ={
+    ['天赋'] = 1000,
+    ['黄阶'] = 1000,
+    ['玄阶'] = 2000,
+    ['地阶'] = 4000,
+    ['天阶'] = 8000,
+    ['真天阶'] = 16000,
+}
 ac.game:event '玩家-注册英雄' (function(self, player, hero)
     hero:event '单位-属性变化'(function(self, hero, name,value)
         if not hero:is_hero() then 
@@ -189,6 +197,15 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
             + (hero:get('物理伤害加深')+hero:get('技能伤害加深'))/12500
             + (hero:get('全伤加深'))/5000)
         zdl = math.floor(zdl)
+        local skl_zdl = 0
+        for skl in hero:each_skill('英雄',true) do 
+            if skl.color == '天赋' then 
+                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level -1)
+            else
+                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level)
+            end
+        end
+        zdl = zdl + skl_zdl
         -- print('战斗力',zdl,name,value)
         if hero.owner:is_self()then 
             new_ui:set_val(zdl)
