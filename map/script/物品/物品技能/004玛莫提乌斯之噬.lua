@@ -33,10 +33,12 @@ v2 = {-5.5,-12.5},
 v3 = 0.5,
 	--介绍
 	tip = [[|cffffff00+%攻击%|r 攻击
-|cffffff00+%攻击速度% %|r 攻击速度
-|cffffff00+%技能冷却% %|r 技能冷却
+|cffffff00+%攻击速度% |cffffff00%|r 攻击速度
+|cffffff00+%技能冷却% |cffffff00%|r 技能冷却
 
-|cffffff00【唯一被动-锋锐】|r攻击 %v1% %几率减少敌人 %v2% % 的护甲，持续%v3%S]],
+|cffffe799【唯一被动-锋锐】|r
+攻击 %v1% %几率减少敌人 %v2% % 的护甲，持续 %v3% 秒
+]],
 	--特效
 	effect = [[Abilities\Spells\NightElf\FaerieFire\FaerieFireTarget.mdl]],
 	--备注

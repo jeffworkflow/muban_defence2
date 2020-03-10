@@ -22,7 +22,7 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[eplaceableTextures\CommandButtons\BTNGrabTree.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
 --说明
 tip = [[ 
 
@@ -136,7 +136,7 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[uanshuxing.blp]],
+art = [[quanshuxing.blp]],
 --说明
 tip = [[ 
 

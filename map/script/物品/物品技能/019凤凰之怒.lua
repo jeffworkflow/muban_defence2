@@ -35,9 +35,11 @@ v3 = 0.5,
 	--介绍
 	tip = [[|cffffff00+%敏捷%|r 敏捷
 |cffffff00+%攻击距离%|r 攻击距离
-|cffffff00+%触发概率加成%|r 触发概率加成
+|cffffff00+%触发概率加成% |cffffff00%|r 触发概率加成
 
-|cffffff00【被动-风速】|r攻击 %v1% %几率提高 %v2% %的攻击间隔，持续0.5S]],
+|cffffe799【被动-风速】|r
+攻击 %v1% %几率提高 %v2% |cffffe799%|r的攻击速度，持续 |cffffe7990.5|r 秒
+]],
 	--特效
 	effect = [[Abilities\Spells\Undead\UnholyFrenzy\UnholyFrenzyTarget.mdl]],
 	--备注

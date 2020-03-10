@@ -11,7 +11,7 @@ mt{
 	--类型
 	item_type = "装备",
 	--套装
-	suit_type = "收益",
+	-- suit_type = "收益",
 	--品质
 	color = "白",
 	--图标
@@ -25,7 +25,11 @@ mt{
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--介绍
-	tip = [[|cffffff00【点金术】|r能立即杀死非BOSS类的单位，并获得该单位赏金*Lv*15的奖励]],
+	tip = [[
+
+|cffffe799【点金术】|r能立即杀死非BOSS类的单位，并获得|cffffe79915倍的赏金*物品等级|r
+
+]],
 	--备注
 	effect4 = [[主动使用，施法距离=1000]],
 	

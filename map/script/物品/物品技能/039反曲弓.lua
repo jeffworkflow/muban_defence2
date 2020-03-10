@@ -38,7 +38,9 @@ v2 = {4,9},
 	tip = [[|cffffff00+%敏捷%|r 敏捷
 |cffffff00+%攻击距离%|r 攻击距离
 
-|cffffff00【被动-多重箭】|r攻击 %v1% %几率向周围 %v2% 个单位额外射出一只的魔法箭，造成 %damage% 的真实伤害]],
+|cffffe799【被动-多重箭】|r
+攻击 %v1% %几率向周围 %v2% 个单位额外射出一只的魔法箭，造成 %damage% 的真实伤害
+]],
 	--备注
 	effect4 = [[闪电链效果，路径lightnings\DrainLightning.blp]],
 	--业务技能代码

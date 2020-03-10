@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*64+100000000)* self.level
+  return (self.owner:get('智力')*16+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",

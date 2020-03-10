@@ -34,10 +34,13 @@ v2 = {1000000,15000000},
 v3 = {20,300},
 	--介绍
 	tip = [[|cffffff00+%技能基础伤害%|r 技能基础伤害
-|cffffff00+%技能伤害加深%|r 技能伤害加深
-|cffffff00+%每秒回血%|r 每秒回血
+|cffffff00+%技能伤害加深% |cffffe799%|r 技能伤害加深
+|cffffff00+%每秒回血% |cffffe799%|r 每秒回血
 
-|cffffff00【被动-朱雀炎】|r攻击 %v1% %几率对敌人造成 %v2% +%v3% *智力的范围技能伤害]],
+|cffffe799【被动-朱雀炎】|r
+攻击 %v1% %几率对敌人造成 %v2% +|cffffe799智力*%v3%|r 的范围技能伤害
+
+]],
 	--特效
 	effect = [[Abilities\Spells\Other\BreathOfFire\BreathOfFireMissile.mdl]],
 	--备注

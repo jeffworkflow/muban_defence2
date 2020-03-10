@@ -7,7 +7,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 800,
 	--类型
 	item_type = "装备",
 	--品质
@@ -29,14 +29,16 @@ mt{
   return (10000)* self.level
 end,
 	--施法范围
-	area = 300,
+	area = 800,
 	--属性加成
  ['力量'] = 1000000,
 v1 = {1,0.5},
 	--介绍
 	tip = [[|cffffff00+%力量%|r 力量
 
-|cffffff00【唯一被动-献祭】|r每隔%v1% 秒能对周围敌人造成%damage%点真实伤害]],
+|cffffe799【唯一被动-献祭】|r
+每隔 %v1% 秒能对周围敌人造成 %damage% 点真实伤害
+]],
 	--特效
 	effect = [[Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl]],
 	--备注

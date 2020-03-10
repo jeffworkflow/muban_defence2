@@ -7,9 +7,9 @@ cool = 0,
 content_tip = '|cffffe799使用说明：|r',
 --描述
 tip = [[
+|cffcccccc无谓因果，不惧轮回。
 
-
-无谓因果，不惧轮回。|cff00ffff点击可食用 可以让|cffff0000强化后的顶级功法|cff00ffff融合入体！无法融合相同功法！|r
+|cff00ffff点击可食用 可以让|cffff0000强化后的顶级功法|cff00ffff融合入体！无法融合相同功法！|r
 
 已融合 %cnt%|cffffff00 / %max_cnt%|r 个： %content%]],
 

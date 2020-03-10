@@ -1,5 +1,5 @@
 --物品名称
-local mt = ac.skill['新手剑']
+local mt = ac.skill['新手剑1']
 mt{
 
 tip = [[
