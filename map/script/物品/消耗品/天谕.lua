@@ -122,7 +122,7 @@ function mt:on_cast_start()
                         up_item(item,player)
                     end    
                 elseif item.level < 15 then
-                    local rt = rate[item.level]*(1 + player:get('强化成功概率')/100)
+                    local rt = rate[item.level]+ player:get('强化成功概率')
                     if math.random(10000)/100 <= rt then 
                         --改变属性
                         up_item(item,player)

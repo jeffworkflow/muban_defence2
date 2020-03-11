@@ -690,8 +690,8 @@ function helper:ads_u(unit,str)
 end
 --增加 属性
 function helper:add(key,cnt)
-	local str = table.concat( ac.player_attr,' ' )
-	if finds(str,key) then 
+	-- local str = table.concat( ac.player_attr,' ' )
+	if _in(key,ac.player_attr) then 
 		self.owner:add(key,tonumber(cnt))
 		print('玩家属性：',key,self.owner:get(key))
 	else 
@@ -702,8 +702,7 @@ function helper:add(key,cnt)
 end
 --读取 属性
 function helper:get(key)
-	local str = table.concat( ac.player_attr,' ' )
-	if finds(str,key) then 
+	if _in(key,ac.player_attr) then 
 		print('玩家属性：',key,self.owner:get(key))
 	else 
 		print('英雄属性：',key,self:get(key))

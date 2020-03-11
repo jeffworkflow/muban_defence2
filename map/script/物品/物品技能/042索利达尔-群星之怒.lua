@@ -52,6 +52,7 @@ v2 = {10,15},
 	--备注
 	effect4 = [[闪电链效果，路径lightnings\DrainLightning.blp]],
 	--业务技能代码
+	unique_name ='多重箭',
 	cover = function(self)
 		return self.v2
 	end

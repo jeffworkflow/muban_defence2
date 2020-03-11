@@ -1,7 +1,10 @@
 
 --循环打印 table
 function print_r (lua_table, indent)
-
+	if type(lua_table) == "string" then 
+		print(lua_table)
+		return
+	end
     indent = indent or 0
     for k, v in pairs(lua_table) do
         if type(k) == "string" then
@@ -29,7 +32,7 @@ function print_r (lua_table, indent)
     end
 end
 
---字符串是否包含 字符串 字符串 字符串
+--字符串是否包含 字符串 字符串 字符串 模糊匹配
 function finds(str,...)
 	local flag = false
 	if not str or type(str) =='table' or  type(str) =='function' then 
@@ -37,6 +40,18 @@ function finds(str,...)
 	end	
 	for key , value in sortpairs{...} do
 		local _, q=string.find(str, value)
+		if _ then 
+			flag= true
+			break
+		end	
+	end
+	return flag
+end
+--字符串是否包含 字符串 字符串 字符串 全等匹配
+function _in(str,...)
+	local flag = false
+	for key , value in sortpairs{...} do
+		local _ = str == value and true or false
 		if _ then 
 			flag= true
 			break
@@ -146,6 +161,7 @@ function bignum2string(value)
         return value % 100000000 == 0 and ('%.0f'):format(value/100000000)..'亿' or ('%.1f'):format(value/100000000)..'亿'
     end
 end
+
 
 --二进制开关，是否拥有***
 function has_flag(flag, bit)

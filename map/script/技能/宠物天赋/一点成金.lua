@@ -43,7 +43,7 @@ function mt:on_cast_start()
     local skill = self
     local hero = self.owner
     local target = self.target 
-    target:kill()
+    target:kill(hero)
     hero:add_wood(self.ex_wood)
 
 end

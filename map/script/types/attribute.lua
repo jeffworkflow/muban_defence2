@@ -430,6 +430,10 @@ on_set['全属性'] = function(self)
 		self:add('智力',  value )
 	end		
 end	
+--会有问题
+-- on_get['全属性'] = function(self)
+-- 	return self:get('力量') + self:get('敏捷') + self:get('智力') 
+-- end
 on_set['力量'] = function(self)
     -- print("新值：",self:get '力量', "老值：",old_value)
 	local old_value =  self:get '力量' --老值

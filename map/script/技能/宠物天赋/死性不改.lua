@@ -31,13 +31,15 @@ mt{
 ]],
 	--技能图标
     art = [[dugou.blp]],
-    value = 10,
+    ['木头翻倍概率'] = 10,
+    ['魔丸翻倍概率'] = 10,
+    ['杀敌数翻倍概率'] = 10,
+    ['全属性翻倍概率'] = 10,
 }
 function mt:on_add()
     local skill = self
     local hero = self.owner
     local p=hero:get_owner()
-    p:add('翻倍',self.value)
 end
 function mt:on_remove()
     local hero = self.owner
@@ -46,5 +48,4 @@ function mt:on_remove()
         self.trg:remove()
         self.trg = nil
     end
-    p:add('翻倍',-self.value)
 end

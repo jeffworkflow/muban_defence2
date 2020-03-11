@@ -36,4 +36,5 @@ require '物品.消耗品.卡片'
 require '物品.消耗品.一颗神奇的种子'
 require '物品.消耗品.黑暗骰子'
 require '物品.消耗品.扭蛋券'
+require '物品.消耗品.天魔物品'
 

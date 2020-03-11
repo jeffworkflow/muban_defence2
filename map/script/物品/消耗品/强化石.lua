@@ -82,7 +82,7 @@ function mt:on_cast_start()
             local item = list[index].item
             if item then 
                 if item.level<10 then 
-                    local rt = rate[item.level]*(1 + player:get('强化成功概率')/100)
+                    local rt = rate[item.level]+ player:get('强化成功概率')
                     if math.random(10000)/100 <= rt then 
                         --改变属性
                         local lni_data = ac.table.ItemData[item.name] or ac.skill[item.name]
