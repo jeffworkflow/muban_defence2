@@ -37,7 +37,7 @@ local mt = ac.skill['彩蛋 ']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[slqy.blp]],
+    art = [[caidan.blp]],
     title = '彩蛋',
     tip = [[
 
@@ -50,7 +50,7 @@ local mt = ac.skill['吞噬']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[slqy.blp]],
+    art = [[ReplaceableTextures\CommandButtons\BTNCannibalize.blp]],
     title = '吞噬',
     tip = [[
 

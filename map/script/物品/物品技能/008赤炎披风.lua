@@ -26,7 +26,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (1000000)* self.level
+  return (1500000)* self.level
 end,
 	--施法范围
 	area = 800,

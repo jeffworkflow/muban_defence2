@@ -197,7 +197,7 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
             + (hero:get('物理伤害加深')+hero:get('技能伤害加深'))/12500
             + (hero:get('全伤加深'))/5000)
         zdl = math.floor(zdl)
-        local skl_zdl = 0
+        local skl_zdl = -4000
         for skl in hero:each_skill('英雄',true) do 
             if skl.color == '天赋' then 
                 skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level -1)

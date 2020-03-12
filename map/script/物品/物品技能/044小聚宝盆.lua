@@ -21,7 +21,7 @@ mt{
 	--耗蓝
 	cost = 1,
 	--冷却时间
-	cool = {180,120},
+	cool = {255,165},
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--属性加成
