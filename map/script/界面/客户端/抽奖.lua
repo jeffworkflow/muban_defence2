@@ -23,7 +23,7 @@ local new_ui = class.panel:builder
         y = 5,
         w = 32,
         h = 32,
-        normal_image = 'image\\操作栏\\cross.blp',
+        normal_image = 'image\\抽奖\\close.tga',
         has_ani = true,
         on_button_clicked = function (self,button)
             local pannel = self.parent
@@ -37,7 +37,7 @@ local new_ui = class.panel:builder
         y = 280,
         w = 241,
         h = 59,
-        normal_image = [[image\抽奖\btn_start.blp]],
+        normal_image = [[image\抽奖\btn_start.tga]],
         has_ani = true,
         on_button_clicked = function(self)
             local p = ac.player.self
@@ -58,21 +58,21 @@ local new_ui = class.panel:builder
        
 
     award_list = {
-        { rand = 10.25,      name = '食物链顶端的人'},
+        { rand = 10,      name = '食物链顶端的人'},
         { rand = 10,     name = '秀才'},
-        { rand = 8,      name = '举人'},
-        { rand = 4,      name = '进士'},
-        { rand = 2,      name = '探花'},
-        { rand = 1,      name = '榜眼'},
-        { rand = 0.45,      name = '状元'},
-        { rand = 0.3,      name = '王昭君'},
-        { rand = 10.3,      name = '王昭君1'},
-        { rand = 0.3,      name = '王昭君2'},
-        { rand = 0.3,      name = '王昭君3'},
-        { rand = 10.3,      name = '王昭君4'},
-        { rand = 10.3,      name = '王昭君5'},
-        { rand = 10.3,      name = '王昭君6'},
-        { rand = 0.3,      name = '王昭君7'},
+        { rand = 10,      name = '举人'},
+        { rand = 10,      name = '进士'},
+        { rand = 10,      name = '探花'},
+        { rand = 10,      name = '榜眼'},
+        { rand = 10,      name = '状元'},
+        { rand = 10,      name = '王昭君'},
+        { rand = 10,      name = '王昭君1'},
+        { rand = 2,      name = '王昭君2'},
+        { rand = 0.1,      name = '王昭君3'},
+        { rand = 0.2,      name = '王昭君4'},
+        { rand = 0.3,      name = '王昭君5'},
+        { rand = 0.4,      name = '王昭君6'},
+        { rand = 7,      name = '王昭君7'},
     },
 
     
@@ -84,7 +84,6 @@ local new_ui = class.panel:builder
         local base_i = 1
         local base_x = 67
         local base_y = 56
-        local img_path = [[image\抽奖\bg_award.blp]]
         local ix = 1
         for i =1,20 do 
             if i == 7 or i == 8 or i == 9 or i == 12 or i == 13 or i == 14 then
@@ -117,7 +116,7 @@ local new_ui = class.panel:builder
             y = y,--假的
             w = 186,
             h = 124,
-            normal_image = [[image\抽奖\bg_award.blp]],--背景
+            normal_image = [[image\抽奖\bg_award.tga]],--背景
             name = name,
             icon = {
                 type = 'texture',
@@ -166,7 +165,7 @@ local new_ui = class.panel:builder
             local slot = (start + moved) % 14 
             slot = slot == 0 and 14 or slot
             -- print('激活：',slot)
-            self.choose_btns[slot]:set_normal_image([[image\抽奖\bg_choosed.blp]])
+            self.choose_btns[slot]:set_normal_image([[image\抽奖\bg_choosed.tga]])
             --抽中
             if t.cnt * 0.01 >= time and self.btns[slot].name == target then 
                 print('中奖啦：',slot,self.btns[slot].name,target)
