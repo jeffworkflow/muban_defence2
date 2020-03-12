@@ -284,10 +284,6 @@ function helper:reload_mall(flag)
 	--挖宝积分在读取存档数据后就赋值。
 	p:event_notify '读取存档数据'
 
-	if not flag then 
-		ac.init_need_map_level()
-	end	
-
 	local skl = self:find_skill('最强魔灵')
 	if skl then skl:remove() end
 	self:add_skill('最强魔灵','英雄',12)	
@@ -349,15 +345,17 @@ end
 function helper:get_server(key)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	if key == 'all' then 
-		for name,val in pairs(p.server) do
+		for name,val in pairs(p.cus_server) do
 			local key = ac.server.name2key(name)
 			print('服务器存档:'..key,p:Map_GetServerValue(key))
-			-- print('服务器存档:',key,val)
+			print('自定义服务器存档:'..key,p.cus_server2[name])
+			print('游戏中存档:',key,val)
 		end
 	else		
 		local name = ac.server.key2name(key)	
 		print('服务器存档:'..key,p:Map_GetServerValue(key))
-		-- print('服务器存档:'..key,p.server[name])
+		print('自定义服务器存档:'..key,p.cus_server2[name])
+		print('游戏中存档:'..key,p.cus_server[name])
 	end	
 end	
 
@@ -1057,7 +1055,7 @@ function helper:ai(str,cnt)
 			if type(data) == 'table' then 
 				if finds(data.name,str) then 
 					for i=1,tonumber(cnt) or 1 do 
-						ac.item.add_skill_item(data.name,self)
+						self:add_item(data.name,true)
 					end	
 				end	
 			end	

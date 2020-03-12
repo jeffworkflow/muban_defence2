@@ -137,6 +137,7 @@ for i=1,10 do
                         local val = 1
                         if data.value then 
                             val = data:value(player) or 0
+                            -- print(key_name,'地图等级',player:Map_GetMapLevel(),val)
                         end    
                         print('111111111111111111',key_name,val)
                         if has_item and has_item > 0 

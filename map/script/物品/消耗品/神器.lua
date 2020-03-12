@@ -223,6 +223,7 @@ for i,value in ipairs(magic_item) do
     mt.is_skill = true
     --商店名词缀
     mt.store_affix = ''
+    mt.passive = true
 
     --使用物品
     function mt:on_cast_start()

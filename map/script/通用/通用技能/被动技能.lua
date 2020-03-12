@@ -229,6 +229,7 @@ ac.game:event '技能-升级' (function (_,hero,self)
             if not buff.on_add then 
                 buff.cover_type = 1
                 buff.cover_max = 1
+                buff.keep = true
                 function buff:on_add()
                     local target = self.target
                     local hero = self.target

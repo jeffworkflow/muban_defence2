@@ -242,20 +242,20 @@ mt.skills = {
     -- '第一个吃螃蟹的人',
 }
 
-function mt:on_add()
-    local hero = self.owner 
-    local player = hero:get_owner()
-    for i=1,#self.skill_name do 
-        local name = self.skill_name[i]
-        local has_mall = player.mall[name] or (player.server and player.server[name])
+-- function mt:on_add()
+--     local hero = self.owner 
+--     local player = hero:get_owner()
+--     for i=1,#self.skill_name do 
+--         local name = self.skill_name[i]
+--         local has_mall = player.mall[name] or (player.server and player.server[name])
       
-        if has_mall and has_mall > 0 then 
-            ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
-            local skl = hero:find_skill(name,nil,true)
-            skl:set_level(has_mall)
-        end
-    end 
-end   
+--         if has_mall and has_mall > 0 then 
+--             ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
+--             local skl = hero:find_skill(name,nil,true)
+--             skl:set_level(has_mall)
+--         end
+--     end 
+-- end   
 
 
 --隐藏成就 注册获得事件

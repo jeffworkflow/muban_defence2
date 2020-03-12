@@ -14,9 +14,29 @@ mt{
 mt.skills = {
     -- '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','武林大会',
     -- ,'精彩活动'
-    '隐藏成就'
+    '隐藏成就','成神'
 } 
--- '全服奖励','赛季奖励'
+local mt = ac.skill['成神']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[zuiqiangmoling.blp]],
+    title = '成神',
+    tip = [[
+
+点击查看 |cff00ffff成神|r
+    ]],
+    
+}
+mt.skill_name ={
+    '番天印','战舰之舵','量天尺','虚空王座','天眼','血羽之心','天神之息','灭世者','宇宙之心','太初锁灵鼓'
+}
+mt.skills = {
+}
+
+
+
+
 
 -- function mt:on_add()
 --     local hero = self.owner 
@@ -218,16 +238,30 @@ mt.skills = {'真武青焰领域','罗刹夜舞领域',}
 --循环遍历 skill_book 的技能
 local function upgrade_skill(player,skill)
     local self = skill
+    local hero = skill.owner
     for index=1,table.maxnum(self.skill_book) do 
         local skill = self.skill_book[index]
         if skill then 
             if skill.is_spellbook == 1 then  
+                --处理动态插入
+                if skill.skill_name  then
+                    for i=1,#skill.skill_name do 
+                        local name = skill.skill_name[i]
+                        local has_mall = player.mall[name] or (player.server and player.server[name])
+                        if has_mall and has_mall > 0 then 
+                            ac.game:event_notify('技能-插入魔法书',hero,skill.name,name)
+                            local skl = hero:find_skill(name,nil,true)
+                            -- print(skl.name,has_mall)
+                            skl:set_level(has_mall)
+                        end
+                    end
+                end
                 upgrade_skill(player,skill)
             else
                 local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
-                -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
                 if has_mall and has_mall > 0 then 
-                    skill:set_level(1)
+                    -- print(skill.name,has_mall)
+                    skill:set_level(math.floor(has_mall))
                 end
                 if skill.name =='独孤求败' then 
                     local has_rank
@@ -263,32 +297,13 @@ local function upgrade_skill(player,skill)
     end    
 end    
 ac.upgrade_skill = upgrade_skill
-for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄','游戏说明','武林大会'}) do
+--{'礼包','武器','翅膀','称号','神圣领域','英雄','游戏说明','武林大会'}
+for i,name in ipairs({'最强魔灵'}) do
     local mt = ac.skill[name]
     function mt:on_add()
         local hero = self.owner 
         local player = hero:get_owner()
-        -- print('打开魔法书')
         upgrade_skill(player,self)
-        -- for index,skill in ipairs(self.skill_book) do 
-        --     local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
-        --     -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
-        --     if has_mall and has_mall > 0 then 
-        --         skill:set_level(1)
-        --     end
-        --     if skill.name =='独孤求败' then 
-        --         local has_rank
-        --         -- print(player.cus_server['今日斗破苍穹无尽排名'],player.cus_server['今日修罗模式无尽排名'])
-        --         if player.cus_server  then 
-        --             if  ((player.cus_server['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server['今日斗破苍穹无尽排名'] or 0) <= 10)
-        --                 or
-        --                 ((player.cus_server['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server['今日修罗模式无尽排名'] or 0) <= 10)
-        --             then 
-        --                 skill:set_level(1)
-        --             end
-        --         end    
-        --     end    
-        -- end 
     end  
 end    
 

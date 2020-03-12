@@ -127,7 +127,8 @@ local attribute = {
 	['杀怪加全属性'] = true,  --默认表示为基础值
 	['杀怪加护甲'] = true,  --默认表示为基础值
 	['杀怪加攻击'] = true,  --默认表示为基础值
-
+	['杀怪加生命上限'] = true,  --默认表示为基础值
+	
 	['杀死进攻怪加木头'] = true,  --默认表示为基础值
 	
 
@@ -193,6 +194,7 @@ local base_attr =[[
 每秒加魔丸 
 多重暴击
 杀死进攻怪加木头
+杀怪加生命上限
 ]]
 ac.base_attr = base_attr
 
@@ -934,6 +936,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	hero:add('护甲',defence)
 	
 	hero:add('攻击',hero:get('杀怪加攻击'))
+	hero:add('生命上限',hero:get('杀怪加生命上限'))
 
 	local player = hero:get_owner()
 	--加金币

@@ -27,7 +27,7 @@ max_cnt = function(self)
     if self and self.owner and self.owner:is_hero() then 
         local hero = self.owner
         local player = hero:get_owner()
-        cnt = player.max_ruti_cnt or 8
+        cnt = player:get('无谓因果使用上限') + 8
     end    
     return cnt
 end,
@@ -92,10 +92,8 @@ function mt:on_cast_start()
     local name = self:get_name()
     hero = player.hero
     local list = {}
-    --超越极限
-    player.max_ruti_cnt = player.max_ruti_cnt or 8
     --只能吞噬 10 个 物品类的，没法更新数据
-    local cnt = player.max_ruti_cnt 
+    local cnt = player:get('无谓因果使用上限') + 8 
     if (player.ruti_cnt or 0) >= cnt then 
         self:add_item_count(1)
         player:sendMsg('无法食用更多的恶魔果实')
