@@ -571,12 +571,8 @@ function mt:get_tip()
 	
 	
 	tip = store_title..gold..color_tip..item_type_tip..content_tip.. item_tip
-	-- print(item_tip,skill_tip)
 	if skill_tip and t_str ~= s_str then 
-	    if item_tip ~='' then  
-			local temp_tip = '|cff'..color_code['灰']..'技能：'..'|r'..'\n' 
-		end	
-		tip = tip..(temp_tip or '')..skill_tip..'\n'
+		tip = tip..skill_tip..'\n'
 	end	
 	-- 物品最后一行换行 
 	-- items.lni_data = data
@@ -972,9 +968,9 @@ function unit.__index:add_item(it,is_fall,p)
 			
 	-- it:on_add_state() 
 
-	ac.wait(10,function()
+	-- ac.wait(10,function()
 		it:hide()
-	end)
+	-- end)
 	--刷新 当前选择的单位的tip
 	if it.auto_fresh_tip then
 		ac.loop(1000, function(t)
@@ -1230,7 +1226,6 @@ function item.create_item(name,poi,is,p)
 	--设置物品名
 	items.name = name 
 	items:set_name(items.title or name)
-	-- print(items.tip)
 	--设置tip
 	items:set_tip(items:get_tip())
 	--设置贴图

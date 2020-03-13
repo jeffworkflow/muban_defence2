@@ -94,6 +94,9 @@ local mt = ac.skill['渡劫']
 mt{
     pulse =0.1,
     dz_cnt = 50,
+    cnt_dz = function(self)
+        return ac.player.self.cnt_dz or 0
+    end
 }
 
 function mt:on_cast_start()

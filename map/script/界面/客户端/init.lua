@@ -21,11 +21,3 @@ require '界面.客户端.BOSS倒计时'
 -- require '界面.客户端.任务'
 require '界面.客户端.动态边框'
 require '界面.客户端.抽奖'
-
---每秒刷新
-ac.loop(1000,function()
-    if ac.player.self then
-        ac.ui.client.panel.updateToolTip()
-        -- ac.ui.client.panel.updateAttr()
-    end
-end)

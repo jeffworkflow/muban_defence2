@@ -288,6 +288,13 @@ local function init()
 end
 init()
 
+--每秒刷新
+ac.loop(1000,function()
+    if ac.player.self then
+        ac.ui.client.panel.updateToolTip()
+        -- ac.ui.client.panel.updateAttr()
+    end
+end)
 
 ------------==开始复制通用 tooltip-------------------
 function get_str_line(str,count)

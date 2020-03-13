@@ -7,7 +7,7 @@ tip = [[
 ]],
 
 cool = 10,
-
+max_level =10,
 target_type = ac.skill.TARGET_TYPE_POINT,
 
 art =  [[sxzh1.blp]],
@@ -22,7 +22,7 @@ range = 99999,
 blink_range = 1000,
 --新目标点
 new_point =nil,
-['力量'] = 100000
+['力量'] = {100,1000}
 
 }
 

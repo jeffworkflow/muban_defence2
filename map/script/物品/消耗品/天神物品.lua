@@ -280,29 +280,26 @@ for i,value in ipairs(magic_item) do
         local p = self.owner:get_owner()
         hero = player.hero 
        
+        if ac.g_game_degree_attr <= p:Map_GetServerValue(key) then 
+            p:sendMsg('难度不够，升级不了。')
+            if self.add_item_count then  
+                self:add_item_count(1) 
+            end
+            return 
+        end
+        --激活成就（存档） 
+        p:Map_AddServerValue(key,1)
+
         local key = ac.server.name2key(self.name)
         local skl = hero:find_skill(self.name,nil,true)
         if skl then 
-            if skl.level< skl.max_level then 
-                --激活成就（存档） 
-                p:Map_AddServerValue(key,1) --网易服务器
-                skl:upgrade(1)
-                p:sendMsg('|cffff0000【可存档成就】'..self.name..'+1',6) 
-            else
-                if self.add_item_count then  
-                    self:add_item_count(1) 
-                end   
-                p:sendMsg('|cffff0000【可存档成就】'..self.name..'已满级',6) 
-                return      
-            end
+            skl:upgrade(1)
+            p:sendMsg('|cffff0000【可存档成就】'..self.name..'+1',6) 
         else
-            --激活成就（存档） 
-            p:Map_AddServerValue(key,1) --网易服务器
             ac.game:event_notify('技能-插入魔法书',hero,'成神',self.name)
             local skl = hero:find_skill(self.name,nil,true)
             player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00存档成功|r 可在最强魔灵-成神中查看',2)
             skl:set_level(1)
-            skl.passive = true
             -- skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         end
     end
