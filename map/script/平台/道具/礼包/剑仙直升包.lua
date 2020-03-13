@@ -27,7 +27,7 @@ function mt:on_add()
     local items = self
     local p = hero:get_owner()
     -- 宠物可以帮忙吃
-    hero = hero:get_owner().hero
+    hero = p.hero
     -- print('剑仙直升包11111')
     --设置为远程
     hero:setMelee(false)

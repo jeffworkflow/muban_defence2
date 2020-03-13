@@ -47,16 +47,6 @@ tip = [[
 ['木头加成'] = {5,50},
 
 
-server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p:Map_GetServerValue(key)
-end,
-now_server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p.server[self.name]
-end,
 
 }
 
@@ -79,16 +69,6 @@ tip = [[
 ['全属性'] = {75000,750000},
 ['魔丸加成'] = {5,50},
 
-server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p:Map_GetServerValue(key)
-end,
-now_server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p.server[self.name]
-end,
 
 }
 
@@ -111,16 +91,6 @@ tip = [[
 ['全属性'] = {75000,750000},
 ['物品获取率'] = {5,50},
 
-server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p:Map_GetServerValue(key)
-end,
-now_server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p.server[self.name]
-end,
 
 }
 
@@ -143,16 +113,7 @@ tip = [[
 ['全属性'] = {75000,750000},
 ['杀敌数加成'] = {5,50},
 
-server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p:Map_GetServerValue(key)
-end,
-now_server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p.server[self.name]
-end,
+
 
 }
 
@@ -175,17 +136,6 @@ tip = [[
 ['全属性'] = {75000,750000},
 ['木头加成'] = {5,50},
 
-server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p:Map_GetServerValue(key)
-end,
-now_server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p.server[self.name]
-end,
-
 }
 
 local mt = ac.skill['du徒']
@@ -206,17 +156,6 @@ tip = [[
 |cffcccccc使用黑暗骰子获得，获得概率与通关难度/地图等级相关]],
 ['全属性'] = {75000,750000},
 ['物品获取率'] = {5,50},
-
-server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p:Map_GetServerValue(key)
-end,
-now_server_val = function(self)
-    local key = ac.server.name2key(self.name)
-    local p = self.owner.owner
-    return p.server[self.name]
-end,
 
 }
 
