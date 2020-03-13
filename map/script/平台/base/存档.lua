@@ -110,7 +110,7 @@ function player.__index:Map_GetServerValue(key)
     else
         value = value
     end
-    return tonumber(value)
+    return tonumber(value) or 0
 end
 
 -- --存档通用型 只能存入字符串型
