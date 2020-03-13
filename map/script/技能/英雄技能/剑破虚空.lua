@@ -48,7 +48,7 @@ function mt:atk_pas_shot(target)
     local hero = self.owner
 
 	local source = hero:get_point()
-
+ 
 	ac.effect_ex{
 		point = target:get_point(),
 		model = skill.effect,

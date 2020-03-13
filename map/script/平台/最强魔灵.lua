@@ -20,7 +20,7 @@ local mt = ac.skill['成神']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[zuiqiangmoling.blp]],
+    art = [[moshen.blp]],
     title = '成神',
     tip = [[
 

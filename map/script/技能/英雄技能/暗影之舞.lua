@@ -39,7 +39,7 @@ end,
 	--技能图标
 	art = [[anyingzhiwu.blp]],
 	--特效
-	effect = [[AZ_F025.mdx]],
+	effect = [[tx_new (3).mdx]],
 	--特效4
 	effect4 = [[英雄位置播放特效，伤害范围700码]],
 }

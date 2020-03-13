@@ -113,7 +113,9 @@ local task_detail = {
             unit:event '单位-死亡' (function(_,unit,killer) 
                 local p = killer.owner
                 local item = ac.skill[task_name..'1'].fall_item
-                hero:add_item(item,true)
+                -- hero:add_item(item,true)
+                ac.item.create_item(item,unit:get_point())
+
             end)    
             p:sendMsg('|cffFFE799【系统消息】|r|cffff0000BOSS'..task_name..'|r|cff00ff00出现在上方，请小心！',2)
 

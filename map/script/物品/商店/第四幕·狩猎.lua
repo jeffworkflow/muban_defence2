@@ -14,8 +14,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+350w 全属性
 |cff00ff00+5000 护甲|r
-
-]],
+ ]],
 }
 
 
@@ -35,8 +34,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+400w 全属性
 攻击有10%几率造成|cffffff00（全属性*30）|cff00ff00的范围技能伤害|r
-
-]],
+ ]],
 --触发几率
 chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 --范围
@@ -96,8 +94,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+450w 全属性|r
 |cff00ff00+50    攻击减甲|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎4']
@@ -115,8 +112,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+500w 全属性|r
 |cff00ff00+2.5% 减伤|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎5']
@@ -134,8 +130,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+550w 全属性|r
 |cff00ff00+2.5% 闪避|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎6']
@@ -153,8 +148,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+600w 全属性|r
 |cff00ff00+2.5% 免伤几率|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎7']
@@ -174,8 +168,7 @@ tip = [[%extr_tip%
 |cff00ff00+650w 全属性|r
 |cff00ff00+2.5% 暴击几率
 |cff00ff00+25%  暴击伤害|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎8']
@@ -195,8 +188,7 @@ tip = [[%extr_tip%
 |cff00ff00+700w 全属性|r
 |cff00ff00+2.5% 技暴几率|r
 |cff00ff00+25%  技暴伤害|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎9']
@@ -216,8 +208,7 @@ tip = [[%extr_tip%
 |cff00ff00+750w 全属性|r
 |cff00ff00+2.5% 会心几率|r
 |cff00ff00+25%  会心伤害|r
-
-]],
+ ]],
 }
 
 local mt = ac.skill['狩猎10']
@@ -235,8 +226,7 @@ tip = [[%extr_tip%
 |cffFFE799【食材属性】：|r
 |cff00ff00+800w 全属性|r
 |cff00ff00-0.05  攻击间隔|r
-
-]],
+ ]],
 }
 
 
