@@ -2,24 +2,24 @@ local mt = ac.skill['宠物纪念册']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[zuiqiangmoling.blp]],
+    art = [[cwpf.blp]],
     title = '宠物纪念册',
     tip = [[
 
-点击查看 |cff00ffff宠物纪念册|r
+点击查看 |cff00ffff宠物纪念册|r|cffcccccc（可存档成就）|r
     ]],
     
 }
 mt.skills = {
-    '宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4',
+    '宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5',
 } 
 function mt:on_add()
     local hero = self.owner 
     local p = hero:get_owner()
     for index,skill in ipairs(self.skill_book) do 
         local min = tonumber(string.sub(skill.name,16, -1))
-        min =  (min -1)*10+1
-        local max = min + 9 
+        min =  (min -1)*5+1
+        local max = min + 4 
         local content = ''
         local ok_cnt = 0 
         for i = min,max do 
@@ -33,18 +33,131 @@ function mt:on_add()
         end    
         skill:set('content',content)
         skill:fresh_tip()
-        if ok_cnt == 10 then 
+        if ok_cnt == 5 then 
             skill:set_level(1)
         end    
     end     
 end    
+
 --所有属性
 local mt = ac.skill['宠物纪念册1']
-mt['力量'] = 1000
+mt['杀怪加敏捷'] = 35
+mt['移动速度'] = 35
+mt['木头加成'] = 35
+mt['暴击伤害'] = 35
+mt{
+title = '赏金猎人',
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【001】-【005】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35  杀怪加敏捷
++35  移动速度
++35% 木头加成
++35% 暴击伤害
+
+]],
+content = '',
+}
+
 local mt = ac.skill['宠物纪念册2']
-mt['敏捷'] = 1000
+mt['杀怪加智力'] = 35
+mt['攻击速度'] = 35
+mt['魔丸加成'] = 35
+mt['技暴伤害'] = 35
+mt{
+title = '神奇宝贝',
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【006】-【010】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35  杀怪加智力
++35% 攻击速度
++35% 魔丸加成
++35% 技暴伤害
+
+]],
+content = '',
+}
+
+
+
 local mt = ac.skill['宠物纪念册3']
-mt['智力'] = 1000
+mt['杀怪加力量'] = 35
+mt['分裂伤害'] = 35
+mt['杀敌数加成'] = 35
+mt['会心伤害'] = 35
+mt{
+title = '驯宠小霸王',
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【011】-【015】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35  杀怪加力量
++35% 分裂伤害
++35% 杀敌数加成
++35% 会心伤害
+
+]],
+content = '',
+}
+
+
+local mt = ac.skill['宠物纪念册4']
+mt['杀怪加攻击'] = 35
+mt['攻击减甲'] = 35
+mt['物品获取率'] = 35
+mt['物理伤害加深'] = 35
+mt{
+title = '龟基赛跑',
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【016】-【020】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35  杀怪加攻击
++35  攻击减甲
++35% 物品获取率
++35% 物理伤害加深
+
+]],
+content = '',
+}
+
+
+local mt = ac.skill['宠物纪念册5']
+mt['杀怪加生命'] = 35
+mt['吸血'] = 35
+mt['金币加成'] = 35
+mt['技能伤害加深'] = 35
+mt{
+title = '洋洋得意',
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【021】-【025】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35  杀怪加生命
++35% 吸血
++35% 金币加成
++35% 技能伤害加深
+
+]],
+content = '',
+}
 
 for i=1,10 do 
     local mt = ac.skill['宠物纪念册'..i]
@@ -54,14 +167,15 @@ for i=1,10 do
     max_level = 1,
     strong_hero = 1, --作用在人身上
     --图标
-    art = [[ReplaceableTextures\CommandButtons\BTNNetherDragon.blp]],
+    art = [[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],
     --说明
-    tip = [[%content%
-%attr_tip%
-|r]],
+    -- tip = [[
+
+-- %content%
+-- %attr_tip%|r]],
     content = '',
     attr_tip = function(self)
-        local tip = '|cff00ffff集齐后激活【XXX】，增加属性:\n'
+        local tip = '|cff00ffff集齐后激活【赏金猎人】，增加属性:\n|cff00ff00'
         for key,val in sortpairs(ac.unit.attribute) do 
             if self[key] then  
                 local per_str = finds(ac.base_attr,key)  and '' or '%'

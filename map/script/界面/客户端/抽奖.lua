@@ -12,7 +12,8 @@ local new_ui = class.panel:builder
     w = 1068,
     h = 607,
     level = 5,
-    is_show = true,
+    -- is_show = true,
+    is_show = false,
     normal_image = [[image\抽奖\bg.blp]],
     alpha = 0.7,
 

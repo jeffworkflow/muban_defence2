@@ -47,7 +47,7 @@ function mt:on_cast_start()
     local p=self.owner.owner
     local hero =p.hero 
     if (p.cnt_succ_ms or 0) >= self.max_succ_cnt then
-        p:sendMsg('挑战次数不够',5)
+        p:sendMsg('|cffffe799【系统消息】|r更多挑战在高难度开放',5)
         return true
     end
 
@@ -64,7 +64,7 @@ function mt:on_cast_start()
             print('天魔死亡',unit,killer)
             local it_name = ac.tm_item[math.random(#ac.tm_item)]
             ac.item.create_item(it_name,unit:get_point())
-            p:sendMsg('恭喜击败'..name,5)
+            -- p:sendMsg('恭喜击败'..name,5)
             --天魔次数+1
             p.cnt_succ_tm = (p.cnt_succ_tm or 0) + 1 
             --魔神挑战次数+1
@@ -80,7 +80,7 @@ function mt:on_cast_start()
             print(name)
             local it_name = ac.ts_item[math.random(#ac.ts_item)]
             ac.item.create_item(it_name,unit:get_point())
-            p:sendMsg('恭喜击败'..name,5)
+            -- p:sendMsg('恭喜击败'..name,5)
             --天神+1
             p.cnt_succ_ts = (p.cnt_succ_ts or 0) + 1 
             --魔神挑战次数+1
@@ -191,7 +191,7 @@ function mt:on_remove()
         --传送回练功房
         local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
         hero:blink(point,true,false,true)
-        ac.player.self:sendMsg('【系统提示】'..p:get_name()..'渡劫成功，增加5%的全属性',5)
+        ac.player.self:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜|cff00ffff'..p:get_name()..'|r|cff00ff00渡劫成功，获得5%全属性',5)
     end
 end
 

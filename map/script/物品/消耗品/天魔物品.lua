@@ -1,21 +1,21 @@
 local mt = ac.skill['地狱咆哮']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【地狱咆哮】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
+art = "ditupaoxiao.blp",
+extr_tip = '|cffffff00点击可激活【地狱咆哮】，激活后可在圣龙气运-入魔中查看',
 ['减伤极限'] = 5,
+['减伤'] = 5,
 ['全属性'] = 20000000,
 ['护甲'] = 50000,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+5W 护甲|r
+|cff00ff00+5% 减伤（无视减伤上限）|r
+
+|cff00ffff【唯一被动-斩杀】攻击 10% 几率直接秒杀低血量的敌人
  ]],
     --触发几率
     chance = 10,
@@ -48,21 +48,21 @@ end
 local mt = ac.skill['地狱意志']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【地狱意志】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
-['减伤极限'] = 5,
+art = "diyuyizhi.blp",
+extr_tip = '|cffffff00点击可激活【地狱意志】，激活后可在圣龙气运-入魔中查看',
+['免伤几率'] = 5,
 ['全属性'] = 20000000,
-['护甲'] = 50000,
+['攻击'] = 50000000,
+['免伤几率极限'] = 5,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+5000W 攻击|r
+|cff00ff00+5% 免伤几率（无视免伤几率上限）|r
+
+|cff00ffff【唯一被动-裂魂】攻击10%几率增加（全属性*5）的攻击力
  ]],
     --触发几率
     chance = 10,
@@ -110,21 +110,21 @@ end
 local mt = ac.skill['鬼神之石']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【鬼神之石】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
-['减伤极限'] = 5,
+art = "guishi.blp",
+extr_tip = '|cffffff00点击可激活【鬼神之石】，激活后可在圣龙气运-入魔中查看',
+['闪避极限'] = 5,
+['闪避'] = 5,
 ['全属性'] = 20000000,
-['护甲'] = 50000,
+['生命上限'] = 300000000,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+3亿 生命上限|r
+|cff00ff00+5% 闪避（无视闪避上限）|r
+
+|cff00ffff【唯一被动-鬼神之勇】攻击10%几率增加（已损失生命值）的全属性
  ]],
     --触发几率
     chance = 10,
@@ -173,21 +173,23 @@ end
 local mt = ac.skill['魂幡之灵']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【魂幡之灵】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
-['减伤极限'] = 5,
+art = "duohunpan.blp",
+extr_tip = '|cffffff00点击可激活【魂幡之灵】，激活后可在圣龙气运-入魔中查看',
+
 ['全属性'] = 20000000,
-['护甲'] = 50000,
+['每秒加全属性'] = 10000,
+['杀怪加攻击'] = 20000,
+['全伤加深'] = 100,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+1W 每秒加全属性|r
+|cff00ff00+2W 杀怪加攻击|r
+|cff00ff00+100% 全伤加深|r
+
+|cff00ffff【唯一被动-守护天使】死亡时有 25% 几率复活，并恢复60%生命
  ]],
     --触发几率
     chance = 10,
@@ -222,98 +224,102 @@ end
 local mt = ac.skill['天灾骨钟']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【天灾骨钟】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
-['暴击极限'] = 5,
+art = "tianzai.blp",
+extr_tip = '|cffffff00点击可激活【天灾骨钟】，激活后可在圣龙气运-入魔中查看',
+['暴击几率极限'] = 5,
+['暴击几率'] = 5,
+['暴击伤害'] = 500,
 ['全属性'] = 20000000,
-['护甲'] = 50000,
+['吸血'] = 100,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+100% 吸血|r
+|cff00ff00+5% 暴击几率（无视暴击几率上限）|r
+|cff00ff00+500% 暴击伤害|r
  ]],
 }
 
 local mt = ac.skill['生死簿']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【生死簿】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
-['暴击极限'] = 5,
+art = "shengsibu.blp",
+extr_tip = '|cffffff00点击可激活【生死簿】，激活后可在圣龙气运-入魔中查看',
+['技暴几率极限'] = 5,
+['技暴几率'] = 5,
+['技暴伤害'] = 500,
 ['全属性'] = 20000000,
-['护甲'] = 50000,
+['对BOSS额外伤害'] = 10,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+5% 技暴几率（无视技暴几率上限）|r
+|cff00ff00+500% 技暴伤害|r
+|cff00ff00+10% 对BOSS额外伤害|r
  ]],
 }
 local mt = ac.skill['阎王印']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【阎王印】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
-['暴击极限'] = 5,
+art = "yanwangyin.blp",
+extr_tip = '|cffffff00点击可激活【阎王印】，激活后可在圣龙气运-入魔中查看',
+['会心几率极限'] = 5,
+['会心几率'] = 5,
+['会心伤害'] = 500,
 ['全属性'] = 20000000,
-['护甲'] = 50000,
+['攻击%'] = 20,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+20% 攻击|r
+|cff00ff00+5% 会心几率（无视会心几率上限）|r
+|cff00ff00+500% 会心伤害|r
  ]],
 }
 local mt = ac.skill['谛听的印记']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【谛听的印记】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
+art = "ditingyinji.blp",
+extr_tip = '|cffffff00点击可激活【谛听的印记】，激活后可在圣龙气运-入魔中查看',
 ['多重暴击几率极限'] = 5,
 ['多重暴击'] = 1,
+['多重暴击几率'] = 5,
+['全属性'] = 20000000,
+['生命上限%'] = 20,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+100W 全属性|r
-|cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
-|cff00ff00+5W 伤害减少|r
-|cff00ff00+5W 生命回复|r
-|cff00ff00藏宝图的掉落概率翻倍
+|cff00ff00+2000W 全属性|r
+|cff00ff00+20% 生命上限|r
+|cff00ff00+5% 多重暴击几率（无视多重暴击几率上限）|r
+|cff00ff00+1 多重暴击|r
  ]],
 }
 local mt = ac.skill['冥界本源']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
+art = "minjiebenyuan.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
 ['龙之血珠使用上限'] = 1,
 ['无谓因果使用上限'] = 1,
+['全属性'] = 20000000,
 
 tip = [[%extr_tip%
 
-+2000万 全属性
-+4本 功法连升书
-+1个 龙之血珠
-+1个 无谓因果
-龙之血珠使用上限+1，无谓因果使用上限+1
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性|r
+|cff00ff00+4本 功法连升书|r
+|cff00ff00+1个 龙之血珠|r
+|cff00ff00+1个 无谓因果|r
+
+|cff00ffff龙之血珠使用上限+1，无谓因果使用上限+1|r
  ]],
 }
 function mt:on_add()
@@ -331,17 +337,20 @@ end
 local mt = ac.skill['聚魂石']
 mt{
 --图标
-art = "hetianyuxi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-踢馆-藏宝阁中查看',
+art = "juhunshi.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
 ['吞噬丹使用上限'] = 1,
+['全属性'] = 20000000,
 
 tip = [[%extr_tip%
 
-+2000万 全属性
-+10个 点金石
-+5个 天谕
-+1个 吞噬丹
-吞噬丹使用上限+1
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性|r
+|cff00ff00+10个 强化石|r
+|cff00ff00+5个 天谕|r
+|cff00ff00+1个 吞噬丹|r
+
+|cff00ffff吞噬丹使用上限+1|r
  ]],
 }
 function mt:on_add()
@@ -349,7 +358,7 @@ function mt:on_add()
     local hero = self.owner
     local p = hero:get_owner()
 
-    local it = ac.item.create_item('点金石',self.owner:get_point())
+    local it = ac.item.create_item('强化石',self.owner:get_point())
     it:set_item_count(10)
     hero:add_item(it) 
 

@@ -280,17 +280,19 @@ for i,value in ipairs(magic_item) do
         local p = self.owner:get_owner()
         hero = player.hero 
        
+        local key = ac.server.name2key(self.name)
+
         if ac.g_game_degree_attr <= p:Map_GetServerValue(key) then 
-            p:sendMsg('难度不够，升级不了。')
+            p:sendMsg('|cffffe799【系统消息】|r|cffff0000存档失败|r 该存档物品已拥有，请挑战更高难度进行升级')
             if self.add_item_count then  
                 self:add_item_count(1) 
             end
             return 
         end
         --激活成就（存档） 
+
         p:Map_AddServerValue(key,1)
 
-        local key = ac.server.name2key(self.name)
         local skl = hero:find_skill(self.name,nil,true)
         if skl then 
             skl:upgrade(1)
