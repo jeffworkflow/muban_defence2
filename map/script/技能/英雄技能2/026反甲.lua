@@ -55,7 +55,7 @@ function mt:damage_start(damage)
 	-- print('测试反甲 攻击倍率',skill.damage_rate)
 	damage.source:damage
 	{
-		source = damage.source,
+		source = hero,
 		damage = (damage.source:get('攻击')*skill.damage_rate/100+1000000)* self.level,
 		-- damage = damage.source:get('攻击'),
 		skill = skill

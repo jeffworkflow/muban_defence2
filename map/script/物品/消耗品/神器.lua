@@ -272,8 +272,12 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end    
     p.flag_all[temp[name]] = true 
     --掉落物品
-    ac.item.create_item(temp[name],unit:get_point())
+    local it = ac.item.create_item(temp[name],unit:get_point())
 
+    print('测试神器掉落：',p,temp[name],p.flag_all[temp[name]],unit:get_point())
+    if it then 
+        print('神器掉落位置：',it:get_point())
+    end
 end)
 
 

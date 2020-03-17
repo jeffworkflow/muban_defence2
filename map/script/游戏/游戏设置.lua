@@ -410,7 +410,7 @@ end
 pathRegionInit(minx, miny, maxx, maxy)
 
 --设置镜头平滑参数
-jass.CameraSetSmoothingFactor(30.00)
+-- jass.CameraSetSmoothingFactor(30.00)
 
 --出地图者死 
 local rect = ac.rect.create(minx-200, miny-500, maxx+200, maxy+800)

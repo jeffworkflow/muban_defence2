@@ -32,7 +32,7 @@ for i,key in ipairs(ac.pratice_man) do
         local p = hero:get_owner()
         local ret = 'lgfbh'..p.id
         local name = key..p.id
-        local cep = ac.creep[key]
+        local cep = ac.creep[name]
         cep:set_region(ret)
         cep.owner = p
         -- ac.wait(1000,function() 
@@ -47,7 +47,7 @@ for i,key in ipairs(ac.pratice_man) do
             if player:is_player() then 
                 player:event '玩家-注册英雄后'(function()
                     local name = key..i
-                    local mt = ac.creep[key]{    
+                    local mt = ac.creep[name]{    
                         creeps_datas = key..'*'..(10 + player:get('练功房怪')),
                         cool = 0.5,
                         create_unit_cool = 0,

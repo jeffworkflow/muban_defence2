@@ -1061,7 +1061,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     for i,data in pairs(tab) do 
         if data.name == '藏宝图' then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('藏宝图掉落概率') or 0)/100)
-            print('藏宝图掉落概率：',tab[i].rand)
+            -- print('藏宝图掉落概率：',tab[i].rand)
         elseif data.name == '羊皮纸' then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('羊皮纸掉落概率') or 0)/100)
         elseif data.name == '无字天书' then 

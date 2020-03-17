@@ -662,7 +662,15 @@ function player.countAlive()
 	end
 	return count
 end
-
+local function init_attribute(p)
+	p._base = {}
+	p._rate = {}
+	p._show = {}
+	
+    -- for _, k in ipairs(ac.player_attr) do
+    --     p:set(k, 0.0)
+    -- end
+end
 --创建玩家(一般不允许外部创建)
 function player.create(id, jPlayer)
 	local p = {}
@@ -692,7 +700,8 @@ function player.create(id, jPlayer)
 	end
 
 	player[id] = p
-
+	--初始化属性
+	init_attribute(p)
 	return p
 end
 

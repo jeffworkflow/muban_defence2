@@ -315,6 +315,7 @@ function mt:packager(name, loadfile)
 	local function package(path, default, enum)
 		ok[path] = true
 		local content = loadfile(path.. name .. '.ini')
+		-- print('lni:',path.. name .. '.ini')
 		if content then
 			result, default, enum = lni_c(content, path .. name .. '.ini', {result, default, enum} )
 		end

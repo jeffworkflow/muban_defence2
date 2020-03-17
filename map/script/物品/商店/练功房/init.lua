@@ -59,3 +59,4 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
     end)
 
 end)    
+-- print('ces2222')

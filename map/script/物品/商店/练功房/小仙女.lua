@@ -9,7 +9,6 @@ for name,data in sortpairs(ac.table.ItemData) do
         table.insert(fairy,name)
     end
 end        
-ac.fairy = fairy
 
 
 
@@ -21,13 +20,18 @@ mt{
 --    model = [[units\creeps\GrizzlyBear\GrizzlyBear.mdl]],
    event_name = '造成伤害效果',
    unit_name ='狗熊',
+--    cool=12,
    mul = 1
 }
 function mt:on_add()
     local hero = self.owner
     local p = hero.owner
-    if p.hero == hero then 
-        self:set('cool',12) --魔法书里的技能升级时，激活cd。
+    if not p.hero then 
+        return 
+    end
+    local skl = p.hero:find_skill(self.name,nil,true)
+    if skl then 
+        skl:set('cool',12) --魔法书里的技能升级时，激活cd。
     end
 
 end    
@@ -190,7 +194,8 @@ for _,name in ipairs(fairy) do
                 p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中|cff00ff00，铭文属性可在圣龙气运-古老的铭文中查看',5)   
                 --创建真小仙女
                 p.fw_cnt =  (p.fw_cnt or 0) + 1
-                if p.fw_cnt == #fairy then 
+                -- print('玩家小仙女激活个数：',p,p.fw_cnt,#fairy )
+                if p.fw_cnt == 8 then 
                     local x,y = seller:get_point():get()
                     --移出原来的小仙女
                     seller:remove()

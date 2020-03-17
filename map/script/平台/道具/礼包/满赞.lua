@@ -80,7 +80,9 @@ ac.game:event '玩家-注册英雄' (function(_,p,hero)
 
     if flag then 
         local skl = hero:find_skill('满赞',nil,true)
-        skl:set_level(1)
+        if skl then 
+            skl:set_level(1)
+        end
     end    
 
 end)

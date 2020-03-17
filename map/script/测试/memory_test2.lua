@@ -5,6 +5,7 @@ local collectgarbage = collectgarbage
 local unit = require 'types.unit'
 local mover = require 'types.mover'
 local effect = require 'types.effect'
+local item = require 'types.item'
 local math = math
 local table = table
 
@@ -138,7 +139,7 @@ local function hookCreate(name)
 	hookFunc(name,function (...)
 		local retval = Real[name](...)
 		if retval and retval > 0 then 
-			DebugInfoMap[retval] = debug.traceback()
+			DebugInfoMap[retval] = debug.traceback(1)
 		end 
 		return retval
 	end)
@@ -172,7 +173,13 @@ local function enableDebug(bool)
 	end 
 end 
 
+
 ac.game:event '玩家-聊天' ( function(trg, player, str)
+
+	if str == '-debug_timer' then 
+		ac.enable_debug_timer = true
+		print('开启计时器debug')
+	end 
 	if str ~= '-debug' then
 		return 
 	end 
@@ -195,7 +202,10 @@ ac.loop(30 * 1000, function()
 	print(('时间: %.f'):format(ac.clock() / 1000))
 	print(('内存[%.3fk]'):format(lua_memory))
 	print(('jass句柄数[%d],历史最大句柄[%d]'):format(dbg.handlecount(), dbg.handlemax()))
+	-- ac.debug_print_timer()
 	print(('计时器 正常[%d]'):format(ac.timer_size()))
+	print(('game计时器 正常[%d]'):format(game.timer_size()))
+
 	local unit_normal_count = 0
 	local creature_normal_count = 0
 	local unit_dead_count = 0
@@ -224,8 +234,9 @@ ac.loop(30 * 1000, function()
 			creature_removed_count = creature_removed_count + 1
 		end
 	end
-	log.debug(('单位 正常[%d],死亡[%d],等待释放[%d]'):format(creature_normal_count, creature_dead_count, creature_removed_count))
-	log.debug(('马甲 正常[%d],死亡[%d],等待释放[%d]'):format(unit_normal_count, unit_dead_count, unit_removed_count))
+
+	
+
 	print(('单位 正常[%d],死亡[%d],等待释放[%d]'):format(creature_normal_count, creature_dead_count, creature_removed_count))
 	print(('马甲 正常[%d],死亡[%d],等待释放[%d]'):format(unit_normal_count, unit_dead_count, unit_removed_count))
 	
@@ -237,8 +248,29 @@ ac.loop(30 * 1000, function()
 	for _ in pairs(mover.removed_mover) do
 		count2 = count2 + 1
 	end
-	log.debug(('运动器 正常[%d],等待释放[%d]'):format(count1, count2))
-	log.debug('-----------------------------------------------------------')
+	print(('运动器 正常[%d],等待释放[%d]'):format(count1, count2))
+
+	local item_normal_count = 0
+	for _, it in pairs(item.item_map) do
+		item_normal_count = item_normal_count + 1
+	end
+	local item_removed_count = 0
+	for u in pairs(item.removed_items) do
+		item_removed_count = item_removed_count + 1
+	end
+	print((('物品 正常[%d],等待释放[%d]'):format(item_normal_count, item_removed_count)))
+
+	-- count1 = 0
+	-- for _ in pairs(ac.tree.all_trees) do 
+	-- 	count1 = count1 + 1
+	-- end 
+
+	-- count2 = 0
+	-- for _ in pairs(ac.tree.all_removed) do 
+	-- 	count2 = count2 +1
+	-- end 
+	-- print(('可破坏物 正常[%d],等待释放[%d]'):format(count1, count2))
+	-- log.debug('-----------------------------------------------------------')
 
 	display_jass_object()
 end)
@@ -270,6 +302,12 @@ function effect:__gc()
 	))
 end
 
+function item:__gc()
+	if self.has_removed then
+		return
+	end
+	log.warn(('[物品]失去引用但是没有被移除:[%s]'):format(self.name))
+end
 --function trigger:__gc()
 --	if self.removed then
 --		return
@@ -323,5 +361,6 @@ ac.game:event '游戏-结束' (function()
 	unit.__gc = nil
 	mover.__gc = nil
 	effect.__gc = nil
+	item.__gc = nil
 	--trigger.__gc = nil
 end)
