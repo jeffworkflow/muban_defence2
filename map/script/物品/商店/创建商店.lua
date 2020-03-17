@@ -49,10 +49,10 @@ ac.game:event '单位-创建商店'(function(trg,shop)
     local name = shop:get_name()
     if name == '基地' then
         shop:remove_restriction '无敌'
-        shop:set('生命上限',5000000000000)
-        shop:set('护甲',10000000000000)
-        -- shop:set('生命上限',500000)
-        -- shop:set('护甲',100)
+        -- shop:set('生命上限',5000000000000)
+        -- shop:set('护甲',10000000000000)
+        shop:set('生命上限',500000)
+        shop:set('护甲',100)
         local function send_msg()
             --红屏提醒
             if shop:get '生命' / shop:get '生命上限' < 0.30  then

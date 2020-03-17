@@ -118,7 +118,7 @@ function mt:on_cast_start()
     ac.wait(2*1000,function()
         local bff = hero:add_buff '渡劫' {
             skill = self,
-            damage = 1000000000 * (p.cnt_succ_dz or 0 + 1),
+            damage = 100000000 * (p.cnt_succ_dz or 0 + 1),
             time = self.dz_cnt * self.pulse,
             pulse = self.pulse,
             dz_cnt = self.dz_cnt
