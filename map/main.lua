@@ -15,7 +15,7 @@ else
     --打开控制台
     console.enable = true
 end
-
+global_test = console.enable
 --重载print,自动转换编码
 print = console.write
 runtime.handle_level = 0
