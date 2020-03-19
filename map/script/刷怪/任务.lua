@@ -55,7 +55,6 @@ local task_detail = {
                     time = 2
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
-                    local p = killer.owner
                     --俘虏事件
                     local rate = 2.5
                     if math.random(10000)/100 < rate then 
@@ -64,6 +63,7 @@ local task_detail = {
                     end
                     p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00剿灭魔教成功，奖励|r |cffff0000【噬血珠】|r',6)
                     hero:add_item('噬血珠',true)
+                    p.revive_point = nil --还原复活点
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000黑心老人|r已出现，小心他的|cffff0000冰火爪|r',2)
                 p.flag_tsjx = true
@@ -112,9 +112,16 @@ local task_detail = {
             }
             unit:event '单位-死亡' (function(_,unit,killer) 
                 local p = killer.owner
-                local item = ac.skill[task_name..'1'].fall_item
-                -- hero:add_item(item,true)
-                ac.item.create_item(item,unit:get_point())
+                local name = ac.skill[task_name..'1'].fall_item
+                
+                local mt = ac.skill[name]
+                if p:Map_GetMapLevel() >= 5 then 
+                    mt.item_type = '神符'
+                    mt.level =1
+                else
+                    mt.item_type = '消耗品'
+                end
+                ac.item.create_item(name,unit:get_point())
 
             end)    
             p:sendMsg('|cffFFE799【系统消息】|r|cffff0000BOSS'..task_name..'|r|cff00ff00出现在上方，请小心！',2)

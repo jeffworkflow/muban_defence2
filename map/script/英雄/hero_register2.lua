@@ -14,6 +14,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	ac.revive_time = time
 	
 	hero:event '单位-死亡' (function()
+		local p = hero.owner
 		ac.timer_ex
 		{
 			time = time,
@@ -30,7 +31,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 					time = 3
 				}
 			else	
-				random_point = ac.map.rects['出生点']:get_point()
+				random_point = p.revive_point or ac.map.rects['出生点']:get_point()
 				hero:revive(random_point)
 			end	
 		end)

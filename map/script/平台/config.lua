@@ -80,7 +80,7 @@ local cus_key = {
     {'wxnd','无限难度'},
 
     {'cwjn','宠物技能'},
-    {'cwjnc','宠物纪念册'},
+    {'cwjnc','宠物纪念册',{ ['宠物纪念册'] = {1,5,value = function(self,p) return p:Map_GetServerValue('cwjnc') end}}},
     {'wsdmt','我是大魔头',{ ['我是大魔头'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('wsdmt')) end}}},
   
     {'hjkg','黄金矿工',{ ['黄金矿工'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('hjkg')) end}}},

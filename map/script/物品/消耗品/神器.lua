@@ -16,7 +16,7 @@ tip = [[%extr_tip%
 |cffFFE799【神器属性】：|r
 |cff00ff00+100W 全属性|r
 |cff00ff00+100W 生命上限|r
-|cff00ff00+500 护甲|r
+|cff00ff00+250 护甲|r
 |cff00ff00+5W 伤害减少|r
 |cff00ff00+5W 生命回复|r
 |cff00ff00藏宝图的掉落概率翻倍
@@ -239,7 +239,7 @@ for i,value in ipairs(magic_item) do
             end   
             return      
         end
-        
+
         ac.game:event_notify('技能-插入魔法书',hero,self.skill_book_name,self.name)
         local skl = hero:find_skill(self.name,nil,true)
         player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可在圣龙气运-踢馆中查看',2)
@@ -271,6 +271,12 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         return 
     end    
     p.flag_all[temp[name]] = true 
+    local mt = ac.skill[temp[name]]
+    if p:Map_GetMapLevel() >= 5 then 
+        mt.item_type = '神符'
+    else
+        mt.item_type = '消耗品'
+    end
     --掉落物品
     local it = ac.item.create_item(temp[name],unit:get_point())
 

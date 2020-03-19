@@ -132,19 +132,23 @@ for i=1,10 do
                 local key_name = tab[2]
                 if tab[3] then 
                     for name,data in sortpairs(tab[3]) do 
-                        local has_item = (player.server[key_name] or 0 ) >= data[1] and 1 
+                        local has_item = player:Map_GetServerValue(key) >= data[1] and 1 
                         local map_level= data[2] or 0
                         local val = 1
                         if data.value then 
                             val = data:value(player) or 0
                             -- print(key_name,'地图等级',player:Map_GetMapLevel(),val)
                         end    
-                        print('111111111111111111',name,val)
+                        -- print(name,has_item,player:Map_GetMapLevel(),map_level)
                         if has_item and has_item > 0 
                         and player:Map_GetMapLevel() >= map_level
                         then 
-                            player.server[name] = val
-                        end   
+                            val = val
+                        else
+                            val = 0
+                        end  
+                        player.server[name] = val
+                        print('111111111111111111',name,val)
                     end    
                 end    
             end   

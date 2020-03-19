@@ -90,6 +90,18 @@ function mt:on_cast_start()
             
         end
     end 
+    peon = player.peon
+    for i=1,6 do 
+        local item = peon:get_slot_item(i)
+        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  and item.level < (item.max_level or 999) then 
+            count = count + 1
+            local info = {
+                name = "|cff"..ac.color_code['淡黄']..'强化 |cffff0000(宠)|r'..item.color_name  .. '|r ',
+                item = item
+            }
+            table.insert(list,info)
+        end
+    end 
     if count < 1 then 
         player:sendMsg('|cffffe799【系统消息】|r英雄物品栏没有可强化的装备',4)
         if self._count > 1 then 

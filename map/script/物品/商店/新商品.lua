@@ -26,7 +26,6 @@ local shop_item_detail = {
         end, 
     } ,
     ['杀敌数兑换'] = {
-        real_kill_cnt = 500,
         on_cast_start = function(self)
             local hero = self.owner
             local p = hero:get_owner()
@@ -90,5 +89,13 @@ for name,data in pairs(ac.table.ItemData) do
             end    
         end    
     end
-
 end    
+
+--特殊商品处理
+local mt = ac.skill['至凶之物']
+function mt:on_cast_start()
+    local hero = self.owner
+    local p = hero:get_owner()
+    if p.flag_tsjx then return end 
+    p.revive_point = ac.rect.j_rect('zxzw'):get_point()
+end

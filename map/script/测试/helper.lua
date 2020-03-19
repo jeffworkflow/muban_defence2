@@ -1091,10 +1091,13 @@ function helper:test_uu2()
 	end	
 end	
 --测试 魔法书功能
-function helper:test_b1(str)
+function helper:test_b1(str,cnt)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	local hero = p.hero
-	ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',str or '有趣的灵魂')
+	local cnt = cnt or 1 
+	for i=1,cnt do 
+		ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',str or '有趣的灵魂')
+	end
 
 end	
 function helper:test_b2(str)
