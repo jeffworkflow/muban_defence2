@@ -175,7 +175,7 @@ function mt:on_cast_start()
                 else 
                     item:add_item_count(-item.kill_cnt+1)
                     item:upgrade(1)
-                    p:sendMsg('|cffff0000'..self.name..' 等级+1|r',3)
+                    p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜 |cff00ffff'..self.name..' |r|cff00ff00升级成功',3)
                 end    
                 --传送回练功房
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
