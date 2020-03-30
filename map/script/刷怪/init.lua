@@ -4,7 +4,6 @@ require '刷怪._常用'
 
 require '刷怪.单位初始化'
 require '刷怪.最终boss'
-require '刷怪.游戏结束'
 require '刷怪.刷怪'
 require '刷怪.刷怪无尽'
 -- require '刷怪.boss挑战'

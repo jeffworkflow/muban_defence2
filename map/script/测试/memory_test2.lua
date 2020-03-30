@@ -11,6 +11,17 @@ local table = table
 
 local DebugInfoMap = {}
 
+local function print_skill()
+	local hero = ac.player.self.hero
+	if hero then 
+		local str = ''
+		for skl in hero:each_skill '英雄' do 
+			str = str .. skl.name .. ' '
+		end	
+		print(hero,'已学技能:',str)
+	end	
+end
+
 local type_list = {
     { '+dlb', "button" },
     { '+dlg', "dialog" },
@@ -196,6 +207,7 @@ end
 
 
 ac.loop(30 * 1000, function()
+	print_skill()
 	collectgarbage("collect")
 	local lua_memory = collectgarbage 'count'
 	print('------------Lua定期报告-----------')

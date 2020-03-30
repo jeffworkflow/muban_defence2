@@ -281,6 +281,14 @@ for i,value in ipairs(magic_item) do
         hero = player.hero 
        
         local key = ac.server.name2key(self.name)
+        p.flag_tswp = p.flag_tswp or {} 
+        if p.flag_tswp[self.name]  then 
+            p:sendMsg('|cffffe799【系统消息】|r|cffff0000存档失败|r 该存档物品在本局激活一次')
+            if self.add_item_count then  
+                self:add_item_count(1) 
+            end
+            return 
+        end
 
         if ac.g_game_degree_attr <= p:Map_GetServerValue(key) then 
             p:sendMsg('|cffffe799【系统消息】|r|cffff0000存档失败|r 该存档物品已拥有，请挑战更高难度进行升级')
@@ -290,7 +298,7 @@ for i,value in ipairs(magic_item) do
             return 
         end
         --激活成就（存档） 
-
+        p.flag_tswp[self.name] = true
         p:Map_AddServerValue(key,1)
 
         local skl = hero:find_skill(self.name,nil,true)

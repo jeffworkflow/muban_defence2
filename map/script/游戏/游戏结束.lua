@@ -43,18 +43,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
 	end)
 end)	
 
-ac.loop(30*1000,function()
-	local hero = ac.player.self.hero
-	if hero then 
-		local str = ''
-		for skl in hero:each_skill '英雄' do 
-			str = str .. skl.name .. ' '
-		end	
-		print(hero,'已学技能:',str)
-	end	
-end)	
-
-
+	
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-结束' (function(trg,flag)
 	local name 

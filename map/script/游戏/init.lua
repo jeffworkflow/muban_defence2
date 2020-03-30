@@ -1,6 +1,4 @@
 
-
---游戏总体的表
 require '游戏.玩家'
 require '游戏.游戏设置'
 require '游戏.掉落'

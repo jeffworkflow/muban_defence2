@@ -61,10 +61,13 @@ function mt:on_cast_start()
     local name = '天魔BOSS'..(p.cnt_succ_ms or 0) + 1
     if cnt <= 10 then 
         create_u(self,name,'moshen2',function(unit,killer)
-            print('天魔死亡',unit,killer)
-            local it_name = ac.tm_item[math.random(#ac.tm_item)]
-            ac.item.create_item(it_name,unit:get_point())
-            -- p:sendMsg('恭喜击败'..name,5)
+            -- local it_name = ac.tm_item[math.random(#ac.tm_item)]
+            
+            local it_name = p:random(ac.tm_item,true)
+            if it_name then 
+                ac.item.create_item(it_name,unit:get_point())
+            end
+            --p:sendMsg('恭喜击败'..name,5)
             --天魔次数+1
             p.cnt_succ_tm = (p.cnt_succ_tm or 0) + 1 
             --魔神挑战次数+1
@@ -77,9 +80,11 @@ function mt:on_cast_start()
     local name = '天神BOSS'..(p.cnt_succ_ms or 0) + 1
     if cnt <= 10 then 
         create_u(self,name,'moshen3',function(unit,killer)
-            print(name)
-            local it_name = ac.ts_item[math.random(#ac.ts_item)]
-            ac.item.create_item(it_name,unit:get_point())
+            local it_name = p:random(ac.ts_item,true)
+            -- local it_name = ac.ts_item[math.random(#ac.ts_item)]
+            if it_name then 
+                ac.item.create_item(it_name,unit:get_point())
+            end
             -- p:sendMsg('恭喜击败'..name,5)
             --天神+1
             p.cnt_succ_ts = (p.cnt_succ_ts or 0) + 1 

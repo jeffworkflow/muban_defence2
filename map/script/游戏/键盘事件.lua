@@ -1,75 +1,3 @@
-local rect = require "types.rect"
-local mt = ac.skill['F2回城']
-mt{
-	--技能id
-	ability_id = 'A01H',
-    --必填
-    is_skill = true,
-    --等级
-    level = 1,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --拾取cd，太快会触发2次。
-    cool = 0,
-    --目标数据
-    cus_target_data = '按键',
-    --图标是否可见 0可见 1隐藏
-    -- hide_count = 1,
-}
-function mt:on_add()
-    self:hide()
-end    
-function mt:on_cast_start()
-    local hero = self.owner
-    local point = ac.map.rects['出生点']:get_point()
-    hero:blink(point,true,false,true)
-end
-
-local mt = ac.skill['F3小黑屋']
-mt{
-	--技能id
-	ability_id = 'AX11',
-    --必填
-    is_skill = true,
-    --等级
-    level = 1,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --拾取cd，太快会触发2次。
-    cool = 0,
-    --目标数据
-    cus_target_data = '按键',
-    --图标是否可见 0可见 1隐藏
-    -- hide_count = 1,
-}
-function mt:on_add()
-    self:hide()
-end    
-
-function mt:on_cast_start()
-    local hero = self.owner
-    local it = self.target
-    local p = hero:get_owner()
-
-    local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
-    hero:blink(point,true,false,true)
-    -- if not p.flag_create_room then 
-    --     p.flag_create_room = true
-    --     ac.wait(1000,function()
-    --         --给每位玩家创建小黑屋 修炼商店
-    --         local x,y = ac.rect.j_rect('lgfsd'..p.id):get_point():get()
-    --         local shop5 = ac.shop.create('修炼商店',x,y,270)
-    --         shop5:set_size(1.2) 
-    --         local shop6 = ac.shop.create('杀敌兑换',x+300,y,270)
-    --         shop6:set_size(1.2) 
-    --     end)
-    -- end    
-end
---30回合开始
-ac.game:event '玩家-注册英雄' (function(trg, player, hero)
-	hero:add_skill('F2回城', '隐藏')
-	hero:add_skill('F3小黑屋', '隐藏')
-end)
 
 local practise_room =ac.region.create(ac.map.rects['练功房刷怪1'],ac.map.rects['练功房刷怪2'],ac.map.rects['练功房刷怪3'],ac.map.rects['练功房刷怪4'],ac.map.rects['练功房刷怪5'],ac.map.rects['练功房刷怪6'])
 --物品是否在练功房内
@@ -100,7 +28,6 @@ ac.game.clear_item = function(self,all)
         item:item_remove()
     end 
 end
-
 
 
 ac.game:event '玩家-聊天' (function(self, player, str)
@@ -215,37 +142,12 @@ ac.game:event '玩家-聊天' (function(self, player, str)
             for i=1,10 do 
                 local hero = ac.player(i).hero 
                 if hero then 
-                    --干掉英雄身上的技能特效
-                    for skl in hero:each_skill() do  
-                        local allstr = table.concat(ac.all_skill) .. table.concat(ac.skill_list4)..table.concat(ac.skill_list6)
-                        if finds(allstr,skl.name) then
-                            if player.flag_qxtx then 
-                                skl.old_model = skl.model
-                                skl.model = ''
-                                -- print(skl.name,skl.model,skl.old_model)
-                                skl.old_effect = skl.effect
-                                skl.effect = ''
-                                skl.old_effect1 = skl.effect1
-                                skl.effect1 = ''
-                                skl.old_effect2 = skl.effect2
-                                skl.effect2 = ''
-                            else
-                                skl.effect = skl.old_effect or skl.effect
-                                skl.effect1 = skl.old_effect1 or skl.effect1
-                                skl.effect2 = skl.old_effect2 or skl.effect2
-                                skl.model = skl.old_model or skl.model
-                            end	
-                        end    
-                    end	
-                    --干掉 英雄的弹道模型
-                    -- if hero.weapon then 
-                    --     if player.flag_qxtx then 
-                    --         hero.old_weapon1 = hero.weapon['弹道模型']
-                    --         hero.weapon['弹道模型'] = ''
-                    --     else
-                    --         hero.weapon['弹道模型'] = hero.old_weapon1
-                    --     end    
-                    -- end  
+                    if player.flag_qxtx then 
+                        ac.low = true 
+                        ac.low_effect_model=[[]]
+                    else
+                        ac.low = false 
+                    end
                 end    
             end    
             

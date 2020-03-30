@@ -115,7 +115,35 @@ local function findunit_byname(name)
 	return unit
 end	
 ac.game.findunit_byname = findunit_byname
+--@table 
+--@true不重复  
+function player.__index:random(tab,flag)
+	if type(tab) ~= 'table' then 
+		print('传入的不是table')
+		return 
+	end
+	if #tab <=0 then 
+		print('传入的table不是序列号型')
+		return 
+	end
+	local index = math.random(#tab)
+	local name = tab[index]
+	if not name then print('没有 name') return end 
+	table.remove(tab,index)
+	
+	self.flag = self.flag or {}
+	if flag then 
+		if not self.flag[name] then 
+			self.flag[name] = true
+			return name 
+		else 
+			return self:random(tab,flag)
+		end
+	else 
+		return name
+	end
 
+end
 
 --禁止A队友
 ac.game:event '单位-攻击开始' (function(self, data)
@@ -149,27 +177,10 @@ ac.map.rects={
 	['主城'] = rect.j_rect('jg2_jd') ,
 	['游戏结束'] = rect.j_rect('jg2_jd') ,
 	
-    ['刷怪-boss'] = rect.j_rect('cgboss4') ,
 	['选人区域'] =rect.j_rect('xuanrenjingtou') ,
-	['武林大会'] =rect.j_rect('wldh') ,
 
-	['npc1'] =rect.j_rect('npc1') ,
-	['npc2'] =rect.j_rect('npc2') ,
-	['npc3'] =rect.j_rect('npc3') ,
-	['npc4'] =rect.j_rect('npc4') ,
-	['npc5'] =rect.j_rect('npc5') ,
-	['npc6'] =rect.j_rect('npc6') ,
-	['npc7'] =rect.j_rect('npc7') ,
-	['npc8'] =rect.j_rect('npc8') ,
-	['npc9'] =rect.j_rect('npc9') ,
     ['选人出生点'] =rect.j_rect('xrcs') ,
 	['出生点'] =rect.j_rect('F2cs') ,
-
-	--野怪
-	['杀鸡儆猴1'] =rect.j_rect('sjjh1') ,
-	['杀鸡儆猴2'] =rect.j_rect('sjjh2') ,
-	['杀鸡儆猴3'] =rect.j_rect('sjjh3') ,
-	
 
 	--练功房 
 	['练功房11'] =rect.j_rect('lgf11') ,
@@ -209,164 +220,11 @@ ac.map.rects={
 	['练功房64'] =rect.j_rect('lgf64') ,
 	['练功房刷怪6'] =rect.j_rect('lgfbh6') ,
 	
-	--武器
-	['传送-武器1'] =rect.j_rect('wuqi1') ,
-	['传送-武器2'] =rect.j_rect('wuqi2') ,
-	['传送-武器3'] =rect.j_rect('wuqi3') ,
-	['传送-武器4'] =rect.j_rect('wuqi4') ,
-	['传送-武器5'] =rect.j_rect('wuqi5') ,
-	['传送-武器6'] =rect.j_rect('wuqi6') ,
-	['传送-武器7'] =rect.j_rect('wuqi7') ,
-	['传送-武器8'] =rect.j_rect('wuqi8') ,
-	['传送-武器9'] =rect.j_rect('wuqi9') ,
-	['传送-武器10'] =rect.j_rect('wuqi10') ,
-	['传送-武器11'] =rect.j_rect('wuqi111') ,
 	
-	['boss-武器1'] =rect.j_rect('wuqi11') ,
-	['boss-武器2'] =rect.j_rect('wuqi22') ,
-	['boss-武器3'] =rect.j_rect('wuqi33') ,
-	['boss-武器4'] =rect.j_rect('wuqi44') ,
-	['boss-武器5'] =rect.j_rect('wuqi55') ,
-	['boss-武器6'] =rect.j_rect('wuqi66') ,
-	['boss-武器7'] =rect.j_rect('wuqi77') ,
-	['boss-武器8'] =rect.j_rect('wuqi88') ,
-	['boss-武器9'] =rect.j_rect('wuqi99') ,
-	['boss-武器10'] =rect.j_rect('wuqi1010') ,
-	['boss-武器11'] =rect.j_rect('wuqi1111') ,
-	
-	--甲
-	['传送-甲1'] =rect.j_rect('jia1') ,
-	['传送-甲2'] =rect.j_rect('jia2') ,
-	['传送-甲3'] =rect.j_rect('jia3') ,
-	['传送-甲4'] =rect.j_rect('jia4') ,
-	['传送-甲5'] =rect.j_rect('jia5') ,
-	['传送-甲6'] =rect.j_rect('jia6') ,
-	['传送-甲7'] =rect.j_rect('jia7') ,
-	['传送-甲8'] =rect.j_rect('jia8') ,
-	['传送-甲9'] =rect.j_rect('jia9') ,
-	['传送-甲10'] =rect.j_rect('jia10') ,
-	['传送-甲11'] =rect.j_rect('jia111') ,
-
-
-	['boss-甲1'] =rect.j_rect('jia11') ,
-	['boss-甲2'] =rect.j_rect('jia22') ,
-	['boss-甲3'] =rect.j_rect('jia33') ,
-	['boss-甲4'] =rect.j_rect('jia44') ,
-	['boss-甲5'] =rect.j_rect('jia55') ,
-	['boss-甲6'] =rect.j_rect('jia66') ,
-	['boss-甲7'] =rect.j_rect('jia77') ,
-	['boss-甲8'] =rect.j_rect('jia88') ,
-	['boss-甲9'] =rect.j_rect('jia99') ,
-	['boss-甲10'] =rect.j_rect('jia1010') ,
-	['boss-甲11'] =rect.j_rect('jia1111') ,
-
-	--技能
-	['传送-技能1'] =rect.j_rect('jn1') ,
-	['传送-技能2'] =rect.j_rect('jn2') ,
-	['传送-技能3'] =rect.j_rect('jn3') ,
-	['传送-技能4'] =rect.j_rect('jn4') ,
-	
-	['boss-技能1'] =rect.j_rect('jn11') ,
-	['boss-技能2'] =rect.j_rect('jn22') ,
-	['boss-技能3'] =rect.j_rect('jn33') ,
-	['boss-技能4'] =rect.j_rect('jn44') ,
-
-	--熔炼石
-	['传送-熔炼石1'] =rect.j_rect('xls1') ,
-	['传送-熔炼石2'] =rect.j_rect('xls2') ,
-	['传送-熔炼石3'] =rect.j_rect('xls3') ,
-	['传送-熔炼石4'] =rect.j_rect('xls4') ,
-	
-	['boss-熔炼石1'] =rect.j_rect('xls11') ,
-	['boss-熔炼石2'] =rect.j_rect('xls22') ,
-	['boss-熔炼石3'] =rect.j_rect('xls33') ,
-	['boss-熔炼石4'] =rect.j_rect('xls44') ,
-
-	--境界
-	['传送-境界1'] =rect.j_rect('jj1') ,
-	['传送-境界2'] =rect.j_rect('jj2') ,
-	['传送-境界3'] =rect.j_rect('jj3') ,
-	['传送-境界4'] =rect.j_rect('jj4') ,
-	['传送-境界5'] =rect.j_rect('jj5') ,
-	['传送-境界6'] =rect.j_rect('jj6') ,
-	['传送-境界7'] =rect.j_rect('jj7') ,
-	['传送-境界8'] =rect.j_rect('jj8') ,
-	['传送-境界9'] =rect.j_rect('jj9') ,
-	['传送-境界10'] =rect.j_rect('jj10') ,
-	['传送-境界11'] =rect.j_rect('sd1') ,
-
-	['boss-境界1'] =rect.j_rect('jj11') ,
-	['boss-境界2'] =rect.j_rect('jj22') ,
-	['boss-境界3'] =rect.j_rect('jj33') ,
-	['boss-境界4'] =rect.j_rect('jj44') ,
-	['boss-境界5'] =rect.j_rect('jj55') ,
-	['boss-境界6'] =rect.j_rect('jj66') ,
-	['boss-境界7'] =rect.j_rect('jj77') ,
-	['boss-境界8'] =rect.j_rect('jj88') ,
-	['boss-境界9'] =rect.j_rect('jj99') ,
-	['boss-境界10'] =rect.j_rect('jj1010') ,
-	['boss-境界11'] =rect.j_rect('sd11') ,
-
-	['传送-伏地魔'] =rect.j_rect('fdm1') ,
-	['boss-伏地魔'] =rect.j_rect('fdm11') ,
-
-	['传送-星星之火'] =rect.j_rect('xxzh1') ,
-	['传送-陨落心炎'] =rect.j_rect('ylxy1') ,
-	['传送-三千焱炎火'] =rect.j_rect('sqyyh1') ,
-	['传送-虚无吞炎'] =rect.j_rect('xwty1') ,
-	['传送-陀舍古帝'] =rect.j_rect('tsgd1') ,
-	['传送-无尽火域'] =rect.j_rect('wjhy1') ,
-	
-	['boss-星星之火'] =rect.j_rect('xxzh111') ,
-	['boss-陨落心炎'] =rect.j_rect('ylxy111') ,
-	['boss-三千焱炎火'] =rect.j_rect('sqyyh111') ,
-	['boss-虚无吞炎'] =rect.j_rect('xwty111') ,
-	['boss-陀舍古帝'] =rect.j_rect('tsgd11') ,
-	['boss-无尽火域'] =rect.j_rect('wjhy11') ,
 
 	--藏宝图
 	['藏宝图 '] =rect.j_rect('cbt1') ,
-	['boss-藏宝图'] =rect.j_rect('cbt111'),
 	['藏宝区'] =rect.j_rect('cbt2'),
-	['奶牛区'] =rect.j_rect('nainiu1') ,
-
-	--恶魔果实
-	['传送-红发'] =rect.j_rect('emo1') ,
-	['传送-黑胡子'] =rect.j_rect('emo2') ,
-	['传送-百兽'] =rect.j_rect('emo3') ,
-	['传送-白胡子'] =rect.j_rect('emo4') ,
-
-	['boss-红发'] =rect.j_rect('emo11') ,
-	['boss-黑胡子'] =rect.j_rect('emo22') ,
-	['boss-百兽'] =rect.j_rect('emo33') ,
-	['boss-白胡子'] =rect.j_rect('emo44') ,
-
-	['传送-替天行道'] =rect.j_rect('ttxd1') ,
-	['boss-食人魔'] =rect.j_rect('ttxd11') ,
-
-	['传送-吞噬极限'] =rect.j_rect('tssx1') ,
-	['刷怪-吞噬极限'] =rect.j_rect('tssx11') ,
-
-	['传送-强化极限'] =rect.j_rect('tssx2') ,
-	['刷怪-强化极限'] =rect.j_rect('tssx22') ,
-
-	['传送-暴击几率'] =rect.j_rect('tssx3') ,
-	['刷怪-暴击几率'] =rect.j_rect('tssx33') ,
-
-	['传送-免伤几率'] =rect.j_rect('tssx4') ,
-	['刷怪-免伤几率'] =rect.j_rect('tssx44') ,
-
-	['传送-技暴几率'] =rect.j_rect('tsjx5') ,
-	['刷怪-技暴几率'] =rect.j_rect('tsjx55') ,
-
-	['传送-闪避'] =rect.j_rect('tsjx6') ,
-	['刷怪-闪避'] =rect.j_rect('tsjx66') ,
-	
-	['传送-会心几率'] =rect.j_rect('tsjx7') ,
-	['刷怪-会心几率'] =rect.j_rect('tsjx77') ,
-
-	['传送-免伤'] =rect.j_rect('tsjx8') ,
-	['刷怪-免伤'] =rect.j_rect('tsjx88') ,
 
 	
 
@@ -496,61 +354,4 @@ out_reg:event '区域-离开' (function(trg, hero)
 end)
 
 
-
---召唤物倍数 波数
-local function get_summon_mul(lv)
-	local level_mul = {
-		[10] ={ 
-			['最小范围'] = 0,
-			['生命'] = 20, 
-			['护甲'] = 0.001, 
-			['攻击'] = 0.5, 
-		},
-		[20] ={ 
-			['最小范围'] = 10,
-			['生命'] = 10, 
-			['护甲'] = 0.001, 
-			['攻击'] = 1, 
-		},
-		[30] ={ 
-			['最小范围'] = 20,
-			['生命'] = 9, 
-			['护甲'] = 0.001, 
-			['攻击'] = 3, 
-		},
-		[40] ={ 
-			['最小范围'] = 30,
-			['生命'] = 8, 
-			['护甲'] = 0.001, 
-			['攻击'] = 10, 
-		},
-		[50] ={ 
-			['最小范围'] = 40,
-			['生命'] = 7, 
-			['护甲'] = 0.001, 
-			['攻击'] = 40, 
-		},
-		[1000000] ={ 
-			['最小范围'] = 50,
-			['生命'] = 5, 
-			['护甲'] = 0.001, 
-			['攻击'] = 120, 
-		},
-	}
-
-	local life_mul = 1
-	local defence_mul = 1
-	local attack_mul = 1
-	for index,info in sortpairs(level_mul) do 
-		if lv <= index and lv > info['最小范围']  then 
-			life_mul = info['生命']
-			defence_mul = info['护甲']
-			attack_mul = info['攻击']
-			break 
-		end 
-	end 
-	return life_mul,defence_mul,attack_mul
-end	
-
-ac.get_summon_mul = get_summon_mul
 

@@ -5,10 +5,13 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	if not player_hero_tm_list[player] then
 		player_hero_tm_list[player] = tm
 	end
+	--取消控制 玩家16 （中立单位）
+    local id = player.id - 1
+	ac.player.force[1][id]:disableControl(ac.player[16])
+
 	--多面板
 	-- print(ac.game.multiboard,ac.game.multiboard.player_init)
 	-- ac.game.multiboard:player_init(player,hero)
-
 	--复活时间
 	local time = 8
 	ac.revive_time = time

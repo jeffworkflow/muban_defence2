@@ -13,6 +13,17 @@ local function rawpairs(t)
 	return next, t, nil
 end
 
+local function print_skill()
+	local hero = ac.player.self.hero
+	if hero then 
+		local str = ''
+		for skl in hero:each_skill '英雄' do 
+			str = str .. skl.name .. ' '
+		end	
+		print(hero,'已学技能:',str)
+	end	
+end
+
 ac.game:event '游戏-开始' (function()
 	print((('游戏开始: %.f'):format(ac.clock() / 1000)))
 	-- collectgarbage("setpause",100)
@@ -25,6 +36,7 @@ ac.game:event '游戏-无尽开始' (function()
 end)
 
 ac.loop(30 * 1000, function()
+	print_skill()
 	local lua_memory = collectgarbage 'count'
 	print(('------------------------定期体检报告------------------------'))
 	print((('时间: %.f'):format(ac.clock() / 1000)))
