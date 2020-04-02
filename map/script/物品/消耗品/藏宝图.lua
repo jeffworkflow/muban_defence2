@@ -141,7 +141,6 @@ function mt:on_cast_start()
 end    
 
 function mt:add_content()
-
     local hero = self.owner
     local player = self.owner:get_owner()
     local p = self.owner:get_owner()
@@ -154,7 +153,7 @@ function mt:add_content()
     -- print('使用了命运花')
     local rand_list = ac.unit_reward['藏宝图']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
-    -- print(rand_list,rand_name)  
+    -- print(rand_list,rand_name) 
     if not rand_name then 
         return true
     end  
@@ -182,8 +181,8 @@ function mt:add_content()
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
     --加挖宝积分
+    player:Map_AddServerValue('sldwb',1) --网易服务器
     -- player:AddServerValue('wbjf',1) 自定义服务器
-    player:Map_AddServerValue('wbjf',1) --网易服务器
     if not player.cus_server3 then 
         player.cus_server3 = {}
     end    

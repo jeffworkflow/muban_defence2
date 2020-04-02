@@ -12,9 +12,10 @@ mt{
     
 }
 mt.skills = {
-    -- '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','武林大会',
-    -- ,'精彩活动'
-    '隐藏成就','成神'
+    '礼包','签到','地图等级','通关难度',
+    '称号','神器','翅膀','领域','坐骑',
+    '法宝','成神','隐藏成就'
+    -- ,'精彩活动' '游戏说明',
 } 
 local mt = ac.skill['成神']
 mt{
@@ -33,23 +34,6 @@ mt.skill_name ={
 }
 mt.skills = {
 }
-
-
-
-
-
--- function mt:on_add()
---     local hero = self.owner 
---     local player = hero:get_owner()
---     -- print('打开魔法书')
---     for index,skill in ipairs(self.skill_book) do 
---         local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
---         -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
---         if has_mall and has_mall > 0 then 
---             skill:set_level(1)
---         end
---     end 
--- end  
 
 local mt = ac.skill['游戏说明']
 mt{
@@ -116,15 +100,15 @@ mt.skills = {
     '限量首充','首充大礼包'
 }
 
-local mt = ac.skill['武器']
+local mt = ac.skill['神器']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[wuqi11.blp]],
-    title = '武器',
+    title = '神器',
     tip = [[
 
-查看武器
+查看神器
     ]],
     
 }
@@ -207,23 +191,23 @@ mt{
 mt.skills = {'剑仙','关公','加百列','不朽剑圣','魔化的小龙女','黄金圣斗士','萧若兰','复仇天神',}
 -- '王昭君','雅典娜',
 
-local mt = ac.skill['神圣领域']
+local mt = ac.skill['领域']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[ssly.blp]],
-    title = '神圣领域',
+    title = '领域',
     tip = [[
 
-查看神圣领域
+查看领域
     ]],
     
 }
 mt.skills = {
     '血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','赤霞万象领域','白云四海领域','孤风青龙领域','远影苍龙领域'
 }
--- '烈火金焰领域','神圣领域-下一页','烈火天翔领域'
-local mt = ac.skill['神圣领域-下一页']
+-- '烈火金焰领域','领域-下一页','烈火天翔领域'
+local mt = ac.skill['领域-下一页']
 mt{
     art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
     title = '下一页',
@@ -235,6 +219,41 @@ mt{
     is_order = 2,
 }
 mt.skills = {'真武青焰领域','罗刹夜舞领域',}
+
+local mt = ac.skill['坐骑']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[ssly.blp]],
+    title = '坐骑',
+    tip = [[
+
+查看坐骑
+    ]],
+    
+}
+mt.skills = {
+    '风速狗','兜兜猪','星空麋鹿','烈焰凤凰','地狱蜘蛛','紫霜龙鹰','炎宿朱雀','苍魂青龙','晶蓝天马','金角天马'
+}
+
+local mt = ac.skill['法宝']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[ssly.blp]],
+    title = '法宝',
+    tip = [[
+
+查看法宝
+    ]],
+    
+}
+mt.skills = {
+    '东皇钟','轩辕剑','缚妖索','青莲宝色旗','莫邪宝剑','盘古斧','招妖幡','昊天塔','太极符印','崆峒印'
+}
+
+
+
 --循环遍历 skill_book 的技能
 local function upgrade_skill(player,skill)
     local self = skill

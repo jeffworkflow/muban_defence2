@@ -1,5 +1,6 @@
 local player = require 'ac.player'
 local japi = require 'jass.japi'
+local ui = require 'ui.client.util'
 register_japi[[
 	native DzAPI_Map_SaveServerValue        takes player whichPlayer, string key, string value returns boolean
     native DzAPI_Map_GetServerValue         takes player whichPlayer, string key returns string
@@ -92,7 +93,11 @@ end
 --获取游戏开始时间
 function player.__index:Map_GetGameStartTime()
     local handle = self.handle
-    return japi.DzAPI_Map_GetGameStartTime()
+    if global_test then 
+        return os.time()
+    else
+        return japi.DzAPI_Map_GetGameStartTime()
+    end
 end
 --获取玩家是否购买重置版
 function player.__index:Map_IsMapReset()
@@ -120,19 +125,21 @@ end
 -- end
 
 --存档通用型 只能存入字符串型
-function player.__index:Map_SaveServerValue(key,value)
+function player.__index:Map_SaveServerValue(key,value,flag)
     local handle = self.handle
     japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(value))
-    --保存本局数据
-    if not self.server then 
-        self.server ={}
-    end    
-    local key_name = ac.server.key2name(key)
-    self.server[key_name] = tonumber(value)
+    if not flag then
+        --保存本局数据
+        if not self.server then 
+            self.server ={}
+        end    
+        local key_name = ac.server.key2name(key)
+        self.server[key_name] = tonumber(value)
+    end
 end
 
-
-function player.__index:Map_AddServerValue(key,value)
+--可能造成回档。 因为server的局内值受到地图等级影戏已经降为有限值，此时只是在有限值+1
+function player.__index:Map_AddServerValue(key,value,flag)
     if not self.server then 
         self.server ={}
     end    
@@ -142,7 +149,7 @@ function player.__index:Map_AddServerValue(key,value)
         self.server[key_name] = self:Map_GetServerValue(key)
     end    
     self.server[key_name] = (self.server[key_name] or 0 ) + tonumber(value) 
-    self:Map_SaveServerValue(key,self.server[key_name])
+    self:Map_SaveServerValue(key,self:Map_GetServerValue(key)+ tonumber(value),flag )
 end
 
 --获取全局存档 返回字符串型
@@ -212,24 +219,32 @@ function player.__index:GetServerValueErrorCode()
     end
 end
 
---同步数据
+--同步数据 在阿七自定义ui里不可用，有冲突，直接掉线
 function player.__index:SyncData(msg,f)
-    if self:is_self() then 
-        local msg = ac.encode(msg)
-        japi.DzSyncData("ac",msg)
-        local trg = CreateTrigger()
-        japi.DzTriggerRegisterSyncData(trg,"ac",false)
-        
-        function action()
-            local message = japi.DzGetTriggerSyncData()
-            local player = japi.DzGetTriggerSyncPlayer()
-            player = ac.player(GetPlayerId(player) + 1)
-            message = ac.decode(message)
-            -- print(message,player)
-            if f then f(player,message)end
-        end   
-        TriggerAddAction(trg,action)  
-    end    
+    if not self:is_self() then
+        print('未进入异步，不需要同步') 
+        return 
+    end
+    if not ui then 
+        print('没有加载ui.encode')
+        return 
+    end
+    if type(msg) == 'table' then 
+        msg = ui.encode(msg)
+    end
+    japi.DzSyncData("ac",msg)
+    local trg = CreateTrigger()
+    japi.DzTriggerRegisterSyncData(trg,"ac",false)
+    
+    function action()
+        local message = japi.DzGetTriggerSyncData()
+        local player = japi.DzGetTriggerSyncPlayer()
+        player = ac.player(GetPlayerId(player) + 1)
+        message = ui.decode(message)
+        -- print(message,player)
+        if f then f(player,message)end
+    end   
+    TriggerAddAction(trg,action)  
     
 end
 

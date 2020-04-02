@@ -159,47 +159,48 @@ function ac.player.__index:Map_SaveServerValue(name, value)
 	end
 
     --保存本局数据
-    if not self.server then 
-        self.server ={}
+    if not self.cus_server then 
+        self.cus_server ={}
     end    
 	local key_name = ac.server.key2name(name)
-    self.server[key_name] = tonumber(value)
+    self.cus_server[key_name] = tonumber(value)
 end
 
-function player.__index:Map_AddServerValue(key,value)
-    if not self.server then 
-        self.server ={}
-    end    
-    --保存
-    local key_name = ac.server.key2name(key)
-    -- print(key_name,self.server[key_name])
-    self.server[key_name] = (self.server[key_name] or 0 ) + tonumber(value)
-    self:Map_SaveServerValue(key,self.server[key_name])
-end
--- function ac.player.__index:Map_AddServerValue(name, value)
--- 	value = tonumber(value)
--- 	local r = self:Map_GetServerValue(name) + value
--- 	score[name][self.id] = r
-
--- 	local type = '增加'
--- 	if value < 0 then
--- 		type = '减少'
--- 	end
-
--- 	log.debug((type..'RPG积分:[%s][%s] + [%s]'):format(self:get_name(), name, value))
--- 	if has_record then
--- 		write_score(get_key(self) .. "+", name, value)
--- 	else
--- 		write_score(get_key(self), name, value + self:Map_GetServerValue(name))
--- 	end
-
---     if not self.server then 
---         self.server ={}
+-- function player.__index:Map_AddServerValue(key,value)
+--     if not self.cus_server then 
+--         self.cus_server ={}
 --     end    
 --     --保存
---     local key_name = ac.server.key2name(name)
---     self.server[key_name] = r
+--     local key_name = ac.server.key2name(key)
+--     -- print(key_name,self.cus_server[key_name])
+--     self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
+--     self:Map_SaveServerValue(key,self.cus_server[key_name])
 -- end
+--防止回档
+function ac.player.__index:Map_AddServerValue(name, value)
+	value = tonumber(value)
+	local r = self:Map_GetServerValue(name) + value
+	score[name][self.id] = r
+
+	if not self.cus_server then 
+        self.cus_server ={}
+    end    
+    --保存
+    local key_name = ac.server.key2name(name)
+	self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
+	
+	local type = '增加'
+	if value < 0 then
+		type = '减少'
+	end
+
+	log.debug((type..'RPG积分:[%s][%s] + [%s]'):format(self:get_name(), name, value))
+	if has_record then
+		write_score(get_key(self) .. "+", name, value)
+	else
+		write_score(get_key(self), name, r)
+	end
+end
 
 --玩家 清空服务器数据 (自定义服务器)
 function ac.player.__index:clear_server(...)
@@ -233,7 +234,7 @@ end
 --获取玩家地图等级
 function ac.player.__index:Map_GetMapLevel()
 	local handle = self.handle
-	local level =self.server and self.server['地图等级'] > 0 and self.server['地图等级'] or 1 
+	local level =self.cus_server and self.cus_server['地图等级'] > 0 and self.cus_server['地图等级'] or 1 
 	level = level + (self['局内地图等级'] or 0)
 	if not ac.flag_use_mall then 
 		level = 1
@@ -254,7 +255,12 @@ ac.loop(time * 1000,function()
 			p:AddServerValue('exp',time) --自定义服务器
 			-- p:Map_AddServerValue('exp',60) 
 			local exp = p.cus_server and p.cus_server['地图经验'] or 0 
-            p:Map_SaveServerValue('level',math.floor(math.sqrt(exp/3600)+1)) --当前地图等级=开方（经验值/3600）+1
+			local new_level = math.floor(math.sqrt(exp/3600)+1)
+			local old_level = p.cus_server['地图等级'] or 1
+			if new_level >= old_level then 
+				p:Map_SaveServerValue('level',new_level) --当前地图等级=开方（经验值/3600）+1
+				p:Map_SaveServerValue('exp',math.floor(exp/3600)) --当前地图等级=开方（经验值/3600）+1
+			end
         end
     end
 end)

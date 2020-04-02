@@ -99,3 +99,54 @@ function mt:on_cast_start()
     if p.flag_tsjx then return end 
     p.revive_point = ac.rect.j_rect('zxzw'):get_point()
 end
+
+local mt = ac.skill['兑换-神奇的令牌']
+mt{
+    store_name = '兑换神奇的令牌',
+    all_attr = 500000000,
+    item_type = '神符',
+    art = [[lingpai.blp]],
+    tip=[[消耗5亿全属性兑换一个神奇的令牌，
+
+    |cff00ff00可用于幸运转盘中抽取各种稀有存档道具
+    
+    |cffcccccc每局兑换上限受游戏难度影响]]
+}
+function mt:on_cast_start()
+    local hero = self.owner
+    local p = hero:get_owner()
+    hero = p.hero 
+    local min_allattr = math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
+    p.dh_sqlp = p.dh_sqlp or 0 
+
+    if p.dh_sqlp >= (2 + ac.g_game_degree_attr) then 
+        p:sendMsg('兑换达上限',5)
+        return 
+    end
+    if min_allattr > self.all_attr then 
+        p.dh_sqlp = p.dh_sqlp + 1
+        hero:add_item('神奇的令牌')
+        hero:add('全属性',-self.all_attr)
+        p:sendMsg('恭喜兑换成功',5)
+    else
+        p:sendMsg('属性不够兑换',5)
+    end
+end
+
+--游戏30分钟 添加神器五分钟商品
+-- ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    -- if not finds(creep.name,'刷怪1') then
+    --     return
+    -- end  
+    -- if index ~= 10 then 
+    --     return 
+    -- end
+ac.game:event '游戏-开始'(function(trg) 
+    --可能异步
+    for handle,shop in pairs(ac.shop.unit_list) do 
+        if shop.name == '庄周' then 
+            shop:add_sell_item('兑换-神奇的令牌')
+        end
+    end
+
+end)

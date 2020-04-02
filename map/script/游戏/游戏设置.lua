@@ -11,12 +11,26 @@ local fogmodifier = require 'types.fogmodifier'
 
 --游戏时长 
 ac.g_game_time = 0 
+local DaysNormalMonth = {[1] = 31, [2] = nil, [3] = 31, [4] = 30, [5] = 31, [6] = 30, [7] = 31, [8] = 31, [9] = 30, [10] = 31, [11] = 30, [12] = 31}
+function getDaysWithMonth(month,year)
+	if month == 2 then
+		if (year%4 == 0 and year % 100 ~= 0) or (year % 100 == 0 and year % 400 == 0) then
+			return 29
+		else
+			return 28
+		end
+	else
+		return DaysNormalMonth[month]
+	end
+end
 
 local ti = ac.loop(1000,function(t)
     --modify by jeff 
     ac.g_game_time = ac.g_game_time + 1
-    local str = os.date("!%H:%M:%S",  ac.g_game_time)
-    -- ranking.ui.date:set_text('游戏时长:'..str)
+	local str = os.date("!%H:%M:%S",  ac.g_game_time)
+	-- print(os.date("!%Y-%m-%d %H:%M:%S",1585755413))
+	-- print(os.date("%Y-%m-%d %H:%M:%S",1585755413)) --北京时间
+
     ac.game.multiboard:set_time(str) --多面板显示
 	-- ac.game.multiboard:set_title()
 	local end_time = 60*60*7.5

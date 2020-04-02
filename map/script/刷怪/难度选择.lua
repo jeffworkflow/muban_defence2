@@ -62,7 +62,7 @@ ac.wait(1200,function()
             t_create_dialog(player,"选择难度",list3,1,function (index,page)  
                 ac.g_game_degree = index + (page-1) * 10
                 ac.g_game_degree_attr = index + (page-1) * 10
-                ac.g_game_degree_name = '无限BOSS-'..list3[ac.g_game_degree].name  
+                ac.g_game_degree_name = list3[ac.g_game_degree].name  
                 --创建预设英雄
                 ac.choose_hero()
                 --游戏-开始

@@ -100,6 +100,10 @@ function mt:add_content()
     if not rand_name then 
         return true
     end  
+    
+    ac.game:event_notify('触发一颗神奇的种子事件',self,self.owner) --发布事件回调
+    --种树熟练度
+    player:Map_AddServerValue('sldzs',1) --网易服务器
     local tran_player = rand_rate < self.rate and ac.player.self or player
     local flag
     local temp_rand_name = rand_name

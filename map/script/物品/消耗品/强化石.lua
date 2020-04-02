@@ -236,6 +236,8 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     hero = player.hero  
     --处理成就
     player:add('锻造次数',1)
+    --打造熟练度
+    player:Map_AddServerValue('slddz',1) --网易服务器
 
     for k,v in sortpairs(temp) do 
         if player:get('锻造次数') == v then 

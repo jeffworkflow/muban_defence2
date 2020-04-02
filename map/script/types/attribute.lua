@@ -169,6 +169,8 @@ local attribute = {
 
 	['韧性'] = true,  --默认表示为% 
 	['韧性极限'] = true,  --默认表示为% 
+
+	['减少复活时间'] = true,  --默认表示为基础 单位秒
 	
 }
 ac.unit.attribute = attribute
@@ -195,6 +197,7 @@ local base_attr =[[
 多重暴击
 杀死进攻怪加木头
 杀怪加生命上限
+减少复活时间
 ]]
 ac.base_attr = base_attr
 
@@ -223,9 +226,6 @@ function mt:add_tran(name, value)
 end	
 --默认or false add('攻速%'，10) 先*再+，若攻速为200，最终值为220
 function mt:add(name, value)
-	if tonumber(value) == 0 then 
-		return 
-	end	
 	local v1, v2 = 0, 0
 	if name:sub(-1, -1) == '%' then
 		v2 = value

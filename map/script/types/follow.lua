@@ -167,9 +167,14 @@ function mt:remove()
 		follow.count = follow.count - 1
 	end
 
+	--modify by jeff 20200401 新增参数 remove_instant 立即移除
 	if self.missile then
-		self.mover:kill()
-		self.mover:removeAllEffects()
+		if self.remove_instant then 
+			self.mover:remove()
+		else
+			self.mover:kill()
+			self.mover:removeAllEffects()
+		end
 	end
 
 	if not self.missile and self.effect then

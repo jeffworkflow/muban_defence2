@@ -54,7 +54,8 @@ function mt:add_content()
     -- print(rand_list,rand_name)  
     if not rand_name then 
         return true
-    end  
+    end 
+    ac.game:event_notify('触发超级扭蛋事件',self,self.owner) --发布事件回调
     local flag
     local temp_rand_name = rand_name
     --先处理属性相关

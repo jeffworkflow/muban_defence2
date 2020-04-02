@@ -7,7 +7,7 @@ mt.remove_target = false
 mt.dead_event = false
 mt.search_area = 600
 mt.ref = 'origin'
-
+mt.pulse = 1
 function mt:on_add()
 	local player = self.target:get_owner()
 	self.old_model = self.target:get_slk 'file'
@@ -70,7 +70,7 @@ function mt:on_add()
 	{
 		skill = self.skill,
 	}
-	-- print('添加水元素',self.time)
+	print('添加水元素',self.time)
 	--设置水元素类型的生命周期
 	-- @目标handle，水元素类型，持续时间
 	jass.UnitApplyTimedLife(self.target.handle,base.string2id('BHwe'),self.time+0.1)
@@ -118,6 +118,9 @@ function mt:on_pulse()
 			local val = v
 			if type(v) == 'function' then 
 				val = v()
+				-- if k =='攻击' then
+				-- 	print('召唤物属性：',k,val)
+				-- end
 				self.target:set(k, val)
 			end	
 		end

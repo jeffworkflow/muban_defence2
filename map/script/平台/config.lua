@@ -66,20 +66,33 @@ local item = {
 
 local cus_key = {
     -- key     名字    奖励  所需值 地图等级 奖励  所需值 地图等级
-    {'cntsb','士兵',{ ['pa'] = {10,5},   ['abc'] = {1,5}} },
-    {'cntqs','骑士'},
-    {'cntzj','主教'},
-    {'cntbl','堡垒'},
-    {'cntgw','国王'},
-    {'cnthh','皇后'},
-    {'cntcq','传奇'},
-    {'cntwglf','万古流芳'},
-    {'cntcfrs','超凡入圣'},
-    {'cntgsyj','冠世一绝'},
-    {'cntcjql','超绝群伦'},
-    {'wxnd','无限难度'},
+    {'cntsb','士兵',{['吕布'] = {1,2}}},
+    {'cntqs','骑士',{['熊灵分裂'] = {2,4}}},
+    {'cntzj','主教',{['梅卡托克'] = {3,6}}},
+    {'cntbl','堡垒',{['爱国者导弹'] = {4,8}}},
+    {'cntgw','国王',{['张飞'] = {5,9}}},
+    {'cnthh','皇后',{['熊灵攻击减甲'] = {6,10}}},
+    {'cntcq','传奇',{['金克丝'] = {7,11}}},
+    {'cntwglf','万古流芳',{['炮台多重射'] = {8,12}}},
+    {'cntcfrs','超凡入圣',{['貂蝉'] = {9,13}}},
+    {'cntgsyj','冠世一绝',{['熊灵粉碎击'] = {10,14}}},
+    {'cntcjql','超绝群伦',{['杰拉米'] = {10,15}}},
 
+    {'timesb','士兵时长'},
+    {'timeqs','骑士时长'},
+    {'timezj','主教时长'},
+    {'timebl','堡垒时长'},
+    {'timegw','国王时长'},
+    {'timehh','皇后时长'},
+    {'timecq','传奇时长'},
+    {'timewglf','万古流芳时长'},
+    {'timecfrs','超凡入圣时长'},
+    {'timegsyj','冠世一绝时长'},
+    {'timecjql','超绝群伦时长'},
+
+    {'wxnd','无限难度'},
     {'cwjn','宠物技能'},
+                             --奖励        所需值 所需地图等级 返回值
     {'cwjnc','宠物纪念册',{ ['宠物纪念册'] = {1,5,value = function(self,p) return p:Map_GetServerValue('cwjnc') end}}},
     {'wsdmt','我是大魔头',{ ['我是大魔头'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('wsdmt')) end}}},
   
@@ -90,6 +103,12 @@ local cus_key = {
     {'ndrs','扭蛋人生',{ ['扭蛋人生'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('ndrs')) end}}},
     {'dutu','du徒',{ ['du徒'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('dutu'))  end}}},
     
+    {'qhzr','强悍之人',{ ['强悍之人'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('qhzr'))  end}}},
+    {'xn','血牛',{ ['血牛'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('xn'))  end}}},
+    {'ycmjbm','一出门就被秒',{ ['一出门就被秒'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('ycmjbm'))  end}}},
+    {'jsmj','绝世魔剑',{ ['绝世魔剑'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('jsmj'))  end}}},
+
+
     {'cdwq','存档武器'},
     {'cdyd','存档腰带'},
     {'cdxz','存档鞋子'},
@@ -97,10 +116,61 @@ local cus_key = {
     {'cdtk','存档头盔'},
     {'cdst','存档手套'},
 
-    {'wbjf','挖宝积分'},
-    {'cntwb','挖宝'},
-    {'today_cntwb','今日挖宝'},
-    {'today_cntwbrank','今日挖宝排名'},
+    {'sldwb','挖宝熟练度',{
+            --奖励  所需值 地图等级
+            ['东皇钟'] = {3000,3},
+            ['轩辕剑'] = {9000,6},
+            ['缚妖索'] = {18000,9},
+            ['青莲宝色旗'] = {30000,12},
+            ['莫邪宝剑'] = {45000,15},
+            ['盘古斧'] = {63000,18},
+            ['招妖幡'] = {84000,21},
+            ['昊天塔'] = {108000,24},
+            ['太极符印'] = {135000,27},
+            ['崆峒印'] = {165000,30},
+        }
+    },
+
+    {'sldks','看书熟练度',{
+            --奖励  所需值 地图等级
+            ['血雾领域'] = {1000,1},
+            ['龙腾领域'] = {6000,4},
+            ['迦蓝领域'] = {14000,7},
+            ['极寒领域'] = {25000,10},
+            ['黄龙天翔领域'] = {39000,13},
+            ['焚魂镇妖领域'] = {56000,16},
+            ['真武青焰领域'] = {76000,19},
+            ['琉光十色领域'] = {99000,22},
+            ['孤风青龙领域'] = {125000,25},
+            ['远影苍龙领域'] = {154000,28},
+        }
+    },
+    {'slddz','打造熟练度',{
+        --奖励  所需值 地图等级
+            ['熔炉炎刀'] = {2000,2},
+            ['冰莲穿山剑'] = {7500,5},
+        }
+    },
+    {'sldzs','种树熟练度',{
+        --奖励  所需值 地图等级
+            ['热血青年'] = {2000,2},
+            ['逆天改命'] = {7500,5},
+        }
+    },
+    {'sldbp','白嫖熟练度',{
+        --奖励  所需值 地图等级
+            ['风速狗'] = {2000,2},
+            ['兜兜猪'] = {7500,5},
+        }
+    },
+    {'sldytz','摇骰子熟练度',{
+        --奖励  所需值 地图等级
+            ['热血青年'] = {2000,2},
+            ['逆天改命'] = {7500,5},
+        }
+    },
+
+
 
     {'fty','番天印',{ ['番天印'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('fty')) end}}},
     {'zjzt','战舰之舵',{ ['战舰之舵'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('zjzt')) end}}},
@@ -113,8 +183,18 @@ local cus_key = {
     {'yzzx','宇宙之心',{ ['宇宙之心'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('yzzx')) end}}},
     {'tcslg','太初锁灵鼓',{ ['太初锁灵鼓'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('tcslg')) end}}},
 
+    --自定义服务器用到的内容
+    {'cntwb','挖宝'},
+    {'today_cntwb','今日挖宝'},
+    {'today_cntwbrank','今日挖宝排名'},
 
-
+    {'qd','签到',{
+        --奖励  所需值 地图等级
+            ['签到'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*20,(p.cus_server['签到'] or 0)) end},
+            ['开始签到'] = {2,1},
+            ['每日一签'] = {5,3},
+        }
+    },
 }
 
 --11存档信息

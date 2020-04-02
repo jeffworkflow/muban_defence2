@@ -55,6 +55,6 @@ ac.wait(100,function ()
         jass.SetDayNightModels(([[Environment\DNC\DNC%s\DNC%sTerrain\DNC%sTerrain.mdx]]):format(name, name, name), ([[Environment\DNC\DNC%s\DNC%sUnit\DNC%sUnit.mdx]]):format(name, name, name))
     end
     -- light(3)
-    
+    print('游戏开始时间：',ac.player(1):Map_GetGameStartTime())
     ac.player(16):setColor(7)    
 end);

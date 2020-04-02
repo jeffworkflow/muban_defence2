@@ -54,7 +54,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
 		ac.timer_ex
         {
-            time = 300,
+            time = 120,
             title = "游戏结束倒计时",
             func = function ()
                 EndGame(true)
@@ -66,7 +66,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		ac.player.self:sendMsg("【游戏失败】")
 		ac.player.self:sendMsg("【游戏失败】")
 		ac.player.self:sendMsg("【游戏失败】")
-		ac.wait(30*1000,function()
+		ac.wait(120*1000,function()
 			EndGame(true)
 		end)
 	end	

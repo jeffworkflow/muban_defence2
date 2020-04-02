@@ -104,6 +104,21 @@ function mt:print_item()
 	end	
 	print(str)	
 end	
+
+function mt:get_nil_slot()
+	if not self.sell_item_list then 
+		self.sell_item_list = {}
+	end	
+	local slot 
+	for i=1,12 do
+		local items = self.sell_item_list[i]
+		if not items then
+			slot = i
+			break 
+		end
+	end
+	return slot
+end
 --添加商品
 function mt:add_sell_item(name,i)
 	-- local data = ac.table.ItemData[name]
@@ -117,7 +132,7 @@ function mt:add_sell_item(name,i)
 	if not name or name =='' then 
 		return 
 	end	
-
+	local i = i or self:get_nil_slot()
 	local item = ac.item.create(name,i,seller)
 	if not item then 
 		return 
@@ -127,18 +142,6 @@ function mt:add_sell_item(name,i)
 	-- item:set_store_title('                   '..self:get_name())
 	item:set_store_title(item.store_name)
 	--每秒刷新商店介绍
-	--选择英雄时，如果是重复用同一套 ability，技能描述会再被刷新为最后一次添加的描述
-	--改为 刷新 当前选择的单位的tip
-	-- if item.auto_fresh_tip then
-	-- 	ac.loop(1000, function(t)
-	-- 		if item.removed then
-	-- 			t:remove()
-	-- 			return
-	-- 		end
-	-- 		--设置tip
-	-- 		item:set_tip(item:get_tip())
-	-- 	end)
-	-- end
 	if not self.sell_item_list then 
 		self.sell_item_list = {}
 	end	

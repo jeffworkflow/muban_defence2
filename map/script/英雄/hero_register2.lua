@@ -9,15 +9,14 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
     local id = player.id - 1
 	ac.player.force[1][id]:disableControl(ac.player[16])
 
-	--多面板
-	-- print(ac.game.multiboard,ac.game.multiboard.player_init)
-	-- ac.game.multiboard:player_init(player,hero)
-	--复活时间
-	local time = 8
-	ac.revive_time = time
+	--复活时间 减少复活时间 
+	hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))
 	
 	hero:event '单位-死亡' (function()
 		local p = hero.owner
+		--复活时间 减少复活时间 
+		hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))
+		local time = hero.revive_time
 		ac.timer_ex
 		{
 			time = time,
@@ -38,6 +37,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 				hero:revive(random_point)
 			end	
 		end)
+		p.cnt_death = (p.cnt_death or 0) + 1
 		--文字提醒
 		ac.player.self:sendMsg('|cffffe799【系统消息】|r |cffff0000'..hero:get_owner():get_name()..' |cff00ff00已阵亡 等待复活中',5)
 	end)

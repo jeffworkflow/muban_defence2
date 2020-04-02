@@ -319,6 +319,11 @@ ac.wait(100,function()
             mt{
                 item_type_tip = '', 
                 content_tip = '',
+                skill_type = '存档物品',
+                tip = ac.table.ItemData[name].tip,
+                art = ac.table.ItemData[name].art,
+                color_name = '|cff'..ac.color_code[ac.table.ItemData[name].color or '白']..ac.table.ItemData[name].title..'|r',
+                need_map_level = ac.table.ItemData[name].need_map_level,
                 map_level_tip = function(self)
 
                     if not self.owner then 

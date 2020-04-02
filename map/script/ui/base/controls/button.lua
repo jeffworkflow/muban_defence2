@@ -13,6 +13,10 @@ class.button = extends(class.panel){
 
     normal_image = '', -- 按钮背景图片
 
+    hover_image = '', --进入时的图像
+
+    active_image = '', --左键按下激活时的图像
+
 --private
     _type   = 'button',  --fdf 中的模板类型
 
@@ -89,6 +93,8 @@ class.button = extends(class.panel){
                 self:set_relative_size(self.relative_size or 1)
                 self:set_position(self.x - (self.w - w) / 2 ,self.y - (self.h - h) / 2)
             end
+
+            
         end 
 
         function self:on_button_mouse_leave()
@@ -100,6 +106,7 @@ class.button = extends(class.panel){
                 self:set_position(self.x - (self.w - w) / 2 ,self.y - (self.h - h) / 2)
                 self._is_ani = false
             end 
+
             
         end 
 
@@ -107,6 +114,7 @@ class.button = extends(class.panel){
             
             self:on_button_mouse_leave()
         end 
+
         function self:on_button_mouseup()
             local x,y = game.get_mouse_pos()
             if self:point_in_rect(x,y) and self:get_is_show() then 
@@ -228,9 +236,34 @@ class.button = extends(class.panel){
         self.is_move_event = enable
     end,
 
+    --正常状态下的图形
     set_normal_image = function (self,image_path,flag)
         self.normal_image = image_path
         self._panel:set_normal_image(image_path,flag)
+    end,
+
+    --进入时图形
+    set_hover_image = function (self, image_path)
+
+        self.hover_image = image_path
+        if image_path == '' then 
+            image_path = 'Transparent.tga'
+        end 
+        if self.is_enter then
+            self._panel:set_normal_image(image_path)
+        end 
+    end,
+
+    --点击激活时的图像
+    set_active_image = function (self, image_path)
+
+        self.active_image = image_path
+        if image_path == '' then 
+            image_path = 'Transparent.tga'
+        end 
+        if self.is_enter then
+            self._panel:set_normal_image(image_path)
+        end 
     end,
 
     set_control_size = function (self,width,height)
@@ -245,6 +278,12 @@ class.button = extends(class.panel){
         self.alpha = alpha
         self._panel:set_alpha(alpha)
     end,
+
+    set_level = function (self, level)
+        class.panel.set_level(self,level)
+        self._panel:set_level(level)
+    end,
+
 
     __tostring = function (self)
         local str = string.format('按钮 %d',self._id or 0)

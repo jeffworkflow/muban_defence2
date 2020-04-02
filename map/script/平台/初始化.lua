@@ -35,10 +35,25 @@ ac.wait(100,function()
         end
     end
 end)
+--读取签到
+ac.wait(0,function()
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            if player:is_self() then 
+                --获取签到相关的数据
+                player:GetServerValue('qd')
+            end    
+        end
+    end
+end)
+
+
 --初始化2 读取自定义服务器 部分数据
 ac.game:event '游戏-开始' (function()
     for i=1,10 do
         local player = ac.player[i]
+        local p = ac.player[i]
         if player:is_player() then
             if player:is_self() then 
                 local key = ac.server.name2key(ac.g_game_degree_name)
@@ -48,7 +63,7 @@ ac.game:event '游戏-开始' (function()
                 if key then 
                     player:GetServerValue(key)
                 end    
-            end    
+            end
         end
     end
     
@@ -133,6 +148,10 @@ for i=1,10 do
                 if tab[3] then 
                     for name,data in sortpairs(tab[3]) do 
                         local has_item = player:Map_GetServerValue(key) >= data[1] and 1 
+                        --如果自定义服务器有值，以自定义服务器为准
+                        if player.cus_server and player.cus_server[key_name] then 
+                            has_item = player.cus_server[key_name] >= data[1] and 1 
+                        end
                         local map_level= data[2] or 0
                         local val = 1
                         if data.value then 
@@ -173,7 +192,49 @@ for i=1,10 do
     end
 end
 
+--处理通关难度
 
+--注册 保存青铜，王者等星数
+ac.game:event '游戏-结束' (function(trg,flag)
+    if not flag then 
+        return 
+    end         
+
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            --无限难度相关
+            local key = ac.server.name2key('无限难度')
+            if ac.g_game_degree > (player.server['无限难度'] or 0) then
+                player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
+            end 
+
+            --保存星数
+            local name = ac.g_game_degree_name
+            local key = ac.server.name2key(name)
+            -- if player:Map_GetMapLevel() >=3 then 
+                player:AddServerValue(key,1)  -- 自定义服务器
+            -- end    
+            -- print(name,key)
+            player:Map_AddServerValue(key,1) --网易服务器
+            player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
+
+            --保存游戏时长 只保存自定义服务器
+            local name = name..'时长'
+            local key = ac.server.name2key(name)
+            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 99999999)
+            --游戏时长 < 存档时间 
+            if os.difftime(cus_value,ac.g_game_time) > 0 then 
+                -- if player:Map_GetMapLevel() >=3 then 
+                    player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                -- end    
+            end    
+            --文字提醒
+            local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
+            player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')  
+        end
+    end
+end)    
 
 
 

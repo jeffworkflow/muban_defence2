@@ -103,7 +103,7 @@ ui.world_to_screen = game.world_to_screen
 
 ui.screen_to_world = game.screen_to_world
 
---将lua表编码成字符串
+--将lua表编码成字符串 有改动过
 ui.encode = function (tbl)
     local type = type
     local pairs = pairs
@@ -136,7 +136,7 @@ ui.encode = function (tbl)
                     buf[#buf+1] = format('[%s]=', k)
                 end 
             elseif tp == 'string' then
-                if find(k, '[^%w_]') then
+                if find(k, '[^%w_]') or find(k,'[%d*]')  then
                     buf[#buf+1] = format('[%q]=', k)
                 else
                     buf[#buf+1] = k..'='

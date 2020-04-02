@@ -199,6 +199,8 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     hero = player.hero  
     --处理成就
     player:add('扭蛋次数',1)
+    --白嫖熟练度
+    player:Map_AddServerValue('sldbp',1) --网易服务器
 
     for k,v in sortpairs(temp) do 
         if player:get('扭蛋次数') == v then 

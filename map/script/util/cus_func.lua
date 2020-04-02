@@ -204,3 +204,60 @@ function table.maxnum(tab)
 	end
 	return max_cnt
 end
+
+--计算两个时间戳的日期差
+--长时间 短时间 返回类型 year month day hour min sec
+function timediff(long_time,short_time,return_type)  
+	local return_type = return_type or 'day'
+	local otab = os.date("*t", short_time)
+	local ntab = os.date("*t", long_time)
+
+	local temp = {1,12,30}
+	local res = 0 
+	for i,name in ipairs({'year','month'}) do 
+		res = res * temp[i] + (ntab[name] - otab[name]) 
+		if name == return_type then 
+			return res
+		end
+	end
+	if return_type =='day' then 
+		local n_day 
+		local days = 0
+		for i = 1, res do 
+			local t_m = otab.month  + (i-1)
+			local t_y = otab.year + math.modf((t_m-1)/12) 
+			t_m = t_m % 12 == 0 and 12 or t_m % 12
+			days = days + getDaysWithMonth(t_m,t_y)
+		end
+		res = days + ntab['day'] - otab['day']
+		return res
+	end
+	--处理 小时、分钟、秒
+	local temp = {24,60,60}
+	for i,name in ipairs({'hour','min','sec'}) do 
+		res = res * temp[i] + (ntab[name] - otab[name]) 
+		if name == return_type then 
+			return res
+		end
+	end
+	return 
+end  
+
+--字符串转为时间戳 仅支持 2019-01-01 23:00:00
+function string2time(strDate)
+	local _, _, y, m, d, _hour, _min, _sec = string.find(strDate, "(%d+)[/-](%d+)[/-](%d+)%s*(%d+):(%d+):(%d+)")
+	local timestamp = os.time({year=y, month = m, day = d, hour = _hour, min = _min, sec = _sec});
+	return timestamp 
+end
+
+--时间戳 转为 2019-01-01 23:00:00
+function time2string(strDate)
+	return os.date("%Y-%m-%d %H:%M:%S",strDate)
+end
+--测试 
+-- for i=1,10000 do 
+-- 	local wl_ux = os.time() + i*3600*2
+-- 	local now = os.date("%Y-%m-%d %H:%M:%S",os.time())
+-- 	local wl = os.date("%Y-%m-%d %H:%M:%S",os.time() + i*3600*2)
+-- 	print(wl,now,timediff(wl_ux,os.time(),'day'))	
+-- end

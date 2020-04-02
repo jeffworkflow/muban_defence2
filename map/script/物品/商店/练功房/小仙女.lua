@@ -84,6 +84,18 @@ function mt:damage_start(damage)
         follow = true,
         search_area = 500, --搜敌路径
     }
+
+    --存档加成 
+    if p.hero:find_skill('熊灵分裂',nil) then 
+        u:add_skill('熊灵分裂1','英雄')
+    end
+    if p.hero:find_skill('熊灵攻击减甲',nil) then 
+        u:add_skill('熊灵攻击减甲1','英雄')
+    end
+    if p.hero:find_skill('熊灵粉碎击',nil) then 
+        u:add_skill('熊灵粉碎击1','英雄')
+    end
+    
 end    
 
 

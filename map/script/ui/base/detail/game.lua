@@ -59,12 +59,15 @@ end
 local function game_event_callback(name,...)
 
     local hash_table = {}
+    local ret = false 
     for index,event_table in ipairs(game_event) do
         local func = event_table[name]
         if func ~= nil then 
-            func(...)
+            ret = ret or func(...)
         end 
     end
+
+    return ret
 end
 
 --同步队列
@@ -173,7 +176,13 @@ base = {
         left_is_down = true
 
         if button ~= nil then
+            button.is_down = true
+            if button.active_image and button.active_image ~= '' then
+                button:set_active_image(button.active_image)
+            end
+            
             button:event_notify('on_button_mousedown')
+            
             table.insert(left_button_list,button)
 
             if button.is_drag == true then 
@@ -187,11 +196,19 @@ base = {
 
                         local x = japi.GetMouseVectorX() / 1024 * 1920
                         local y = (-(japi.GetMouseVectorY() - 768)) / 768 * 1080
-                        x = x - button.w / 2
-                        y = y - button.h / 2
-                        texture = class.texture.create(button.normal_image,x,y,width,height)
+                        texture = class.texture:builder
+                        {
+                            parent_id = second_ui,
+                            x = x - button.w / 2,
+                            y = y - button.h / 2,
+                            w = width,
+                            h = height,
+                            normal_image = button.normal_image,
+                            alpha = 0.8,
+                        }
                         texture.button = button
-                        texture:set_alpha(100)
+                        --button:set_position(x,y)
+
                         button:event_notify('on_button_begin_drag')
                     end
                 end)
@@ -199,7 +216,18 @@ base = {
             end
         end
 
-        game_event_callback('on_mouse_down') 
+        local ret = game_event_callback('on_mouse_down')
+        local handle = japi.GetTargetObject()
+        local type = get_handle_type(handle)
+        
+        if type == 1 then 
+            ret = game_event_callback('on_item_mouse_down',handle) or ret
+        elseif type == 2 then 
+            ret = game_event_callback('on_unit_mouse_down',handle) or ret
+        end
+
+        
+        return ret 
     end,
 
     on_mouse_up = function ()
@@ -217,6 +245,13 @@ base = {
             texture = nil
         end 
         for index,object in ipairs(left_button_list) do
+            object.is_down = nil
+            if object.is_enter and object.hover_image and object.hover_image ~= '' then
+                object:set_hover_image(object.hover_image)
+            else
+                object:set_normal_image(object.normal_image)
+            end
+
             if object ~= button then 
                 object:event_notify('on_button_mouseup')
             else
@@ -233,15 +268,20 @@ base = {
         end
         left_button_list = {}
 
+        local ret = game_event_callback('on_mouse_up')
+
         local handle = japi.GetTargetObject()
         local type = get_handle_type(handle)
+
         if type == 1 then 
-            game_event_callback('on_item_clicked',handle)
+            ret = game_event_callback('on_item_mouse_up',handle) or ret
+            ret = game_event_callback('on_item_clicked',handle) or ret
         elseif type == 2 then 
-            game_event_callback('on_unit_clicked',handle)
+            ret = game_event_callback('on_unit_mouse_up',handle) or ret
+            ret = game_event_callback('on_unit_clicked',handle) or ret
         end
 
-        game_event_callback('on_mouse_up') 
+        return ret 
     end,
 
     on_mouse_right_down = function ()
@@ -255,6 +295,7 @@ base = {
             table.insert(right_button_list,button)
         end 
 
+        return game_event_callback('on_mouse_right_down')
     end,
 
     on_mouse_right_up = function ()
@@ -273,14 +314,17 @@ base = {
         end
         right_button_list = {}
 
+        local ret 
+
         local handle = japi.GetTargetObject()
         local type = get_handle_type(handle)
         if type == 1 then 
-            game_event_callback('on_item_right_clicked',handle)
+            ret = game_event_callback('on_item_right_clicked',handle) or ret
         elseif type == 2 then 
-            game_event_callback('on_unit_right_clicked',handle)
+            ret = game_event_callback('on_unit_right_clicked',handle) or ret
         end
-
+        ret = game_event_callback('on_mouse_right_up') or ret 
+        return ret
     end,
 
     on_mouse_move = function ()
@@ -322,18 +366,31 @@ base = {
             local button = button_leave_event_list[i]
             button:event_notify('on_button_mouse_leave')
             table.remove(button_leave_event_list, i)
+
+            if button.is_down and button.active_image and button.active_image ~= '' then
+                button:set_active_image(button.active_image)
+            else
+                button:set_normal_image(button.normal_image)
+            end 
         end
 
         for i = #button_enter_event_list, 1, -1 do
             local button = button_enter_event_list[i]
             button:event_notify('on_button_mouse_enter')
             table.remove(button_enter_event_list, i)
+
+            if button.hover_image and button.hover_image ~= '' then
+                button:set_hover_image(button.hover_image)
+            else
+                button:set_normal_image(button.normal_image)
+            end 
         end 
 
+        game_event_callback('on_mouse_move')
     end,
 
     on_mouse_wheeldelta = function ()
-        game_event_callback('on_mouse_wheeldelta',japi.GetWheelDelta() > 0)
+        
 
         local x = japi.GetMouseVectorX() / 1024
         local y = (-(japi.GetMouseVectorY() - 768)) / 768 
@@ -343,7 +400,7 @@ base = {
         for id,panel in pairs(class.panel.object_map) do
             local ox,oy = panel:get_real_position()
         
-            if panel.enable_scroll 
+            if panel.is_scroll 
             and x >= ox and  y >= oy 
             and x <= ox + panel.w and y <= oy + panel.h 
             then
@@ -364,50 +421,49 @@ base = {
                 
             end 
         end 
+
+        return game_event_callback('on_mouse_wheeldelta',japi.GetWheelDelta() > 0)
     end,
 
     on_key_down = function ()
         local code = japi.GetTriggerKey()
         local str = KEY_STR[code]
-        game_event_callback('on_key_down', code) 
+        
 
-        if str == nil then 
-            return 
+        if str then 
+            for id,button in pairs(class.button.button_map) do
+                if button.is_enable and button.keys and button:get_is_show() then
+                    for index, key in ipairs(button.keys) do 
+                        if key == str then 
+                            button:event_notify('on_button_key_down', str)
+                            break
+                        end 
+                    end 
+                end
+            end
         end 
 
-        for id,button in pairs(class.button.button_map) do
-            if button.is_enable and button.keys and button:get_is_show() then
-                for index, key in ipairs(button.keys) do 
-                    if key == str then 
-                        button:event_notify('on_button_key_down', str)
-                        break
-                    end 
-                end 
-            end
-        end
+       return game_event_callback('on_key_down', code) 
     end,
 
     on_key_up = function ()
         local code = japi.GetTriggerKey()
         local str = KEY_STR[code]
-
-        game_event_callback('on_key_up',code)
-
-        if str == nil then 
-            return 
+        
+        if str then 
+            for id,button in pairs(class.button.button_map) do
+                if button.is_enable and button.keys and button:get_is_show() then
+                    for index, key in ipairs(button.keys) do 
+                        if key == str then 
+                            button:event_notify('on_button_key_up', str)
+                            break
+                        end 
+                    end 
+                end
+            end 
         end 
 
-        for id,button in pairs(class.button.button_map) do
-            if button.is_enable and button.keys and button:get_is_show() then
-                for index, key in ipairs(button.keys) do 
-                    if key == str then 
-                        button:event_notify('on_button_key_up', str)
-                        break
-                    end 
-                end 
-            end
-        end
-
+        return game_event_callback('on_key_up',code)
     end,
 
     --指向物品事件
@@ -449,34 +505,49 @@ base = {
         base.on_mouse_move()
         game_event_callback('on_update', delta)
 
+        local center = ac.player.self:getCamera()
+
         for control in pairs(world_controls) do 
             local unit = control.world_unit 
             local x, y, z 
             if unit then 
                 if unit.removed then
-                    control:destroy()
+                    if control.world_auto_remove then 
+                        control:destroy()
+                    else 
+                        control:hide()
+                    end
                     goto continue
                 else 
-                    if (not unit:is_alive()) or unit:has_restriction '隐藏' then 
+                    if  unit.hide_life_bar or not unit:is_alive() or unit:has_restriction '隐藏' or not unit:is_visible(ac.player.self) then 
                         control:hide()
                         goto continue
                     else 
-                        x, y, z = unit:get_point():get()
+                        local p = unit:get_point()
+                        if center * p > 4000 then 
+                            control:hide()
+                            goto continue
+                        end 
+                        x, y = p:get()
+                        z = p:getZ()
                         z = z + unit:get_high()
                         z = z + message.unit_overhead(unit.handle)
                     end 
                 end 
             else 
-                x, y, z = control.x, control.y, control.z
+                x, y, z = control.world_x, control.world_y, control.world_z
             end 
             local screen_x, screen_y, scale = game.world_to_screen(x, y, z)
             
-            if screen_x == nil or screen_x < 0 or screen_y < 32 or screen_x > 1920 or screen_y > 820 then 
+            if screen_x == nil or screen_x < 0 or screen_y < 32 or screen_x > 1920 or screen_y > 1080 then 
                 control:hide()
             else 
                 control:show()
-                control:set_position(screen_x - control.w / 2, screen_y - control.h / 2)
-                control:set_relative_size(scale, true)
+                local x = screen_x - control.w + (control.offect_x or 0)
+                local y = screen_y - control.h + (control.offect_y or 0)
+                control:set_real_position(x, y, control.world_anchor)
+                
+                --control:set_relative_size(scale, false)
             end 
 
             ::continue::
@@ -508,8 +579,10 @@ local event = {
 --窗口消息事件
 function WindowEventCallBack(event_id)
     if event[event_id] ~= nil then 
-        xpcall(event[event_id],error_handle)
+        local bool, ret = xpcall(event[event_id],error_handle)
+        return ret
     end 
+    return false
 end
 
 

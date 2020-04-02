@@ -27,19 +27,32 @@ ac.game:event '游戏-最终boss' (function(trg)
         ac.final_boss = nil
         ac.final_boss_death = true
         if ac.g_game_degree_attr >= 11 then 
-            -- print(unit:get_point())
-            ac.func_give_suipian(unit:get_point()) --散落碎片
             --无尽开始
             ac.game:event_notify('游戏-无尽开始')
         else    
             --游戏结束
             ac.game:event_notify('游戏-结束',true)
-            --创建神龙
-            local x,y = boss:get_point():get()
-            local shop4 = ac.shop.create('神龙',x,y,270)
         end    
+
+        --隐藏成就 
+        for i=1,10 do 
+            local p = ac.player(i)
+            local hero = p.hero
+            if p:is_player() then 
+                --强悍之人 没有死亡半次
+                if not p.cnt_death or p.cnt_death == 0 then 
+                    ac.active_yccj(p,'强悍之人')
+                end
+                --血牛 
+                if hero:get('生命上限')>= 1000000000 * ac.g_game_degree_attr then 
+                    ac.active_yccj(p,'血牛')
+                end
+                --一出门就被秒
+                if p.cnt_death and p.cnt_death >= 0 then 
+                    ac.active_yccj(p,'一出门就被秒')
+                end
+            end
+        end
     end) ; 
     
 end);    
-
-
