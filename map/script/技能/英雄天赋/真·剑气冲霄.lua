@@ -25,7 +25,7 @@ mt{
   return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*20)* self.level
 end,
 dead_damage = function(self)
-return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*50+10000)* self.level
+return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*20+10000)* self.level
 end,
 	--施法范围
 	area = 500,

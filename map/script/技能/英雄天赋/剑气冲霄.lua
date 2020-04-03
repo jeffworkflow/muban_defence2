@@ -22,10 +22,10 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*75)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10)* self.level
 end,
 dead_damage = function(self)
-return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*75+10000)* self.level
+return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10+10000)* self.level
 end,
 	--施法范围
 	area = 500,

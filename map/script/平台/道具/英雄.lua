@@ -1,6 +1,181 @@
 local japi = require("jass.japi")
 local slk = require 'jass.slk'
 
+local mt = ac.skill['黄盖']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[huanggai.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥5|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加力量】+100*Lv
+【物理伤害加深】+50%
+【每秒回血】+10%
+【护甲】+10%
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（力量*10+10000）*Lv+1%敌人的最大生命值
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+
+--特效
+effect = [[GuanSuoPiFu2.mdx]]
+
+}
+
+local mt = ac.skill['关羽']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[guangong.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加力量】+140*Lv
+【移动速度】+150
+【攻击速度】+100%
+【物理伤害加深】+100%
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人
+【伤害公式】（力量*15+10000）*Lv+1%敌人的最大生命值
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+
+--特效
+effect = [[zsgskin_guanyu_01.mdx]]
+
+}
+
+local mt = ac.skill['堕落天使']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[tianshi.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥15|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【每秒加木头】+5*Lv
+【每秒加魔丸】+5*Lv
+【物品获取率】+100%
+【减少周围护甲】+1000
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（智力*20+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+
+--特效
+effect = [[avengingangel.mdx]]
+
+}
+
+local mt = ac.skill['加百列']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[ReplaceableTextures\CommandButtons\BTNMarine.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥20|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加敏捷】+240*Lv
+【攻击速度】+50%
+【攻击减甲】+250
+【多重射】+2
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*30+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+--特效
+effect = [[ArchAngelngelGabriel.mdx]]
+}
+
+
+local mt = ac.skill['王昭君']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[wzj.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥25|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加智力】+280*Lv
+【智力】+20%
+【技能伤害加深】+200%
+【强大的冰盾系统】
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（智力*35+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+--特效
+effect = [[Npc_18.mdx]]
+}
+
+local mt = ac.skill['雅典娜']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[ydn.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥30|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加敏捷】+320*Lv
+【移动速度】+200
+【物理伤害加深】+500%
+【全伤加深】+50%
+【强大的永生系统】
+
+|cff00ffff【被动效果】攻击10%几率造成多次突袭伤害
+【伤害公式】（敏捷*40+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+--特效
+effect = [[hero_hc04.mdx]]
+}
+
+
 local mt = ac.skill['Pa']
 mt{
 is_skill = 1,
@@ -452,50 +627,50 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-local mt = ac.skill['关羽']
-mt{
-is_skill = 1,
-item_type ='神符',
---商店品
-store_name = '挑战 关羽',
---等级
-level = 0,
---图标
-art = [[guanyu.blp]],
---说明
-tip = [[
+-- local mt = ac.skill['关羽']
+-- mt{
+-- is_skill = 1,
+-- item_type ='神符',
+-- --商店品
+-- store_name = '挑战 关羽',
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[guanyu.blp]],
+-- --说明
+-- tip = [[
 
-|cffffe799【获得方式】：|r
-|cffff0000达到最强王者15星 且 地图等级≥10|r
+-- |cffffe799【获得方式】：|r
+-- |cffff0000达到最强王者15星 且 地图等级≥10|r
 
-|cffFFE799【天赋属性】：|r
-|cffffff00【杀怪加全属性】+188*Lv
-【杀敌数加成】+75%
-【物品获取率】+75%
-【木头加成】+75%
-【魔丸加成】+75%|r
+-- |cffFFE799【天赋属性】：|r
+-- |cffffff00【杀怪加全属性】+188*Lv
+-- 【杀敌数加成】+75%
+-- 【物品获取率】+75%
+-- 【木头加成】+75%
+-- 【魔丸加成】+75%|r
 
-|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(全属性*10+1w)*Lv
+-- |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+-- 【伤害公式】(全属性*10+1w)*Lv
 
-|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
-]],
-need_map_level = 3,
-skin_cnt = function(self)
-    local p = ac.player.self
-    return p.server[self.name..'碎片'] or 0
-end,
---所需激活碎片
-need_sp_cnt = 50,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
--- ['杀怪加攻击'] = 750,
--- ['暴击几率'] = 5,
--- ['技暴几率'] = 5,
--- ['全伤加深'] = 5,
---特效
-effect = [[chibang7.mdx]]
-}
+-- |cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+-- ]],
+-- need_map_level = 3,
+-- skin_cnt = function(self)
+--     local p = ac.player.self
+--     return p.server[self.name..'碎片'] or 0
+-- end,
+-- --所需激活碎片
+-- need_sp_cnt = 50,
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- -- ['杀怪加攻击'] = 750,
+-- -- ['暴击几率'] = 5,
+-- -- ['技暴几率'] = 5,
+-- -- ['全伤加深'] = 5,
+-- --特效
+-- effect = [[chibang7.mdx]]
+-- }
 
 
 local mt = ac.skill['关公']
@@ -529,67 +704,7 @@ tip = [[
 effect = [[chibang7.mdx]]
 }
 
-local mt = ac.skill['加百列']
-mt{
-is_skill = 1,
-item_type ='神符',
---等级
-level = 0,
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNMarine.blp]],
---说明
-tip = [[
 
-|cffffe799【获得方式】：|r
-|cffff0000地图等级≥42|r
-
-|cffFFE799【天赋属性】：|r
-|cffffff00【杀怪加全属性】+488*Lv
-【敏捷】+50%
-【攻击减甲】+350
-【攻击速度】+150%
-【攻击间隔】-0.2
-【攻击距离】+100|r
-
-|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(全属性*35+1w)*Lv
-
-|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
-]],
---特效
-effect = [[ArchAngelngelGabriel.mdx]]
-}
-
-
-local mt = ac.skill['王昭君']
-mt{
-is_skill = 1,
---等级
-level = 0,
---图标
-art = [[wzj.blp]],
---说明
-tip = [[
-
-|cffffe799【获得方式】：|r
-|cffff0000特殊活动获得 且 地图等级≥30|r
-
-|cffFFE799【天赋属性】：|r
-|cffffff00【杀怪加全属性】+488*Lv
-【智力】+50%
-【触发概率加成】+35%
-【技能冷却】+10%
-【技暴伤害】+250%
-【技能伤害加深】+250%|r
-
-|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(全属性*35+1w)*Lv
-
-|cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r
-]],
---特效
-effect = [[Npc_18.mdx]]
-}
 
 local mt = ac.skill['魔化的小龙女']
 mt{
@@ -610,35 +725,7 @@ tip = [[
 effect = [[hero_hs01.mdx]]
 }
 
-local mt = ac.skill['雅典娜']
-mt{
-is_skill = 1,
---等级
-level = 0,
---图标
-art = [[ydn.blp]],
---说明
-tip = [[
 
-|cffffe799【获得方式】：|r
-|cffff0000特殊活动获得 且 地图等级≥30|r
-
-|cffFFE799【天赋属性】：|r
-|cffffff00【杀怪加全属性】+488*Lv
-【敏捷】+50%
-【暴击伤害】+250%
-【物理伤害加深】+250%
-【会心伤害】+100%
-【对BOSS额外伤害】+50%|r
-
-|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(全属性*35+1w)*Lv
-
-|cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r
-]],
---特效
-effect = [[hero_hc04.mdx]]
-}
 
 local mt = ac.skill['不朽剑圣']
 mt{

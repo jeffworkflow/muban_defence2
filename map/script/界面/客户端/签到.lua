@@ -26,7 +26,7 @@ local new_ui = class.panel:builder
             --未签到
             if timediff(start_time,p.qd_time or 0) > 0 then 
                 p:AddServerValue('qd',1) --签到天数+1 自定义服务器
-                p:sendMsg('恭喜签到成功',5)
+                p:sendMsg('|cffffe799【系统消息】|r|cff00ff00签到成功，恭喜获得|cffff0000【可存档属性】每秒加全属性+X|cff00ff00可在最强魔灵-签到系统中查看',5)
                 --发起同步
                 local info = {
                     type = 'qd',
@@ -58,7 +58,7 @@ local event = {
         player.server['签到'] = val
 
         player.qd_time = player:Map_GetGameStartTime()
-        print('点击后，签到次数：',player.cus_server['签到'])
+        print('|cff00ff00点击进行本日签到，当前累计签到次数：',player.cus_server['签到'])
     end,
 }
 ui.register_event('qd',event)

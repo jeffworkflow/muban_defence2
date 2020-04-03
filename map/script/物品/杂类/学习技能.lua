@@ -80,8 +80,9 @@ function mt:on_cast_shot()
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','八个技能的男人')
                 player.is_show_nickname = '八个技能的男人'
                 --给全部玩家发送消息
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r获得成就|cffff0000 "八个技能的男人" |r 奖励 |cffff0000100w全属性，15%魔丸加成|r |cff00ff00 Ps:技能可替换，继续点击要学习的技能就行|r',20)
-       
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r获得成就|cffff0000 "八个技能的男人" |r 奖励 |cffff0000100w全属性，15%魔丸加成|r |cff00ff00 Ps:当技能超过八个时，点击新的技能书|cffffff00可替换|cff00ff00身上的技能，且|cffffff00技能等级可被继承|r',5)
+                ac.player.self:sendMsg('|cff00ff00 Ps:当技能超过八个时，点击新的技能书|cffffff00可替换|cff00ff00身上的技能，且|cffffff00技能等级可被继承|r',5)
+                ac.player.self:sendMsg('|cff00ff00 Ps:当技能超过八个时，点击新的技能书|cffffff00可替换|cff00ff00身上的技能，且|cffffff00技能等级可被继承|r',5)
             end
             
 

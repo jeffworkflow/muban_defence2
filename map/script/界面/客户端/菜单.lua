@@ -20,7 +20,7 @@ class.screen_button = extends(class.button){
             self.tx_name:set_text(str)
             if total_time == 0  then
                 --发送文字
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r游戏开局已过5分钟 |cff00ffff所有玩家|r获得|cffff0000可存档属性攻击减甲+1|r 按F4可查看全部存档属性')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r游戏开局已过5分钟 |cff00ffff所有玩家|r获得一个|cffff0000神奇的令牌|r 请查看英雄的背包栏')
                 for i=1,10 do 
                     local p = ac.player(i)
                     if p:is_player() then 
@@ -45,7 +45,7 @@ class.screen_button = extends(class.button){
     on_button_mouse_enter = function (self)
         if self.info then 
             if self.info.name == '神奇的令牌' then 
-                self:tooltip('|cffffe799神奇的令牌|r',self.info.tip,-1,300,84)
+                self:tooltip('|cffffe799神奇的令牌|r',self.info.tip,-1,300,94)
 
             else
                 self:tooltip(self.info.name,self.info.tip,0,200,84)
@@ -71,9 +71,9 @@ local ui_info = {
     },
     {
         name = '神奇的令牌',  
-        path = 'wfz.blp',
+        path = 'lingpai.blp',
         -- key = 'F3', 
-        tip = "|cff00ff00开局五分钟自动获得|cffff0000攻击减甲+1 （可存档）|r|n|cffcccccc上限受地图等级影响|r",
+        tip = "|cff00ff00开局五分钟可获得一个|cffff0000神奇的令牌|r|n|n",
         x = 1800,
         y = 638
     },

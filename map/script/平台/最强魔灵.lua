@@ -14,9 +14,25 @@ mt{
 mt.skills = {
     '礼包','签到','地图等级','通关难度',
     '称号','神器','翅膀','领域','坐骑',
-    '法宝','成神','隐藏成就'
+    '法宝','最强魔灵-下一页'
     -- ,'精彩活动' '游戏说明',
 } 
+local mt = ac.skill['最强魔灵-下一页']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+点击查看 |cff00ffff下一页|r
+    ]],
+    
+}
+mt.skills = {
+    '成神','隐藏成就'
+}
+
 local mt = ac.skill['成神']
 mt{
     is_spellbook = 1,
@@ -35,6 +51,23 @@ mt.skill_name ={
 mt.skills = {
 }
 
+
+local mt = ac.skill['地图等级']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[dtdj.blp]],
+    title = '地图等级奖励',
+    tip = [[
+
+点击查看 |cff00ffff地图等级奖励|r
+    ]],
+    
+}
+mt.skills = {
+    '黄盖','关羽','堕落天使','加百列','王昭君','雅典娜'
+}
+
 local mt = ac.skill['游戏说明']
 mt{
     is_spellbook = 1,
@@ -43,7 +76,7 @@ mt{
     title = '游戏说明',
     tip = [[
 
-查看游戏说明
+点击查看 |cff00ffff游戏说明
     ]],
 }
 mt.skills = {
@@ -58,7 +91,7 @@ mt{
     title = '礼包',
     tip = [[
 
-查看礼包
+点击查看 |cff00ffff礼包
     ]],
     
 }
@@ -74,7 +107,7 @@ mt{
     title = '赞助',
     tip = [[
 
-查看赞助
+点击查看 |cff00ffff赞助
     ]],
     
 }
@@ -92,7 +125,7 @@ mt{
     title = '首充',
     tip = [[
 
-查看首充
+点击查看 |cff00ffff首充
     ]],
     
 }
@@ -104,11 +137,11 @@ local mt = ac.skill['神器']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wuqi11.blp]],
+    art = [[wuqi10.blp]],
     title = '神器',
     tip = [[
 
-查看神器
+点击查看 |cff00ffff神器
     ]],
     
 }
@@ -121,11 +154,11 @@ local mt = ac.skill['翅膀']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[chibang8.blp]],
+    art = [[chibang10.blp]],
     title = '翅膀',
     tip = [[
 
-查看翅膀
+点击查看 |cff00ffff翅膀
     ]],
     
 }
@@ -137,11 +170,11 @@ local mt = ac.skill['称号']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wzgl1.blp]],
+    art = [[chenghao10.blp]],
     title = '称号',
     tip = [[
 
-查看称号
+点击查看 |cff00ffff称号
     ]],
     
 }
@@ -155,7 +188,7 @@ mt{
     title = '下一页',
     tip = [[
 
-查看 下一页
+点击查看 |cff00ffff下一页
     ]], 
     is_spellbook = 1,
     is_order = 2,
@@ -170,7 +203,7 @@ mt{
     title = '英雄皮肤',
     tip = [[
 
-查看英雄皮肤
+点击查看 |cff00ffff英雄皮肤
     ]],
 }
 mt.skills = {
@@ -183,7 +216,7 @@ mt{
     title = '下一页',
     tip = [[
 
-查看 下一页
+点击查看 |cff00ffff下一页
     ]], 
     is_spellbook = 1,
     is_order = 2,
@@ -195,11 +228,11 @@ local mt = ac.skill['领域']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[ssly.blp]],
+    art = [[lingyu10.blp]],
     title = '领域',
     tip = [[
 
-查看领域
+点击查看 |cff00ffff领域
     ]],
     
 }
@@ -213,7 +246,7 @@ mt{
     title = '下一页',
     tip = [[
 
-查看 下一页
+点击查看 |cff00ffff下一页
     ]], 
     is_spellbook = 1,
     is_order = 2,
@@ -224,11 +257,11 @@ local mt = ac.skill['坐骑']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[ssly.blp]],
+    art = [[zuoqi10.blp]],
     title = '坐骑',
     tip = [[
 
-查看坐骑
+点击查看 |cff00ffff坐骑
     ]],
     
 }
@@ -240,11 +273,11 @@ local mt = ac.skill['法宝']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[ssly.blp]],
+    art = [[fabao10.blp]],
     title = '法宝',
     tip = [[
 
-查看法宝
+点击查看 |cff00ffff法宝
     ]],
     
 }

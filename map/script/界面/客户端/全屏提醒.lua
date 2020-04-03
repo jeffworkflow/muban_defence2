@@ -15,6 +15,23 @@ class.screen_animation = extends(class.panel){
     --进攻提示
     up_jingong_title = function(self,title)
         self.title:set_text(title)
+        -- if not self.old_x then 
+        --     self.old_x,self.old_y = self:get_position()
+        -- end
+        -- -- local start_size = 2
+        -- -- local start_x = (1920-1400)/2
+        -- -- local start_y = 150
+        
+        -- self:set_position(self.old_x,self.old_y)
+        -- -- self:set_position(start_x,start_y)
+        -- -- self:set_relative_size(start_size)
+
+        -- -- self:move_animation(self.old_x+500,self.old_y+540,4)
+        -- self:show()
+        
+        -- ac.wait(3*1000,function()
+        --     self:set_position(self.x,50)
+        -- end)
         self:show()
         self:blink(4,1)
     end,
@@ -183,9 +200,9 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
         local skl_zdl = -4000
         for skl in hero:each_skill('英雄',true) do 
             if skl.color == '天赋' then 
-                skl_zdl = skl_zdl + (skl_point[skl.color or '黄阶'] or 1) *(skl.level -1)
+                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level -1)
             else
-                skl_zdl = skl_zdl + (skl_point[skl.color or '黄阶'] or 1) *(skl.level)
+                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level)
             end
         end
         zdl = zdl + skl_zdl
@@ -260,3 +277,4 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     end
 
 end)
+

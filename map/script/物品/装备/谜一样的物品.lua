@@ -6,8 +6,9 @@ mt{
     color = '紫',
     tip = [[ 
         
-|cff00ff00一个可以收集灵魂的箱子，性能不详
+|cff00ff00一个可以收集怪物灵魂的箱子，性能不详
     ]],
+    --|cff00ffff功法怪灵魂（可在练功房-武学功法NPC处召唤）|cff00ff00
     --技能图标
     art = [[tkdbz.blp]],
     kill_cnt = 1000,
@@ -72,8 +73,9 @@ mt{
     color = '紫',
     tip = [[ 
 
-|cff00ff00一本可以收集灵魂的功法，性能不详
-    ]],
+|cff00ff00一本可以收集|cff00ffff 功法怪灵魂 |cff00ff00的功法，性能不详
+
+|cffcccccc（可在练功房的武学功法NPC处，召唤功法怪）]],
     --技能图标
     art = [[gongfa.blp]],
     kill_cnt = 1000,
