@@ -1,30 +1,315 @@
 --称号
-local mt = ac.skill['炉火纯青']
+local mt = ac.skill['热血青年']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
-art = [[lhcq.blp]],
+art = [[chenghao1.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff青铜1星 
+|cff00ffff种树熟练度≥1000
 
 |cffFFE799【称号属性】：|r
-|cff00ff00+15  杀怪加全属性|r
-|cff00ff00+5%  杀敌数加成|r
+|cff00ff00+18  杀怪加全属性|r
+|cff00ff00+2   每秒加木头|r
+|cff00ff00+5% 全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 15,
-['杀敌数加成'] = 5,
-need_map_level = 2,
+['杀怪加全属性'] = 18,
+['全伤加深'] = 5,
+['每秒加木头'] = 2,
+need_map_level = 1,
 --特效
-effect = [[lhcq.mdx]]
+effect = [[ch1.mdx]]
 }
+
+local mt = ac.skill['逆天改命']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao2.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥6000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+28  杀怪加全属性|r
+|cff00ff00+10% 物品获取率|r
+|cff00ff00+10% 全伤加深|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 28,
+['全伤加深'] = 10,
+['物品获取率'] = 10,
+need_map_level = 4,
+--特效
+effect = [[CH_nitiangaiming.mdx]]
+}
+
+local mt = ac.skill['横扫六合']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao3.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥14000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+38  杀怪加全属性|r
+|cff00ff00+15% 全伤加深|r
+|cff00ff00+10% 种子掉落概率|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 38,
+['全伤加深'] = 15,
+['一颗神奇的种子掉落概率'] = 10,
+need_map_level = 7,
+--特效
+effect = [[hslh2_00000.mdx]]
+}
+
+local mt = ac.skill['北斗七星']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao4.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥25000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+48  杀怪加全属性|r
+|cff00ff00+25% 分裂伤害|r
+|cff00ff00+20% 全伤加深|r
+|cff00ff00+10% 种子掉落概率|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 48,
+['分裂伤害'] = 25,
+['全伤加深'] = 20,
+['一颗神奇的种子掉落概率'] = 10,
+need_map_level = 10,
+--特效
+effect = [[bdqx3_00000.mdx]]
+}
+
+local mt = ac.skill['战神崛起']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao5.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥39000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+58  杀怪加全属性|r
+|cff00ff00+10   每秒加木头|r
+|cff00ff00+25% 全伤加深|r
+|cff00ff00+10% 种子掉落概率|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 58,
+['全伤加深'] = 25,
+['每秒加木头'] = 10,
+['一颗神奇的种子掉落概率'] = 10,
+
+need_map_level = 13,
+--特效
+effect = [[CH11.mdx]]
+}
+
+local mt = ac.skill['战神无敌']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao6.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥56000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+68   杀怪加全属性|r
+|cff00ff00+100% 暴击伤害|r
+|cff00ff00+30%  全伤加深|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 68,
+['全伤加深'] = 30,
+['暴击伤害'] = 100,
+need_map_level = 16,
+--特效
+effect = [[5_00000.mdx]]
+}
+
+local mt = ac.skill['毁天灭地']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao7.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥76000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+78   杀怪加全属性|r
+|cff00ff00+15   每秒加木头|r
+|cff00ff00+35% 全伤加深|r
+|cff00ff00+10% 种子掉落概率|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 78,
+['全伤加深'] = 35,
+['每秒加木头'] = 15,
+['一颗神奇的种子掉落概率'] = 10,
+
+need_map_level = 19,
+--特效
+effect = [[htmd.mdx]]
+}
+
+local mt = ac.skill['爆肝之王']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao8.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥99000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+88   杀怪加全属性|r
+|cff00ff00+100% 技暴伤害|r
+|cff00ff00+40%  全伤加深|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 88,
+['全伤加深'] = 40,
+['技暴伤害'] = 100,
+need_map_level = 22,
+--特效
+effect = [[bgzw123_00000.mdx]]
+}
+
+local mt = ac.skill['真龙天子']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao9.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥125000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+98   杀怪加全属性|r
+|cff00ff00+25   每秒加木头|r
+|cff00ff00+45%  全伤加深|r
+|cff00ff00+10% 种子掉落概率|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 98,
+['全伤加深'] = 45,
+['每秒加木头'] = 25,
+['一颗神奇的种子掉落概率'] = 10,
+
+need_map_level = 25,
+--特效
+effect = [[zhenlongtianzi.mdx]]
+}
+
+local mt = ac.skill['大至尊']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[chenghao10.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff种树熟练度≥154000
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+108  杀怪加全属性|r
+|cff00ff00+100% 会心伤害|r
+|cff00ff00+50%  全伤加深|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 108,
+['全伤加深'] = 50,
+['会心伤害'] = 100,
+need_map_level = 28,
+--特效
+effect = [[bazhuan.mdx]]
+}
+
 
 local mt = ac.skill['势不可挡']
 mt{
@@ -37,7 +322,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff挖宝熟练度超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
 |cff00ffff消耗勇士徽章 15 兑换获得
 
 |cffFFE799【称号属性】：|r
@@ -51,7 +336,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.server['挖宝积分'] or 0
+    return p.server['挖宝熟练度'] or 0
 end,
 
 ['杀怪加攻击'] = 50,
@@ -62,34 +347,34 @@ need_map_level = 3,
 effect = [[sbkd.mdx]]
 }
 
-local mt = ac.skill['毁天灭地']
-mt{
---等级
-level = 0,
---图标
-art = [[htmd.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['毁天灭地']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[htmd.blp]],
+-- --说明
+-- tip = [[
+-- |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff黄金3星 
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff黄金3星 
 
-|cffFFE799【称号属性】：|r
-|cff00ff00+30    杀怪加全属性|r
-|cff00ff00+20%   物理伤害加深|r
-|cff00ff00+2.5%  全伤加深|r
+-- |cffFFE799【称号属性】：|r
+-- |cff00ff00+30    杀怪加全属性|r
+-- |cff00ff00+20%   物理伤害加深|r
+-- |cff00ff00+2.5%  全伤加深|r
 
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 30,
-['物理伤害加深'] = 20,
-['全伤加深'] = 2.5,
-need_map_level = 4,
---特效
-effect = [[htmd.mdx]]
-}
+-- |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 30,
+-- ['物理伤害加深'] = 20,
+-- ['全伤加深'] = 2.5,
+-- need_map_level = 4,
+-- --特效
+-- effect = [[htmd.mdx]]
+-- }
 
 local mt = ac.skill['风驰电掣']
 mt{
@@ -273,110 +558,110 @@ need_map_level = 5,
 effect = [[fm_jzdwch.mdx]]
 }
 
-local mt = ac.skill['真龙天子']
-mt{
---等级
-level = 0,
---图标
-art = [[zltz.blp]],
---说明
-tip = [[
+-- local mt = ac.skill['真龙天子']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[zltz.blp]],
+-- --说明
+-- tip = [[
 
-|cffffe799【获得方式】：|r
-|cff00ffff商城购买自动激活
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff商城购买自动激活
 
-|cffFFE799【称号属性】：|r
-|cff00ff00+488   杀怪加全属性|r
-|cff00ff00+488   攻击减甲|r
-|cff00ff00+488%  全伤加深|r
-|cff00ffff+50%   每秒回血|r
-|cff00ffff+10%   闪避|r
-|cffff0000+15%   会心几率|r
-|cffff0000+150%  会心伤害|r
+-- |cffFFE799【称号属性】：|r
+-- |cff00ff00+488   杀怪加全属性|r
+-- |cff00ff00+488   攻击减甲|r
+-- |cff00ff00+488%  全伤加深|r
+-- |cff00ffff+50%   每秒回血|r
+-- |cff00ffff+10%   闪避|r
+-- |cffff0000+15%   会心几率|r
+-- |cffff0000+150%  会心伤害|r
 
-|cffdf19d0攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*150）
+-- |cffdf19d0攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*150）
 
-|cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
+-- |cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
 
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 488,
-['每秒回血'] = 50,
-['会心几率'] = 15,
-['会心伤害'] = 150,
-['闪避'] = 10,
---特效
-effect = [[zhenlongtianzi.mdx]],
+-- |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 488,
+-- ['每秒回血'] = 50,
+-- ['会心几率'] = 15,
+-- ['会心伤害'] = 150,
+-- ['闪避'] = 10,
+-- --特效
+-- effect = [[zhenlongtianzi.mdx]],
 
-['攻击减甲'] = function(self) 
-    local val = 488 
-    local p = self.owner:get_owner()
-    if (p.mall and p.mall['齐天大圣'] or 0) >=1  then 
-        val = val + 288
-    end    
-    return val
-end,  
-['全伤加深'] = function(self) 
-    local val = 488 
-    local p = self.owner:get_owner()
-    if (p.mall and p.mall['齐天大圣'] or 0) >=1  then 
-        val = val + 288
-    end    
-    return val
-end,  
-effect1 = [[Hero_EmberSpirit_N4S_F_Blast.mdx]],
---触发几率
-chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
-cool = 1,
-ignore_cool_save = true,
-area = 600,
---伤害
-damage = function(self)
-    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*150)
-end,
-}
-function mt:on_add()
-    local hero =self.owner
-    local skill =self
-    self.trg = hero:event '造成伤害效果' (function(_,damage)
-        if not damage:is_common_attack()  then 
-            return 
-        end 
-		--技能是否正在CD
-        if skill:is_cooling() then
-			return 
-		end
-        --触发时修改攻击方式
-        if math.random(100) <= self.chance then
-            --创建特效
-            local angle = damage.source:get_point() / damage.target:get_point()
-            ac.effect(damage.target:get_point(),skill.effect1,angle,1,'origin'):remove()
-            --计算伤害
-            for _,unit in ac.selector()
-            : in_range(damage.target:get_point(),self.area)
-            : is_enemy(hero)
-            : ipairs()
-            do 
-                unit:damage
-                {
-                    source = hero,
-                    damage = skill.damage,
-                    skill = skill,
-                    damage_type = '法术'
-                }
-            end 
-            --激活cd
-            skill:active_cd()
-        end
-    end)
-end    
-function mt:on_remove()
-    if self.trg then 
-        self.trg:remove()
-        self.trg = nil
-    end   
-end    
+-- ['攻击减甲'] = function(self) 
+--     local val = 488 
+--     local p = self.owner:get_owner()
+--     if (p.mall and p.mall['齐天大圣'] or 0) >=1  then 
+--         val = val + 288
+--     end    
+--     return val
+-- end,  
+-- ['全伤加深'] = function(self) 
+--     local val = 488 
+--     local p = self.owner:get_owner()
+--     if (p.mall and p.mall['齐天大圣'] or 0) >=1  then 
+--         val = val + 288
+--     end    
+--     return val
+-- end,  
+-- effect1 = [[Hero_EmberSpirit_N4S_F_Blast.mdx]],
+-- --触发几率
+-- chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+-- cool = 1,
+-- ignore_cool_save = true,
+-- area = 600,
+-- --伤害
+-- damage = function(self)
+--     return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*150)
+-- end,
+-- }
+-- function mt:on_add()
+--     local hero =self.owner
+--     local skill =self
+--     self.trg = hero:event '造成伤害效果' (function(_,damage)
+--         if not damage:is_common_attack()  then 
+--             return 
+--         end 
+-- 		--技能是否正在CD
+--         if skill:is_cooling() then
+-- 			return 
+-- 		end
+--         --触发时修改攻击方式
+--         if math.random(100) <= self.chance then
+--             --创建特效
+--             local angle = damage.source:get_point() / damage.target:get_point()
+--             ac.effect(damage.target:get_point(),skill.effect1,angle,1,'origin'):remove()
+--             --计算伤害
+--             for _,unit in ac.selector()
+--             : in_range(damage.target:get_point(),self.area)
+--             : is_enemy(hero)
+--             : ipairs()
+--             do 
+--                 unit:damage
+--                 {
+--                     source = hero,
+--                     damage = skill.damage,
+--                     skill = skill,
+--                     damage_type = '法术'
+--                 }
+--             end 
+--             --激活cd
+--             skill:active_cd()
+--         end
+--     end)
+-- end    
+-- function mt:on_remove()
+--     if self.trg then 
+--         self.trg:remove()
+--         self.trg = nil
+--     end   
+-- end    
 
 local mt = ac.skill['独孤求败']
 mt{
@@ -423,42 +708,42 @@ function mt:on_add()
 end    
 
 
-local mt = ac.skill['逆天改命']
-mt{
---等级
-level = 0, 
---图标
-art = [[ntgm.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['逆天改命']
+-- mt{
+-- --等级
+-- level = 0, 
+-- --图标
+-- art = [[ntgm.blp]],
+-- --说明
+-- tip = [[
+-- |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff深渊乱斗25星
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff深渊乱斗25星
 
-|cffFFE799【称号属性】：|r
-|cff00ff00+1250 杀怪加攻击|r
-|cff00ff00+50% 技暴伤害|r
-|cff00ff00+50% 技能伤害加深|r
-|cff00ff00+50% 会心伤害|r
+-- |cffFFE799【称号属性】：|r
+-- |cff00ff00+1250 杀怪加攻击|r
+-- |cff00ff00+50% 技暴伤害|r
+-- |cff00ff00+50% 技能伤害加深|r
+-- |cff00ff00+50% 会心伤害|r
 
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 1250,
-['技暴伤害'] = 50,
-['技能伤害加深'] = 50,
-['会心伤害'] = 50,
+-- |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r
+-- ]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加攻击'] = 1250,
+-- ['技暴伤害'] = 50,
+-- ['技能伤害加深'] = 50,
+-- ['会心伤害'] = 50,
 
-need_map_level = 17,
---特效
-effect = [[CH_nitiangaiming.mdx]]
-}
+-- need_map_level = 17,
+-- --特效
+-- effect = [[CH_nitiangaiming.mdx]]
+-- }
 
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','九洲帝王','独孤求败','逆天改命'}) do
+for i,name in ipairs({'热血青年','逆天改命','横扫六合','北斗七星','战神崛起','战神无敌','毁天灭地','爆肝之王','真龙天子','大至尊'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

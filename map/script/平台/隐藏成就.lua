@@ -250,7 +250,7 @@ tip = [[
 
 |cffffe799【成就属性】：|r
 |cff00ff00+7.5W*Lv 全属性
-+%减少复活时间% |cff00ff00减少复活时间
++%减少复活时间% |cff00ff00秒 减少复活时间
 
 |cffcccccc获得概率与死亡次数/通关难度/地图等级相关]],
 ['全属性'] = {75000,750000},
@@ -270,7 +270,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff挖宝熟练度超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
 |cff00ffff消耗勇士徽章 15 兑换获得
 
 |cffFFE799【称号属性】：|r
@@ -302,19 +302,8 @@ level = 1,
 art = [[sbkd.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff消耗勇士徽章 15 兑换获得
-
-|cffFFE799【称号属性】：|r
-|cff00ff00+50   杀怪加攻击|r
-|cff00ff00+500  护甲|r
-|cff00ff00+10% 物品获取率|r
-
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
-need_map_level = 3,
+]],
 event_name = '造成伤害效果',
 chance = 5,
 damage_area = 500,
@@ -346,7 +335,7 @@ function mt:damage_start(damage)
             source = source,
             skill = skill,
             damage = source:get('攻击')*skill.attack,
-            damage_type = '法术'
+            damage_type = '物理'
         }
 	end	
 end
@@ -356,19 +345,21 @@ mt{
 level = 0, --要动态插入
 max_level = 10,
 --图标
-art = [[dutu.blp]],
+art = [[jueshimojian.blp]],
 --说明
 tip = [[
 
-|cffffe799【成就属性】：|r
-|cff00ff00+7.5W*Lv 全属性
-+1*Lv 每秒加杀敌数
-+2*Lv 每秒加木头
-+3*Lv 每秒加魔丸
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：攻击力*5）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深
 
-|cffcccccc使用黑暗骰子获得，获得概率与通关难度/地图等级相关]],
-attack = {1,10},
-attack_gap = {1,0.1}
+|cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
+
+need_map_level = 3,
+attack = {100,550},
+attack_gap = {1,0.5}
 }
 function mt:on_upgrade()
     local skill =self
@@ -521,7 +512,7 @@ local function check_air(p,name)
             ok = false 
         end
     end
-    p:sendMsg('恭喜获得 '..name..' 集齐进度'..has_cnt..'/'..#temp,5)
+    p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..has_cnt..'/'..#temp,5)
     --激活隐藏成就、魔剑
     if ok then 
         --激活

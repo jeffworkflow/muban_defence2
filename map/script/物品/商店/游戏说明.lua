@@ -158,7 +158,7 @@ mt{
 |cffffe799持续更新中]],
 }
 
-local mt = ac.skill['挖宝积分说明']
+local mt = ac.skill['挖宝熟练度说明']
 mt{
     --类型
     item_type = "神符",
@@ -168,7 +168,7 @@ mt{
     content_tip = '',
     store_affix ='',
     tip = [[ 
-找新手任务NPC，传送打怪获得藏宝图，|cff00ff00使用藏宝图可以获得大量挖宝积分|r|cffcccccc（搭配商城道具:寻宝小达人效果更佳）|r
+找新手任务NPC，传送打怪获得藏宝图，|cff00ff00使用藏宝图可以获得大量挖宝熟练度|r|cffcccccc（搭配商城道具:寻宝小达人效果更佳）|r
 
 |cffffE799每点积分|r 奖励 |cff00ff00200全属性(属性永久存档 上限受地图等级影响)
 |cffffE799积分超过2000|r 奖励 |cff00ff00【称号】势不可挡（价值15元）

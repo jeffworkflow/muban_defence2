@@ -1,19 +1,169 @@
 
 local mt = ac.skill['谢谢参与']
 mt{
-    art = [[xiexie.blp]]
+    art = [[xiexie.blp]],
+    -- tip = [[谢谢参与]]
 }
 local mt = ac.skill['挖宝熟练度+100']
 mt{
-    art = [[xiexie.blp]]
+    art = [[chanzi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['看书熟练度+100']
+mt{
+    art = [[fadajing.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['打造熟练度+100']
+mt{
+    art = [[suijiwupin.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['种树熟练度+100']
+mt{
+    art = [[zhongzi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['白嫖熟练度+100']
+mt{
+    art = [[niudantiancai.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['摇骰子熟练度+100']
+mt{
+    art = [[anheishaizi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['挖宝熟练度+2000']
+mt{
+    art = [[chanzi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['看书熟练度+2000']
+mt{
+    art = [[fadajing.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['打造熟练度+2000']
+mt{
+    art = [[suijiwupin.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['种树熟练度+2000']
+mt{
+    art = [[zhongzi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['白嫖熟练度+2000']
+mt{
+    art = [[niudantiancai.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['摇骰子熟练度+2000']
+mt{
+    art = [[anheishaizi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['挖宝熟练度+5000']
+mt{
+    art = [[chanzi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['看书熟练度+5000']
+mt{
+    art = [[fadajing.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['打造熟练度+5000']
+mt{
+    art = [[suijiwupin.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['种树熟练度+5000']
+mt{
+    art = [[zhongzi.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['白嫖熟练度+5000']
+mt{
+    art = [[niudantiancai.blp]],
+    -- tip = [[xiexie.blp]]
+}
+
+local mt = ac.skill['摇骰子熟练度+5000']
+mt{
+    art = [[anheishaizi.blp]],
+    -- tip = [[xiexie.blp]]
 }
 
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
-        {    rand = 15, name = '谢谢参与',},
-        {    rand = 5, name = '挖宝熟练度+100' },
-        {    rand = 80, name = '随机存档物品',},
+        {    rand = 16, name = '谢谢参与',},
+
+        {    rand = 4, name = '挖宝熟练度+100' },
+        {    rand = 4, name = '看书熟练度+100',},
+        {    rand = 4, name = '打造熟练度+100',},
+        {    rand = 4, name = '种树熟练度+100',},
+        {    rand = 4, name = '白嫖熟练度+100',},
+        {    rand = 4, name = '摇骰子熟练度+100',},
+
+        {    rand = 0.5, name = '挖宝熟练度+2000' },
+        {    rand = 0.5, name = '看书熟练度+2000',},
+        {    rand = 0.5, name = '打造熟练度+2000',},
+        {    rand = 0.5, name = '种树熟练度+2000',},
+        {    rand = 0.5, name = '白嫖熟练度+2000',},
+        {    rand = 0.5, name = '摇骰子熟练度+2000',},
+
+        {    rand = 0.3, name = '挖宝熟练度+5000' },
+        {    rand = 0.3, name = '看书熟练度+5000',},
+        {    rand = 0.3, name = '打造熟练度+5000',},
+        {    rand = 0.3, name = '种树熟练度+5000',},
+        {    rand = 0.3, name = '白嫖熟练度+5000',},
+        {    rand = 0.3, name = '摇骰子熟练度+5000',},
+
+        {    rand = 25.9, name = '随机存档物品',},
+
+        {    rand = 1.3, name = '我是大魔头',},
+        {    rand = 1.3, name = '黄金矿工',},
+        {    rand = 1.3, name = '书呆子',},
+        {    rand = 1.3, name = '剑瞎子',},
+        {    rand = 1.3, name = '采蘑菇的小姑娘',},
+        {    rand = 1.3, name = '扭蛋人生',},
+        {    rand = 1.3, name = 'du徒',},
+        {    rand = 1.3, name = '强悍之人',},
+        {    rand = 1.3, name = '血牛',},
+        {    rand = 1.3, name = '一出门就被秒',},
+        {    rand = 1.3, name = '绝世魔剑',},
+
+        {    rand = 1.5, name = '番天印',},
+        {    rand = 1.5, name = '战舰之舵',},
+        {    rand = 1.5, name = '量天尺',},
+        {    rand = 1.5, name = '虚空王座',},
+        {    rand = 1.5, name = '天眼',},
+        {    rand = 1.5, name = '血羽之心',},
+        {    rand = 1.5, name = '天神之息',},
+        {    rand = 1.5, name = '灭世者',},
+        {    rand = 1.5, name = '宇宙之心',},
+        {    rand = 1.5, name = '太初锁灵鼓',},
+        
+
     },
 
 }
@@ -34,8 +184,14 @@ local new_ui = ac.ui.client.draw
 local mt = ac.skill['神奇的令牌']
 mt{
     item_type = '消耗品',
+    art = [[lingpai.blp]],
+    content_tip = '|cffffe799使用说明：|r',
     level = 1,
-    tip =[[点击使用 抽取 存档物品]]
+    tip =[[
+
+
+|cff00ff00传说可以打开幸运宝库的令牌，可用于幸运转盘中抽取|cffff0000各种稀有存档道具
+                ]]
 }
 function mt:on_cast_start()
     local hero = self.owner
@@ -70,6 +226,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
         return 
     end
     local time = 60 * 15
+    -- local time = 60 * 1
     if ac.g_game_time >=time  then 
         for i=1,10 do 
             local p = ac.player(i)
@@ -77,6 +234,6 @@ ac.game:event '游戏-结束' (function(trg,flag)
                 p.hero:add_item('神奇的令牌')
             end
         end
-        ac.player.self:sendMsg('虽然游戏失败了，但获得神奇的令牌一枚，请尽快使用。',5)
+        -- player:sendMsg('|cffffe799【系统消息】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！',5)
     end
 end)

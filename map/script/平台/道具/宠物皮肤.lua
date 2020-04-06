@@ -50,7 +50,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNAzureDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 1W 自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff挖宝熟练度超过 1W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+28   杀怪加全属性|r
@@ -67,7 +67,7 @@ end,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.server['挖宝积分'] or 0
+    return p.server['挖宝熟练度'] or 0
 end,
 
 --所需激活碎片
@@ -273,7 +273,7 @@ art = [[meiying.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff挖宝熟练度超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【属性】：|r
 |cff00ff00+148  杀怪加全属性|r
@@ -294,7 +294,7 @@ end,
 
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.server['挖宝积分'] or 0
+    return p.server['挖宝熟练度'] or 0
 end,
 
 ['杀怪加全属性'] = 148,
@@ -318,7 +318,7 @@ art = [[zsyhly.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff挖宝熟练度超过 7W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+188  杀怪加全属性|r
@@ -335,7 +335,7 @@ skin_cnt = function(self)
 end,
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.server['挖宝积分'] or 0
+    return p.server['挖宝熟练度'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 650,
@@ -487,7 +487,7 @@ art = [[tmxk.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 10W 自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff挖宝熟练度超过 10W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+288  杀怪加全属性|r
@@ -506,7 +506,7 @@ skin_cnt = function(self)
 end,
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.server['挖宝积分'] or 0
+    return p.server['挖宝熟练度'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 850,
@@ -555,7 +555,7 @@ skin_cnt = function(self)
 end,
 wabao_cnt = function(self)
     local p = ac.player.self
-    return p.server['挖宝积分'] or 0
+    return p.server['挖宝熟练度'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 850,

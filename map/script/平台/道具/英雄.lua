@@ -7,6 +7,7 @@ is_skill = 1,
 item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[huanggai.blp]],
 --说明
@@ -37,6 +38,7 @@ is_skill = 1,
 item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[guangong.blp]],
 --说明
@@ -67,6 +69,7 @@ is_skill = 1,
 item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[tianshi.blp]],
 --说明
@@ -97,6 +100,7 @@ is_skill = 1,
 item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNMarine.blp]],
 --说明
@@ -125,6 +129,7 @@ mt{
 is_skill = 1,
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[wzj.blp]],
 --说明
@@ -152,6 +157,7 @@ mt{
 is_skill = 1,
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[ydn.blp]],
 --说明
@@ -804,8 +810,9 @@ effect = [[HeroSpecblue.mdx]]
 }
 --,'至尊宝皮肤B'
 for i,name in ipairs({
-    '赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝','鬼厉','剑仙','关公','加百列',
-    '王昭君','雅典娜','不朽剑圣','魔化的小龙女','黄金圣斗士','萧若兰','复仇天神',
+    -- '赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝','鬼厉','剑仙','关公','加百列',
+    -- '王昭君','雅典娜','不朽剑圣','魔化的小龙女','黄金圣斗士','萧若兰','复仇天神',
+    '黄盖','关羽','堕落天使','加百列','王昭君','雅典娜',
 }) do
     local mt = ac.skill[name]
     function mt:on_cast_start()

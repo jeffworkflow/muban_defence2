@@ -50,6 +50,7 @@ local mt = ac.skill['开始签到']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandao.blp]],
 --说明
@@ -75,6 +76,7 @@ local mt = ac.skill['每日一签']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandao.blp]],
 --说明
@@ -102,6 +104,7 @@ local mt = ac.skill['我爱签到']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandao.blp]],
 --说明
@@ -129,6 +132,7 @@ local mt = ac.skill['签到小弟']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaoxiaodi.blp]],
 --说明
@@ -156,6 +160,7 @@ local mt = ac.skill['签到小哥']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaoxiaoge.blp]],
 --说明
@@ -183,6 +188,7 @@ local mt = ac.skill['签到小达人']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaoxiaodaren.blp]],
 --说明
@@ -210,6 +216,7 @@ local mt = ac.skill['签到大哥']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaodage.blp]],
 --说明
@@ -237,6 +244,7 @@ local mt = ac.skill['签到大佬']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaodalao.blp]],
 --说明
@@ -264,6 +272,7 @@ local mt = ac.skill['签到大王']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaodawang.blp]],
 --说明
@@ -291,6 +300,7 @@ local mt = ac.skill['签到大圣']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[qiandaodasheng.blp]],
 --说明

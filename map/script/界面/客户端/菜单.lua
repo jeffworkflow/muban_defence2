@@ -13,6 +13,7 @@ class.screen_button = extends(class.button){
     fresh_name = function(self)
         --处理 在线奖励 
         local total_time = 300 
+        -- local total_time = 30 
         ac.loop(1000,function(t)
             --modify by jeff 
             total_time = total_time - 1
@@ -25,7 +26,7 @@ class.screen_button = extends(class.button){
                     local p = ac.player(i)
                     if p:is_player() then 
                         if p.hero then 
-                            p.hero:add_item('神器的令牌') 
+                            p.hero:add_item('神奇的令牌') 
                         end 
                     end       
                 end    

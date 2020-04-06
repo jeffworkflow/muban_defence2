@@ -112,7 +112,7 @@ function mt:on_cast_start()
                         item.max_level = 15
                         item:upgrade(1)
                         item:set_name(item.name)
-                        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r')
+                        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffff0000打造熟练度+1')
 
                         if item.level == 10 then 
                             player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
@@ -120,7 +120,7 @@ function mt:on_cast_start()
                         -- 物品升级为 '..item.color_name..'
                         -- |cffffff00+'..item.level -1 ..'|r 
                     else 
-                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r')
+                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cff00ff00打造熟练度+1')
                     end    
 
                     if self._count > 0 then  
@@ -278,7 +278,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     end
 
     if rand_name == '无' then
-        -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.server['挖宝积分']..' )|r',2)
+        -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，额外获得 |cffff0000打造熟练度+1，当前打造熟练度 '..player.server['打造熟练度']..'|r',2)
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]

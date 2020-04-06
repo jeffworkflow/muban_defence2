@@ -49,9 +49,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	local name 
 	if flag then 
 		name = '【游戏胜利】'
-		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
-		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
-		ac.player.self:sendMsg("【游戏胜利】|cffff00005分钟后游戏结束|r")
+		ac.player.self:sendMsg("【游戏胜利】|cffff00002分钟后游戏结束|r")
+		ac.player.self:sendMsg("【游戏胜利】|cffff00002分钟后游戏结束|r")
+		ac.player.self:sendMsg("【游戏胜利】|cffff00002分钟后游戏结束|r")
 		ac.timer_ex
         {
             time = 120,
@@ -63,9 +63,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		return 
 	else
 		name = '【游戏失败】'
-		ac.player.self:sendMsg("【游戏失败】")
-		ac.player.self:sendMsg("【游戏失败】")
-		ac.player.self:sendMsg("【游戏失败】")
+		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
+		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
+		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
 		ac.wait(120*1000,function()
 			EndGame(true)
 		end)

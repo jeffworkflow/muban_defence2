@@ -281,7 +281,7 @@ function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
 	local peon = p.peon
 	
-	--挖宝积分在读取存档数据后就赋值。
+	--挖宝熟练度在读取存档数据后就赋值。
 	p:event_notify '读取存档数据'
 
 	local skl = self:find_skill('最强魔灵')
@@ -884,6 +884,8 @@ function helper:tt()
 	self:add_kill_count(10000000)
 	self:add_wood(10000000)
 	self:add_rec_ex(10000000)
+	helper.dtdj(self,50)
+	helper.reload_mall(self)
 	-- if not ac.wtf then
 	-- 	helper.wtf(self)
 	-- end

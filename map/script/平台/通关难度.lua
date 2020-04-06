@@ -3,6 +3,7 @@ local mt = ac.skill['吕布']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[lvbu.blp]],
 --说明
@@ -30,6 +31,7 @@ local mt = ac.skill['梅卡托克']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[dagongjiang.blp]],
 --说明
@@ -57,6 +59,7 @@ local mt = ac.skill['张飞']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[zhangfei.blp]],
 --说明
@@ -84,6 +87,7 @@ local mt = ac.skill['金克丝']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[jinkesi.blp]],
 --说明
@@ -112,6 +116,7 @@ local mt = ac.skill['貂蝉']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[diaochan.blp]],
 --说明
@@ -140,6 +145,7 @@ local mt = ac.skill['杰拉米']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[jielami.blp]],
 --说明
@@ -168,6 +174,7 @@ local mt = ac.skill['熊灵分裂'] --展示
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[xiongling1.blp]],
 title ='熊灵能力：分裂',
@@ -209,6 +216,7 @@ local mt = ac.skill['爱国者导弹']
 mt{
 --等级
 level = 0,
+is_order = 1,
 --图标
 art = [[paotai.blp]],
 
@@ -316,6 +324,7 @@ local mt = ac.skill['熊灵攻击减甲'] --展示
 mt{
 --等级
 level = 0,
+is_order = 1,
 title ='熊灵能力：攻击减甲',
 --图标
 art = [[xiongling1.blp]],
@@ -355,6 +364,7 @@ local mt = ac.skill['炮台多重射'] --展示
 mt{
 --等级
 level = 0,
+is_order = 1,
 title ='炮台能力：多重射',
 --图标
 art = [[paotai.blp]],
@@ -397,6 +407,7 @@ local mt = ac.skill['熊灵粉碎击'] --展示
 mt{
 --等级
 level = 0,
+is_order = 1,
 title ='熊灵能力：粉碎击',
 --图标
 art = [[xiongling1.blp]],

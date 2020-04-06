@@ -98,19 +98,19 @@ function mt:add_content()
     elseif rand_name == '黄金罗盘' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            --给藏宝图10张，挖宝积分100点
+            --给藏宝图10张，挖宝熟练度100点
             for i=1,10 do
                 self.owner:add_item('藏宝图',true)
             end    
             -- player:AddServerValue('wbjf',100) 自定义服务器
-            player:Map_AddServerValue('wbjf',100) --网易服务器
+            player:Map_AddServerValue('sldwb',100) --网易服务器
             --自动寻宝
             hero.wabao_auto = true 
 
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000藏宝图10张，挖宝积分100点，特殊技能：自动寻宝（点击藏宝图试试）|r',6)
+            ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000藏宝图10张，挖宝熟练度100点，特殊技能：自动寻宝（点击藏宝图试试）|r',6)
         else
             player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end   

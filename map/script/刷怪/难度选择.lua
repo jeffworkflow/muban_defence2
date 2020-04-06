@@ -90,7 +90,7 @@ ac.wait(1200,function()
         -- if global_test then 
         --     time = 20
         -- end    
-        BJDebugMsg(time .. "秒后开始第1波怪物进攻",10)
+        BJDebugMsg("|cffffe799【系统消息】|cff00ff00"..time .. "秒后，怪物开始第1波进攻",10)
         ac.timer_ex 
         {
             time = time,

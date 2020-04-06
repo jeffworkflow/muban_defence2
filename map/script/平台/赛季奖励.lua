@@ -24,7 +24,7 @@ local cnt_ljwj_config = { --通关
     {'ljwjsyld','深渊乱斗无尽累计'},-- 无尽层数累计值
 }
 local cnt_wbjf_config = {
-    {'wbjf','挖宝积分'},
+    {'wbjf','挖宝熟练度'},
 }
 local cnt_wljf_config = {
     {'wljf','比武积分'},
@@ -47,7 +47,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 挖宝熟练度: %cnt_wbjf%
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -67,11 +67,11 @@ cnt_ljwj = function(self)
     cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100)--1500,100
     return cnt
 end,
---挖宝积分 总计
+--挖宝熟练度 总计
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = p.server['S0挖宝积分'] 
+    local cnt = p.server['S0挖宝熟练度'] 
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500)--5000,500
     return cnt
 end,
@@ -89,7 +89,7 @@ tip = [[
 |cffFFE799【赛季奖励】：|r
 |cffff0000【杀怪加力量】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加力量】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加力量】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加力量】|cff00ffff+1*当前赛季的挖宝熟练度|cffffff00（最大挖宝熟练度受限于地图等级）
 
 ]],
 --目标类型
@@ -110,11 +110,11 @@ cnt_ljwj = function(self)
     cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100)--1500,100
     return cnt
 end,
---挖宝积分 总计
+--挖宝熟练度 总计
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = p.server['S0挖宝积分'] 
+    local cnt = p.server['S0挖宝熟练度'] 
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500)--5000,500
     return cnt
 end,
@@ -180,7 +180,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 挖宝熟练度: %cnt_wbjf%
 |cffcccccc当前赛季 比武积分: %cnt_wljf%
 ]],
 --目标类型
@@ -208,7 +208,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S1挖宝积分'] or 0)- (p.server['S0挖宝积分'] or 0)
+    local cnt = (p.server['S1挖宝熟练度'] or 0)- (p.server['S0挖宝熟练度'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -236,7 +236,7 @@ tip = [[
 |cffFFE799【赛季奖励】：|r
 |cffff0000【杀怪加敏捷】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加敏捷】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加敏捷】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加敏捷】|cff00ffff+1*当前赛季的挖宝熟练度|cffffff00（最大挖宝熟练度受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -266,8 +266,8 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    -- print(p.server['S1挖宝积分'],p.server['S0挖宝积分'])
-    local cnt = (p.server['S1挖宝积分'] or 0)- (p.server['S0挖宝积分'] or 0)
+    -- print(p.server['S1挖宝熟练度'],p.server['S0挖宝熟练度'])
+    local cnt = (p.server['S1挖宝熟练度'] or 0)- (p.server['S0挖宝熟练度'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -342,7 +342,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 挖宝熟练度: %cnt_wbjf%
 |cffcccccc当前赛季 比武积分: %cnt_wljf%
 ]],
 --目标类型
@@ -370,7 +370,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S2挖宝积分'] or 0)- (p.server['S1挖宝积分'] or 0)
+    local cnt = (p.server['S2挖宝熟练度'] or 0)- (p.server['S1挖宝熟练度'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -398,7 +398,7 @@ tip = [[
 |cffFFE799【赛季奖励】：|r
 |cffff0000【杀怪加智力】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加智力】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加智力】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加智力】|cff00ffff+1*当前赛季的挖宝熟练度|cffffff00（最大挖宝熟练度受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -427,7 +427,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S2挖宝积分'] or 0)- (p.server['S1挖宝积分'] or 0)
+    local cnt = (p.server['S2挖宝熟练度'] or 0)- (p.server['S1挖宝熟练度'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -503,7 +503,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 挖宝熟练度: %cnt_wbjf%
 |cffcccccc当前赛季 比武积分: %cnt_wljf%
 ]],
 --目标类型
@@ -531,7 +531,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S3挖宝积分'] or 0)- (p.server['S2挖宝积分'] or 0)
+    local cnt = (p.server['S3挖宝熟练度'] or 0)- (p.server['S2挖宝熟练度'] or 0)
     cnt = math.min(cnt,2500,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -559,7 +559,7 @@ tip = [[
 |cffFFE799【赛季奖励】：|r
 |cffff0000【杀怪加全属性】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加全属性】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加全属性】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加全属性】|cff00ffff+1*当前赛季的挖宝熟练度|cffffff00（最大挖宝熟练度受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -588,7 +588,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S3挖宝积分'] or 0)- (p.server['S2挖宝积分'] or 0)
+    local cnt = (p.server['S3挖宝熟练度'] or 0)- (p.server['S2挖宝熟练度'] or 0)
     cnt = math.min(cnt,2500,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -663,7 +663,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 挖宝熟练度: %cnt_wbjf%
 |cffcccccc当前赛季 比武积分: %cnt_wljf%
 ]],
 --目标类型
@@ -692,7 +692,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S4挖宝积分'] or 0)- (p.server['S3挖宝积分'] or 0)
+    local cnt = (p.server['S4挖宝熟练度'] or 0)- (p.server['S3挖宝熟练度'] or 0)
     cnt = math.min(cnt,2500,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -720,7 +720,7 @@ tip = [[
 |cffFFE799【赛季奖励】：|r
 |cffff0000【杀怪加力量】|cff00ffff+2*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加力量】|cff00ffff+2*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加力量】|cff00ffff+2*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加力量】|cff00ffff+2*当前赛季的挖宝熟练度|cffffff00（最大挖宝熟练度受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -749,7 +749,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.server['S4挖宝积分'] or 0)- (p.server['S3挖宝积分'] or 0)
+    local cnt = (p.server['S4挖宝熟练度'] or 0)- (p.server['S3挖宝熟练度'] or 0)
     cnt = math.min(cnt,2500,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
@@ -825,7 +825,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 挖宝熟练度: %cnt_wbjf%
 |cffcccccc当前赛季 比武积分: %cnt_wljf%
 ]],
 --目标类型
@@ -851,7 +851,7 @@ end,
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = get_season(p,'总挖宝积分') - (p.server['S4挖宝积分'] or 0)
+    local cnt = get_season(p,'总挖宝熟练度') - (p.server['S4挖宝熟练度'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
     return cnt
 end,
@@ -877,7 +877,7 @@ tip = [[
 |cffFFE799【赛季奖励】：|r
 |cffff0000【杀怪加敏捷】|cff00ffff+2*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加敏捷】|cff00ffff+2*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加敏捷】|cff00ffff+2*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加敏捷】|cff00ffff+2*当前赛季的挖宝熟练度|cffffff00（最大挖宝熟练度受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -1045,7 +1045,7 @@ get_season = function(p,key,flag_reduce)
         for i,data in ipairs(cnt_ljwj_config) do 
             cnt = cnt + (p.server[data[2]] or 0)
         end 
-    elseif  key == '总挖宝积分' then   
+    elseif  key == '总挖宝熟练度' then   
         for i,data in ipairs(cnt_wbjf_config) do 
             cnt = cnt + (p.server[data[2]] or 0)
         end 
@@ -1077,11 +1077,11 @@ save_season= function(p)
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
 
-    --挖宝积分处理
-    local cnt_wbjf = p.server['S0挖宝积分'] or 0
+    --挖宝熟练度处理
+    local cnt_wbjf = p.server['S0挖宝熟练度'] or 0
     if cnt_wbjf <=0 then 
-        local cnt = get_season(p,'总挖宝积分')
-        local key = ac.server.name2key('S0挖宝积分')
+        local cnt = get_season(p,'总挖宝熟练度')
+        local key = ac.server.name2key('S0挖宝熟练度')
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
 
@@ -1102,15 +1102,15 @@ save_season= function(p)
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
 
-    --挖宝积分处理
-    local cnt_wbjf = p.server['S1挖宝积分'] or 0
+    --挖宝熟练度处理
+    local cnt_wbjf = p.server['S1挖宝熟练度'] or 0
     if cnt_wbjf <=0 then 
-        local cnt = get_season(p,'总挖宝积分')
-        local key = ac.server.name2key('S1挖宝积分')
+        local cnt = get_season(p,'总挖宝熟练度')
+        local key = ac.server.name2key('S1挖宝熟练度')
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
     
-    --挖宝积分处理
+    --挖宝熟练度处理
     local cnt_wbjf = p.server['S1比武积分'] or 0
     if cnt_wbjf <=0 then 
         local cnt = get_season(p,'总比武积分')
@@ -1135,15 +1135,15 @@ save_season= function(p)
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
 
-    --挖宝积分处理
-    local cnt_wbjf = p.server['S2挖宝积分'] or 0
+    --挖宝熟练度处理
+    local cnt_wbjf = p.server['S2挖宝熟练度'] or 0
     if cnt_wbjf <=0 then 
-        local cnt = get_season(p,'总挖宝积分')
-        local key = ac.server.name2key('S2挖宝积分')
+        local cnt = get_season(p,'总挖宝熟练度')
+        local key = ac.server.name2key('S2挖宝熟练度')
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
     
-    --挖宝积分处理
+    --挖宝熟练度处理
     local cnt_wbjf = p.server['S2比武积分'] or 0
     if cnt_wbjf <=0 then 
         local cnt = get_season(p,'总比武积分')
@@ -1168,15 +1168,15 @@ save_season= function(p)
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
 
-    --挖宝积分处理
-    local cnt_wbjf = p.server['S3挖宝积分'] or 0
+    --挖宝熟练度处理
+    local cnt_wbjf = p.server['S3挖宝熟练度'] or 0
     if cnt_wbjf <=0 then 
-        local cnt = get_season(p,'总挖宝积分')
-        local key = ac.server.name2key('S3挖宝积分')
+        local cnt = get_season(p,'总挖宝熟练度')
+        local key = ac.server.name2key('S3挖宝熟练度')
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
     
-    --挖宝积分处理
+    --挖宝熟练度处理
     local cnt_wbjf = p.server['S3比武积分'] or 0
     if cnt_wbjf <=0 then 
         local cnt = get_season(p,'总比武积分')
@@ -1201,15 +1201,15 @@ save_season= function(p)
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
 
-    --挖宝积分处理
-    local cnt_wbjf = p.server['S4挖宝积分'] or 0
+    --挖宝熟练度处理
+    local cnt_wbjf = p.server['S4挖宝熟练度'] or 0
     if cnt_wbjf <=0 then 
-        local cnt = get_season(p,'总挖宝积分')
-        local key = ac.server.name2key('S4挖宝积分')
+        local cnt = get_season(p,'总挖宝熟练度')
+        local key = ac.server.name2key('S4挖宝熟练度')
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
     
-    --挖宝积分处理
+    --挖宝熟练度处理
     local cnt_wbjf = p.server['S4比武积分'] or 0
     if cnt_wbjf <=0 then 
         local cnt = get_season(p,'总比武积分')

@@ -281,18 +281,19 @@ local event = {
             ok = true
         end    
         if ok then 
-            player:sendMsg('恭喜获得'..player.reward_name,5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000'..player.reward_name..'|cff00ff00，熟练度存档可按F4进行查看',10)
             return 
         end
 
         local skl = ac.skill[player.reward_name]
         if skl.name =='谢谢参与' then 
-            player:sendMsg('恭喜获得'..skl.color_name,5)
+            player:sendMsg('|cffffe799【系统消息】|r|cff00ff00幸运转盘不断旋转，最终停在了|cffff0000'..player.reward_name..'|cff00ff00的位置',10)
             return 
         end
         if skl.skill_type == '存档物品' then 
             hero:add_item(player.reward_name) 
-            player:sendMsg('恭喜获得'..skl.color_name,5)
+            -- player:sendMsg('恭喜获得'..skl.color_name,5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档装备】'..skl.color_name,10)
         else 
             local key = ac.server.name2key(player.reward_name)
             player:Map_AddServerValue(key,1)
@@ -305,10 +306,10 @@ local event = {
             local skl = hero:find_skill(player.reward_name,nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,book_name,player.reward_name)
-                player:sendMsg('恭喜获得'..player.reward_name,5)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得恭喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
             else
                 skl:upgrade(1)
-                player:sendMsg('恭喜获得'..player.reward_name,5)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得恭喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
             end
         end
     end

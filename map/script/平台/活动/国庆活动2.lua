@@ -184,7 +184,7 @@ ac.game:event '挖图成功'(function(trg,hero)
         if not ac.flag_ptzj then 
             ac.func_give_suipian(hero:get_point(),temp)
             ac.flag_ptzj = true 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 在挖宝时挖塌了|cffff0000种子幼儿园|r，一大堆种子散落|cffff0000老家周围|r，大家快去抢啊|r',5) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 在挖宝时挖塌了|cffff0000种子幼儿园|r，一大堆种子散落|cffff0000老家周围|r，大家快去枪啊|r',5) 
 
            
         end    

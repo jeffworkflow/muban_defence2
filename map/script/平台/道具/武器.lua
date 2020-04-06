@@ -1,5 +1,275 @@
---商城武器
+
+local mt = ac.skill['熔炉炎刀']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi1.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥2000
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+72  杀怪加攻击|r
+|cff00ff00+18  攻击减甲|r
+|cff00ff00+5% 杀敌数加成|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 2,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 72,
+['攻击减甲'] = 18,
+['杀敌数加成'] = 5,
+--特效
+effect = [[wuqi4.mdx]]
+}
+
+local mt = ac.skill['冰莲穿山剑']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi2.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥7500
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+112  杀怪加攻击|r
+|cff00ff00+28  攻击减甲|r
+|cff00ff00+15% 强化石、天谕掉落概率|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 5,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 112,
+['攻击减甲'] = 28,
+['强化石掉落概率'] = 15,
+['天谕掉落概率'] = 15,
+--特效
+effect = [[wuqi15.mdx]]
+}
+
+local mt = ac.skill['紫阳白涛剑']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi3.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥16000
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+152  杀怪加攻击|r
+|cff00ff00+38   攻击减甲|r
+|cff00ff00+7.5% 杀敌数加成|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 8,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 152,
+['攻击减甲'] = 38,
+['杀敌数加成'] = 7.5,
+--特效
+effect = [[wuqi123.mdx]]
+}
+
+local mt = ac.skill['霜之哀伤']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi4.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥27500
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+192  杀怪加攻击|r
+|cff00ff00+48   攻击减甲|r
+|cff00ff00+100% 暴击伤害|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 11,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 192,
+['攻击减甲'] = 48,
+['暴击伤害'] = 100,
+--特效
+effect = [[BingPoHanGuangJian.mdx]]
+}
+
+local mt = ac.skill['熔炉流星刀']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi5.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥42000
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+232  杀怪加攻击|r
+|cff00ff00+58  攻击减甲|r
+|cff00ff00+10% 杀敌数加成|r
+|cff00ff00+15% 强化石、天谕掉落概率|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 14,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 232,
+['攻击减甲'] = 58,
+['杀敌数加成'] = 10,
+['强化石掉落概率'] = 15,
+['天谕掉落概率'] = 15,
+--特效
+effect = [[xyj.mdx]]
+}
+
+local mt = ac.skill['冰魂火焰枪']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi6.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥59500
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+272  杀怪加攻击|r
+|cff00ff00+68   攻击减甲|r
+|cff00ff00+100% 技暴伤害|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 17,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 272,
+['攻击减甲'] = 68,
+['技暴伤害'] = 100,
+--特效
+effect = [[Mx_qiubaihongyingqiang.mdx]]
+}
+
 local mt = ac.skill['霸王莲龙锤']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi7.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥80000
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+312   杀怪加攻击|r
+|cff00ff00+78    攻击减甲|r
+|cff00ff00+12.5% 杀敌数加成|r
+|cff00ff00+5%    全伤加深|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 20,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 312,
+['攻击减甲'] = 78,
+['杀敌数加成'] = 12.5,
+['全伤加深'] = 5,
+--特效
+effect = [[wuqi10.mdx]]
+}
+
+local mt = ac.skill['方天画戟']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi8.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥103500
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+352  杀怪加攻击|r
+|cff00ff00+88   攻击减甲|r
+|cff00ff00+100% 会心伤害|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 23,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 352,
+['攻击减甲'] = 88,
+['会心伤害'] = 100,
+--特效
+effect = [[Wuqi_fangtainhuaji.mdx]]
+}
+
+local mt = ac.skill['桃花天香棒']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wuqi9.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff打造熟练度≥130000
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+392  杀怪加攻击|r
+|cff00ff00+98  攻击减甲|r
+|cff00ff00+15% 杀敌数加成|r
+|cff00ff00+15% 强化石、天谕掉落概率|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+need_map_level = 26,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 392,
+['攻击减甲'] = 98,
+['杀敌数加成'] = 15,
+['强化石掉落概率'] = 15,
+['天谕掉落概率'] = 15,
+--特效
+effect = [[effect_Weapon_1.MDX]]
+}
+
+local mt = ac.skill['苍雷噬金枪']
 mt{
 --等级
 level = 0,
@@ -10,37 +280,93 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 2W  自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff打造熟练度≥159500
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+300 杀怪加攻击|r
-|cff00ff00+20% 吸血|r
-|cff00ff00+35   攻击减甲|r
-|cff00ff00+25%  物理伤害加深|r
+|cff00ff00+432  杀怪加攻击|r
+|cff00ff00+108  攻击减甲|r
+|cff00ff00+25%  对BOSS额外伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
-need_map_level = 10,
-skin_cnt = function(self)
-    local p = ac.player.self
-    return p.server[self.name..'碎片'] or 0
-end,
-
-wabao_cnt = function(self)
-    local p = ac.player.self
-    return p.server['挖宝积分'] or 0
-end,
-
---所需激活碎片
-need_sp_cnt = 150,
+need_map_level = 29,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 300,
-['吸血'] = 20,
-['攻击减甲'] = 35,
-['物理伤害加深'] = 25,
+['杀怪加攻击'] = 432,
+['攻击减甲'] = 108,
+['对BOSS额外伤害'] = 25,
+
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[effect_Weapon_0.MDX]]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- --商城武器
+-- local mt = ac.skill['霸王莲龙锤']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[wuqi10.blp]],
+-- is_order = 1,
+-- --说明
+-- tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff挖宝熟练度超过 2W  自动获得，已拥有积分：|r%wabao_cnt%
+
+-- |cffFFE799【神兵属性】：|r
+-- |cff00ff00+300 杀怪加攻击|r
+-- |cff00ff00+20% 吸血|r
+-- |cff00ff00+35   攻击减甲|r
+-- |cff00ff00+25%  物理伤害加深|r
+
+-- |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+-- need_map_level = 10,
+-- skin_cnt = function(self)
+--     local p = ac.player.self
+--     return p.server[self.name..'碎片'] or 0
+-- end,
+
+-- wabao_cnt = function(self)
+--     local p = ac.player.self
+--     return p.server['挖宝熟练度'] or 0
+-- end,
+
+-- --所需激活碎片
+-- need_sp_cnt = 150,
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加攻击'] = 300,
+-- ['吸血'] = 20,
+-- ['攻击减甲'] = 35,
+-- ['物理伤害加深'] = 25,
+-- --特效
+-- effect = [[wuqi10.mdx]]
+-- }
 
 local mt = ac.skill['惊虹奔雷剑']
 mt{
@@ -144,41 +470,41 @@ need_map_level = 13,
 effect = [[wuqi-hy1.mdx]]
 }
 
-local mt = ac.skill['霜之哀伤']
-mt{
---等级
-level = 0,
---图标
-art = [[xlmswq.blp]],
-is_order = 1,
---说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['霜之哀伤']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[xlmswq.blp]],
+-- is_order = 1,
+-- --说明
+-- tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff修罗模式25星 
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff修罗模式25星 
 
-|cffFFE799【神兵属性】：|r
-|cff00ff00+700  杀怪加攻击|r
-|cff00ff00+100  攻击减甲|r
-|cff00ff00+100% 分裂伤害|r
-|cff00ff00+75%  物理伤害加深|r
-|cff00ff00+15%  对BOSS额外伤害|r
+-- |cffFFE799【神兵属性】：|r
+-- |cff00ff00+700  杀怪加攻击|r
+-- |cff00ff00+100  攻击减甲|r
+-- |cff00ff00+100% 分裂伤害|r
+-- |cff00ff00+75%  物理伤害加深|r
+-- |cff00ff00+15%  对BOSS额外伤害|r
 
-|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 700,
-['攻击减甲'] = 100,
-['分裂伤害'] = 100,
-['物理伤害加深'] = 75,
-['对BOSS额外伤害'] = 15,
+-- |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
+-- ]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加攻击'] = 700,
+-- ['攻击减甲'] = 100,
+-- ['分裂伤害'] = 100,
+-- ['物理伤害加深'] = 75,
+-- ['对BOSS额外伤害'] = 15,
 
-need_map_level = 16,
+-- need_map_level = 16,
 
---特效
-effect = [[BingPoHanGuangJian.mdx]]
-}
+-- --特效
+-- effect = [[BingPoHanGuangJian.mdx]]
+-- }
 
 local mt = ac.skill['飞星雷火剑']
 mt{
@@ -215,39 +541,39 @@ need_map_level = 18,
 effect = [[wuqi123.mdx]]
 }
 
-local mt = ac.skill['方天画戟']
-mt{
---等级
-level = 0,
---图标
-art = [[fthj.blp]],
-is_order = 1,
---说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['方天画戟']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[fthj.blp]],
+-- is_order = 1,
+-- --说明
+-- tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=500波
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=500波
 
-|cffFFE799【武器属性】：|r
-|cff00ff00+900  杀怪加攻击|r
-|cff00ff00+150   攻击减甲|r
-|cff00ff00+150% 分裂伤害|r
-|cff00ff00+100% 物理伤害加深|r|r
+-- |cffFFE799【武器属性】：|r
+-- |cff00ff00+900  杀怪加攻击|r
+-- |cff00ff00+150   攻击减甲|r
+-- |cff00ff00+150% 分裂伤害|r
+-- |cff00ff00+100% 物理伤害加深|r|r
 
-|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 900,
-['物理伤害加深'] = 100,
-['分裂伤害'] = 150,
-['攻击减甲'] = 150,
+-- |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
+-- ]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加攻击'] = 900,
+-- ['物理伤害加深'] = 100,
+-- ['分裂伤害'] = 150,
+-- ['攻击减甲'] = 150,
 
-need_map_level = 26,
+-- need_map_level = 26,
 
---特效
-effect = [[Wuqi_fangtainhuaji.mdx]]
-}
+-- --特效
+-- effect = [[Wuqi_fangtainhuaji.mdx]]
+-- }
 
 local mt = ac.skill['圣神无双剑']
 mt{
@@ -446,7 +772,7 @@ effect = [[wuqi11.mdx]]
 }
 
 
-for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀','圣神无双剑','灭神紫霄剑'}) do
+for i,name in ipairs({'熔炉炎刀','冰莲穿山剑','紫阳白涛剑','霜之哀伤','熔炉流星刀','冰魂火焰枪','霸王莲龙锤','方天画戟','桃花天香棒','苍雷噬金枪'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self
@@ -457,7 +783,8 @@ for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫
         if hero.effect_wuqi then 
             hero.effect_wuqi:remove()
         end     
-        local orf = ac.hero_weapon[hero.name] or 'hand'
+        local orf = 'hand'
+        -- local orf = ac.hero_weapon[hero.name] or 'hand'
         hero.effect_wuqi = hero:add_effect(orf,self.effect)
 
         --添加被动技能

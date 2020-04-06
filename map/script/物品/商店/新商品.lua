@@ -102,15 +102,17 @@ end
 
 local mt = ac.skill['兑换-神奇的令牌']
 mt{
-    store_name = '兑换神奇的令牌',
+    store_name = '神奇的令牌',
     all_attr = 500000000,
     item_type = '神符',
     art = [[lingpai.blp]],
-    tip=[[消耗5亿全属性兑换一个神奇的令牌，
+    tip=[[
+|cffffe799【说明】
 
-    |cff00ff00可用于幸运转盘中抽取各种稀有存档道具
-    
-    |cffcccccc每局兑换上限受游戏难度影响]]
+|cff00ff00消耗 |cffff00005亿全属性 |cff00ff00兑换 |cff00ffff一个神奇的令牌
+|cffcccccc（可用于幸运转盘中抽取各种稀有存档道具）
+  
+|cffcccccc每局兑换上限受游戏难度影响]]
 }
 function mt:on_cast_start()
     local hero = self.owner
@@ -120,27 +122,27 @@ function mt:on_cast_start()
     p.dh_sqlp = p.dh_sqlp or 0 
 
     if p.dh_sqlp >= (2 + ac.g_game_degree_attr) then 
-        p:sendMsg('兑换达上限',5)
+        p:sendMsg('|cffffe799【系统消息】|cff00ff00本局已达兑换上限',5)
         return 
     end
     if min_allattr > self.all_attr then 
         p.dh_sqlp = p.dh_sqlp + 1
         hero:add_item('神奇的令牌')
         hero:add('全属性',-self.all_attr)
-        p:sendMsg('恭喜兑换成功',5)
+        p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜兑换成功',5)
     else
-        p:sendMsg('属性不够兑换',5)
+        p:sendMsg('|cffffe799【系统消息】|cff00ff00兑换条件不足',5)
     end
 end
 
 --游戏30分钟 添加神器五分钟商品
 -- ac.game:event '游戏-回合开始'(function(trg,index, creep) 
-    -- if not finds(creep.name,'刷怪1') then
-    --     return
-    -- end  
-    -- if index ~= 10 then 
-    --     return 
-    -- end
+--     if not finds(creep.name,'刷怪1') then
+--         return
+--     end  
+--     if index ~= 10 then 
+--         return 
+--     end
 ac.game:event '游戏-开始'(function(trg) 
     --可能异步
     for handle,shop in pairs(ac.shop.unit_list) do 
