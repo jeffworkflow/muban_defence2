@@ -32,6 +32,7 @@ function mt:on_cast_shot()
     hero:add_buff '无敌' {
         time = 3
     }
+    self:active_cd()
 end
 
 function mt:on_cast_stop()

@@ -1,6 +1,7 @@
 local function active_yccj(p,name,sendmsg,sendmsg2)
-    print(p,name,sendmsg,sendmsg2)
+    -- print(p,name,sendmsg,sendmsg2)
     p.flag_yccj = p.flag_yccj or {} 
+    local hero = p.hero
     if not p.flag_yccj[name] then 
         p.flag_yccj[name] = true
         local key = ac.server.name2key(name)

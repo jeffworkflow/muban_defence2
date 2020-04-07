@@ -63,7 +63,8 @@ function mt:boss_skill_shot()
 			skill.eff2:remove()
 			skill.eff2 = nil
 		end
-	end
+    end
+    
 end
 
 function mt:on_cast_start()
@@ -80,13 +81,13 @@ end
 
 function mt:on_cast_shot()
     self:boss_skill_shot()
+    self:active_cd()
 end
 
 function mt:on_cast_stop()
     if self.eft then
         self.eft:remove()
     end
-    -- self:active_cd()
 end
 
 function mt:on_remove()

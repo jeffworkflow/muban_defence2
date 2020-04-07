@@ -327,7 +327,9 @@ function helper:save(key,value)
 			local key = data[1]
 			p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器
 		end		
-	else	
+	elseif key == 'qd' then 	
+		p:SetServerValue(key,tonumber(value) or nil) --自定义服务器
+	else
 		p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器
 	end	
 end	
@@ -559,9 +561,9 @@ end
 function helper:power()
 	helper.move(self)
 	helper.lv(self, 100)
-	if not ac.wtf then
-		helper.wtf(self)
-	end
+	-- if not ac.wtf then
+	-- 	helper.wtf(self)
+	-- end
 	local player = self:get_owner()
 	self:add_restriction '免死'
 	player:addGold(599999)

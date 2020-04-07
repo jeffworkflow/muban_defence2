@@ -27,7 +27,7 @@ local function cast_skill(hero,target,type)
     if skill:is_cooling() then 
         return 
     end     
-
+    print('boss 开始施法',skill.name)
     if skill.target_type == 0 then 
         skill:cast()
     elseif skill.target_type == 1 then
@@ -62,7 +62,8 @@ ac.loop(1000,function()
             return (dest:is_type('boss') or dest:is_type('精英'))
         end)
         : ipairs()
-    do
+    do  
+        -- if u:get_name() == '' 
         cast_skill(u,nil,2)
     end
 

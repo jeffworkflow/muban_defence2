@@ -1,4 +1,4 @@
-local mt = ac.skill['撕裂大地']
+local mt = ac.skill['大地崩']
 mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
@@ -11,9 +11,9 @@ level = 1,
 --技能图标
 art = [[icon\card\2\card2_3.blp]],
 --技能说明
-title = '撕裂大地',
+title = '大地崩',
 tip = [[
-    撕裂大地
+    大地崩
 ]],
 --消耗
 cost_data = {	type = '魔法',	num_type = '三维',	rate = 0.2,},
@@ -85,6 +85,7 @@ end
 
 function mt:on_cast_shot()
     self:boss_skill_shot()
+    self:active_cd()
 end
 
 function mt:on_cast_stop()

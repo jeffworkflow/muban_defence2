@@ -167,7 +167,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             -- table.insert(ac.creep['刷怪1'].group,boss)
             boss:add_buff '攻击英雄' {}
             boss:add_skill('无敌','英雄')
-            boss:add_skill('撕裂大地','英雄')
+            boss:add_skill('大地崩','英雄')
 
             boss:add('减伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
             boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
