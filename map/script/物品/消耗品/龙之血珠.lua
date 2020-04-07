@@ -104,7 +104,7 @@ function mt:on_cast_start()
                     end    
                 end
             end  
-            if skill.level>=skill.max_level and skill.color == '天阶' and not flag then 
+            if skill.level>=skill.max_level and _in(skill.color,'天阶','天赋','神阶') and not flag then 
                 count = count + 1
                 local info = {
                     name = "|cff"..ac.color_code['淡黄']..'强化 '..'|cff'..ac.color_code[skill.color].. clean_color(skill:get_title()),

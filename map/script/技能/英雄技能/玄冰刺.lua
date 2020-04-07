@@ -54,6 +54,7 @@ function mt:atk_pas_shot(target)
 		model = skill.effect,
 	}:remove()  
 
+	print('测试打印伤害2：',skill.damage)
 	for i, u in ac.selector()
 	: in_range(target,skill.area)
 	: is_enemy(hero)

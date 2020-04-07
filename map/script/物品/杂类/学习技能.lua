@@ -64,7 +64,7 @@ function mt:on_cast_shot()
         if skill then 
             local key = skill:get_hotkey() 
             local info = {
-                name = '|cff00ff00更换 |cff'..ac.color_code[skill.color].. clean_color(skill:get_title()) .. ' ( ' .. key.. ' )',
+                name = '|cff00ff00更换 |cff'..ac.color_code[skill.color or '白'].. clean_color(skill:get_title()) .. ' ( ' .. key.. ' )',
                 key = key:byte(),
                 skill = skill,
             }
@@ -99,8 +99,10 @@ function mt:on_cast_shot()
                 local skl = list[index].skill
                 if skl then 
                     local id = skl.slotid
+                    local level = skl.level
                     skl:remove()
-                    hero:add_skill(name,'英雄',id)
+                    local new_skl = hero:add_skill(name,'英雄',id)
+                    new_skl:set_level(level)
                 else
                     -- print('取消更换技能')
                     if self._count > 1 then 

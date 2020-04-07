@@ -33,7 +33,7 @@ mt.event_name = '单位-攻击出手'
 mt.trg = nil
 
 --触发概率
-mt.random = 100
+mt.random = nil
 
 --技能对象
 mt.skill = nil
@@ -83,7 +83,8 @@ function mt:can_passive(source,target,damage)
     if damage and damage.skill and (self.skill == damage.skill or self.skill.name == damage.skill.name) then
         return
     end
-    if math_random(100) > self.random or not self:do_filter() then
+    local random = self.random or self.skill.chance or 100
+    if math_random(100) > random or not self:do_filter() then
         return
     end
 
@@ -140,7 +141,6 @@ function mt:init()
             if self.damage_finish then
                 self.damage_finish(self.skill,source,target,damage)
             end
-            -- print('触发被动',is_success,self.random)
             return is_success
         end)
     else
@@ -210,7 +210,7 @@ function ac.damage(name)
         if data.skill.type == 'buff' then
             data.skill = data.skill.skill
         end
-
+        -- print('被动技能的几率：',data.skill.chance)
         data.owner = data.skill.owner
         data.filters = {}
         data.event_name = name
@@ -237,7 +237,6 @@ ac.game:event '技能-升级' (function (_,hero,self)
                     self.dmg_trg = ac.damage(skill.event_name){
                         skill = self.skill,
                         cool = true,
-                        random = self.chance,
                         damage_start = self.damage_start,
                     } 
                     -- print('添加到buff:',self.dmg_trg,self.dmg_trg.skill)
@@ -259,7 +258,6 @@ ac.game:event '技能-升级' (function (_,hero,self)
             skill.unique_buff = hero:add_buff(skill.unique_name){
                 value = skill.cover,
                 skill = skill,
-                random = skill.chance,
                 damage_start = skill.damage_start,
             }
 
@@ -271,7 +269,6 @@ ac.game:event '技能-升级' (function (_,hero,self)
             skill.flag_passive = ac.damage(self.event_name){
                 skill = skill,
                 cool = true,
-                random = skill.chance,
                 damage_start = skill.damage_start,
             } 
         end

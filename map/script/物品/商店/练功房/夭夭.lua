@@ -24,8 +24,8 @@ ac.devil_deal = devil_deal
 local function add_skill_by_lv(shop,lv,flag)
     --最后一重时，增加魔鬼的交易
     if lv > #devil_deal then 
-        shop:add_sell_item('真魔鬼的交易',1)
-        shop:add_sell_item('魔鬼的合成',4)
+        shop:add_sell_item('真·神魂修炼',1)
+        shop:add_sell_item('神魂合成',4)
         
     end    
     if not devil_deal[lv] then 

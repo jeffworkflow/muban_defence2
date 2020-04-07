@@ -104,7 +104,7 @@ function mt:add_content()
             if not rand_name then 
                 return
             end    
-            local list = ac.all_skill
+            local list = ac.quality_skill[rand_name]
             --添加给英雄
             local name = list[math.random(#list)]
             ac.item.add_skill_item(name,hero)

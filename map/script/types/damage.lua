@@ -934,9 +934,7 @@ function mt:on_mul_crite()
 					damage = self.current_damage,
 					skill = self.skill,
 					real_damage = true,
-                    physicals_crit_flag=self.physicals_crit_flag,
-                    spells_crit_flag=self.spells_crit_flag,
-                    heart_crit_flag=self.heart_crit_flag,
+                    mul_crit_flag=true,
 				}
 			end)
 		end	
@@ -1125,8 +1123,7 @@ function damage:__call()
 	--音效
 	on_sound(self)
 	--漂浮文字
-	on_texttag(self)
-	-- ac.game:event_notify('显示伤害特效', self)
+	-- on_texttag(self)
 	if not self.real_damage then
 
 		if not target:is_type('建筑') then

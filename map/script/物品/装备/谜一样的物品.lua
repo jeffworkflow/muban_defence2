@@ -97,6 +97,9 @@ function mt:on_add()
     -- print(self.trg,self.level,self.max_level)
     if not self.trg and not p.flag_myydts then 
         self.trg = ac.game:event '单位-杀死单位' (function(trg, killer, target)
+            if not finds(target:get_name(),'功法怪') then 
+                return 
+            end
             --召唤物杀死也继承
             local hero = killer:get_owner().hero
             if hero ~= self.owner then 

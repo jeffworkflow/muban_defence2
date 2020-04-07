@@ -9,6 +9,6 @@ require '通用.模拟死亡'
 
 require '通用.通用buff'
 require '通用.通用技能'
--- require '通用.特效跳字'
+require '通用.特效跳字'
 
 

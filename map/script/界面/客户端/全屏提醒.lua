@@ -83,7 +83,9 @@ local new_ui = class.panel:builder
     normal_image = [[ui\battle_power\ui-a10.tga]],
     md = {
         type = 'model',
-        size = 1,
+        x=250,
+        y= -30,
+        size = 2,
         model = [[zhanlixlz.mdx]],
     },
     target_val = 0,
@@ -180,6 +182,8 @@ local skl_point ={
     ['地阶'] = 4000,
     ['天阶'] = 8000,
     ['真天阶'] = 16000,
+    ['神阶'] = 8000,
+    ['真神阶'] = 16000,
 }
 ac.game:event '玩家-注册英雄' (function(self, player, hero)
     hero:event '单位-属性变化'(function(self, hero, name,value)

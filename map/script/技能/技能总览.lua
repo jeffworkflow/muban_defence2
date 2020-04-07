@@ -1,6 +1,8 @@
 
 ac.quality_skill = {}
-ac.all_skill = {}
+ac.all_skill = {} --游戏内用的所有skill --去除 '天赋','真天赋','真天阶','神阶','真神阶'
+ac._all_skill = {} --底层用的所有skill
+
 --总技能 
 ac.wait(0,function()
     for i,data in pairs(ac.skill) do 
@@ -11,7 +13,8 @@ ac.wait(0,function()
                 end    
                 table.insert(ac.quality_skill[data.color],data.name)
 
-                if not finds(data.color,'天赋','真天阶') then
+                table.insert(ac._all_skill,data.name)
+                if not _in(data.color,'天赋','真天赋','真天阶','神阶','真神阶') then
                     -- print(data.name,data.color)
                     table.insert(ac.all_skill,data.name)
                 end    
@@ -32,7 +35,7 @@ end)
 
 --boss技能列表
 ac.skill_list3 = {
-    '无敌','撕裂大地',
+    '无敌','撕裂大地','伤害守卫','伤害守卫','boss光子灵枪'
     --'超新星',
 }
 --天赋技能

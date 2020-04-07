@@ -259,7 +259,7 @@
         u.buy_suc = false 
         -- print(it.name)
         local flag 
-        for i,v in ipairs(ac.all_skill) do
+        for i,v in ipairs(ac._all_skill) do
             if v == it.name then 
                 flag = true
                 break

@@ -125,31 +125,29 @@ end
 -- end
 
 --存档通用型 只能存入字符串型
-function player.__index:Map_SaveServerValue(key,value,flag)
+function player.__index:Map_SaveServerValue(key,value)
     local handle = self.handle
     japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(value))
-    if not flag then
-        --保存本局数据
-        if not self.server then 
-            self.server ={}
-        end    
-        local key_name = ac.server.key2name(key)
-        self.server[key_name] = tonumber(value)
-    end
-end
-
---可能造成回档。 因为server的局内值受到地图等级影戏已经降为有限值，此时只是在有限值+1
-function player.__index:Map_AddServerValue(key,value,flag)
+    --保存本局数据
     if not self.server then 
         self.server ={}
     end    
-    --保存
     local key_name = ac.server.key2name(key)
-    if not self.server[key_name] or self.server[key_name] == 0 then 
-        self.server[key_name] = self:Map_GetServerValue(key)
-    end    
+    self.server[key_name] = tonumber(value)
+end
+
+--可能造成回档。 因为server的局内值受到地图等级影戏已经降为有限值，此时只是在有限值+1
+function player.__index:Map_AddServerValue(key,value)
+    local handle = self.handle
+    local real_value = self:Map_GetServerValue(key)+ tonumber(value)
+    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(real_value))
+
+    local key_name = ac.server.key2name(key)  
+    if not self.server then 
+        self.server ={}
+    end     
     self.server[key_name] = (self.server[key_name] or 0 ) + tonumber(value) 
-    self:Map_SaveServerValue(key,self:Map_GetServerValue(key)+ tonumber(value),flag )
+    --直接调用底层函数，避免游戏内的值影响了存档值，造成回档。
 end
 
 --获取全局存档 返回字符串型

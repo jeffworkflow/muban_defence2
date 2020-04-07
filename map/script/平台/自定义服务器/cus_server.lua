@@ -211,7 +211,7 @@ local event = {
             player:Map_SaveServerValue('level',math.floor(math.sqrt(exp/3600)+1)) --当前地图等级=开方（经验值/3600）+1
         end    
         --影响 网易数据
-        player:event_notify('读取存档数据')   
+        -- player:event_notify('读取存档数据')   
     end,
     --从自定义服务器读取数据
     read_key_from_server = function (tab_str)
@@ -255,10 +255,7 @@ local event = {
                 player.cus_server[data[2]] = player.cus_server[data[2]] or 0
             end 
             player.flag_read_server = true
-            if ac.clock() > 2000 then 
-                print('又发布了一次读档回调')
-                player:event_notify('读取存档数据')   
-            end    
+            print('发布了一次读档回调')
             player:sendMsg('|cff00ff00读取成功|r')
         end  
         --移除循环  

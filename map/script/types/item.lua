@@ -125,6 +125,8 @@ local color_code = {
 	['淡黄'] = 'FFE799',
 	['神'] = 'df19d0', --91007F 860202
 
+    ['真神阶'] = 'bc8f8f',--紫
+    ['神阶'] = 'bc8f8f',--紫
     ['天赋'] = 'df19d0',--紫
     ['真天阶'] = 'df19d0',--紫
     ['天阶'] = 'ff0000',--红
@@ -161,6 +163,8 @@ ac.zb_color_model = zb_color_model
 
 --技能model
 local skill_model = {
+    ['真神阶'] = 'zibianshu.mdx',--紫
+    ['神阶'] = 'zibianshu.mdx',--紫
     ['天赋'] = 'zibianshu.mdx',--紫
     ['真天阶'] = 'zibianshu.mdx',--紫
     ['天阶'] = 'hongbianshu.mdx',--红

@@ -1,10 +1,11 @@
 local list = {
-    ['物理'] = {'red', 26, 1.7},--后缀 间距 模型大小 红
-    ['物爆'] = {'red', 36, 3,45,3.2},--暴击+红
-    ['法术'] = {'blue', 30, 2.2},--蓝
-    ['法爆'] = {'blue', 36, 3,45,3.2},--暴击+蓝
-    ['真伤'] = {'white', 26, 0.8},--白
-    ['会心'] = {'yellow', 40, 1.7,55,2.1},--暴击+黄
+    ['物理'] = {'hong', 30,0.9},--间距 模型大小 红
+    ['物爆'] = {'hong', 36,1.1,42,1.1},--间距 模型大小  暴击间距 暴击模型大小   暴击+红 
+    ['法术'] = {'lan', 30,0.9},--蓝
+    ['法爆'] = {'lan', 36,1.1,42,1.1},--暴击+蓝
+    ['真伤'] = {'jin', 30,0.9},--金 
+    ['会心'] = {'jin', 36,1.1,42,1.1},--暴击+黄
+    ['多重暴击'] = {'zi',36,1.1,42,1.1},--暴击+黄
 }
 
 ac.texttag_jump = function(data)
@@ -44,7 +45,7 @@ ac.texttag_jump = function(data)
     --随机位置
     x_base = math.random(15,30)
     --随机高度
-    local h = 120 + math.random(50)
+    local h = 60 + math.random(50)
 
     local str = '' .. val
     local name = list[data.type][1]
@@ -57,7 +58,7 @@ ac.texttag_jump = function(data)
         ac.effect_ex
         {
             point = point - {0,x_base},
-            model = mst or (('F2_model\\Mtp_%s_%s.mdx'):format(name,num)),
+            model = mst or (('F2_model\\%s_%s.mdx'):format(name,num)),
             high = h,
             size = size,
         }:remove()
@@ -71,8 +72,14 @@ ac.game:event '造成伤害结束'(function(_,damage)
     local is_crit 
     --=====================
     --先真实伤害
-    if damage.real_damage then
-        type = '真伤'
+    if damage:is_mul_crit() then  
+        type = '多重暴击'
+    elseif damage.real_damage then
+        if damage:is_aoe() then --去除分裂伤害的显示
+            type = nil
+        else
+            type = '真伤'
+        end
     elseif damage:is_heart_crit() then  
         type = '会心'
         is_crit = true
@@ -84,6 +91,9 @@ ac.game:event '造成伤害结束'(function(_,damage)
         is_crit = damage:is_spells_crit() 
     end
     --伤害特效文字显示
+    if not type then 
+        return 
+    end
     ac.texttag_jump{
         str = damage.current_damage,
         point = damage.target:get_point(),
