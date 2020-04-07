@@ -73,7 +73,7 @@ function mt:on_cast_start()
     end    
 
     --添加 神阶功法 未处理
-    local list = ac.black_item
+    local list = ac.quality_skill['神阶'] 
     local name = list[math.random(#list)]
     --满时，掉在地上 神阶功法 未处理
     hero:add_item(name,true)
