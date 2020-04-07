@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 400,
 	--技能品阶
 	color = "真神阶",
 	--技能类型
@@ -36,7 +36,8 @@ end,
 【每秒加攻击】+960*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（攻击*192+10亿）*Lv|r]],
+【伤害公式】（攻击*192+10亿）*Lv|r
+ ]],
 	--技能图标
 	art = [[wubeici.blp]],
 	--特效

@@ -35,11 +35,11 @@ mt{
         local p = hero.owner
         return p.server['签到']
     end,
-    ['每秒加全属性'] = function(self)
-        local hero = self.owner
-        local p = hero.owner
-        return p.server['签到']
-    end,
+    -- ['每秒加全属性'] = function(self)
+    --     local hero = self.owner
+    --     local p = hero.owner
+    --     return p.server['签到']
+    -- end,
     
 }
 mt.skills = {
@@ -67,8 +67,8 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['每秒加全属性'] = 5,
-['金币加成'] = 15,
+-- ['每秒加全属性'] = 5,
+-- ['金币加成'] = 15,
 need_map_level = 1,
 }
 

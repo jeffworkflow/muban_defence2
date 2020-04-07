@@ -19,12 +19,12 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 2,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*192+1000000000)* self.level
+  return (self.owner:get('敏捷')*160+1000000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -38,14 +38,15 @@ end,
 【每秒加敏捷】+480*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人1S
-【伤害公式】（敏捷*192+10亿）*Lv|r]],
+【伤害公式】（敏捷*192+10亿）*Lv|r
+ ]],
 	--技能图标
 	art = [[liujin.blp]],
 	--特效
 	effect = [[T50.mdx]],
 	--特效4
 	effect4 = [[类似火焰呼吸，不过伤害区域是一个长方形，区域大小400*1200]],
-	distance = 1000,
+	distance = 5000,
 	hit_area = 200,
 	time =1
 }

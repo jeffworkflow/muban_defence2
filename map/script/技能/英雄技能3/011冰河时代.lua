@@ -19,12 +19,12 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 2,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*96+100000000)* self.level
+  return (self.owner:get('智力')*80+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -38,7 +38,8 @@ end,
 【每秒加智力】+240*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（智力*96*Lv+1%敌人的最大生命值）|r]],
+【伤害公式】（智力*96*Lv+1%敌人的最大生命值）|r
+ ]],
 	--技能图标
 	art = [[binghe.blp]],
 	--特效

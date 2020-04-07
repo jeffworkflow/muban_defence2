@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 600,
 	--技能品阶
 	color = "神阶",
 	--技能类型
@@ -31,10 +31,11 @@ end,
 	--属性加成
 ['杀怪加生命上限'] = {2000,40000},
 	--介绍
-	tip = [[|cffffff00【杀怪加生命】+2000*Lv
+	tip = [[|cffffff00【杀怪加生命上限】+2000*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（生命上限*24+1亿）*Lv|r]],
+【伤害公式】（生命上限*24+1亿）*Lv|r
+ ]],
 	--技能图标
 	art = [[yeqiu.blp]],
 	--特效
@@ -53,6 +54,7 @@ function mt:damage_start(damage)
 	--创建特效
 	ac.effect_ex{
 		model = self.effect,
+		size = 3,
 		point = target:get_point(),
 	}:remove()
 	--造成伤害

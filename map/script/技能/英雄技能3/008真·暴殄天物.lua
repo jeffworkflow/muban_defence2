@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 1000,
+   damage_area = 500,
 	--技能品阶
 	color = "真神阶",
 	--技能类型
@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 2,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
@@ -38,7 +38,8 @@ end,
 【每秒加力量】+480*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（力量*192*Lv+1%敌人的最大生命值）|r]],
+【伤害公式】（力量*192*Lv+1%敌人的最大生命值）|r
+ ]],
 	--技能图标
 	art = [[dazui.blp]],
 	--特效

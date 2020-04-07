@@ -76,7 +76,7 @@ function mt:on_strong(skill)
     --先删除
     skill:remove() 
     ac.game:event_notify('技能-插入魔法书',hero,'神技入体',skill.name)
-    player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 神技入体系统 查看')
+    player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 圣龙气运-吞噬系统中 查看')
     --设置入体技能为5级
     ac.wait(300,function() 
         local skl = hero:find_skill(skill.name,nil,true)
@@ -111,7 +111,8 @@ function mt:on_cast_start()
                     end    
                 end
             end  
-            if skill.level>=skill.max_level and skill.color == '真天阶' and not flag then 
+            -- if skill.level>=skill.max_level and skill.color == '真天阶' and not flag then 
+            if skill.level>=skill.max_level and _in(skill.color,'真天阶','真天赋','真神阶') and not flag then 
                 count = count + 1
                 local info = {
                     name = "|cff"..ac.color_code['淡黄']..'吞噬 '..'|cff'..ac.color_code[skill.color].. clean_color(skill:get_title()),

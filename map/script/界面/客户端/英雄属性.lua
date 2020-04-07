@@ -20,7 +20,7 @@ class.hero_info_panel = extends(class.panel){
 
         local tf_text = '|cffFDC000装备总评分：|r'
         panel:add_text(tf_text,213,25,120,194,12,'auto_newline') 
-        panel.item_pf = panel:add_text('2323232',333,25,100,194,12,'auto_newline')
+        panel.item_pf = panel:add_text('0',333,25,100,194,12,'auto_newline')
         panel.item_pf:set_color(0xffFDC000)
 
         local btn_name = {'武器','衣服','头盔','手套','腰带','鞋子'}

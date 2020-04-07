@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 1000,
 	--技能品阶
 	color = "真神阶",
 	--技能类型
@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 4,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
@@ -38,11 +38,12 @@ end,
 【每秒加全属性】+240*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人2S
-【伤害公式】（全属性*48+10亿）*Lv|r]],
+【伤害公式】（全属性*48+10亿）*Lv|r
+ ]],
 	--技能图标
 	art = [[hunji.blp]],
 	--特效
-	effect = [[AZ_LCDark_D_Flag.mdx]],
+	effect = [[hero_hs05.mdx]],
 	--特效4
 	effect4 = [[参考最终BOSS的"伤害守卫"，持续时间4秒，每隔1秒造成一次伤害，晕眩0.5秒]],
 	pulse_time = 1,
