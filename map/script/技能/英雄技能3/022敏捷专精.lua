@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 100*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 0.1*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -27,7 +27,8 @@ mt{
 	--介绍
 	tip = [[|cffffff00【敏捷】+1%*Lv
 
-|cff00bdec【被动效果】杀怪0.1% 几率获得 1% 永久敏捷（已获得 %has_val% % 敏捷）]],
+|cff00bdec【被动效果】杀怪0.1% 几率获得 1% 永久敏捷|cffff0000（已获得 %has_val% |cffff0000% 敏捷）
+ ]],
 	--技能图标
 	art = [[mjzj.blp]],
 	--特效

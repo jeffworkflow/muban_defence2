@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 2,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
@@ -38,15 +38,16 @@ end,
 【每秒加力量】+480*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人1S
-【伤害公式】（力量*192+10亿）*Lv|r]],
+【伤害公式】（力量*192+10亿）*Lv|r
+ ]],
 	--技能图标
 	art = [[yibang.blp]],
 	--特效
 	effect = [[effect_hero_attack5.mdx]],
 	--特效4
 	effect4 = [[类似火焰呼吸，不过伤害区域是一个长方形，区域大小400*1200]],
-	distance = 1000,
-	hit_area = 200,
+	distance = 1300,
+	hit_area = 300,
 	time =1
 }
 function mt:damage_start(damage)

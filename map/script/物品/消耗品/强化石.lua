@@ -13,6 +13,7 @@ art = [[qianghuashi.blp]],
 item_type = "消耗品",
 --模型
 specail_model = [[EmeraldCore_blue.mdx]],
+-- specail_model = [[Athelas1.mdx]],
 model_size = 0.7,
 --品质
 -- color = "紫",

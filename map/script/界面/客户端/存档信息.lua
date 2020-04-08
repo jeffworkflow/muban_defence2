@@ -32,6 +32,7 @@ class.player_info_panel = extends(class.panel){
         panel.titles = {
             '地图等级',
             -- '评论数',
+            '签到',
             '宠物等级',
             '挖宝熟练度',
             '看书熟练度',
