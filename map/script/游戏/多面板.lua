@@ -3,44 +3,63 @@ local multiboard = require 'types.multiboard'
 local base_icon = [[ReplaceableTextures\CommandButtons\BTNSelectHeroOn.blp]]
 local mtb
 local color = {
-	['魔鬼的交易'] = {
-		['无所不在'] = '|cffffffff',
-		['无所不知'] = '|cffffffff',
-		['无所不为'] = '|cff00ffff',
-		['无所不贪'] = '|cff00ffff',
-		['无所不能'] = '|cffffff00',
-		['脚踩祥云'] = '|cffffff00',
-		['身披圣衣'] = '|cffff0000',
-		['头顶乾坤'] = '|cffff0000',
+	['神魂修炼'] = {
+		['炼皮'] = '|cffffffff',
+		['锻膜'] = '|cffffffff',
+		['造骨'] = '|cff00ffff',
+		['凝血'] = '|cff00ffff',
+		['练气'] = '|cffffff00',
+		['神勇'] = '|cffffff00',
+		['壮腑'] = '|cffff0000',
+		['通灵'] = '|cffff0000',
+		['魂变'] = '|cffff0000',
+		['涅槃'] = '|cffff0000',
 	},
-	['境界突破'] = {
-		['小斗气'] = '|cff00ff00',
-		['斗者'] = '|cff00ff00',
-		['斗师'] = '|cff00ffff',
-		['斗灵'] = '|cff00ffff',
-		['斗王'] = '|cffffff00',
-		['斗皇'] = '|cffffff00',
-		['斗宗'] = '|cffff0000',
-		['斗尊'] = '|cffff0000',
-		['斗圣'] = '|cffdf19d0',
-		['斗帝'] = '|cffdf19d0',
-		['斗神'] = '|cffdf19d0',
-	},
-	['异火'] = {
-		['星星之火'] = '|cff00ffff',
-		['陨落心炎'] = '|cffffff00',
-		['三千焱炎火'] = '|cffffe799',
-		['虚无吞炎'] = '|cffff0000',
-		['陀舍古帝'] = '|cffdf19d0',
-		['无尽火域'] = '|cffdf19d0',
-	},
+	
+	['踢馆'] = '|cff00ff00',
+	['突破'] = '|cff00ffff',
+	['狩猎'] = '|cff00ffff',
+	['战就战'] = '|cffffff00',
+	['入魔'] = '|cffffff00',
+
 	['其它'] = {
-		['倒霉蛋'] = '|cff00ffff',
-		['游戏王'] = '|cffff0000',
+		['大屠杀'] = '|cff00ffff',
+		['错臂之交'] = '|cff00ffff',
+		['八个技能的男人'] = '|cffff0000',
 	},
 }
+local function get_skill_all_sub_skl_name(book_skill,list)
+	local skl = ac.skill[book_skill]
+	if skl.is_spellbook then 
+		list = (list or'') ..'['..skl.name..'],'
+		for i=#skl.skills,1,-1 do
+			local name = skl.skills[i]
+			local skl = ac.skill[name]
+			if skl.is_spellbook then 
+				list = get_skill_all_sub_skl_name(name,list)
+			else
+				list = (list or'') ..name..','
+			end
+		end
+	end
+	return list
+end
+
+-- local r_str  --要求在某几个魔法书里面进行搜索
+-- ac.wait(0,function()
+-- 	for k,v in pairs(color['圣龙气运']) do 
+-- 		local skl = ac.skill['圣龙气运']
+-- 		for i=#skl.skills,1,-1 do
+-- 			local name = skl.skills[i]
+-- 			if k == name then 
+-- 				r_str = (r_str or'') .. (get_skill_all_sub_skl_name(name) or '')
+-- 			end
+-- 		end
+-- 	end
+-- 	print('测试：：：：：：：：：：：：：：：',r_str)
+-- end)
 --深度优先算法
-local function get_text(hero,book_skill)
+local function get_text(hero,book_skill,filter)
 	local str = ''
 	local skl = hero:find_skill(book_skill,nil,true)
 	if not skl or  not skl.skill_book  then return str end 
@@ -49,12 +68,15 @@ local function get_text(hero,book_skill)
 		if skill.level>=1 then 
 			if skill.is_spellbook then
 				--深度优先，没有判断 则每次递归都有值返回，而我们是要找到符合条件的才返回，所以加判断。
-				if get_text(hero,skill.name) then 
-					return get_text(hero,skill.name) 
-				end	
+				-- if filter then print('测试测试2：：：：：',filter,r_str,skill.name) end
+				-- if not filter or (filter and finds(r_str,skill.name)) then
+					if get_text(hero,skill.name,filter) then 
+						return get_text(hero,skill.name,filter) 
+					end	
+				-- end
 			else
 				-- print(skill.name)
-				str = skill.name
+				str = skill.title or skill.name
 				return str
 			end	
 		end	
@@ -63,20 +85,25 @@ end
 local function add_color(str,book_skill)
 	local str = str or ''
 	--处理颜色代码
-	if color[book_skill] then  
-		for key,val in sortpairs(color[book_skill]) do
-			-- print(str,key,val)
-			if finds(str,key) then
-				str = val..str..'|r'
-				break
-			end
-		end	
+	if color[book_skill] then
+		if type(color[book_skill]) == 'table' then  
+			for key,val in sortpairs(color[book_skill]) do
+				-- print(str,key,val)
+				if finds(str,key) then
+					str = val..str..'|r'
+					break
+				end
+			end	
+		else
+			str = color[book_skill]..str..'|r'
+		end
 	end	
+	
 	return str
 end
 
 
-local title =  {'玩家','|cff00ff00杀敌数|r','|cff00ffff魔丸|r','|cff00ff00神魂修炼|r','|cff00ffff境界|r','|cffffff00异火|r','|cffff0000其它|r'}
+local title =  {'玩家','|cff00ff00战斗力|r','|cff00ffff杀敌数|r','|cff00ff00魔丸|r','|cff00ffff神魂修炼|r','|cffffff00主线|r','|cffff0000其它|r'}
 
 local function init()
 
@@ -101,7 +128,8 @@ local function init()
 	--调整局部宽度 第x列
     mtb:setXwidth(2,0.03)
     mtb:setXwidth(3,0.03)
-    mtb:setXwidth(5,0.03)
+    mtb:setXwidth(4,0.03)
+    -- mtb:setXwidth(5,0.03)
 	mtb:setXwidth(7,0.03)
 	local ix = 2
 	--初始化所有数据
@@ -111,7 +139,7 @@ local function init()
 			mtb:setText(1,ix,player:getColorWord()..player:get_name()..'|r')
 			mtb:setText(2,ix,'0')
 			mtb:setText(3,ix,'0')
-			mtb:setText(4,ix,' ')
+			mtb:setText(4,ix,'0')
 			mtb:setText(5,ix,' ')
 			mtb:setText(6,ix,' ')
 			mtb:setText(7,ix,' ')
@@ -141,8 +169,9 @@ end
 local function fresh(player,hero)
 	-- print(1111111111)
 	--刷新杀敌数
-	mtb:setText( 2, player.ix, bignum2string(player.kill_count))
-	mtb:setText( 3, player.ix, bignum2string(player.rec_ex))
+	mtb:setText( 2, player.ix, bignum2string(player.zdl or 0))
+	mtb:setText( 3, player.ix, bignum2string(player.kill_count))
+	mtb:setText( 4, player.ix, bignum2string(player.rec_ex))
 	--刷新字段
 	-- print(get_text(hero,'魔鬼的交易'))
 	for i,book_skill in ipairs(title) do 
@@ -151,12 +180,24 @@ local function fresh(player,hero)
 		local new_str 
 		if book_skill == '其它' then 
 			new_str = player.is_show_nickname
-		elseif book_skill == '境界' then
-			book_skill = '境界突破'
-			new_str = get_text(hero,book_skill)
+		elseif book_skill == '主线' then
+			book_skill = '圣龙气运'
+			for i,name in ipairs({'入魔','战就战','狩猎','突破','踢馆'}) do 
+				new_str = get_text(hero,name)
+				if new_str then 
+					book_skill = name
+					break
+				end
+			end
+			if not new_str and player.flag_slqy then 
+				new_str = '圣龙气运'
+			end
+			-- print(book_skill,new_str)
 		else	
 			new_str = get_text(hero,book_skill)
 		end	 
+		
+		new_str = clean_color(new_str or '')
 		new_str = add_color(new_str,book_skill)
 		-- print(book_skill,new_str)
 		if new_str and new_str ~='' then 

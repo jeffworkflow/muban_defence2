@@ -210,6 +210,7 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
             end
         end
         zdl = zdl + skl_zdl
+        player.zdl = zdl
         -- print('战斗力',zdl,name,value)
         if hero.owner:is_self()then 
             new_ui:set_val(zdl)

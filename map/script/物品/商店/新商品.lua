@@ -96,6 +96,7 @@ local mt = ac.skill['至凶之物']
 function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
+    p.flag_slqy = true
     if p.flag_tsjx then return end 
     p.revive_point = ac.rect.j_rect('zxzw'):get_point()
 end
