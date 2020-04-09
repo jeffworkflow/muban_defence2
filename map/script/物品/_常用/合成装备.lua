@@ -47,7 +47,7 @@ ac.wait(10,function()
     -- --处理黑色物品 （黑）
     -- quality_item['黑'] ={}
     for color,data in pairs(ac.quality_skill) do
-        print(color,data[1])
+        -- print(color,data[1])
         quality_item[color] = data 
     end   
     --排序

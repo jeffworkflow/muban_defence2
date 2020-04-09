@@ -79,8 +79,15 @@ end
 
 --条件检查
 function mt:can_passive(source,target,damage)
-    --同一个技能
+    --同一个技能 
+    --由于是后注册先执行，因此是一个深度优先。
+    --当2个被动技能，触发概率为100时，只会触发一个（因为第一个技能触发时产生伤害，会进行第一个技能的伤害判断，
+    --而又因第二个技能不是普通直接return时，导致进入cd,会被return掉）
     if damage and damage.skill and (self.skill == damage.skill or self.skill.name == damage.skill.name) then
+        return
+    end
+    --不是普攻 返回
+    if not damage:is_common_attack() then
         return
     end
     local random = self.random or self.skill.chance or 100
@@ -149,7 +156,9 @@ function mt:init()
             local is_success 
             --被动开始
             if self:can_passive(_,_,damage)  then
+                -- print('111',self,self.skill.name,damage,damage.skill,damage.skill and damage.skill.name)
                 is_success = self.damage_start(self.skill,damage)
+                -- print('222',self,self.skill.name,damage,damage.skill,damage.skill and damage.skill.name)
                 self:finish()
             elseif self.damage_failure then
                 --被动失败

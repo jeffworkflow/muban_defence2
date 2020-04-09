@@ -86,8 +86,8 @@ ac.wait(1100,function()
                 -- print('存档数据:',key,key_name,val)
             end
             ac.wait(900,function()
-                print(player,' 2获取满赞：',player.mall and player.mall['满赞'])
-                print(player,' 2获取地图等级：',player:Map_GetMapLevel())
+                -- print(player,' 2获取满赞：',player.mall and player.mall['满赞'])
+                -- print(player,' 2获取地图等级：',player:Map_GetMapLevel())
                 player:event_notify '读取存档数据'
                 player:event_notify '读取存档数据后'
             end)
@@ -167,7 +167,7 @@ for i=1,10 do
                             val = 0
                         end  
                         player.server[name] = val
-                        print('111111111111111111',name,val)
+                        -- print('111111111111111111',name,val)
                     end    
                 end    
             end   

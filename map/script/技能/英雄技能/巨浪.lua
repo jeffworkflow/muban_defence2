@@ -103,12 +103,10 @@ function mt:on_add()
 		if not damage:is_common_attack()  then 
 			return 
 		end 
-	
 		--技能是否正在CD
         if skill:is_cooling() then
 			return 
 		end
-		print('测试几率：',self.chance)
 		local rand = math.random(1,100)
 		if rand <= self.chance then 
 			skill:atk_pas_shot(damage)

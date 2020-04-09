@@ -43,7 +43,7 @@ for key,u_name in pairs(ac.kangfu) do
             local player = ac.player(i)
             if player:is_player() then 
                 local skl_color = string.sub( key,1,6 )
-                print('功法测试',skl_color)
+                -- print('功法测试',skl_color)
                 if not player.kangfu then 
                     player.kangfu = {}
                 end  

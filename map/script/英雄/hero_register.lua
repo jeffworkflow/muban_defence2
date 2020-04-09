@@ -47,7 +47,7 @@ local i =16
 if i == 16 then
 	local p = ac.player[i]
 	p.ability_list = {}
-	p.ability_list['预览'] = {size = 4}
+	p.ability_list['预览'] = {size = 1}
 	for x = 1, p.ability_list['预览'].size do
 		p.ability_list['预览'][x] = ('Q20%d'):format(x)
 	end

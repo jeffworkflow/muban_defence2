@@ -32,7 +32,7 @@ local function init_shop()
                         if not finds(name,'超级异火','超越极限') then
                             local x,y = ac.rect.j_rect(str):get_point():get()
                             local shop = ac.shop.create(name,x,y,face,nil,player)  
-                            print(shop:get_name(),name,x,y)
+                            -- print(shop:get_name(),name,x,y)
                         end    
                     end)  
                 end    

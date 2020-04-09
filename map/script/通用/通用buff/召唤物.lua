@@ -70,7 +70,7 @@ function mt:on_add()
 	{
 		skill = self.skill,
 	}
-	print('添加水元素',self.time)
+	-- print('添加水元素',self.time)
 	--设置水元素类型的生命周期
 	-- @目标handle，水元素类型，持续时间
 	jass.UnitApplyTimedLife(self.target.handle,base.string2id('BHwe'),self.time+0.1)
