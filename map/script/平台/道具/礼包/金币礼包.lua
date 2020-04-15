@@ -12,19 +12,19 @@ tip = [[
 
 |cffFFE799【领取条件】|r商城购买|cffff0000金币礼包|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00每秒加500金币，杀怪+500金币，攻击+500金币
-开局赠送一本随机技能书，发放英雄背包|r
+|cffFFE799【礼包奖励】|r|cff00ff00每秒加1000金币，杀怪+1000金币，攻击+1000金币
+开局赠送一本黄阶功法书（四选一），发放英雄背包|r
  ]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --每秒金币
-per_gold = 500,
+per_gold = 1000,
 --杀怪加金币
-kill_gold = 500,
+kill_gold = 1000,
 --攻击加金币
-attack_gold = 500,
+attack_gold = 1000,
 }
 
 function mt:on_cast_start()
@@ -43,7 +43,7 @@ function mt:on_cast_start()
         hero:add_item('随机技能书',true)
         p.mall_flag[name] = true
         
-        local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000金币礼包|r |cffFFE799【礼包奖励】|r|cff00ff00每秒加500金币，杀怪+500金币，攻击+500金币|r'
+        local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活 |cff00ffff金币礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
         p:sendMsg(tip,3)
     else
         p:sendMsg('条件不足或已领取过',2)    

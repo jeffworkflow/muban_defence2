@@ -12,7 +12,7 @@ tip = [[
 
 |cffFFE799【领取条件】|r给此图来个|cffff0000五星好评|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击伤害+30%， 技暴伤害+15% |r
+|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得200点全属性， 暴击伤害+50%， 技暴伤害+25% |r
  ]],
 --物品类型
 item_type = '神符',
@@ -21,8 +21,8 @@ need_map_level = 3,
 target_type = ac.skill.TARGET_TYPE_NONE,
 --购买价格
 gold = 0,
-award_physical_damage = 30,
-award_magic_damage = 15,
+award_physical_damage = 50,
+award_magic_damage = 25,
 chance = 10
 }
 
@@ -45,12 +45,12 @@ function mt:on_cast_start()
         hero:event '受到伤害效果' (function(trg, damage)
             --概率加全属性
             if math.random(100) <= self.chance then 
-                hero:add('全属性',100)
+                hero:add('全属性',200)
             end    
         end)
         p.mall_flag[name] = true
         
-        local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000五星好评礼包|r |cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击伤害+30%， 技暴伤害+15% |r'
+        local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活|cff00ffff五星好评礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
         p:sendMsg(tip,3)
     else
         p:sendMsg('条件不足或已领取过',2)    

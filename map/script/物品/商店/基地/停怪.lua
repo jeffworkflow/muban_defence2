@@ -58,7 +58,7 @@ function mt:on_cast_start()
             ac.main_stop_timer = nil
         end,
     }
-    ac.player.self:sendMsg('玩家 '..p:get_name()..' 购买了|cffff0000停怪！|r停怪90秒。')
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ff00玩家|cff00ffff '..p:get_name()..' |cff00ff00购买了|cffff0000停怪！|r|cff00ff00停怪90秒。')
 end
 
 -- ac.game:event '单位-货币不足' (function(_,seller,u,it)
