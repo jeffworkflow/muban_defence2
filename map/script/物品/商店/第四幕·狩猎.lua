@@ -253,6 +253,7 @@ for i,value in ipairs(magic_item) do
     mt.item_type = '消耗品'
     mt.content_tip = ''
     mt.item_type_tip = ''
+    mt.passive = true
 
     --使用物品
     function mt:on_cast_start()
@@ -265,7 +266,7 @@ for i,value in ipairs(magic_item) do
             if self.add_item_count then  
                 self:add_item_count(1) 
             end   
-            return      
+            return true --不加true的话，会执行加属性。   
         end
         player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)

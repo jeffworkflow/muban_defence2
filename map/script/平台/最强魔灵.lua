@@ -303,7 +303,7 @@ local function upgrade_skill(player,skill)
                         if has_mall and has_mall > 0 then 
                             ac.game:event_notify('技能-插入魔法书',hero,skill.name,name)
                             local skl = hero:find_skill(name,nil,true)
-                            -- print(skl.name,has_mall)
+                            skl.item_type = nil --动态插入的技能，如果是消耗品且为0级,设置为nil再升级就有对应的属性。 案例：天神物品
                             skl:set_level(has_mall)
                         end
                     end
