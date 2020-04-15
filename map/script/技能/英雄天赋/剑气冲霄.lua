@@ -22,28 +22,28 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*5)* self.level
 end,
 dead_damage = function(self)
-return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10+10000)* self.level
+return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*5)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
- ['杀怪加全属性'] = {1000,20000},
- ['攻击减甲'] = 488,
- ['攻击间隔'] = -0.25,
- ['全伤加深'] = 488
-,
+ ['杀怪加全属性'] = {488,9760},
+ ['每秒加护甲'] = 88,
+ ['攻击减甲'] = 888,
+ ['全伤加深'] = 488,
+
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+1000*Lv
-【攻击减甲】+488
-【攻击间隔】-0.25
+	tip = [[|cffffff00【杀怪加全属性】+488*Lv
+【每秒加护甲】+88
+【攻击减甲】+888
 【全伤加深】+488%
 【强大的永生系统】
 
 |cff00ffff【被动效果】攻击10%几率造成超大范围技能伤害 
-【伤害公式】（全属性*75*Lv+1%敌人的最大生命值）
+【伤害公式】（全属性*50*Lv+1%敌人的最大生命值）
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标

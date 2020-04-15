@@ -244,7 +244,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     end    
 
     if rand_name == '无' then
-        player:sendMsg('|cffffe799【系统消息】|r|cffffe799【系统消息】|r|cffff0000白嫖熟练度+1，当前白嫖熟练度 '..player.server['白嫖熟练度']..'|r',2)
+        player:sendMsg('|cffffe799【系统消息】|r|cffff0000白嫖熟练度+1，当前白嫖熟练度 '..player.server['白嫖熟练度']..'|r',2)
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]

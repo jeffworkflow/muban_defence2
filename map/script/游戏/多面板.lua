@@ -4,28 +4,56 @@ local base_icon = [[ReplaceableTextures\CommandButtons\BTNSelectHeroOn.blp]]
 local mtb
 local color = {
 	['神魂修炼'] = {
-		['炼皮'] = '|cffffffff',
-		['锻膜'] = '|cffffffff',
+		['炼皮'] = '|cff00ff00',
+		['锻膜'] = '|cff00ff00',
 		['造骨'] = '|cff00ffff',
 		['凝血'] = '|cff00ffff',
 		['练气'] = '|cffffff00',
 		['神勇'] = '|cffffff00',
 		['壮腑'] = '|cffff0000',
 		['通灵'] = '|cffff0000',
-		['魂变'] = '|cffff0000',
-		['涅槃'] = '|cffff0000',
+		['魂变'] = '|cffdf19d0',
+		['涅盘'] = '|cffdf19d0',
 	},
 	
 	['踢馆'] = '|cff00ff00',
 	['突破'] = '|cff00ffff',
-	['狩猎'] = '|cff00ffff',
-	['战就战'] = '|cffffff00',
-	['入魔'] = '|cffffff00',
+	['狩猎'] = '|cffffff00',
+	['战就战'] = '|cffff0000',
+	['入魔'] = '|cffdf19d0',
 
 	['其它'] = {
-		['大屠杀'] = '|cff00ffff',
-		['错臂之交'] = '|cff00ffff',
-		['八个技能的男人'] = '|cffff0000',
+		['大屠杀'] = '|cff00ff00',
+		['错臂之交'] = '|cff00ff00',
+		['八个技能的男人'] = '|cff00ff00',
+
+		['挖宝达人'] = '|cff00ffff',
+		['鉴宝大师'] = '|cff00ffff',
+		['鬼斧神工'] = '|cff00ffff',
+		['扭转乾坤'] = '|cff00ffff',
+		['园艺大师'] = '|cff00ffff',
+		['骰子王'] = '|cff00ffff',
+
+		['五道杠少年'] = '|cffffff00',
+
+		['倒霉蛋'] = '|cffff0000',
+
+		['游戏王'] = '|cffdf19d0',
+
+
+-- 大屠杀
+-- 错臂之交
+-- 八个技能的男人
+-- 挖宝达人
+-- 鉴宝大师
+-- 鬼斧神工
+-- 扭转乾坤
+-- 园艺大师
+-- 骰子王
+-- 五道杠少年
+-- 倒霉蛋
+-- 游戏王
+
 	},
 }
 local function get_skill_all_sub_skl_name(book_skill,list)
@@ -103,7 +131,7 @@ local function add_color(str,book_skill)
 end
 
 
-local title =  {'玩家','|cff00ff00战斗力|r','|cff00ffff杀敌数|r','|cff00ff00魔丸|r','|cff00ffff神魂修炼|r','|cffffff00主线|r','|cffff0000其它|r'}
+local title =  {'玩家','|cff00ff00战斗力|r','|cff00ffff杀敌数|r','|cffffff00魔丸|r','|cffff0000神魂修炼|r','|cffffff00主线|r','|cff00ffff其它|r'}
 
 local function init()
 

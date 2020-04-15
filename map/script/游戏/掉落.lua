@@ -414,8 +414,8 @@ local unit_reward = {
     ['藏宝阁小弟'] = {{rand =1.5,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
-        {    rand = 60.41, name = '无' },
-        {    rand = 8, name = '随机物品',},
+        {    rand = 52.81, name = '无' },
+        {    rand = 15, name = '随机物品',},
         {    rand = 8, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 55, name = '黄阶'},
                 { rand = 30, name = '玄阶'},
@@ -428,22 +428,22 @@ local unit_reward = {
         {    rand = 1, name = '杀怪加全属性+150 攻击加全属性+600 每秒加全属性+2500',},
         {    rand = 1, name = '杀怪加攻击+600 每秒加攻击+6000',},
         {    rand = 1, name = '每秒加护甲+5',},
-        {    rand = 1, name = '攻击减甲+30',},
+        {    rand = 1, name = '攻击减甲+50',},
 
         {    rand = 1, name = '宠物经验书(小)*1',},
         {    rand = 1, name = '宠物经验书(大)*1',},
         {    rand = 2, name = '魔丸',},
         {    rand = 2, name = '木头',},
 
-        {    rand = 1, name = '功法升级书*1',}, --lv1
-        {    rand = 0.5, name = '功法连升书*1',}, --lv2
+        {    rand = 1.2, name = '功法升级书*1',}, --lv1
+        {    rand = 0.6, name = '功法连升书*1',}, --lv2
         {    rand = 0.35, name = '三眼赤痕*1',}, --lv1
         {    rand = 0.35, name = '火龙气息*1',}, --lv2
         {    rand = 0.25, name = '地魂融血丹*1',}, --lv1
         {    rand = 0.25, name = '天魂融血丹*1',}, --lv2
 
-        {    rand = 1, name = '强化石*1',}, --lv2
-        {    rand = 0.5, name = '天谕*1',}, --lv2
+        {    rand = 1.2, name = '强化石*1',}, --lv2
+        {    rand = 0.6, name = '天谕*1',}, --lv2
         {    rand = 0.2, name = '吞噬丹*1',}, --lv2
 
         --挖宝成就
@@ -696,7 +696,7 @@ local unit_reward = {
     },
 
     ['超级扭蛋'] = {
-        {    rand = 30.181, name = '空蛋' },
+        {    rand = 31.781, name = '空蛋' },
 
         {    rand = 2.5, name = '魔丸',},
         {    rand = 2.5, name = '木头',},
@@ -768,10 +768,10 @@ local unit_reward = {
         {    rand = 0.02, name = '三号熔炼石',},
         {    rand = 0.02, name = '四号熔炼石',},
 
-        {    rand = 0.5, name = '地魂融血丹',}, --lv1
-        {    rand = 0.5, name = '天魂融血丹',}, --lv2
-        {    rand = 0.5, name = '三眼赤痕',}, --lv1
-        {    rand = 0.5, name = '火龙气息',}, --lv2
+        {    rand = 0.1, name = '地魂融血丹',}, --lv1
+        {    rand = 0.1, name = '天魂融血丹',}, --lv2
+        {    rand = 0.1, name = '三眼赤痕',}, --lv1
+        {    rand = 0.1, name = '火龙气息',}, --lv2
 
 
         {    rand = 0.12, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000
@@ -824,7 +824,7 @@ local unit_reward = {
         {    rand = 13.2, name = '一笔巨款',}, --成就
         {    rand = 11.1, name = '玄远之学',}, --成就
         {    rand = 10.67, name = '三冬暖',}, --成就
-        {    rand = 10.44, name = '源不断的本钱',},--成就
+        {    rand = 10.44, name = '源源不断的本钱',},--成就
 
         {    rand = 0.33, name = '骰子王',}, --彩蛋
 
