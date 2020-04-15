@@ -20,7 +20,8 @@ local color = {
 	['突破'] = '|cff00ffff',
 	['狩猎'] = '|cffffff00',
 	['战就战'] = '|cffff0000',
-	['入魔'] = '|cffdf19d0',
+
+	['魔神之路'] = '|cffdf19d0',
 
 	['其它'] = {
 		['大屠杀'] = '|cff00ff00',
@@ -210,15 +211,21 @@ local function fresh(player,hero)
 			new_str = player.is_show_nickname
 		elseif book_skill == '主线' then
 			book_skill = '圣龙气运'
-			for i,name in ipairs({'入魔','战就战','狩猎','突破','踢馆'}) do 
+			for i,name in ipairs({'战就战','狩猎','突破','踢馆'}) do 
 				new_str = get_text(hero,name)
 				if new_str then 
 					book_skill = name
 					break
 				end
 			end
-			if not new_str and player.flag_slqy then 
-				new_str = '圣龙气运'
+			if not new_str then 
+				if player.flag_slqy then 
+					new_str = '圣龙气运'
+				end
+				if player.flag_mszl then 
+					new_str = '魔神之路'
+					book_skill = '魔神之路'
+				end
 			end
 			-- print(book_skill,new_str)
 		else	

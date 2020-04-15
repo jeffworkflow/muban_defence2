@@ -14,6 +14,8 @@ local function create_u(skill,unit_name,target_rect,f)
     local point = rect:get_point()
     local u = ac.player(12):create_unit(unit_name,point)
     u:event '单位-死亡'(function(_,unit,killer)
+        --多面板显示
+        p.flag_mszl = true
         --激活属性
         f(unit,killer) 
         --删除另一只怪

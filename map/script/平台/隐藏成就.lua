@@ -1,3 +1,4 @@
+--隐藏成就 系统说明 强悍之人
 local function active_yccj(p,name,sendmsg,sendmsg2)
     -- print(p,name,sendmsg,sendmsg2)
     p.flag_yccj = p.flag_yccj or {} 
@@ -502,23 +503,38 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 end)    
 
 -- 万分之一空气
-local function check_air(p,name)
-    local temp = {'挖图','超级扭蛋','黑暗骰子','羊皮无字','一颗神奇的种子'}
-    local ok =true
-    local has_cnt = 0
-    for i,name in pairs(temp) do 
-        if p.air[name] then 
-            has_cnt = has_cnt + 1
-        else
-            ok = false 
-        end
+-- local function check_air(p,name)
+--     local temp = {'挖图','超级扭蛋','黑暗骰子','羊皮无字','一颗神奇的种子'}
+--     local ok =true
+--     local has_cnt = 0
+--     for i,name in pairs(temp) do 
+--         if p.air[name] then 
+--             has_cnt = has_cnt + 1
+--         else
+--             ok = false 
+--         end
+--     end
+--     p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..has_cnt..'/'..#temp,5)
+--     --激活隐藏成就、魔剑
+--     if ok then 
+--         --激活
+--         p.hero:add_item('魔剑卡片')
+--         ac.player.self:sendMsg('恭喜 '..p:get_name()..' 集齐万分之一空气,获得魔剑卡片',5)
+--     end
+-- end
+local function check_air(p)
+    if p.flag_air then 
+        return 
     end
-    p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..has_cnt..'/'..#temp,5)
-    --激活隐藏成就、魔剑
-    if ok then 
-        --激活
+    local all_cnt = 7
+    if p.air >= all_cnt then 
+        p.flag_air = true
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
+        --激活隐藏成就、魔剑
         p.hero:add_item('魔剑卡片')
         ac.player.self:sendMsg('恭喜 '..p:get_name()..' 集齐万分之一空气,获得魔剑卡片',5)
+    else
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
     end
 end
 --统一概率
@@ -526,54 +542,39 @@ local rate = 30
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner
     if math.random(100000)/1000 < rate then 
-        p.air =p.air or {}
-        if not p.air['挖图'] then 
-            p.air['挖图'] = true 
-            check_air(p,'挖图')
-        end
+        p.air =(p.air or 0) + 1
+        check_air(p)
     end
 end)
 
 ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
     local p = hero.owner
     if math.random(100000)/1000 < rate then 
-        p.air =p.air or {}
-        if not p.air['超级扭蛋'] then 
-            p.air['超级扭蛋'] = true 
-            check_air(p,'超级扭蛋')
-        end
+        p.air =(p.air or 0) + 1
+        check_air(p)
     end
 end)
 
 ac.game:event '触发黑暗骰子事件'(function(trg,skill,hero)
     local p = hero.owner
     if math.random(100000)/1000 < rate then 
-        p.air =p.air or {}
-        if not p.air['黑暗骰子'] then 
-            p.air['黑暗骰子'] = true 
-            check_air(p,'黑暗骰子')
-        end
+        p.air =(p.air or 0) + 1
+        check_air(p)
     end
 end)
 
 ac.game:event '触发羊皮无字事件'(function(trg,skill,hero)
     local p = hero.owner
     if math.random(100000)/1000 < rate then 
-        p.air =p.air or {}
-        if not p.air['羊皮无字'] then 
-        p.air['羊皮无字'] = true 
-        check_air(p,'羊皮无字')
-        end
+        p.air =(p.air or 0) + 1
+        check_air(p)
     end
 end)
 
 ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     local p = hero.owner
     if math.random(100000)/1000 < rate then 
-        p.air =p.air or {}
-        if not p.air['一颗神奇的种子'] then 
-            p.air['一颗神奇的种子'] = true 
-            check_air(p,'一颗神奇的种子')
-        end
+        p.air =(p.air or 0) + 1
+        check_air(p)
     end
 end)

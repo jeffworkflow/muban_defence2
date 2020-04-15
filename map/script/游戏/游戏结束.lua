@@ -43,7 +43,6 @@ ac.game:event '游戏-无尽开始'(function(trg)
 	end)
 end)	
 
-	
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-结束' (function(trg,flag)
 	local name 
@@ -58,6 +57,12 @@ ac.game:event '游戏-结束' (function(trg,flag)
             title = "游戏结束倒计时",
             func = function ()
                 EndGame(true)
+				for i=1,8 do
+					local player = ac.player[i]
+					if player:is_player() then
+						CustomDefeatBJ(player.handle,name)
+					end
+				end
             end,
         }
 		return 
@@ -68,6 +73,12 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
 		ac.wait(120*1000,function()
 			EndGame(true)
+			for i=1,8 do
+				local player = ac.player[i]
+				if player:is_player() then
+					CustomDefeatBJ(player.handle,name)
+				end
+			end
 		end)
 	end	
 	ac.wait(3000,function()
@@ -79,7 +90,6 @@ ac.game:event '游戏-结束' (function(trg,flag)
                 player.hero:add_restriction('无敌')
                 player.hero:add_restriction('缴械')
                 player.hero:add_restriction('定身')
-                CustomDefeatBJ(player.handle,name)
             end
         end
     end)
@@ -228,6 +238,12 @@ ac.game:event '游戏-大胜利' (function(trg)
 
 	ac.wait(120*1000,function()
 		EndGame(true)
+		for i=1,8 do
+			local player = ac.player[i]
+			if player:is_player() then
+				CustomDefeatBJ(player.handle,name)
+			end
+		end
 	end)
 
 end)

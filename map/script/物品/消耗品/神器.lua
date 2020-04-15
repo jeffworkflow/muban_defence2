@@ -237,7 +237,7 @@ for i,value in ipairs(magic_item) do
             if self.add_item_count then  
                 self:add_item_count(1) 
             end   
-            return      
+            return true --不加true的话，会执行加属性。  
         end
 
         ac.game:event_notify('技能-插入魔法书',hero,self.skill_book_name,self.name)

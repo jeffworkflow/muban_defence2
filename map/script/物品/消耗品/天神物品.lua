@@ -255,7 +255,7 @@ ac.ts_item = magic_item
 for i,value in ipairs(magic_item) do 
     local mt = ac.skill[value]
     --等久
-    mt.level = 1
+    mt.level = 0
     --魔法书相关
     -- mt.is_order = 1 
     --物品类型
@@ -272,6 +272,7 @@ for i,value in ipairs(magic_item) do
 	--忽略技能冷却
     mt.ignore_cool_save = true
     mt.passive = true
+    mt.not_use_state = true --消耗品使用时不添加属性
 
     --使用物品
     function mt:on_cast_start()
@@ -287,7 +288,7 @@ for i,value in ipairs(magic_item) do
             if self.add_item_count then  
                 self:add_item_count(1) 
             end
-            return 
+            return true --不加true的话，会执行加属性。 
         end
 
         if ac.g_game_degree_attr <= p:Map_GetServerValue(key) then 
@@ -295,7 +296,7 @@ for i,value in ipairs(magic_item) do
             if self.add_item_count then  
                 self:add_item_count(1) 
             end
-            return 
+            return true --不加true的话，会执行加属性。 
         end
         --激活成就（存档） 
         p.flag_tswp[self.name] = true
@@ -308,12 +309,14 @@ for i,value in ipairs(magic_item) do
         else
             ac.game:event_notify('技能-插入魔法书',hero,'成神',self.name)
             local skl = hero:find_skill(self.name,nil,true)
+            skl.item_type = nil
             player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00存档成功|r 可在最强魔灵-成神中查看',2)
             skl:set_level(1)
             -- skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         end
     end
 end
+
 
 
 

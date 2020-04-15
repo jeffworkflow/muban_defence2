@@ -1,4 +1,4 @@
-local mt = ac.skill['永久超级赞助']
+local mt = ac.skill['高级赞助']
 mt{
 --等久
 level = 0,
@@ -23,14 +23,11 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --几率
 chance = 10,
 ['杀怪加全属性'] = 288,
-['攻击加全属性'] = 488,
-['每秒加全属性'] = 888,
-['暴击几率'] = 25,
-['暴击伤害'] = 500,
-['技暴几率'] = 25,
-['技暴伤害'] = 500,
-['全伤加深'] = 250,
-['攻击减甲'] = 125,
 ['额外杀敌数'] = 1,
+['攻击减甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 15 * map_level
+end,
 
 }

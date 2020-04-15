@@ -123,7 +123,6 @@ mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[ahtxz.blp]],
-    title = '赞助',
     tip = [[
 
 点击查看 |cff00ffff通行证

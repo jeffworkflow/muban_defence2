@@ -408,7 +408,7 @@ for i,value in ipairs(magic_item) do
                 self:add_item_count(1) 
             end   
             player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00无法重复激活成功|r ',2)
-            return      
+            return true --不加true的话，会执行加属性。 
         end
         
         ac.game:event_notify('技能-插入魔法书',hero,'入魔',self.name)

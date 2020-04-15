@@ -544,7 +544,7 @@ local function format_table(self, data, hero, level, need_level)
 		end
 		return table_concat(t, '/') .. '|r'
 	else
-		local v = format_number(data[level]) or 0
+		local v = format_number(data[level]) or format_number(data[1]) or 0
 		return '|cffffcc00' .. v .. '|r'
 	end
 end

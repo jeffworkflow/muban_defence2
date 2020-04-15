@@ -87,7 +87,7 @@ function mt:can_passive(source,target,damage)
         return
     end
     --不是普攻 返回
-    if not damage:is_common_attack() then
+    if damage and not damage:is_common_attack() then
         return
     end
     local random = self.random or self.skill.chance or 100

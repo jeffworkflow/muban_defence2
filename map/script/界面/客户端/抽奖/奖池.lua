@@ -196,6 +196,12 @@ mt{
 function mt:on_cast_start()
     local hero = self.owner
     local p = hero.owner 
+    if new_ui.is_show then 
+        p:sendMsg('已在抽奖，请勿重复点击',5)
+        self:add_item_count(1)
+        return 
+    end
+
     p.save_coin = (p.save_coin or 0) + 1
 
     local temp = {}
@@ -219,21 +225,3 @@ function mt:on_cast_start()
         new_ui:fresh()
     end
 end
-
---游戏失败 且游戏时长>=15分钟给一个令牌
-ac.game:event '游戏-结束' (function(trg,flag)
-    if flag then 
-        return 
-    end
-    local time = 60 * 15
-    -- local time = 60 * 1
-    if ac.g_game_time >=time  then 
-        for i=1,10 do 
-            local p = ac.player(i)
-            if p:is_player() then 
-                p.hero:add_item('神奇的令牌')
-            end
-        end
-        -- player:sendMsg('|cffffe799【系统消息】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！',5)
-    end
-end)

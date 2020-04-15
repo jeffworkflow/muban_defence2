@@ -22,8 +22,31 @@ for i=1,10 do
         require '测试.helper'
     end  
 end
+--处理局内地图等级
+ac.wait(0,function()
+for i=1,10 do
+    local p = ac.player[i]
+    if p:is_player() then
+        for n=1,#ac.mall do
+            local has_item = p:Map_HasMallItem(ac.mall[n][1])
+            local name = ac.mall[n][2]
+            local skl = ac.skill[name]
+            if has_item and type(skl) == 'table' and skl:get('局内地图等级') then 
+                p:add('局内地图等级',skl:get('局内地图等级'))
+            end
+        end    
 
-
+        for n=1,#ac.cus_server_key do
+            local has_item = p:Map_GetServerValue(ac.cus_server_key[n][1])  or 0
+            local name = ac.cus_server_key[n][2]
+            local skl = ac.skill[name]
+            if has_item and has_item > 0 and type(skl) == 'table' and skl:get('局内地图等级') then 
+                p:add('局内地图等级',skl:get('局内地图等级'))
+            end
+        end    
+    end
+end
+end)
 --初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0 | 读取有延迟
 ac.wait(100,function()
     for i=1,10 do
@@ -85,6 +108,8 @@ ac.wait(1100,function()
                 player.server[key_name] = val
                 -- print('存档数据:',key,key_name,val)
             end
+            --发布事件
+            player:event_notify '读取存档数据前' 
             ac.wait(900,function()
                 -- print(player,' 2获取满赞：',player.mall and player.mall['满赞'])
                 -- print(player,' 2获取地图等级：',player:Map_GetMapLevel())
@@ -94,6 +119,7 @@ ac.wait(1100,function()
         end
     end
 end)
+
 
 --初始化3 商城数据 → 业务端
 for i=1,10 do

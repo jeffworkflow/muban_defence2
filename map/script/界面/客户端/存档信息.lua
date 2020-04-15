@@ -136,8 +136,8 @@ class.player_info_panel = extends(class.panel){
         local player = ac.player.self
         local hero = ac.player.self.hero
         local peon = ac.player.self.peon
-        if not hero then return end
-        if not peon then return end
+        -- if not hero then return end
+        -- if not peon then return end
 
         local skl = hero and hero:find_skill(hero.skill_names) 
         if skl then
@@ -145,7 +145,7 @@ class.player_info_panel = extends(class.panel){
             self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')
             self.hero_tip:set_text(tip)
         end    
-        if hero.tab_art then 
+        if hero and hero.tab_art then 
             self.hero_img:set_normal_image(hero.tab_art)
         end    
 
@@ -160,7 +160,7 @@ class.player_info_panel = extends(class.panel){
                     if name =='地图等级' then 
                         new_value = player:Map_GetMapLevel()
                     elseif name =='宠物等级' then
-                        new_value = peon:find_skill('宠物技能') and peon:find_skill('宠物技能').level
+                        new_value = peon and peon:find_skill('宠物技能') and peon:find_skill('宠物技能').level or 0
                     elseif name =='小龙女碎片' then
                         name = '手无寸铁的小龙女碎片' 
                         new_value = string.format("%.f",player.server[name] or 0)  

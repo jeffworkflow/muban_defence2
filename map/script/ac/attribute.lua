@@ -100,7 +100,7 @@ function mt:get(k)
     if Get[k] then
         v = Get[k](self, v) or v
     end
-    return v
+    return math.tointeger(v) or v
 end
 
 function mt:add_tran(name, value)

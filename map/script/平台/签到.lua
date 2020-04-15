@@ -1,5 +1,4 @@
 
-
 local mt = ac.skill['签到']
 mt{
     is_spellbook = 1,
@@ -10,7 +9,7 @@ mt{
     
 %is_qd% 
 |cffffe799累计签到次数：|r%has_qd%
-|cffffe799本次签到奖励：|r|cff00ff00每秒加全属性+%每秒加全属性%
+|cffffe799本次签到奖励：|r|cff00ff00每秒加全属性+%本次签到奖励%
 |cffffe799总签到奖励：|r|cff00ff00每秒加全属性+%每秒加全属性%
 
 点击查看 |cff00ffff签到成就|r
@@ -35,11 +34,22 @@ mt{
         local p = hero.owner
         return p.server['签到']
     end,
-    -- ['每秒加全属性'] = function(self)
-    --     local hero = self.owner
-    --     local p = hero.owner
-    --     return p.server['签到']
-    -- end,
+    ['本次签到奖励'] = function(self)
+        local hero = self.owner
+        local p = hero.owner
+        return (p.server['签到'] or 0) + 1
+    end,
+    ['每秒加全属性'] = function(self)
+        local hero = self.owner
+        local p = hero.owner
+        local val = 0
+        if p.server['签到'] and p.server['签到'] > 0 then
+            for i=1,p.server['签到'] do 
+                val = val + i
+            end
+        end
+        return val
+    end,
     
 }
 mt.skills = {

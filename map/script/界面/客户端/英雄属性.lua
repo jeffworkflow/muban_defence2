@@ -308,6 +308,7 @@ function ac.unit.__index:add_save_item(it)
     local key = ac.server.name2key('存档'..it.type1)
     p:Map_SaveServerValue(key,it.s_id) 
 
+    p:sendMsg('|cffffe799【系统消息】|cffff0000地图等级不够,装备属性不生效',5)
     return it
 end 
 --统一增加所有的存档物品方法

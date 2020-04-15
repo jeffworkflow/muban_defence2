@@ -166,9 +166,11 @@ function bignum2string(value)
     if value < 10000 then
         return math.tointeger(value) or ('%.2f'):format(value)
 	elseif value < 100000000 then
-        return value % 10000 == 0 and ('%.0f'):format(value/10000)..'万' or ('%.1f'):format(value/10000)..'万'
+		-- return value % 10000 == 0 and ('%.0f'):format(value/10000)..'万' or ('%.1f'):format(value/10000)..'万'
+		return ('%.0f'):format(value/10000)..'万'
     else
-        return value % 100000000 == 0 and ('%.0f'):format(value/100000000)..'亿' or ('%.1f'):format(value/100000000)..'亿'
+        -- return value % 100000000 == 0 and ('%.0f'):format(value/100000000)..'亿' or ('%.1f'):format(value/100000000)..'亿'
+		return ('%.0f'):format(value/100000000)..'亿'
     end
 end
 
@@ -254,10 +256,17 @@ end
 function time2string(strDate)
 	return os.date("%Y-%m-%d %H:%M:%S",strDate)
 end
---测试 
--- for i=1,10000 do 
--- 	local wl_ux = os.time() + i*3600*2
--- 	local now = os.date("%Y-%m-%d %H:%M:%S",os.time())
--- 	local wl = os.date("%Y-%m-%d %H:%M:%S",os.time() + i*3600*2)
--- 	print(wl,now,timediff(wl_ux,os.time(),'day'))	
--- end
+
+function table_copy(tbl) 
+    local res = {} 
+    if tbl then 
+        for k, v in pairs(tbl) do 
+            if type(v) == 'table' then
+                res[k] = table_copy(v)
+            else
+                res[k] = v
+            end
+        end 
+    end 
+    return res 
+end

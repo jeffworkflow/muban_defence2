@@ -159,7 +159,7 @@ end
 if global_test then 
     function player.__index:Map_GetMapLevel()
         if ac.flag_use_mall then 
-            return (self.map_level or 1) + (self['局内地图等级'] or 0)
+            return (self.map_level or 1) + self:get('局内地图等级')
         else     
             return 1
         end    
@@ -171,7 +171,7 @@ else
         if level == 0 then 
             level = 1
         end 
-        level = level + (self['局内地图等级'] or 0)
+        level = level + self:get('局内地图等级')
         if not ac.flag_use_mall then 
             level = 1
         end       
@@ -203,9 +203,9 @@ end
 function player.__index:Map_HasMallItem(key)
     local handle = self.handle
     -- print(handle,key)
-    -- return japi.DzAPI_Map_HasMallItem(handle,key)
+    return japi.DzAPI_Map_HasMallItem(handle,key)
     --测试时，默认都为空，商城开关
-    return false
+    -- return false
 end
 
 --判断玩家服务器存档是否读取成功

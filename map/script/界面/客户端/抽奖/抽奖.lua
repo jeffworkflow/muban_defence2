@@ -63,10 +63,10 @@ local new_ui = class.panel:builder
         end,
         text = {
             type = 'text',
-            text = ac.player.self.save_coin or 0 ,
+            text = '开始' ,
             align = 'center',
             font_size =15,
-            color = 0xffFDC000,
+            color = 0xff000000,
         },
     },
        
@@ -206,17 +206,21 @@ local new_ui = class.panel:builder
             --抽中
             if t.cnt * 0.01 >= time and self.btns[slot].name == p.reward_name then 
                 print('中奖啦：',slot,self.btns[slot].name,p.reward_name)
-                --发起同步请求
-                local info = {
-                    type = 'draw',
-                    func_name = 'award',
-                    params = {
-                        [1] = p.reward_name,
+                --2秒后关闭 ui，提示中奖
+                ac.wait(2*1000,function()
+                    --发起同步请求
+                    local info = {
+                        type = 'draw',
+                        func_name = 'award',
+                        params = {
+                            [1] = p.reward_name,
+                        }
                     }
-                }
-                ui.send_message(info)
+                    ui.send_message(info)
+                    self.start_button:show()
+                    self:hide()
+                end)
                 self.choose_btns[slot]:blink(0.7,0.2,true)
-                self.start_button:show()
                 self.last_selected = slot
                 self:fresh_save_coin()
                 t:remove()
@@ -240,24 +244,24 @@ ac.ui.client.draw = new_ui
 ac.wait(100,function()
     new_ui:new()
 end)
-
-local game_event = {}
-game_event.on_key_down = function (code)
-    -- if code == KEY.F5 then 
-    --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
-    -- end
-    if code == KEY.F7 then 
-        if new_ui == nil then return end 
-        if new_ui.is_show then 
-            new_ui:hide()
-        else 
-            new_ui:show()
-        end 
-    elseif code == KEY.ESC then 
-        new_ui:hide()
-    end 
-end 
-game.register_event(game_event)
+--关闭F7
+-- local game_event = {}
+-- game_event.on_key_down = function (code)
+--     -- if code == KEY.F5 then 
+--     --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
+--     -- end
+--     if code == KEY.F7 then 
+--         if new_ui == nil then return end 
+--         if new_ui.is_show then 
+--             new_ui:hide()
+--         else 
+--             new_ui:show()
+--         end 
+--     elseif code == KEY.ESC then 
+--         new_ui:hide()
+--     end 
+-- end 
+-- game.register_event(game_event)
 
 local ui = require 'ui.server.util'
 --处理同步请求
@@ -266,7 +270,7 @@ local event = {
         local player = ui.player 
         local hero = player.hero
         player.save_coin = data
-        player.reward_name = ac.get_reward_name(player.award_list)
+        player.reward_name = ac.get_reward_name(player.award_list or new_ui.award_list)
         print('点击开始抽奖，同步的存档硬币：',player,data,player.reward_name)
     end,
     --给奖励
@@ -316,40 +320,22 @@ local event = {
 }
 ui.register_event('draw',event)
 
-
-
---淡化
-function class.ui_base:fade(time)
-    --进行淡化
-    ac.timer(time/100 * 1000,100,function(t)
-        -- print((100-t.cnt)/100) 
-        self:set_alpha((100-t.cnt)/100)
-    end)
-end   
-
---闪烁
-function class.ui_base:blink(time,speed,keep)
-    local time = time or 1
-    local speed = speed or 0.2 --一闪烁来回时间
-    local per_speed = 100 /(speed / 2 /0.001) 
-    local flag=1
-    local current_alpha = 1
-    ac.timer(0.001*1000,math.floor(time/0.001),function(t)
-
-        current_alpha = (current_alpha*100 - per_speed * flag)/100
-        -- print('闪烁:',current_alpha)
-        self:set_alpha(current_alpha)
-        --变淡
-        if current_alpha <= 0 then 
-            flag = -1
-        elseif current_alpha >= 1 then 
-            flag = 1
+--游戏失败 且游戏时长>=15分钟给一个令牌
+ac.game:event '游戏-结束' (function(trg,flag)
+    if flag then 
+        return 
+    end
+    local time = 60 * 15
+    local time = 60 * 1
+    if ac.g_game_time >=time  then 
+        for i=1,10 do 
+            local p = ac.player(i)
+            if p:is_player() then
+                p.save_coin = (p.save_coin or 0) + 1
+            end
         end
+        new_ui:show()
+        -- player:sendMsg('|cffffe799【系统消息】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！',5)
+    end
+end)
 
-        if t.count <=0  then 
-            local v = keep and 1 or 0 
-            self:set_alpha(v)
-        end
-        
-    end)
-end   

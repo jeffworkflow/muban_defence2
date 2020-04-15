@@ -1,25 +1,17 @@
 
 ac.game:event '技能-升级' (function (_,hero,self)
-    -- print(hero,self.name) 创建物品时，会添加到马甲单位初始化技能，此时由old_status,并赋值给你item，item再初始化时就又有了数据。
-    -- --item_type 有值表示为物品，以下代码不生效 or not hero:is_type('英雄') 
     --如果技能在宠物身上，加强效果在人身上
     if self.strong_hero then 
         hero = hero:get_owner().hero
     end    
-    -- print(hero.name,self.item_type,self.item_type)
+    -- print('技能升级：',self.name,self.item_type,self.slot_type)
 	if not hero or self.item_type =='消耗品' then 
 		return
     end	
     local p = hero:get_owner()
-	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
     local name = self.name
     -- if self.level == 1 then 
     self.old_status =  self.old_status or {} 
-        --self.old_status or
-    -- end
-    -- print_r(self.old_status)
-    -- print('老值:',self.old_status)
-    -- self.old_status = self.old_status or {}
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 
@@ -51,28 +43,29 @@ ac.game:event '技能-升级' (function (_,hero,self)
 	--玩家的属性表
     for i,key in ipairs(ac.player_attr) do 
         -- print('玩家属性',key,self[key])
-        --处理基础值
-        local value = self[key]
-        local old_value = self.old_status[key]
-        if old_value then 
-            p:add_tran(key,-old_value)
-		end 
-        if value then 
-            p:add_tran(key,value)
-        end 
-        self.old_status[key] = value
-        --处理%值
-		key = key..'%'
-		value = self[key]
-        old_value = self.old_status[key]
-		if old_value then 
-            p:add_tran(key,-old_value)
-		end 
-		if value then 
-            p:add_tran(key,value)
-        end 
-        self.old_status[key] = value
-
+        if key ~='局内地图等级' then
+            --处理基础值
+            local value = self[key]
+            local old_value = self.old_status[key]
+            if old_value then 
+                p:add_tran(key,-old_value)
+            end 
+            if value then 
+                p:add_tran(key,value)
+            end 
+            self.old_status[key] = value
+            --处理%值
+            key = key..'%'
+            value = self[key]
+            old_value = self.old_status[key]
+            if old_value then 
+                p:add_tran(key,-old_value)
+            end 
+            if value then 
+                p:add_tran(key,value)
+            end 
+            self.old_status[key] = value
+        end
         -- self:set('old_status',self.old_status)
     end
     

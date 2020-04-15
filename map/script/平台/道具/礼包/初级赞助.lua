@@ -1,4 +1,4 @@
-local mt = ac.skill['永久赞助']
+local mt = ac.skill['初级赞助']
 mt{
 --等久
 level = 0,
@@ -23,6 +23,7 @@ tip = [[
 target_type = ac.skill.TARGET_TYPE_NONE,
 --几率
 chance = 10,
+double_map_level = 10, --大于此地图等级，效果翻倍
 ['杀怪加全属性'] = 88,
 ['攻击加全属性'] = 188,
 ['每秒加全属性'] = 588,
@@ -30,7 +31,7 @@ chance = 10,
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local value = 30
-    if map_level >= 10 then 
+    if map_level >= self.double_map_level then 
         value = 30 * 2
     end    
     return value 
@@ -39,7 +40,7 @@ end,
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local value = 30
-    if map_level >= 10 then 
+    if map_level >= self.double_map_level then 
         value = 30 * 2
     end    
     return value 
@@ -48,7 +49,7 @@ end,
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local value = 30
-    if map_level >= 10 then 
+    if map_level >= self.double_map_level then 
         value = 30 * 2
     end    
     return value 
@@ -57,7 +58,7 @@ end,
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local value = 30
-    if map_level >= 10 then 
+    if map_level >= self.double_map_level then 
         value = 30 * 2
     end    
     return value 
