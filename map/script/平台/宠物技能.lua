@@ -156,7 +156,7 @@ for k,v in sortpairs(peon_skill) do
             local str = '|cff00ffff可用天赋点:|r |cffffff00'..(skl and skl.remain_point or 0)..'|r\n'
             return str..v[5]
         end,
-        [v[2]] = {v[3],v[3]*10},
+        [v[2]] = {v[3],v[3]*15},
     }   
     -- if v[2] then 
     --     mt[v[2]] = {v[3],v[3]*10}

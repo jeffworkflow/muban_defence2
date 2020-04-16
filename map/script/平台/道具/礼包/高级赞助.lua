@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[yjcjzz.blp]],
+art = [[gaojivip.blp]],
 is_order = 1,
 --说明
 tip = [[
@@ -11,23 +11,57 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00杀怪加288全属性，攻击加488全属性，每秒加888全属性，
-|cff00ffff暴击几率+25% 暴击伤害+500% 
-技暴几率+25% 技暴伤害+500%
-攻击减甲+125 全伤加深+250% |r
-|cffffff00杀敌数额外+1|r
+|cff00ff00杀怪加388全属性，攻击加888全属性，每秒加1688全属性
+|cff00ffff攻击减甲+地图等级*15
+减少周围护甲+地图等级*250
+|cffffff00物理伤害加深+地图等级*100%
+技能伤害加深+地图等级*50%
+|cffff0000全伤加深+地图等级*25%
+对BOSS额外伤害+地图等级*10%
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --几率
 chance = 10,
-['杀怪加全属性'] = 288,
-['额外杀敌数'] = 1,
+['杀怪加全属性'] = 388,
+['攻击加全属性'] = 888,
+['每秒加全属性'] = 1688,
+
 ['攻击减甲'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     return 15 * map_level
 end,
+['减少周围护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 250 * map_level
+end,
+
+['物理伤害加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 100 * map_level
+end,
+
+['技能伤害加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 50 * map_level
+end,
+
+['全伤加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 25 * map_level
+end,
+
+['对BOSS额外伤害'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 10 * map_level
+end,
+
 
 }

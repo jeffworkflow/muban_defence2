@@ -329,6 +329,13 @@ rect gg_rct_moshen3= null
 rect gg_rct_dujie1= null
 rect gg_rct_moshen4= null
 rect gg_rct_dujie2= null
+rect gg_rct_ronglian105= null
+rect gg_rct_ronglian104= null
+rect gg_rct_ronglian101= null
+rect gg_rct_ronglian102= null
+rect gg_rct_ronglian106= null
+rect gg_rct_ronglian103= null
+rect gg_rct_ronglian107= null
 endglobals
 
     
@@ -1766,6 +1773,13 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_dujie1=Rect(- 8544.0, - 4896.0, - 8480.0, - 4832.0)
 	set gg_rct_moshen4=Rect(- 7008.0, 23808.0, - 5088.0, 28544.0)
     set gg_rct_dujie2=Rect(- 9440.0, - 5632.0, - 7488.0, - 3936.0)
+	set gg_rct_ronglian105=Rect(12672.0, 16448.0, 12864.0, 16672.0)
+    set gg_rct_ronglian104=Rect(13984.0, 16480.0, 14176.0, 16704.0)
+    set gg_rct_ronglian101=Rect(13408.0, 17056.0, 13472.0, 17120.0)
+    set gg_rct_ronglian102=Rect(12640.0, 17632.0, 12832.0, 17856.0)
+    set gg_rct_ronglian106=Rect(13344.0, 18688.0, 13536.0, 18912.0)
+    set gg_rct_ronglian103=Rect(13952.0, 17632.0, 14144.0, 17856.0)
+    set gg_rct_ronglian107=Rect(16448.0, 19168.0, 16576.0, 19264.0)
 endfunction
 
 //===========================================================================

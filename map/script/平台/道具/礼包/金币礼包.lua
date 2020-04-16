@@ -13,7 +13,7 @@ tip = [[
 |cffFFE799【领取条件】|r商城购买|cffff0000金币礼包|r
 
 |cffFFE799【礼包奖励】|r|cff00ff00每秒加1000金币，杀怪+1000金币，攻击+1000金币
-开局赠送一本黄阶功法书（四选一），发放英雄背包|r
+|cff00ffff开局赠送一本功法书，发放英雄背包|r
  ]],
 --物品类型
 item_type = '消耗品',
@@ -69,16 +69,15 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[szdlb.blp]],
+art = [[other\suijijineng.blp]],
 is_order = 1,
+title ='随机功法书',
 item_type ='消耗品',
 --说明
 tip = [[
-|cffFFE799【领取条件】|r商城购买|cffff0000金币礼包|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00每秒加1000金币，杀怪+1000金币，攻击+1000金币
-开局赠送一本黄阶功法书（四选一），发放英雄背包|r
-]],
+|cff00ff00点击获取 |cff00ffff随机功法 
+ ]],
 attr_tip = '',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,

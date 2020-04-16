@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 0.1*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 5*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -27,7 +27,7 @@ mt{
 	--介绍
 	tip = [[|cffffff00【攻击】+1%*Lv
 
-|cff00bdec【被动效果】杀怪0.1%几率 获得1%永久攻击|cffff0000（已获得 %has_val% |cffff0000% 攻击）
+|cff00bdec【被动效果】杀怪5%几率 获得0.1%永久攻击|cffff0000（已获得 %has_val% |cffff0000% 攻击）
  ]],
 	--技能图标
 	art = [[gjzj.blp]],
@@ -38,7 +38,7 @@ mt{
 	--被动事件
 	event_name = "单位-杀死单位",
 	attr_name = '攻击%',
-	value = 1,
+	value = 0.1,
 	has_val = function(self)
 		return self.spell_stack * self.value
 	end,

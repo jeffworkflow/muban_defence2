@@ -13,15 +13,15 @@ local function active_yccj(p,name,sendmsg,sendmsg2)
             local skl = hero:find_skill(name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
-                local msg = sendmsg or ('恭喜获得隐藏成就 '..name)
+                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
                 p:sendMsg(msg,5)
             else 
                 skl:upgrade(1)  
-                local msg = sendmsg2 or ('恭喜隐藏成就 '..name..' +1')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】|cffff0000【可存档成就】'..name..'+1|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
                 p:sendMsg(msg,5)
             end    
         else
-            p:sendMsg('请在更高难度时激活或升级',5)
+            p:sendMsg('',5)
         end
     end    
 end
@@ -266,22 +266,22 @@ mt{
 --等级
 level = 1,
 --图标
-art = [[sbkd.blp]],
+art = [[jueshimojian.blp]],
+
+title = '魔剑召唤',
+content_tip= '|cffffe799使用说明：|r',
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff消耗勇士徽章 15 兑换获得
 
-|cffFFE799【称号属性】：|r
-|cff00ff00+50   杀怪加攻击|r
-|cff00ff00+500  护甲|r
-|cff00ff00+10% 物品获取率|r
+|cff00ff00激活 |cffff0000可存档战宠【魔剑】|cff00ff00
+并在基地召唤出一只强大无比的|cffff0000魔剑守卫！
+]],
 
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+
+
 item_type = '消耗品'
+
 }
 
 function mt:on_cast_start()
@@ -301,15 +301,16 @@ mt{
 --等级
 level = 1,
 --图标
-art = [[sbkd.blp]],
+art = [[jueshimojian.blp]],
 --说明
 tip = [[
 
-]],
+攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+ ]],
 event_name = '造成伤害效果',
-chance = 5,
-damage_area = 500,
-attack = 5,
+chance = 10,
+damage_area = 600,
+attack = 10,
 effect = [[MXXXT28 -  F.mdx]]
 }
 
@@ -353,14 +354,14 @@ tip = [[
 
 |cffFFE799【魔剑属性】：|r
 |cff00ff00获得一个随从-绝世魔剑
-|cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
-|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：攻击力*5）
-|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深
+|cff00ffff魔剑攻击力=%aattack% |cff00ffff%英雄攻击力
+|cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+|cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
 |cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
 
 need_map_level = 3,
-attack = {100,550},
+aattack = {100,550},
 attack_gap = {1,0.5}
 }
 function mt:on_upgrade()
@@ -370,7 +371,7 @@ function mt:on_upgrade()
     if p.id >10 then return end 
     
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')*skill.attack*0.01 end,
+        ['攻击'] = function() return hero:get('攻击')*skill.aattack*0.01 end,
         ['攻击间隔'] = function() return skill.attack_gap end,
         ['攻击速度'] = function() return hero:get('攻击速度') end,
         ['生命上限'] = function() return hero:get('生命上限') end,
@@ -532,13 +533,14 @@ local function check_air(p)
         p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
         --激活隐藏成就、魔剑
         p.hero:add_item('魔剑卡片')
-        ac.player.self:sendMsg('恭喜 '..p:get_name()..' 集齐万分之一空气,获得魔剑卡片',5)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00功夫不负有心人，|cff00ffff '..p:get_name()..' |cff00ff00集齐了七份万分之一空气，获得了|cffff0000召唤魔剑|cff00ff00的权利！',5)
     else
         p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
     end
 end
 --统一概率
-local rate = 30
+local rate = 0.1
+-- local rate = 50.01
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner
     if math.random(100000)/1000 < rate then 
