@@ -205,9 +205,9 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
         local skl_zdl = -4000
         for skl in hero:each_skill('英雄',true) do 
             if skl.color == '天赋' then 
-                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level -1)
+                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *((skl.level or 0) -1)
             else
-                skl_zdl = skl_zdl + skl_point[skl.color or '黄阶'] *(skl.level)
+                skl_zdl = skl_zdl + skl_point[(skl.color or '黄阶')] *(skl.level or 0)
             end
         end
         zdl = zdl + skl_zdl

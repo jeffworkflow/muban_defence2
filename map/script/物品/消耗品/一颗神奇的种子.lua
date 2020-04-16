@@ -13,41 +13,69 @@ tip = [[
 ]],
 --品质
 color = '紫',
-owner_ship = true,
+-- owner_ship = true,
 --物品类型
 item_type = '消耗品',
 specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法距离
-range = 1000,
+range = 200,
 --物品详细介绍的title
-content_tip = '|cffffe799使用说明：|r'
+content_tip = '|cffffe799使用说明：|r',
+pulse = 0.5,
+auto_plant = function(self)
+    local hero = self.owner
+    local p = hero.owner
+    hero = p.hero
+    return hero.auto_plant
+    -- return true
+end
 }
-function mt:on_cast_start()
-    local hero = self.owner 
-    local p = hero:get_owner()
-    local player = hero:get_owner()
-    local u = p:create_unit('一颗神奇的种子',self.target)
+
+local function create_u(skl,hero,point)
+    local p = hero.owner
+    local u = p:create_unit('一颗神奇的种子',point)
     u:set('生命上限',10)
     u:add_restriction('无敌')
     u:add_restriction('定身')
     --动画
     local time = 5
     u:add_buff '缩放' {
-		time = time,
-		origin_size = 0.1,
-		target_size = 1.5,
+        time = time,
+        origin_size = 0.1,
+        target_size = 1.5,
     }
     ac.wait((time+1)*1000,function()
         --创建蟠桃
         local it = ac.item.create_item('一颗神奇的树',u:get_point())
         it.owner_ship = p
+        --自动收获
+        if skl.auto_plant then 
+            hero:add_item(it)
+        end
         --移除桃树
         u:remove()
     
     end)
+end
+function mt:on_cast_start(next_point)
+    local hero = self.owner 
+    local p = hero:get_owner()
+    local player = hero:get_owner()
+    local point = next_point or self.target 
 
+    -- print('创建了一颗神奇的种子',next_point,self.target)
+    create_u(self,hero,point)
+    if self.auto_plant then 
+        if self:get_item_count() > 1 then 
+            ac.wait(self.pulse*1000,function()
+                local next_point = hero:get_point() -{math.random(360),100}
+                self:on_cast_start(next_point)
+                self:add_item_count(-1)
+            end)
+        end
+    end
 end   
 
 

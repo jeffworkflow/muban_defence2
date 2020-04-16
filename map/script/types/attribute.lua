@@ -749,7 +749,7 @@ set['攻击距离'] = function(self, attack_range)
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x16), attack_range)
 	if self.owner:is_player() then
 		--修改攻击距离后同时修改主动攻击范围
-		local search_range = math.max(1000,self:get '攻击距离')
+		local search_range = math.max(500,self:get '攻击距离')
 		self:set_search_range(search_range)
 
 		--修改相关的弹道速度

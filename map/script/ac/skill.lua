@@ -2593,7 +2593,17 @@ local function init()
 				break
 			end
 		end
-
+		--处理物品相关
+		local item_cast
+		if hero.item_list then 
+			for i,it in pairs(hero.item_list) do
+				if it.ability_id == ability_id then 
+					skill = it 
+					item_cast = true
+					break
+				end
+			end
+		end
 		if not skill then
 			return
 		end
@@ -2635,7 +2645,13 @@ local function init()
 				return
 			end
 		end
-		skill:cast_by_client(target)
+		--物品或是技能 各自进入自己的施法流程
+		if item_cast and ac.item_cast then 
+			skill.target = target
+			ac.item_cast(skill)
+		else
+			skill:cast_by_client(target)
+		end
 	end)
 	for i = 1, 13 do
 		jass.TriggerRegisterPlayerUnitEvent(j_trg, ac.player[i].handle, jass.EVENT_PLAYER_UNIT_SPELL_CHANNEL, nil)

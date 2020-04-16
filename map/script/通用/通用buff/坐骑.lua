@@ -11,7 +11,7 @@ function mt:on_add()
     local high = self.high
     local size = self.size
     local model = self.model
-    local zq_hight = self.zq_hight
+    local zq_hight = self.zq_hight or 0
     hero:set_high(high)
 
     self.follow = self.target:follow{
@@ -20,7 +20,7 @@ function mt:on_add()
         angle_follow = true,
         face_follow = true,
         distance = 0,
-        high = zq_hight or 0,
+        high = zq_hight,
         skill = false,
         size = size or 1,
         remove_instant = true, --立即移除

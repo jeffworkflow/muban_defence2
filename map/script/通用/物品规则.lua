@@ -456,6 +456,27 @@
             end
         end    
     end
+    local function item_cast(item)
+        if item:_call_event 'on_cast_start' then 
+            item_on_finish(item)
+            if item.item_type == '消耗品' and item._count < 1  then
+                hero:add_item(item.name,true)
+            end    
+            return 
+        end   
+        --额外支持施法出手
+        if item.cast_start_time > 0 then
+            hero:wait(math_floor(item.cast_start_time * 1000), function()
+                item:_call_event 'on_cast_shot'
+            end)
+        else
+            item:_call_event 'on_cast_shot'
+        end
+        
+        -- print('调用物品施法：',slot_id,item.name)
+        item_on_finish(item)
+    end
+    ac.item_cast = item_cast
     --使用物品
     local it_id = {
         ['使用第1格物品'] = 1,
@@ -488,28 +509,11 @@
             --判断施法条件是否满足
             if item:conditions(item,target) ~= true then
                 --如果施法条件不满足，重置CD
-                japi.EXSetAbilityState(item:get_handle(), 0x01, 0.01)
+                -- japi.EXSetAbilityState(item:get_handle(), 0x01, 0.01)
+				item:set('_out_range_target', target)
                 return
             end
-
-            if item:_call_event 'on_cast_start' then 
-                item_on_finish(item)
-                if item.item_type == '消耗品' and item._count < 1  then
-                    hero:add_item(item.name,true)
-                end    
-                return 
-            end   
-            --额外支持施法出手
-			if item.cast_start_time > 0 then
-				hero:wait(math_floor(item.cast_start_time * 1000), function()
-					item:_call_event 'on_cast_shot'
-				end)
-			else
-				item:_call_event 'on_cast_shot'
-            end
-            
-            -- print('调用物品施法：',slot_id,item.name)
-            item_on_finish(item)
-
+            --进入自定义物品施法流程
+            item_cast(item)
             hero:event_notify('物品-施法完成', hero,item)
         end)

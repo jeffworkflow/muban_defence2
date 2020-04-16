@@ -1,4 +1,4 @@
-local mt = ac.skill['剑冢通行证']
+local mt = ac.skill['百花宫通行证']
 mt{
 --等久
 level = 0,
@@ -28,12 +28,12 @@ function mt:on_add()
     local hero = self.owner
     local p = hero:get_owner()
     local peon = p.peon
-    peon:add_item('剑冢通行证 ')
-    --自动挖宝
-    hero.wabao_auto = true
+    peon:add_item('百花宫通行证 ')
+    --开启自动种树
+    hero.auto_plant = true
 end
 
-local mt = ac.skill['剑冢通行证 ']
+local mt = ac.skill['百花宫通行证 ']
 mt{
 --等久
 level = 1,
@@ -59,14 +59,12 @@ function mt:on_cast_start()
     local items = self
     local p = hero:get_owner()
     local peon = p.peon
-    local it = ac.item.create_item('强化石')
+    local it = ac.item.create_item('一颗神奇的种子')
     it:set_item_count(5)
     peon:add_item(it)
-
-    local it = ac.item.create_item('天谕')
+    
+    local it = ac.item.create_item('无字天书')
     it:set_item_count(2)
     peon:add_item(it)
 
-    local name = ac.all_item[math.random(#ac.all_item)]
-    peon:add_item(name)
 end    
