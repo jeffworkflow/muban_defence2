@@ -119,7 +119,7 @@ local new_ui = class.panel:builder
 
     end,
     fresh_save_coin = function(self)
-        self.start_button.text:set_text(ac.player.self.save_coin)
+        -- self.start_button.text:set_text(ac.player.self.save_coin) 
     end,
     fresh = function(self)
         self:fresh_save_coin()
