@@ -207,7 +207,7 @@ local new_ui = class.panel:builder
             if t.cnt * 0.01 >= time and self.btns[slot].name == p.reward_name then 
                 print('中奖啦：',slot,self.btns[slot].name,p.reward_name)
                 --2秒后关闭 ui，提示中奖
-                ac.wait(3*1000,function()
+                ac.wait(2.5*1000,function()
                     --发起同步请求
                     local info = {
                         type = 'draw',

@@ -234,12 +234,18 @@ tip = [[
 ]],
 need_map_level = 8,
 }
+-- function mt:on_add()
+--     local hero = self.owner
+--     local p = hero.owner
+--     local peon = p.peon
+--     peon:add_item('爱国者导弹1')
+-- end
+
 function mt:on_add()
     local hero = self.owner
-    local p = hero.owner
-    local peon = p.peon
-    peon:add_item('爱国者导弹1')
+    hero:add_item('爱国者导弹1')
 end
+
 
 local mt = ac.skill['爱国者导弹1'] 
 mt{

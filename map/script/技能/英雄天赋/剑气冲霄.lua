@@ -63,7 +63,7 @@ function mt:on_add()
 	self.skl1 = hero:add_skill('重生','隐藏')
 	if self.skl1 then 
 		self.skl1.cnt = 99999999
-		self.skl1.time = 1
+		self.skl1.time = 2
 	end	 
 	--注册即将死亡伤害事件
 	self.trg1=hero:event '单位-即将死亡' (function (_,unit,killer)

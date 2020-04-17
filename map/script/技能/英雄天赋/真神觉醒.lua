@@ -122,7 +122,7 @@ function mt:on_add()
 	self.skl1 = hero:add_skill('重生','隐藏')
 	if self.skl1 then 
 		self.skl1.cnt = 99999999
-		self.skl1.time = 2
+		self.skl1.time = 3
 		self.skl1.effect = skill.effect1
 		self.skl1.effect1 = skill.effect2
 	end	 
