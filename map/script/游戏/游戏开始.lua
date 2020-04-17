@@ -1,14 +1,6 @@
 -- 加载脚本 → 选择难度 → 注册英雄 → 游戏-开始 → 开始刷兵
 ac.game:event '游戏-开始' (function()
-
     print('游戏开始1')
-    --游戏开始，不允许控制中立被动（钥匙怪）
-    print('游戏开始2')
-
-    
-    --开启按钮 F2 F3
-    -- c_ui.kzt.F2_home:show()
-    -- c_ui.kzt.F3_xiaoheiwu:show()
 
     --每个玩家初始化金币
     for i=1 ,12 do 
@@ -17,6 +9,21 @@ ac.game:event '游戏-开始' (function()
 
         end    
     end    
+
+    --设置隐藏玩法 五号熔炼石
+    local rect = ac.rect.j_rect('ronglian107')
+    local reg = ac.region.create(rect)
+    local target_rect = ac.rect.j_rect('ronglian101')
+    ac.effect_ex{
+        model = [[void1.mdx]],
+        point = rect:get_point(),
+        size = 0.8
+    }
+    reg:event '区域-进入' (function(trg,unit)
+        --传送到另一个地方
+        unit:blink(target_rect,true,false,true)
+    end)
+
 
     --难五 添加伏地魔 和斗神
     if ac.g_game_degree_attr >= 5 then 

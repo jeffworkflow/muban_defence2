@@ -130,6 +130,49 @@ local task_detail = {
         end    
 
     end, 
+    ['熔炼石侍卫'] = function(killer,target)
+        local name = target:get_name()
+        local skill_name = finds(name,'侍卫') and string.sub(name,1,-2) or name
+        -- if not finds(name,'侍卫') then  return end 
+        local p = killer:get_owner()
+        local task_name = finds(skill_name,'侍卫') and string.sub(skill_name,1,-7) or skill_name
+        print('3333',name,skill_name,task_name)
+        p.flag_all = p.flag_all or {}
+        p.task_cnt = p.task_cnt or {}
+        if p.flag_all[name] then return end
+        p.flag_all[name] = true 
+        p.task_cnt[task_name] = (p.task_cnt[task_name] or 0) + 1
+
+        --加属性 
+        local hero = p.hero
+        if not hero then return end 
+        if finds(skill_name,'侍卫') then
+            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00猎杀进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)|r',2)
+        end
+        
+        if p.task_cnt[task_name] == 4 then 
+            --boss事件
+            -- local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
+            local point = ac.rect.j_rect('ronglian106')
+            local unit = ac.player(12):create_unit('五号熔炼石BOSS',point,270)
+            unit:add_buff '定身'{
+                time = 2
+            }
+            unit:add_buff '无敌'{
+                time = 2
+            }
+            unit:event '单位-死亡' (function(_,unit,killer) 
+                local p = killer.owner
+                ac.item.create_item('五号熔炼石',unit:get_point())
+                p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00猎杀成功，掉落了|r',2)
+            end)    
+            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000五号熔炼石BOSS |r|cff00ff00出现在上方，请小心！',2)
+        end    
+
+    end
+    
+
+
 }
 local mt = ac.skill['二郎侍卫1']{
     ['全属性'] =500000,

@@ -74,7 +74,7 @@ function mt:event(name)
 		jass.TriggerRegisterEnterRegion(self.event_enter, self.handle, nil)
 		jass.TriggerAddCondition(self.event_enter, jass.Condition(function()
 			local unit = unit.j_unit(jass.GetTriggerUnit())
-			if unit then
+			if unit and self < unit:get_point() then
 				ac.event_notify(self, name, unit, self)
 				ac.game:event_notify(name, unit, self)
 			end

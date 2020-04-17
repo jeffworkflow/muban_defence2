@@ -27,10 +27,15 @@ content_tip = '|cffffe799使用说明：|r',
 cool = 0.5,
 pulse = 1,
 auto_plant = function(self)
-    local hero = self.owner
-    local p = hero.owner
-    hero = p.hero
-    return hero.auto_plant
+    local owner = self.owner
+    local p = owner.owner
+    local hero = p.hero
+    local ok
+    --只有在英雄身上时，使用才有效
+    if owner == hero then 
+        ok = hero.auto_plant
+    end
+    return ok
     -- return true
 end
 }
@@ -71,15 +76,26 @@ function mt:on_cast_start(next_point)
     create_u(self,hero,point)
     if self.auto_plant then 
         if self:get_item_count() > 1 then 
-            ac.wait(self.pulse*1000,function()
+            hero.auto_plant_timer = ac.wait(self.pulse*1000,function(t)
+                p.auto_plant_timer = nil
                 local next_point = hero:get_point() -{math.random(360),100}
                 self:on_cast_start(next_point)
                 self:add_item_count(-1)
             end)
+            
         end
     end
 end   
-
+--注册事件
+ac.game:event '单位-发布指令' (function(self, hero, order, target, player_order)
+    if order == '' then
+        return
+    end
+    if hero.auto_plant_timer then 
+        hero.auto_plant_timer:remove()
+        hero.auto_plant_timer = nil  
+    end
+end)
 
 local mt = ac.skill['一颗神奇的树']
 mt{

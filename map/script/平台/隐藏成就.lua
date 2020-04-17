@@ -329,7 +329,7 @@ function mt:damage_start(damage)
         point = target:get_point()
     }:remove()
     for i, u in ac.selector()
-		: in_range(source,self.damage_area)
+		: in_range(target,self.damage_area)
 		: is_enemy(source)
 		: ipairs()
 	do

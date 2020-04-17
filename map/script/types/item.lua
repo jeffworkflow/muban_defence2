@@ -1135,7 +1135,7 @@ end
 --物品名称
 --位置
 --是否创建特效，默认创建,true 不创建， false 创建
-function item.create_item(name,poi,is,p)
+function item.create_item(name,poi,hide,p)
 	--创建一个物品
 	local items = setmetatable({},item)
 	
@@ -1177,6 +1177,8 @@ function item.create_item(name,poi,is,p)
 	-- print('指定坐标创建物品',poi)
 	if poi then
 		x,y = poi:get()
+	else
+		hide = true --不指定位置的话，默认不显示物品
 	end
 	
 	--创建一个实例物品
@@ -1208,16 +1210,8 @@ function item.create_item(name,poi,is,p)
 	if items.specail_model then 
 		items._model = items.specail_model
 	end	
-	if not is then 
-		-- items._eff = ac.effect(ac.point(x,y),items._model,270,1,'origin')
-		-- --设置物品模型 套装 模型大小
-		-- if items.model_size and items._eff then 
-		-- 	items._eff.unit:set_size(items.model_size )
-		-- end
-		-- items._eff = ac.effect_ex{
-		-- 	point = ac.point(x,y),
-		-- 	model =items._model,
-		-- }
+	items:hide()--默认hide
+	if not hide then 
 		items:show(true)
 	end
 	

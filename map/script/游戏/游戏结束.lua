@@ -115,6 +115,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	end
 
 	for _, u in ac.selector()
+		: of_not_hero()
 		: ipairs()
 	do
 		--暂停所有单位
@@ -163,6 +164,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	}
 	--dummy:set_size(5)
 
+
+	local old_event_dispatch = ac.event_dispatch
+	local old_event_notify = ac.event_notify
 	--地图全亮
 	jass.FogEnable(false)
 	
@@ -209,6 +213,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
 				}
 				n = n - 1
 				if n <= 0 and t then
+					ac.event_dispatch = old_event_dispatch
+					ac.event_notify = old_event_notify
 					p:showInterface(1)
 					eff:remove()
 					eff2:remove()
@@ -220,7 +226,6 @@ ac.game:event '游戏-结束' (function(trg,flag)
 			end
 		end
 	end
-
 	-- 删掉事件分法
 	function ac.event_dispatch()
 	end

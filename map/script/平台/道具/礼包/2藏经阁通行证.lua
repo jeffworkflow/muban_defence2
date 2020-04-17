@@ -25,7 +25,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['无字天书掉落概率'] = 100,
 ['局内地图等级'] = 1,
 
--- add_fire = 25000,
+add_fire = 25000,
 }
 
 function mt:on_add()
@@ -33,7 +33,7 @@ function mt:on_add()
     local p = hero:get_owner()
 
     -- hero = p.hero
-    -- hero:add_rec_ex(self.add_fire)
+    hero:add_rec_ex(self.add_fire)
 
     local peon = p.peon
     peon:add_item('藏经阁通行证 ')
