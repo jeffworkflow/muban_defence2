@@ -50,7 +50,7 @@ function mt:on_cast_start()
         end)
         p.mall_flag[name] = true
         
-        local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活|cff00ffff五星好评礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
+        local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活|cff00ffff 五星好评礼包 |r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
         p:sendMsg(tip,3)
     else
         p:sendMsg('条件不足或已领取过',2)    

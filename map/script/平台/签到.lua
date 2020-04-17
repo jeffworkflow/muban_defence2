@@ -11,8 +11,6 @@ mt{
 |cffffe799累计签到次数：|r%has_qd%
 |cffffe799本次签到奖励：|r|cff00ff00每秒加全属性+%本次签到奖励%
 |cffffe799总签到奖励：|r|cff00ff00每秒加全属性+%每秒加全属性%
-
-点击查看 |cff00ffff签到成就|r
     ]],
     is_qd = function(self)
         local hero = self.owner
@@ -77,8 +75,8 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
--- ['每秒加全属性'] = 5,
--- ['金币加成'] = 15,
+['每秒加全属性'] = 5,
+['金币加成'] = 15,
 need_map_level = 1,
 }
 

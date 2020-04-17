@@ -207,7 +207,7 @@ local new_ui = class.panel:builder
             if t.cnt * 0.01 >= time and self.btns[slot].name == p.reward_name then 
                 print('中奖啦：',slot,self.btns[slot].name,p.reward_name)
                 --2秒后关闭 ui，提示中奖
-                ac.wait(2*1000,function()
+                ac.wait(2.5*1000,function()
                     --发起同步请求
                     local info = {
                         type = 'draw',
@@ -310,10 +310,10 @@ local event = {
             local skl = hero:find_skill(player.reward_name,nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,book_name,player.reward_name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得恭喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
             else
                 skl:upgrade(1)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得恭喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
             end
         end
     end
@@ -326,7 +326,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
         return 
     end
     local time = 60 * 15
-    local time = 60 * 1
+    -- local time = 60 * 1
     if ac.g_game_time >=time  then 
         for i=1,10 do 
             local p = ac.player(i)

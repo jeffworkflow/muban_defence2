@@ -16,7 +16,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffffff00【杀怪加力量】+80*Lv
 【吸血】+10%
 【攻击距离】+100
-【物理伤害加深】+40%
+【物理伤害加深】+50%
 
 |cff00ffff【被动效果】攻击10%几率变身魔神，持续8秒
 
@@ -41,10 +41,10 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00主教3段
 
 |cffFFE799【天赋属性】：|r
-|cffffff00【每秒加木头】+2*Lv
-【每秒加魔丸】+2*Lv
-【物品获取率】+50%
-【每秒回血】+10%
+|cffffff00【每秒加木头】+5*Lv
+【每秒加魔丸】+5*Lv
+【物品获取率】+75%
+【每秒回血】+20%
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（智力*10+10000）*Lv
@@ -71,7 +71,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【天赋属性】：|r
 |cffffff00【杀怪加力量】+120*Lv
 【护甲】+15%
-【分裂伤害】+25%
+【分裂伤害】+50%
 【攻击减甲】+150
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
@@ -98,9 +98,9 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【天赋属性】：|r
 |cffffff00【杀怪加敏捷】+160*Lv
-【攻击速度】+50%
+【攻击速度】+100%
 【攻击距离】+250
-【物理伤害加深】+150%
+【物理伤害加深】+200%
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（敏捷*20+10000）*Lv+1%敌人的最大生命值
@@ -155,10 +155,11 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00超绝群伦10段
 
 |cffFFE799【天赋属性】：|r
-|cffffff00【杀怪加敏捷】+240*Lv
-【移动速度】+200
-【闪避】+20%
-【物理伤害加深】+350%
+【杀怪加敏捷】+240*Lv
+【移动速度】+125
+【闪避】+25%
+【物理伤害加深】+500%
+【全伤加深】+100%
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（敏捷*30+10000）*Lv+1%敌人的最大生命值
@@ -186,7 +187,7 @@ tip = [[
 |cff00ff00骑士2段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00使得召唤出来的狗熊，拥有100%的分裂伤害
+|cff00ff00使得召唤出来的狗熊，拥有250%的分裂伤害
 
 ]],
 need_map_level = 4,
@@ -203,11 +204,11 @@ art = [[xiongling1.blp]],
 --说明
 tip = [[
 
-|cff00ffff分裂伤害+100%
+|cff00ffff分裂伤害+250%
 
 ]],
 need_map_level = 4,
-['分裂伤害'] =100
+['分裂伤害'] =250
 }
 
 
@@ -233,12 +234,18 @@ tip = [[
 ]],
 need_map_level = 8,
 }
+-- function mt:on_add()
+--     local hero = self.owner
+--     local p = hero.owner
+--     local peon = p.peon
+--     peon:add_item('爱国者导弹1')
+-- end
+
 function mt:on_add()
     local hero = self.owner
-    local p = hero.owner
-    local peon = p.peon
-    peon:add_item('爱国者导弹1')
+    hero:add_item('爱国者导弹1')
 end
+
 
 local mt = ac.skill['爱国者导弹1'] 
 mt{
@@ -273,7 +280,7 @@ function mt:on_cast_start()
         ['弹道出手'] = {15, 0, 66},
     }
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')+1000000 end,
+        ['攻击'] = function() return hero:get('攻击')+100000000 end,
 
         ['物品获取率'] = hero:get('物品获取率'),
         ['木头加成'] = hero:get('木头加成'),
@@ -336,7 +343,7 @@ tip = [[
 |cff00ff00皇后6段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00使得召唤出来的狗熊，拥有200的攻击减甲
+|cff00ff00使得召唤出来的狗熊，拥有350的攻击减甲
 
 ]],
 need_map_level = 10,
@@ -353,10 +360,10 @@ art = [[sbkd.blp]],
 --说明
 tip = [[
 
-|cff00ffff攻击减甲+200
+|cff00ffff攻击减甲+350
 
 ]],
-['攻击减甲'] =200
+['攻击减甲'] =350
 }
 
 
@@ -376,7 +383,7 @@ tip = [[
 |cff00ff00万古传芳8段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00使得召唤出来的爱国者导弹，多重射+4
+|cff00ff00使得召唤出来的爱国者导弹，多重射+5
 
 ]],
 need_map_level = 12,
@@ -393,10 +400,10 @@ art = [[paotai.blp]],
 --说明
 tip = [[
 
-|cff00ffff多重射+4
+|cff00ffff多重射+5
 
 ]],
-['多重射'] = 4
+['多重射'] = 5
 }
 function mt:on_add()
     print('炮台多重射被添加')
@@ -419,7 +426,7 @@ tip = [[
 |cff00ff00冠世一绝10段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00使得召唤出来的狗熊，攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*10），并晕眩敌人1秒
+|cff00ff00使得召唤出来的狗熊，攻击10%概率造成范围物理伤害（伤害公式：英雄攻击力*20），并晕眩敌人1秒
 
 ]],
 need_map_level = 14,
@@ -436,12 +443,12 @@ art = [[xiongling1.blp]],
 --说明
 tip = [[
 
-|cff00ffff攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*10），并晕眩敌人1秒
+|cff00ffff攻击10%概率造成范围物理伤害（伤害公式：英雄攻击力*20），并晕眩敌人1秒
 
 ]],
 need_map_level = 3,
 event_name = '造成伤害效果',
-chance = 5,
+chance = 10,
 damage_area = 500,
 effect = [[Abilities\Spells\NightElf\EntanglingRoots\EntanglingRootsTarget.mdl]]
 }
@@ -465,7 +472,7 @@ function mt:damage_start(damage)
         {
             source = source,
             skill = skill,
-            damage = hero:get('攻击')*10,
+            damage = hero:get('攻击')*20,
             damage_type = '物理'
         }
         u:add_buff '晕眩'{

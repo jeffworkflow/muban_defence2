@@ -23,7 +23,9 @@ target_type = ac.skill.TARGET_TYPE_POINT,
 range = 200,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
-pulse = 0.5,
+-- pulse = 0.5,
+cool = 0.5,
+pulse = 1,
 auto_plant = function(self)
     local hero = self.owner
     local p = hero.owner

@@ -197,7 +197,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero.owner 
     if new_ui.is_show then 
-        p:sendMsg('已在抽奖，请勿重复点击',5)
+    p:sendMsg('|cffffe799【系统提示】|cff00ff00请勿打开幸运转盘',5)
         self:add_item_count(1)
         return 
     end

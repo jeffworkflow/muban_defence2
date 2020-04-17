@@ -28,13 +28,13 @@ end,
 	area = 500,
 	--属性加成
 ['杀怪加敏捷'] = {320,6400},
- ['移动速度'] = 200,
+ ['移动速度'] = 150,
  ['全伤加深'] = 250,
  ['敏捷%'] = 50,
 	--介绍
 	tip = [[|cffffff00【杀怪加敏捷】+320*Lv
 【敏捷】+50%
-【移动速度】+200
+【移动速度】+150
 【全伤加深】+250%
 【强大的永生系统】
 
@@ -122,7 +122,7 @@ function mt:on_add()
 	self.skl1 = hero:add_skill('重生','隐藏')
 	if self.skl1 then 
 		self.skl1.cnt = 99999999
-		self.skl1.time = 2
+		self.skl1.time = 3
 		self.skl1.effect = skill.effect1
 		self.skl1.effect1 = skill.effect2
 	end	 
