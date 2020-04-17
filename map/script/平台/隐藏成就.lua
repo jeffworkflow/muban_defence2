@@ -310,7 +310,7 @@ tip = [[
 event_name = '造成伤害效果',
 chance = 10,
 damage_area = 600,
-attack = 10,
+skill_attack = 10,
 effect = [[MXXXT28 -  F.mdx]]
 }
 
@@ -337,7 +337,7 @@ function mt:damage_start(damage)
         {
             source = source,
             skill = skill,
-            damage = source:get('攻击')*skill.attack,
+            damage = source:get('攻击')*skill.skill_attack,
             damage_type = '物理'
         }
 	end	
@@ -362,6 +362,7 @@ tip = [[
 
 need_map_level = 3,
 aattack = {100,550},
+skill_attack = {10,10},
 attack_gap = {1,0.5}
 }
 function mt:on_upgrade()
@@ -410,10 +411,9 @@ function mt:on_upgrade()
     local skl = p.unit_mojian:find_skill('魔剑击',nil)
     if not skl then 
         skl = p.unit_mojian:add_skill('魔剑击','隐藏')
-        skl.attack = self.attack
+        skl.skill_attack = self.skill_attack
     else 
-        -- print('魔剑击倍数：',skl.skill_attack,self.skill_attack)
-        skl.attack = self.attack
+        skl.skill_attack = self.skill_attack
     end   
     --  
 end
