@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*24+1000000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*8+1000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -38,7 +38,7 @@ end,
 【每秒加全属性】+120*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*24*Lv+2%敌人的最大生命值）|r
+【伤害公式】（全属性*12*Lv+2%敌人的最大生命值）|r
  ]],
 	--技能图标
 	art = [[qikai.blp]],

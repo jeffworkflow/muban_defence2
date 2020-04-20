@@ -26,7 +26,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('攻击')*10+100000)* self.level
+  return (self.owner:get('攻击')*8+100000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -36,7 +36,7 @@ end,
 
 v1 = {6,20},
 v2 = {100000,1500000},
-v3 = {10,150},
+v3 = {8,120},
 	--介绍
 	tip = [[|cffffff00+%攻击%|r 攻击
 |cffffff00+%技能基础伤害%|r 技能基础伤害

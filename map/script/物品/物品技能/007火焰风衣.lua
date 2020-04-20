@@ -7,7 +7,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 800,
+   damage_area = 400,
 	--类型
 	item_type = "装备",
 	--品质
@@ -26,7 +26,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (150000)* self.level
+  return (1500000)* self.level
 end,
 	--施法范围
 	area = 800,

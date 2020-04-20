@@ -369,6 +369,20 @@ local reward = {
             hero:add_item(name,true)    
         end 
     end,
+    ['五号熔炼石'] = function (player,hero,unit,is_on_hero)
+        local name = '五号熔炼石'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
     ['召唤boss'] = function (player,hero,unit,is_on_hero)
         local name = '召唤boss'
         --英雄死亡时 掉落在地上
@@ -484,14 +498,22 @@ local unit_reward = {
     ['藏宝阁小弟'] = {{rand =1.5,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
-        {    rand = 55.75, name = '无' },
-        {    rand = 13, name = '随机物品',},
+        {    rand = 53.24, name = '无' },
+        {    rand = 8, name = '随机物品',},
         {    rand = 5, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 30, name = '黄阶'},
                 { rand = 30, name = '玄阶'},
                 { rand = 20, name = '地阶'},
                 { rand = 20, name = '天阶'},
         }}, 
+        {    rand = 1, name = '杀怪加力量+30 攻击加力量+120 每秒加力量+500' },
+        {    rand = 1, name = '杀怪加敏捷+30 攻击加敏捷+120 每秒加敏捷+500',},
+        {    rand = 1, name = '杀怪加智力+30 攻击加智力+120 每秒加智力+500',},
+        {    rand = 1, name = '杀怪加全属性+15 攻击加全属性+60 每秒加全属性+250',},
+        {    rand = 1, name = '杀怪加攻击+60 每秒加攻击+600',},
+        {    rand = 1, name = '每秒加护甲+1',},
+        {    rand = 1, name = '攻击减甲+5',},
+
         {    rand = 1, name = '杀怪加力量+300 攻击加力量+1200 每秒加力量+5000' },
         {    rand = 1, name = '杀怪加敏捷+300 攻击加敏捷+1200 每秒加敏捷+5000',},
         {    rand = 1, name = '杀怪加智力+300 攻击加智力+1200 每秒加智力+5000',},
@@ -513,14 +535,15 @@ local unit_reward = {
         {    rand = 0.04, name = '二号熔炼石*1',},
         {    rand = 0.03, name = '三号熔炼石*1',},
         {    rand = 0.02, name = '四号熔炼石*1',},
+        {    rand = 0.01, name = '五号熔炼石*1',},
         
 
         {    rand = 1.2, name = '功法升级书*1',}, --lv1
         {    rand = 0.6, name = '功法连升书*1',}, --lv2
-        {    rand = 0.35, name = '三眼赤痕*1',}, --lv1
-        {    rand = 0.35, name = '火龙气息*1',}, --lv2
-        {    rand = 0.25, name = '地魂融血丹*1',}, --lv1
-        {    rand = 0.25, name = '天魂融血丹*1',}, --lv2
+        {    rand = 0.5, name = '三眼赤痕*1',}, --lv1
+        {    rand = 0.5, name = '火龙气息*1',}, --lv2
+        {    rand = 0.35, name = '地魂融血丹*1',}, --lv1
+        {    rand = 0.35, name = '天魂融血丹*1',}, --lv2
 
         {    rand = 2, name = '强化石*1',}, --lv2
         {    rand = 0.6, name = '天谕*1',}, --lv2

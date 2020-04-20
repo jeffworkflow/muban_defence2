@@ -35,7 +35,7 @@ tip = [[%extr_tip%
 
 |cffFFE799【食材属性】：|r
 |cff00ff00+400w 全属性
-攻击有10%几率造成|cffffff00（全属性*30）|cff00ff00的范围技能伤害|r
+攻击有10%几率造成|cffffff00（全属性*45）|cff00ff00的范围技能伤害|r
  ]],
 --触发几率
 chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
@@ -43,7 +43,7 @@ chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) e
 damage_area = 500,
 --伤害
 damage = function(self)
-    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*30)
+    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*45)
 end,
 --冷却
 cool = 1,

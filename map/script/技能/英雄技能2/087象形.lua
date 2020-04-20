@@ -20,7 +20,7 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*8+100000)* self.level*5
+  return (self.owner:get('力量')*10+100000)* self.level*3
 end,
 	--施法范围
 	area = 500,
@@ -36,7 +36,7 @@ end,
 【每秒加力量】+20*Lv
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害
-【伤害公式】(力量*8+10w)*Lv*5|r
+【伤害公式】(力量*10+10w)*Lv*3|r
 
 ]],
 	--技能图标

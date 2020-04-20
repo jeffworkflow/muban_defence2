@@ -20,7 +20,7 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*32+10000000)* self.level*5
+  return (self.owner:get('力量')*30+10000000)* self.level*3
 end,
 	--属性加成
 ['杀怪加力量'] = {80,1600},
@@ -34,7 +34,7 @@ end,
 【每秒加力量】+80*Lv
 
 |cff00bdec【主动施放】向指定方向投出钩子，将敌人钩回身边
-【伤害公式】(力量*32+1000w)*Lv*5|r
+【伤害公式】(力量*30+1000w)*Lv*3|r
 
 ]],
 	--技能图标

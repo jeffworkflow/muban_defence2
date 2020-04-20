@@ -23,7 +23,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['移动速度'] = 125,
 ['每秒加木头'] = 38,
 ['藏宝图掉落概率'] = 100,
-['局内地图等级'] = 1,
+-- ['局内地图等级'] = 1,
 }
 function mt:on_add()
     local hero = self.owner

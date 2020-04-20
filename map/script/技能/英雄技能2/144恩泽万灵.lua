@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【每秒加力量】+6400*Lv|r
 
-|cff00bdec【主动施放】增加|cffff0000暴击几率+(15+1*Lv)% 暴击伤害+(150+10*Lv)%|r，|cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加|cffff0000暴击几率+(15+1*Lv)% 暴击伤害+(225+15*Lv)%|r，|cff00bdec持续5秒|r
 
 ]],
 	--技能图标
@@ -40,7 +40,7 @@ mt{
     end ,
     --技暴伤害
     crit_damage = function(self) 
-        return 150 + self.level * 10
+        return 225 + self.level * 15
     end ,
     damage_type = '法术',
     time = 5

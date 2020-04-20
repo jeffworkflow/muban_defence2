@@ -24,7 +24,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击距离'] = 150,
 ['每秒加护甲'] = 5,
 ['一颗神奇的种子掉落概率'] = 100,
-['局内地图等级'] = 1,
+-- ['局内地图等级'] = 1,
 }
 function mt:on_add()
     local hero = self.owner

@@ -33,7 +33,7 @@ mt{
 
 |cffffff00【每秒加敏捷】+6400*Lv|r
 
-|cff00bdec【被动效果】攻击10%几率触发 |cffff0000会心几率+30% 会心伤害+300%|r，|cff00bdec持续0.5秒|r
+|cff00bdec【被动效果】攻击10%几率触发 |cffff0000会心几率+15% 会心伤害+150%|r，|cff00bdec持续0.5秒|r
 
 ]],
 	--技能图标
@@ -41,8 +41,8 @@ mt{
 	--特效4
 	effect4 = [[参考赤灵的狂龙爆]],
     time = 0.5,
-    crit_rate = 30,
-    crit_damage = 300
+    crit_rate = 15,
+    crit_damage = 150
 }
 function mt:damage_start(damage)
     local skill = self

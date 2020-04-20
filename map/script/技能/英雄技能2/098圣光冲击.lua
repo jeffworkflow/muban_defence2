@@ -20,7 +20,7 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*4+1000000)* self.level*5
+  return (self.owner:get('智力')*8+1000000)* self.level*3
 end,
 	--施法范围
 	area = 500,
@@ -36,7 +36,7 @@ end,
 【每秒加智力】+40*Lv
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害
-【伤害公式】(智力*16+100w)*Lv*5|r
+【伤害公式】(智力*20+100w)*Lv*3|r
 
 ]],
 	--技能图标

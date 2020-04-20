@@ -26,7 +26,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (50000)* self.level
+  return (150000)* self.level
 end,
 	--属性加成
  ['敏捷'] = 1000000,

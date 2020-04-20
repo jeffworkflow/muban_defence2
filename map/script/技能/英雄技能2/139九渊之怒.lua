@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【每秒加智力】+6400*Lv|r
 
-|cff00bdec【主动施放】增加|cffff0000技暴几率+(15+1*Lv)% 技暴伤害+(150+10*Lv)%，|r|cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加|cffff0000技暴几率+(10+0.75*Lv)% 技暴伤害+(150+10*Lv)%，|r|cff00bdec持续5秒|r
 
 ]],
 	--技能图标
@@ -36,7 +36,7 @@ mt{
 	effect4 = [[参考赤灵的渡业妖爆]],
     --技暴几率
     skill_rate = function(self)
-        return 15 + self.level*1
+        return 10 + self.level*0.75
     end,
     --技暴伤害
     skill_damage = function(self)

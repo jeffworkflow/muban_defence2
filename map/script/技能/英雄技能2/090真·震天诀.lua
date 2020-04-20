@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*64+100000000)* self.level
+  return (self.owner:get('力量')*45+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -42,7 +42,7 @@ end,
 【每秒加力量】+160*Lv
 
 |cff00bdec【被动效果】对周围敌人造成范围技能伤害
-【伤害公式】（力量*64+100000000）*Lv|r
+【伤害公式】（力量*45+100000000）*Lv|r
 
 ]],
 	--技能图标

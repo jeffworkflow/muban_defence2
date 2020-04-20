@@ -20,7 +20,7 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*32+10000000)* self.level*5
+  return (self.owner:get('敏捷')*30+10000000)* self.level*3
 end,
 	--施法范围
 	area = 500,
@@ -36,7 +36,7 @@ end,
 【每秒加敏捷】+80*Lv
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害
-【伤害公式】(敏捷*32+1000w)*Lv*5|r
+【伤害公式】(敏捷*30+1000w)*Lv*3|r
 
 ]],
 	--技能图标

@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('攻击')*192+1000000000)* self.level
+  return (self.owner:get('攻击')*18+1000000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -36,7 +36,7 @@ end,
 【每秒加攻击】+960*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（攻击*192+10亿）*Lv|r
+【伤害公式】（攻击*18+10亿）*Lv|r
  ]],
 	--技能图标
 	art = [[wubeici.blp]],
