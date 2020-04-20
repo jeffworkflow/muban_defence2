@@ -196,11 +196,7 @@ function mt:damage_start(damage)
     	point = target:get_point(),
     }:remove()
     if not target:is_type('boss') then 
-        target:damage
-        {
-            source = hero,
-            skill = skill,
-        }:kill()
+        target:kill(hero)
     end
 end
 
@@ -335,7 +331,7 @@ for i,name in ipairs({'火炎之力 ','水寒之力 ','暴风之力 ','天雷之
             end)
         end)
         --创建区域离开事件
-        local reg = ac.region.create(ac.rect.j_rect('zhanjiuzhan2'))
+        local reg = ac.map.regions['zhanjiuzhan2']
         reg:event '区域-离开'(function(trg,unit)
             if hero ~= unit then 
                 return 

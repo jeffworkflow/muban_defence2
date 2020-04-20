@@ -140,13 +140,12 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     if creep.name ~= '刷怪1' then
         return
     end    
-    if index <= 14 then 
-        return 
-    end
-    --可能异步
-    for handle,shop in pairs(ac.shop.unit_list) do 
-        if shop.name == '庄周' then 
-            shop:add_sell_item('兑换-神奇的令牌',9)
+    if index == 14 then 
+        --可能异步
+        for handle,shop in pairs(ac.shop.unit_list) do 
+            if shop.name == '庄周' then 
+                shop:add_sell_item('兑换-神奇的令牌',9)
+            end
         end
     end
 

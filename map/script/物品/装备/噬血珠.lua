@@ -183,7 +183,7 @@ function mt:on_cast_start()
             end)
         end)
         --创建区域离开事件
-        local reg = ac.region.create(ac.rect.j_rect('shixiezhu2'))
+        local reg = ac.map.regions['shixiezhu2']
         reg:event '区域-离开'(function(trg,unit)
             if hero ~= unit then 
                 return 

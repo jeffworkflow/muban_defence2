@@ -244,6 +244,15 @@ ac.map.rects={
 
 }
 
+ac.map.regions={
+	['moshen4'] = ac.region.create(ac.rect.j_rect('moshen4')),
+	['dujie2'] = ac.region.create(ac.rect.j_rect('dujie2')),
+	['tupo2'] = ac.region.create(ac.rect.j_rect('tupo2')),
+	['zhanjiuzhan2'] = ac.region.create(ac.rect.j_rect('zhanjiuzhan2')),
+	['chiyanjia2'] = ac.region.create(ac.rect.j_rect('chiyanjia2')),
+	['shaohuogun2'] = ac.region.create(ac.rect.j_rect('shaohuogun2')),
+	['shixiezhu2'] = ac.region.create(ac.rect.j_rect('shixiezhu2')),
+}
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()
 -- local point = rect.j_rect('sg002'):get_point()
 -- print(minx, miny, maxx, maxy)

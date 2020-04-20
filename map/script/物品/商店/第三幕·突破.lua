@@ -287,7 +287,7 @@ for i,name in ipairs({'魔胎 ','半魔 ','原魔 ','真魔 ','天魔 ','魔主 
             end)
         end)
         --创建区域离开事件
-        local reg = ac.region.create(ac.rect.j_rect('tupo2'))
+        local reg = ac.map.regions['tupo2']
         reg:event '区域-离开'(function(trg,unit)
             if hero ~= unit then 
                 return 
