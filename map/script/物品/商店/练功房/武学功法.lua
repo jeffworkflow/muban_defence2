@@ -27,7 +27,7 @@ for key,u_name in pairs(ac.kangfu) do
     function mt:on_cast_start()
         local hero = self.owner
         local p = hero:get_owner()
-        local ret = 'lgfbh'..p.id
+        local ret = 'lgfnpc'..p.id..'8'
         local name = key..p.id
         local cep = ac.creep[name]
         cep:set_region(ret)

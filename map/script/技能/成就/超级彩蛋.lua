@@ -117,13 +117,13 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*100
+        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*125
 end,
 	--介绍
 	tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00攻击10%几率造成范围全属性*100的技能伤害
+|cff00ff00攻击10%几率造成范围全属性*125的技能伤害
 
 ]],
 	--特效

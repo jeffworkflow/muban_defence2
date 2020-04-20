@@ -372,7 +372,7 @@ function mt:on_upgrade()
     if p.id >10 then return end 
     
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')*attack*0.01 end,
+        ['攻击'] = function() return hero:get('攻击')*skill.attack*0.01 end,
         ['攻击间隔'] = function() return skill.attack_gap end,
         ['攻击速度'] = function() return hero:get('攻击速度') end,
         ['生命上限'] = function() return hero:get('生命上限') end,

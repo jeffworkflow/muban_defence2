@@ -139,7 +139,7 @@ function mt:on_cast_start()
                 --触发超级彩蛋
                 if player.tunshi_cnt  == 8 then 
                     ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','大胃王')
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*50的技能伤害|r',6)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*125的技能伤害|r',6)
                 end    
                     
 
