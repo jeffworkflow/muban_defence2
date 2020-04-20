@@ -196,11 +196,7 @@ function mt:damage_start(damage)
     	point = target:get_point(),
     }:remove()
     if not target:is_type('boss') then 
-        target:damage
-        {
-            source = hero,
-            skill = skill,
-        }:kill()
+        target:kill(hero)
     end
 end
 
