@@ -1067,6 +1067,21 @@ function helper:ai(str,cnt)
 	end
 
 end
+--测试 region 1000个泄漏10M
+function helper:test_reg()
+	local reg = ac.region.create(ac.rect.j_rect('F2cs'))
+	for i=1,100 do 
+		local reg = ac.map.regions['tupo2']
+		print(reg)
+		 --创建区域离开事件
+		-- reg:event '区域-离开'(function(trg,unit)
+		-- 	print('离开了',i)
+		-- 	--删除自己的
+		-- 	trg:remove()  
+        --     reg:remove()
+		-- end)
+	end	
+end	
 --测试 
 function helper:test_uu()
 	print('当前怪物数量：',ac.unit_cnt)

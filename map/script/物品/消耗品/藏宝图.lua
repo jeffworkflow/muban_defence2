@@ -105,7 +105,8 @@ function mt:on_cast_start()
                         self.trg:remove()
                         self.trg = nil
                     end    
-                    
+                    region:remove()
+                    rect:remove()
                     if self:get_item_count()>= 1 then 
                         --模拟消耗品使用
                         self:on_cast_start()
@@ -127,6 +128,9 @@ function mt:on_cast_start()
                 return true
             end    
 
+            region:remove()
+            rect:remove()
+            
             self:add_item_count(-1) 
             self:on_add() 
             --添加东西给英雄

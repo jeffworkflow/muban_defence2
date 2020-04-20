@@ -30,7 +30,7 @@ local function create_u(skill,unit_name,target_rect,f)
         p.flag_ms = false
     end)
     --创建区域离开事件
-    local reg = ac.region.create(ac.rect.j_rect('moshen4'))
+    local reg = ac.map.regions['moshen4']
     reg:event '区域-离开'(function(trg,unit)
         if hero ~= unit then 
             return 
@@ -132,7 +132,7 @@ function mt:on_cast_start()
         }
 
         --创建区域离开事件
-        local reg = ac.region.create(ac.rect.j_rect('dujie2'))
+        local reg = ac.map.regions['dujie2']
         reg:event '区域-离开'(function(trg,unit)
             if hero ~= unit then 
                 return 
