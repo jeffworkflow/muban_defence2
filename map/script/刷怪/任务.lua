@@ -147,7 +147,7 @@ local task_detail = {
         local hero = p.hero
         if not hero then return end 
         if finds(skill_name,'侍卫') then
-            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00猎杀进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)|r',2)
+            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00第五号熔炼石获取进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)|r',2)
         end
         
         if p.task_cnt[task_name] == 4 then 

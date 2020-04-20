@@ -33,7 +33,7 @@ mt{
 
 |cffffff00【每秒加智力】+12800*Lv|r
 
-|cff00bdec【被动效果】攻击10%几率触发|cffff0000技暴几率+30% 技暴伤害+300%|r，|cff00bdec持续0.75秒|r
+|cff00bdec【被动效果】攻击10%几率触发|cffff0000技暴几率+22.5% 技暴伤害+300%|r，|cff00bdec持续0.75秒|r
 
 ]],
 	--技能图标
@@ -41,7 +41,7 @@ mt{
 	--特效4
 	effect4 = [[参考赤灵的渡业妖爆]],
     time = 0.75,
-    skill_rate = 30,
+    skill_rate = 22.5,
     skill_damage = 300
 }
 function mt:damage_start(damage)

@@ -354,14 +354,14 @@ tip = [[
 
 |cffFFE799【魔剑属性】：|r
 |cff00ff00获得一个随从-绝世魔剑
-|cff00ffff魔剑攻击力=%aattack% |cff00ffff%英雄攻击力
+|cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
 |cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
 |cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
 |cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
 
 need_map_level = 3,
-aattack = {100,550},
+attack = {100,550},
 skill_attack = {10,10},
 attack_gap = {1,0.5}
 }
@@ -372,7 +372,7 @@ function mt:on_upgrade()
     if p.id >10 then return end 
     
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')*skill.aattack*0.01 end,
+        ['攻击'] = function() return hero:get('攻击')*attack*0.01 end,
         ['攻击间隔'] = function() return skill.attack_gap end,
         ['攻击速度'] = function() return hero:get('攻击速度') end,
         ['生命上限'] = function() return hero:get('生命上限') end,

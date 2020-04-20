@@ -44,7 +44,7 @@ v2 = {5,8},
 mt.event_name = '造成伤害效果'
 mt.chance = mt.v1
 function mt:damage_start(damage)
-	self.value = 0.4+0.04*self.level
+	self.value = 0.6+0.06*self.level
     self.time = self.v2
     local skill = self
     local hero = self.owner

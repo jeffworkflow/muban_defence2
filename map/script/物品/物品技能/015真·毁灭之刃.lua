@@ -26,7 +26,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('攻击')*80+100000000)* self.level
+  return (self.owner:get('攻击')*20+100000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -37,7 +37,7 @@ end,
 
 v1 = {6,20},
 v2 = {100000000,1500000000},
-v3 = {80,1200},
+v3 = {20,300},
 	--介绍
 	tip = [[|cffcccccc 世界有生就有灭，代表生的盘古斧诞生时，代表灭的毁灭之刃也同时诞生。
 

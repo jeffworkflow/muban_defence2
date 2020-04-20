@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*96+100000000)* self.level
+  return (self.owner:get('智力')*40+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -38,7 +38,7 @@ end,
 【每秒加智力】+240*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人1S
-【伤害公式】（智力*96+1亿）*Lv|r
+【伤害公式】（智力*40+1亿）*Lv|r
  ]],
 	--技能图标
 	art = [[donggan.blp]],

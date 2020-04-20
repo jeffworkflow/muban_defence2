@@ -31,7 +31,7 @@ mt{
     
 |cffFFE799【属性】：|r
 |cff00ff00+600W 全属性
-攻击有10%几率造成|cffffff00（全属性*50）|cff00ff00的范围技能伤害|r
+攻击有10%几率造成|cffffff00（全属性*75）|cff00ff00的范围技能伤害|r
 
 ]],
     ['全属性'] = 6000000,
@@ -51,7 +51,7 @@ mt{
    damage_area = 500,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*50)
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*75)
 end,
 	--被动事件
 	event_name = "造成伤害效果",

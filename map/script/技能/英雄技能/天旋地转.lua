@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*7+10000000)* self.level
+  return (self.owner:get('力量')*15+10000000)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -38,7 +38,7 @@ end,
 【每秒加力量】+80*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（力量*40+10000000）*Lv
+【伤害公式】（力量*30+10000000）*Lv
  ]],
 	--技能图标
 	art = [[huixuanren.blp]],

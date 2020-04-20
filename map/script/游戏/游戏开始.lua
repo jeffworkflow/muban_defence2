@@ -17,7 +17,7 @@ ac.game:event '游戏-开始' (function()
     ac.effect_ex{
         model = [[void1.mdx]],
         point = rect:get_point(),
-        size = 0.8
+        size = 0.7
     }
     reg:event '区域-进入' (function(trg,unit)
         --传送到另一个地方

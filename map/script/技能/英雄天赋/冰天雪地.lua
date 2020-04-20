@@ -22,7 +22,7 @@ mt{
 	cool = 2.5,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*7+10011)* self.level
+  return (self.owner:get('智力')*15+10011)* self.level
 end,
 	--施法范围
 	area = 500,

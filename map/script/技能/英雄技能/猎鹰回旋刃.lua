@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*4+100000)* self.level
+  return (self.owner:get('力量')*5+100000)* self.level
 end,
 	--施法范围
 	area = 500,

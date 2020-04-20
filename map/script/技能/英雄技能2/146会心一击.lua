@@ -27,7 +27,7 @@ mt{
 
 |cffffff00【每秒加敏捷】+800*Lv|r
 
-|cff00bdec【主动施放】增加|cffff0000会心几率+(8+0.4*Lv)% 会心伤害+(80+4*Lv)%，|r|cff00bdec持续3秒|r
+|cff00bdec【主动施放】增加|cffff0000会心几率+(4+0.2*Lv)% 会心伤害+(40+2*Lv)%，|r|cff00bdec持续3秒|r
 
 ]],
 	--技能图标
@@ -36,11 +36,11 @@ mt{
 	effect4 = [[参考赤灵的狂龙爆]],
     --技暴几率
     crit_rate = function(self) 
-        return 8 + self.level * 0.4
+        return 4 + self.level * 0.2
     end ,
     --技暴伤害
     crit_damage = function(self) 
-        return 80 + self.level * 4
+        return 40 + self.level * 2
     end ,
     damage_type = '法术',
     time = 3

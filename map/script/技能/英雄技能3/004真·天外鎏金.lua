@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*160+1000000000)* self.level
+  return (self.owner:get('敏捷')*60+1000000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -38,7 +38,7 @@ end,
 【每秒加敏捷】+480*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人1S
-【伤害公式】（敏捷*192+10亿）*Lv|r
+【伤害公式】（敏捷*60+10亿）*Lv|r
  ]],
 	--技能图标
 	art = [[liujin.blp]],

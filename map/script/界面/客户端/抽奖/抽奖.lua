@@ -326,7 +326,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
         return 
     end
     local time = 60 * 15
-    -- local time = 60 * 1
+    -- local time = 1 * 1
     if ac.g_game_time >=time  then 
         for i=1,10 do 
             local p = ac.player(i)
