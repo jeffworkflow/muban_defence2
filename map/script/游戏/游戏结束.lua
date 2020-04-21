@@ -82,8 +82,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		end)
 	end	
 	ac.wait(3000,function()
-		panel = class.hero_info_panel.get_instance()
-		panel:show()
+		-- local panel = class.hero_info_panel.get_instance()
+		-- panel:show()
         for i=1,8 do
             local player = ac.player[i]
             if player:is_player() then

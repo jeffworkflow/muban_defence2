@@ -45,6 +45,8 @@ end,
 	effect1 = [[Abilities\Weapons\WardenMissile\WardenMissile.mdl]],
 	--特效4
 	effect4 = [[参考赤灵的憎恶]],
+    --技能目标
+    target_type = ac.skill.TARGET_TYPE_POINT,
     --施法距离
     range =  1200,
     --投射物碰撞距离

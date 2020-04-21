@@ -2291,10 +2291,12 @@ end
 function mt:cast_force(target, data)
 	local hero = self.owner
 	local self = self:create_cast(data)
+	-- print('技能-强制施法', self.name)
 	self.target = target
 	if self.instant == 0 then
 		local skills = hero._casting_list
 		if skills then
+			-- print('技能-强制施法1', self.name)
 			local wait
 			for _, skill in ipairs(skills) do
 				if skill.instant == 0 then
@@ -2305,12 +2307,14 @@ function mt:cast_force(target, data)
 						end
 						table_insert(wait, skill)
 					else
+						-- print('技能-强制施法2', self.name)
 						return false
 					end
 				end
 			end
 			if wait then
 				for _, skill in ipairs(wait) do
+					-- print('技能-强制施法3', self.name)
 					skill:stop()
 				end
 			end
@@ -2331,6 +2335,7 @@ function mt:cast_force(target, data)
 		end
 	end
 	
+	-- print('技能-强制施法4', self.name)
 	self:_change_step 'start'
 	ac.wait(0, function()
 		hero:set('魔法', hero:get '魔法')

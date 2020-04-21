@@ -130,7 +130,7 @@ function mt:on_cast_start()
 
             region:remove()
             rect:remove()
-            
+
             self:add_item_count(-1) 
             self:on_add() 
             --添加东西给英雄
@@ -290,7 +290,7 @@ function mt:add_content()
         if finds(hero:get_name(),'剑仙','至尊宝','鬼厉') then 
             local skl = hero:find_skill(rand_name,nil,true)
             if not skl  then 
-                ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋',rand_name)
+                ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
                 player.is_show_nickname = rand_name  
                 --给全部玩家发送消息
                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cff00ff00所有队友的全属性+5%',6)

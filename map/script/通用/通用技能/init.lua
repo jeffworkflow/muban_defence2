@@ -8,7 +8,7 @@ require '通用.通用技能.全图闪烁'
 require '通用.通用技能.D跳跃'
 
 require '通用.通用技能.魔法书'
-require '通用.通用技能.魔法书demo'
+-- require '通用.通用技能.魔法书demo'
 
 require '通用.通用技能.减少周围护甲'
 require '通用.通用技能.升级属性'

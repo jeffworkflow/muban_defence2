@@ -1,14 +1,11 @@
 --物品名称
-local mt = ac.skill['装备合成']
+local mt = ac.skill['物品合成']
 mt{
     --类型
     item_type = "神符",
     art = [[other\hecheng.blp]],
-    --物品技能
-    is_skill = true,
     title = '物品合成',
     content_tip = '',
-    auto_fresh_tip = false,
     cool = 1,
 
     art = [[other\hecheng.blp]],
@@ -34,7 +31,15 @@ end
 function mt:on_cast_shot()
     local hero = self.owner
     hero:add_item('装备合成')
+    hero:add_item('功法合成')
 end    
 --实际是丢掉
 function mt:on_remove()
 end
+
+--物品名称
+local mt = ac.skill['装备合成']
+mt{
+    --类型
+    item_type = "神符",
+}

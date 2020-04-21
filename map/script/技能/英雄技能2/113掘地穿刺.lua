@@ -22,8 +22,6 @@ mt{
 	damage = function(self)
   return (self.owner:get('敏捷')*20+1000000)* self.level*3
 end,
-	--施法范围
-	area = 500,
 	--介绍
 	tip = [[
 

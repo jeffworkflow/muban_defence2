@@ -42,10 +42,17 @@ end
 function mt:on_cast_start()
     local skill = self
     local hero = self.owner
+    local p = hero.owner
     local target = self.target 
+    if target:is_type('boss') then 
+        p:sendMsg('不可对boss使用',5)
+        ac.wait(0,function()
+            self:set_cd(0) --刷新技能
+        end)
+        return 
+    end
     target:kill(hero)
     hero:add_wood(self.ex_wood)
-
 end
 function mt:on_remove()
     local hero = self.owner

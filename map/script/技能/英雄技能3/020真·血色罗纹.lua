@@ -53,7 +53,7 @@ function mt:damage_start(damage)
 	if not damage:is_common_attack()  then 
 		return 
 	end 
-	hero:timer(300,function()
+	hero:timer(300,2,function()
 		--创建特效
 		ac.effect_ex{
 			model = self.effect,

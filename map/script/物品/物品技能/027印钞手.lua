@@ -36,8 +36,6 @@ mt{
 	--业务技能代码
 	--目标类型
 	target_type = ac.skill.TARGET_TYPE_POINT,
-	--目标允许  
-	target_data = "玩家单位 敌人",
 	value = function(self)
 		return self.level*15
 	end,

@@ -35,8 +35,8 @@ auto_plant = function(self)
     if owner == hero then 
         ok = hero.auto_plant
     end
-    return ok
-    -- return true
+    -- return ok
+    return true
 end
 }
 
@@ -92,6 +92,7 @@ ac.game:event '单位-发布指令' (function(self, hero, order, target, player_
         return
     end
     if hero.auto_plant_timer then 
+        print('自动种树停止：',hero, order, target, player_order)
         hero.auto_plant_timer:remove()
         hero.auto_plant_timer = nil  
     end

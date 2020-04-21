@@ -135,6 +135,18 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
         p:sendMsg('|cffFFCC00不够资源|r',5)
         return 
     end  
+    --检测彩蛋
+    local rate = 6
+    local hero = p.hero
+    if p.rec_ex >= 200000 and p.wood>=100000 and p.kill_count>=20000 then 
+        if math.random(100000)/1000 <= rate then 
+            local skl = hero:find_skill('至尊赌神',nil,true)
+            if not skl then 
+                ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','至尊赌神')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00005000万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
+            end    
+        end
+    end
 
     local rand = math.random(100)
     local rate = self.rate
@@ -190,14 +202,14 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
             if math.random(10000)/100 <= rate then 
                 local skl = hero:find_skill('一代幸运神',nil,true)
                 if not skl then 
-                    ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','一代幸运神')
+                    ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','一代幸运神')
                     ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "一代幸运神" |r，奖励 |cffff00005000万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
                 end    
             end
         end  
     end
 
-
+    
 end)
 
 

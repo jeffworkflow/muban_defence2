@@ -379,6 +379,140 @@ mt{
 }
 
 
+local mt = ac.skill['实在是菜']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[szsc.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+1500 护甲
++500W  生命上限|r
+
+]],
+    ['护甲'] = 1500,
+    ['生命上限'] = 5000000,
+}
+
+local mt = ac.skill['至尊赌神']
+mt{
+    is_spellbook = 1,
+    level = 1,
+    is_order = 2,
+    art = [[qbfb.blp]],
+    tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+5000万 全属性
++100%  杀敌数加成
++100%  物品获取率
++100%  木头加成
++100%  魔丸加成
+    ]],
+    ['全属性'] = 50000000,
+    ['杀敌数加成'] = 100,
+    ['木头加成'] = 100,
+    ['魔丸加成'] = 100,
+    ['物品获取率'] = 100
+}
+
+local mt = ac.skill['大胃王']
+mt{
+    --必填
+    is_skill = true,
+    --初始等级
+    level = 5,
+    --最大等级
+   max_level = 5,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+    --伤害范围
+   area = 800,
+	--技能类型
+	skill_type = "被动,力量",
+	--被动
+	passive = true,
+	--冷却时间
+	cool = 1,
+	--伤害
+	damage = function(self)
+        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*125
+end,
+	--介绍
+	tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00攻击10%几率造成范围全属性*125的技能伤害
+
+]],
+	--特效
+    effect = [[Hero_Axe_N3S_E_Source.mdx]],
+    art = [[daweiwang.blp]],
+    damage_type = '法术',
+}
+function mt:on_add()
+    local skill = self
+    local hero = self.owner
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+        if math.random(100) <= self.chance then
+            ac.effect(hero:get_point(), self.effect, 270, 1,'origin'):remove()
+         
+            for i, u in ac.selector()
+                : in_range(hero,self.area)
+                : is_enemy(hero)
+                : of_not_building()
+                : ipairs()
+            do
+                -- u:add_buff '晕眩'
+                -- {
+                --     source = hero,
+                --     time = self.time,
+                -- }
+                u:damage
+                {
+                    source = hero,
+                    damage = self.damage,
+                    skill = self,
+                    damage_type = self.damage_type
+                }
+            end	
+            
+            --激活cd
+            skill:active_cd()
+    
+        end
+    end)
+
+end
+function mt:on_remove()
+    local hero = self.owner
+    if self.trg then
+        self.trg:remove()
+        self.trg = nil
+    end
+end
+
 
 local task_detail = {
     ['血魔'] = {
@@ -423,3 +557,26 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
         end   
     end    
 end)    
+
+
+--实在是菜
+ac.game:event '单位-死亡'(function(_,unit,killer)
+    if not unit:is_hero() then 
+        return 
+    end 
+    local player = unit:get_owner()
+    player.dead_cnt = (player.dead_cnt or 0) +1
+    local hero = unit
+    if player.dead_cnt == 10 then 
+        local skl = hero:find_skill('实在是菜',nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','实在是菜')
+            player.is_show_nickname = '实在是菜'
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
+        end
+    end    
+
+end)

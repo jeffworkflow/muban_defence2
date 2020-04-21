@@ -28,8 +28,6 @@ mt{
 end,
 	--被动事件
 	event_name = "造成伤害效果",
-	--施法范围
-	area = 500,
 	--介绍
 	tip = [[
 
@@ -45,8 +43,6 @@ end,
 	effect1 = [[Abilities\Spells\Undead\Impale\ImpaleMissTarget.mdx]],
 	--特效4
 	effect4 = [[参考赤灵的穿刺]],
-	--技能目标
-	target_type = ac.skill.TARGET_TYPE_POINT,
 	--施法距离
 	range = 800,
 	--持续时间
@@ -60,13 +56,12 @@ function mt:damage_start(damage)
     local skill = self
     local hero = self.owner
     local p = hero:get_owner()
-	local target = damage.target
 
 	if not damage:is_common_attack()  then 
 		return 
 	end 
 	local source = hero:get_point()
-	local target = self.target:get_point()
+	local target = damage.target:get_point()
 	local angle = source / target
 	local mvr = ac.mover.line
 	{

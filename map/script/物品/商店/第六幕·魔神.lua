@@ -125,7 +125,7 @@ function mt:on_cast_start()
     ac.wait(2*1000,function()
         local bff = hero:add_buff '渡劫' {
             skill = self,
-            damage = 300000000 * (p.cnt_succ_dz or 0 + 1),
+            damage = 300000000 * ((p.cnt_succ_dz or 0) + 1),
             time = self.dz_cnt * self.pulse,
             pulse = self.pulse,
             dz_cnt = self.dz_cnt
@@ -186,7 +186,7 @@ function mt:on_remove()
     p.flag_dz = false
 
     --完成加属性，半途离去，不处理
-    print('buff删除',self.pulse_count ,self.dz_cnt)
+    -- print('buff删除',self.pulse_count ,self.dz_cnt)
     if self.pulse_count >= (self.dz_cnt - 1) then 
         --记录成功次数
         p.cnt_succ_dz = (p.cnt_succ_dz or 0) + 1 

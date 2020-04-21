@@ -61,10 +61,10 @@ function mt:damage_start(damage)
 		return 
 	end 
 
-	self.eff = ac.effect(target:get_point(),skill.effect,270,1.5,'origin')
+	skill.eff = ac.effect(target:get_point(),skill.effect,270,1.5,'origin')
 	-- self.eff2 = ac.effect(target:get_point(),skill.effect1,270,0.8,'origin') 
 	--计时器
-	self.trg = hero:timer(self.pulse_time * 1000,math.floor(self.time/self.pulse_time),function()
+	skill.trg = hero:timer(self.pulse_time * 1000,math.floor(self.time/self.pulse_time),function()
 		for i, u in ac.selector()
         : in_range(target,skill.damage_area)
         : is_enemy(hero)
@@ -83,7 +83,7 @@ function mt:damage_start(damage)
 			}
 		end
 	end)
-	function self.trg:on_timeout()
+	function skill.trg:on_timeout()
 		if skill.eff then
 			skill.eff:remove()
 			skill.eff = nil
