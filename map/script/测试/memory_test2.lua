@@ -318,7 +318,7 @@ function item:__gc()
 	if self.has_removed then
 		return
 	end
-	log.warn(('[物品]失去引用但是没有被移除:[%s]'):format(self.name))
+	log.warn(('[物品]失去引用但是没有被移除:[%s]%s'):format(self.name,self:get_point()))
 end
 --function trigger:__gc()
 --	if self.removed then

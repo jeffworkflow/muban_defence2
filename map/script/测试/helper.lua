@@ -288,14 +288,20 @@ function helper:reload_mall(flag)
 	if skl then skl:remove() end
 	self:add_skill('最强魔灵','英雄',12)	
 	
-	local skl = peon:find_skill('宠物皮肤')
+	local skl = peon:find_skill('宠物纪念册')
 	if skl then skl:remove() end
-	peon:add_skill('宠物皮肤','英雄',12)
+	peon:add_skill('宠物纪念册','英雄',12)
 
 	local skl = peon:find_skill('宠物技能')
 	if skl then skl:remove() end
 	peon:add_skill('宠物技能','英雄',8)
 
+	--宠物重载身上技能
+    if p:Map_GetMapLevel() >= 3 then 
+        -- u:add_skill('一键出售','英雄',7)
+        peon:add_skill('一键合成','英雄',6)
+        peon:add_skill('一键丢弃','英雄',7)
+    end
 
 
 end	
@@ -1021,7 +1027,10 @@ end
 function helper:fmi(num)
 	local num = tonumber(num) or 1
 	for i=1,num do 
-		ac.fall_move('新手剑',self:get_point())
+		ac.fall_move{
+			name = '新手剑',
+			source = self:get_point()
+		}
 	end	
 end	
 --模糊添加技能
@@ -1066,6 +1075,11 @@ function helper:ai(str,cnt)
 		end	
 	end
 
+end
+--测试 region 1000个泄漏10M
+function helper:point()
+	local p = self.owner 
+	p:pingMinimap(ac.point(0,0),3)
 end
 --测试 region 1000个泄漏10M
 function helper:test_reg()

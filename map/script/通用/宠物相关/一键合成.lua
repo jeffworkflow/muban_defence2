@@ -46,7 +46,8 @@ function mt:on_cast_shot()
 				local item_point = v:get_point()
 				if item_point then 
 					if item_point:is_in_range(self.target ,self.area) then 
-						if finds(v.item_type,'装备','消耗品') and v.color and finds(v.color,'白','蓝','金')  then 
+						--finds(v.item_type,'装备','消耗品') and
+						if finds(v.item_type,'装备','消耗品') and v.color and finds(v.color,'白','蓝','金','黄阶','玄阶','地阶')  then 
 							table.insert(selected_item,v)
 						end	
 					end
@@ -59,17 +60,25 @@ function mt:on_cast_shot()
 		['蓝'] ={},
 		['金'] ={},
 		['红'] ={},
+		['黄阶'] ={},
+		['玄阶'] ={},
+		['地阶'] ={},
+		['天阶'] ={},
 	}	
-	local hecheng1 = {'白','蓝','金','红'}
+	local hecheng1 = {
+		['物品'] = {'白','蓝','金','红'},
+		['技能'] ={'黄阶','玄阶','地阶','天阶'}
+	}
 	local function get_next_color(color)
 		local res
-		for i,name in ipairs(hecheng1) do 
+		local type = finds(color,'阶') and '技能' or '物品'
+		for i,name in ipairs(hecheng1[type]) do 
 			if name == color then 
-				res = hecheng1[i+1]
+				res = hecheng1[type][i+1]
 				break
 			end
 		end
-		return res	
+		return res,type
 	end	
 	--进行合成，
 	-- selected_item 白，蓝，金，红
@@ -77,8 +86,9 @@ function mt:on_cast_shot()
 		local item = selected_item[i]
 		if item and item.color then 
 			table.insert(hecheng[item.color],i)
-			-- hecheng[item.color] = (hecheng[item.color] or 0 +1)
-			if #hecheng[item.color] == 4 then 
+			local ok = #hecheng[item.color] == (finds(item.color,'阶') and 3 or 4) 
+			-- print(item.color,ok)
+			if ok then 
 				--删物品
 				for i,index in ipairs(hecheng[item.color]) do 
 					--优先处理消耗品
@@ -94,16 +104,24 @@ function mt:on_cast_shot()
 				hecheng[item.color] = {}
 
 				--增加新物品
-				local next_color = get_next_color(item.color)
-				local list = ac.quality_item[next_color] 
-				if not list then 
-					return 
+				local next_color,next_type = get_next_color(item.color)
+				local list
+				if next_type =='技能' then 
+					list = ac.quality_skill[next_color] 
+				else
+					list = ac.quality_item[next_color] 
+				end
+
+				if list then 
+					local name = list[math.random(#list)]
+					local new_item
+					if next_type =='技能' then  
+						new_item= ac.item.create_skill_item(name,self.target) --创建物品
+					else
+						new_item= ac.item.create_item(name,self.target) --创建物品
+					end
+					table.insert(selected_item,new_item)
 				end 
-				local name = list[math.random(#list)]
-				local new_item = ac.item.create_item(name,self.target) --创建物品
-				table.insert(selected_item,new_item)
-
-
 			end	
 		end	
 	end	

@@ -414,13 +414,22 @@ local reward = {
         local rand = math.random(#ac.save_item[lv][color])
         local name = ac.save_item[lv][color][rand]
         --掉落运动 
-        ac.fall_move(name,unit:get_point(),ac.table.ItemData[name].specail_model)
+        ac.fall_move{
+            name = name ,
+            source = unit:get_point() ,
+            model = ac.table.ItemData[name].specail_model ,
+        }
         
     end,
 }
 ac.reward = reward
-local function fall_move(it_name,where,model,is_skill,player)
-    local point = where:get_point() - {math.random(360),math.random(200,500)}
+local function fall_move(data)
+    local it_name = data.name
+    local where = data.source
+    local point = data.target or (where:get_point() - {math.random(360),math.random(200,500)})
+    local model = data.model
+    local is_skill = data.is_skill
+    local owner_ship = data.owner
     --运动
     local mvr = ac.mover.target
     {

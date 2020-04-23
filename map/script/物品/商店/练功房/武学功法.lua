@@ -27,7 +27,7 @@ for key,u_name in pairs(ac.kangfu) do
     function mt:on_cast_start()
         local hero = self.owner
         local p = hero:get_owner()
-        local ret = 'lgfnpc'..p.id..'8'
+        local ret = 'lgfbh'..p.id
         local name = key..p.id
         local cep = ac.creep[name]
         cep:set_region(ret)
@@ -85,7 +85,14 @@ for key,u_name in pairs(ac.kangfu) do
                                 local name = ac.quality_skill[skl_color][math.random(#ac.quality_skill[skl_color])]
                                 -- ac.item.create_skill_item(name,unit:get_point())
                                 --掉落运动 
-                                ac.fall_move(name,unit:get_point(),ac.skill_model[ ac.skill[name].color or '黄阶' ],true,p)
+                                ac.fall_move{
+                                    name = name,
+                                    source = unit:get_point(),
+                                    target = ac.rect.j_rect('lgfnpc'..p.id..'8'):get_point(),
+                                    model = ac.skill_model[ ac.skill[name].color or '黄阶' ],
+                                    is_skill = true,
+                                    owner = p,
+                                }
                                 p.kangfu[skl_color] = 0
                                 --完成次数
                                 p.kangfu_cnt[skl_color] = (p.kangfu_cnt[skl_color] or 1) +1
@@ -93,7 +100,10 @@ for key,u_name in pairs(ac.kangfu) do
                             --额外掉落 有0.05%概率掉落功法升级书，0.01%概率掉落功法连升书
                             local item_name = ac.get_reward_name(temp_reward['功法掉落'])
                             if item_name then 
-                                ac.fall_move(item_name,unit:get_point())
+                                ac.fall_move{
+                                    name = item_name,
+                                    source = unit:get_point(),
+                                }
                                 -- p:sendMsg('恭喜掉落 '..item_name,5)
                             end
                         end)

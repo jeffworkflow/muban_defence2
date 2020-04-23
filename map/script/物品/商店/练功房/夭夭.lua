@@ -168,9 +168,9 @@ for _,tab in ipairs(devil_deal) do
                 return  
             end
 
-            print('查看继承关系前：',self,self.name,self.gold,self.wood)
+            -- print('查看继承关系前：',self,self.name,self.gold,self.wood)
             local item = setmetatable(self,ac.item)
-            print('查看继承关系后：',self,item.name,self.name,self.gold,self.wood,item.gold)
+            -- print('查看继承关系后：',self,item.name,self.name,self.gold,self.wood,item.gold)
             item.name = name
             if hero:is_alive() then 
                 hero:event_notify('单位-点击商店物品',seller,hero,item)
@@ -213,7 +213,10 @@ ac.game:event '单位-创建商店'(function(trg,shop)
         return 
     end    
     add_skill_by_lv(shop,1,true)
-    shop:add_skill('一键修炼','英雄',4)
+    local p = shop.owner 
+    if p and p:Map_GetMapLevel() >=3 then 
+        shop:add_skill('一键修炼','英雄',4)
+    end
 end)
 
 
