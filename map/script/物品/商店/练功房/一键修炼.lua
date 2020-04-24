@@ -3,7 +3,12 @@ local slot={9,10,11,12,5,6,7,8,1,2,3,4}
 local mt = ac.skill['一键修炼']
 mt{
     level = 1,
-    tip = [[一键修炼以上内容]],
+    is_order = "1",
+    art = "yijianxiulian.blp",
+    tip = [[
+
+|cff00ff00点击进行|cffffff00 一键修炼
+ ]],
 }
 function mt:on_cast_start()
     local owner = self.owner
