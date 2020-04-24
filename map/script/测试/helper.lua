@@ -328,7 +328,7 @@ end
 function helper:save(key,value)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	-- p:SetServerValue(key,tonumber(value) or 1) 自定义服务器
-	if key == 'all' then 
+	if not key then 
 		for i,data in ipairs(ac.cus_server_key) do 
 			local key = data[1]
 			p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器

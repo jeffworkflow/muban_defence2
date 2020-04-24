@@ -78,15 +78,11 @@ function mt:on_cast_start()
     p.eff = ac.effect(self.random_point,self.effect,0,1,'origin')
 
     local tx,ty = self.random_point:get()
-    local rect = ac.rect.create( tx - self.area/2, ty-self.area/2, tx + self.area/2, ty + self.area/2)
-    local region = ac.region.create(rect)
-    local point = hero:get_point()
-
     --自动寻宝
     if self.wabao_auto_use then 
         --区域修改
-        rect = ac.rect.create( tx - 64, ty-64, tx + 64, ty + 64)
-        region = ac.region.create(rect)
+        local rect  = ac.rect.create( tx - 64, ty-64, tx + 64, ty + 64)
+        local region = ac.region.create(rect)
         if not self.trg then 
             self.trg = region:event '区域-进入' (function(trg, unit)
                 if  unit == hero then
@@ -106,7 +102,7 @@ function mt:on_cast_start()
                         self.trg = nil
                     end    
                     region:remove()
-                    rect:remove()
+
                     if self:get_item_count()>= 1 then 
                         --模拟消耗品使用
                         self:on_cast_start()
@@ -120,6 +116,9 @@ function mt:on_cast_start()
         end)
         player:pingMinimap(self.random_point, 3)
     else      
+        local rect = ac.rect.create( tx - self.area/2, ty-self.area/2, tx + self.area/2, ty + self.area/2)
+        local region = ac.region.create(rect)
+        local point = hero:get_point()
         --点在区域内
         if region < point  then
             if not player.peon_wabao and  ( hero.unit_type == '宠物' or hero.unit_type == '召唤物') then 
@@ -129,7 +128,6 @@ function mt:on_cast_start()
             end    
 
             region:remove()
-            rect:remove()
 
             self:add_item_count(-1) 
             self:on_add() 
