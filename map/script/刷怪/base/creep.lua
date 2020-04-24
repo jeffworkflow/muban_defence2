@@ -151,7 +151,7 @@ function mt:set_region(rgn)
         return
     end    
 
-    local reg =region.create()
+    local reg 
     local _ = 0
     local region_str = ''
 
@@ -162,7 +162,7 @@ function mt:set_region(rgn)
         if _ ==1 then 
             reg = rect.j_rect(name)	
         else
-           reg = region.create(rect.j_rect(name)) + reg 
+            reg = (reg or region.create()) + rect.j_rect(name)
         end   
     end
     
@@ -221,25 +221,22 @@ function mt:start(player)
             end    
         end    
     end    
-    --可能会引起掉线
-    -- local p = player or ac.player.self
     local tip = self.tip 
     if tip then 
         ac.player.self:sendMsg(tip, 5)
     end    
-    -- self.trg_player = p
 
     if self.is_leave_region_replace then 
         local reg = self.region
-        if self.region.type ~='region' then 
+        if self.region.type =='rect' then 
             reg = region.create(reg)
         end
+        self.reg = reg
+        print('打印region:',reg.type,self.region.type)
         self.event_region = reg:event '区域-离开' (function(trg, hero)
-            -- local loc_hero = ac.player.self.hero
             if hero == self.owner.hero then 
-                -- self:print_group()
-                -- self:finish(true)
                 self.owner.current_creep = self
+                -- reg:remove()
                 local ceps = creep:find_creep_by_region(self.region_str)
                 if ceps then 
                     for i =1, #ceps do
@@ -516,6 +513,14 @@ function mt:finish(is_unit_kill)
     if self.event_region then 
         self.event_region:remove()
         self.event_region = nil
+    end
+    if self.region and self.region.type == 'region' then 
+        self.region:remove()
+        self.region = nil
+    end
+    if self.reg and self.reg.type == 'region' then 
+        self.reg:remove()
+        self.reg = nil
     end
     if self.wait_trg then 
         self.wait_trg:remove()

@@ -15,7 +15,7 @@ function mt:on_cast_start()
         local skl = owner:find_skill(slot[i],'英雄')
         if skl then
             print(skl.name,skl.level)
-                skl:cast_force() --开始施法
+            skl:cast_force() --开始施法
         end
     end
 end)
