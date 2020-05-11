@@ -9,7 +9,11 @@ for i=1,10 do
     end  
     if not p.server then 
         p.server ={}
+    end 
+    if not p.cus_server then 
+        p.cus_server ={}
     end    
+    
     if not p.mall_flag then 
         p.mall_flag = {}
     end  

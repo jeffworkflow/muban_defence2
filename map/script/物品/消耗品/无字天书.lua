@@ -51,6 +51,7 @@ function mt:add_content()
 
     local hero = self.owner
     local player = self.owner:get_owner()
+    local p = self.owner:get_owner()
     hero = player.hero 
     --初始化
     player.achievement = player.achievement or {}

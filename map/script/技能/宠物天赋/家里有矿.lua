@@ -42,7 +42,8 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local peon = self.owner
     local hero = p.hero
-	ac.func_give_suipian(ac.main_unit:get_point(),temp)
+    ac.func_give_suipian(ac.main_unit:get_point(),temp)
+    ac.player.self:sendMsg('玩家 '..p:get_name()..' 往基地撒了一堆钱，大家赶紧去抢',5)
 end
 function mt:on_remove()
     local hero = self.owner
