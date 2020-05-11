@@ -12,7 +12,7 @@ class.screen_button = extends(class.button){
     end,
     fresh_name = function(self)
         --处理 在线奖励 
-        local total_time = 300 
+        local total_time = 600 
         -- local total_time = 30 
         ac.loop(1000,function(t)
             --modify by jeff 
@@ -21,7 +21,7 @@ class.screen_button = extends(class.button){
             self.tx_name:set_text(str)
             if total_time == 0  then
                 --发送文字
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r游戏开局已过5分钟 |cff00ffff所有玩家|r获得一个|cffff0000神奇的令牌|r 请查看英雄的背包栏')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r游戏开局已过10分钟 |cff00ffff所有玩家|r获得一个|cffff0000神奇的令牌|r 请查看英雄的背包栏')
                 for i=1,10 do 
                     local p = ac.player(i)
                     if p:is_player() then 
@@ -74,7 +74,7 @@ local ui_info = {
         name = '神奇的令牌',  
         path = 'lingpai.blp',
         -- key = 'F3', 
-        tip = "|cff00ff00开局五分钟可获得一个|cffff0000神奇的令牌|r|n|n",
+        tip = "|cff00ff00开局10分钟可获得一个|cffff0000神奇的令牌|r|n|n",
         x = 1800,
         y = 638
     },

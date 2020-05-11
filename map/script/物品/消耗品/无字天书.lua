@@ -109,11 +109,11 @@ function mt:add_content()
         local it = ac.item.add_skill_item(name,self.owner)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffffff00【技能书】'..(it.color_name or name)..'|r',2)
     elseif  rand_name == '大魔丸' then
-        self.owner:add_rec_ex(25000)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..rand_name..'+25000|r',2) 
+        self.owner:add_rec_ex(50000)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..rand_name..'+50000|r',2) 
     elseif  rand_name == '大木头' then
-        self.owner:add_wood(10000)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..rand_name..'+10000|r',2) 
+        self.owner:add_wood(20000)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..rand_name..'+20000|r',2) 
     elseif finds(rand_name,'七十二绝技') then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
@@ -121,20 +121,36 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2000万，多重暴击+1，多重暴击几率+2.5%， 全伤加深+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+10%， 全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+10%， 全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+10%， 全伤加深+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end   
-    elseif rand_name == '鉴宝大师' then
+    elseif finds(rand_name,'鉴宝大师') then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+            local new_skl = ac.game:event_dispatch('技能-插入魔法书',hero,'藏经阁',rand_name)
             player.is_show_nickname = rand_name
+            local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001000万全属性，魔丸加成+50%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end   
+
+    -- elseif rand_name == '鉴宝大师' then
+    --     local skl = hero:find_skill(rand_name,nil,true)
+    --     if not skl  then 
+    --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+    --         player.is_show_nickname = rand_name
+    --         --给全部玩家发送消息
+    --         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001000万全属性，魔丸加成+50%|r',6)
+    --     else
+    --         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+    --     end   
     elseif rand_name == '书呆子' then
         if not p.flag_yccj then 
             p.flag_yccj = {} 

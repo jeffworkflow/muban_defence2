@@ -197,7 +197,7 @@ for i=1,10 do
                             val = 0
                         end  
                         player.server[name] = val
-                        -- print('111111111111111111',name,val)
+                        print('111111111111111111',name,val)
                     end    
                 end    
             end   

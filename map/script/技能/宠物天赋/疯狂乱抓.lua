@@ -58,11 +58,11 @@ function mt:on_add()
             {
                 point = damage.target:get_point(),
                 model = skill.effect,
-                size = 2,
+                size = 3,
             }:remove()
 
             --计算伤害
-            hero:timer(0.1*1000,5,function()
+            hero:timer(0.1*1000,4,function()
                 damage.target:damage
                 {
                     source = hero,

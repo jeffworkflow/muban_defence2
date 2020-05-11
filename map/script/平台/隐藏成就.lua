@@ -443,7 +443,7 @@ mt.skills = {
 --隐藏成就 注册获得事件
 local task_detail = {
     ['血魔'] = {
-        rate = 0.01,
+        rate = 0.015,
         -- rate = 10,
         award = '我是大魔头',
         sendMsg = function(p)
@@ -539,7 +539,7 @@ local function check_air(p)
     end
 end
 --统一概率
-local rate = 0.1
+local rate = 0.5
 -- local rate = 50.01
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner

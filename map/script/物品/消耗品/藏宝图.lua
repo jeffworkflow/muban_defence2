@@ -233,6 +233,8 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+150万，攻击减甲+50，护甲+1500',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+150万，攻击减甲+50，护甲+1500',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+150万，攻击减甲+50，护甲+1500',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
         end  
@@ -245,6 +247,8 @@ function mt:add_content()
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，移速+75，技能冷却+10%，每秒加护甲+10',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，移速+75，技能冷却+10%，每秒加护甲+10',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，移速+75，技能冷却+10%，每秒加护甲+10',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
         end  
@@ -255,6 +259,8 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+10%，技暴伤害+100%，技能伤害加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+10%，技暴伤害+100%，技能伤害加深+50%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+10%，技暴伤害+100%，技能伤害加深+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
@@ -267,6 +273,8 @@ function mt:add_content()
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1200万，减少周围护甲+1500，每秒加木头+50，木头加成+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1200万，减少周围护甲+1500，每秒加木头+50，木头加成+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1200万，减少周围护甲+1500，每秒加木头+50，木头加成+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
         end  
@@ -278,9 +286,24 @@ function mt:add_content()
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+10%，会心伤害+100%，全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+10%，会心伤害+100%，全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+10%，会心伤害+100%，全伤加深+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
         end  
+    elseif finds(rand_name,'挖宝达人') then
+        local skl = hero:find_skill(rand_name,nil,true)
+        if not skl  then 
+            local new_skl = ac.game:event_dispatch('技能-插入魔法书',hero,'藏宝阁',rand_name)
+            player.is_show_nickname = rand_name
+            local tip = tran_space(new_skl:get_tip()) --去除换行为空格
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1800万，物品获取率+75%，闪避+10%，多重暴击几率+10%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1800万，物品获取率+75%，闪避+10%，多重暴击几率+10%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1800万，物品获取率+75%，闪避+10%，多重暴击几率+10%|r',6)
+        else
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
+        end 
 
 
 
@@ -300,16 +323,16 @@ function mt:add_content()
         end   
 
 
-    elseif rand_name == '挖宝达人' then
-        local skl = hero:find_skill(rand_name,nil,true)
-        if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
-            player.is_show_nickname = rand_name
-            --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1500万，物品获取率+75%，闪避+10%，多重暴击几率+10%|r',6)
-        else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
-        end   
+    -- elseif rand_name == '挖宝达人' then
+    --     local skl = hero:find_skill(rand_name,nil,true)
+    --     if not skl  then 
+    --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+    --         player.is_show_nickname = rand_name
+    --         --给全部玩家发送消息
+    --         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1500万，物品获取率+75%，闪避+10%，多重暴击几率+10%|r',6)
+    --     else
+    --         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
+    --     end   
         
     elseif rand_name == '黄金矿工' then
         if not p.flag_yccj then 

@@ -1,7 +1,7 @@
 
 local function get_difficult(degree,br)
     local base =1
-    local base_rate = br or 1.5
+    local base_rate = br or 2
     local degree = degree or 1 
     if degree == 1 then 
         return base 
@@ -36,22 +36,37 @@ local function init_attribute(unit)
     local attr_mul = get_difficult(ac.g_game_degree_attr)
     --根据难度增强属性 
     if data.attribute then  
-        unit:set('攻击',(data.attribute['攻击']or 0) )
-        unit:set('生命上限',(data.attribute['生命上限']or 0))
+        unit:set('攻击',(data.attribute['攻击']or 0) * (attr_mul or 1))
+        unit:set('生命上限',(data.attribute['生命上限']or 0) * (attr_mul or 1))
         unit:set('魔法上限',(data.attribute['魔法上限']or 0))
         unit:set('生命恢复',(data.attribute['生命恢复']or 0))
         unit:set('魔法恢复',(data.attribute['魔法恢复']or 0))
         -- print(ac.g_game_degree_attr)
         unit:set('护甲',(data.attribute['护甲']or 0) *  (attr_mul or 1))
-        unit:set('魔抗',(data.attribute['护甲']or 0) * (attr_mul or 1))
+        unit:set('魔抗',(data.attribute['护甲']or 0) *  (attr_mul or 1))
 
         unit:set('暴击伤害',(data.attribute['暴击伤害'] or 0) * (attr_mul or 1))
     end    
 
     --单独增强最终boss
-    if unit:get_name() == '虚空诺亚' then
+    if unit:get_name() == '九头怪' then
         unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
     end  
+    if unit:get_name() == '奇美拉' then
+        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
+    end 
+    if unit:get_name() == '蜥蜴领主' then
+        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
+    end 
+    if unit:get_name() == '山岭巨人' then
+        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
+    end 
+    if unit:get_name() == '基尔加丹' then
+        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
+    end 
+    if unit:get_name() == '虚空诺亚' then
+        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
+    end 
  
 end
 ac.unit.init_attribute = init_attribute    

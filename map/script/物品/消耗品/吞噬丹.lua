@@ -128,7 +128,10 @@ function mt:on_cast_start()
                 skl{
                     title = item.color_name,
                     art = item.art,
+                    is_order = 1,
                     tip = item:get_tip()
+
+
                 }
                 local new_skl_name = item.name..' '
                 if ac.tunshi_black_item and finds(ac.tunshi_black_item,item.name) then 

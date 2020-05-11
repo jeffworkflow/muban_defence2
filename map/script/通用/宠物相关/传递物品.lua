@@ -25,7 +25,7 @@ mt{
 	
     ignore_cool_save = true, --忽略技能冷却
 	--cd
-	cool = 1,
+	cool = 0.5,
 	
 	--施法距离
 	range = 50,

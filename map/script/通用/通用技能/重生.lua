@@ -31,6 +31,7 @@ function mt:on_add()
             ac.effect_ex{
                 time = self.time,
                 model = self.effect1,
+                model_size = self.effect1_size,
                 point = point
             }
         end    

@@ -125,6 +125,8 @@ function mt:on_add()
 		self.skl1.time = 3
 		self.skl1.effect = skill.effect1
 		self.skl1.effect1 = skill.effect2
+		self.skl1.effect1_size = 50
+
 	end	 
 	--注册即将死亡伤害事件
 	self.trg1=hero:event '单位-即将死亡' (function (_,unit,killer)
