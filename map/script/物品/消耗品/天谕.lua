@@ -33,9 +33,9 @@ auto_fresh_tip = true,
 
 }
 --概率
-local rate ={90,90,85,80,75,70,50,45,40,65,55,45,35,25}
+local rate ={95,85,75,65,60,55,50,45,40,65,55,45,35,25}
 --强化属性百分比
-local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115,145,180,220,260,300}
+local strong_attr ={10,20,30,40,50,65,80,95,115,145,180,220,260,300}
 
 local temp = {
     ['天谕'] = {
@@ -61,7 +61,7 @@ local function up_item(item,player)
     item.max_level = 15
     item:upgrade(1)
     item:set_name(item.name)
-    player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r')
+    player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
     if item.level == item.max_level then 
         player:sendMsg('|cffffe799【系统消息】恭喜强化成功，|cff00ff00当前物品已经到达顶级|r')
     end
@@ -139,7 +139,7 @@ function mt:on_cast_start()
                         --改变属性
                         up_item(item,player)
                     else 
-                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r')
+                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                     end   
                 else
                     player:sendMsg('|cffffe799【系统消息】|cff00ff00当前物品已经到达顶级|r')

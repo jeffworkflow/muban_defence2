@@ -57,6 +57,7 @@ function mt:damage_start(damage)
 		--创建特效
 		ac.effect_ex{
 			model = self.effect,
+			size = 3.5,
 			point = target:get_point(),
 		}:remove()
 		--造成伤害

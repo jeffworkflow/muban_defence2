@@ -28,7 +28,7 @@ mt{
 	area = 500,
 
 	--cd
-	cool = 1,
+	cool = 0.5,
 
 	--特效模型
 	effect = [[AZ_Doomdragon_T.mdx]],

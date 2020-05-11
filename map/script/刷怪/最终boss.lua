@@ -48,7 +48,7 @@ ac.game:event '游戏-最终boss' (function(trg)
                     ac.active_yccj(p,'血牛')
                 end
                 --一出门就被秒
-                if p.cnt_death and p.cnt_death >= 0 then 
+                if p.cnt_death and p.cnt_death >= 50 then 
                     ac.active_yccj(p,'一出门就被秒')
                 end
             end

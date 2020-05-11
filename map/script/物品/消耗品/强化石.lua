@@ -33,11 +33,13 @@ content_tip = '|cffffe799使用说明：|r',
 auto_fresh_tip = true,
 
 }
-local rate ={90,90,85,80,75,70,50,45,40,65,55,45,35,25}
+local rate ={95,85,75,65,60,55,50,45,40,65,55,45,35,25}
 --概率
 
 --强化属性百分比
-local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115,145,180,220,260,300}
+-- local strong_attr ={2.5,7.5,15,25,37.5,52.5,70,90,115,145,180,220,260,300}
+
+local strong_attr ={10,20,30,40,50,65,80,95,115,145,180,220,260,300}
 
 function mt:on_cast_start()
     local unit = self.owner
@@ -115,7 +117,7 @@ function mt:on_cast_start()
                         item.max_level = 15
                         item:upgrade(1)
                         item:set_name(item.name)
-                        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffff0000打造熟练度+1')
+                        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
 
                         if item.level == 10 then 
                             player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
@@ -123,7 +125,7 @@ function mt:on_cast_start()
                         -- 物品升级为 '..item.color_name..'
                         -- |cffffff00+'..item.level -1 ..'|r 
                     else 
-                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cff00ff00打造熟练度+1')
+                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                     end    
 
                     if self._count > 0 then  
@@ -168,12 +170,13 @@ local function insert_book(hero,name)
     local p = hero.owner
     local player = hero.owner
     local skl = hero:find_skill(name,nil,true) 
-    if finds(name,'鬼斧神工') then 
-        if not skl then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。'..p:get_name()..'获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
-        end
-    elseif finds(name,'剑瞎子') then 
+    -- if finds(name,'鬼斧神工') then 
+    --     if not skl then 
+    --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
+    --         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。'..p:get_name()..'获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
+    --     end
+    -- else
+    if finds(name,'剑瞎子') then 
         if not p.flag_yccj then 
             p.flag_yccj = {} 
         end    
@@ -199,19 +202,23 @@ local function insert_book(hero,name)
     else
         if not skl then 
             ac.game:event_notify('技能-插入魔法书',hero,'剑冢',name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
         end
     end
  
 end 
 local temp = {
-    ['锻造学徒'] =50,
-    ['锻造师傅'] =100,
-    ['锻造匠人'] =150,
-    ['锻造宗师'] =200,
-    ['鬼斧神工'] =250,
-    ['剑瞎子'] =300,
-    ['天外飞仙'] =350,
+    ['锻造学徒'] =20,
+    ['锻造师傅'] =45,
+    ['锻造匠人'] =75,
+    ['锻造宗师'] =110,
+    ['鬼斧神工'] =150,
+    -- ['鬼斧神工'] =2,
+    ['剑瞎子'] =195,
+    -- ['剑瞎子'] =2,
+    ['天外飞仙'] =245,
 }  
 local function up_item(item)
     local lni_data = ac.table.ItemData[item.name]

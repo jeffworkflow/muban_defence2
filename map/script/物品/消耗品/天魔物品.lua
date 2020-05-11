@@ -62,7 +62,7 @@ tip = [[%extr_tip%
 |cff00ff00+5000W 攻击|r
 |cff00ff00+5% 免伤几率（无视免伤几率上限）|r
 
-|cff00ffff【唯一被动-裂魂】攻击10%几率增加（全属性*5）的攻击力
+|cff00ffff【唯一被动-裂魂】攻击10%几率增加超强攻击力
  ]],
     --触发几率
     chance = 10,
@@ -315,7 +315,7 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性|r
-|cff00ff00+4本 功法连升书|r
+|cff00ff00+2本 功法连升书|r
 |cff00ff00+1个 龙之血珠|r
 |cff00ff00+1个 无谓因果|r
 
@@ -327,7 +327,7 @@ function mt:on_add()
     local hero = self.owner
     local p = hero:get_owner()
     local it = ac.item.create_item('功法连升书',self.owner:get_point())
-    it:set_item_count(4)
+    it:set_item_count(2)
     hero:add_item(it)
 
     hero:add_item('龙之血珠')

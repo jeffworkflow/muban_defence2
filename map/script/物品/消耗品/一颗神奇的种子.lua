@@ -35,10 +35,11 @@ auto_plant = function(self)
     if owner == hero then 
         ok = hero.auto_plant
     end
-    -- return ok
-    return true
+    return ok
+    -- return true
 end
 }
+
 
 local function create_u(skl,hero,point)
     local p = hero.owner
@@ -207,7 +208,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+100W，每秒加木头+10，木头加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150W，每秒加木头+10，木头加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150W，每秒加木头+10，木头加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150W，每秒加木头+10，木头加成+25%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
@@ -218,7 +221,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300W，每秒加魔丸+25，魔丸加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300W，+5W魔丸，每秒加魔丸+25，魔丸加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300W，+5W魔丸，每秒加魔丸+25，魔丸加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300W，+5W魔丸，每秒加魔丸+25，魔丸加成+25%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
@@ -229,7 +234,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+500W，攻击速度+50%， 分裂伤害+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600W，攻击速度+100%， 分裂伤害+100%，攻击减甲+100，减少周围护甲+1000',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600W，攻击速度+100%， 分裂伤害+100%，攻击减甲+100，减少周围护甲+1000',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600W，攻击速度+100%， 分裂伤害+100%，攻击减甲+100，减少周围护甲+1000',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
@@ -240,7 +247,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+750W，每秒加杀敌数+1，杀敌数加成+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+10% ，技暴伤害+100% ，攻击间隔-0.05',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+10% ，技暴伤害+100% ，攻击间隔-0.05',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+10% ，技暴伤害+100% ，攻击间隔-0.05',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
@@ -251,21 +260,36 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff0000全属性+2000W，每秒加杀敌数+5，杀敌数加成+50%， 全伤加深+25%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff0000全属性+2400W，全属性+10%， 全伤加深+100%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff0000全属性+2400W，全属性+10%， 全伤加深+100%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff0000全属性+2400W，全属性+10%， 全伤加深+100%',6)
+        else
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+        end   
+    elseif finds(rand_name,'园艺大师') then
+        local skl = hero:find_skill(rand_name,nil,true)
+        if not skl  then 
+            local new_skl = ac.game:event_dispatch('技能-插入魔法书',hero,'百花宫',rand_name)
+            player.is_show_nickname = rand_name
+            local tip = tran_space(new_skl:get_tip()) --去除换行为空格
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff00001800万全属性，每秒回血+5%， 闪避+5%， 免伤几率+5%， 减伤+5%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff00001800万全属性，每秒回血+5%， 闪避+5%， 免伤几率+5%， 减伤+5%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff00001800万全属性，每秒回血+5%， 闪避+5%， 免伤几率+5%， 减伤+5%|r',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
 
-    elseif rand_name == '园艺大师' then
-        local skl = hero:find_skill(rand_name,nil,true)
-        if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
-            player.is_show_nickname = rand_name
-            --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001000万全属性，杀敌数加成+50%|r',6)
-        else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(种树熟练度+1，当前种树熟练度 '..player.server['种树熟练度']..' )|r',2)
-        end 
+    -- elseif rand_name == '园艺大师' then
+    --     local skl = hero:find_skill(rand_name,nil,true)
+    --     if not skl  then 
+    --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+    --         player.is_show_nickname = rand_name
+    --         --给全部玩家发送消息
+    --         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001000万全属性，杀敌数加成+50%|r',6)
+    --     else
+    --         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(种树熟练度+1，当前种树熟练度 '..player.server['种树熟练度']..' )|r',2)
+    --     end 
     elseif rand_name == '采蘑菇的小姑娘' then
         if not p.flag_yccj then 
             p.flag_yccj = {} 

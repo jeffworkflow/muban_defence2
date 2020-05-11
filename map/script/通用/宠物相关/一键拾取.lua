@@ -30,7 +30,7 @@ mt{
 	area = 350,
 
 	--cd
-	cool = 1,
+	cool = 0.5,
 	--自动合成
 	auto_hecheng= function(self)
 		local hero = self.owner

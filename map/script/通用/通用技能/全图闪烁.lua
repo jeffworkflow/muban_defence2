@@ -11,7 +11,7 @@ mt{
 ]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBlink.blp]],
-	cool = 1,
+	cool = 0.5,
 
 	target_type = ac.skill.TARGET_TYPE_POINT,
 

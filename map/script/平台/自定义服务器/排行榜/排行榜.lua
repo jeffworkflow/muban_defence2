@@ -79,7 +79,9 @@ class.phb_panel = extends(class.panel){
         local more_tip2 = panel:add_button([[image\排行榜\icon_wenhao.blp]],440+menu_width+main_box_width+off_left ,off_top,32,32) 
         local info = {
             name ='',
-            tip = '每小时刷新一次,地图等级>=3才能上榜'
+            -- tip = '每小时刷新一次,地图等级>=3才能上榜'
+            tip = '|cffcccccc每小时刷新一次\n请耐心等待'
+            
         }
         function more_tip1:on_button_mouse_enter()
             if info then 

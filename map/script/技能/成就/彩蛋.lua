@@ -72,184 +72,21 @@ function mt:on_add()
     -- p:sendMsg('【系统消息】获得大屠杀',5)
 end 
 
-local mt = ac.skill['挖宝达人']
-mt{
-    --等久
-    level = 1,
-    --魔法书相关
-    is_order = 1 ,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --冷却
-    cool = 0,
-    content_tip = '',
-    item_type_tip = '',
-    --物品技能
-    is_skill = true,
-    --商店名词缀
-    store_affix = '',
-    art = [[wbdr.blp]], 
-    tip = [[
-    
-|cffFFE799【成就属性】：|r
-|cff00ff00+1500W 全属性
-+75%  物品获取率
-+10%  闪避
-+10%  多重暴击几率|r
 
-]],
-    ['物品获取率'] = 75,
-    ['闪避'] = 10,
-    ['全属性'] = 15000000,
-    ['多重暴击几率'] = 10,
-}
 
-local mt = ac.skill['鉴宝大师']
-mt{
-    --等久
-    level = 1,
-    --魔法书相关
-    is_order = 1 ,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --冷却
-    cool = 0,
-    content_tip = '',
-    item_type_tip = '',
-    --物品技能
-    is_skill = true,
-    --商店名词缀
-    store_affix = '',
-    art = [[jianbaodashi.blp]], 
-    tip = [[
-    
-|cffFFE799【成就属性】：|r
-|cff00ff00+1000W 全属性
-+50%  魔丸加成|r
 
-]],
-    ['魔丸加成'] = 50,
-    ['全属性'] = 10000000,
-}
  
   
 
   
 
 
-local mt = ac.skill['鬼斧神工']
-mt{
-    --等久
-    level = 1,
-    --魔法书相关
-    is_order = 1 ,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --冷却
-    cool = 0,
-    content_tip = '',
-    item_type_tip = '',
-    --物品技能
-    is_skill = true,
-    --商店名词缀
-    store_affix = '',
-    art = [[guifushengong.blp]], 
-    tip = [[
-    
-|cffFFE799【成就属性】：|r
-|cff00ff00+1000W 全属性
-+50%  木头加成
-+2.5%  强化成功概率|r
 
-]],
-    ['全属性'] = 10000000,
-    ['强化成功概率'] = 2.5,
-    ['木头加成'] = 50,
-}
 
-local mt = ac.skill['扭转乾坤']
-mt{
-    --等久
-    level = 1,
-    --魔法书相关
-    is_order = 1 ,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --冷却
-    cool = 0,
-    content_tip = '',
-    item_type_tip = '',
-    --物品技能
-    is_skill = true,
-    --商店名词缀
-    store_affix = '',
-    art = [[niuzhuanrensheng.blp]], 
-    tip = [[
-    
-|cffFFE799【成就属性】：|r
-|cff00ff00+1000W 全属性
-+50%  木头加成|r
 
-]],
-    ['全属性'] = 10000000,
-    ['木头加成'] = 50,
-}
 
-local mt = ac.skill['园艺大师']
-mt{
-    --等久
-    level = 1,
-    --魔法书相关
-    is_order = 1 ,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --冷却
-    cool = 0,
-    content_tip = '',
-    item_type_tip = '',
-    --物品技能
-    is_skill = true,
-    --商店名词缀
-    store_affix = '',
-    art = [[yyds.blp]], 
-    tip = [[
-    
-|cffFFE799【成就属性】：|r
-|cff00ff00+1000W 全属性
-+50%  杀敌数加成|r
 
-]],
-    ['全属性'] = 10000000,
-    ['杀敌数加成'] = 50,
-}
 
-local mt = ac.skill['骰子王']
-mt{
-    --等久
-    level = 1,
-    --魔法书相关
-    is_order = 1 ,
-    --目标类型
-    target_type = ac.skill.TARGET_TYPE_NONE,
-    --冷却
-    cool = 0,
-    content_tip = '',
-    item_type_tip = '',
-    --物品技能
-    is_skill = true,
-    --商店名词缀
-    store_affix = '',
-    art = [[touzihuanghou.blp]], 
-    tip = [[
-    
-|cffFFE799【成就属性】：|r
-|cff00ff00+1000W 全属性
-+50%  物品获取率|r
-
-]],
-    ['全属性'] = 10000000,
-    ['物品获取率'] = 50,
-}
 
 local mt = ac.skill['倒霉蛋']
 mt{
@@ -310,14 +147,18 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+3500W 全属性
-+5%     全伤加深
-+5%     减伤|r
+|cff00ff00+5000W 全属性
++10%     减伤
++10%     多重暴击几率
++1       多重暴击
++25%     全伤加深|r
 
 ]],
-    ['全伤加深'] = 5,
-    ['减伤'] = 5,
-    ['全属性'] = 35000000,
+    ['全伤加深'] = 25,
+    ['减伤'] = 10,
+    ['全属性'] = 50000000,
+    ['多重暴击几率'] = 10,
+    ['多重暴击'] = 1,
 }
 
 local mt = ac.skill['八个技能的男人']
@@ -395,16 +236,16 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[szsc.blp]], 
+    art = [[shizaishicai.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+1500 护甲
-+500W  生命上限|r
+|cff00ff00+5000 护甲
++1000W  生命上限|r
 
 ]],
-    ['护甲'] = 1500,
-    ['生命上限'] = 5000000,
+    ['护甲'] = 5000,
+    ['生命上限'] = 10000000,
 }
 
 local mt = ac.skill['至尊赌神']
@@ -412,17 +253,17 @@ mt{
     is_spellbook = 1,
     level = 1,
     is_order = 2,
-    art = [[qbfb.blp]],
+    art = [[zhizundushen.blp]],
     tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+5000万 全属性
+|cff00ff00+7500万 全属性
 +100%  杀敌数加成
 +100%  物品获取率
 +100%  木头加成
 +100%  魔丸加成
     ]],
-    ['全属性'] = 50000000,
+    ['全属性'] = 75000000,
     ['杀敌数加成'] = 100,
     ['木头加成'] = 100,
     ['魔丸加成'] = 100,
@@ -573,9 +414,9 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','实在是菜')
             player.is_show_nickname = '实在是菜'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+5000护甲 +1000W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+5000护甲 +1000W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+5000护甲 +1000W生命上限|r',6)
         end
     end    
 

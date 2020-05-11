@@ -26,14 +26,14 @@ mt{
 	tip = [[ 
 |cffffe799【暴击几率】+5%
 
-|cff00ffff所有小怪|cffffff00【每秒加护甲-10】
-|cff00ffff所有boss|cffffff00【每秒加护甲-20】
+|cff00ffff所有小怪|cffffff00【每秒加护甲-50】
+|cff00ffff所有boss|cffffff00【每秒加护甲-100】
 
 ]],
 	--技能图标
     art = [[kulotou.blp]],
-    value = 10,
-    value1 = 20,
+    value = 50,
+    value1 = 100,
     area = 3000,
 }
 function mt:on_upgrade()

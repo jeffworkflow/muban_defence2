@@ -130,28 +130,34 @@ content_tip = '|cffffe799使用说明：|r'
 }
 
 
-local function insert_book(hero,name)
+local function insert_book(hero,name,self)
     local p = hero.owner
     local player = hero.owner
     local skl = hero:find_skill(name,nil,true) 
-    if finds(name,'扭转乾坤') then 
-        if not skl then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
-            ac.wait(0,function()
-                ac.player.self:sendMg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
-            end)
-        end
-    elseif finds(name,'扭蛋人生') then 
+    print('打印：1',name)
+    -- if finds(name,'扭转乾坤') then 
+    --     if not skl then 
+    --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
+    --         ac.wait(0,function()
+    --             ac.player.self:sendMg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
+    --         end)
+    --     end
+    -- else
+    if finds(name,'扭蛋人生') then 
+        print('打印：2',name)
         if not p.flag_yccj then 
             p.flag_yccj = {} 
         end    
         if p.flag_yccj[name] then 
             return 
         end   
+        print('打印：3',name)
         p.flag_yccj[name] = true --一局只能获得一次
         --存档
         local key = ac.server.name2key(name)
+        print('打印：4',name,p:Map_GetServerValue(key))
         if ac.g_game_degree_attr > p:Map_GetServerValue(key) then 
+            print('打印：4',name,p:Map_GetServerValue(key))
             p:Map_AddServerValue(key,1)
             local skl = hero:find_skill(name,nil,true) 
             if not skl  then 
@@ -171,6 +177,8 @@ local function insert_book(hero,name)
             ac.game:event_notify('技能-插入魔法书',hero,'龙宫',name)
             ac.wait(0,function()
                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
             end)
         end
     end
@@ -178,14 +186,17 @@ local function insert_book(hero,name)
 end 
 
 local temp = {
-    ['欢乐扭蛋'] =50,
-    ['扭蛋高手'] =100,
-    ['扭蛋天才'] =150,
-    ['扭蛋大魔王'] =200,
-    ['扭转乾坤'] =250,
-    ['扭蛋人生'] =300,
-    ['扭蛋大神'] =350,
-    
+    ['欢乐扭蛋'] =20,
+    ['扭蛋高手'] =50,
+    ['扭蛋天才'] =85,
+    ['扭蛋大魔王'] =125,
+    ['扭转乾坤'] =175,
+    -- ['扭转乾坤'] =10,
+    ['扭蛋人生'] =230,
+    -- ['扭蛋人生'] =3,
+    ['扭蛋大神'] =290,
+
+
 }  
 
 ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
@@ -204,7 +215,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
 
     for k,v in sortpairs(temp) do 
         if player:get('扭蛋次数') == v then 
-            insert_book(hero,k)
+            insert_book(hero,k,self)
         end
     end 
     

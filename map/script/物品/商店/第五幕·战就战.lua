@@ -56,7 +56,8 @@ end,
 	--被动事件
 	event_name = "造成伤害效果",
 	--特效
-	effect = [[Abilities\Spells\Undead\FrostNova\FrostNovaTarget.mdl]],
+    effect = [[Abilities\Spells\Undead\FrostNova\FrostNovaTarget.mdl]],
+    
 }
 
 function mt:damage_start(damage)
@@ -68,7 +69,8 @@ function mt:damage_start(damage)
 		return 
 	end 
     ac.effect_ex{
-    	model = skill.effect,
+        model = skill.effect,
+        size = 4,
     	point = target:get_point(),
     }:remove()
 	for i, u in ac.selector()
@@ -253,13 +255,13 @@ mt{
     
 |cffFFE799【属性】：|r
 |cff00ff00+1300W 全属性
-+1W    杀怪加全属性
-+20W   每秒加全属性|r
++1000 杀怪加全属性
++2W   每秒加全属性|r
 
 ]],
     ['全属性'] = 13000000,
-    ['杀怪加全属性'] = 10000,
-    ['每秒加全属性'] = 200000,
+    ['杀怪加全属性'] = 1000,
+    ['每秒加全属性'] = 20000,
     
     
 }
