@@ -46,7 +46,8 @@ function mt:on_cast_start()
             pp.hero:add_wood(self.value) 
         end  
     end    
-
+    local p = hero.owner 
+    ac.player.self:sendMsg('玩家 '..p:get_name()..' 给每个玩家发放了慰问金',5)
 end
 function mt:on_remove()
     local hero = self.owner

@@ -90,14 +90,18 @@ mt{
     ['全属性'] = 5000000,
 }
 
--- function mt:on_add()
---     local hero = self.owner
---     local p = hero:get_owner()
---     local peon = p.peon
---     -- peon:add_item('百花宫通行证 ')
---     --开启自动种树
---     hero.auto_plant = true
--- end
+function mt:on_add()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local peon = p.peon
+    --开启自动种树
+    hero.auto_plant = true
+    --给藏宝图10张，挖宝熟练度100点
+    local it = ac.item.create_item('一颗神奇的种子')
+    it:set_item_count(10)
+    hero:add_item(it)
+    p:Map_AddServerValue('sldzs',100) 
+end
 
 
 local mt = ac.skill['奇美拉的头颅']

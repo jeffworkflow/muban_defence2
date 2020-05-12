@@ -40,9 +40,9 @@ for i=1,10 do
             end
         end    
 
-        for n=1,#ac.cus_server_key do
-            local has_item = p:Map_GetServerValue(ac.cus_server_key[n][1])  or 0
-            local name = ac.cus_server_key[n][2]
+        for n=1,#ac.server_key do
+            local has_item = p:Map_GetServerValue(ac.server_key[n][1])  or 0
+            local name = ac.server_key[n][2]
             local skl = ac.skill[name]
             if has_item and has_item > 0 and type(skl) == 'table' and skl:get('局内地图等级') then 
                 p:add('局内地图等级',skl:get('局内地图等级'))
@@ -102,7 +102,7 @@ ac.wait(1100,function()
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
-        for index,data in ipairs(ac.cus_server_key) do
+        for index,data in ipairs(ac.server_key) do
                 local key = data[1]
                 local key_name = data[2]
                 local val = player:Map_GetServerValue(key)
@@ -134,13 +134,19 @@ for i=1,10 do
             for n=1,#ac.mall do
                 -- print("01",p:Map_HasMallItem(ac.mall[n][1]))
                 local need_map_level = ac.mall[n][3] or 999999999999
-                if     (p:Map_HasMallItem(ac.mall[n][1]) 
-                    or (p:Map_GetMapLevel() >= need_map_level) 
-                    or (p.cheating)) 
-                then
+                if ac.mall[n][3] then 
+                    if p:Map_GetMapLevel() >= ac.mall[n][3] then 
+                        local name = ac.mall[n][2]  
+                        p.mall[name] = 1  
+                    end
+                elseif p:Map_HasMallItem(ac.mall[n][1]) then 
+                    local name = ac.mall[n][2]  
+                    p.mall[name] = 1 
+                end
+                if p.cheating then    
                     local name = ac.mall[n][2]  
                     p.mall[name] = 1  
-                end  
+                end
             end    
         end)    
     end    
@@ -172,7 +178,7 @@ for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then   
         player:event '读取存档数据' (function()
-            for i,tab in ipairs(ac.cus_server_key) do 
+            for i,tab in ipairs(ac.server_key) do 
                 local key = tab[1]
                 local key_name = tab[2]
                 if tab[3] then 
@@ -210,7 +216,7 @@ for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then   
         player:event '玩家-注册英雄' (function(_,p,hero)
-            for i,data in ipairs(ac.cus_server_key) do 
+            for i,data in ipairs(ac.server_key) do 
                 if finds(data[2] ,'存档') then 
                     local name = player.server[data[2]] and ac.all_save_item[player.server[data[2]]]
                     if name then
@@ -272,7 +278,7 @@ end)
 
 --开始进行地图等级集中过滤
 -- ac.server.need_map_level = {}
--- for i,tab in ipairs(ac.cus_server_key) do
+-- for i,tab in ipairs(ac.server_key) do
 --     if tab[3] then 
 --         for name,data in sortpairs(tab[3]) do 
 --             print(name,data[2])

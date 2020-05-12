@@ -30,6 +30,7 @@ class.screen_button = extends(class.button){
                         end 
                     end       
                 end    
+                self:destroy()
                 t:remove()
             end
         end)

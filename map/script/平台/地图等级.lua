@@ -1,400 +1,428 @@
---地图等级
-local mt = ac.skill['地图等级1']
+
+local mt = ac.skill['黄盖']
 mt{
---等级
-level = 1,
-title = function(self) return '地图等级说明2' end,
-is_order = 1,
---图标
-art = [[xsgl.blp]],
---说明
-tip = [[ 
-|cff00ff00地图等级直接奖励额外属性|r
-
-|cffffE7992级|r 奖励 |cff00ff00攻击加全属性+20，杀怪加金币+50
-（通关青铜翻倍）
-|cffffE7993级|r 奖励 |cff00ff00每秒加护甲0.5，每秒加全属性+250
-（通关青铜翻倍）
-|cffffE7994级|r 奖励 |cff00ff00金币加成+25% ，杀敌数加成+10%
-（通关白银翻倍）
-|cffffE7995级|r 奖励 |cff00ffff木头加成+7.5% ，魔丸加成+7.5%
-（通关白银翻倍）
-|cffffE7996级|r 奖励 |cff00ffff减少周围护甲+100（通关黄金翻倍）
-|cffffE7997级|r 奖励 |cff00ffff首充大礼包的资源属性翻倍
-(条件：已购买首充大礼包)    
-|cffffE7998级|r 奖励 |cffffff00杀敌加全属性+50（通关黄金翻倍）
-|cffffE7999级|r 奖励 |cffffff00攻击减甲+15（通关铂金翻倍）
-|cffffE79910级|r 奖励 |cffffff00暴击伤害+50%（通关铂金翻倍）
-|cffffE79910级|r 奖励 |cffff0000永久赞助的资源属性翻倍
-(条件：已购买永久赞助)
-|cffffE79911级|r 奖励 |cffff0000技暴伤害+50%（通关钻石翻倍）
-|cffffE79912级|r 奖励 |cffff0000全伤加深+5%（通关钻石翻倍）
- ]],
-map_level = function(self)
-    local p = self.owner:get_owner()
-    local res = p:Map_GetMapLevel()
-    return res
-end,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
---属性加成： 地图等级2
-['攻击加全属性'] = function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 2 then 
-        value = 20 * dw_star
-    end    
-    return value 
-end,
-['杀怪加金币'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 2 then 
-        value = 50 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级3
-['每秒加护甲'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 3 then 
-        value = 0.5 * dw_star
-    end    
-    return value 
-end,
-['每秒加全属性'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['青铜'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 3 then 
-        value = 250 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级4
---金币加成 + 25，杀敌数加成+10（通关N2效果翻倍）
-['金币加成'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 4 then 
-        value = 25 * dw_star
-    end    
-    return value 
-end,
-['杀敌数加成'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 4 then 
-        value = 10 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级5
---木头加成+10，魔丸加成+10（通关N2效果翻倍）
-['木头加成'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 5 then 
-        value = 7.5 * dw_star
-    end    
-    return value 
-end,
-['魔丸加成'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['白银'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 5 then 
-        value = 7.5 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级6
---减少周围护甲+100 （通关N3效果翻倍）
-['减少周围护甲'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['黄金'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 6 then 
-        value = 100 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级7 限量首充资源加成翻倍
---属性加成： 地图等级8 杀敌加全属性+50（通关N3效果翻倍）
-['杀怪加全属性'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['黄金'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 8 then 
-        value = 50 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级9 攻击减甲+15（通关N4效果翻倍）
-['攻击减甲'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['铂金'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 9 then 
-        value = 15 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级10 物爆加深+50（通关N4效果翻倍）
-['暴击伤害'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['铂金'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 10 then 
-        value = 50 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级11 技爆加深+50（通关N4效果翻倍）
-['技暴伤害'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['钻石'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 11 then 
-        value = 50 * dw_star
-    end    
-    return value 
-end,
---属性加成： 地图等级12 全身加深+5（通关N5效果翻倍）
-['全伤加深'] =  function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.server and p.server['钻石'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 12 then 
-        value = 5 * dw_star
-    end    
-    return value 
-end,
-
-}
-
-
---商城武器
-local mt = ac.skill['地图等级2']
-mt{
---等级
-level = 1,
-title = function(self) return '地图等级说明3' end,
-is_order = 1,
---图标
-art = [[xsgl.blp]],
---说明
-tip = [[
-
-|cff00ff00更多地图等级奖励，请在基地右边的|cffffff00【游戏说明】|cff00ff00查看|r
- ]],
-map_level = function(self)
-    local p = self.owner:get_owner()
-    local res = p:Map_GetMapLevel()
-    return res
-end,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-}
-function mt:on_add()
-    local hero =self.owner
-    if self.map_level >=16 then 
-        local skl = hero:add_skill('神仙水','隐藏')
-        skl:set_level(1)
-    end    
-    -- if self.map_level >=40 then 
-    --     local skl = hero:add_skill('永久超级赞助','隐藏')
-    --     skl:set_level(1)
-    -- end  
-    -- if self.map_level >=38 then   
-    --     local skl = hero:add_skill('孤风青龙领域2','隐藏')
-    --     skl:set_level(1)
-    -- end  
-    -- if self.map_level >=45 then   
-    --     local skl = hero:add_skill('远影苍龙领域2','隐藏')
-    --     skl:set_level(1)
-    -- end 
-    -- if self.map_level >=50 then   
-    --     local skl = hero:add_skill('真龙天子2','隐藏')
-    --     skl:set_level(1)
-    -- end 
-    -- if self.map_level >=55 then   
-    --     local skl = hero:add_skill('齐天大圣B2','隐藏')
-    --     skl:set_level(1)
-    -- end 
-    
-end    
-
-local mt = ac.skill['孤风青龙领域2']
-mt{
+is_skill = 1,
+item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
-art = [[qinglong.blp]],
+art = [[huanggai.blp]],
 --说明
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
+|cffff0000地图等级≥5|r
 
-|cffFFE799【领域属性】：|r
-|cff00ff00+228   杀怪加全属性|r
-|cff00ff00+2280  减少周围护甲|r
-|cff00ff00+100%  木头加成|r
-|cff00ff00+100%  魔丸加成|r
-|cff00ffff+228%  全伤加深|r
-|cff00ffff+5%    会心几率|r
-|cff00ffff+50%   会心伤害|r
-|cffffff00孤风青龙领域+远影苍龙领域激活：练功房怪物数量+5！
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加力量】+100*Lv
+【物理伤害加深】+50%
+【每秒回血】+10%
+【护甲】+10%
 
-|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 228,
-['减少周围护甲'] = 2280,
-['全伤加深'] = 228,
-['会心几率'] = 5,
-['会心伤害'] = 50,
-['木头加成'] = 100,
-['魔丸加成'] = 100,
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（力量*10+10000）*Lv+1%敌人的最大生命值
 
-need_map_level = 2,
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+
 --特效
-effect = [[lingyu5.mdx]]
+effect = [[GuanSuoPiFu2.mdx]]
+
 }
 
-local mt = ac.skill['远影苍龙领域2']
+local mt = ac.skill['关羽']
 mt{
+is_skill = 1,
+item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
-art = [[canglong.blp]],
+art = [[guangong.blp]],
 --说明
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
+|cffff0000地图等级≥10|r
 
-|cffFFE799【领域属性】：|r
-|cff00ff00+388  杀怪加全属性|r
-|cff00ff00+3880  减少周围护甲|r
-|cff00ff00+100%  木头加成|r
-|cff00ff00+100%  魔丸加成|r
-|cff00ffff+388%  全伤加深|r
-|cff00ffff+5%  会心几率|r
-|cff00ffff+50%  会心伤害|r
-|cff00ffff+35%  对BOSS额外伤害|r
-|cffffff00孤风青龙领域+远影苍龙领域激活：练功房怪物数量+5！
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加力量】+140*Lv
+【力量】+25%
+【移动速度】+100
+【攻击速度】+100%
+【物理伤害加深】+200%
 
-|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 388,
-['减少周围护甲'] = 3880,
-['全伤加深'] = 388,
-['会心几率'] = 5,
-['会心伤害'] = 50,
-['对BOSS额外伤害'] = 35,
-['木头加成'] = 100,
-['魔丸加成'] = 100,
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人
+【伤害公式】（力量*30+10000）*Lv+1%敌人的最大生命值
 
-need_map_level = 2,
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+
 --特效
-effect = [[lingyu8.mdx]]
+effect = [[zsgskin_guanyu_01.mdx]]
+
 }
 
-local mt = ac.skill['真龙天子2']
+local mt = ac.skill['堕落天使']
 mt{
+is_skill = 1,
+item_type ='神符',
 --等级
 level = 0,
+is_order = 1,
 --图标
-art = [[canglong.blp]],
+art = [[tianshi.blp]],
 --说明
 tip = [[
-|cffFFE799【称号属性】：|r
-|cff00ff00+488   杀怪加全属性|r
-|cff00ff00+488   攻击减甲|r
-|cff00ff00+488%  全伤加深|r
-|cff00ffff+50%   每秒回血|r
-|cff00ffff+10%  闪避|r
-|cffff0000+15%   会心几率|r
-|cffff0000+150%  会心伤害|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 488,
-['攻击减甲'] = 488,
-['全伤加深'] = 488,
-['会心几率'] = 15,
-['会心伤害'] = 150,
-['闪避'] = 10,
-['每秒回血'] = 50,
 
-need_map_level = 2,
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥15|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【每秒加木头】+10*Lv
+【每秒加魔丸】+10*Lv
+【物品获取率】+150%
+【减少周围护甲】+1500
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（智力*20+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+
 --特效
-effect = [[lingyu8.mdx]]
+effect = [[avengingangel.mdx]]
+
 }
 
-local mt = ac.skill['齐天大圣B2']
+local mt = ac.skill['加百列']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[ReplaceableTextures\CommandButtons\BTNMarine.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥20|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加敏捷】+240*Lv
+【攻击间隔】-0.2
+【攻击减甲】+350
+【多重射】+3
+【多重暴击几率】+5%
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*30+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+--特效
+effect = [[ArchAngelngelGabriel.mdx]]
+}
+
+
+local mt = ac.skill['王昭君']
 mt{
 is_skill = 1,
 --等级
 level = 0,
-strong_hero = 1, --作用在人身上
-title ='齐天大圣B（新版）',
+is_order = 1,
 --图标
-art = [[cwqtds.blp]],
+art = [[wzj.blp]],
 --说明
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
+|cffff0000地图等级≥25|r
 
-|cffFFE799【宠物属性】：|r
-|cff00ff00+488  杀怪加全属性|r
-|cff00ff00+488  攻击减甲|r
-|cff00ff00+488%  全伤加深|r
-|cff00ffff+5%   会心几率|r
-|cff00ffff+50%  会心伤害|r
-|cffff0000+40 每秒加护甲|r
-|cffff0000杀敌数额外+1|r
-|cffff0000练功房怪物数量+3|r
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加智力】+280*Lv
+【智力】+50%
+【触发概率加成】+50%
+【技能冷却】+25%
+【技能伤害加深】+200%
+【强大的冰盾系统】
 
-|cffdf19d0【唯一被动】每秒减少宠物周围敌人血量的5%（对BOSS无效）
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（智力*35+10000）*Lv
 
-|cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+--特效
+effect = [[Npc_18.mdx]]
+}
 
-|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+local mt = ac.skill['雅典娜']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[ydn.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥30|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加敏捷】+320*Lv
+【敏捷】+50%
+【移动速度】+150
+【全伤加深】+250%
+【强大的永生系统】
+
+|cff00ffff【被动效果】攻击10%几率造成多次突袭伤害
+【伤害公式】（敏捷*40+10000）*Lv
+
+|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+--特效
+effect = [[hero_hc04.mdx]]
+}
+
+local mt = ac.skill['地图等级首充礼包']
+mt{
+title = '首充礼包',
+--等久
+level = 0,
+--图标
+art = [[sffl.blp]],
+is_order = 1,
+--说明
+tip = [[
+
+|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+
+|cffFFE799【礼包奖励】|r
+|cff00ff00全属性加成+5%
+初始全属性+100万 
+初始金币+80万
+初始杀敌数+3000|r
+
+]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 488,
-['攻击减甲'] = 488,
-['全伤加深'] = 488,
-['会心几率'] = 5,
-['会心伤害'] = 150,
-['每秒加护甲'] = 40,
-['额外杀敌数'] = 1,  
---特效
-effect = [[qtds.mdx]],
+['全属性'] = 1000000,
+['力量%'] = 5,
+['敏捷%'] = 5,
+['智力%'] = 5,
+--初始金币和杀敌数
+init_gold = 800000,
+init_kill_count = 3000,
+}
+function mt:on_add()
+    local hero = self.owner
+    hero:addGold(self.init_gold)
+    hero:add_kill_count(self.init_kill_count)
+end
+
+
+local mt = ac.skill['地图等级成长礼包']
+mt{
+title = '成长礼包',
+--等久
+level = 0,
+--图标
+art = [[chengzhanglibao.blp]],
+is_order = 1,
+--说明
+tip = [[
+
+|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+
+|cffFFE799【礼包奖励】|r
+|cff00ff00杀怪加38全属性，攻击加68全属性，每秒加108全属性 
+|cff00ffff杀敌数加成+15% 木头加成+15% 
+物品获取率+15% 魔丸加成+15% |r
+|cffff0000全伤加深+地图等级*10%|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['全伤加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 10 * map_level
+end,
+}
+
+local mt = ac.skill['地图等级初级赞助']
+mt{
+title = '初级赞助',
+--等久
+level = 0,
+--图标
+art = [[chujivip.blp]],
+is_order = 1,
+--说明
+tip = [[
+
+|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+
+|cffFFE799【礼包奖励】|r
+|cff00ff00杀怪加188全属性，攻击加388全属性，每秒加888全属性
+|cff00ffff杀敌数加成+75% 木头加成+75% 
+物品获取率+75% 魔丸加成+75% |r
+|cffff0000攻击减甲+50 减少周围护甲1000|r
+
+|cffffff00地图等级>=5，效果翻倍|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--几率
+chance = 10,
+double_map_level = 10, --大于此地图等级，效果翻倍
+
+['杀怪加全属性'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 188
+    if map_level >= self.double_map_level then 
+        value = 188 * 2
+    end    
+    return value 
+end,
+['攻击加全属性'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 388
+    if map_level >= self.double_map_level then 
+        value = 388 * 2
+    end    
+    return value 
+end,
+['每秒加全属性'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 888
+    if map_level >= self.double_map_level then 
+        value = 888 * 2
+    end    
+    return value 
+end,
+['杀敌数加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 75
+    if map_level >= self.double_map_level then 
+        value = 75 * 2
+    end    
+    return value 
+end,
+['木头加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 75
+    if map_level >= self.double_map_level then 
+        value = 75 * 2
+    end    
+    return value 
+end,
+['物品获取率'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 75
+    if map_level >= self.double_map_level then 
+        value = 75 * 2
+    end    
+    return value 
+end,
+['魔丸加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 75
+    if map_level >= self.double_map_level then 
+        value = 75 * 2
+    end    
+    return value 
+end,
+['减少周围护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 1000
+    if map_level >= self.double_map_level then 
+        value = 1000 * 2
+    end    
+    return value 
+end,
+['攻击减甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 50
+    if map_level >= self.double_map_level then 
+        value = 50 * 2
+    end    
+    return value 
+end,
+}
+
+local mt = ac.skill['地图等级高级赞助']
+mt{
+title = '高级赞助',
+--等久
+level = 0,
+--图标
+art = [[gaojivip.blp]],
+is_order = 1,
+--说明
+tip = [[
+
+|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+
+|cffFFE799【礼包奖励】|r
+|cff00ff00杀怪加388全属性，攻击加888全属性，每秒加1688全属性
+|cff00ffff攻击减甲+地图等级*15
+减少周围护甲+地图等级*250
+|cffffff00物理伤害加深+地图等级*100%
+技能伤害加深+地图等级*50%
+|cffff0000全伤加深+地图等级*25%
+对BOSS额外伤害+地图等级*10%
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--几率
+chance = 10,
+['杀怪加全属性'] = 388,
+['攻击加全属性'] = 888,
+['每秒加全属性'] = 1688,
+
+['攻击减甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 15 * map_level
+end,
+['减少周围护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 250 * map_level
+end,
+
+['物理伤害加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 100 * map_level
+end,
+
+['技能伤害加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 50 * map_level
+end,
+
+['全伤加深'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 25 * map_level
+end,
+
+['对BOSS额外伤害'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 10 * map_level
+end,
 }

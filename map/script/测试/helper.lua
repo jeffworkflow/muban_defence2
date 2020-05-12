@@ -270,12 +270,13 @@ function helper:dtdj(lv)
 	end    
 end
 
---地图等级相关
-function helper:get_map_lv()
-	local p = self and self:get_owner() or ac.player(ac.player.self.id)
-	print(p:Map_GetMapLevel())
-
-
+--允许控制所有单位
+function helper:god()
+	--允许控制中立被动的单位
+	local player = self.owner
+	for y = 1,16 do
+		player:enableControl(ac.player(y))
+	end	
 end	
 function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
@@ -329,7 +330,7 @@ function helper:save(key,value)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	-- p:SetServerValue(key,tonumber(value) or 1) 自定义服务器
 	if not key then 
-		for i,data in ipairs(ac.cus_server_key) do 
+		for i,data in ipairs(ac.server_key) do 
 			local key = data[1]
 			p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器
 		end		

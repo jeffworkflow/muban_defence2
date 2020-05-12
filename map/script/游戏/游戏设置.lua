@@ -72,11 +72,13 @@ function player.__index:add_rec_ex(rec_ex, where, flag)
 		self:event_notify('玩家-即将获得魔丸', data)
 		rec_ex = data.rec_ex
 	end
-	local rec_ex = tonumber(string.format( "%.2f",rec_ex))
+	local rec_ex = tonumber(math.tointeger(rec_ex) or ('%.2f'):format(rec_ex))
 	self.rec_ex = (self.rec_ex or 0) + rec_ex
 	-- self.rec_ex = jass.I2R(self.rec_ex)
 	if self.rec_ex < 0 then 
 		self.rec_ex = 0
+	elseif self.rec_ex >= 5000000 then 
+		self.rec_ex = 5000000
 	end	
 	self:event_notify('玩家-魔丸变化', data)
 

@@ -35,6 +35,7 @@ function mt:add_content()
 
     local hero = self.owner
     local player = self.owner:get_owner()
+    local p = self.owner:get_owner()
     hero = player.hero 
     --初始化
     player.achievement = player.achievement or {}
@@ -66,10 +67,12 @@ function mt:add_content()
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
         --进行多个处理
-        local it 
-        for i=1,tonumber(v) do 
-            it = hero:add_item(k,true)
-        end  
+        local it = ac.item.create_item(k)
+        it:set_item_count((tonumber(v) or 1))
+        if it.owner_ship then
+            it.owner_ship = p
+        end
+        it = hero:add_item(it,true)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 

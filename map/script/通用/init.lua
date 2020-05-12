@@ -12,3 +12,4 @@ require '通用.通用技能'
 require '通用.特效跳字'
 
 
+require '通用.AI施法'

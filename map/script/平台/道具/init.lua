@@ -26,7 +26,7 @@ require '平台.道具.称号'
 require '平台.道具.翅膀'
 
 require '平台.道具.宠物皮肤'
-require '平台.道具.英雄'
+-- require '平台.道具.英雄'
 require '平台.道具.神圣领域'
 
 require '平台.道具.坐骑'

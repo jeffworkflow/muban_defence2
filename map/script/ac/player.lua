@@ -347,7 +347,7 @@ function mt:add_wood(wood, where, flag)
 	if not wood or tonumber(wood) == 0 then 
 		return 
 	end	
-	local wood = tonumber(string.format( "%.2f",wood))
+	local wood = tonumber(math.tointeger(wood) or ('%.2f'):format(wood))
 	-- print(wood)
 	local data = {player = self, wood = wood}
 	if wood > 0 and not flag then
@@ -357,6 +357,8 @@ function mt:add_wood(wood, where, flag)
 	self.wood = self.wood + wood
 	if self.wood < 0 then 
 		self.wood = 0
+	elseif self.wood >=2000000 then 
+		self.wood = 2000000
 	end	
 	self:setlumber(self.wood)
 	-- self:addlumber(wood) --魔兽端显示
@@ -402,8 +404,8 @@ function mt:add_kill_count(num)
 	if not num or tonumber(num) == 0 then 
 		return 
 	end	
-
-	local num = tonumber(string.format( "%.2f",num))
+	
+	local num = tonumber(math.tointeger(num) or ('%.2f'):format(num))
 	--当前杀敌数
 	self.kill_count = (self.kill_count or 0.00 ) + num
 	-- print('1',self.kill_count)
@@ -412,6 +414,8 @@ function mt:add_kill_count(num)
 
 	if self.kill_count < 0 then 
 		self.kill_count = 0
+	elseif self.kill_count >=1000000 then 
+		self.kill_count = 1000000
 	end	
 	--总杀敌数
 	if num > 0 then 

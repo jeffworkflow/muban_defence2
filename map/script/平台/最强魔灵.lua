@@ -65,7 +65,8 @@ mt{
     
 }
 mt.skills = {
-    '黄盖','关羽','堕落天使','加百列','王昭君','雅典娜'
+    '黄盖','关羽','堕落天使','加百列','王昭君','雅典娜',
+    '地图等级首充礼包','地图等级成长礼包','地图等级初级赞助','地图等级高级赞助',
 }
 
 local mt = ac.skill['游戏说明']
@@ -331,7 +332,7 @@ local function upgrade_skill(player,skill)
             else
                 local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
                 if has_mall and has_mall > 0 then 
-                    -- print(skill.name,has_mall)
+                    print('激活：',skill.name,has_mall)
                     skill:set_level(math.floor(has_mall))
                 end
                 if skill.name =='独孤求败' then 

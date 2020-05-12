@@ -29,12 +29,6 @@
 require '技能.野怪技能.BOSS技能'
 require '技能.野怪技能.火焰'
 require '技能.野怪技能.火焰1'
-
-
--- require '技能.野怪技能.多重射击'
--- require '技能.野怪技能.快速'
--- require '技能.野怪技能.火焰强化'
--- require '技能.野怪技能.特别强壮'
--- require '技能.野怪技能.皮肤硬化'
+require '技能.野怪技能.屠戮者'
 
 

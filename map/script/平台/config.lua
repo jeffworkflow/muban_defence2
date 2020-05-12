@@ -33,6 +33,10 @@ local item = {
     {'WZJ','王昭君',25},
     {'YDN','雅典娜',30},
     
+    {'DJSCLB','地图等级首充礼包',12},
+    {'DJCZLB','地图等级成长礼包',18},
+    {'DJCJZZ','地图等级初级赞助',28},
+    {'DJGJZZ','地图等级高级赞助',35},
 -- {'gd','肝帝',60},
 }
 
@@ -229,7 +233,7 @@ if record_11 then
     print(ac.player(1):Map_GetServerValue('sjjh'))
 end 
 
-ac.cus_server_key = cus_key
+ac.server_key = cus_key
 ac.mall = item 
 
 --通过key取 name 和 是否商城道具
@@ -237,7 +241,7 @@ function ac.server.key2name(key)
     local res
     local is_mall
     --取自定义key,value
-    for i,v in ipairs(ac.cus_server_key) do 
+    for i,v in ipairs(ac.server_key) do 
         if v[1] == key then 
             res = v[2]
             break
@@ -256,7 +260,7 @@ end
 function ac.server.name2key(name) 
     local res
     --取自定义key,value
-    for i,v in ipairs(ac.cus_server_key) do 
+    for i,v in ipairs(ac.server_key) do 
         if v[2] == name then 
             res = v[1]
             break

@@ -109,16 +109,6 @@ function mt:add_content()
     elseif rand_name == '发光的草药' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then  
-            --给藏宝图10张，挖宝熟练度100点
-            -- for i=1,10 do
-            --     self.owner:add_item('一颗神奇的种子',true)
-            -- end   
-                
-            -- player:AddServerValue('wbjf',100) 自定义服务器
-            player:Map_AddServerValue('sldzs',100) --网易服务器
-                
-            --自动寻宝
-            hero.auto_plant = true 
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋1',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息

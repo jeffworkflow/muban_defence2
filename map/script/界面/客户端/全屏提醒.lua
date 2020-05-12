@@ -1,42 +1,59 @@
 
-class.screen_animation = extends(class.panel){
-    
-    create = function ()
-        local hero = ac.player.self.hero
-        local panel = class.panel.create('image\\控制台\\jingong.tga',(1920-700)/2,300,700,250)
-        local title = panel:add_text('',(panel.w-260)/2,(panel.h-40)/2-30,260,40,15,4)
-        panel.__index = class.screen_animation 
-        panel.title = title
-        panel:hide()
-        return panel
-    end,
-
-
-    --进攻提示
-    up_jingong_title = function(self,title)
-        self.title:set_text(title)
-        -- if not self.old_x then 
-        --     self.old_x,self.old_y = self:get_position()
-        -- end
-        -- -- local start_size = 2
-        -- -- local start_x = (1920-1400)/2
-        -- -- local start_y = 150
-        
-        -- self:set_position(self.old_x,self.old_y)
-        -- -- self:set_position(start_x,start_y)
-        -- -- self:set_relative_size(start_size)
-
-        -- -- self:move_animation(self.old_x+500,self.old_y+540,4)
-        -- self:show()
-        
-        -- ac.wait(3*1000,function()
-        --     self:set_position(self.x,50)
-        -- end)
+local new_ui = class.panel:builder
+{
+    x = 0,--假的
+    y = 0,--假的
+    w = 1920,
+    h = 1080,
+    level = 5,
+    is_show = false,
+    normal_image = 'xueliangguodi.blp',
+    --蜗牛出品
+    title = {
+        type = 'texture',
+        x = (1920-700)/2,
+        y = 300,
+        w = 700,
+        h = 250,
+        normal_image = 'image\\控制台\\jingong.tga',
+        title = {
+            type = 'text',
+            y = -30,
+            font_size = 15,
+            align = 'center',
+        }
+    },
+    fresh = function(self,title)
+        self.title.title:set_text(title)
         self:show()
-        self:blink(4,1)
-    end,
-    
+        --@总时长
+        --@一闪烁来回时间 单位秒
+        self:blink(4,2)
+        --红色渲染提醒
+        -- local f1 = ac.player.self:cinematic_filter
+        -- {   
+        --     file = 'xueliangguodi.blp',
+        --     start = {100, 100, 100, 100},
+        --     finish = {100, 100, 100, 0},
+        --     time = 5,
+        -- }
+    end
 }
+--业务：刷怪进攻提醒
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if not finds(creep.name,'刷怪1') then
+        return
+    end    
+    
+    print('开始进攻提醒啦')
+    -- local panel = class.screen_animation.get_instance()
+    if finds(creep.name,'无尽') then 
+        if new_ui then new_ui:fresh(' 第 '..creep.index..' 波 （无尽）') end
+    else
+        if new_ui then new_ui:fresh(' 第 '..creep.index..' 波 ') end
+    end
+
+end)
 
 --业务：蜗牛出品 
 local new_ui = class.panel:builder
@@ -267,20 +284,4 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
     end 
 end)
 
-
---业务：刷怪进攻提醒
-ac.game:event '游戏-回合开始'(function(trg,index, creep) 
-    if not finds(creep.name,'刷怪1') then
-        return
-    end    
-    
-    print('开始进攻提醒啦')
-    local panel = class.screen_animation.get_instance()
-    if finds(creep.name,'无尽') then 
-        if panel then panel:up_jingong_title(' 第 '..creep.index..' 波 （无尽）') end
-    else
-        if panel then panel:up_jingong_title(' 第 '..creep.index..' 波 ') end
-    end
-
-end)
 

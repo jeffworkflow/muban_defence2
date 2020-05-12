@@ -49,25 +49,11 @@ local function init_attribute(unit)
     end    
 
     --单独增强最终boss
-    if unit:get_name() == '九头怪' then
+    if _in(unit:get_name(),'九头怪','奇美拉','蜥蜴领主','山岭巨人','基尔加丹','虚空诺亚') then
         unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
+        unit:set('每秒回血',2 * ((ac.g_game_degree_attr or 1 ) -1))
     end  
-    if unit:get_name() == '奇美拉' then
-        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
-    end 
-    if unit:get_name() == '蜥蜴领主' then
-        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
-    end 
-    if unit:get_name() == '山岭巨人' then
-        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
-    end 
-    if unit:get_name() == '基尔加丹' then
-        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
-    end 
-    if unit:get_name() == '虚空诺亚' then
-        unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
-    end 
- 
+    
 end
 ac.unit.init_attribute = init_attribute    
 --单位创建 属性增强

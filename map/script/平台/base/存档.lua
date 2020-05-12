@@ -62,7 +62,7 @@ function player.__index:clear_server(...)
     local player = self
     --没有传参，默认全部清除
     if not ... then 
-        for i,v in ipairs(ac.cus_server_key) do 
+        for i,v in ipairs(ac.server_key) do 
             local key = v[1]
             -- player:SetServerValue(key,0) 自定义服务器
             

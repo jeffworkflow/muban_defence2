@@ -251,7 +251,7 @@ local event = {
         end    
         if ok and not player.flag_read_server then 
             --进行初始化
-            for i,data in ipairs(ac.cus_server_key) do 
+            for i,data in ipairs(ac.server_key) do 
                 player.cus_server[data[2]] = player.cus_server[data[2]] or 0
             end 
             player.flag_read_server = true
@@ -362,7 +362,7 @@ function player.__index:initCusServerValue()
     if not self:is_self() and self.id < 11 then 
         return 
     end    
-    for i,v in ipairs(ac.cus_server_key) do 
+    for i,v in ipairs(ac.server_key) do 
         local key = v[1]
         local player_name = self:get_name()
         local map_name = config.map_name

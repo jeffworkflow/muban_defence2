@@ -329,7 +329,7 @@ local function start()
 	local function f(obj,player)
 		--检查是否还有人没选英雄
 		--玩家离线时还没选英雄，玩家离线时已选英雄。
-		print('检查是否还有人没选英雄',obj.type,player ,ac.clock())
+		print('检查是否还有人没选英雄',obj.type,player ,player and player.hero,ac.clock())
 		local flag = true
 		if player then 
 			for i = 1, 10 do

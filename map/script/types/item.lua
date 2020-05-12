@@ -904,7 +904,7 @@ function unit.__index:add_item(it,is_fall,p)
 		return it
 	end	
 	--如果物品指定所有者，不是所有者就返回
-	if it.owner_ship and it.owner_ship ~= self:get_owner() then 
+	if it.owner_ship and type(it.owner_ship)=='table' and it.owner_ship ~= self:get_owner() then 
 	   self.owner:showSysWarning('不是你的')
 	   it.recycle = false 
 	   it:on_recycle(self)

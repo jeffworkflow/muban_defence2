@@ -26,7 +26,11 @@ local function cast_skill(hero,target,type)
     end    
     if skill:is_cooling() then 
         return 
-    end     
+    end  
+    --skill 不满足ai执行条件则返回，例子： 在范围1000码内没有敌人，直接返回。
+    if skill.on_ai and not skill:on_ai() then 
+        return 
+    end      
     print('boss 开始施法',skill.name)
     if skill.target_type == 0 then 
         skill:cast()

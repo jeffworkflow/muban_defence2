@@ -745,6 +745,13 @@ get['攻击距离'] = function(self)
 	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x16))
 end
 
+on_get['攻击距离'] = function(self, attack_distance)
+	if attack_distance >= 5000 then
+		return 5000
+	end
+	return attack_distance
+end
+
 set['攻击距离'] = function(self, attack_range)
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x16), attack_range)
 	if self.owner:is_player() then

@@ -14,6 +14,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -32,6 +34,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -51,6 +55,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -70,6 +76,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -89,6 +97,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -108,6 +118,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -127,6 +139,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -146,6 +160,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -167,6 +183,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -186,6 +204,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -208,6 +228,8 @@ tip = [[
 item_type = '消耗品',
 --不可点击
 no_use = true,
+--独自拥有
+owner_ship = true,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -240,6 +262,7 @@ function mt:on_cast_start()
     else 
         hero:add('全属性',-all_attr + 100)
         p:sendMsg('凉凉',2)
+        hero:add_item('神奇的令牌')
     end    
 end
 
