@@ -87,7 +87,8 @@ class.wjphb_panel = extends(class.panel){
         local info = {
             name ='',
             -- tip = '每小时刷新一次'
-            tip = '|cffcccccc每小时刷新一次\n请耐心等待'
+            tip = '|cff00ff00每小时刷新一次\n|cffcccccc赛季结束将清空排行榜'
+            
         }
         function more_tip1:on_button_mouse_enter()
             if info then 
@@ -96,10 +97,14 @@ class.wjphb_panel = extends(class.panel){
         end    
         local info = {
             name ='',
-            tip = [[|r|cffcccccc每小时刷新一次
+            tip = [[|r|cff00ff00每小时刷新一次|cffffe799（上榜奖励|cffdf19d0【称号】江山代有才人出|cffffe799）
+|cffcccccc每天清空一次排行榜]]
+--             tip = [[|r|cffcccccc每小时刷新一次
 
-上榜奖励:|r |cffff0000独孤求败|r (刷新后自动激活)
-]]
+-- 上榜奖励:|r |cffff0000独孤求败|r (刷新后自动激活)
+-- ]]
+
+
         }
         function more_tip2:on_button_mouse_enter()
             if info then 

@@ -28,7 +28,7 @@ local new_ui = class.panel:builder
         self:show()
         --@总时长
         --@一闪烁来回时间 单位秒
-        self:blink(4,2)
+        self:blink(1,2)
         --红色渲染提醒
         -- local f1 = ac.player.self:cinematic_filter
         -- {   

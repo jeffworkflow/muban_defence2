@@ -258,10 +258,10 @@ function mt:on_cast_start()
     local all_attr = math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
     if math.random(100) <= self.rate then 
         hero:add('全属性',all_attr)
-        p:sendMsg('翻倍',2)
+        p:sendMsg('|cff00ff00翻倍',2)
     else 
-        hero:add('全属性',-all_attr + 100)
-        p:sendMsg('凉凉',2)
+        hero:add('全属性',-all_attr * 0.95 + 100)
+        p:sendMsg('|cffff0000凉凉',2)
         hero:add_item('神奇的令牌')
     end    
 end

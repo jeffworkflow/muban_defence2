@@ -3,7 +3,7 @@ mt{
 --施法信息
 cast_start_time = 0,
 --施法时长
-cast_channel_time = 2, 
+cast_channel_time = 0.5, 
 cast_shot_time = 0,
 cast_finish_time = 0.0,
 --初始等级
@@ -24,7 +24,7 @@ range = 1000,
 --伤害范围 直径
 area = 350,
  --每一个预警圈消失的时间
-time = 2,
+time = 0.3,
 --冷却
 cool = 12,
 effect = [[effect_hero_attack5.mdx]]

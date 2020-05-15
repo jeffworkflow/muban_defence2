@@ -13,7 +13,7 @@ store_affix = '',
 coin = '木头',
 --实际概率
 rate = function(self)
-    return self.owner.owner:get(self.name..'概率') + 55
+    return self.owner.owner:get(self.name..'概率') + 53
 end 
 }
 
@@ -31,27 +31,27 @@ store_affix = '',
 coin = '杀敌数',
 --实际概率
 rate = function(self)
-    return self.owner.owner:get(self.name..'概率') + 55
+    return self.owner.owner:get(self.name..'概率') + 53
 end 
 }
 
-local mt = ac.skill['魔丸翻倍']
-mt{
-has_vale = function() 
-    return ac.player.self.rec_ex
-end ,
---物品类型
-item_type = '神符',
-content_tip = '',
---商店名词缀
-store_affix = '',
---币种
-coin = '杀敌数',
---实际概率
-rate = function(self)
-    return self.owner.owner:get(self.name..'概率') + 55
-end 
-}
+-- local mt = ac.skill['魔丸翻倍']
+-- mt{
+-- has_vale = function() 
+--     return ac.player.self.rec_ex
+-- end ,
+-- --物品类型
+-- item_type = '神符',
+-- content_tip = '',
+-- --商店名词缀
+-- store_affix = '',
+-- --币种
+-- coin = '杀敌数',
+-- --实际概率
+-- rate = function(self)
+--     return self.owner.owner:get(self.name..'概率') + 52
+-- end 
+-- }
 
 local mt = ac.skill['魔丸翻倍']
 mt{
@@ -67,7 +67,7 @@ store_affix = '',
 coin = '魔丸',
 --实际概率
 rate = function(self)
-    return self.owner.owner:get(self.name..'概率') + 55
+    return self.owner.owner:get(self.name..'概率') + 53
 end 
 }
 
@@ -90,7 +90,7 @@ store_affix = '',
 coin = '全属性', 
 --实际概率
 rate = function(self)
-    return self.owner.owner:get(self.name..'概率') + 55
+    return self.owner.owner:get(self.name..'概率') + 50
 end 
 }
 for i,name in ipairs({'木头翻倍','杀敌数翻倍','魔丸翻倍','全属性翻倍'}) do 

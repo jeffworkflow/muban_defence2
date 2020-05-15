@@ -1,6 +1,7 @@
 
 local mt = ac.skill['黄盖']
 mt{
+title = '【英雄】黄盖',    
 is_skill = 1,
 item_type ='神符',
 --等级
@@ -32,6 +33,7 @@ effect = [[GuanSuoPiFu2.mdx]]
 
 local mt = ac.skill['关羽']
 mt{
+title = '【英雄】关羽',    
 is_skill = 1,
 item_type ='神符',
 --等级
@@ -64,6 +66,8 @@ effect = [[zsgskin_guanyu_01.mdx]]
 
 local mt = ac.skill['堕落天使']
 mt{
+title = '【英雄】堕落天使',     
+    
 is_skill = 1,
 item_type ='神符',
 --等级
@@ -96,6 +100,7 @@ effect = [[avengingangel.mdx]]
 local mt = ac.skill['加百列']
 mt{
 is_skill = 1,
+title = '【英雄】加百列',    
 item_type ='神符',
 --等级
 level = 0,
@@ -127,6 +132,7 @@ effect = [[ArchAngelngelGabriel.mdx]]
 local mt = ac.skill['王昭君']
 mt{
 is_skill = 1,
+title = '【英雄】王昭君',    
 --等级
 level = 0,
 is_order = 1,
@@ -157,6 +163,7 @@ effect = [[Npc_18.mdx]]
 local mt = ac.skill['雅典娜']
 mt{
 is_skill = 1,
+title = '【英雄】雅典娜',    
 --等级
 level = 0,
 is_order = 1,
@@ -185,7 +192,8 @@ effect = [[hero_hc04.mdx]]
 
 local mt = ac.skill['地图等级首充礼包']
 mt{
-title = '首充礼包',
+
+title = '【商城】首充礼包',    
 --等久
 level = 0,
 --图标
@@ -194,9 +202,10 @@ is_order = 1,
 --说明
 tip = [[
 
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥12|r|cffcccccc（可与 【商城道具】首充礼包 叠加属性）
 
-|cffFFE799【礼包奖励】|r
+|cffFFE799【礼包属性】|r
 |cff00ff00全属性加成+5%
 初始全属性+100万 
 初始金币+80万
@@ -222,7 +231,7 @@ end
 
 local mt = ac.skill['地图等级成长礼包']
 mt{
-title = '成长礼包',
+title = '【商城】成长礼包',  
 --等久
 level = 0,
 --图标
@@ -231,9 +240,10 @@ is_order = 1,
 --说明
 tip = [[
 
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥18|r|cffcccccc（可与 【商城道具】成长礼包 叠加属性）
 
-|cffFFE799【礼包奖励】|r
+|cffFFE799【礼包属性】|r
 |cff00ff00杀怪加38全属性，攻击加68全属性，每秒加108全属性 
 |cff00ffff杀敌数加成+15% 木头加成+15% 
 物品获取率+15% 魔丸加成+15% |r
@@ -251,7 +261,7 @@ end,
 
 local mt = ac.skill['地图等级初级赞助']
 mt{
-title = '初级赞助',
+title = '【商城】初级赞助',  
 --等久
 level = 0,
 --图标
@@ -260,9 +270,10 @@ is_order = 1,
 --说明
 tip = [[
 
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥28|r|cffcccccc（可与 【商城道具】初级赞助 叠加属性）
 
-|cffFFE799【礼包奖励】|r
+|cffFFE799【礼包属性】|r
 |cff00ff00杀怪加188全属性，攻击加388全属性，每秒加888全属性
 |cff00ffff杀敌数加成+75% 木头加成+75% 
 物品获取率+75% 魔丸加成+75% |r
@@ -362,7 +373,7 @@ end,
 
 local mt = ac.skill['地图等级高级赞助']
 mt{
-title = '高级赞助',
+title = '【商城】高级赞助',  
 --等久
 level = 0,
 --图标
@@ -371,9 +382,10 @@ is_order = 1,
 --说明
 tip = [[
 
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥35|r|cffcccccc（可与 【商城道具】高级赞助 叠加属性）
 
-|cffFFE799【礼包奖励】|r
+|cffFFE799【礼包属性】|r
 |cff00ff00杀怪加388全属性，攻击加888全属性，每秒加1688全属性
 |cff00ffff攻击减甲+地图等级*15
 减少周围护甲+地图等级*250

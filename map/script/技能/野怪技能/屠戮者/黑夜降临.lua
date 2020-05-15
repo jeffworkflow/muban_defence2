@@ -7,7 +7,7 @@ mt{
 
     --伤害值
     damage = function(self,hero)
-        return hero:get '攻击' * 5
+        return hero:get '攻击' * 50
     end,
 
     --刀刃模型

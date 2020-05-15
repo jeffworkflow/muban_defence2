@@ -3,7 +3,7 @@ mt{
 --施法信息
 cast_start_time = 0,
 --施法时长
-cast_channel_time = 2, 
+cast_channel_time = 0.5, 
 cast_shot_time = 0,
 cast_finish_time = 0.0,
 --初始等级
@@ -20,9 +20,9 @@ damage = function(self)
     return self.owner:get('攻击')*100
 end, 
 --伤害范围 直径
-area = 1000,
+area = 650,
 max_life_rate = 25,
-time = 2,
+time = 0.8,
 --冷却
 cool = 12,
 effect = [[effect3_dazui01.mdx]]  
@@ -47,7 +47,7 @@ function mt:boss_skill_shot(old_point)
 	ac.effect_ex{
 		model = self.effect,
 		point = target:get_point(),
-		size = 5,
+		size = 1.8,
 		time = self.time2
 	}
 	for _,u in ac.selector()

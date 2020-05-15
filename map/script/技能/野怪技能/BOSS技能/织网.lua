@@ -3,7 +3,7 @@ mt{
 --施法信息
 cast_start_time = 0,
 --施法时长
-cast_channel_time = 2, 
+cast_channel_time = 0.5, 
 cast_shot_time = 0,
 cast_finish_time = 0.0,
 --初始等级
@@ -21,10 +21,10 @@ damage = function(self)
 end, 
 --伤害范围 直径
 area = 1000,
-time = 2,
+time = 0.5,
 time2 = 20,
 --冷却
-cool = 12,
+cool = 10,
 effect = [[Abilities\Spells\Undead\Web\WebTarget.mdl]]  --太小了，模型不对
 }
 -- mt.effect1 = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]
@@ -47,7 +47,7 @@ function mt:boss_skill_shot(old_point)
 	ac.effect_ex{
 		model = self.effect,
 		point = target:get_point(),
-		size = 5,
+		size = 15,
 		time = self.time2
 	}
 	if not self.timer then 

@@ -7,7 +7,7 @@ mt{
 
     --伤害值
     damage = function(self,hero)
-        return hero:get '攻击' * 3
+        return hero:get '攻击' * 30
     end,
 
     --回血比例

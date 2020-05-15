@@ -47,7 +47,7 @@ function mt:on_cast_start()
         end  
     end    
     local p = hero.owner 
-    ac.player.self:sendMsg('玩家 '..p:get_name()..' 给每个玩家发放了慰问金',5)
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff玩家 '..p:get_name()..' |cff00ff00的宠物是移动的取款机，所有玩家获得|cffffff00250木头|cff00ff00，请注意查收！',5)
 end
 function mt:on_remove()
     local hero = self.owner

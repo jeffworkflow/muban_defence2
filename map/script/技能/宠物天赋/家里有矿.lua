@@ -43,7 +43,7 @@ function mt:on_cast_start()
     local peon = self.owner
     local hero = p.hero
     ac.func_give_suipian(ac.main_unit:get_point(),temp)
-    ac.player.self:sendMsg('玩家 '..p:get_name()..' 往基地撒了一堆钱，大家赶紧去抢',5)
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff玩家 '..p:get_name()..' |cff00ff00的宠物家里有矿，往|cffffff00基地|cff00ff00撒了一堆钱，大家赶紧去抢！',5)
 end
 function mt:on_remove()
     local hero = self.owner

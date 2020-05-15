@@ -28,7 +28,7 @@ mt{
 	tip = [[ 
 |cffffe799【攻击】+20%
 
-|cff00ff00经常咬死队友的宠物，使主人赔了不少医药费|cffff0000（扣光木头，+2%全伤加深），|cffffff00队友增加500木头
+|cff00ff00经常咬死队友的宠物，使主人赔了不少医药费|cffff0000（减少500木头，+2%全伤加深），|cffffff00队友增加500木头
 
 ]],
 	--技能图标
@@ -72,7 +72,7 @@ function mt:on_cast_start()
         height = 110,
         skill = skill,
         on_finish = function(self)
-            ac.player.self:sendMsg('【系统消息】 '..p:get_name()..' 的宠物 袭击了 '..target.owner:get_name()..' 的宠物，给每个玩家发放了慰问金',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】 |cff00ffff'..p:get_name()..'的宠物 |cff00ff00袭击了 |cff00ffff'..target.owner:get_name()..' 的宠物 |cff00ff00，赔偿了500木头',5)
             target:add_buff '定身'{
                 time = skill.time,
                 ref = 'overhead',

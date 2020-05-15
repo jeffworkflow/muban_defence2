@@ -80,7 +80,7 @@ class.phb_panel = extends(class.panel){
         local info = {
             name ='',
             -- tip = '每小时刷新一次,地图等级>=3才能上榜'
-            tip = '|cffcccccc每小时刷新一次\n请耐心等待'
+            tip = '|cff00ff00每小时刷新一次\n|cffcccccc赛季结束将清空排行榜'
             
         }
         function more_tip1:on_button_mouse_enter()
