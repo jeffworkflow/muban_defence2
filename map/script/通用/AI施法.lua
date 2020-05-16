@@ -51,6 +51,7 @@ end
 function api:cast_force(u)
     for skl in u:each_skill('隐藏') do
         local target = api:is(skl)
+        print('释放技能：',skl.name,target)
         if target then
             skl:cast_force(target)
         end
@@ -68,6 +69,7 @@ end
 
 api.time = ac.loop(5000,function()
     for u in api.list:pairs() do
+        print('单位开始ai施法',u)
         api:cast_force(u)
     end
 end)
@@ -77,6 +79,7 @@ ac.game:event '技能-获得'(function(_,hero,self)
         return
     end
 
+    print('技能获得插入单位：',hero)
     if api.list:has(hero) then
         return
     end

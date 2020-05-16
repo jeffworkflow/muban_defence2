@@ -12,8 +12,7 @@ class.wjphb_panel = extends(class.panel){
         --左边菜单 
         panel.menu_titles = {
             -- '深渊乱斗无尽','无限乱斗无尽','无上之境无尽','斗破苍穹无尽',
-            '修罗模式无尽',
-            '比武','挖宝',
+            '挖宝','看书','打造','种树','白嫖','摇骰子',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -343,22 +342,19 @@ game.register_event(game_event)
 
 
 local rank = {
-    {'wjxlms','修罗模式无尽'},
-    -- {'wjdpcq','斗破苍穹无尽'},
-    -- {'wjwszj','无上之境无尽'},
-    -- {'wjwxld','无限乱斗无尽'},
-    -- {'wjsyld','深渊乱斗无尽'},
     {'cntwb','挖宝'},
-    {'cntwl','比武'},
-
-
-    {'today_wjxlms','今日修罗模式无尽'},
-    -- {'today_wjdpcq','今日斗破苍穹无尽'},
-    -- {'today_wjwszj','今日无上之境无尽'},
-    -- {'today_wjwxld','今日无限乱斗无尽'},
-    -- {'today_wjsyld','今日深渊乱斗无尽'},
+    {'cntks','看书'},
+    {'cntdz','打造'},
+    {'cntzs','种树'},
+    {'cntbp','白嫖'},
+    {'cntytz','摇骰子'},
+    
     {'today_cntwb','今日挖宝'},
-    {'today_cntwl','今日比武'},
+    {'today_cntks','今日看书'},
+    {'today_cntdz','今日打造'},
+    {'today_cntzs','今日种树'},
+    {'today_cntbp','今日白嫖'},
+    {'today_cntytz','今日摇骰子'},
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -366,7 +362,7 @@ ac.wait(5*1000,function()
     for i,content in ipairs(rank) do
         local p = ac.player(1);
         ac.wait(200*i,function()
-            p:sp_get_rank(content[1],'rank',10,function(data)
+            p:sp_get_rank2(content[1],function(data)
                 -- print_r(data)
                 ac.wait(10,function()
                     if not panel.rank then 
@@ -424,3 +420,187 @@ local event = {
 ui.register_event('sync_rank_wj',event)
 
 
+
+
+-- local content ={ 
+-- }
+
+--保存今日榜
+local function save_wb()
+    for i=1,10 do
+        local p = ac.player[i]
+        if p:is_player() then 
+            if not p.cus_server3 then 
+                p.cus_server3 = {}
+            end   
+            for i,data in ipairs(rank) do 
+                local key = data[1]
+                local name = data[2]
+                if p.cus_server3[name] then 
+                    p.cus_server3['总'..name] = (p.cus_server3['总'..name] or 0) + p.cus_server3[name]
+                    --自定义服务器 保存总积分 
+                    p:AddServerValue(key,p.cus_server3[name])  
+                    --自定义服务器 保存今日最高积分
+                    if p.cus_server3['总'..name] >= (p.cus_server['今日'..name] or 0 ) then 
+                        p:SetServerValue('today_'..key,p.cus_server3['总'..name])  
+                    end
+                    --保存完需要清空，下次保存时才能正确增加上去
+                    p.cus_server3[name] = 0 
+                end    
+            end
+        end
+    end   
+end  
+ac.game:event '选择难度' (function() 
+    local time =60 * 2
+    save_wb()
+    ac.loop(time*1000,function()
+        save_wb()
+    end)
+end)
+
+ac.game:event '挖图成功'(function(trg,hero)
+    local p = hero.owner
+    p.cus_server3['挖宝'] = (p.cus_server3['挖宝'] or 0) + 1
+end)
+ac.game:event '触发羊皮无字事件'(function(trg,skill,hero)
+    local p = hero.owner
+    p.cus_server3['看书'] = (p.cus_server3['看书'] or 0) + 1
+end)
+
+ac.game:event '触发锻造事件'(function(trg,skill,hero)
+    local p = hero.owner
+    p.cus_server3['打造'] = (p.cus_server3['打造'] or 0) + 1
+end)
+
+ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
+    local p = hero.owner
+    p.cus_server3['种树'] = (p.cus_server3['种树'] or 0) + 1
+end)
+
+ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
+    local p = hero.owner
+    p.cus_server3['白嫖'] = (p.cus_server3['白嫖'] or 0) + 1
+end)
+
+ac.game:event '触发黑暗骰子事件'(function(trg,skill,hero)
+    local p = hero.owner
+    p.cus_server3['摇骰子'] = (p.cus_server3['摇骰子'] or 0) + 1
+end)
+
+
+local mt = ac.skill['风骚']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1,
+--图标
+art = [[huolinger.blp]],
+--说明
+tip = [[
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-风骚
+|cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
+|cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+|cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
+
+|cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
+
+}
+function mt:on_upgrade()
+    local skill =self
+    local hero = self.owner
+    local p = hero:get_owner()
+    if p.id >10 then return end 
+    local attribute ={
+        ['攻击'] = function() return hero:get('攻击')*4 end,
+        ['攻击间隔'] = function() return hero:get('攻击间隔') end,
+        ['攻击速度'] = function() return hero:get('攻击速度') end,
+        ['生命上限'] = function() return hero:get('生命上限') end,
+        ['魔法上限'] = function() return hero:get('魔法上限') end,
+        ['生命恢复'] = function() return hero:get('生命恢复') end,
+        ['魔法恢复'] = function() return hero:get('魔法恢复') end,
+        ['移动速度'] = 522,
+
+        ['暴击几率'] = function() return hero:get('暴击几率') end,
+        ['暴击伤害'] = function() return hero:get('暴击伤害') end,
+        ['会心几率'] = function() return hero:get('会心几率') end,
+        ['会心伤害'] = function() return hero:get('会心伤害') end,
+        ['物理伤害加深'] = function() return hero:get('物理伤害加深') end,
+        ['全伤加深'] = function() return hero:get('全伤加深') end,
+
+        ['物品获取率'] = function() return hero:get('物品获取率') end,
+        ['木头加成'] = function() return hero:get('木头加成') end,
+        ['金币加成'] = function() return hero:get('金币加成') end,
+        ['杀敌数加成'] = function() return hero:get('杀敌数加成') end,
+        ['魔丸加成'] = function() return hero:get('魔丸加成') end,
+    }
+    if not p.unit_fs then 
+        p.unit_fs = p:create_unit('风骚',hero:get_point()-{math.random(360),100})
+        p.unit_fs:remove_ability 'AInv'
+        p.unit_fs:add_ability 'Aloc'
+        p.unit_fs:add_restriction '无敌'
+        p.unit_fs:add_buff "召唤物"{
+            attribute = attribute,
+            skill = self,
+            follow = true,
+            search_area = 500, --搜敌路径    
+        }
+    end   
+    
+    --技能相关
+    local skl = p.unit_fs:find_skill('神魂颠倒',nil)
+    if not skl then 
+        skl = p.unit_fs:add_skill('神魂颠倒','隐藏')
+    end   
+end
+
+--魔剑技能
+local mt = ac.skill['神魂颠倒'] 
+mt{
+--等级
+level = 1,
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+
+攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+ ]],
+event_name = '造成伤害效果',
+chance = 10,
+damage_area = 600,
+skill_attack = 10,
+effect = [[MXXXT28 -  F.mdx]],
+effect2 = [[ZHeart.MDX]]
+}
+
+function mt:damage_start(damage)
+    local source =self.owner
+    local p = source.owner
+    local hero = source
+    local skill =self
+    local target = damage.target
+
+	if not damage:is_common_attack()  then 
+		return 
+    end 
+    for i, u in ac.selector()
+		: in_range(target,self.damage_area)
+		: is_enemy(source)
+		: ipairs()
+	do
+        u:damage
+        {
+            source = source,
+            skill = skill,
+            damage = source:get('攻击')*skill.skill_attack,
+            damage_type = '物理'
+        }
+        u:add_buff '晕眩'{
+            time = 1.5,
+            model = skill.effect2
+        }
+	end	
+end

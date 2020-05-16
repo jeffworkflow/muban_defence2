@@ -74,7 +74,14 @@ function mt:on_cast_start()
             p.cnt_succ_tm = (p.cnt_succ_tm or 0) + 1 
             --魔神挑战次数+1
             p.cnt_succ_ms = (p.cnt_succ_ms or 0) + 1 
-            p.cnt_dz = (p.cnt_dz or 0) + 1 
+            p.cnt_dz = (p.cnt_dz or 0) + 1
+            p.cnt_total_succ =  (p.cnt_total_succ or 0) + 1
+            if p.cnt_total_succ == 10 and not ac.flag_msjy  then
+                ac.flag_msjy = true
+                local unit = ac.findunit_byname('第六幕·魔神之路')
+                unit:add_sell_item('魔神的交易',9)
+                ac.player.self:sendMsg(p:get_name()..'开启了 魔神的交易',5)
+            end
         end)
     end
 
@@ -93,6 +100,7 @@ function mt:on_cast_start()
             --魔神挑战次数+1
             p.cnt_succ_ms = (p.cnt_succ_ms or 0) + 1 
             p.cnt_dz = (p.cnt_dz or 0) + 1 
+            p.cnt_total_succ =  (p.cnt_total_succ or 0) + 1
         end)
     end
 end

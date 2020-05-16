@@ -120,7 +120,7 @@ end
 function Unit.__index:add_rec_ex(num)
 	self:get_owner():add_rec_ex(num, where or self, flag)
 end
-local function findunit_byname(name)
+local function find_unit(name)
 	local unit
 	for key,val in pairs(ac.unit.all_units) do 
 		if val:get_name() == name then 
@@ -130,7 +130,7 @@ local function findunit_byname(name)
 	end	
 	return unit
 end	
-ac.game.findunit_byname = findunit_byname
+ac.find_unit = find_unit
 --@table 
 --@true不重复  
 function player.__index:random(tab,flag)
@@ -172,7 +172,7 @@ ac.game:event '单位-攻击开始' (function(self, data)
 end)
 --游戏说明 被玩家12攻击则无敌5秒
 ac.game:event '游戏-开始' (function()
-	local unit = ac.game.findunit_byname('游戏说明')
+	local unit = ac.find_unit('游戏说明')
     if not unit then return end
 	unit:event '受到伤害效果'(function(_,damage)
 		if damage.source:get_owner().id >=11 then 

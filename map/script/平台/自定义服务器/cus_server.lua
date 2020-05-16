@@ -167,8 +167,8 @@ function player.__index:sp_get_map_test(f)
                     for i,data in ipairs(tbl.data[1]) do 
                         temp_tab[data.key] = data.value
                     
-                        --处理排行榜数据
-                        if finds(data.key ,'today_wxboss','today_wjsyld','today_wjwxld','today_cntwl','today_wjwszj','today_wjdpcq','today_wjxlms','today_cntwb') then
+                        --处理排行榜数据 挖宝、看书、打造、种树、白嫖、摇骰子
+                        if finds(data.key ,'today_cntwb','today_cntks','today_cntdz','today_cntzs','today_cntbp','today_cntytz') then
                             local new_key = data.key..'rank'
                             local new_key_name = ac.server.key2name(data.key)..'排名'
                             temp_tab[new_key] = data.rank

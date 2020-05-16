@@ -11,9 +11,8 @@ class.phb_panel = extends(class.panel){
 
         --左边菜单 
         panel.menu_titles = {
-            -- '深渊乱斗','无限乱斗','无上之境','斗破苍穹',
-            '修罗模式', 
-            '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '超绝群伦', 
+            '冠世一绝', '超凡入圣','万古流芳','传奇','皇后','国王','堡垒','主教','骑士','士兵',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -99,14 +98,14 @@ class.phb_panel = extends(class.panel){
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('段位星数',276,0,30,34,10,'left')
+        local text = texture:add_text('战斗力',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local texture = panel:add_texture(img_title,54+menu_width+main_box_width+off_left,65+off_top,366,48) 
         local text =  texture:add_text('名次',30,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('通关时长',276,0,30,34,10,'left')
+        local text = texture:add_text('通关次数',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
 
         --巅峰数据
@@ -247,7 +246,18 @@ class.phb_panel = extends(class.panel){
             --设置数据
             self.df_rank[i]:set_text(data.rank)
             self.df_player[i]:set_text(data.player_name)
-            self.df_star[i]:set_text(data.value)
+            local val = tonumber(data.value)
+            if type(val) == 'string' then 
+                return 
+            end	
+            if val < 100000 then
+                val =  math.tointeger(val) or ('%.2f'):format(val)
+            elseif val < 1000000000 then
+                val =  ('%.0f'):format(val/10000)..'万'
+            else
+                val =  ('%.0f'):format(val/100000000)..'亿' 
+            end
+            self.df_star[i]:set_text(val)
         end 
     end,
     set_tgsc_data = function (self,list)
@@ -272,8 +282,8 @@ class.phb_panel = extends(class.panel){
             --设置数据
             self.tgsc_rank[i]:set_text(data.rank)
             self.tgsc_player[i]:set_text(data.player_name)
-            local str = os.date("!%H:%M:%S",tonumber(data.value)) 
-            self.tgsc_time[i]:set_text(str)
+            -- local str = os.date("!%H:%M:%S",tonumber(data.value)) 
+            self.tgsc_time[i]:set_text(data.value)
         end 
     end,
 
@@ -283,8 +293,8 @@ class.phb_panel = extends(class.panel){
         end    
         -- self.rank[name],self.rank[name..'时长']
 
-        self:set_df_data(self.rank[name])
-        self:set_tgsc_data(self.rank[name..'时长'])
+        self:set_df_data(self.rank[name..'战斗力'])
+        self:set_tgsc_data(self.rank[name])
     end,
 
 
@@ -325,38 +335,34 @@ game.register_event(game_event)
 
 
 local rank = {
-    {'cnt_qt','青铜'},
-    {'cnt_by','白银'},
-    {'cnt_hj','黄金'},
-    {'cnt_bj','铂金'},
-    {'cnt_zs','钻石'},
-    {'cnt_xy','星耀'},
-    {'cnt_wz','王者'},
-    {'cnt_zqwz','最强王者'},
-    {'cntrywz','荣耀王者'},
-    {'cntdfwz','巅峰王者'},
-    {'cntxlms','修罗模式'},
+    {'cntsb','士兵'},
+    {'cntqs','骑士'},
+    {'cntzj','主教'},
+    {'cntbl','堡垒'},
+    {'cntgw','国王'},
+    {'cnthh','皇后'},
+    {'cntcq','传奇'},
+    {'cntwglf','万古流芳'},
+    {'cntcfrs','超凡入圣'},
+    {'cntgsyj','冠世一绝'},
+    {'cntcjql','超绝群伦'},
     -- {'cntdpcq','斗破苍穹'},
     -- {'cntwszj','无上之境'},
     -- {'cntwxld','无限乱斗'},
     -- {'cntsyld','深渊乱斗'},
 
-    
-    {'time_qt','青铜时长'},
-    {'time_by','白银时长'},
-    {'time_hj','黄金时长'},
-    {'time_bj','铂金时长'},
-    {'time_zs','钻石时长'},
-    {'time_xy','星耀时长'},
-    {'time_wz','王者时长'},
-    {'time_zqwz','最强王者时长'},
-    {'time_rywz','荣耀王者时长'},
-    {'time_dfwz','巅峰王者时长'},
-    {'time_xlms','修罗模式时长'},
-    -- {'time_dpcq','斗破苍穹时长'},
-    -- {'time_wszj','无上之境时长'},
-    -- {'time_wxld','无限乱斗时长'},
-    -- {'time_syld','深渊乱斗时长'},
+    {'zdlsb','士兵战斗力'},
+    {'zdlqs','骑士战斗力'},
+    {'zdlzj','主教战斗力'},
+    {'zdlbl','堡垒战斗力'},
+    {'zdlgw','国王战斗力'},
+    {'zdlhh','皇后战斗力'},
+    {'zdlcq','传奇战斗力'},
+    {'zdlwglf','万古流芳战斗力'},
+    {'zdlcfrs','超凡入圣战斗力'},
+    {'zdlgsyj','冠世一绝战斗力'},
+    {'zdlcjql','超绝群伦战斗力'},
+
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -364,7 +370,7 @@ ac.wait(5*1000,function()
     for i,content in ipairs(rank) do
         local p = ac.player(1);
         ac.wait(200*i,function()
-            p:sp_get_rank(content[1],'rank',10,function(data)
+            p:sp_get_rank2(content[1],function(data)
                 -- print_r(data)
                 ac.wait(10,function()
                     if not panel.rank then 

@@ -189,7 +189,7 @@ end)
 
 --游戏说明 攻击1%得大西瓜
 ac.game:event '游戏-开始' (function()
-    local unit = ac.game.findunit_byname('游戏说明')
+    local unit = ac.game.find_unit('游戏说明')
     local rate = 1
     --获得最多次数
     local dxg_max_cnt = 20

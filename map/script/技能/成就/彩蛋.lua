@@ -355,6 +355,29 @@ function mt:on_remove()
 end
 
 
+local mt = ac.skill['第六根柱子']
+mt{
+    is_spellbook = 1,
+    level = 1,
+    is_order = 2,
+    art = [[zhizundushen.blp]],
+    tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+7500万 全属性
++100%  杀敌数加成
++100%  物品获取率
++100%  木头加成
++100%  魔丸加成
+    ]],
+    ['全属性'] = 75000000,
+    ['杀敌数加成'] = 100,
+    ['木头加成'] = 100,
+    ['魔丸加成'] = 100,
+    ['物品获取率'] = 100
+}
+
+
 local task_detail = {
     ['血魔'] = {
         rate = 0.1,
@@ -367,12 +390,53 @@ local task_detail = {
         end,
     },
     
+    ['藏宝阁阁主、藏经阁少阁主、剑魔、苏若颜、哪吒、牛头马面'] = {
+        rate = 100,
+        award = function(killer, target)
+            local p = killer.owner
+            if not p.flag_dlgzz then 
+                p.flag_dlgzz = true
+                local point = target:get_point()
+                local u = ac.player(12):create_unit('爱我你就爆了我6',point)
+                u:add_restriction '定身'
+                u:add_restriction '缴械'
+                u:add_buff '无敌'{
+                    time = 2
+                }
+            end
+        end,
+        sendMsg = function(p)
+            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+        end,
+    },
+    
+    ['爱我你就爆了我6'] = {
+        rate = 100,
+        award = '第六根柱子',
+        sendMsg = function(p)
+            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 挑战副本时 击败了传说中的|cffff0000 "第六根柱子" |r，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
+        end,
+    },
 }
-
+--第六根柱子
 ac.game:event '单位-杀死单位' (function(trg, killer, target) 
     local name = target:get_name()
-    if not task_detail[name] then return end 
-
+    local ok
+    for k,v in pairs(task_detail) do    
+        -- print(k,name) 
+        if finds(k,name) then
+            ok = true
+            name = k
+            break
+        end
+    end  
+    if not ok then 
+        return 
+    end
     local rate =task_detail[name].rate
     local award = task_detail[name].award
     local sendMsg = task_detail[name].sendMsg
@@ -380,22 +444,26 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
         local p = killer.owner
         local hero = p.hero
         if not hero then return end
-        local skl = hero:find_skill(award,nil,true) 
-        if not skl  then 
-            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',award)
-            if type(sendMsg) == 'function' then 
-                sendMsg(p)
-            elseif sendMsg[3] then 
-                ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
-                ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
-                ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
-                
-            else 
-                p:sendMsg(sendMsg[1],sendMsg[2])
-                p:sendMsg(sendMsg[1],sendMsg[2])
-                p:sendMsg(sendMsg[1],sendMsg[2])
-            end
-        end   
+        if type(award) =='function' then 
+            award(killer, target)
+        else
+            local skl = hero:find_skill(award,nil,true) 
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',award)
+                if type(sendMsg) == 'function' then 
+                    sendMsg(p)
+                elseif sendMsg[3] then 
+                    ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
+                    ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
+                    ac.player.self:sendMsg(sendMsg[1],sendMsg[2])
+                    
+                else 
+                    p:sendMsg(sendMsg[1],sendMsg[2])
+                    p:sendMsg(sendMsg[1],sendMsg[2])
+                    p:sendMsg(sendMsg[1],sendMsg[2])
+                end
+            end   
+        end
     end    
 end)    
 

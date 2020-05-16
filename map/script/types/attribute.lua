@@ -753,6 +753,8 @@ on_get['攻击距离'] = function(self, attack_distance)
 end
 
 set['攻击距离'] = function(self, attack_range)
+	--攻击距离最大 5000
+	attack_range = math.min(attack_range,5000) 
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x16), attack_range)
 	if self.owner:is_player() then
 		--修改攻击距离后同时修改主动攻击范围

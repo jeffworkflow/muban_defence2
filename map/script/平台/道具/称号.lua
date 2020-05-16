@@ -663,7 +663,7 @@ effect = [[fm_jzdwch.mdx]]
 --     end   
 -- end    
 
-local mt = ac.skill['独孤求败']
+local mt = ac.skill['江山代有才人出']
 mt{
 --等级
 level = 0,
@@ -743,7 +743,7 @@ end
 
 
 
-for i,name in ipairs({'热血青年','逆天改命','横扫六合','北斗七星','战神崛起','战神无敌','毁天灭地','爆肝之王','真龙天子','大至尊'}) do
+for i,name in ipairs({'热血青年','逆天改命','横扫六合','北斗七星','战神崛起','战神无敌','毁天灭地','爆肝之王','真龙天子','大至尊','江山代有才人出'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

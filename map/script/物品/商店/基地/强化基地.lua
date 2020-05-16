@@ -42,6 +42,11 @@ end
 
 function mt:on_cast_start()
     local unit = self.seller
+    if (unit.wtf_cnt or 0) >=100 then 
+        player:sendMsg('|cff00ff00强化次数已达上限|r',5)
+        return true
+    end 
+
     unit:add('生命上限%',self.life)
     unit:add('护甲%',self.defence)
     local hero = self.owner
