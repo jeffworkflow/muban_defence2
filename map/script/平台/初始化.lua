@@ -133,15 +133,17 @@ for i=1,10 do
         p:event '读取存档数据' (function()
             for n=1,#ac.mall do
                 -- print("01",p:Map_HasMallItem(ac.mall[n][1]))
-                local need_map_level = ac.mall[n][3] or 999999999999
-                if ac.mall[n][3] then 
-                    if p:Map_GetMapLevel() >= ac.mall[n][3] then 
+                local need_map_level = ac.mall[n][3] or 0
+                if p:Map_GetMapLevel() >= need_map_level then 
+                    if ac.mall[n][4] then 
                         local name = ac.mall[n][2]  
-                        p.mall[name] = 1  
+                        p.mall[name] = 1 
+                    else
+                        if p:Map_HasMallItem(ac.mall[n][1])  then 
+                            local name = ac.mall[n][2]  
+                            p.mall[name] = 1 
+                        end
                     end
-                elseif p:Map_HasMallItem(ac.mall[n][1]) then 
-                    local name = ac.mall[n][2]  
-                    p.mall[name] = 1 
                 end
                 if p.cheating then    
                     local name = ac.mall[n][2]  
@@ -157,7 +159,17 @@ end
 ac.wait(10,function()
     -- local name = [[谜情小伙]]
     local temp_mall = {
-        {'time_qt','青铜时长'},
+        {'zdlsb','士兵战斗力'},
+        {'zdlqs','骑士战斗力'},
+        {'zdlzj','主教战斗力'},
+        {'zdlbl','堡垒战斗力'},
+        {'zdlgw','国王战斗力'},
+        {'zdlhh','皇后战斗力'},
+        {'zdlcq','传奇战斗力'},
+        {'zdlwglf','万古流芳战斗力'},
+        {'zdlcfrs','超凡入圣战斗力'},
+        {'zdlgsyj','冠世一绝战斗力'},
+        {'zdlcjql','超绝群伦战斗力'},
        
     }
     for i,data in ipairs(ac.mall) do 
@@ -253,21 +265,21 @@ ac.game:event '游戏-结束' (function(trg,flag)
             -- end    
             -- print(name,key)
             player:Map_AddServerValue(key,1) --网易服务器
-            player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
+            player:sendMsg('【游戏胜利】|cffff0000'..name..'通关次数+1|r')
 
             --保存游戏时长 只保存自定义服务器
-            local name = name..'时长'
+            local name = name..'战斗力'
             local key = ac.server.name2key(name)
-            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 99999999)
-            --游戏时长 < 存档时间 
-            if os.difftime(cus_value,ac.g_game_time) > 0 then 
+            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 0)
+            --战斗力高的储存在服务器
+            if player.zdl > cus_value then 
                 -- if player:Map_GetMapLevel() >=3 then 
-                    player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                    player:SetServerValue(key,player.zdl) --自定义服务器
                 -- end    
             end    
             --文字提醒
-            local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
-            player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')  
+            -- local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
+            player:sendMsg('【游戏胜利】|cffff0000本次通关战斗力：'..player.zdl..'|r')  
         end
     end
 end)    

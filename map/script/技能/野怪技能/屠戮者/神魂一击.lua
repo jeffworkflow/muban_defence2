@@ -23,7 +23,7 @@ mt{
 
 }
 function mt:is_conditions()
-    local list = ac.selector():in_range(self.owner,1000):is_enemy(self.owner):get()
+    local list = ac.selector():in_range(self.owner,1000):is_enemy(self.owner):is_not(ac.main_unit):get()
     if #list == 0 then
         return
     end
@@ -58,7 +58,7 @@ function mt:on_cast_start()
     local pointList = {}
     hero:setAllSkillCd(3,6)
 
-    for _,u in ac.selector():in_range(hero,2000):is_enemy(hero):ipairs() do
+    for _,u in ac.selector():in_range(hero,2000):is_enemy(hero):is_not(ac.main_unit):ipairs() do
         ac.effect_ex{model = skill.model1,point = u:get_point(),size = 0.4,time = 1}
         table.insert(pointList,u:get_point())
     end
@@ -71,6 +71,7 @@ function mt:on_cast_start()
             for _,u in ac.selector()
                 :in_range(point,200)
                 :is_enemy(hero)
+                :is_not(ac.main_unit)
                 :add_filter(function(dest)
                     return dest.shenhunyiji ~= true
                  end)

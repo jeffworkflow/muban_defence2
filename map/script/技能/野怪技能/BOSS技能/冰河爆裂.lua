@@ -49,6 +49,7 @@ function mt:boss_skill_shot(angle)
 	for i, u in ac.selector()
 		: in_line(hero, angle, self.range + 50, self.area) --	起点--	角度--	长度--	宽度
 		: of_not_building()
+        : is_not(ac.main_unit)
 		: is_enemy(hero)
 		: ipairs()
 	do

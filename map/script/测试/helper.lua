@@ -434,19 +434,6 @@ function helper:test_k_u()
 	local temp = {}
 	ac.test_unit = ac.loop(1000,function()
 		for i=1,100 do
-			-- local dummy = u:create_illusion(u:get_point())
-			-- dummy:kill()	
-			-- local x,y = point:get()
-			-- local handle = jass.CreateUnit(ac.player(1).handle, base.string2id('u002'), x, y,0)
-			-- self ={}
-			-- self.handle = handle
-			-- jass.SetWidgetLife(self.handle, 100000)--生命
-			-- japi.SetUnitState(handle, jass.UNIT_STATE_MAX_LIFE, 100000) --生命上限
-			-- japi.SetUnitState(handle, jass.UNIT_STATE_MAX_MANA, 100000) --魔法上限
-			-- japi.SetUnitState(self.handle, jass.ConvertUnitState(0x20), 100000) --护甲
-			-- japi.SetUnitState(self.handle, jass.ConvertUnitState(0x12), 123 - 1) --攻击 
-			-- jass.RemoveUnit(handle)
-			-- print(handle)
 			local u = ac.player(12):create_unit('甲虫',point)
 			u:kill()
 			-- u:remove()

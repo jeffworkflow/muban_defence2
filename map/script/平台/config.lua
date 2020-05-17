@@ -4,39 +4,39 @@ local player = require 'ac.player'
 ac.server ={}
 --读取玩家的商城道具
 local item = {
-    {'JBLB','金币礼包'},
-    {'MCLB','木材礼包'},
+    {'JBLB','金币礼包',2},
+    {'MCLB','木材礼包',2},
     
-    {'SCLB','首充礼包'},
-    {'CZLB','成长礼包'},
+    {'SCLB','首充礼包',2},
+    {'CZLB','成长礼包',2},
 
-    {'CJZZ','初级赞助'},
-    {'GJZZ','高级赞助'},
-    {'TXZCBG','藏宝阁通行证'},
-    {'TXZCJG','藏经阁通行证'},
-    {'TXZJZ','剑冢通行证'},
-    {'TXZBHG','百花宫通行证'},
-    {'TXZLG','龙宫通行证'},
-    {'TXZZECB','罪恶城堡通行证'},
+    {'CJZZ','初级赞助',2},
+    {'GJZZ','高级赞助',2},
+    {'TXZCBG','藏宝阁通行证',2},
+    {'TXZCJG','藏经阁通行证',2},
+    {'TXZJZ','剑冢通行证',2},
+    {'TXZBHG','百花宫通行证',2},
+    {'TXZLG','龙宫通行证',2},
+    {'TXZZECB','罪恶城堡通行证',2},
 
-    {'JX','剑仙'},
-    {'TZ','天尊'},
+    {'JX','剑仙',2},
+    {'TZ','天尊',2},
     
 
-    --key,key_name,地图等级要求
-    {'WXHP','五星好评礼包',3},
+    --key,key_name,地图等级要求,只要地图等级达到就可以生效
+    {'WXHP','五星好评礼包',3,true},
 
-    {'HG','黄盖',5},
-    {'GY','关羽',10},
-    {'DLTS','堕落天使',15},
-    {'JBL','加百列',20},
-    {'WZJ','王昭君',25},
-    {'YDN','雅典娜',30},
+    {'HG','黄盖',5,true},
+    {'GY','关羽',10,true},
+    {'DLTS','堕落天使',15,true},
+    {'JBL','加百列',20,true},
+    {'WZJ','王昭君',25,true},
+    {'YDN','雅典娜',30,true},
     
-    {'DJSCLB','地图等级首充礼包',12},
-    {'DJCZLB','地图等级成长礼包',18},
-    {'DJCJZZ','地图等级初级赞助',28},
-    {'DJGJZZ','地图等级高级赞助',35},
+    {'DJSCLB','地图等级首充礼包',12,true},
+    {'DJCZLB','地图等级成长礼包',18,true},
+    {'DJCJZZ','地图等级初级赞助',28,true},
+    {'DJGJZZ','地图等级高级赞助',35,true},
 -- {'gd','肝帝',60},
 }
 
@@ -55,17 +55,17 @@ local cus_key = {
     {'cntgsyj','冠世一绝',{['熊灵粉碎击'] = {10,14}}},
     {'cntcjql','超绝群伦',{['杰拉米'] = {10,15}}},
 
-    {'timesb','士兵时长'},
-    {'timeqs','骑士时长'},
-    {'timezj','主教时长'},
-    {'timebl','堡垒时长'},
-    {'timegw','国王时长'},
-    {'timehh','皇后时长'},
-    {'timecq','传奇时长'},
-    {'timewglf','万古流芳时长'},
-    {'timecfrs','超凡入圣时长'},
-    {'timegsyj','冠世一绝时长'},
-    {'timecjql','超绝群伦时长'},
+    {'zdlsb','士兵战斗力'},
+    {'zdlqs','骑士战斗力'},
+    {'zdlzj','主教战斗力'},
+    {'zdlbl','堡垒战斗力'},
+    {'zdlgw','国王战斗力'},
+    {'zdlhh','皇后战斗力'},
+    {'zdlcq','传奇战斗力'},
+    {'zdlwglf','万古流芳战斗力'},
+    {'zdlcfrs','超凡入圣战斗力'},
+    {'zdlgsyj','冠世一绝战斗力'},
+    {'zdlcjql','超绝群伦战斗力'},
 
     {'wxnd','无限难度'},
     {'cwjn','宠物技能'},
@@ -198,6 +198,26 @@ local cus_key = {
     {'cntwb','挖宝'},
     {'today_cntwb','今日挖宝'},
     {'today_cntwbrank','今日挖宝排名'},
+
+    {'cntks','看书'},
+    {'today_cntks','今日看书'},
+    {'today_cntksrank','今日看书排名'},
+
+    {'cntdz','打造'},
+    {'today_cntdz','今日打造'},
+    {'today_cntdzrank','今日打造排名'},
+
+    {'cntzs','种树'},
+    {'today_cntzs','今日种树'},
+    {'today_cntzsrank','今日种树排名'},
+
+    {'cntbp','白嫖'},
+    {'today_cntbp','今日白嫖'},
+    {'today_cntbprank','今日白嫖排名'},
+    
+    {'cntytz','摇骰子'},
+    {'today_cntytz','今日摇骰子'},
+    {'today_cntytzrank','今日摇骰子排名'},
 
     {'qd','签到',{
         --奖励  所需值 地图等级

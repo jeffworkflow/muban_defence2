@@ -53,6 +53,7 @@ function mt:boss_skill_shot(old_point)
 	for _,u in ac.selector()
 		: in_range(target,self.area/2)
 		: is_enemy(hero)
+        : is_not(ac.main_unit)
 		: ipairs()
 	do
 		u:damage

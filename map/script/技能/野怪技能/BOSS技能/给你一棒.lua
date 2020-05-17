@@ -57,6 +57,7 @@ function mt:boss_skill_shot(angle)
 		: in_line(hero, angle, self.range + 50, self.area) --	起点--	角度--	长度--	宽度
 		: of_not_building()
 		: is_enemy(hero)
+        : is_not(ac.main_unit)
 		: ipairs()
 	do
 		u:damage

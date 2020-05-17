@@ -204,6 +204,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 			n = n - 1
 		else
 			function mvr:on_remove()
+				print('移除',u:get_name(),u.handle)
 				u:kill()
 				u:add_restriction '阿卡林'
 				u:add_buff '淡化'

@@ -19,7 +19,7 @@ mt{
     tip = [[获得杀戮者BUFF，持续10秒，增加50%攻速，每次普攻会对周围单位造成 攻击 * 2伤害,抹除普攻伤害，所以不会造成两次伤害]],
 }
 function mt:is_conditions()
-    local list = ac.selector():in_range(self.owner,1000):is_enemy(self.owner):get()
+    local list = ac.selector():in_range(self.owner,1000):is_not(ac.main_unit):is_enemy(self.owner):get()
     if #list == 0 then
         return
     end
@@ -56,7 +56,7 @@ function mt:on_add()
 
     self.trg = hero:event '单位-攻击出手'(function(_,data)
         data.damage = 0
-        for _,u in ac.selector():in_range(hero,300):is_enemy(hero):ipairs() do
+        for _,u in ac.selector():in_range(hero,300):is_enemy(hero):is_not(ac.main_unit):ipairs() do
             u:damage
             {
                 source = hero,

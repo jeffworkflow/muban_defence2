@@ -24,7 +24,7 @@ function mt:on_add()
 end
 
 function mt:is_conditions()
-    local list = ac.selector():in_range(self.owner,1000):is_enemy(self.owner):get()
+    local list = ac.selector():in_range(self.owner,1000):is_enemy(self.owner):is_not(ac.main_unit):get()
     if #list == 0 then
         return
     end
@@ -43,7 +43,7 @@ local function heiyejianglin(hero,skill,point)
         ac.effect_ex({model = [[tgrtrr.mdx]],point = point,size = 1.5,angle = 90}):remove()
     end)
 
-    for _,u in ac.selector():in_range(point,350):is_enemy(hero):ipairs() do
+    for _,u in ac.selector():in_range(point,350):is_enemy(hero):is_not(ac.main_unit):ipairs() do
         u:damage{
             source = hero,
             skill = skill,
@@ -59,13 +59,7 @@ function mt:on_cast_start()
     local point = target:get_point()
 
     hero:setAllSkillCd(2,4)
-    -- ac.effect_ex{model = [[warningring.mdx]],point = point,time = 1,size = 1.3}
-    ac.warning_effect_ring
-    {
-        point = point,
-        area = 200,
-        time = self.time,
-    }
+    ac.effect_ex{model = [[warningring.mdx]],point = point,time = 1,size = 1.3}
     hero:wait(500,function()
         if not hero:is_alive() then
             return
@@ -80,18 +74,13 @@ function mt:on_cast_start()
             :in_range(hero,1500)
             :is_enemy(hero)
             :is_not(target)
+            :is_type('英雄')
             :add_filter(function(dest)
                 return dest:get_point() * hero:get_point() > 300
             end)
             :ipairs() do
             table.insert(list,u:get_point())
-            -- ac.effect_ex{model = [[warningring.mdx]],point = u:get_point(),time = 1,size = 1.3}
-            ac.warning_effect_ring
-            {
-                point =  u:get_point(),
-                area = 200,
-                time = 1,
-            }
+            ac.effect_ex{model = [[warningring.mdx]],point = u:get_point(),time = 1,size = 1.3}
         end
 
         --在等待0.6秒后进行冲击

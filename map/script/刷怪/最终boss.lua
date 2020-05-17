@@ -13,6 +13,10 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:add_skill('大地崩','英雄')
     boss:add_skill('伤害守卫','英雄')
     boss:add_skill('boss光子灵枪','英雄')
+
+    boss:add_skill('屠戮_黑夜降临','隐藏')
+    boss:add_skill('屠戮_神魂一击','隐藏')
+    boss:add_skill('屠戮_屠戮盛宴','隐藏')
     
 
     boss:add('减伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))

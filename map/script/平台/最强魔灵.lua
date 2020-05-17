@@ -98,8 +98,8 @@ mt{
     
 }
 mt.skills = {
-    -- '入群礼包','五星好评礼包','金币礼包','木材礼包',
-    -- '首充礼包','成长礼包','通行证','赞助',
+    '入群礼包','五星好评礼包','金币礼包','木材礼包',
+    '首充礼包','成长礼包','通行证','赞助',
 }
 
 local mt = ac.skill['赞助']
@@ -200,7 +200,7 @@ mt{
     
 }
 mt.skills = {
-    '热血青年','逆天改命','横扫六合','北斗七星','战神崛起','战神无敌','毁天灭地','爆肝之王','真龙天子','大至尊',
+    '热血青年','逆天改命','横扫六合','北斗七星','战神崛起','战神无敌','毁天灭地','爆肝之王','真龙天子','大至尊','江山代有才人出'
 }
 -- '称号-下一页'
 local mt = ac.skill['称号-下一页']
@@ -336,25 +336,27 @@ local function upgrade_skill(player,skill)
                     print('激活：',skill.name,has_mall)
                     skill:set_level(math.floor(has_mall))
                 end
-                if skill.name =='独孤求败' then 
+                if skill.name == '江山代有才人出' then 
                     local has_rank
                     -- print(player.cus_server['今日斗破苍穹无尽排名'],player.cus_server['今日修罗模式无尽排名'])
+                    --挖宝、看书、打造、种树、白嫖、摇骰子
                     if player.cus_server  then 
-                        if  ((player.cus_server['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server['今日斗破苍穹无尽排名'] or 0) <= 10)
+                        if  ((player.cus_server['今日挖宝排名'] or 0) >0 and (player.cus_server['今日挖宝排名'] or 0) <= 10)
                             or
-                            ((player.cus_server['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server['今日修罗模式无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日看书排名'] or 0) >0 and (player.cus_server['今日看书排名'] or 0) <= 10)
                             or
-                            ((player.cus_server['今日无上之境无尽排名'] or 0) >0 and (player.cus_server['今日无上之境无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日打造排名'] or 0) >0 and (player.cus_server['今日打造排名'] or 0) <= 10)
                             or
-                            ((player.cus_server['今日无限乱斗无尽排名'] or 0) >0 and (player.cus_server['今日无限乱斗无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日种树排名'] or 0) >0 and (player.cus_server['今日种树排名'] or 0) <= 10)
                             or
-                            ((player.cus_server['今日深渊乱斗无尽排名'] or 0) >0 and (player.cus_server['今日深渊乱斗无尽排名'] or 0) <= 10)
+                            ((player.cus_server['今日白嫖排名'] or 0) >0 and (player.cus_server['今日白嫖排名'] or 0) <= 10)
                             or
-                            ((player.cus_server['今日挖宝排名'] or 0) >0 and (player.cus_server['今日挖宝排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日比武排名'] or 0) >0 and (player.cus_server['今日比武排名'] or 0) <= 10)
+                            ((player.cus_server['今日摇骰子排名'] or 0) >0 and (player.cus_server['今日摇骰子排名'] or 0) <= 10)
                         then 
                             skill:set_level(1)
+                            --顺便添加 风骚技能（隐藏）
+                            local hero = skill.owner
+                            hero:add_skill('风骚','隐藏')
                         end
                     end    
                 end   

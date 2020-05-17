@@ -78,15 +78,15 @@ function mt:on_cast_start()
                 ref = 'overhead',
                 model = skill.effect2
             }
-            hero:add('全伤加深',self.value)
+            hero:add('全伤加深',skill.value)
             for i=1,10 do 
                 local pp = ac.player(i)
                 if pp:is_player() then 
-                    --自己清空木头 其他人加500木头
+                    --自己扣500 其他人加500木头
                     if pp == p then 
-                        pp.hero:add_wood(-p.wood)
+                        pp.hero:add_wood(-skill.ex_wood)
                     else 
-                        pp.hero:add_wood(self.ex_wood)
+                        pp.hero:add_wood(skill.ex_wood)
                     end    
                 end  
             end      
