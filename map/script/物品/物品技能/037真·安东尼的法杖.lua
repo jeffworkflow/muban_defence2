@@ -46,8 +46,7 @@ v4 = {20,35},
 
 |cffffe799【被动-冰晶突刺】|r
 攻击 %v1% %几率对敌人造成 %v2% +|cffffe799智力*%v3%|r 的范围技能伤害，并减少 %v4% %的移动速度
-
-]],
+ ]],
 	--特效
 	effect = [[Abilities\Spells\Undead\FrostNova.mdl]],
 	--备注

@@ -38,8 +38,7 @@ mt{
 |cffffff00+%物品获取率% |cffffe799%|r 物品获取率
 |cffffff00+%木头加成% |cffffe799%|r 木头加成
 |cffffff00+%魔丸加成% |cffffe799%|r 魔丸加成
-
-]],
+ ]],
 	--业务技能代码
 }
 function mt:on_remove()

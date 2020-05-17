@@ -39,8 +39,7 @@ v3 = {20,300},
 
 |cffffe799【被动-朱雀炎】|r
 攻击 %v1% %几率对敌人造成 %v2% +|cffffe799智力*%v3%|r 的范围技能伤害
-
-]],
+ ]],
 	--特效
 	effect = [[Abilities\Spells\Other\BreathOfFire\BreathOfFireMissile.mdl]],
 	--备注
