@@ -24,7 +24,7 @@ range = 1000,
 --伤害范围 直径
 area = 350,
  --每一个预警圈消失的时间
-time = 0.3,
+time = 0.35,
 --冷却
 cool = 12,
 effect = [[effect_hero_attack5.mdx]]
@@ -88,7 +88,7 @@ function mt:on_cast_start()
 		else 
 			point = hero:get_point() - {angle,self.area/2 + (i-1)*self.area}
 		end
-		ac.wait(0.3*(i-1)*1000,function(t)
+		ac.wait(0.35*(i-1)*1000,function(t)
 			ac.warning_effect_ring
 			{
 				point = point,
@@ -97,7 +97,7 @@ function mt:on_cast_start()
 			}
 		end)
 	end
-	ac.wait((self.time + 0.3*2)*1000,function()
+	ac.wait((self.time + 0.35*2)*1000,function()
 		self:boss_skill_shot(angle)
 	end)
 end

@@ -17,13 +17,13 @@ tip = [[
 ]],
 
 damage = function(self)
-    return self.owner:get('攻击')*100
+    return self.owner:get('攻击')*300
 end, 
 --范围
 range = 1000,
 --伤害范围 直径
 area = 300,
-time = 0.25,
+time = 0.275,
 --冷却
 cool = 12,
 effect = [[Abilities\Spells\Undead\FrostNova\FrostNovaTarget.mdl]]
@@ -79,7 +79,7 @@ function mt:on_cast_start()
 			point = hero:get_point() - {angle,self.area/2 + (i-1)*self.area}
 		end
 		table.insert(temp_point,point)
-		ac.wait(0.25*(i-1)*1000,function(t)
+		ac.wait(0.275*(i-1)*1000,function(t)
 			ac.warning_effect_ring
 			{
 				point = point,
@@ -88,7 +88,7 @@ function mt:on_cast_start()
 			}
 		end)
 	end
-	ac.wait((self.time + 0.25*2)*1000,function()
+	ac.wait((self.time + 0.275*2)*1000,function()
 		for i,point in ipairs(temp_point) do 
 			--创建特效
 			ac.effect_ex{

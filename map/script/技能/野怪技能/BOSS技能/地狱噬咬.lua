@@ -17,12 +17,12 @@ tip = [[
 ]],
 
 damage = function(self)
-    return self.owner:get('攻击')*100
+    return self.owner:get('攻击')*200
 end, 
 --伤害范围 直径
 area = 650,
 max_life_rate = 25,
-time = 0.8,
+time = 0.95,
 --冷却
 cool = 12,
 effect = [[effect3_dazui01.mdx]]  
