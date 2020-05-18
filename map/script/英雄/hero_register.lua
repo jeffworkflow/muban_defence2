@@ -93,10 +93,10 @@ local function hero_register_main()
 		-- ac.wait(os.clock()*1000 % 1000 ,function()
 		-- end)
 		
-		-- player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
+		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 		
 		-- 创建宠物
-		player:create_pets('斗牛犬')
+		-- player:create_pets('斗牛犬')
 
 		-- player:selectUnit(player.peon)
 		
