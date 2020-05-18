@@ -30,7 +30,7 @@ class.wjphb_panel = extends(class.panel){
             if i == 1 then 
                 text:set_color(0xff744726)
             elseif panel.menu_titles[i] =='挖宝' then 
-                text:set_color(0xff00ffff)
+                text:set_color(0xffA9A6F7)
             else    
                 text:set_color(0xffA9A6F7)
             end        
@@ -42,7 +42,7 @@ class.wjphb_panel = extends(class.panel){
                 --更换按钮状态
                 panel.last_button:set_normal_image('')
                 if panel.last_button.text:get_text() == '挖宝' then 
-                    panel.last_button.text:set_color(0xff00ffff)
+                    panel.last_button.text:set_color(0xffA9A6F7)
                 else     
                     panel.last_button.text:set_color(0xffA9A6F7)
                 end    
@@ -499,13 +499,14 @@ art = [[huolinger.blp]],
 --说明
 tip = [[
 
-|cffFFE799【魔剑属性】：|r
-|cff00ff00获得一个随从-风骚
-|cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
-|cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+|cffFFE799【单位属性】：|r
+|cff00ff00获得一个随从
+|cff00ffff单位攻击力=%attack% |cff00ffff%英雄攻击力
+|cffffff00单位攻击10%概率造成范围物理伤害（伤害公式：攻击力*15）
 |cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
-|cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
+|cff00ffff进入|cffffff00今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
+|cffcccccc（非永久存档称号，掉出排行榜将失去称号）|r]],
 
 }
 function mt:on_upgrade()
@@ -562,11 +563,12 @@ mt{
 --等级
 level = 1,
 --图标
-art = [[jueshimojian.blp]],
+art = [[huolinger.blp]],
 --说明
 tip = [[
 
-攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+|cffFFE799【能力说明】：|r
+|cff00ff00攻击10%概率让她的敌人神魂颠倒，晕眩敌人1.5秒，并造成范围物理伤害（伤害公式：英雄攻击力*15）
  ]],
 event_name = '造成伤害效果',
 chance = 10,
@@ -600,7 +602,8 @@ function mt:damage_start(damage)
         }
         u:add_buff '晕眩'{
             time = 1.5,
-            model = skill.effect2
+            model = skill.effect2,
+            size = 1.5
         }
 	end	
 end

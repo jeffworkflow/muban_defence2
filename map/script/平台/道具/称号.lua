@@ -215,6 +215,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 19,
 --特效
 effect = [[htmd.mdx]]
+-- effect = [[jsdycrc.mdx]]
 }
 
 local mt = ac.skill['爆肝之王']
@@ -668,33 +669,33 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[dgqb.blp]],
+art = [[jsdycrc.blp]],
 --说明
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff进入|cffffff00挖宝/比武-今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
+|cff00ffff进入|cffffff00今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
 |cffcccccc（非永久存档称号，掉出排行榜将失去称号）|r
 
 |cffFFE799【称号属性】：|r
-|cff00ff00+368   杀怪加全属性|r
-|cff00ff00+200   攻击减甲|r
-|cff00ff00+5%    会心几率|r
-|cff00ff00+100%  会心伤害|r
-|cff00ff00+168%  全伤加深|r
+|cff00ff00+666  杀怪加全属性|r
+|cff00ff00+666  攻击减甲|r
+|cff00ff00+10%  会心几率|r
+|cff00ff00+100% 会心伤害|r
+|cff00ff00+88%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 -- 修罗模式/斗破苍穹/无上之境/乱斗/
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 368,
-['攻击减甲'] = 200,
-['会心几率'] = 5,
+['杀怪加全属性'] = 666,
+['攻击减甲'] = 666,
+['会心几率'] = 10,
 ['会心伤害'] = 100,
-['全伤加深'] = 168,
+['全伤加深'] = 88,
 need_map_level = 8,
 --特效
-effect = [[CH_duguqiubai.mdx]]
+effect = [[jsdycrc.mdx]]
 }
 function mt:on_add()
     local hero = self.owner

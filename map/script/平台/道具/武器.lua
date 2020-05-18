@@ -353,7 +353,7 @@ effect = [[effect_Weapon_0.MDX]]
 
 -- wabao_cnt = function(self)
 --     local p = ac.player.self
---     return p.server['挖宝熟练度'] or 0
+--     return p.server['熟练度'] or 0
 -- end,
 
 -- --所需激活碎片

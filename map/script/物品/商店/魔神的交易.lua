@@ -6,12 +6,12 @@ mt{
 level = 1,
 is_order = 1,
 --图标
-art = [[zshxl.blp]],
+art = [[mszw.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
 --说明
 tip = [[
 
-消耗 |cffff0000四本天阶功法|r 兑换 |cff00ff00一本神阶功法|r
+消耗 |cffff00004个红色物品|r 兑换 |cff00ff001个黑色物品|r
 
 |cffcccccc最大兑换次数12次]],
 

@@ -360,22 +360,29 @@ mt{
     is_spellbook = 1,
     level = 1,
     is_order = 2,
-    art = [[zhizundushen.blp]],
+    art = [[dlgzz.blp]],
     tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+7500万 全属性
-+100%  杀敌数加成
-+100%  物品获取率
-+100%  木头加成
-+100%  魔丸加成
+|cff00ff00+1500万 全属性
++1W  木头
++1  练功房数量
     ]],
-    ['全属性'] = 75000000,
-    ['杀敌数加成'] = 100,
-    ['木头加成'] = 100,
-    ['魔丸加成'] = 100,
-    ['物品获取率'] = 100
+    ['全属性'] = 15000000,
+    ['木头'] = 10000,
+    ['练功房怪'] = 1,
+    add_wood = 10000,
 }
+function mt:on_add()
+    local hero  = self.owner
+    local player = hero:get_owner()
+    hero = player.hero
+    
+    hero:add_wood(self.add_wood)
+    hero:add_rec_ex(self.add_fire)
+    hero:add_kill_count(self.add_kill)
+end    
+
 
 
 local task_detail = {
@@ -414,7 +421,7 @@ local task_detail = {
     },
     
     ['爱我你就爆了我6'] = {
-        rate = 100,
+        rate = 1,
         award = '第六根柱子',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
