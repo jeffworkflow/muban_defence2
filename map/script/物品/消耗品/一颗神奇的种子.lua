@@ -73,7 +73,7 @@ function mt:on_cast_start(next_point)
     local player = hero:get_owner()
     local point = next_point or self.target 
 
-    -- print('创建了一颗神奇的种子',next_point,self.target)
+    print('创建了一颗神奇的种子',hero,next_point,self.target)
     create_u(self,hero,point)
     if self.auto_plant then 
         if self:get_item_count() > 1 then 

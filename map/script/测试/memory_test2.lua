@@ -220,19 +220,26 @@ ac.loop(30 * 1000, function()
 
 	local unit_normal_count = 0
 	local creature_normal_count = 0
+	local moni_normal_count = 0
 	local unit_dead_count = 0
 	local creature_dead_count = 0
+	local moni_dead_count = 0
 	local unit_removed_count = 0
 	local creature_removed_count = 0
+	local moni_removed_count = 0
 	for _, u in pairs(unit.all_units) do
 		if u:is_alive() then
-			if u:get_class() then
+			if u:get_class()=='模拟死亡' then
+				moni_normal_count = moni_normal_count + 1
+			elseif u:get_class() then
 				unit_normal_count = unit_normal_count + 1
 			else
 				creature_normal_count = creature_normal_count + 1
 			end
 		else
-			if u:get_class() then
+			if u:get_class()=='模拟死亡' then
+				moni_dead_count = moni_dead_count + 1
+			elseif u:get_class() then
 				unit_dead_count = unit_dead_count + 1
 			else
 				creature_dead_count = creature_dead_count + 1
@@ -240,7 +247,9 @@ ac.loop(30 * 1000, function()
 		end
 	end
 	for u in pairs(unit.removed_units) do
-		if u:get_class() then
+		if u:get_class()=='模拟死亡' then
+			moni_removed_count = moni_removed_count + 1
+		elseif u:get_class() then
 			unit_removed_count = unit_removed_count + 1
 		else
 			creature_removed_count = creature_removed_count + 1
@@ -251,6 +260,7 @@ ac.loop(30 * 1000, function()
 
 	print(('单位 正常[%d],死亡[%d],等待释放[%d]'):format(creature_normal_count, creature_dead_count, creature_removed_count))
 	print(('马甲 正常[%d],死亡[%d],等待释放[%d]'):format(unit_normal_count, unit_dead_count, unit_removed_count))
+	print(('模拟死亡 正常[%d],死亡[%d],等待释放[%d]'):format(moni_normal_count, moni_dead_count, moni_removed_count))
 	
 	local count1 = 0
 	for _ in pairs(mover.mover_group) do
@@ -346,6 +356,15 @@ ac.game:event '游戏-结束' (function()
 	--end
 	if not base.release then
 		log.debug '=========================='
+		log.debug '统计死亡单位'
+		for _, u in pairs(unit.all_units) do
+			local self = u
+			if not u:is_alive() then
+				log.debug(('++++单位[%s][%s][%s][%s]'):format(self:get_name(), self.id, (self:get_class() or ''),self:get_point()))
+				log.debug('所有者:' .. self:get_owner():get_name())
+			end
+		end
+		log.debug '=========================='
 		log.debug '统计已经被移除但是依然被引用的单位'
 		for self in pairs(unit.removed_units) do
 			log.debug(('++++单位[%s][%s]'):format(self:get_name(), self.id))
@@ -354,6 +373,7 @@ ac.game:event '游戏-结束' (function()
 				log.debug('模型:' .. self.model)
 			end
 		end
+		
 		log.debug '=========================='
 		log.debug '统计已经被移除但是依然被引用的运动器'
 		local callback_list = {'on_move', 'on_hit', 'on_remove', 'on_block', 'on_finish'}

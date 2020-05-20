@@ -18,9 +18,9 @@ for i=1,10 do
         p.mall_flag = {}
     end  
     local cheating = [[
-        后山一把刀 卡卡发动机  蜗牛互娱 特朗普领航
+         特朗普领航
     ]]
-    -- 作弊
+    -- 作弊 后山一把刀 卡卡发动机  蜗牛互娱
     if finds(cheating,p:get_name()) then 
         p.cheating = true 
         require '测试.helper'

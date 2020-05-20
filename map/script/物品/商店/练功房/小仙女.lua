@@ -168,7 +168,8 @@ for _,name in ipairs(fairy) do
     mt.rate = 10
     --概率增加
     mt.up_rate = 5
-        
+    mt.is_ui_text=true
+    
     function mt:on_cast_shot()
         local hero = self.owner
         local p = hero:get_owner()

@@ -1048,7 +1048,10 @@ function unit.__index:remove_item(it)
 	--触发丢弃物品时，没有马上返回物品位置。
 	ac.wait(0,function()
 		-- print(it:get_point())
-		it:show(true)
+		--等待0秒后，如果有owner,证明在人身上，不需要显示
+		if not it.owner then 
+			it:show(true)
+		end
 	end)   
 	
 	jass.UnitRemoveItem(self.handle,it.handle)
@@ -1267,7 +1270,9 @@ end
 --创建物品 - 商店使用
 --@商品位置 必填
 function item.create(name,pos,seller)
-	
+	if ac.item.shop_item_map[name] then 
+		return ac.item.shop_item_map[name]
+	end
 	--创建一个物品
 	local items = setmetatable({},item)
 

@@ -31,15 +31,11 @@ function mt:on_cast_start()
     local player = hero.owner
     local shop_item = ac.item.shop_item_map[self.name]
     --限定购买次数
-    if not shop_item.player_buy_cnt then 
-        shop_item.player_buy_cnt = {}
-    end
     if not shop_item.player_wood then 
         shop_item.player_wood = {}
     end
 
     --可能会异步
-    shop_item.player_buy_cnt[player] = (shop_item.player_buy_cnt[player] or 1) + 1
     shop_item.player_wood[hero:get_owner()] =  math.min(shop_item.wood + self.cre_wood * shop_item.player_buy_cnt[player],500000)
 
     --给英雄随机添加物品

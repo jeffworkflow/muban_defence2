@@ -1137,12 +1137,16 @@ function helper:test_i1()
 	end	
 end	
 
-function helper:test_i2()
+function helper:test_i2(name)
+	ac.test_nav = {}
 	local x,y = self:get_point():get()
 	for i=1,500 do 
-		local a = ac.item.create_item('强化石',self:get_point())
+		local a = ac.item.create_item(name,self:get_point())
+		table.insert( ac.test_nav, a )
+		-- a:item_remove()
 	end	
 end	
+
 function helper:test_i3(str)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	local hero = p.hero
@@ -1152,15 +1156,16 @@ function helper:test_i3(str)
 	end
 end	
 
-function helper:test_e1()
+function helper:test_e1(name)
 	local x,y = self:get_point():get()
 	ac.test_eff = {}
 	for i=1,500 do 
+		local model = name =='暗影战斧' and [[File00000376 - W.mdx]] or ac.skill[name].specail_model or ac.skill['强化石'].specail_model
 		local eff = ac.effect_ex{
 			point = self:get_point(),
-			model = ac.skill['强化石'].specail_model
+			model = model
 		}
-		
+		--[[File00000376 - W.mdx]]
 		table.insert( ac.test_eff, eff )
 	end	
 end	
@@ -1173,12 +1178,24 @@ function helper:test_c1()
 end	
 
 function helper:test_c2()
+	for i,it in ipairs(ac.test_nav) do 
+		it:item_remove()
+		ac.test_nav[i] = nil
+	end	
+end	
+
+function helper:test_ce1()
 	for i,eff in ipairs(ac.test_eff) do 
 		eff:remove()
 		ac.test_eff[i] = nil
 	end	
 end	
 
+function helper:test_s(num)
+	for i=1,(tonumber(num) or 1000) do 
+		self.owner:showSysWarning('物品栏已满')
+	end
+end	
 --创建 魔兽自带兵
 function helper:u1()
 	local point = ac.map.rects['出生点']

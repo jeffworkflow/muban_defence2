@@ -111,6 +111,7 @@ function mt:on_cast_start()
     local wood = self.wood_cnt
     local has_wood = p.wood
     local item = hero:has_item(self.name)
+    if not item then return end
     if item.level == item.max_level then
         return 
     end  

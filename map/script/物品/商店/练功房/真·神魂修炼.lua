@@ -47,21 +47,6 @@ function mt:on_cast_start()
         p:sendMsg('材料不足')
         return 
     end    
-    --限定购买次数
-    -- if not p.buy_cnt then 
-    --     p.buy_cnt = {} 
-    -- end
-    -- p.buy_cnt[self.name] = p.buy_cnt[self.name] or 0 + 1  
-    -- if p.buy_cnt[self.name] >self.max_buy_cnt then
-    --     p:sendMsg('超出次数') 
-    --     return 
-    -- end 
-    --限定购买次数
-    local shop_item = ac.item.shop_item_map[self.name]
-    if not shop_item.player_buy_cnt then 
-        shop_item.player_buy_cnt = {}
-    end
-    shop_item.player_buy_cnt[player] = (shop_item.player_buy_cnt[player] or 1) + 1
     
     --删除物品
     for i,item in ipairs(temp_item) do 

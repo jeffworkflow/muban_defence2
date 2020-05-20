@@ -100,7 +100,7 @@ local function skill_tooltip(skill,unit)
             gold = jifen
             show_gold = show_jifen
         end
-
+        -- show_gold = math.tointeger(show_gold) or ('%.2f'):format(show_gold)
         -- print('是否含有拥有多少',wood,show_wood, wood)
         local icon = shop_icon[skill.coin]
         if  icon and gold>0 then   
@@ -201,10 +201,15 @@ function panel.updateToolTip()
             -- unit:print_item()
             local item = unit.sell_item_list[button.old_slot_id]
             skill = ac.item.shop_item_map[item and item.name] --再根据名字取shop_item_map的物品
-        -- else 
-        --     skill = unit:find_skill( button.slot_id, unit.skill_page or '英雄')
         end   
 
+        local skl = unit:find_skill( button.slot_id, unit.skill_page or '英雄')
+        if skl and skl.is_ui_text then 
+            --把魔兽自带的提示框移出屏幕外
+            japi.FrameSetPoint(japi.FrameGetTooltip(),8,game_ui,8,0.3,0.16)
+            skill = skl
+        end 
+        
         if skill == nil then
             tool:hide()
             return 

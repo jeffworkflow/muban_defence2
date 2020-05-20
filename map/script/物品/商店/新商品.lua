@@ -25,32 +25,32 @@ local shop_item_detail = {
             end    
         end, 
     } ,
-    ['杀敌数兑换'] = {
-        on_cast_start = function(self)
-            local hero = self.owner
-            local p = hero:get_owner()
-            local player = hero:get_owner()
-            hero = p.hero
+    -- ['杀敌数兑换'] = {
+    --     on_cast_start = function(self)
+    --         local hero = self.owner
+    --         local p = hero:get_owner()
+    --         local player = hero:get_owner()
+    --         hero = p.hero
             
-            local shop_item = ac.item.shop_item_map[self.name]
-            if not shop_item.player_kill then 
-                shop_item.player_kill ={}
-            end
-            -- print(shop_item.player_buy_cnt[player])
-            --改变价格
-            if shop_item.player_buy_cnt[player] >20 then
-                shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + 50
-            else
-                shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + self.cre  
-            end   
-            if player:is_self() then 
-                shop_item.real_kill_cnt = shop_item.player_kill[player]
-                shop_item:set_tip(shop_item:get_tip())
-            end    
-            --文字提醒
-            p:sendMsg('|cff00ff00兑换 '..self.name..' 成功|r',5)
-        end, 
-    }   
+    --         local shop_item = ac.item.shop_item_map[self.name]
+    --         if not shop_item.player_kill then 
+    --             shop_item.player_kill ={}
+    --         end
+    --         -- print(shop_item.player_buy_cnt[player])
+    --         --改变价格
+    --         if shop_item.player_buy_cnt[player] >20 then
+    --             shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + 50
+    --         else
+    --             shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + self.cre  
+    --         end   
+    --         if player:is_self() then 
+    --             shop_item.real_kill_cnt = shop_item.player_kill[player]
+    --             shop_item:set_tip(shop_item:get_tip())
+    --         end    
+    --         --文字提醒
+    --         p:sendMsg('|cff00ff00兑换 '..self.name..' 成功|r',5)
+    --     end, 
+    -- }   
 
 }
 

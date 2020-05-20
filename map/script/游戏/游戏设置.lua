@@ -8,6 +8,7 @@ local jass = require 'jass.common'
 local player = require 'ac.player'
 local Unit = require 'types.unit'
 local fogmodifier = require 'types.fogmodifier'
+local Skill = require 'ac.skill'
 
 --游戏时长 
 ac.g_game_time = 0 
@@ -74,6 +75,7 @@ function player.__index:add_rec_ex(rec_ex, where, flag)
 	end
 	local rec_ex = tonumber(math.tointeger(rec_ex) or ('%.2f'):format(rec_ex))
 	self.rec_ex = (self.rec_ex or 0) + rec_ex
+	self.rec_ex = tonumber(math.tointeger(self.rec_ex) or ('%.2f'):format(self.rec_ex))
 	-- self.rec_ex = jass.I2R(self.rec_ex)
 	if self.rec_ex < 0 then 
 		self.rec_ex = 0
@@ -120,6 +122,67 @@ end
 function Unit.__index:add_rec_ex(num)
 	self:get_owner():add_rec_ex(num, where or self, flag)
 end
+
+
+--获取购买价格
+function Skill.__index:buy_price()
+	local gold = (self.player_gold and self.player_gold[ac.player.self]) and self.player_gold[ac.player.self] or (self.gold or 0)
+	return self.gold or 0,gold,self.player_gold and self.player_gold[ac.player.self] 
+end
+
+--获取购买木头
+function Skill.__index:buy_wood()
+	local gold = (self.player_wood and self.player_wood[ac.player.self]) and self.player_wood[ac.player.self] or (self.wood or 0)
+	return self.wood or 0,gold,self.player_wood and self.player_wood[ac.player.self] 
+end
+
+--获取购买杀敌数
+function Skill.__index:buy_kill_count()
+	local gold = (self.player_kill and self.player_kill[ac.player.self]) and self.player_kill[ac.player.self] or (self.kill_count or 0)
+	-- print(gold,self.kill_count)
+	self.kill_count = self.kill_count or 0 
+	for i=1,10 do
+		if ac.player(i) == ac.player.self then
+			if ac.player.self.kill_count then 
+				gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.kill_count or '0')..')|r'
+			end
+		end	
+	end
+	self.show_kill_count = gold
+	return self.kill_count,self.show_kill_count,self.player_kill and self.player_kill[ac.player.self] 
+end
+
+
+--获取购买积分
+function Skill.__index:buy_jifen()
+	local gold = (self.player_jifen and self.player_jifen[ac.player.self] ) and self.player_jifen[ac.player.self] or (self.jifen or 0)
+	self.jifen = self.jifen or 0 
+	-- self.jifen = gold
+	for i=1,10 do
+		if ac.player(i) == ac.player.self then
+			gold = gold..'   |cff00ffff(拥有'..(ac.player.self.jifen or '0')..')|r'
+		end	
+	end
+	self.show_jifen = gold
+	return self.jifen,self.show_jifen,self.player_jifen and self.player_jifen[ac.player.self] 
+end
+
+
+--获取购买魔丸
+function Skill.__index:buy_rec_ex()
+	local gold = (self.player_rec_ex and self.player_rec_ex[ac.player.self]) and self.player_rec_ex[ac.player.self] or (self.rec_ex or 0)
+	-- self.rec_ex = gold
+	self.rec_ex = self.rec_ex or 0 
+	for i=1,10 do
+		if ac.player(i) == ac.player.self then
+			gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.rec_ex or '0')..')|r'
+		end	
+	end
+	self.show_rec_ex = gold
+	return self.rec_ex,self.show_rec_ex,self.player_rec_ex and self.player_rec_ex[ac.player.self] 
+end
+
+
 local function find_unit(name)
 	local unit
 	for key,val in pairs(ac.unit.all_units) do 

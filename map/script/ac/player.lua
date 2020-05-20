@@ -190,7 +190,7 @@ function mt:disableControl(dest)
 end
 	
 --显示系统警告
---	警告内容
+--	警告内容 有内存泄漏
 function mt:showSysWarning(msg)
     local sys_sound = jass.CreateSoundFromLabel("InterfaceError", false, false, false, 10, 10);
     if(jass.GetLocalPlayer() == self.handle) then
@@ -355,6 +355,7 @@ function mt:add_wood(wood, where, flag)
 		wood = data.wood
 	end
 	self.wood = self.wood + wood
+	self.wood = tonumber(math.tointeger(self.wood) or ('%.2f'):format(self.wood))
 	if self.wood < 0 then 
 		self.wood = 0
 	elseif self.wood >=2000000 then 
@@ -405,10 +406,12 @@ function mt:add_kill_count(num)
 		return 
 	end	
 	
+	-- print('测试杀敌数位数1：',self.kill_count,num)
 	local num = tonumber(math.tointeger(num) or ('%.2f'):format(num))
 	--当前杀敌数
 	self.kill_count = (self.kill_count or 0.00 ) + num
-	-- print('1',self.kill_count)
+	self.kill_count = tonumber(math.tointeger(self.kill_count) or ('%.2f'):format(self.kill_count))
+	-- print('测试杀敌数位数2：',self.kill_count,num)
 	-- self.kill_count = jass.I2R(self.kill_count)
 	-- print('2',self.kill_count)
 
