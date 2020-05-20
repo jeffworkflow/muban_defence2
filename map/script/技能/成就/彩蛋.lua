@@ -398,7 +398,7 @@ local task_detail = {
     },
     
     ['藏宝阁阁主、藏经阁少阁主、剑魔、苏若颜、哪吒、牛头马面'] = {
-        rate = 100,
+        rate = 1,
         award = function(killer, target)
             local p = killer.owner
             if not p.flag_dlgzz then 

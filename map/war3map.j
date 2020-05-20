@@ -2018,7 +2018,7 @@ endfunction
 //*
 //***************************************************************************
 function config takes nothing returns nothing
-    call SetMapName("魔灵传说")
+    call SetMapName("魔灵降世")
     call SetMapDescription("没有说明")
     call SetPlayers(12)
     call SetTeams(12)

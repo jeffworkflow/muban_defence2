@@ -310,10 +310,10 @@ local event = {
             local skl = hero:find_skill(player.reward_name,nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,book_name,player.reward_name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
             else
                 skl:upgrade(1)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵中查看',10)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
             end
         end
     end
