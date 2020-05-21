@@ -63,7 +63,7 @@ for key,value in pairs(ac.exchange_kill) do
         end
         -- print('改变价格:',shop_item,shop_item.name,player,shop_item.player_buy_cnt[player],shop_item.player_kill[player])
         --改变价格
-        if shop_item.player_buy_cnt[player] >20 then
+        if shop_item.player_buy_cnt[player] >19 then
             shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + 50
         else
             shop_item.player_kill[player] = (shop_item.player_kill[player] or self.kill_count ) + self.cre  

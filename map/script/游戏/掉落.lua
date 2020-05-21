@@ -467,7 +467,7 @@ local unit_reward = {
                 { rand = 1, name = '随机红装'},
             }
         },
-        { rand = 0.006,      name = '吞噬丹'},
+        { rand = 0.005,      name = '吞噬丹'},
         { rand = 0.01,      name = '天谕'},
         { rand = 0.02,      name = '强化石'},
         { rand = 0.008,      name = '随机技能'},
@@ -477,7 +477,7 @@ local unit_reward = {
         -- { rand = 10.01,      name = '一颗神奇的种子'},
         -- { rand = 10.01,      name = '扭蛋券(十连抽)'},
         -- { rand = 10.01,      name = '超级扭蛋券(十连抽)'},
-        { rand = 0.02,      name = '黑暗骰子'}
+        { rand = 0.015,      name = '黑暗骰子'}
     },
     
     ['一棒男'] =  {{ rand = 20,      name = '吞噬丹'}},
