@@ -98,6 +98,8 @@ function mt:on_cast_start()
             if item then 
                 if item.level<10 then 
                     local rt = rate[item.level]+ player:get('强化成功概率')
+                    --打造熟练度
+                    player:Map_AddServerValue('slddz',1) --网易服务器
                     if math.random(10000)/100 <= rt then 
                         --改变属性
                         local lni_data = ac.skill[item.name].v1 and ac.skill[item.name] or ac.table.ItemData[item.name] 
@@ -246,8 +248,6 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     hero = player.hero  
     --处理成就
     player:add('锻造次数',1)
-    --打造熟练度
-    player:Map_AddServerValue('slddz',1) --网易服务器
 
     for k,v in sortpairs(temp) do 
         if player:get('锻造次数') == v then 

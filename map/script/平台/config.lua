@@ -70,7 +70,7 @@ local cus_key = {
     {'wxnd','无限难度'},
     {'cwjn','宠物技能'},
                              --奖励        所需值 所需地图等级 返回值
-    {'cwjnc','宠物纪念册',{ ['宠物纪念册'] = {1,5,value = function(self,p) return p:Map_GetServerValue('cwjnc') end}}},
+    {'cwjnc','宠物纪念册',{ ['宠物纪念册'] = {1,1,value = function(self,p) return p:Map_GetServerValue('cwjnc') end}}},
 
     {'wsdmt','我是大魔头',{ ['我是大魔头'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('wsdmt')) end}}},
   

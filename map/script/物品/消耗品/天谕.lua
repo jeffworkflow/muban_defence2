@@ -124,6 +124,9 @@ function mt:on_cast_start()
             self.dialog = nil
             local item = list[index].item
             if item then 
+                --打造熟练度
+                player:Map_AddServerValue('slddz',1) --网易服务器
+                
                 if item.level < 10 then 
                     --改变属性
                     local cnt = ac.get_reward_name(temp['天谕'])

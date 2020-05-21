@@ -21,7 +21,7 @@ local task_detail = {
         --俘虏事件
         local rate = 0.5
         if math.random(10000)/100 < rate and (p.flxm or 0) < 11 then 
-            local u = p:create_unit('俘虏·血魔',killer:get_point()-{math.random(360),100})
+            p:create_unit('俘虏·血魔',killer:get_point()-{math.random(360),100})
             p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00触发俘虏事件',2)
             p.flxm = (p.flxm or 0)+ 1
         end

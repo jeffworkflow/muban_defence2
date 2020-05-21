@@ -46,8 +46,9 @@ function mt:damage_start(damage)
     end 
     
     local u = p:create_unit(self.unit_name,hero:get_point() - {math.random(360),100})
+    u:remove_ability 'AInv'
+    u:add_ability 'Aloc'
     u:add_restriction '无敌'
-    
 
     local attribute ={
         ['攻击'] = hero:get('攻击')*self.mul,

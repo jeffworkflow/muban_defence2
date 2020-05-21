@@ -30,12 +30,7 @@ auto_plant = function(self)
     local owner = self.owner
     local p = owner.owner
     local hero = p.hero
-    local ok
-    --只有在英雄身上时，使用才有效
-    if owner == hero then 
-        ok = hero.auto_plant
-    end
-    return ok
+    return p.auto_plant
     -- return true
 end
 }
@@ -47,6 +42,7 @@ local function create_u(skl,hero,point)
     u:set('生命上限',10)
     u:add_restriction('无敌')
     u:add_restriction('定身')
+    u:add_restriction('缴械')
     --动画
     local time = 5
     u:add_buff '缩放' {
@@ -78,7 +74,7 @@ function mt:on_cast_start(next_point)
     if self.auto_plant then 
         if self:get_item_count() > 1 then 
             hero.auto_plant_timer = ac.wait(self.pulse*1000,function(t)
-                p.auto_plant_timer = nil
+                hero.auto_plant_timer = nil
                 local next_point = hero:get_point() -{math.random(360),100}
                 self:on_cast_start(next_point)
                 self:add_item_count(-1)

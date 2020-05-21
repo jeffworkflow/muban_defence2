@@ -325,10 +325,10 @@ for i,name in ipairs({'东皇钟','轩辕剑','缚妖索','青莲宝色旗','莫
         local player = self.owner:get_owner()
         hero = player.hero 
         --改变外观，添加武器
-        if hero.effect_chibang then 
-            hero.effect_chibang:remove()
+        if hero.effect_fabao then 
+            hero.effect_fabao:remove()
         end     
-        hero.effect_chibang = hero:add_effect('chest',self.effect)
+        hero.effect_fabao = hero:add_effect('chest',self.effect)
     end   
     -- mt.on_add = mt.on_cast_start --自动显示特效
 end    

@@ -362,6 +362,8 @@ ac.game:event '游戏-结束' (function()
 			if not u:is_alive() then
 				log.debug(('++++单位[%s][%s][%s][%s]'):format(self:get_name(), self.id, (self:get_class() or ''),self:get_point()))
 				log.debug('所有者:' .. self:get_owner():get_name())
+				log.debug(self,self.removed,self._is_alive,self:is_alive())
+				
 			end
 		end
 		log.debug '=========================='

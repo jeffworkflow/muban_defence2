@@ -305,7 +305,7 @@ local event = {
             if finds(player.reward_name,'我是大魔头','黄金矿工','书呆子','剑瞎子','采蘑菇的小姑娘','扭蛋人生','du徒','强悍之人','血牛','一出门就被秒','绝世魔剑') then 
                 book_name = '隐藏成就'
             else
-                book_name = '天神物品'
+                book_name = '成神'
             end
             local skl = hero:find_skill(player.reward_name,nil,true)
             if not skl then 

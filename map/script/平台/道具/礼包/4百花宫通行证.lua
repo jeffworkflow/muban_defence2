@@ -32,7 +32,7 @@ function mt:on_add()
     local peon = p.peon
     peon:add_item('百花宫通行证 ')
     --开启自动种树
-    hero.auto_plant = true
+    p.auto_plant = true
 end
 
 local mt = ac.skill['百花宫通行证 ']

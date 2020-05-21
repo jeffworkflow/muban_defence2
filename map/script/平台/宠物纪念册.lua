@@ -199,7 +199,7 @@ local function save_cwjnc()
             local val = 2^(p.peon.data.cid -1)
             local key = ac.server.name2key('宠物纪念册')
             if not has_flag(p.server['宠物纪念册'],val) then 
-                -- print('宠物毕业:',p.peon.data.cid,p.peon:get_name())
+                print('宠物毕业:',p.peon.data.cid,p.peon:get_name())
                 p:Map_AddServerValue(key,val)
             end    
         end
