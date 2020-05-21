@@ -25,7 +25,7 @@ for i = 1, 10 do
 	--在选人区域创建可见度修整器(对每个玩家,永久)
 	fogmodifier.create(p, map.rects['选人区域'])
 	--设置镜头属性
-	p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000)
+	p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2250)
 	local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
 	p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 	local x,y = ac.map.rects['选人区域']:get_point():get()
@@ -298,7 +298,7 @@ local function start()
 				p:setCameraField('CAMERA_FIELD_ROTATION', 90)
 				p:showInterface(1)
 				--镜头动画
-				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000, 1)
+				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2250, 1)
 				p:setCameraBounds(minx-400, miny-400, maxx+400, maxy+400)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 	
 				--允许框选
@@ -308,7 +308,7 @@ local function start()
 	
 				--强制镜头高度
 				ac.wait(1000, function()
-					p.camera_high = 2000
+					p.camera_high = 2250
 				end)
 			end)
 		end
