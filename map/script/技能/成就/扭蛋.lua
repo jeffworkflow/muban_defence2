@@ -95,7 +95,7 @@ function mt:on_add()
     local p = hero:get_owner()
     local peon = p.peon
     --开启自动种树
-    hero.auto_plant = true
+    p.auto_plant = true
     --给藏宝图10张，挖宝熟练度100点
     local it = ac.item.create_item('一颗神奇的种子')
     it:set_item_count(10)
