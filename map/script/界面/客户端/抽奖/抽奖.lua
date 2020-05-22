@@ -58,7 +58,7 @@ local new_ui = class.panel:builder
                 pannel:start(pannel.last_selected or 1)
                 self:hide()
             else
-                p:sendMsg('票子不够')
+                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000票子不够')
             end
         end,
         text = {

@@ -132,7 +132,7 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
         min_attr = 10000
     end
     if coin_val <= 10 or coin_val <= min_attr then 
-        p:sendMsg('|cffFFCC00不够资源|r',5)
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000不够资源|r',5)
         return 
     end  
     --检测彩蛋

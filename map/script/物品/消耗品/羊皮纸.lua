@@ -42,7 +42,7 @@ function mt:on_cast_start()
         hero:add_rec_ex(-self.rec_ex)
     else 
         self:add_item_count(1) 
-        p:sendMsg('魔丸不足',2)
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000魔丸不足',2)
     end    
  
 end    

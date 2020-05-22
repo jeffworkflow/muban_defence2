@@ -1171,7 +1171,7 @@ function item.create_item(name,poi,hide,p)
 	--读取一个句柄
 	local type_id = ac.get_item_handle()
 	if not type_id then 
-		ac.player.self:sendMsg('|cffff0000物品超出上限，请及时清理地上物品!|r',10)
+		ac.player.self:sendMsg('|cffFFE799【系统消息】|r|cffff0000物品超出上限，请及时清理地上物品!|r',10)
 		return 
 	end	
 	items.type_id = type_id
