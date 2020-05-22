@@ -115,6 +115,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	end
 
 	for _, u in ac.selector()
+		: allow_god()
 		: of_not_hero()
 		: ipairs()
 	do
@@ -124,6 +125,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		u:add_restriction '无敌'
 		--停止动画
 		u:set_animation_speed(0)
+		if u:get_name() =='虚空诺亚' then print('捕捉到游戏失败时，最终boss,是否有禁锢：',u:has_restriction '禁锢') end
 		if not u:has_restriction '禁锢' then
 			table.insert(group, u)
 		end
@@ -204,7 +206,12 @@ ac.game:event '游戏-结束' (function(trg,flag)
 			n = n - 1
 		else
 			function mvr:on_remove()
-				-- print('移除',u:get_name(),u.handle)
+				-- if ac.final_boss then 
+				-- 	print('移除最终boss:',u:get_name(),u.handle)
+				-- 	ac.final_boss:remove()
+				-- 	ac.final_boss = nil
+				-- 	ac.final_boss_death = true
+				-- end
 				u:kill()
 				u:add_restriction '阿卡林'
 				u:add_buff '淡化'
