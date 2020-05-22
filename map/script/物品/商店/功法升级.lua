@@ -75,7 +75,7 @@ function mt:on_cast_start()
                     --升级技能
                     skl:upgrade(1)
                 else 
-                    p:sendMsg('|cffffe799【系统消息】|cff00ff00魔丸不足',5)
+                    p:sendMsg('|cffffe799【系统消息】|cffff0000魔丸不足',5)
                 end    
                 --再执行一遍
                 hero:event_notify('单位-点击商店物品',self.seller,hero,self)

@@ -57,10 +57,10 @@ function mt:atk_pas_shot(target)
 
     local attribute ={
         ['攻击'] = hero:get('攻击') * (0.8+self.level * 0.05),
-        ['护甲'] = hero:get('护甲') * (0.8+self.level * 0.05),
+        ['护甲'] = hero:get('护甲') * (0.5+self.level * 0.05),
         ['攻击间隔'] = hero:get('攻击间隔'),
         ['攻击速度'] = hero:get('攻击速度'),
-        ['生命上限'] = hero:get('生命上限')* (0.8+self.level * 0.05),
+        ['生命上限'] = hero:get('生命上限')* (0.5+self.level * 0.05),
         ['魔法上限'] = hero:get('魔法上限')* (0.8+self.level * 0.05),
         ['生命恢复'] = hero:get('生命恢复')* (0.8+self.level * 0.05),
         ['魔法恢复'] = hero:get('魔法恢复')* (0.8+self.level * 0.05),

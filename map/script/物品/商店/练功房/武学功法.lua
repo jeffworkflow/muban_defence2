@@ -74,7 +74,7 @@ for key,u_name in pairs(ac.kangfu) do
                             if not skl_color  then 
                                 print('功法测试2',skl_color,unit,killer)
                             end
-                            local max_cnt = math.min((p.kangfu_cnt[skl_color] or 1)*50,400)
+                            local max_cnt = math.min((p.kangfu_cnt[skl_color] or 1)*50,350)
                             p.kangfu[skl_color] = (p.kangfu[skl_color] or 0) +1
 
                             if p.kangfu[skl_color] % per_cnt == 0 then 

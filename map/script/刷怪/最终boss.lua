@@ -48,11 +48,11 @@ ac.game:event '游戏-最终boss' (function(trg)
                     ac.active_yccj(p,'强悍之人')
                 end
                 --血牛 
-                if hero:get('生命上限')>= 1000000000 * ac.g_game_degree_attr then 
+                if hero:get('生命上限')>= 5000000000 * ac.g_game_degree_attr then 
                     ac.active_yccj(p,'血牛')
                 end
                 --一出门就被秒
-                if p.cnt_death and p.cnt_death >= 50 then 
+                if p.cnt_death and p.cnt_death >= 35 then 
                     ac.active_yccj(p,'一出门就被秒')
                 end
             end
