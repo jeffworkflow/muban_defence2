@@ -504,11 +504,11 @@ local unit_reward = {
     ['难10'] =  {{ rand = 1.5, name = {{ rand = 10,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 35,   name = '3级物品'},{ rand = 15,   name = '4级物品'}}}},
     ['难11'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'}}}},
 
-    ['藏宝阁小弟'] = {{rand =1.4,name = '藏宝图'}},
+    ['藏宝阁小弟'] = {{rand =1.3,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
-        {    rand = 49.34, name = '无' },
-        {    rand = 8.2, name = '随机物品',},
+        {    rand = 49.54, name = '无' },
+        {    rand = 8, name = '随机物品',},
         {    rand = 3.5, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 40, name = '黄阶'},
                 { rand = 40, name = '玄阶'},

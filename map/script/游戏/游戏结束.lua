@@ -68,9 +68,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		return 
 	else
 		name = '【游戏失败】'
-		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
-		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
-		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！")
+		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cffff0000胜败乃兵家常事，大侠请重新来过！")
+		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cffff0000胜败乃兵家常事，大侠请重新来过！")
+		ac.player.self:sendMsg("|cffffe799【游戏失败】|r|cffff0000胜败乃兵家常事，大侠请重新来过！")
 		ac.wait(120*1000,function()
 			EndGame(true)
 			for i=1,8 do

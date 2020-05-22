@@ -66,11 +66,11 @@ function mt:damage_start(damage)
     end
     local attribute ={
         ['攻击'] = hero:get('攻击') * self.value,
-        ['护甲'] = hero:get('护甲') * self.value,
+        ['护甲'] = hero:get('护甲') * self.value*0.5,
         ['攻击间隔'] = hero:get('攻击间隔'),
 	
         ['攻击速度'] = hero:get('攻击速度'),
-        ['生命上限'] = hero:get('生命上限')* self.value,
+        ['生命上限'] = hero:get('生命上限')* self.value*0.5,
         ['魔法上限'] = hero:get('魔法上限')* self.value,
 	
         ['生命恢复'] = hero:get('生命恢复')* self.value,

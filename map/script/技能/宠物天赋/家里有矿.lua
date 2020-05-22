@@ -36,14 +36,14 @@ function mt:on_add()
     local skill = self
     local hero = self.owner
 end
-local temp = {'金币'}
+local temp = {'木头'}
 function mt:on_cast_start()
     local skill = self
     local p = self.owner.owner
     local peon = self.owner
     local hero = p.hero
     ac.func_give_suipian(ac.main_unit:get_point(),temp)
-    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff玩家 '..p:get_name()..' |cff00ff00的宠物家里有矿，往|cffffff00基地|cff00ff00撒了一堆钱，大家赶紧去抢！',5)
+    ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff玩家 '..p:get_name()..' |cff00ff00的宠物家里有矿，往|cffffff00基地|cff00ff00撒了一堆木头，大家赶紧去抢！',5)
 end
 function mt:on_remove()
     local hero = self.owner
@@ -53,7 +53,7 @@ function mt:on_remove()
     end
 end
 
-local mt = ac.skill['金币']
+local mt = ac.skill['木头']
 mt{
 --必填
 is_skill = true,

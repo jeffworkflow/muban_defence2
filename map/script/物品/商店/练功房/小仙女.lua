@@ -240,7 +240,7 @@ for _,name in ipairs(fairy) do
                 end    
             end 
         else 
-            p:sendMsg('|cffffe799【系统消息】|cff00ff00杀敌数不足',5)    
+            p:sendMsg('|cffffe799【系统消息】|cffff0000杀敌数不足',5)    
         end
     end  
 end     

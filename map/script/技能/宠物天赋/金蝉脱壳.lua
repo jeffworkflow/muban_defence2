@@ -15,7 +15,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 300,
+	cool = 450,
 	--作用在人身上
 	strong_hero = true,
 	--属性加成

@@ -421,7 +421,7 @@ local task_detail = {
     },
     
     ['爱我你就爆了我6'] = {
-        rate = 1,
+        rate = 2,
         award = '第六根柱子',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)

@@ -539,7 +539,7 @@ local function check_air(p)
     end
 end
 --统一概率
-local rate = 0.5
+local rate = 0.8
 -- local rate = 50.01
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner
