@@ -37,10 +37,15 @@ end
 function mt:on_cast_start()
     local skill = self
     local hero = self.owner
+    local p = hero.owner
     
     --概率触发
     if math.random(100) <= self.chance then
-        hero:add_item(ac.consumable_item[math.random(#ac.consumable_item)],true)
+        local name = ac.consumable_item[math.random(#ac.consumable_item)]
+        local it = hero:add_item(name,true)
+        p:sendMsg('【系统消息】 恭喜获得'.. (it and (it.color_name or name)))
+    else
+        p:sendMsg('【系统消息】什么都没得到')
     end    
 
 end

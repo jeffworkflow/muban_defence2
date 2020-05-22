@@ -105,13 +105,25 @@ function mt:on_cast_start()
         self.dialog = create_dialog(player,'吞噬装备',list,function (index)
             local item = list[index].item
             if item then 
-                --宠物吞噬自己身上的装备，给英雄加属性
-                -- item.owner = hero:get_owner().hero
-                --再加一次属性
-                item:on_add_state()
+                local skl = ac.skill[item.name]
+                skl.title = item.name
+                skl.store_name = item.store_name
+                skl.art = item.art
+                skl.tip = item:get_tip()
+                skl.is_order =1
+                --改变数值
+                for key,val in pairs(item) do  
+                    local attr = key
+                    if key:sub(-1, -1) == '%' then
+                        attr = key:sub(1, -2)
+                    end
+                    -- print('吞噬：',key,attr,ac.unit.attribute[attr],_in(attr,ac.player_attr))
+                    if ac.unit.attribute[attr] or _in(attr,ac.player_attr) then 
+                        skl[key] = val
+                    end
+                end
                 --移除装备，移除一次属性
                 item:item_remove()
-
                 --吞噬个数 +1
                 if not player.tunshi_cnt then 
                     player.tunshi_cnt =0
@@ -122,23 +134,10 @@ function mt:on_cast_start()
                 if not player.tunshi then 
                     player.tunshi = {}
                 end    
-                table.insert(player.tunshi,item)
-                --
-                local skl = ac.skill[item.name..' ']
-                skl{
-                    title = item.color_name,
-                    art = item.art,
-                    is_order = 1,
-                    tip = item:get_tip()
-
-
-                }
-                local new_skl_name = item.name..' '
-                if ac.tunshi_black_item and finds(ac.tunshi_black_item,item.name) then 
-                    new_skl_name = item.name
-                end
-                ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',new_skl_name)
-
+                table.insert(player.tunshi,skl)
+                ac.wait(10,function()
+                    ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',item.name)
+                end)
                 --触发超级彩蛋
                 if player.tunshi_cnt  == 8 then 
                     ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')

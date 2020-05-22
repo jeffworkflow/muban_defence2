@@ -1127,6 +1127,12 @@ function helper:test_b2(str)
 	ac.game:event_notify('技能-删除魔法书',hero,'精彩活动',str or '有趣的灵魂')
 end	
 
+
+function helper:test_b3(str)
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	local hero = p.hero
+	ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',str or '索利达尔之怒')
+end	
 function helper:test_i1()
 	local type_id = 'I013'
 	ac.test_nav = {}

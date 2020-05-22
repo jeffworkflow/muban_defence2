@@ -38,7 +38,7 @@ end
 
 local function create_u(skl,hero,point)
     local p = hero.owner
-    local u = p:create_unit('一颗神奇的种子',point)
+    local u = ac.player(11):create_unit('一颗神奇的种子',point)
     u:set('生命上限',10)
     u:add_restriction('无敌')
     u:add_restriction('定身')
