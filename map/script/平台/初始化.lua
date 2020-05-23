@@ -217,6 +217,8 @@ for i=1,10 do
                         player.server[name] = val
                         print('111111111111111111',name,val)
                     end    
+                else
+                    print('111111111111111111',key_name,player.server[key_name])
                 end    
             end   
         end)  

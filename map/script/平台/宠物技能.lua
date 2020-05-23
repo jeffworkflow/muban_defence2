@@ -104,7 +104,7 @@ function mt:on_add()
         value = 0 
     end
     ac.wait(500,function()
-        if value > 0 then
+        if value >= 0 then
             hero:peon_add_xp(value)
             hero:peon_add_lv()
         end    

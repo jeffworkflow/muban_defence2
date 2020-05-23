@@ -471,21 +471,34 @@ function helper:test_offline()
 end	
 
 --难3测试
-function helper:test_n3()
-	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+function helper:test_n2()
+	-- local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	for i=1,6 do 
+		local p = ac.player(i)
+		p:add('局内地图等级',2)
+		p:Map_SaveServerValue('cwjn',60000) --网易服务器
 
-    p:Map_SaveServerValue('JBLB',1) --网易服务器
-    p:Map_SaveServerValue('MCLB',1) --网易服务器
-    p:Map_SaveServerValue('WXHP',1) --网易服务器
-    p:Map_SaveServerValue('zzl',1) --网易服务器
-    p:Map_SaveServerValue('XHB',1) --网易服务器
-    p:Map_SaveServerValue('lhcq',1) --网易服务器
-    p:Map_SaveServerValue('sbkd',1) --网易服务器
-    p:Map_SaveServerValue('nsl',1) --网易服务器
-    p:Map_SaveServerValue('sjjh',50) --网易服务器
-    p:Map_SaveServerValue('yshz',20) --网易服务器
-    p:Map_SaveServerValue('wbjf',2000) --网易服务器
-    p:Map_SaveServerValue('cwjn',60000) --网易服务器
+		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('sldwb',1000) --网易服务器
+		p:Map_SaveServerValue('sldks',1000) --网易服务器
+		p:Map_SaveServerValue('slddz',1000) --网易服务器
+		p:Map_SaveServerValue('sldzs',1000) --网易服务器
+		p:Map_SaveServerValue('sldbp',1000) --网易服务器
+		p:Map_SaveServerValue('sldytz',1000) --网易服务器
+
+		p:Map_SaveServerValue('wsdmt',1) --网易服务器
+		p:Map_SaveServerValue('hjkg',1) --网易服务器
+		p:Map_SaveServerValue('cmgdxgn',1) --网易服务器
+		p:Map_SaveServerValue('ycmjbm',1) --网易服务器
+		p:Map_SaveServerValue('qhzr',1) --网易服务器
+		p:Map_SaveServerValue('fty',1) --网易服务器
+		p:Map_SaveServerValue('zjzt',1) --网易服务器
+		p:Map_SaveServerValue('ltc',1) --网易服务器
+		p:Map_SaveServerValue('xkwz',1) --网易服务器
+		p:Map_SaveServerValue('ty',1) --网易服务器
+		
+		p:event_notify '读取存档数据'
+	end
 
 end	
 
@@ -1202,6 +1215,35 @@ function helper:test_s(num)
 		self.owner:showSysWarning('物品栏已满')
 	end
 end	
+
+function helper:pp()
+	local function add_block(where,fly)
+		local x0,y0=where:get()
+		for x = x0 - 64, x0 + 64, 32 do
+			for y = y0 - 64, y0 + 64, 32 do
+				jass.SetTerrainPathable(x, y, 1, false)
+				if fly then
+					jass.SetTerrainPathable(x, y, 2, false)
+				end
+			end
+		end
+	end
+	--测试不可通行点
+	local point = self:get_point()
+	local distance = 200
+	for i=1,12 do 
+		local new_point = point -{(i-1)*30,distance}
+		add_block(new_point,true)
+		ac.effect_ex{
+			point = new_point,
+			model = [[File00000376 - W.mdx]]
+		}
+	end
+    
+end	
+
+
+
 --创建 魔兽自带兵
 function helper:u1()
 	local point = ac.map.rects['出生点']
