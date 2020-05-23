@@ -14,7 +14,7 @@ mt{
     damage = function(self)
         local p = self.owner.owner
         local hero = p.hero
-        return (hero:get('智力')*1)
+        return (hero:get('智力')*100)
     end,
 	--流派
 	skill_type = "技能触发类",

@@ -26,7 +26,7 @@ mt{
 	tip = [[ 
 |cffffe799【力量】+10%
 
-|cff00ffff所有队友|cffffff00【每秒加护甲+2.5】
+|cff00ffff所有队友|cffffff00【每秒加护甲+5】
 |cff00ffff基地|cffffff00【每秒加护甲+5】
 
 ]],
@@ -35,7 +35,7 @@ mt{
     --光环影响范围
     area = 99999,
     --值
-    team_value = 2.5,
+    team_value = 5,
     main_value = 5,
 }
 function mt:on_upgrade()

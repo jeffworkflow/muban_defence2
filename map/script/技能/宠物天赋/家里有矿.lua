@@ -75,5 +75,5 @@ item_type = '神符'
 --右击使用
 function mt:on_cast_start()
     local hero = self.owner
-    hero:add_wood(math.random(1,100))
+    hero:add_wood(math.random(1,150))
 end    
