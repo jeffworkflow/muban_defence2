@@ -192,7 +192,7 @@ for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实
                 p:sendMsg('本局已达兑换上限')    
             end    
         else 
-            p:sendMsg('材料不够')    
+            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000材料不够')    
         end    
     end    
 end    

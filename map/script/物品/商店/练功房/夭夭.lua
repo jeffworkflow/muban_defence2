@@ -161,7 +161,7 @@ for _,tab in ipairs(devil_deal) do
                     --给与奖励
                     self:on_cast_finish()
                 else
-                    p:sendMsg('全属性不足',10) 
+                    p:sendMsg('|cffFFE799【系统消息】|r|cffff0000全属性不足',10) 
                 end  
                 --停止继续执行   
                 self:stop()

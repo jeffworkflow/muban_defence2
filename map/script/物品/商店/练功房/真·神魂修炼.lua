@@ -44,7 +44,7 @@ function mt:on_cast_start()
         end    
     end    
     if red_cnt < 4 then 
-        p:sendMsg('材料不足')
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000材料不足')
         return 
     end    
     

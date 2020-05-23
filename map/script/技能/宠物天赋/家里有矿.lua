@@ -24,7 +24,7 @@ mt{
 	tip = [[ 
 |cffffe799【生命上限】+20%
 
-|cff00ff00在基地掉下大量金币
+|cff00ff00在基地掉下大量木头
 
 ]],
 	--技能图标
@@ -75,5 +75,5 @@ item_type = '神符'
 --右击使用
 function mt:on_cast_start()
     local hero = self.owner
-    hero:add_wood(math.random(1,100))
+    hero:add_wood(math.random(1,150))
 end    

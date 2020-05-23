@@ -132,7 +132,7 @@ function mt:on_cast_start()
         hero:add('全属性',-self.all_attr)
         p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜兑换成功',5)
     else
-        p:sendMsg('|cffffe799【系统消息】|cff00ff00兑换条件不足',5)
+        p:sendMsg('|cffffe799【系统消息】|cffff0000兑换条件不足',5)
     end
 end
 

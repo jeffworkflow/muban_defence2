@@ -25,7 +25,7 @@ award_kill_cnt = 500,
 
 function mt:on_cast_start()
     local p = self.owner:get_owner()
-    p:sendMsg('已领取或条件不足')
+    p:sendMsg('|cffFFE799【系统消息】|r|cffff0000已领取或条件不足')
 end
 
 

@@ -235,7 +235,7 @@ for i,name in ipairs({'祭祀-格里芬','祭祀-黑暗项链','祭祀-最强生
                 p:sendMsg('本局已达兑换上限')    
             end    
         else 
-            p:sendMsg('材料不够')    
+            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000材料不够')    
         end    
     end    
 end    

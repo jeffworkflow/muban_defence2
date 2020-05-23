@@ -205,36 +205,36 @@
             end    
         end    
         if gold < golds and not has_raffle then
-            u:get_owner():sendMsg('钱不够',3)
+            u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000钱不够',3)
             ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end 
         if wood < woods and not has_raffle  then
-            u:get_owner():sendMsg('木头不够',3)
+            u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000木头不够',3)
             ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end
         if kill_count < kill_counts and not has_raffle then
-            u:get_owner():sendMsg('杀敌数不够',3)
+            u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000杀敌数不够',3)
             ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end
         if jifens > 0 and not has_raffle then 
             if jifen < jifens then
-                u:get_owner():sendMsg('积分不够',3)
+                u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000积分不够',3)
                 ac.game:event_notify('单位-货币不足',seller,u,it)
                 return
             end
         end   
         if rec_ex < rec_exs and not has_raffle then
-            u:get_owner():sendMsg('魔丸不够',3)
+            u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000魔丸不够',3)
             ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end 
         --只能用兑换券 兑换的物品，没有兑换券时的处理 
         if it.raffle then
             if  rec_exs == 0 and jifens == 0 and kill_counts == 0 and woods == 0 and golds == 0  and not has_raffle then
-                u:get_owner():sendMsg('|cffffe799【系统消息】|r|cff00ff00条件不符',3)
+                u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不符',3)
                 ac.game:event_notify('单位-货币不足',seller,u,it)
                 return
             end 
@@ -250,7 +250,7 @@
 
         if it.max_buy_cnt  then
             if it.player_buy_cnt[player] and (it.player_buy_cnt[player] > (it.max_buy_cnt or 9999999)) then
-                u:get_owner():sendMsg('超出购买上限',3)
+                u:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000超出购买上限',3)
                 return
             end
         end    

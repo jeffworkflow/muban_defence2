@@ -539,7 +539,7 @@ local function check_air(p)
     end
 end
 --统一概率
-local rate = 0.8
+local rate = 1
 -- local rate = 50.01
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner
@@ -551,7 +551,7 @@ end)
 
 ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
     local p = hero.owner
-    if math.random(100000)/1000 < rate then 
+    if math.random(500000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
     end

@@ -118,7 +118,7 @@ function mt:on_cast_start()
     local p=self.owner.owner
     local hero = p.hero 
     if (p.cnt_dz or 0) <=0 then
-        p:sendMsg('挑战次数不够',5)
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000挑战次数不够',5)
         return true
     end
 

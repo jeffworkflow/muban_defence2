@@ -24,7 +24,7 @@ mt{
 	tip = [[ 
 |cffffe799【生命上限】+20%
 
-|cff00ff00钱越滚越多，点击获得|cffffff00【10%当前木头】|cff00ff00的木头
+|cff00ff00钱越滚越多，点击获得|cffffff00【20%当前木头】|cff00ff00的木头
 
 ]],
 	--技能图标
@@ -38,7 +38,7 @@ function mt:on_cast_start()
     local skill = self
     local hero = self.owner
     local p = self.owner.owner
-    hero:add_wood(p.wood * 0.1)  
+    hero:add_wood(p.wood * 0.2)  
 
 end
 function mt:on_remove()
