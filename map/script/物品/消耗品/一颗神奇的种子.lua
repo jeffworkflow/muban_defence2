@@ -9,8 +9,10 @@ art = [[zhongzi.blp]],
 tip = [[
 
 
-|cff00ff00在地上，埋下一颗神奇的种子，数千年后可获得果实
-]],
+在地上，埋下一颗神奇的种子，数千年后可获得果实
+
+|cffffe799每点种树熟练度|r 奖励 |cff00ff00每秒加护甲+0.002
+|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
 --品质
 color = '紫',
 -- owner_ship = true,
@@ -244,9 +246,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+10% ，技暴伤害+100% ，攻击间隔-0.05',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+10% ，技暴伤害+100% ，攻击间隔-0.05',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+10% ，技暴伤害+100% ，攻击间隔-0.05',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+5% ，技暴伤害+100% ，攻击间隔-0.05',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+5% ，技暴伤害+100% ，攻击间隔-0.05',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+5% ，技暴伤害+100% ，攻击间隔-0.05',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   

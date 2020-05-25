@@ -219,7 +219,7 @@ art = [[caiquan.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00点击使用后，在10秒内输入|cffffff00“剪刀”、“石头”、“布”|cff00ff00，进行猜拳:
+|cff00ff00直接输入|cffffff00“剪刀”、“石头”、“布”|cff00ff00，进行猜拳:
 |cff00ff00如果|cffffff00赢了|cff00ff00，杀敌数/木头/魔丸/全属性全部翻倍；
 |cff00ff00如果|cffffff00平手|cff00ff00，杀敌数/木头/魔丸/全属性全部翻0.5倍；
 |cff00ff00如果|cffffff00输了|cff00ff00，杀敌数/木头/魔丸/全属性全部凉凉

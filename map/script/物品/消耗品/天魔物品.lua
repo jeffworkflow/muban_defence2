@@ -227,6 +227,7 @@ mt{
 art = "tianzai.blp",
 extr_tip = '|cffffff00点击可激活【天灾骨钟】，激活后可在圣龙气运-入魔中查看',
 ['暴击几率极限'] = 5,
+['移动速度'] = 50,
 ['暴击几率'] = 5,
 ['暴击伤害'] = 1000,
 ['全属性'] = 20000000,
@@ -236,6 +237,7 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性|r
+|cff00ff00+50   移动速度|r
 |cff00ff00+100% 吸血|r
 |cff00ff00+5% 暴击几率（无视暴击几率上限）|r
 |cff00ff00+1000% 暴击伤害|r
@@ -269,7 +271,7 @@ art = "yanwangyin.blp",
 extr_tip = '|cffffff00点击可激活【阎王印】，激活后可在圣龙气运-入魔中查看',
 ['会心几率极限'] = 5,
 ['会心几率'] = 5,
-['会心伤害'] = 500,
+['会心伤害'] = 250,
 ['全属性'] = 20000000,
 ['攻击%'] = 20,
 
@@ -279,7 +281,7 @@ tip = [[%extr_tip%
 |cff00ff00+2000W 全属性|r
 |cff00ff00+20% 攻击|r
 |cff00ff00+5% 会心几率（无视会心几率上限）|r
-|cff00ff00+500% 会心伤害|r
+|cff00ff00+250% 会心伤害|r
  ]],
 }
 local mt = ac.skill['谛听的印记']
@@ -346,7 +348,7 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性|r
-|cff00ff00+10个 强化石|r
+|cff00ff00+25个 强化石|r
 |cff00ff00+5个 天谕|r
 |cff00ff00+1个 吞噬丹|r
 
@@ -359,7 +361,7 @@ function mt:on_add()
     local p = hero:get_owner()
 
     local it = ac.item.create_item('强化石',self.owner:get_point())
-    it:set_item_count(10)
+    it:set_item_count(25)
     hero:add_item(it) 
 
     local it = ac.item.create_item('天谕',self.owner:get_point())

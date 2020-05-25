@@ -9,7 +9,9 @@ mt{
 
 
 无字天书上封印着一股强大的神秘气息|cffdf19d0(点击耗费10000魔丸解开封印)|r
-]],
+
+|cffffe799每点看书熟练度|r 奖励 |cff00ff00每秒加智力+0.1
+|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
     --物品类型
     item_type = '消耗品',
     rec_ex = 10000,
@@ -121,9 +123,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+10%， 全伤加深+50%',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+10%， 全伤加深+50%',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+10%， 全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end   

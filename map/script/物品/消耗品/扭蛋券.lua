@@ -8,8 +8,10 @@ art = [[cjnd.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次|cffffff00扭蛋(十连抽)|cff00ff00的机会|r
-]],
+可以在扭蛋处兑换一次|cffffff00扭蛋(十连抽)|r的机会
+
+|cffffe799每点白嫖熟练度|r 奖励 |cff00ff00每秒加生命上限+1
+|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
 --物品类型
 item_type = '消耗品',
 --不可点击
@@ -86,8 +88,10 @@ art = [[gjnd.blp]],
 --说明
 tip = [[ 
 
-|cff00ff00可以在扭蛋处兑换一次|cffffff00超级扭蛋(十连抽)|cff00ff00的机会|r
-]],
+可以在扭蛋处兑换一次|cffffff00超级扭蛋(十连抽)|r的机会
+
+|cffffe799每点白嫖熟练度|r 奖励 |cff00ff00每秒加生命上限+1
+|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
 --物品类型
 item_type = '消耗品',
 specail_model = [[WP3.mdx]],

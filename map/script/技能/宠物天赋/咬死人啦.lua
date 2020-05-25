@@ -28,7 +28,7 @@ mt{
 	tip = [[ 
 |cffffe799【攻击】+20%
 
-|cff00ff00经常咬死队友的宠物，使主人赔了不少医药费|cffff0000（减少500木头，+2%全伤加深），|cffffff00队友增加500木头
+|cff00ff00经常咬死队友的宠物，使主人赔了不少医药费|cffff0000（减少500木头，+3%全伤加深），|cffffff00队友增加500木头
 
 ]],
 	--技能图标
@@ -37,7 +37,7 @@ mt{
     effect = [[Abilities\Spells\NightElf\shadowstrike\ShadowStrikeMissile.mdl]],
     effect2 = [[Abilities\Spells\NightElf\shadowstrike\ShadowStrike.mdl]],
     --全伤加深
-    value = 2,
+    value = 3,
     --木头
     ex_wood = 500,
     --定身时间

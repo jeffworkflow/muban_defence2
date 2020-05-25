@@ -9,8 +9,10 @@ art = [[anheishaizi.blp]],
 tip = [[
 
 
-|cff00ff00我命由天不由我，请小心使用，以免gg|r
-]],
+我命由天不由我，请小心使用，以免gg
+
+|cffffe799每点摇骰子熟练度|r 奖励 |cff00ff00每秒加攻击+0.2
+|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
 --品质
 -- color = '紫',
 --物品类型
@@ -174,9 +176,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+10%， 会心伤害+100%， 多重暴击几率+10%， 多重暴击+1',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+10%， 会心伤害+100%， 多重暴击几率+10%， 多重暴击+1',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+10%， 会心伤害+100%， 多重暴击几率+10%， 多重暴击+1',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+5%， 会心伤害+50%， 多重暴击几率+5%， 多重暴击+1',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+5%， 会心伤害+50%， 多重暴击几率+5%， 多重暴击+1',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+5%， 会心伤害+50%， 多重暴击几率+5%， 多重暴击+1',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end 

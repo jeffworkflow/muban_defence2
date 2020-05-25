@@ -8,8 +8,10 @@ mt{
     tip = [[
 
 
-根据提示，到指定地点，挖开即可获得 |cffdf19d0 各种宝藏 |r
-]],
+根据提示，到指定地点，挖开即可获得|cffdf19d0 各种宝藏 |r
+
+|cffffe799每点挖宝熟练度|r 奖励 |cff00ff00每秒加敏捷+0.1
+|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
     --物品类型
     item_type = '消耗品',
     specail_model = [[ScrollOfProtection.mdx]],
@@ -254,9 +256,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+10%，技暴伤害+100%，技能伤害加深+50%',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+10%，技暴伤害+100%，技能伤害加深+50%',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+10%，技暴伤害+100%，技能伤害加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+5%，技暴伤害+100%，技能伤害加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+5%，技暴伤害+100%，技能伤害加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，技暴几率+5%，技暴伤害+100%，技能伤害加深+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
         end  
@@ -280,9 +282,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+10%，会心伤害+100%，全伤加深+50%',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+10%，会心伤害+100%，全伤加深+50%',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+10%，会心伤害+100%，全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+5%，会心伤害+50%，全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+5%，会心伤害+50%，全伤加深+50%',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，会心几率+5%，会心伤害+50%，全伤加深+50%',6)
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
         end  
