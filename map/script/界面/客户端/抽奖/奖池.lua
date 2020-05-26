@@ -196,12 +196,12 @@ mt{
 function mt:on_cast_start()
     local hero = self.owner
     local p = hero.owner 
-    if new_ui.is_show then 
-    p:sendMsg('|cffffe799【系统提示】|cff00ff00请勿打开幸运转盘',5)
+    if p.flag_cj then 
+        p:sendMsg('|cffffe799【系统提示】|cff00ff00请勿打开幸运转盘',5)
         self:add_item_count(1)
         return 
     end
-
+    p.flag_cj = true
     p.save_coin = (p.save_coin or 0) + 1
 
     local temp = {}

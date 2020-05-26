@@ -164,7 +164,7 @@ class.player_info_panel = extends(class.panel){
                         new_value = peon and peon:find_skill('宠物技能') and peon:find_skill('宠物技能').level or 0
                     elseif name =='宠物毕业数量' then
                         for i=1,64 do 
-                            if has_flag(player.server['宠物纪念册'],2^(i-1)) then 
+                            if has_flag((player.server['宠物纪念册'] or 0),2^(i-1)) then 
                                 new_value = new_value + 1  
                             end
                         end

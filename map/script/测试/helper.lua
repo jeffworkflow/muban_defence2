@@ -478,7 +478,7 @@ function helper:test_n2()
 		p:add('局内地图等级',2)
 		p:Map_SaveServerValue('cwjn',60000) --网易服务器
 
-		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('cntsb',2) --网易服务器
 		p:Map_SaveServerValue('sldwb',1000) --网易服务器
 		p:Map_SaveServerValue('sldks',1000) --网易服务器
 		p:Map_SaveServerValue('slddz',1000) --网易服务器
@@ -502,6 +502,38 @@ function helper:test_n2()
 
 end	
 
+--难3测试
+function helper:test_n3()
+	-- local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	for i=1,6 do 
+		local p = ac.player(i)
+		p:add('局内地图等级',4)
+		p:Map_SaveServerValue('cwjn',60000) --网易服务器
+
+		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('cntqs',2) --网易服务器
+		p:Map_SaveServerValue('sldwb',5000) --网易服务器
+		p:Map_SaveServerValue('sldks',5000) --网易服务器
+		p:Map_SaveServerValue('slddz',5000) --网易服务器
+		p:Map_SaveServerValue('sldzs',5000) --网易服务器
+		p:Map_SaveServerValue('sldbp',5000) --网易服务器
+		p:Map_SaveServerValue('sldytz',5000) --网易服务器
+
+		p:Map_SaveServerValue('wsdmt',2) --网易服务器
+		p:Map_SaveServerValue('hjkg',2) --网易服务器
+		p:Map_SaveServerValue('cmgdxgn',2) --网易服务器
+		p:Map_SaveServerValue('ycmjbm',2) --网易服务器
+		p:Map_SaveServerValue('qhzr',2) --网易服务器
+		p:Map_SaveServerValue('fty',2) --网易服务器
+		p:Map_SaveServerValue('zjzt',2) --网易服务器
+		p:Map_SaveServerValue('ltc',2) --网易服务器
+		p:Map_SaveServerValue('xkwz',2) --网易服务器
+		p:Map_SaveServerValue('ty',2) --网易服务器
+		
+		p:event_notify '读取存档数据'
+	end
+
+end	
 --伤害自己
 function helper:damage(damage)
 	self:damage

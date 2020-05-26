@@ -195,7 +195,10 @@ for i=1,10 do
                 local key_name = tab[2]
                 if tab[3] then 
                     for name,data in sortpairs(tab[3]) do 
-                        local has_item = player:Map_GetServerValue(key) >= data[1] and 1 
+                        -- 从网易服务器读取
+                        -- local has_item = player:Map_GetServerValue(key) >= data[1] and 1 
+                        local has_item = player.server[key_name] >= data[1] and 1  --从客户端（已读取）
+                        
                         --如果自定义服务器有值，以自定义服务器为准
                         if key_name == '签到' and player.cus_server and player.cus_server[key_name] then 
                             has_item = player.cus_server[key_name] >= data[1] and 1 
@@ -206,7 +209,7 @@ for i=1,10 do
                             val = data:value(player) or 0
                             -- print(key_name,'地图等级',player:Map_GetMapLevel(),val)
                         end    
-                        -- print(key_name,name,has_item,player.cus_server[key_name],player:Map_GetMapLevel(),map_level)
+                        -- print(key_name,name,has_item,player.server[key_name],player:Map_GetMapLevel(),map_level)
                         if has_item and has_item > 0 
                         and player:Map_GetMapLevel() >= map_level
                         then 
@@ -215,10 +218,10 @@ for i=1,10 do
                             val = 0
                         end  
                         player.server[name] = val
-                        print('111111111111111111',name,val)
+                        print('111111111111111111',player,name,val)
                     end    
                 else
-                    print('111111111111111111',key_name,player.server[key_name])
+                    print('111111111111111111',player,key_name,player.server[key_name])
                 end    
             end   
         end)  

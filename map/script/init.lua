@@ -38,7 +38,7 @@ require '测试'
 -- jass.CreateDestructable(base.string2id('B04E'), 0, 0, 0, 1, 0) 
 
 
-ac.wait(100,function ()
+ac.wait(0,function ()
     local function light(type)
         local light = {
             'Ashenvale',
@@ -58,3 +58,10 @@ ac.wait(100,function ()
     print('游戏开始时间：',time2string(ac.player(1):Map_GetGameStartTime()))
     ac.player(16):setColor(7)    
 end);
+--测试难2
+ac.wait(1199,function ()
+    for i=1,6 do 
+        local p = ac.player(i)
+        p:Map_SaveServerValue('wxnd',10) --网易服务器
+    end
+end)

@@ -84,6 +84,8 @@ local function hero_register_main()
 		--添加通用技能
 		hero:add_skill('凌波微步','隐藏')
 		hero:add_skill('减少周围护甲','隐藏')
+		hero:add_skill('熟练度奖励','隐藏')
+		
 		hero:add_skill('F2回城', '隐藏')
 		hero:add_skill('F3小黑屋', '隐藏')
 		
@@ -93,10 +95,10 @@ local function hero_register_main()
 		-- ac.wait(os.clock()*1000 % 1000 ,function()
 		-- end)
 		
-		-- player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
+		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 		
 		-- 创建宠物
-		player:create_pets('高级鸡')
+		-- player:create_pets('高级鸡')
 
 		-- player:selectUnit(player.peon)
 		

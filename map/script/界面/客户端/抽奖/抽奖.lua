@@ -122,7 +122,7 @@ local new_ui = class.panel:builder
         -- self.start_button.text:set_text(ac.player.self.save_coin) 
     end,
     fresh = function(self)
-        self:fresh_save_coin()
+        -- self:fresh_save_coin()
         local p = ac.player.self
         for i,data in ipairs(p.award_list) do 
             -- local is_save_item = ac.table.ItemData[data.name]
@@ -278,6 +278,7 @@ local event = {
         local player = ui.player 
         local hero = player.hero
         local ok
+        player.flag_cj = nil --标识为抽奖结束
         --加熟练度
         for k,v in string.gsub(player.reward_name,'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
             local key = ac.server.name2key(k)
