@@ -21,13 +21,13 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 180,
+	cool = 60,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--介绍
 	tip = [[
 
-|cffffe799【点金术】|r能立即杀死非BOSS类的单位，并获得|cffffe79925倍的赏金*物品等级|r
+|cffffe799【点金术】|r能立即杀死非BOSS类的单位，并获得|cffffe79915倍的赏金*物品等级|r
 ]],
 	--备注
 	effect4 = [[主动使用，施法距离=1000]],
@@ -35,7 +35,7 @@ mt{
 	--目标类型
 	target_type = ac.skill.TARGET_TYPE_UNIT,
 	value = function(self)
-		return self.level*25
+		return self.level*15
 	end,
 	range = 1000
 }
