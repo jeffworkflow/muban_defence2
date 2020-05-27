@@ -26,7 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀敌数翻倍概率'] = 3,
 ['全属性翻倍概率'] = 1.5,
 ['黑暗骰子掉落概率'] = 100,
--- ['局内地图等级'] = 1,
+['局内地图等级'] = 1,
 }
 function mt:on_add()
     local hero = self.owner

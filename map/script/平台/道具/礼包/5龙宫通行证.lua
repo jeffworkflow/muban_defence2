@@ -24,7 +24,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['会心几率'] = 10,
 ['扭蛋券（十连抽）掉落概率'] = 100,
 ['超级扭蛋券（十连抽）掉落概率'] = 100,
--- ['局内地图等级'] = 1,
+['局内地图等级'] = 1,
 }
 function mt:on_add()
     local hero = self.owner

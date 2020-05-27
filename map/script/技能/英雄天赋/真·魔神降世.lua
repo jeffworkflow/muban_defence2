@@ -59,6 +59,7 @@ function mt:atk_pas_shot(target)
 		['攻击速度'] = 350,
 		['分裂伤害'] = 35,
 		['减伤'] = 35,
+		['攻击减甲'] = 50,
 	}
 	self.buf = hero:add_buff '变身'{
 		time =skill.time,

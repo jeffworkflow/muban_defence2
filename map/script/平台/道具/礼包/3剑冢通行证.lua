@@ -24,7 +24,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加木头'] = 38,
 ['强化石掉落概率'] = 100,
 ['天谕掉落概率'] = 100,
--- ['局内地图等级'] = 1,
+['局内地图等级'] = 1,
 }
 function mt:on_add()
     local hero = self.owner

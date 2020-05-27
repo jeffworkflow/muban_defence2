@@ -23,11 +23,11 @@ mt{
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--属性加成
-['护甲%'] = {0.5,10},
+['护甲%'] = {1,20},
 	--介绍
-	tip = [[|cffffff00【护甲】+0.5%*Lv
+	tip = [[|cffffff00【护甲】+1%*Lv
 
-|cff00bdec【被动效果】杀怪1%几率 获得0.05%永久护甲|cffff0000（已获得 %has_val% |cffff0000%护甲）
+|cff00bdec【被动效果】杀怪1%几率 获得0.1%永久护甲|cffff0000（已获得 %has_val% |cffff0000%护甲）
  ]],
 	--技能图标
 	art = [[hjzj.blp]],
@@ -38,7 +38,7 @@ mt{
 	--被动事件
 	event_name = "单位-杀死单位",
 	attr_name = '护甲%',
-	value = 0.05,
+	value = 0.1,
 	has_val = function(self)
 		return self.spell_stack * self.value
 	end,
