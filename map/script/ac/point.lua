@@ -104,7 +104,8 @@ local block_points = {}
 -- 边长x
 -- 边长y
 -- 是否阻挡空中
-function mt:add_block(x, y, air)
+-- 是否不可通行
+function mt:add_block(x, y, air,block)
 	if not self.block_points then
 		self.block_points = {}
 		table_insert(block_points, self.block_points)
@@ -121,7 +122,14 @@ function mt:add_block(x, y, air)
 		for dy = - y / 2, y / 2, 32 do
 			local p = ac.point(x0 + dx, y0 + dy)
 			p.block_air = air
+			p.block = block
 			table_insert(self.block_points, p)
+			if block then 
+				jass.SetTerrainPathable(x0 + dx,  y0 + dy, 1, false)
+				if air then
+					jass.SetTerrainPathable(x0 + dx,  y0 + dy, 2, false)
+				end
+			end
 		end
 	end
 end
@@ -131,6 +139,16 @@ function mt:remove_block()
 	if self.block_points then
 		for i, points in ipairs(block_points) do
 			if self.block_points == points then
+				-- print(11111111111111)
+				for i,point in ipairs(points) do 
+					if point.block then 
+						local x,y = point:get()
+						jass.SetTerrainPathable(x, y, 1, true)
+						if point.block_air then
+							jass.SetTerrainPathable(x, y, 2, true)
+						end
+					end
+				end
 				table_remove(block_points, i)
 				block_points.new = true
 				return

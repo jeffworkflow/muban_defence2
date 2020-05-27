@@ -477,6 +477,7 @@ function helper:test_n2()
 		local p = ac.player(i)
 		p:add('局内地图等级',2)
 		p:Map_SaveServerValue('cwjn',60000) --网易服务器
+		p:event_notify '读取存档数据'
 
 		p:Map_SaveServerValue('cntsb',2) --网易服务器
 		p:Map_SaveServerValue('sldwb',1000) --网易服务器
@@ -496,10 +497,9 @@ function helper:test_n2()
 		p:Map_SaveServerValue('ltc',1) --网易服务器
 		p:Map_SaveServerValue('xkwz',1) --网易服务器
 		p:Map_SaveServerValue('ty',1) --网易服务器
-		
-		p:event_notify '读取存档数据'
-	end
+		p.server['吕布'] = 1
 
+	end
 end	
 
 --难3测试
@@ -509,6 +509,7 @@ function helper:test_n3()
 		local p = ac.player(i)
 		p:add('局内地图等级',4)
 		p:Map_SaveServerValue('cwjn',60000) --网易服务器
+		p:event_notify '读取存档数据'
 
 		p:Map_SaveServerValue('cntsb',1) --网易服务器
 		p:Map_SaveServerValue('cntqs',2) --网易服务器
@@ -529,9 +530,22 @@ function helper:test_n3()
 		p:Map_SaveServerValue('ltc',2) --网易服务器
 		p:Map_SaveServerValue('xkwz',2) --网易服务器
 		p:Map_SaveServerValue('ty',2) --网易服务器
-		
-		p:event_notify '读取存档数据'
+		p.server['吕布'] = 1
+		p.server['熊灵分裂'] = 1
+
+		p.mall['金币礼包'] = 1
+		p.mall['木材礼包'] = 1
+		p.mall['入群礼包'] = 1
+		p.mall['五星好评礼包'] = 1
 	end
+	
+	ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+		for i=1,5 do 
+			local rand = math.random(#ac.save_item[1]['白'])
+			local name = ac.save_item[1]['白'][rand]
+			hero:add_item(name)
+		end
+	end)
 
 end	
 --伤害自己
