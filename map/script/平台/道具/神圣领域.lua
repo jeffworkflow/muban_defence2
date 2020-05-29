@@ -14,14 +14,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+216  杀怪加生命上限|r
-|cff00ff00+100  减少周围护甲|r
+|cff00ff00+200  减少周围护甲|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 216,
-['减少周围护甲'] = 100,
+['减少周围护甲'] = 200,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 1,
@@ -44,14 +44,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+336  杀怪加生命上限|r
-|cff00ff00+200  减少周围护甲|r
+|cff00ff00+400  减少周围护甲|r
 |cff00ff00+10   每秒加魔丸|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 336,
-['减少周围护甲'] = 200,
+['减少周围护甲'] = 400,
 ['每秒加魔丸'] = 10,
 need_map_level = 4,
 --特效
@@ -73,14 +73,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+456  杀怪加生命上限|r
-|cff00ff00+300  减少周围护甲|r
+|cff00ff00+600  减少周围护甲|r
 |cff00ff00+5%   技能冷却|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 456,
-['减少周围护甲'] = 300,
+['减少周围护甲'] = 600,
 ['技能冷却'] = 5,
 
 need_map_level = 7,
@@ -103,7 +103,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+576  杀怪加生命上限|r
-|cff00ff00+400  减少周围护甲|r
+|cff00ff00+800  减少周围护甲|r
 |cff00ff00+15   每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
@@ -111,7 +111,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 576,
-['减少周围护甲'] = 400,
+['减少周围护甲'] = 800,
 ['每秒加魔丸'] = 15,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
@@ -135,14 +135,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+696  杀怪加生命上限|r
-|cff00ff00+500  减少周围护甲|r
+|cff00ff00+1000  减少周围护甲|r
 |cff00ff00+10%  对BOSS额外伤害|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 696,
-['减少周围护甲'] = 500,
+['减少周围护甲'] = 1000,
 ['对BOSS额外伤害'] = 10,
 need_map_level = 13,
 --特效
@@ -164,7 +164,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+816  杀怪加生命上限|r
-|cff00ff00+600  减少周围护甲|r
+|cff00ff00+1200  减少周围护甲|r
 |cff00ff00+20   每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
@@ -172,7 +172,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 816,
-['减少周围护甲'] = 600,
+['减少周围护甲'] = 1200,
 ['每秒加魔丸'] = 20,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
@@ -196,15 +196,15 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+936  杀怪加生命上限|r
-|cff00ff00+700  减少周围护甲|r
-|cff00ff00+1    多重射|r
+|cff00ff00+1400  减少周围护甲|r
+|cff00ff00+2    多重射|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 936,
-['减少周围护甲'] = 700,
-['多重射'] = 1,
+['减少周围护甲'] = 1400,
+['多重射'] = 2,
 
 need_map_level = 19,
 --特效
@@ -226,7 +226,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+1056  杀怪加生命上限|r
-|cff00ff00+800  减少周围护甲|r
+|cff00ff00+1600  减少周围护甲|r
 |cff00ff00+25   每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
@@ -234,7 +234,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 1056,
-['减少周围护甲'] = 800,
+['减少周围护甲'] = 1600,
 ['每秒加魔丸'] = 25,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
@@ -258,14 +258,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+1176  杀怪加生命上限|r
-|cff00ff00+900  减少周围护甲|r
+|cff00ff00+1800  减少周围护甲|r
 |cff00ff00+10%  攻击距离|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 1176,
-['减少周围护甲'] = 900,
+['减少周围护甲'] = 1800,
 ['攻击距离%'] = 10,
 need_map_level = 25,
 --特效
@@ -287,7 +287,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+1296  杀怪加生命上限|r
-|cff00ff00+1000  减少周围护甲|r
+|cff00ff00+2000  减少周围护甲|r
 |cff00ff00+30    每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
@@ -295,7 +295,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 1296,
-['减少周围护甲'] = 1000,
+['减少周围护甲'] = 2000,
 ['每秒加魔丸'] = 30,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
@@ -304,66 +304,66 @@ need_map_level = 28,
 effect = [[lingyu8.mdx]]
 }
 
-local mt = ac.skill['飞沙热浪领域']
-mt{
---等级
-level = 0,
---图标
-art = [[ftrl.blp]],
---说明
-tip = [[
+-- local mt = ac.skill['飞沙热浪领域']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[ftrl.blp]],
+-- --说明
+-- tip = [[
 
-|cffffe799【获得方式】：|r
-|cff00ffff地图等级=%need_map_level%
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff地图等级=%need_map_level%
 
-|cffFFE799【领域属性】：|r
-|cff00ff00+75  杀怪加全属性|r
-|cff00ff00+450  减少周围护甲|r
-|cff00ff00+60%  物理伤害加深|r
-|cff00ff00+5%  全伤加深|r
+-- |cffFFE799【领域属性】：|r
+-- |cff00ff00+75  杀怪加全属性|r
+-- |cff00ff00+450  减少周围护甲|r
+-- |cff00ff00+60%  物理伤害加深|r
+-- |cff00ff00+5%  全伤加深|r
 
-|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 75,
-['减少周围护甲'] = 450,
-['物理伤害加深'] = 60,
-['全伤加深'] = 5,
-need_map_level = 17,
---特效
-effect = [[lingyu11.mdx]]
-}
+-- |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 75,
+-- ['减少周围护甲'] = 450,
+-- ['物理伤害加深'] = 60,
+-- ['全伤加深'] = 5,
+-- need_map_level = 17,
+-- --特效
+-- effect = [[lingyu11.mdx]]
+-- }
 
 
-local mt = ac.skill['灵霄烟涛领域']
-mt{
---等级
-level = 0,
---图标
-art = [[lxyt.blp]],
---说明
-tip = [[
+-- local mt = ac.skill['灵霄烟涛领域']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[lxyt.blp]],
+-- --说明
+-- tip = [[
 
-|cffffe799【获得方式】：|r
-|cff00ffff地图等级=%need_map_level%
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff地图等级=%need_map_level%
 
-|cffFFE799【领域属性】：|r
-|cff00ff00+98  杀怪加全属性|r
-|cff00ff00+600  减少周围护甲|r
-|cff00ff00+100%  物理伤害加深|r
-|cff00ff00+10%  全伤加深|r
+-- |cffFFE799【领域属性】：|r
+-- |cff00ff00+98  杀怪加全属性|r
+-- |cff00ff00+600  减少周围护甲|r
+-- |cff00ff00+100%  物理伤害加深|r
+-- |cff00ff00+10%  全伤加深|r
 
-|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 98,
-['减少周围护甲'] = 600,
-['物理伤害加深'] = 100,
-['全伤加深'] = 10,
-need_map_level = 22,
---特效
-effect = [[lingyu10.mdx]]
-}
+-- |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 98,
+-- ['减少周围护甲'] = 600,
+-- ['物理伤害加深'] = 100,
+-- ['全伤加深'] = 10,
+-- need_map_level = 22,
+-- --特效
+-- effect = [[lingyu10.mdx]]
+-- }
 
 
 -- local mt = ac.skill['孤风青龙领域']

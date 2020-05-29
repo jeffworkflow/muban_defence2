@@ -10,7 +10,7 @@ ac.kangfu ={
 }
 local temp_reward = {
     ['功法掉落'] = {
-        { rand = 0.02,      name = '功法升级书'},
+        { rand = 0.05,      name = '功法升级书'},
         { rand = 0.01,      name = '功法连升书'}
     }
 }

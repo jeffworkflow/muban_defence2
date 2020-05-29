@@ -15,7 +15,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【天赋属性】：|r
 |cffffff00【杀怪加力量】+80*Lv
 【吸血】+10%
-【攻击距离】+100
+【攻击距离】+50
 【物理伤害加深】+50%
 
 |cff00ffff【被动效果】攻击10%几率变身魔神，持续8秒
@@ -178,7 +178,7 @@ level = 0,
 is_order = 1,
 --图标
 art = [[xiongling1.blp]],
-title ='熊灵能力：分裂',
+title ='熊灵能力：分裂击',
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -187,7 +187,7 @@ tip = [[
 |cff00ff00骑士2段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00使得召唤出来的狗熊，拥有250%的分裂伤害
+|cff00ff00使得召唤出来的狗熊，强化攻击并拥有350%的分裂伤害
 
 ]],
 need_map_level = 4,
@@ -198,17 +198,20 @@ local mt = ac.skill['熊灵分裂1']
 mt{
 --等级
 level = 1,
-title ='分裂',
+title ='分裂击',
 --图标
 art = [[xiongling1.blp]],
 --说明
 tip = [[
 
-|cff00ffff分裂伤害+250%
+|cff00ffff攻击+250%
+|cff00ffff分裂伤害+350%
 
 ]],
 need_map_level = 4,
-['分裂伤害'] =250
+['攻击%'] =250,
+['分裂伤害'] =350,
+
 }
 
 

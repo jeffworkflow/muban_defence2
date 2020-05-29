@@ -14,14 +14,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+36  杀怪加敏捷|r
-|cff00ff00+15% 物理伤害加深|r
+|cff00ff00+20% 物理伤害加深|r
 |cff00ff00+25% 攻击速度|r
 
 |cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 36,
-['物理伤害加深'] = 15,
+['物理伤害加深'] = 20,
 ['攻击速度'] = 25,
 need_map_level = 2,
 --特效
@@ -45,14 +45,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+56  杀怪加敏捷|r
-|cff00ff00+30% 物理伤害加深|r
+|cff00ff00+40% 物理伤害加深|r
 |cff00ff00+1   每秒加杀敌数|r
 
 |cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 56,
-['物理伤害加深'] = 30,
+['物理伤害加深'] = 40,
 ['每秒加杀敌数'] = 1,
 need_map_level = 5,
 --特效
@@ -76,14 +76,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+76  杀怪加敏捷|r
-|cff00ff00+45% 物理伤害加深|r
+|cff00ff00+60% 物理伤害加深|r
 |cff00ff00+25  移动速度|r
 
 |cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 76,
-['物理伤害加深'] = 45,
+['物理伤害加深'] = 60,
 ['移动速度'] = 25,
 need_map_level = 8,
 --特效
@@ -107,7 +107,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+96  杀怪加敏捷|r
-|cff00ff00+60% 物理伤害加深|r
+|cff00ff00+80% 物理伤害加深|r
 |cff00ff00+2   每秒加杀敌数|r
 |cff00ff00+10% 扭蛋券(十连抽)/超级扭蛋券(十连抽)掉落概率|r
 
@@ -115,7 +115,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 96,
-['物理伤害加深'] = 60,
+['物理伤害加深'] = 80,
 ['每秒加杀敌数'] = 2,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
@@ -143,7 +143,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+116 杀怪加敏捷|r
-|cff00ff00+75% 物理伤害加深|r
+|cff00ff00+100% 物理伤害加深|r
 |cff00ff00+25% 吸血|r
 |cff00ff00+10% 扭蛋券(十连抽)/超级扭蛋券(十连抽)掉落概率|r
 
@@ -151,7 +151,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 116,
-['物理伤害加深'] = 75,
+['物理伤害加深'] = 100,
 ['吸血'] = 25,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
@@ -177,7 +177,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+136 杀怪加敏捷|r
-|cff00ff00+90% 物理伤害加深|r
+|cff00ff00+120% 物理伤害加深|r
 |cff00ff00+3   每秒加杀敌数|r
 |cff00ff00+10% 扭蛋券(十连抽)/超级扭蛋券(十连抽)掉落概率|r
 
@@ -185,7 +185,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 136,
-['物理伤害加深'] = 90,
+['物理伤害加深'] = 120,
 ['每秒加杀敌数'] = 3,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
@@ -212,14 +212,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+156  杀怪加敏捷|r
-|cff00ff00+105% 物理伤害加深|r
+|cff00ff00+140% 物理伤害加深|r
 |cff00ff00+1    多重射|r
 
 |cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 156,
-['物理伤害加深'] = 105,
+['物理伤害加深'] = 140,
 ['多重射'] = 1,
 need_map_level = 20,
 --特效
@@ -244,7 +244,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+176  杀怪加敏捷|r
-|cff00ff00+120% 物理伤害加深|r
+|cff00ff00+160% 物理伤害加深|r
 |cff00ff00+4    每秒加杀敌数|r
 |cff00ff00+10%  扭蛋券(十连抽)/超级扭蛋券(十连抽)掉落概率|r
 
@@ -252,7 +252,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 176,
-['物理伤害加深'] = 120,
+['物理伤害加深'] = 160,
 ['每秒加杀敌数'] = 4,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
@@ -279,14 +279,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+196  杀怪加敏捷|r
-|cff00ff00+135% 物理伤害加深|r
+|cff00ff00+180% 物理伤害加深|r
 |cff00ff00+1    多重暴击|r
 
 |cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 196,
-['物理伤害加深'] = 135,
+['物理伤害加深'] = 180,
 ['多重暴击'] = 1,
 need_map_level = 26,
 --特效
@@ -310,7 +310,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+216  杀怪加敏捷|r
-|cff00ff00+150% 物理伤害加深|r
+|cff00ff00+200% 物理伤害加深|r
 |cff00ff00+5    每秒加杀敌数|r
 |cff00ff00+10%  扭蛋券(十连抽)/超级扭蛋券(十连抽)掉落概率|r
 
@@ -318,7 +318,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加敏捷'] = 216,
-['物理伤害加深'] = 150,
+['物理伤害加深'] = 200,
 ['每秒加杀敌数'] = 5,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,

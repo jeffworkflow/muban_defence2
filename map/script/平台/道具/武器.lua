@@ -14,7 +14,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+72  杀怪加攻击|r
-|cff00ff00+18  攻击减甲|r
+|cff00ff00+25  攻击减甲|r
 |cff00ff00+5% 杀敌数加成|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -22,7 +22,7 @@ need_map_level = 2,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 72,
-['攻击减甲'] = 18,
+['攻击减甲'] = 25,
 ['杀敌数加成'] = 5,
 --特效
 effect = [[wuqi4.mdx]]
@@ -43,7 +43,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+112  杀怪加攻击|r
-|cff00ff00+28  攻击减甲|r
+|cff00ff00+50  攻击减甲|r
 |cff00ff00+15% 强化石、天谕掉落概率|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -51,7 +51,7 @@ need_map_level = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 112,
-['攻击减甲'] = 28,
+['攻击减甲'] = 50,
 ['强化石掉落概率'] = 15,
 ['天谕掉落概率'] = 15,
 --特效
@@ -73,7 +73,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+152  杀怪加攻击|r
-|cff00ff00+38   攻击减甲|r
+|cff00ff00+75   攻击减甲|r
 |cff00ff00+7.5% 杀敌数加成|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -81,7 +81,7 @@ need_map_level = 8,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 152,
-['攻击减甲'] = 38,
+['攻击减甲'] = 75,
 ['杀敌数加成'] = 7.5,
 --特效
 effect = [[wuqi123.mdx]]
@@ -102,7 +102,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+192  杀怪加攻击|r
-|cff00ff00+48   攻击减甲|r
+|cff00ff00+100   攻击减甲|r
 |cff00ff00+100% 暴击伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -110,7 +110,7 @@ need_map_level = 11,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 192,
-['攻击减甲'] = 48,
+['攻击减甲'] = 100,
 ['暴击伤害'] = 100,
 --特效
 effect = [[BingPoHanGuangJian.mdx]]
@@ -131,7 +131,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+232  杀怪加攻击|r
-|cff00ff00+58  攻击减甲|r
+|cff00ff00+125  攻击减甲|r
 |cff00ff00+10% 杀敌数加成|r
 |cff00ff00+15% 强化石、天谕掉落概率|r
 
@@ -140,7 +140,7 @@ need_map_level = 14,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 232,
-['攻击减甲'] = 58,
+['攻击减甲'] = 125,
 ['杀敌数加成'] = 10,
 ['强化石掉落概率'] = 15,
 ['天谕掉落概率'] = 15,
@@ -163,7 +163,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+272  杀怪加攻击|r
-|cff00ff00+68   攻击减甲|r
+|cff00ff00+150   攻击减甲|r
 |cff00ff00+100% 技暴伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -171,7 +171,7 @@ need_map_level = 17,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 272,
-['攻击减甲'] = 68,
+['攻击减甲'] = 150,
 ['技暴伤害'] = 100,
 --特效
 effect = [[Mx_qiubaihongyingqiang.mdx]]
@@ -192,7 +192,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+312   杀怪加攻击|r
-|cff00ff00+78    攻击减甲|r
+|cff00ff00+175    攻击减甲|r
 |cff00ff00+12.5% 杀敌数加成|r
 |cff00ff00+5%    全伤加深|r
 
@@ -201,7 +201,7 @@ need_map_level = 20,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 312,
-['攻击减甲'] = 78,
+['攻击减甲'] = 175,
 ['杀敌数加成'] = 12.5,
 ['全伤加深'] = 5,
 --特效
@@ -223,7 +223,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+352  杀怪加攻击|r
-|cff00ff00+88   攻击减甲|r
+|cff00ff00+200   攻击减甲|r
 |cff00ff00+100% 会心伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -231,7 +231,7 @@ need_map_level = 23,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 352,
-['攻击减甲'] = 88,
+['攻击减甲'] = 200,
 ['会心伤害'] = 100,
 --特效
 effect = [[Wuqi_fangtainhuaji.mdx]]
@@ -252,7 +252,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+392  杀怪加攻击|r
-|cff00ff00+98  攻击减甲|r
+|cff00ff00+225  攻击减甲|r
 |cff00ff00+15% 杀敌数加成|r
 |cff00ff00+15% 强化石、天谕掉落概率|r
 
@@ -261,7 +261,7 @@ need_map_level = 26,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 392,
-['攻击减甲'] = 98,
+['攻击减甲'] = 225,
 ['杀敌数加成'] = 15,
 ['强化石掉落概率'] = 15,
 ['天谕掉落概率'] = 15,
@@ -284,16 +284,16 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+432  杀怪加攻击|r
-|cff00ff00+108  攻击减甲|r
-|cff00ff00+25%  对BOSS额外伤害|r
+|cff00ff00+250  攻击减甲|r
+|cff00ff00+35%  对BOSS额外伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 29,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 432,
-['攻击减甲'] = 108,
-['对BOSS额外伤害'] = 25,
+['攻击减甲'] = 250,
+['对BOSS额外伤害'] = 35,
 
 --特效
 effect = [[effect_Weapon_0.MDX]]
