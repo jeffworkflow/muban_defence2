@@ -218,10 +218,10 @@ for i=1,10 do
                             val = 0
                         end  
                         player.server[name] = val
-                        print('111111111111111111',player,name,val)
+                        -- print('111111111111111111',player,name,val)
                     end    
                 else
-                    print('111111111111111111',player,key_name,player.server[key_name])
+                    -- print('111111111111111111',player,key_name,player.server[key_name])
                 end    
             end   
         end)  

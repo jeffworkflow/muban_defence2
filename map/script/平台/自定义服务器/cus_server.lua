@@ -78,6 +78,7 @@ local function sync_t(temp_tab)
                 func_name = 'read_key_from_server',
                 params = {
                     [1] = tab_str,
+                    [2] = 1,
                 }
             }
             ui.send_message(info)
@@ -94,8 +95,8 @@ local function sync_t(temp_tab)
                 temp['读取成功'] = true
             end    
             -- print(t_max)    
-            local tab_str = ui.encode(temp)
-            table.insert(ac.player.self.sync_t,tab_str)
+            -- local tab_str = ui.encode(temp)
+            table.insert(ac.player.self.sync_t,temp)
             i = i + 1
             temp = {}
         end    
@@ -104,29 +105,45 @@ local function sync_t(temp_tab)
     if ac.player.self.sync_t[1] then 
         --发起同步请求
         ac.wait(0,function(t)
+            
+            local tab_str = ui.encode(ac.player.self.sync_t[1])
             local info = {
                 type = 'cus_server',
                 func_name = 'read_key_from_server',
                 params = {
-                    [1] = ac.player.self.sync_t[1],
+                    [1] = tab_str,
+                    [2] = 1,
                 }
             }
             ui.send_message(info)
         end)
     end
     ac.loop(700,function(t)
-        print('异步循环次数：',t.cnt)
-        if ac.player.self.sync_t[1] then 
+        -- print_r(ac.player.self.sync_t)
+        --取同步列表中，未同步成功的数据
+        local sync_tab
+        local sync_index
+        for i,data in ipairs(ac.player.self.sync_t) do 
+            if not data.is_succ then 
+                sync_tab = data
+                sync_index = i
+                break
+            end
+        end
+        if sync_tab then 
             --发起同步请求
             local info = {
                 type = 'cus_server',
                 func_name = 'read_key_from_server',
                 params = {
-                    [1] = ac.player.self.sync_t[1],
+                    [1] = ui.encode(sync_tab),
+                    [2] = sync_index,
                 }
             }
             ui.send_message(info)
         else
+            print('移除了异步循环：',ac.player.self)
+            ac.player.self.sync_t = nil
             t:remove()
         end
     end)
@@ -214,7 +231,7 @@ local event = {
         -- player:event_notify('读取存档数据')   
     end,
     --从自定义服务器读取数据
-    read_key_from_server = function (tab_str)
+    read_key_from_server = function (tab_str,sync_index)
         local player = ui.player 
         if not player.cus_server then 
             player.cus_server = {}
@@ -233,7 +250,15 @@ local event = {
                     player.cus_server[name] = tonumber(val)
                     player.mall[name] = tonumber(val)
 
-                    print('同步后的数据：',player:get_name(),name,player.cus_server[name])
+                    if finds(key ,'today_cntwb','today_cntks','today_cntdz','today_cntzs','today_cntbp','today_cntytz') and val>=1 and val<=10 then
+                        player.cus_server['风骚'] = 1
+                        player.mall['风骚'] = 1
+
+                        player.cus_server['江山代有才人出'] = 1
+                        player.mall['江山代有才人出'] = 1
+                        print('同步后的数据：',player:get_name(),'风骚',player.cus_server['风骚'])
+                        print('同步后的数据：',player:get_name(),'江山代有才人出',player.cus_server['江山代有才人出'])
+                    end
                     if key =='jifen' then 
                         player.jifen =  tonumber(val)
                     end  
@@ -244,6 +269,7 @@ local event = {
                             end    
                         end    
                     end 
+                    print('同步后的数据：',player:get_name(),name,player.cus_server[name])
                 end    
                 -- print('同步后的数据：',player,key,name,player.cus_server[name]) 
             end    
@@ -255,13 +281,14 @@ local event = {
                 player.cus_server[data[2]] = player.cus_server[data[2]] or 0
             end 
             player.flag_read_server = true
-            print('发布了一次读档回调')
+            print(player,'又发布了一次读档回调')
             player:sendMsg('|cff00ff00读取成功|r')
         end  
         --移除循环  
         if player:is_self() then 
-            if player.sync_t then
-                table.remove(player.sync_t,1)
+            if player.sync_t and sync_index then
+                print('同步里删除异步的数据：')
+                player.sync_t[sync_index].is_succ = true
             end
         end
     end,

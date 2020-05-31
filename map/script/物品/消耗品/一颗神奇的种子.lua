@@ -15,7 +15,7 @@ tip = [[
 |cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
 --品质
 color = '紫',
--- owner_ship = true,
+owner_ship = true,
 --物品类型
 item_type = '消耗品',
 specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],

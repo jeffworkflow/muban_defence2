@@ -25,9 +25,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >20 then 
-        val = math.min(p.server['挖宝熟练度']*0.1, lv*lv*500+250)
+        val = math.min(p.server['挖宝熟练度'], lv*lv*500+250)*0.1
     else
-        val = math.min(p.server['挖宝熟练度']*0.1, lv*10000)
+        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.1
     end
     return val
 end,
@@ -36,9 +36,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >20 then 
-        val = math.min(p.server['挖宝熟练度']*0.1, lv*lv*500+250)
+        val = math.min(p.server['挖宝熟练度'], lv*lv*500+250)*0.1
     else
-        val = math.min(p.server['挖宝熟练度']*0.1, lv*10000)
+        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.1
     end
     return val
 end,
@@ -47,9 +47,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >20 then 
-        val = math.min(p.server['挖宝熟练度']*0.1, lv*lv*500+250)
+        val = math.min(p.server['挖宝熟练度'], lv*lv*500+250)*0.1
     else
-        val = math.min(p.server['挖宝熟练度']*0.1, lv*10000)
+        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.1
     end
     return val
 end,
@@ -58,9 +58,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >20 then 
-        val = math.min(p.server['挖宝熟练度']*0.002, lv*lv*500+250)
+        val = math.min(p.server['挖宝熟练度'], lv*lv*500+250)*0.002
     else
-        val = math.min(p.server['挖宝熟练度']*0.002, lv*10000)
+        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.002
     end
     return val
 end,
@@ -69,9 +69,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >20 then 
-        val = math.min(p.server['挖宝熟练度']*1, lv*lv*500+250)
+        val = math.min(p.server['挖宝熟练度'], lv*lv*500+250)*1
     else
-        val = math.min(p.server['挖宝熟练度']*1, lv*10000)
+        val = math.min(p.server['挖宝熟练度'], lv*10000)*1
     end
     return val
 end,
@@ -80,9 +80,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >20 then 
-        val = math.min(p.server['挖宝熟练度']*0.2, lv*lv*500+250)
+        val = math.min(p.server['挖宝熟练度'], lv*lv*500+250)*0.2
     else
-        val = math.min(p.server['挖宝熟练度']*0.2, lv*10000)
+        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.2
     end
     return val
 end,
