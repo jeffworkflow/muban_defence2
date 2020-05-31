@@ -220,9 +220,9 @@ art = [[caiquan.blp]],
 tip = [[ 
 
 |cff00ff00直接输入|cffffff00“剪刀”、“石头”、“布”|cff00ff00，进行猜拳:
-|cff00ff00如果|cffffff00赢了|cff00ff00，杀敌数/木头/魔丸/全属性全部翻倍；
-|cff00ff00如果|cffffff00平手|cff00ff00，杀敌数/木头/魔丸/全属性全部翻0.5倍；
-|cff00ff00如果|cffffff00输了|cff00ff00，杀敌数/木头/魔丸/全属性全部凉凉
+|cff00ff00如果|cffffff00赢了|cff00ff00，杀敌数/木头/魔丸全部翻倍，全属性翻0.1倍；
+|cff00ff00如果|cffffff00平手|cff00ff00，杀敌数/木头/魔丸全部翻0.5倍，全属性翻0.05倍；
+|cff00ff00如果|cffffff00输了|cff00ff00，杀敌数/木头/魔丸全部凉凉，全属性翻-0.1倍；
 ]],
 --物品类型
 item_type = '消耗品',
@@ -296,21 +296,21 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         hero:add_kill_count(p.kill_count*0.5)
         hero:add_wood(p.wood*0.5)
         hero:add_rec_ex(p.rec_ex*0.5)
-        hero:add('全属性',all_attr*0.5)
+        hero:add('全属性',all_attr*0.05)
         flag = '平'
     elseif p_num-sys_num > 0 or p_num-sys_num == -2 then 
     --赢 杀敌数/木头/魔丸/全属性全部翻倍
         hero:add_kill_count(p.kill_count)
         hero:add_wood(p.wood)
         hero:add_rec_ex(p.rec_ex)
-        hero:add('全属性',all_attr)
+        hero:add('全属性',all_attr*0.1)
         flag = '赢'
     else 
     --输 杀敌数/木头/魔丸/全属性全部凉凉
         hero:add_kill_count(-p.kill_count)
         hero:add_wood(-p.wood)
         hero:add_rec_ex(-p.rec_ex)
-        hero:add('全属性',-all_attr + 100)
+        hero:add('全属性',-all_attr*0.1 + 100)
         flag = '输'
     end
     p:sendMsg('|cffffe799【系统消息】|r |cffffff00【'..flag..'】，|cff00ff00系统出的拳是 |cffffff00'..sys_str,2)
