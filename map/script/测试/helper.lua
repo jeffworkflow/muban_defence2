@@ -788,8 +788,9 @@ function helper:add_skill(str,cnt)
 	end	
 end
 --移除技能
-function helper:remove_skill(str)
-	local skill = self:find_skill(str,'英雄',true)
+function helper:remove_skill(str,type)
+	local type = type or '英雄'
+	local skill = self:find_skill(str,type,true)
 	if skill then 
 		skill:remove()
 	end	

@@ -163,6 +163,7 @@ class.hero_info_panel = extends(class.panel){
         for key,item in pairs(self.items) do 
             all_pf = all_pf + item.pf
         end    
+        p.pf = all_pf
         self.item_pf:set_text(('%.f'):format(all_pf))
     end,    
     fresh = function(self)

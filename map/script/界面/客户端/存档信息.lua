@@ -35,6 +35,7 @@ class.player_info_panel = extends(class.panel){
             '签到',
             '宠物等级',
             '宠物毕业数量',
+            '装备总评分',
             '挖宝熟练度',
             '看书熟练度',
             '打造熟练度',
@@ -168,6 +169,8 @@ class.player_info_panel = extends(class.panel){
                                 new_value = new_value + 1  
                             end
                         end
+                    elseif name =='装备总评分' then
+                        new_value = player.pf
                     elseif finds(name,'深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
                         new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value..' 星'

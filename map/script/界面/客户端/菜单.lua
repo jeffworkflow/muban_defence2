@@ -1,9 +1,9 @@
-
-
+local ui = require 'ui.client.util'
 class.screen_button = extends(class.button){
     new = function (parant,x,y,info)
-        local button = class.button.new(parant,info.path,x,y,84,84)
-        button.tx_name = button:add_text(info.name,0,64,84,84,12,'center')
+        -- print_r(info)
+        local button = class.button.new(parant,info.path,x,y,info.w or 84,info.h or 84)
+        button.tx_name = button:add_text(info.title,0,64,info.w or 84,info.h or 84,12,'center')
         button.tx_name:set_color(0xffff0000)
         button.__index = class.screen_button
 
@@ -39,8 +39,20 @@ class.screen_button = extends(class.button){
     on_button_clicked = function (self)
         if self.info then 
             local key = self.info.key
-            japi.SendMessage(0x100,KEY[key],0)
-            japi.SendMessage(0x101,KEY[key],1)
+            if key then
+                japi.SendMessage(0x100,KEY[key],0)
+                japi.SendMessage(0x101,KEY[key],1)
+            end
+            if finds(self.info.name,'绝世魔剑','风骚') then 
+                local info = {
+                    type = 'jsmj',
+                    func_name = 'jsmj',
+                    params = {
+                        [1] = self.info.name,
+                    }
+                }
+                ui.send_message(info)
+            end
         end
     end,
 
@@ -48,48 +60,90 @@ class.screen_button = extends(class.button){
         if self.info then 
             if self.info.name == '神奇的令牌' then 
                 self:tooltip('|cffffe799神奇的令牌|r',self.info.tip,-1,300,94)
-
             else
-                self:tooltip(self.info.name,self.info.tip,0,200,84)
+                local with = #self.info.tip >=100 and 400 or 200
+                local high = #self.info.tip >=100 and 300 or 84
+                self:tooltip(self.info.name,self.info.tip,0,with,high)
             end    
 
         end
     end,
 }
 
-
-local ui_info = {
-    {
-        name = nil,  
-        path = 'image\\控制台\\F2_home.blp',
-        key = 'F2', 
-        tip = "F2回城"
-    },
-    {
-        name = nil,  
-        path = 'image\\控制台\\f3_liangongfang.blp',
-        key = 'F3', 
-        tip = "F3进入练功房"
-    },
-    {
-        name = '神奇的令牌',  
-        path = 'lingpai.blp',
-        -- key = 'F3', 
-        tip = "|cff00ff00开局10分钟可获得一个|cffff0000神奇的令牌|r|n|n",
-        x = 1800,
-        y = 638
-    },
-
+local ui = require 'ui.server.util'
+--处理同步请求
+local event = {
+    jsmj = function (name)
+        local player = ui.player 
+        local hero = player.hero
+        if hero then 
+            local skl = hero:find_skill(name,nil)
+            if skl then 
+                skl:cast()
+            end
+        end
+    end,
 }
+ui.register_event('jsmj',event)
 
-for index,info in ipairs(ui_info) do 
-    local button 
-    if info.x and info.y then 
-        button = class.screen_button.create(info.x,info.y,info)
-    else      
-        button = class.screen_button.create(10,50 + index*84*1.2,info)
-    end    
-    if info.name =='神奇的令牌' then 
-        button:fresh_name()
-    end    
-end 
+
+ac.wait(0,function()
+    local ui_info = {
+        {
+            name = "F2回城",  
+            path = 'image\\控制台\\F2_home.blp',
+            key = 'F2', 
+            tip = "F2回城",
+        },
+        {
+            name = "F3进入练功房",  
+            path = 'image\\控制台\\f3_liangongfang.blp',
+            key = 'F3', 
+            tip = "F3进入练功房",
+            is_show_name = false,
+        },
+        {
+            name = '神奇的令牌', 
+            title = '神奇的令牌', 
+            path = 'lingpai.blp',
+            -- key = 'F3', 
+            tip = "|cff00ff00开局10分钟可获得一个|cffff0000神奇的令牌|r|n|n",
+            x = 1800,
+            y = 638,
+        },
+        --绝世魔剑和 风骚
+        {
+            name = '绝世魔剑',  
+            path = ac.skill['绝世魔剑'].art,
+            -- key = 'F3', 
+            tip = ac.skill['绝世魔剑']:get_tip(),
+            x = 10,
+            y = 380,
+            w = 52,
+            h = 52,
+        },
+        {
+            name = '风骚',  
+            path = ac.skill['风骚'].art,
+            -- key = 'F3', 
+            tip = ac.skill['风骚']:get_tip(),
+            x = 10,
+            y = 450,
+            w = 52,
+            h = 52,
+        },
+
+    }
+
+    for index,info in ipairs(ui_info) do 
+        local button 
+        if info.x and info.y then 
+            button = class.screen_button.create(info.x,info.y,info)
+        else      
+            button = class.screen_button.create(10,50 + index*84*1.2,info)
+        end    
+        if info.name =='神奇的令牌' then 
+            button:fresh_name()
+        end    
+    end 
+end)

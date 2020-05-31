@@ -74,7 +74,7 @@ function mt:add_content()
         if it.owner_ship then
             it.owner_ship = p
         end
-        it = hero:add_item(it,true)
+        it = self.owner:add_item(it,true)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 

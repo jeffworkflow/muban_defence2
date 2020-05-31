@@ -200,7 +200,7 @@ function mt:damage_start(damage)
         end
 
         function mvr:on_hit(dest)
-            if dest:get_name() ~='毁灭者' then 
+            if dest:get_name() ~='虚空诺亚' then 
                 self.flag_hit = true
                 recycle_hook(self.mover:get_point(),tbl,dest)
                 return true

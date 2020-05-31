@@ -22,32 +22,68 @@ tip = [[
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加敏捷'] = function(self)
     local p = self.owner.owner
-    local val = math.min(p.server['挖宝熟练度'], p:Map_GetMapLevel()*10000)*0.1
+    local lv = p:Map_GetMapLevel()
+    local val
+    if lv >20 then 
+        val = math.min(p.server['挖宝熟练度']*0.1, lv*lv*500+250)
+    else
+        val = math.min(p.server['挖宝熟练度']*0.1, lv*10000)
+    end
     return val
 end,
 ['每秒加智力'] = function(self)
     local p = self.owner.owner
-    local val = math.min(p.server['看书熟练度'], p:Map_GetMapLevel()*10000)*0.1
+    local lv = p:Map_GetMapLevel()
+    local val
+    if lv >20 then 
+        val = math.min(p.server['挖宝熟练度']*0.1, lv*lv*500+250)
+    else
+        val = math.min(p.server['挖宝熟练度']*0.1, lv*10000)
+    end
     return val
 end,
 ['每秒加力量'] = function(self)
     local p = self.owner.owner
-    local val = math.min(p.server['打造熟练度'], p:Map_GetMapLevel()*10000)*0.1
+    local lv = p:Map_GetMapLevel()
+    local val
+    if lv >20 then 
+        val = math.min(p.server['挖宝熟练度']*0.1, lv*lv*500+250)
+    else
+        val = math.min(p.server['挖宝熟练度']*0.1, lv*10000)
+    end
     return val
 end,
 ['每秒加护甲'] = function(self)
     local p = self.owner.owner
-    local val = math.min(p.server['种树熟练度'], p:Map_GetMapLevel()*10000)*0.002
+    local lv = p:Map_GetMapLevel()
+    local val
+    if lv >20 then 
+        val = math.min(p.server['挖宝熟练度']*0.002, lv*lv*500+250)
+    else
+        val = math.min(p.server['挖宝熟练度']*0.002, lv*10000)
+    end
     return val
 end,
 ['每秒加生命上限'] = function(self)
     local p = self.owner.owner
-    local val = math.min(p.server['白嫖熟练度'], p:Map_GetMapLevel()*10000)
+    local lv = p:Map_GetMapLevel()
+    local val
+    if lv >20 then 
+        val = math.min(p.server['挖宝熟练度']*1, lv*lv*500+250)
+    else
+        val = math.min(p.server['挖宝熟练度']*1, lv*10000)
+    end
     return val
 end,
 ['每秒加攻击'] = function(self)
     local p = self.owner.owner
-    local val = math.min(p.server['摇骰子熟练度'], p:Map_GetMapLevel()*10000)*0.2
+    local lv = p:Map_GetMapLevel()
+    local val
+    if lv >20 then 
+        val = math.min(p.server['挖宝熟练度']*0.2, lv*lv*500+250)
+    else
+        val = math.min(p.server['挖宝熟练度']*0.2, lv*10000)
+    end
     return val
 end,
 }

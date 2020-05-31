@@ -206,14 +206,12 @@ ac.game:event '游戏-结束' (function(trg,flag)
 			n = n - 1
 		else
 			function mvr:on_remove()
-				-- if ac.final_boss then 
-				-- 	print('移除最终boss:',u:get_name(),u.handle)
-				-- 	ac.final_boss:remove()
-				-- 	ac.final_boss = nil
-				-- 	ac.final_boss_death = true
-				-- end
 				u:kill()
-				u:add_restriction '阿卡林'
+				if u.add_restriction then 
+					u:add_restriction '阿卡林'
+				else 
+					print('游戏结束时，单位没有add_restriction',u)
+				end
 				u:add_buff '淡化'
 				{
 					time = 2,
@@ -221,6 +219,12 @@ ac.game:event '游戏-结束' (function(trg,flag)
 				}
 				n = n - 1
 				if n <= 0 and t then
+					if ac.final_boss and ac.final_boss:is_alive() then 
+						print('移除最终boss:',ac.final_boss:get_name(),ac.final_boss.handle)
+						ac.final_boss:remove()
+						ac.final_boss = nil
+						ac.final_boss_death = true
+					end
 					ac.event_dispatch = old_event_dispatch
 					ac.event_notify = old_event_notify
 					p:showInterface(1)

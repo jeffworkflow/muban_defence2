@@ -347,6 +347,7 @@ mt{
 --等级
 level = 0, --要动态插入
 max_level = 10,
+cool= 1,
 --图标
 art = [[jueshimojian.blp]],
 --说明
@@ -394,7 +395,7 @@ function mt:on_upgrade()
         ['杀敌数加成'] = function() return hero:get('杀敌数加成') end,
         ['魔丸加成'] = function() return hero:get('魔丸加成') end,
     }
-    if not p.unit_mojian then 
+    if  not p.unit_mojian then 
         p.unit_mojian = p:create_unit('绝世魔剑',hero:get_point()-{math.random(360),100})
         p.unit_mojian:remove_ability 'AInv'
         p.unit_mojian:add_ability 'Aloc'
@@ -416,6 +417,15 @@ function mt:on_upgrade()
         skl.skill_attack = self.skill_attack
     end   
     --  
+end
+function mt:on_cast_start()
+    local p=self.owner.owner
+    if p.unit_mojian then 
+        p.unit_mojian:remove()
+        p.unit_mojian = nil
+    else
+        self:on_upgrade()
+    end
 end
 
 

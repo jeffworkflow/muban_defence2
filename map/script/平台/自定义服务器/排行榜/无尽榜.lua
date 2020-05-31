@@ -494,6 +494,7 @@ mt{
 --等级
 level = 1, --要动态插入
 max_level = 1,
+cool = 1,
 --图标
 art = [[huolinger.blp]],
 --说明
@@ -556,6 +557,16 @@ function mt:on_upgrade()
         skl = p.unit_fs:add_skill('神魂颠倒','隐藏')
     end   
 end
+function mt:on_cast_start()
+    local p=self.owner.owner
+    if p.unit_fs then 
+        p.unit_fs:remove()
+        p.unit_fs = nil
+    else
+        self:on_upgrade()
+    end
+end
+
 
 --魔剑技能
 local mt = ac.skill['神魂颠倒'] 

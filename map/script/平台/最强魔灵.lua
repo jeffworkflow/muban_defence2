@@ -338,7 +338,7 @@ local function upgrade_skill(player,skill)
                 end
                 if skill.name == '江山代有才人出' then 
                     local has_rank
-                    -- print(player.cus_server['今日斗破苍穹无尽排名'],player.cus_server['今日修罗模式无尽排名'])
+                    print('江山代有才人出:',player,player.cus_server['今日白嫖排名'],player.cus_server['今日挖宝排名'])
                     --挖宝、看书、打造、种树、白嫖、摇骰子
                     if player.cus_server  then 
                         if  ((player.cus_server['今日挖宝排名'] or 0) >0 and (player.cus_server['今日挖宝排名'] or 0) <= 10)

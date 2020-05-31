@@ -53,6 +53,7 @@ function mt:add_content()
 
     local hero = self.owner
     local player = self.owner:get_owner()
+    local p = self.owner:get_owner()
     hero = player.hero 
     --初始化
     player.achievement = player.achievement or {}
@@ -87,7 +88,7 @@ function mt:add_content()
         --进行多个处理
         local it 
         for i=1,tonumber(v) do 
-            it = hero:add_item(k,true)
+            it = self.owner:add_item(k,true)
         end  
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end

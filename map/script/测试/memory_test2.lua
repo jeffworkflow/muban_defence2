@@ -355,17 +355,17 @@ ac.game:event '游戏-结束' (function()
 	--	log.debug('曾使用的事件:' .. table.concat(self.event_names, ' '))
 	--end
 	if not base.release then
-		log.debug '=========================='
-		log.debug '统计死亡单位'
-		for _, u in pairs(unit.all_units) do
-			local self = u
-			if not u:is_alive() then
-				log.debug(('++++单位[%s][%s][%s][%s]'):format(self:get_name(), self.id, (self:get_class() or ''),self:get_point()))
-				log.debug('所有者:' .. self:get_owner():get_name())
-				log.debug(self,self.removed,self._is_alive,self:is_alive())
+		-- log.debug '=========================='
+		-- log.debug '统计死亡单位'
+		-- for _, u in pairs(unit.all_units) do
+		-- 	local self = u
+		-- 	if not u:is_alive() then
+		-- 		log.debug(('++++单位[%s][%s][%s][%s]'):format(self:get_name(), self.id, (self:get_class() or ''),self:get_point()))
+		-- 		log.debug('所有者:' .. self:get_owner():get_name())
+		-- 		log.debug(self,self.removed,self._is_alive,self:is_alive())
 				
-			end
-		end
+		-- 	end
+		-- end
 		log.debug '=========================='
 		log.debug '统计已经被移除但是依然被引用的单位'
 		for self in pairs(unit.removed_units) do
