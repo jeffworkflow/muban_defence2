@@ -130,9 +130,8 @@ function mt:on_cast_start()
                     else 
                         player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                     end    
-
+                    ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调
                     if self._count > 0 then  
-                        ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调
                         self:on_cast_start()
                         self:add_item_count(-1)
                     end  
@@ -253,6 +252,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     for k,v in sortpairs(temp) do 
         if player:get('锻造次数') == v then 
             insert_book(hero,k)
+            break
         end
     end 
     
@@ -283,7 +283,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         --进行多个处理
         local it 
         for i=1,tonumber(v) do 
-            it = hero:add_item(k,true)
+            it = self.owner:add_item(k,true)
         end  
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end

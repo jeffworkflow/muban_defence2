@@ -548,6 +548,56 @@ function helper:test_n3()
 	end)
 
 end	
+
+--难4测试
+function helper:test_n4()
+	-- local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	for i=1,6 do 
+		local p = ac.player(i)
+		p:add('局内地图等级',10)
+		p:Map_SaveServerValue('cwjn',300000) --网易服务器
+		p:event_notify '读取存档数据'
+
+		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('cntqs',2) --网易服务器
+		p:Map_SaveServerValue('cntzj',3) --网易服务器
+		p:Map_SaveServerValue('sldwb',20000) --网易服务器
+		p:Map_SaveServerValue('sldks',20000) --网易服务器
+		p:Map_SaveServerValue('slddz',20000) --网易服务器
+		p:Map_SaveServerValue('sldzs',20000) --网易服务器
+		p:Map_SaveServerValue('sldbp',20000) --网易服务器
+		p:Map_SaveServerValue('sldytz',20000) --网易服务器
+
+		p:Map_SaveServerValue('wsdmt',3) --网易服务器
+		p:Map_SaveServerValue('hjkg',3) --网易服务器
+		p:Map_SaveServerValue('cmgdxgn',3) --网易服务器
+		p:Map_SaveServerValue('ycmjbm',3) --网易服务器
+		p:Map_SaveServerValue('qhzr',3) --网易服务器
+		p:Map_SaveServerValue('fty',3) --网易服务器
+		p:Map_SaveServerValue('zjzt',3) --网易服务器
+		p:Map_SaveServerValue('ltc',3) --网易服务器
+		p:Map_SaveServerValue('xkwz',3) --网易服务器
+		p:Map_SaveServerValue('ty',3) --网易服务器
+		p.server['吕布'] = 1
+		p.server['熊灵分裂'] = 1
+
+		p.mall['金币礼包'] = 1
+		p.mall['木材礼包'] = 1
+		p.mall['入群礼包'] = 1
+		p.mall['五星好评礼包'] = 1
+	end
+	
+	ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+		for i=1,6 do 
+			local rand = math.random(#ac.save_item[1]['白'])
+			local name = ac.save_item[1]['白'][rand]
+			hero:add_item(name)
+		end
+	end)
+
+end	
+
+
 --伤害自己
 function helper:damage(damage)
 	self:damage

@@ -153,9 +153,9 @@ function mt:on_cast_start()
                         --重新添加给英雄
                         unit:add_item(name,true)
                     end  
-                end    
+                end
+                ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调    
                 if self._count > 0 then  
-                    ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调
                     self:on_cast_start()
                     self:add_item_count(-1)
                 end  
