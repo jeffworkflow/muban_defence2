@@ -21,11 +21,11 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 90,
+	cool = {90,30},
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--施法范围
-	area = 175,
+	area = {175,475},
 	--介绍
 	tip = [[
 	
