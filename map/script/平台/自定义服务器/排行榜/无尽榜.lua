@@ -494,20 +494,21 @@ mt{
 --等级
 level = 1, --要动态插入
 max_level = 1,
-cool = 1,
+-- cool = 1,
 --图标
 art = [[huolinger.blp]],
 --说明
 tip = [[
 
 |cffFFE799【单位属性】：|r
-|cff00ff00获得一个随从
-|cff00ffff单位攻击力=%attack% |cff00ffff%英雄攻击力
-|cffffff00单位攻击10%概率造成范围物理伤害（伤害公式：攻击力*15）
+|cff00ff00点击获得/收回一个随从
+|cff00ffff单位攻击力=400%英雄攻击力
+|cffffff00单位攻击10%概率让她的敌人神魂颠倒，晕眩敌人1.5秒，并造成范围物理伤害（伤害公式：英雄攻击力*15）
 |cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
 |cff00ffff进入|cffffff00今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
-|cffcccccc（非永久存档称号，掉出排行榜将失去称号）|r]],
+|cffcccccc（非永久存档称号，掉出排行榜将失去称号）|r
+]],
 
 }
 function mt:on_upgrade()
@@ -584,7 +585,7 @@ tip = [[
 event_name = '造成伤害效果',
 chance = 10,
 damage_area = 600,
-skill_attack = 10,
+skill_attack = 15,
 effect = [[MXXXT28 -  F.mdx]],
 effect2 = [[ZHeart.MDX]]
 }
