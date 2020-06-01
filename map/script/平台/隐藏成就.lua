@@ -347,14 +347,14 @@ mt{
 --等级
 level = 0, --要动态插入
 max_level = 10,
-cool= 1,
+-- cool= 1,
 --图标
 art = [[jueshimojian.blp]],
 --说明
 tip = [[
 
 |cffFFE799【魔剑属性】：|r
-|cff00ff00获得一个随从-绝世魔剑
+|cff00ff00点击获得/收回一个随从
 |cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
 |cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
 |cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深

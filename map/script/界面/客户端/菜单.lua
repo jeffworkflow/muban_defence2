@@ -128,7 +128,7 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
             -- key = 'F3', 
             tip = ac.skill['绝世魔剑']:get_tip(),
             x = 10,
-            y = 380,
+            y = 350,
             w = 52,
             h = 52,
         }
@@ -144,7 +144,7 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
             -- key = 'F3', 
             tip = ac.skill['风骚']:get_tip(),
             x = 10,
-            y = is_jsmj and 450 or 380,
+            y = is_jsmj and 420 or 350,
             w = 52,
             h = 52,
         }
