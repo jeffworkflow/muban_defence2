@@ -44,14 +44,17 @@ class.screen_button = extends(class.button){
                 japi.SendMessage(0x101,KEY[key],1)
             end
             if finds(self.info.name,'绝世魔剑','风骚') then 
-                local info = {
-                    type = 'jsmj',
-                    func_name = 'jsmj',
-                    params = {
-                        [1] = self.info.name,
+                local skl = ac.player.self.hero:find_skill(self.info.name,nil,true)
+                if skl and not skl:is_cooling() then 
+                    local info = {
+                        type = 'jsmj',
+                        func_name = 'jsmj',
+                        params = {
+                            [1] = self.info.name,
+                        }
                     }
-                }
-                ui.send_message(info)
+                    ui.send_message(info)
+                end
             end
         end
     end,
