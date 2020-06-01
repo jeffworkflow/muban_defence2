@@ -41,8 +41,8 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00主教3段
 
 |cffFFE799【天赋属性】：|r
-|cffffff00【每秒加木头】+10*Lv
-【每秒加魔丸】+10*Lv
+|cffffff00【每秒加木头】+5*Lv
+【每秒加魔丸】+5*Lv
 【物品获取率】+100%
 【每秒回血】+20%
 【减少周围护甲】+750
