@@ -154,6 +154,7 @@ function mt:on_cast_start()
                         unit:add_item(name,true)
                     end  
                 end
+                self.owner = unit
                 ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调    
                 if self._count > 0 then  
                     self:on_cast_start()

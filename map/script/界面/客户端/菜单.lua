@@ -90,10 +90,11 @@ local event = {
 ui.register_event('jsmj',event)
 
 
-ac.game:event '玩家-注册英雄' (function(trg, player, hero)
-    if not player:is_self() then 
-        return 
-    end
+-- ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+--     if not player:is_self() then 
+--         return 
+--     end
+ac.wait(30*1000,function()
     local ui_info = {
         {
             name = "F2回城",  
@@ -120,7 +121,7 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
 
     }
     local is_jsmj
-    if player.server['绝世魔剑'] and player.server['绝世魔剑'] >0 then 
+    if ac.player.self.server['绝世魔剑'] and ac.player.self.server['绝世魔剑'] >0 then 
         local temp =
         {
             name = '绝世魔剑',  
@@ -136,7 +137,7 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
         is_jsmj = true
     end
 
-    if player.cus_server['风骚'] and player.cus_server['风骚'] >0 then 
+    if ac.player.self.cus_server['风骚'] and ac.player.self.cus_server['风骚'] >0 then 
         local temp =
         {
             name = '风骚',  

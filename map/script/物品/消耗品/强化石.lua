@@ -130,6 +130,7 @@ function mt:on_cast_start()
                     else 
                         player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                     end    
+                    self.owner = unit
                     ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调
                     if self._count > 0 then  
                         self:on_cast_start()

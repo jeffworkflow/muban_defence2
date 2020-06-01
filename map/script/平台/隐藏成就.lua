@@ -491,6 +491,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
     local rate =task_detail[name].rate
     local award = task_detail[name].award
     local sendMsg = task_detail[name].sendMsg
+    local sendMsg1 = task_detail[name].sendMsg1
     local condition = task_detail[name].condition
     if math.random(10000)/100 < rate then 
         p.flag_yccj[task_detail[name]] = true --一局只能获得一次

@@ -580,6 +580,14 @@ function helper:test_n4()
 		p:Map_SaveServerValue('ty',3) --网易服务器
 		p.server['吕布'] = 1
 		p.server['熊灵分裂'] = 1
+		p.server['鬼剑愁'] = 3
+
+		p.server['绝世魔剑'] = 3
+		p.server['书呆子'] = 3
+		p.server['剑瞎子'] = 3
+		p.server['扭蛋人生'] = 3
+		p.server['血羽之心'] = 3
+		p.server['天神之息'] = 3
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1

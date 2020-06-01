@@ -507,7 +507,9 @@ function mt:finish(is_unit_kill)
         self.timer = nil
     end
     if  self.timerdialog then 
-        self.timerdialog:remove()
+        if self.timerdialog.remove then 
+            self.timerdialog:remove()
+        end
         self.timerdialog = nil
     end
     if self.event_region then 

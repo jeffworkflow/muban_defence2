@@ -236,8 +236,7 @@ ac.game:event '技能-升级' (function (_,hero,self)
             --生成buff
             local buff = ac.buff[skill.unique_name]
             if not buff.on_add then 
-                buff.cover_type = 1
-                buff.cover_max = 1
+                buff.cover_type = 0
                 buff.keep = true
                 function buff:on_add()
                     local target = self.target
@@ -248,7 +247,7 @@ ac.game:event '技能-升级' (function (_,hero,self)
                         cool = true,
                         damage_start = self.damage_start,
                     } 
-                    -- print('添加到buff:',self.dmg_trg,self.dmg_trg.skill)
+                    -- print('添加到buff:',self.dmg_trg,self.dmg_trg.skill,self.dmg_trg.skill.owner)
                 end
 
                 function buff:on_remove()
@@ -260,7 +259,11 @@ ac.game:event '技能-升级' (function (_,hero,self)
                     end
                 end
                 function buff:on_cover(new)
-                    return new.value > self.value
+                    if new.value then 
+                        return new.value > self.value   
+                    else
+                        return false
+                    end
                 end
             end
             --添加buff

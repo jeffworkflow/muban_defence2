@@ -117,12 +117,13 @@ function mt:on_cast_start()
         self.dialog = create_dialog(player,'吞噬装备',list,function (index)
             local item = list[index].item
             if item then 
-                local skl = ac.skill[item.name]
+                --移除装备，移除一次属性
+                item:item_remove()
+                local skl = ac.game:event_dispatch('技能-插入魔法书',hero,'吞噬神丹',item.name)
                 skl.title = item.name
                 skl.store_name = item.store_name
                 skl.art = item.art
                 skl.tip = item:get_tip()
-                skl.is_order =1
                 --改变数值
                 for key,val in pairs(item) do  
                     local attr = key
@@ -134,8 +135,7 @@ function mt:on_cast_start()
                         skl[key] = val
                     end
                 end
-                --移除装备，移除一次属性
-                item:item_remove()
+                skl:set_level(item.level)
                 --吞噬个数 +1
                 if not player.tunshi_cnt then 
                     player.tunshi_cnt =0
@@ -147,9 +147,7 @@ function mt:on_cast_start()
                     player.tunshi = {}
                 end    
                 table.insert(player.tunshi,skl)
-                ac.wait(10,function()
-                    ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',item.name)
-                end)
+
                 --触发超级彩蛋
                 if player.tunshi_cnt  == 8 then 
                     ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')
