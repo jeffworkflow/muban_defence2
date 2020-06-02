@@ -696,6 +696,197 @@ function helper:test_n5()
 
 end	
 
+--难6测试
+function helper:test_n6()
+	-- local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	for i=1,6 do 
+		local p = ac.player(i)
+		p:add('局内地图等级',13)
+		p:Map_SaveServerValue('cwjn',600000) --网易服务器
+		p:event_notify '读取存档数据'
+
+		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('cntqs',2) --网易服务器
+		p:Map_SaveServerValue('cntzj',3) --网易服务器
+		p:Map_SaveServerValue('sldwb',30000) --网易服务器
+		p:Map_SaveServerValue('sldks',30000) --网易服务器
+		p:Map_SaveServerValue('slddz',30000) --网易服务器
+		p:Map_SaveServerValue('sldzs',30000) --网易服务器
+		p:Map_SaveServerValue('sldbp',30000) --网易服务器
+		p:Map_SaveServerValue('sldytz',30000) --网易服务器
+
+		p:Map_SaveServerValue('wsdmt',5) --网易服务器
+		p:Map_SaveServerValue('hjkg',5) --网易服务器
+		p:Map_SaveServerValue('cmgdxgn',5) --网易服务器
+		p:Map_SaveServerValue('ycmjbm',5) --网易服务器
+		p:Map_SaveServerValue('qhzr',5) --网易服务器
+		p:Map_SaveServerValue('fty',5) --网易服务器
+		p:Map_SaveServerValue('zjzt',5) --网易服务器
+		p:Map_SaveServerValue('ltc',5) --网易服务器
+		p:Map_SaveServerValue('xkwz',5) --网易服务器
+		p:Map_SaveServerValue('ty',5) --网易服务器
+		p.server['吕布'] = 1
+		p.server['熊灵分裂'] = 1
+		p.server['鬼剑愁'] = 1
+		p.server['爱国者导弹'] = 1
+		p.server['张飞'] = 1
+		
+		p.server['绝世魔剑'] = 5
+		p.server['书呆子'] = 5
+		p.server['剑瞎子'] = 5
+		p.server['扭蛋人生'] = 5
+		p.server['血羽之心'] = 5
+		p.server['天神之息'] = 5
+
+		p.mall['金币礼包'] = 1
+		p.mall['木材礼包'] = 1
+		p.mall['入群礼包'] = 1
+		p.mall['五星好评礼包'] = 1
+		p.mall['首充礼包'] = 1
+
+		p.mall['热血青年'] = 1
+		p.mall['逆天改命'] = 1
+		p.mall['横扫六合'] = 1
+		p.mall['北斗七星'] = 1
+
+		p.mall['熔炉炎刀'] = 1
+		p.mall['冰莲穿山剑'] = 1
+		p.mall['紫阳白涛剑'] = 1
+		p.mall['霜之哀伤'] = 1
+
+		p.mall['小精灵之翼'] = 1
+		p.mall['火精灵之翼'] = 1
+		p.mall['杰拉米之翼'] = 1
+		p.mall['暗羽翼'] = 1
+
+		p.mall['血雾领域'] = 1
+		p.mall['龙腾领域'] = 1
+		p.mall['迦蓝领域'] = 1
+		p.mall['极寒领域'] = 1
+
+		p.mall['风速狗'] = 1
+		p.mall['兜兜猪'] = 1
+		p.mall['星空麋鹿'] = 1
+		p.mall['烈焰凤凰'] = 1
+
+		p.mall['东皇钟'] = 1
+		p.mall['轩辕剑'] = 1
+		p.mall['缚妖索'] = 1
+		p.mall['青莲宝色旗'] = 1
+
+
+
+	end
+	
+	ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+		for i=1,6 do 
+			local rand = math.random(#ac.save_item[2]['白'])
+			local name = ac.save_item[2]['白'][rand]
+			hero:add_item(name)
+		end
+	end)
+
+end	
+
+--难6测试
+function helper:test_n7()
+	-- local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	for i=1,6 do 
+		local p = ac.player(i)
+		p:add('局内地图等级',15)
+		p:Map_SaveServerValue('cwjn',800000) --网易服务器
+		p:event_notify '读取存档数据'
+
+		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('cntqs',2) --网易服务器
+		p:Map_SaveServerValue('cntzj',3) --网易服务器
+		p:Map_SaveServerValue('sldwb',40000) --网易服务器
+		p:Map_SaveServerValue('sldks',40000) --网易服务器
+		p:Map_SaveServerValue('slddz',40000) --网易服务器
+		p:Map_SaveServerValue('sldzs',40000) --网易服务器
+		p:Map_SaveServerValue('sldbp',40000) --网易服务器
+		p:Map_SaveServerValue('sldytz',40000) --网易服务器
+
+		p:Map_SaveServerValue('wsdmt',6) --网易服务器
+		p:Map_SaveServerValue('hjkg',6) --网易服务器
+		p:Map_SaveServerValue('cmgdxgn',6) --网易服务器
+		p:Map_SaveServerValue('ycmjbm',6) --网易服务器
+		p:Map_SaveServerValue('qhzr',6) --网易服务器
+		p:Map_SaveServerValue('fty',6) --网易服务器
+		p:Map_SaveServerValue('zjzt',6) --网易服务器
+		p:Map_SaveServerValue('ltc',6) --网易服务器
+		p:Map_SaveServerValue('xkwz',6) --网易服务器
+		p:Map_SaveServerValue('ty',6) --网易服务器
+		p.server['吕布'] = 1
+		p.server['熊灵分裂'] = 1
+		p.server['鬼剑愁'] = 1
+		p.server['爱国者导弹'] = 1
+		p.server['张飞'] = 1
+		p.server['熊灵攻击减甲'] = 1
+		
+		p.server['绝世魔剑'] = 6
+		p.server['书呆子'] = 6
+		p.server['剑瞎子'] = 6
+		p.server['扭蛋人生'] = 6
+		p.server['血羽之心'] = 6
+		p.server['天神之息'] = 6
+
+		p.mall['金币礼包'] = 1
+		p.mall['木材礼包'] = 1
+		p.mall['入群礼包'] = 1
+		p.mall['五星好评礼包'] = 1
+		p.mall['首充礼包'] = 1
+
+		p.mall['热血青年'] = 1
+		p.mall['逆天改命'] = 1
+		p.mall['横扫六合'] = 1
+		p.mall['北斗七星'] = 1
+		p.mall['战神崛起'] = 1
+
+		p.mall['熔炉炎刀'] = 1
+		p.mall['冰莲穿山剑'] = 1
+		p.mall['紫阳白涛剑'] = 1
+		p.mall['霜之哀伤'] = 1
+		p.mall['熔炉流星刀'] = 1
+
+		p.mall['小精灵之翼'] = 1
+		p.mall['火精灵之翼'] = 1
+		p.mall['杰拉米之翼'] = 1
+		p.mall['暗羽翼'] = 1
+		p.mall['光羽翼'] = 1
+
+		p.mall['血雾领域'] = 1
+		p.mall['龙腾领域'] = 1
+		p.mall['迦蓝领域'] = 1
+		p.mall['极寒领域'] = 1
+		p.mall['黄龙天翔领域'] = 1
+
+		p.mall['风速狗'] = 1
+		p.mall['兜兜猪'] = 1
+		p.mall['星空麋鹿'] = 1
+		p.mall['烈焰凤凰'] = 1
+		p.mall['地狱蜘蛛'] = 1
+
+		p.mall['东皇钟'] = 1
+		p.mall['轩辕剑'] = 1
+		p.mall['缚妖索'] = 1
+		p.mall['青莲宝色旗'] = 1
+		p.mall['莫邪宝剑'] = 1
+
+
+
+	end
+	
+	ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+		for i=1,6 do 
+			local rand = math.random(#ac.save_item[2]['白'])
+			local name = ac.save_item[2]['白'][rand]
+			hero:add_item(name)
+		end
+	end)
+
+end	
+
 --伤害自己
 function helper:damage(damage)
 	self:damage
