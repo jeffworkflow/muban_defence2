@@ -102,12 +102,12 @@ local max_attribute = {
 ['护甲']= 3000,
 ['每秒加护甲']= 1,
 
--- ['力量%']= 2.5,
--- ['敏捷%']= 2.5,
--- ['智力%']= 2.5,
--- ['护甲%']= 2.5,
--- ['生命上限%']= 5,
--- ['攻击%']= 5,
+['力量%']= 2.5,
+['敏捷%']= 2.5,
+['智力%']= 2.5,
+['护甲%']= 2.5,
+['生命上限%']= 5,
+['攻击%']= 5,
 
 ['生命上限']= 15000000,
 ['技能基础伤害']= 3000000,
@@ -169,7 +169,10 @@ function finds(str,...)
 	if not str or type(str) =='table' or  type(str) =='function' then 
 		return flag
 	end	
-	for key , value in pairs{...} do
+    for key , value in pairs{...} do
+        if value:sub(-1, -1) == '%' then
+            value =  value..'%'
+        end
 		local _, q=string.find(str, value)
 		if _ then 
 			flag= true
@@ -195,12 +198,13 @@ function bignum2string(value)
 end
 
 local function lni_item()
-	local lni_str = ''
+	local lni_str = {}
     local temp_max_attr ={}
     local str = [[['default']
 item_type = '消耗品'
 category = '存档']]
-    lni_str = lni_str .. str..'\n'
+    table.insert(lni_str,str..'\n')
+    -- table.insert(lni_str,str..'\n'
 	for key,val in pairs(max_attribute) do
 		table.insert(temp_max_attr,{key,val})
 	end
@@ -209,16 +213,16 @@ category = '存档']]
         --每个物品 的物品数量  ['霞光刀']={num=20,type1 = '武器',lv = 1,art = 'al.tip',['攻击']=2,['护甲'] = 3},
         for i=1,data.num do
             for color,color_tab in pairs(color_attr) do 
-                lni_str = lni_str .. "['"..name..ids[start_id].."']"..'\n'
-                lni_str = lni_str .. "s_id = "..ids[start_id]..""..'\n'
+                table.insert(lni_str,"['"..name..ids[start_id].."']"..'\n')
+                table.insert(lni_str,"s_id = "..ids[start_id]..""..'\n')
                 start_id = start_id + 1
-                lni_str = lni_str .. "title = "..name..""..'\n'
-                lni_str = lni_str .. "type1 = '"..data.type1.."'"..'\n'
-                lni_str = lni_str .. "lv = "..data.lv..""..'\n'
-                lni_str = lni_str .. "art = '"..data.art.."'"..'\n'
+                table.insert(lni_str,"title = "..name..""..'\n')
+                table.insert(lni_str,"type1 = '"..data.type1.."'"..'\n')
+                table.insert(lni_str,"lv = "..data.lv..""..'\n')
+                table.insert(lni_str,"art = '"..data.art.."'"..'\n')
                 --主要属性浮动%
                 local main_attr_per = math.random(50,150)
-                lni_str = lni_str .. "main_attr_per = "..main_attr_per..""..'\n'
+                table.insert(lni_str,"main_attr_per = "..main_attr_per..""..'\n')
 
                 --处理主要属性
                 local main_attr_tab = {}
@@ -229,17 +233,17 @@ category = '存档']]
                 end    
 
                 --处理color赋值 品质数值 物品模型 最小词条数 最大词条数 词条值因数
-                lni_str = lni_str .. "color = '"..color.."'"..'\n'
-                lni_str = lni_str .. "color_lv = "..color_tab[1]..""..'\n'
-                lni_str = lni_str .. "specail_model = [["..color_tab[2].."]]"..'\n'
-                lni_str = lni_str .. "min_attr_num = "..color_tab[3]..""..'\n'
-                lni_str = lni_str .. "max_attr_num = "..color_tab[4]..""..'\n'
-                lni_str = lni_str .. "attr_a = "..color_tab[5]..""..'\n'
-                lni_str = lni_str .. "model_size = "..color_tab[6]..""..'\n'
+                table.insert(lni_str,"color = '"..color.."'"..'\n')
+                table.insert(lni_str,"color_lv = "..color_tab[1]..""..'\n')
+                table.insert(lni_str,"specail_model = [["..color_tab[2].."]]"..'\n')
+                table.insert(lni_str,"min_attr_num = "..color_tab[3]..""..'\n')
+                table.insert(lni_str,"max_attr_num = "..color_tab[4]..""..'\n')
+                table.insert(lni_str,"attr_a = "..color_tab[5]..""..'\n')
+                table.insert(lni_str,"model_size = "..color_tab[6]..""..'\n')
 
                 --随机词条：每个物品的 词缀数,重复的话，重复的数值加上去
                 local attr_num = math.random(color_tab[3],color_tab[4])
-                lni_str = lni_str .. "attr_num = "..attr_num..""..'\n'
+                table.insert(lni_str,"attr_num = "..attr_num..""..'\n')
 
                 local item = {}
                 for n = 1, attr_num do
@@ -265,39 +269,41 @@ category = '存档']]
                 --装备评分 装备评分公式=100*等级*（主要属性波动百分比）+100*附加属性数量*（0.6+装备等级*0.4）*特殊属性加成b（查看工作表“品质”）
                 local pf = com_func['装备评分'][1] * data.lv * main_attr_per/100 + com_func['装备评分'][2]*attr_num*(com_func['特殊属性百分比'][1] + data.lv*com_func['特殊属性百分比'][1])*color_tab[5]
                 pf = string.format('%.f',pf)
-                lni_str = lni_str .. "pf = "..pf..""..'\n'
+                table.insert(lni_str,"pf = "..pf..""..'\n')
                 --地图等级需求 '（（装备等级-1）*6+（装备品质-1）*3'
                 local need_map_level = (data.lv-1)*com_func['地图等级需求'][1] + (color_tab[1]-1)*com_func['地图等级需求'][2]
                 
-                lni_str = lni_str .. "need_map_level = "..need_map_level..""..'\n'
+                table.insert(lni_str,"need_map_level = "..need_map_level..""..'\n')
 
                 --生成tip
-                lni_str = lni_str .. 'tip = [['..'\n'
-                lni_str = lni_str .. '|cffffe799评分：|r'..pf..'\n'
-                lni_str = lni_str .. '%map_level_tip%'..'\n'
-                lni_str = lni_str .. '|cffffe799属性：|r'..'\n'
+                table.insert(lni_str,'tip = [['..'\n')
+                table.insert(lni_str,'|cffffe799评分：|r'..pf..'\n')
+                table.insert(lni_str,'%map_level_tip%'..'\n')
+                table.insert(lni_str,'|cffffe799属性：|r'..'\n')
                 for i,tab in ipairs(main_attr_tab)do 
                     local per_str = finds(base_attr,tab[1])  and '' or '%'
+                    local attr_name = tab[1]:sub(-1,-1)=='%' and tab[1]:sub(1,-2) or tab[1]
                     if tonumber(tab[2]) < 0 then 
-                        lni_str = lni_str  .."|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                        table.insert(lni_str,"|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. attr_name ..'\n')
                     else     
-                        lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                        table.insert(lni_str,"|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. attr_name ..'\n')
                     end    
                 end
                 if #item > 0 then 
-                    lni_str = lni_str .. ''
-                    -- lni_str = lni_str .. '\n|cffffe799额外属性：|r'..'\n'
+                    -- table.insert(lni_str,''
+                    -- table.insert(lni_str,'\n|cffffe799额外属性：|r'..'\n'
                 end
                 for i,tab in ipairs(item) do    
                     local per_str = finds(base_attr,tab[1])  and '' or '%'
+                    local attr_name = tab[1]:sub(-1,-1)=='%' and tab[1]:sub(1,-2) or tab[1]
                     if tonumber(tab[2]) < 0 then 
-                        lni_str = lni_str  .."|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                        table.insert(lni_str,"|cffffff00"..bignum2string(tab[2])..per_str..' |r'.. attr_name ..'\n')
                     else     
-                        lni_str = lni_str  .."|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. tab[1] ..'\n'
+                        table.insert(lni_str,"|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. attr_name ..'\n')
                     end    
                 end
-                lni_str = lni_str .. '\n|cff00ff00点击进行穿戴|cffff0000（只存档穿戴后的装备）|cff00ff00，按Tab查看效果'..'\n'
-                lni_str = lni_str .. ']]'..'\n'
+                table.insert(lni_str,'\n|cff00ff00点击进行穿戴|cffff0000（只存档穿戴后的装备）|cff00ff00，按Tab查看效果'..'\n')
+                table.insert(lni_str,']]'..'\n')
 
                 --合并属性条
                 local temp = {}
@@ -314,17 +320,18 @@ category = '存档']]
                     end    
                 end    
                 --生成 属性 lni 
-                lni_str = lni_str .. "attr = {"..'\n'
+                table.insert(lni_str,"attr = {"..'\n')
                 for key,val in pairs(temp)do
-                    lni_str = lni_str .. "'"..key .."' = " .. val ..',\n'
+                    table.insert(lni_str,"'"..key .."' = " .. val ..',\n')
                 end
-                lni_str = lni_str .. "}"
-                --lni_str = lni_str .. "'"..key1 .."' = " .. random_val ..'\n'
-                lni_str = lni_str .. '\n'
+                table.insert(lni_str,"}")
+                --table.insert(lni_str,"'"..key1 .."' = " .. random_val ..'\n'
+                table.insert(lni_str,'\n')
             end    
 		end	
-	end
-	print(lni_str)
+    end
+    local str = table.concat( lni_str,"")
+	print(str)
 
 end
 

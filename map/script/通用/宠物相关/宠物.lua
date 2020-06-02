@@ -27,6 +27,7 @@ function player.__index:create_pets(name)
     if u.data and u.data.skill_name then 
         u:add_skill(u.data.skill_name ,'英雄',9)
     end    
+    u:add('魔法恢复',1)
     -- u:set_animation_speed(1000)
     --添加切换背包
     u:add_skill('切换背包','英雄',5)
