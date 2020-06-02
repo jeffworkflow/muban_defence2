@@ -109,9 +109,10 @@ function creeps.start()
         end)
 	end
 end
---加载完直接刷怪
-creeps.start()
-
+--难度选择完，加载刷怪
+ac.game:event '选择难度' (function(_,g_game_degree_name)
+    creeps.start()
+end)
 
 
 

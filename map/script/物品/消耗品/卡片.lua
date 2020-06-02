@@ -281,7 +281,8 @@ ac.game:event '玩家-聊天' (function(self, player, str)
     end    
     local hero = player.hero
     local p = player
-    local it = hero:has_item('猜拳卡')
+    local peon = p.peon
+    local it = hero:has_item('猜拳卡') or peon:has_item('猜拳卡')
     if not it then 
         return 
     end 

@@ -605,6 +605,63 @@ function helper:test_n4()
 
 end	
 
+--难5测试
+function helper:test_n5()
+	-- local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	for i=1,6 do 
+		local p = ac.player(i)
+		p:add('局内地图等级',12)
+		p:Map_SaveServerValue('cwjn',435000) --网易服务器
+		p:event_notify '读取存档数据'
+
+		p:Map_SaveServerValue('cntsb',1) --网易服务器
+		p:Map_SaveServerValue('cntqs',2) --网易服务器
+		p:Map_SaveServerValue('cntzj',3) --网易服务器
+		p:Map_SaveServerValue('sldwb',25000) --网易服务器
+		p:Map_SaveServerValue('sldks',25000) --网易服务器
+		p:Map_SaveServerValue('slddz',25000) --网易服务器
+		p:Map_SaveServerValue('sldzs',25000) --网易服务器
+		p:Map_SaveServerValue('sldbp',25000) --网易服务器
+		p:Map_SaveServerValue('sldytz',25000) --网易服务器
+
+		p:Map_SaveServerValue('wsdmt',4) --网易服务器
+		p:Map_SaveServerValue('hjkg',4) --网易服务器
+		p:Map_SaveServerValue('cmgdxgn',4) --网易服务器
+		p:Map_SaveServerValue('ycmjbm',4) --网易服务器
+		p:Map_SaveServerValue('qhzr',4) --网易服务器
+		p:Map_SaveServerValue('fty',4) --网易服务器
+		p:Map_SaveServerValue('zjzt',4) --网易服务器
+		p:Map_SaveServerValue('ltc',4) --网易服务器
+		p:Map_SaveServerValue('xkwz',4) --网易服务器
+		p:Map_SaveServerValue('ty',4) --网易服务器
+		p.server['吕布'] = 1
+		p.server['熊灵分裂'] = 1
+		p.server['鬼剑愁'] = 1
+		p.server['爱国者导弹'] = 1
+		
+		p.server['绝世魔剑'] = 4
+		p.server['书呆子'] = 4
+		p.server['剑瞎子'] = 4
+		p.server['扭蛋人生'] = 4
+		p.server['血羽之心'] = 4
+		p.server['天神之息'] = 4
+
+		p.mall['金币礼包'] = 1
+		p.mall['木材礼包'] = 1
+		p.mall['入群礼包'] = 1
+		p.mall['五星好评礼包'] = 1
+		p.mall['首充礼包'] = 1
+	end
+	
+	ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+		for i=1,6 do 
+			local rand = math.random(#ac.save_item[2]['白'])
+			local name = ac.save_item[2]['白'][rand]
+			hero:add_item(name)
+		end
+	end)
+
+end	
 
 --伤害自己
 function helper:damage(damage)

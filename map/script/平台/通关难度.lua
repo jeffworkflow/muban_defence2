@@ -285,11 +285,11 @@ function mt:on_cast_start()
     local attribute ={
         ['攻击'] = function() return hero:get('攻击')+100000000 end,
 
-        ['物品获取率'] = hero:get('物品获取率'),
-        ['木头加成'] = hero:get('木头加成'),
-        ['金币加成'] = hero:get('金币加成'),
-        ['杀敌数加成'] = hero:get('杀敌数加成'),
-        ['魔丸加成'] = hero:get('魔丸加成'),--新资源
+        ['物品获取率'] = function() return hero:get('物品获取率') end ,
+        ['木头加成'] = function() return hero:get('木头加成') end ,
+        ['金币加成'] = function() return hero:get('金币加成') end , 
+        ['杀敌数加成'] = function() return hero:get('杀敌数加成') end ,
+        ['魔丸加成'] = function() return hero:get('魔丸加成') end ,--新资源
 
     }
     u:add_buff "召唤物"{

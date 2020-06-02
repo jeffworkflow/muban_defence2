@@ -628,8 +628,8 @@ on_add['魔法'] = function(self, v1, v2)
 end
 
 on_get['魔法'] = function(self, mana)
-	if mana < 0 then
-		return 0
+	if mana < 1 then
+		return 1
 	else
 		local max_mana = self:get '魔法上限'
 		if mana > max_mana then

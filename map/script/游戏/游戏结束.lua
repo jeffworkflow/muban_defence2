@@ -117,6 +117,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	for _, u in ac.selector()
 		: allow_god()
 		: of_not_hero()
+        : add_filter(function(dest)
+            return (dest:get_name() ~='特效马甲')
+        end)
 		: ipairs()
 	do
 		--暂停所有单位
@@ -210,7 +213,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 				if u.add_restriction then 
 					u:add_restriction '阿卡林'
 				else 
-					print('游戏结束时，单位没有add_restriction',u)
+					print('游戏结束时，单位没有add_restriction',u:get_name())
 				end
 				u:add_buff '淡化'
 				{

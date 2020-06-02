@@ -412,6 +412,7 @@ local task_detail = {
                 u:add_buff '无敌'{
                     time = 2
                 }
+                u.owner_ship = p
             end
         end,
         sendMsg = function(p)
@@ -450,6 +451,10 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
     if math.random(10000)/100 < rate then 
         local p = killer.owner
         local hero = p.hero
+        --死亡单位如果有所有者，则奖励为所有者的。
+        if target.owner_ship then 
+            hero = target.owner_ship.hero
+        end
         if not hero then return end
         if type(award) =='function' then 
             award(killer, target)

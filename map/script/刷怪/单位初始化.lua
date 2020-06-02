@@ -41,7 +41,6 @@ local function init_attribute(unit)
         unit:set('魔法上限',(data.attribute['魔法上限']or 0))
         unit:set('生命恢复',(data.attribute['生命恢复']or 0))
         unit:set('魔法恢复',(data.attribute['魔法恢复']or 0))
-        -- print(ac.g_game_degree_attr)
         unit:set('护甲',(data.attribute['护甲']or 0) *  (attr_mul or 1))
         unit:set('魔抗',(data.attribute['护甲']or 0) *  (attr_mul or 1))
 

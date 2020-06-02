@@ -44,10 +44,8 @@ for name,data in pairs(ac.table.ItemData) do
 end 
 ac.wait(10,function()   
 
-    -- --处理黑色物品 （黑）
-    -- quality_item['黑'] ={}
+    --将 品质技能 插入到 品质物品表里
     for color,data in pairs(ac.quality_skill) do
-        -- print(color,data[1])
         quality_item[color] = data 
     end   
     --排序
@@ -76,7 +74,8 @@ ac.wait(10,function()
     ac.save_item = save_item
     ac.all_save_item = all_save_item
     
-   
+    
+    -- print_r(ac.quality_item)
     -- print_r(ac.save_item)
     -- print_r(ac.all_save_item)
 end)
@@ -109,6 +108,8 @@ local streng_item_list = {
     {'真·圣龙精魄^100','圣龙精魄碎片一*1 圣龙精魄碎片二*1 '},
     {'龙之血珠^100','三眼赤痕*1 火龙气息*1 '},
     {'无谓因果^100','地魂融血丹*1 天魂融血丹*1 '},
+    
+    -- {'大乘佛法^100','彩虹天堂*1 火焰雨*1 功法合成*1'},
     -- {'青','青*1 青*1 青*1 技能融合*1'},
     
 }
@@ -302,10 +303,10 @@ local function streng_item(alltable,unit,it)
                             end     
                         end   
                         
-                        --创建新的物品，并设置物品数量为 总数量-合成需要的数量
-                        --已经找过的
+                        --处理消耗品材料 创建新的物品，并设置物品数量为 总数量-合成需要的数量
                         --等待0.10秒，等全部物品都删了后，再添加
                         ac.wait(0,function()
+                            -- print(111,k)
                             local stack = find_item(unit_item_list,k,true)
                             if stack -  tonumber(v) > 0 then
                                 local new_it 
@@ -315,6 +316,7 @@ local function streng_item(alltable,unit,it)
                                     new_it = ac.item.create_skill_item(k)
                                 end  
                                 new_it:set_item_count( stack -  tonumber(v))
+                                print('添加材料',u.owner,u,k)
                                 u:add_item(new_it,true)  
                             end  
                         end)
@@ -330,7 +332,7 @@ local function streng_item(alltable,unit,it)
                     end    
 
                     if name then
-                        -- print(name)
+                        --处理消耗品材料 创建新的物品，并设置物品数量为 总数量-合成需要的数量
                         ac.wait(0,function()
                             local stack = find_item(unit_item_list,name,true)
                             -- print_item(unit_item_list)
@@ -342,6 +344,7 @@ local function streng_item(alltable,unit,it)
                                     new_it = ac.item.create_skill_item(name)
                                 end  
                                 new_it:set_item_count( stack -  tonumber(v))
+                                print('添加材料2',u.owner,u,name)
                                 u:add_item(new_it,true)  
                             end  
                         end)
@@ -349,8 +352,12 @@ local function streng_item(alltable,unit,it)
                 end
             end
             -- 品质装备的 取物品名字
+            -- 品质技能
             if not ac.table.ItemData[dest_str] then 
-                dest_str = quality_item[dest_str][math.random(1,#quality_item[dest_str])]
+                -- print('类型',type(ac.skill[dest_str])) --ac.skill['蓝'] 是个table
+                -- if type(ac.skill[dest_str]) == 'function' then 
+                    dest_str = quality_item[dest_str][math.random(1,#quality_item[dest_str])]
+                -- end
                 local max_strong_rate = 0 
                 local temp_rate 
                 --处理同名装备提升合成成功概率
@@ -368,7 +375,7 @@ local function streng_item(alltable,unit,it)
                 if dest_rate then 
                     dest_rate = dest_rate + dest_rate * max_strong_rate
                 end 
-                print('提升概率：',max_strong_rate,dest_rate)
+                print('提升概率：',dest_str,max_strong_rate,dest_rate)
             end    
             
 
@@ -396,12 +403,13 @@ local function streng_item(alltable,unit,it)
                 else
                     new_item = ac.item.add_skill_item(dest_str,u)
                 end  
+                print('添加合成物品3',u.owner,u,dest_str)
                 -- 新物品 ， 材料列表 k = 材料名 ，v =数量
                 -- 回调时 需要等 合成物品成功，程序继续进行
-                ac.game:event_dispatch('物品-合成成功',p,new_item,source_names) 
+                ac.game:event_dispatch('物品-合成成功',p,new_item,source_names,source_str) 
             else
                 p:sendMsg('|cffff0000合成|r |cff'..color..dest_str..'|r |cffff0000失败|r',5)
-                ac.game:event_dispatch('物品-合成失败',p,dest_str,source_names) 
+                ac.game:event_dispatch('物品-合成失败',p,dest_str,source_names,source_str) 
             end    
               
             return is_block_trg_item 
@@ -438,14 +446,12 @@ end)
 
 
 
-ac.game:event '物品-合成成功' (function(trg, player,new_item, source_names) 
+ac.game:event '物品-合成成功' (function(trg, player,new_item, source_names,source_str) 
     if not new_item then 
         return
     end    
     local name = new_item:get_name()
-    if name =='灵宝剑' then
-        print('合成灵宝剑')
-    end    
+    print('物品合成成功：',player,new_item.name,source_names,source_str)
     return true 
 end)
 
