@@ -651,6 +651,39 @@ function helper:test_n5()
 		p.mall['入群礼包'] = 1
 		p.mall['五星好评礼包'] = 1
 		p.mall['首充礼包'] = 1
+
+		p.mall['热血青年'] = 1
+		p.mall['逆天改命'] = 1
+		p.mall['横扫六合'] = 1
+		p.mall['北斗七星'] = 1
+
+		p.mall['熔炉炎刀'] = 1
+		p.mall['冰莲穿山剑'] = 1
+		p.mall['紫阳白涛剑'] = 1
+		p.mall['霜之哀伤'] = 1
+
+		p.mall['小精灵之翼'] = 1
+		p.mall['火精灵之翼'] = 1
+		p.mall['杰拉米之翼'] = 1
+		p.mall['暗羽翼'] = 1
+
+		p.mall['血雾领域'] = 1
+		p.mall['龙腾领域'] = 1
+		p.mall['迦蓝领域'] = 1
+		p.mall['极寒领域'] = 1
+
+		p.mall['风速狗'] = 1
+		p.mall['兜兜猪'] = 1
+		p.mall['星空麋鹿'] = 1
+		p.mall['烈焰凤凰'] = 1
+
+		p.mall['东皇钟'] = 1
+		p.mall['轩辕剑'] = 1
+		p.mall['缚妖索'] = 1
+		p.mall['青莲宝色旗'] = 1
+
+
+
 	end
 	
 	ac.game:event '玩家-注册英雄' (function(trg, player, hero)
