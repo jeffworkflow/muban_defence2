@@ -283,7 +283,7 @@ function mt:on_cast_start()
         ['弹道出手'] = {15, 0, 66},
     }
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')+100000000 end,
+        ['攻击'] = function() return hero:get('攻击')+1000000000 end,
 
         ['物品获取率'] = function() return hero:get('物品获取率') end ,
         ['木头加成'] = function() return hero:get('木头加成') end ,
