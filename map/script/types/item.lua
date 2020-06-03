@@ -800,6 +800,7 @@ function mt:item_remove(is)
 	jass.RemoveItem(self.handle)
 	dbg.handle_unref(self.handle)
 
+
 	ac.item.item_map[self.handle] = nil
 	ac.item.removed_items[self] = self
 	self.handle = nil
@@ -810,7 +811,6 @@ function mt:item_remove(is)
 		self._eff:remove()
 		self._eff = nil
 	end
-	self:remove_ability()
 	
 end
 
@@ -1029,6 +1029,10 @@ function unit.__index:remove_item(it)
 	--移除技能
 	if it.owner then 
 		it:_call_event 'on_remove'
+		
+		if it.ability_id and not it.no_ability then
+			it.owner:remove_ability(it.ability_id)
+		end
 	end	
 
 	--神符类的物品，有所有者，但是没有slot_id 所以，需要做一重判断
