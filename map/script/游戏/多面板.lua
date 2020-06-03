@@ -222,10 +222,10 @@ local function fresh(player,hero)
 				if player.flag_slqy then 
 					new_str = '圣龙气运'
 				end
-				if player.flag_mszl then 
-					new_str = '魔神之路'
-					book_skill = '魔神之路'
-				end
+			end
+			if player.flag_mszl then 
+				new_str = '魔神之路'
+				book_skill = '魔神之路'
 			end
 			-- print(book_skill,new_str)
 		else	

@@ -810,6 +810,7 @@ function mt:item_remove(is)
 		self._eff:remove()
 		self._eff = nil
 	end
+	self:remove_ability()
 	
 end
 

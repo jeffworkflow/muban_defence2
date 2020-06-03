@@ -456,6 +456,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
             hero = target.owner_ship.hero
         end
         if not hero then return end
+        p = hero.owner
         if type(award) =='function' then 
             award(killer, target)
         else

@@ -118,7 +118,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		: allow_god()
 		: of_not_hero()
         : add_filter(function(dest)
-            return (dest:get_name() ~='特效马甲')
+            return (not finds(dest:get_name(),'特效'))
         end)
 		: ipairs()
 	do
