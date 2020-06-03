@@ -66,9 +66,13 @@ function mt:on_upgrade()
 			end
 			--随机装备
 			local name = ac.all_item[math.random(#ac.all_item)]
+			print('给了随机装备',name)
 			hero:add_item(name)
 			if self.owner then 
 				self:active_cd()
+			else
+				self.timer:remove()
+				self.timer = nil
 			end
 		end)
 	end
