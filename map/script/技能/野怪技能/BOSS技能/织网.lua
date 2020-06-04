@@ -20,7 +20,7 @@ damage = function(self)
     return self.owner:get('攻击')*100
 end, 
 --伤害范围 直径
-area = 1000,
+area = 650,
 time = 0.5,
 time2 = 20,
 --冷却

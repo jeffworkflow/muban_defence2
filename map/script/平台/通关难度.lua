@@ -279,12 +279,22 @@ function mt:on_cast_start()
     u:add_restriction '定身'
     u.weapon = {
         ['弹道模型'] = [[Abilities\Weapons\Mortar\MortarMissile.mdl]],
-        ['弹道速度'] = 1000,
+        ['弹道速度'] = 3000,
         ['弹道弧度'] = 0,
         ['弹道出手'] = {15, 0, 66},
     }
     local attribute ={
         ['攻击'] = function() return hero:get('攻击')+1000000000 end,
+
+        ['攻击速度'] = function() return hero:get('攻击速度') end ,
+        ['攻击间隔'] = function() return hero:get('攻击间隔') end ,
+        ['暴击几率'] = function() return hero:get('暴击几率') end ,
+        ['暴击伤害'] = function() return hero:get('暴击伤害') end , 
+        ['会心几率'] = function() return hero:get('会心几率') end ,
+        ['会心伤害'] = function() return hero:get('会心伤害') end , 
+        ['物理伤害加深'] = function() return hero:get('物理伤害加深') end ,
+        ['全伤加深'] = function() return hero:get('全伤加深') end ,
+
 
         ['物品获取率'] = function() return hero:get('物品获取率') end ,
         ['木头加成'] = function() return hero:get('木头加成') end ,

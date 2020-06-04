@@ -81,6 +81,8 @@ function mt:on_cast_start()
                 local unit = ac.find_unit('第六幕·魔神之路')
                 unit:add_sell_item('魔神的交易',9)
                 ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
             end
         end)
     end
