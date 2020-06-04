@@ -22,7 +22,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*20+10002)* self.level
+  return (self.owner:get('智力')*15+10002)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -39,7 +39,7 @@ end,
 【每秒回血】+20%
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（智力*20+10000）*Lv
+【伤害公式】（智力*15+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标

@@ -27,13 +27,13 @@ end,
 	--施法范围
 	area = 500,
 	--属性加成
- ['移动速度'] = 50,
- ['暴击几率'] = 5,
- ['暴击伤害'] = 50,
+ ['移动速度'] = 75,
+ ['暴击几率'] = 10,
+ ['暴击伤害'] = 200,
 	--介绍
-	tip = [[|cffffff00【移动速度】+50
-【暴击几率】+5%
-【暴击伤害】+50%
+	tip = [[|cffffff00【移动速度】+75
+【暴击几率】+10%
+【暴击伤害】+200%
 
 |cff00ffff【被动效果】攻击10%几率制造两只幻影（强度和技能等级相关）迷惑对手
 
@@ -56,14 +56,14 @@ function mt:atk_pas_shot(target)
     local u =  hero:create_illusion(source-{math.random(360),100})
 
     local attribute ={
-        ['攻击'] = hero:get('攻击') * (0.8+self.level * 0.05),
-        ['护甲'] = hero:get('护甲') * (0.5+self.level * 0.05),
+        ['攻击'] = hero:get('攻击') * (1+self.level * 0.07),
+        ['护甲'] = hero:get('护甲') * (0.7+self.level * 0.07),
         ['攻击间隔'] = hero:get('攻击间隔'),
         ['攻击速度'] = hero:get('攻击速度'),
-        ['生命上限'] = hero:get('生命上限')* (0.5+self.level * 0.05),
-        ['魔法上限'] = hero:get('魔法上限')* (0.8+self.level * 0.05),
-        ['生命恢复'] = hero:get('生命恢复')* (0.8+self.level * 0.05),
-        ['魔法恢复'] = hero:get('魔法恢复')* (0.8+self.level * 0.05),
+        ['生命上限'] = hero:get('生命上限')* (0.7+self.level * 0.07),
+        ['魔法上限'] = hero:get('魔法上限')* (1+self.level * 0.07),
+        ['生命恢复'] = hero:get('生命恢复')* (1+self.level * 0.07),
+        ['魔法恢复'] = hero:get('魔法恢复')* (1+self.level * 0.07),
         ['移动速度'] = hero:get('移动速度'),
 
         -- ['分裂伤害'] = hero:get('分裂伤害'),

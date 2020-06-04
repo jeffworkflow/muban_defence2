@@ -507,8 +507,8 @@ local unit_reward = {
     ['藏宝阁小弟'] = {{rand =1.3,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
-        {    rand = 49.24, name = '无' },
-        {    rand = 8, name = '随机物品',},
+        {    rand = 49.44, name = '无' },
+        {    rand = 8.2, name = '随机物品',},
         {    rand = 3.5, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 40, name = '黄阶'},
                 { rand = 40, name = '玄阶'},
@@ -559,8 +559,8 @@ local unit_reward = {
         {    rand = 0.7, name = '功法连升书*1',}, --lv2
         {    rand = 0.5, name = '三眼赤痕*1',}, --lv1
         {    rand = 0.5, name = '火龙气息*1',}, --lv2
-        {    rand = 0.35, name = '地魂融血丹*1',}, --lv1
-        {    rand = 0.35, name = '天魂融血丹*1',}, --lv2
+        {    rand = 0.15, name = '地魂融血丹*1',}, --lv1
+        {    rand = 0.15, name = '天魂融血丹*1',}, --lv2
 
         {    rand = 2, name = '强化石*1',}, --lv2
         {    rand = 0.6, name = '天谕*1',}, --lv2
@@ -585,7 +585,7 @@ local unit_reward = {
     ['藏经阁小弟'] = {{rand =0.875,name = '羊皮纸'},{rand =0.08,name = '无字天书'}},
     ['藏经阁少阁主'] = {{rand =93,name = '羊皮纸'},{rand =7,name = '无字天书'}},
     ['羊皮纸'] =  {	
-        {    rand = 49.09, name = '无' },
+        {    rand = 49.49, name = '无' },
         {    rand = 12.2, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 50, name = '黄阶'},
                 { rand = 30, name = '玄阶'},
@@ -595,8 +595,8 @@ local unit_reward = {
         
         {    rand = 5, name = '功法升级书*1',}, --lv2
         {    rand = 1, name = '功法连升书*1',}, --lv2
-        {    rand = 0.65, name = '地魂融血丹*1',},
-        {    rand = 0.65, name = '天魂融血丹*1',},
+        {    rand = 0.45, name = '地魂融血丹*1',},
+        {    rand = 0.45, name = '天魂融血丹*1',},
         {    rand = 1.3, name = '三眼赤痕*1',}, 
         {    rand = 1.3, name = '火龙气息*1',},
 
@@ -664,7 +664,7 @@ local unit_reward = {
 
     },
     ['无字天书'] =  {	
-        {    rand = 19.99, name = '无' },
+        {    rand = 20.59, name = '无' },
         {    rand = 15, name = { --'随机技能' 黄：3；玄：55:；地：30；天：12
                 { rand = 5, name = '黄阶'},
                 { rand = 50, name = '玄阶'},
@@ -673,8 +673,8 @@ local unit_reward = {
         }}, 
         {    rand = 15, name = '功法升级书*1',}, --lv2
         {    rand = 3, name = '功法连升书*1',}, --lv2
-        {    rand = 1.5, name = '地魂融血丹*1',},
-        {    rand = 1.5, name = '天魂融血丹*1',},
+        {    rand = 1.2, name = '地魂融血丹*1',},
+        {    rand = 1.2, name = '天魂融血丹*1',},
         {    rand = 3, name = '三眼赤痕*1',}, 
         {    rand = 3, name = '火龙气息*1',},
 
@@ -721,22 +721,23 @@ local unit_reward = {
         
     },
     
-    ['剑冢小弟'] = {{rand =0.35,name = '强化石*1'},{rand =0.05,name = '天谕*1'}},
+    ['剑冢小弟'] = {{rand =0.34,name = '强化石*1'},{rand =0.05,name = '天谕*1'}},
     ['剑魔'] = {{rand =33,name = '强化石*1'},{rand =9,name = '天谕*1'}},
 
     ['装备升级'] =  {	
-        {    rand = 0.35, name = '真·复制装备',},
-        -- {    rand = 97.75, name = '无' },
+        {    rand = 0.3, name = '真·复制装备',},
+        {    rand = 96.1, name = '无' },
         {    rand = 2, name = '随机物品',},
-        {    rand = 1.1, name = '吞噬丹*1',},
-        {    rand = 0.7, name = '复制装备',},
+        {    rand = 1, name = '吞噬丹*1',},
+        {    rand = 0.6, name = '复制装备',},
+
     },
 
 
     ['百花宫宫女'] = {{rand =0.65,name = '一颗神奇的种子*1'}},
     ['苏若颜'] = {{rand =100,name = '一颗神奇的种子*1'}},
     ['一颗神奇的种子'] =  {	
-        {    rand = 43.44, name = '无' },
+        {    rand = 43.54, name = '无' },
         {    rand = 1.5, name = '随机物品',},
         {    rand = 1.5, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 40, name = '黄阶'},
@@ -788,8 +789,8 @@ local unit_reward = {
         {    rand = 0.4, name = '功法连升书*1',}, --lv2
         {    rand = 0.25, name = '三眼赤痕*1',}, --lv1
         {    rand = 0.25, name = '火龙气息*1',}, --lv2
-        {    rand = 0.15, name = '地魂融血丹*1',}, --lv1
-        {    rand = 0.15, name = '天魂融血丹*1',}, --lv2
+        {    rand = 0.1, name = '地魂融血丹*1',}, --lv1
+        {    rand = 0.1, name = '天魂融血丹*1',}, --lv2
 
         {    rand = 1, name = '强化石*1',}, --lv2
         {    rand = 0.3, name = '天谕*1',}, --lv2
@@ -911,7 +912,7 @@ local unit_reward = {
     },
 
     ['超级扭蛋'] = {
-        {    rand = 32.941, name = '空蛋' },
+        {    rand = 32.981, name = '空蛋' },
 
         {    rand = 2.5, name = '魔丸',},
         {    rand = 2.5, name = '木头',},
@@ -983,8 +984,8 @@ local unit_reward = {
         {    rand = 0.02, name = '三号熔炼石',},
         {    rand = 0.02, name = '四号熔炼石',},
 
-        {    rand = 0.05, name = '地魂融血丹',}, --lv1
-        {    rand = 0.05, name = '天魂融血丹',}, --lv2
+        {    rand = 0.03, name = '地魂融血丹',}, --lv1
+        {    rand = 0.03, name = '天魂融血丹',}, --lv2
         {    rand = 0.05, name = '三眼赤痕',}, --lv1
         {    rand = 0.05, name = '火龙气息',}, --lv2
 
@@ -997,11 +998,11 @@ local unit_reward = {
         {    rand = 0.15, name = '龙族血统',},--木头+5555，魔丸+5555，杀敌数+5555
     },
     
-    ['城堡守卫'] = {{rand =0.55,name = '黑暗骰子*1'}},
+    ['城堡守卫'] = {{rand =0.58,name = '黑暗骰子*1'}},
     ['牛头马面'] = {{rand =100,name = '黑暗骰子*1'}},
 
     ['黑暗骰子'] =  {	
-        {    rand = 64.24, name = '无' },
+        {    rand = 64.12, name = '无' },
         {    rand = 0.5, name = '随机物品',},
         {    rand = 0.5, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
                 { rand = 55, name = '黄阶'},
@@ -1047,18 +1048,18 @@ local unit_reward = {
         {    rand = 0.02, name = '四号熔炼石*1',},
         {    rand = 0.01, name = '五号熔炼石*1',},
         
-        {    rand = 0.3, name = '杀敌数保本卡*1' },
-        {    rand = 0.3, name = '木头保本卡*1' },
-        {    rand = 0.3, name = '魔丸保本卡*1' },
-        {    rand = 0.3, name = '全属性保本卡*1' },
-        {    rand = 0.3, name = '杀敌数翻倍卡*1' },
-        {    rand = 0.3, name = '木头翻倍卡*1' },
-        {    rand = 0.3, name = '魔丸翻倍卡*1' },
-        {    rand = 0.3, name = '全属性翻倍卡*1' },
-        {    rand = 0.3, name = '炸弹卡*1' },
-        {    rand = 0.3, name = '大炸弹卡*1' },
-        {    rand = 0.3, name = '猜拳卡*1' },
-        {    rand = 0.3, name = 'gg卡*1' },
+        {    rand = 0.31, name = '杀敌数保本卡*1' },
+        {    rand = 0.31, name = '木头保本卡*1' },
+        {    rand = 0.31, name = '魔丸保本卡*1' },
+        {    rand = 0.31, name = '全属性保本卡*1' },
+        {    rand = 0.31, name = '杀敌数翻倍卡*1' },
+        {    rand = 0.31, name = '木头翻倍卡*1' },
+        {    rand = 0.31, name = '魔丸翻倍卡*1' },
+        {    rand = 0.31, name = '全属性翻倍卡*1' },
+        {    rand = 0.31, name = '炸弹卡*1' },
+        {    rand = 0.31, name = '大炸弹卡*1' },
+        {    rand = 0.31, name = '猜拳卡*1' },
+        {    rand = 0.31, name = 'gg卡*1' },
 
         {    rand = 3.2, name = '一笔巨款',}, --成就
         {    rand = 1.1, name = '玄远之学',}, --成就
