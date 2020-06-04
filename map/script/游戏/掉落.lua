@@ -829,7 +829,7 @@ local unit_reward = {
 
     },
     ['扭蛋'] = {
-        {    rand = 32.601, name = '空蛋' },
+        {    rand = 32.681, name = '空蛋' },
 
         {    rand = 4, name = '魔丸',},
         {    rand = 4, name = '木头',},
@@ -901,17 +901,17 @@ local unit_reward = {
         {    rand = 0.02, name = '一号熔炼石',},
         {    rand = 0.02, name = '二号熔炼石',},
 
-        {    rand = 0.12, name = '红色小水滴',},--红色小水滴 吸血+10% 攻击回血+500000
-        {    rand = 0.12, name = '黄金罗盘',},--暴击几率+2.5%，暴击伤害+35%
-        {    rand = 0.12, name = '发光的草药',},--免伤几率+5%，每秒回血+5%
-        {    rand = 0.12, name = '奇美拉的头颅',},--分裂伤害+50%，攻击速度+50%
+        {    rand = 0.1, name = '红色小水滴',},--红色小水滴 吸血+10% 攻击回血+500000
+        {    rand = 0.1, name = '黄金罗盘',},--暴击几率+2.5%，暴击伤害+35%
+        {    rand = 0.1, name = '发光的草药',},--免伤几率+5%，每秒回血+5%
+        {    rand = 0.1, name = '奇美拉的头颅',},--分裂伤害+50%，攻击速度+50%
 
         {    rand = 0.02, name = '倒霉蛋',},--木头+5555，魔丸+5555，杀敌数+5555
         {    rand = 0.1, name = '矮人的火枪',},--木头+5555，魔丸+5555，杀敌数+5555
     },
 
     ['超级扭蛋'] = {
-        {    rand = 33.061, name = '空蛋' },
+        {    rand = 32.941, name = '空蛋' },
 
         {    rand = 2.5, name = '魔丸',},
         {    rand = 2.5, name = '木头',},
@@ -988,13 +988,13 @@ local unit_reward = {
         {    rand = 0.05, name = '三眼赤痕',}, --lv1
         {    rand = 0.05, name = '火龙气息',}, --lv2
 
-        {    rand = 0.13, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000
-        {    rand = 0.13, name = '发光的蓝色灰烬',},--暴击几率+2.5%，暴击伤害+25%
-        {    rand = 0.13, name = '诸界的毁灭者',},--免伤几率+5%，每秒回血+5%
-        {    rand = 0.13, name = '末日的钟摆',},--分裂伤害+50%，攻击速度+50%
+        {    rand = 0.15, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000
+        {    rand = 0.15, name = '发光的蓝色灰烬',},--暴击几率+2.5%，暴击伤害+25%
+        {    rand = 0.15, name = '诸界的毁灭者',},--免伤几率+5%，每秒回血+5%
+        {    rand = 0.15, name = '末日的钟摆',},--分裂伤害+50%，攻击速度+50%
 
-        {    rand = 0.03, name = '游戏王',},--木头+5555，魔丸+5555，杀敌数+5555
-        {    rand = 0.13, name = '龙族血统',},--木头+5555，魔丸+5555，杀敌数+5555
+        {    rand = 0.05, name = '游戏王',},--木头+5555，魔丸+5555，杀敌数+5555
+        {    rand = 0.15, name = '龙族血统',},--木头+5555，魔丸+5555，杀敌数+5555
     },
     
     ['城堡守卫'] = {{rand =1.1,name = '黑暗骰子*1'}},
@@ -1255,23 +1255,25 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local tab = table_copy(tab)
     --概率提升
     for i,data in pairs(tab) do 
-        if data.name == '藏宝图' then 
+        -- print(i,data.name,finds(data.name,'超级扭蛋券%(十连抽%)') )
+        if finds(data.name,'藏宝图') then 
+            -- print('藏宝图掉落概率1：',player:get('藏宝图掉落概率'),tab[i].rand)
             tab[i].rand  = tab[i].rand * (1 + (player:get('藏宝图掉落概率') or 0)/100)
-        elseif data.name == '羊皮纸' then 
+        elseif finds(data.name,'羊皮纸') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('羊皮纸掉落概率') or 0)/100)
-        elseif data.name == '无字天书' then 
+        elseif finds(data.name,'无字天书') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('无字天书掉落概率') or 0)/100)
-        elseif data.name == '强化石' then 
+        elseif finds(data.name,'强化石') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('强化石掉落概率') or 0)/100)
-        elseif data.name == '天谕' then 
+        elseif finds(data.name,'天谕') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('天谕掉落概率') or 0)/100)
-        elseif data.name == '一颗神奇的种子' then 
+        elseif finds(data.name,'一颗神奇的种子') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('一颗神奇的种子掉落概率') or 0)/100)
-        elseif data.name == '扭蛋券(十连抽)' then 
-            tab[i].rand  = tab[i].rand * (1 + (player:get('扭蛋券(十连抽)掉落概率') or 0)/100)
-        elseif data.name == '超级扭蛋券(十连抽)' then 
+        elseif finds(data.name,'超级扭蛋券%(十连抽%)') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('超级扭蛋券(十连抽)掉落概率') or 0)/100)
-        elseif data.name == '黑暗骰子' then 
+        elseif finds(data.name,'扭蛋券%(十连抽%)') then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('扭蛋券(十连抽)掉落概率') or 0)/100)
+        elseif finds(data.name,'黑暗骰子') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('黑暗骰子掉落概率') or 0)/100)
         end 
     end    

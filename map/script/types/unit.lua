@@ -1418,7 +1418,7 @@ function unit.j_unit(handle)
 		if  ignore_flag then
 			unit.remove_handle_map[handle] = nil
 		else			
-			log.warn('没有被脚本控制的单位!', handle, base.id2string(jass.GetUnitTypeId(handle)), jass.GetUnitName(handle))
+			log.warn('没有被脚本控制的单位!', handle, base.id2string(jass.GetUnitTypeId(handle)), jass.GetUnitName(handle),unit.remove_handle_map[handle])
 		end
 		u = unit.init_unit(handle)
 	end

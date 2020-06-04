@@ -26,7 +26,7 @@ function mt:on_cast_shot()
     if skill then 
         local upgrade_count = skill.upgrade_count or 1
 
-        if upgrade_count >= 5 then 
+        if upgrade_count >= skill.max_level then 
             player:sendMsg('技能已经满级')
 
             if self._count > 1 then 
