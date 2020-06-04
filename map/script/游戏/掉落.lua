@@ -1255,23 +1255,25 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local tab = table_copy(tab)
     --概率提升
     for i,data in pairs(tab) do 
-        if data.name == '藏宝图' then 
+        -- print(i,data.name,finds(data.name,'超级扭蛋券%(十连抽%)') )
+        if finds(data.name,'藏宝图') then 
+            -- print('藏宝图掉落概率1：',player:get('藏宝图掉落概率'),tab[i].rand)
             tab[i].rand  = tab[i].rand * (1 + (player:get('藏宝图掉落概率') or 0)/100)
-        elseif data.name == '羊皮纸' then 
+        elseif finds(data.name,'羊皮纸') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('羊皮纸掉落概率') or 0)/100)
-        elseif data.name == '无字天书' then 
+        elseif finds(data.name,'无字天书') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('无字天书掉落概率') or 0)/100)
-        elseif data.name == '强化石' then 
+        elseif finds(data.name,'强化石') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('强化石掉落概率') or 0)/100)
-        elseif data.name == '天谕' then 
+        elseif finds(data.name,'天谕') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('天谕掉落概率') or 0)/100)
-        elseif data.name == '一颗神奇的种子' then 
+        elseif finds(data.name,'一颗神奇的种子') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('一颗神奇的种子掉落概率') or 0)/100)
-        elseif data.name == '扭蛋券(十连抽)' then 
-            tab[i].rand  = tab[i].rand * (1 + (player:get('扭蛋券(十连抽)掉落概率') or 0)/100)
-        elseif data.name == '超级扭蛋券(十连抽)' then 
+        elseif finds(data.name,'超级扭蛋券%(十连抽%)') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('超级扭蛋券(十连抽)掉落概率') or 0)/100)
-        elseif data.name == '黑暗骰子' then 
+        elseif finds(data.name,'扭蛋券%(十连抽%)') then 
+            tab[i].rand  = tab[i].rand * (1 + (player:get('扭蛋券(十连抽)掉落概率') or 0)/100)
+        elseif finds(data.name,'黑暗骰子') then 
             tab[i].rand  = tab[i].rand * (1 + (player:get('黑暗骰子掉落概率') or 0)/100)
         end 
     end    

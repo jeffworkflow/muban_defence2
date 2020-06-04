@@ -628,8 +628,8 @@ on_add['魔法'] = function(self, v1, v2)
 end
 
 on_get['魔法'] = function(self, mana)
-	if mana < 1 then
-		return 1
+	if mana < 0 then
+		return 0
 	else
 		local max_mana = self:get '魔法上限'
 		if mana > max_mana then
@@ -644,6 +644,9 @@ get['魔法上限'] = function(self)
 end
 
 set['魔法上限'] = function(self, max_mana)
+	if max_mana <= 1 then 
+		max_mana = 1
+	end	
 	japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_MANA, max_mana)
 end
 

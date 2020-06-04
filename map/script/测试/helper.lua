@@ -1662,6 +1662,15 @@ function helper:print_hero()
     end 
 
 end
+
+--test_print_all_unit
+function helper:test_print()
+	for handle,u in pairs(ac.unit.all_units) do 
+		print(handle,u,u.handle,u.id,u:get_name(),u.unit_type,ac.unit.remove_handle_map[handle])
+	end
+
+	
+end
 --添加漂浮文字称号
 function helper:add_ch(str,zoffset)
 	if self.ch then 

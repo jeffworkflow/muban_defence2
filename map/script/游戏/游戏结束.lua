@@ -129,6 +129,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		--停止动画
 		u:set_animation_speed(0)
 		if u:get_name() =='虚空诺亚' then print('捕捉到游戏失败时，最终boss,是否有禁锢：',u:has_restriction '禁锢') end
+
 		if not u:has_restriction '禁锢' then
 			table.insert(group, u)
 		end
@@ -215,11 +216,13 @@ ac.game:event '游戏-结束' (function(trg,flag)
 				else 
 					print('游戏结束时，单位没有add_restriction',u:get_name())
 				end
-				u:add_buff '淡化'
-				{
-					time = 2,
-					remove_when_hit = not u:is_hero(),
-				}
+				if u.add_buff then 
+					u:add_buff '淡化'
+					{
+						time = 2,
+						remove_when_hit = not u:is_hero(),
+					}
+				end
 				n = n - 1
 				if n <= 0 and t then
 					if ac.final_boss and ac.final_boss:is_alive() then 
