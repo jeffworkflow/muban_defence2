@@ -237,7 +237,7 @@ local function up_item(item)
     item.show_level = true
     item.qh_max_level = 10
     item.max_level = 15
-    item.level = item.level + 1
+    item:upgrade(1)
     item:set_name(item.name)
 end   
 
