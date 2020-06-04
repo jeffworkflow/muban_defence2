@@ -426,7 +426,7 @@ local task_detail = {
         award = '第六根柱子',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的传说中的|cffff0000 "第六根柱子" |r 被击败了，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的|cffff0000 "第六根柱子" |r 已被击毙，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
         end,
     },
 }
