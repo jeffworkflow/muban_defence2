@@ -14,7 +14,7 @@ tip = [[
 |cff00ff00全属性加成+5%
 初始全属性+100万 
 初始金币+80万
-初始杀敌数+3000|r
+初始杀敌数+1500|r
 
 ]],
 --目标类型
@@ -25,7 +25,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['智力%'] = 5,
 --初始金币和杀敌数
 init_gold = 800000,
-init_kill_count = 3000,
+init_kill_count = 1500,
 }
 function mt:on_add()
     local hero = self.owner

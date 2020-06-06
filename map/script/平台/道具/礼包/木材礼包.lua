@@ -12,14 +12,14 @@ tip = [[
 
 |cffFFE799【领取条件】|r商城购买|cffff0000木材礼包|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00初始木头+15，初始杀敌数+1000 |r
+|cffFFE799【礼包奖励】|r|cff00ff00初始木头+15，初始杀敌数+500 |r
  ]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 award_wood = 15,
-award_all_attr = 1000,
+award_all_attr = 500,
 
 }
 
