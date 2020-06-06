@@ -8,7 +8,7 @@
 -- end    
 
 require '测试.helper'
-require '测试.memory_test'
--- require '测试.memory_test2'
+-- require '测试.memory_test'
+require '测试.memory_test2'
 
 

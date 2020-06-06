@@ -58,7 +58,9 @@ ac.game:event '单位-创建前'(function(_,id,self,j_id, x, y,face)
         -- u:remove_restriction '禁锢'
         u:remove_restriction '缴械'
         u:set('生命', u:get '生命上限')
-        ac.unit.init_attribute(u)
+        if ac.unit.init_attribute then 
+            ac.unit.init_attribute(u)
+        end
 
         return u
     end    

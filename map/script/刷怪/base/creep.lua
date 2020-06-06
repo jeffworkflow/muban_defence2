@@ -315,7 +315,7 @@ function mt:next()
     --     self.timerdialog:remove()
     --     self.timerdialog = nil
     -- end    
-    if  self.force_cool then 
+    if  self.force_cool and self.index < self.max_index then 
         --创建计时器窗口
         self.timerdialog = ac.timer_ex 
         {
@@ -507,6 +507,7 @@ function mt:finish(is_unit_kill)
         self.timer = nil
     end
     if  self.timerdialog then 
+        -- print_r(self.timerdialog)
         self.timerdialog:remove()
         self.timerdialog = nil
     end

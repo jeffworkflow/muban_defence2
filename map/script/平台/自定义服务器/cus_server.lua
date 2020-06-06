@@ -334,7 +334,7 @@ function player.__index:SetServerValue(key,value,f)
             end    
         else
             -- print('返回值非json格式:',self:get_name(),post,'保存失败')
-            print('服务器返回数据异常:',retval)
+            print('服务器返回数据异常1:',post)
             -- print_r(retval)
         end    
     end)

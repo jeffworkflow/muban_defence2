@@ -216,7 +216,7 @@ ac.loop(30 * 1000, function()
 	print(('jass句柄数[%d],历史最大句柄[%d]'):format(dbg.handlecount(), dbg.handlemax()))
 	-- ac.debug_print_timer()
 	print(('计时器 正常[%d]'):format(ac.timer_size()))
-	print(('game计时器 正常[%d]'):format(game.timer_size()))
+	-- print(('game计时器 正常[%d]'):format(game.timer_size()))
 
 	local unit_normal_count = 0
 	local creature_normal_count = 0

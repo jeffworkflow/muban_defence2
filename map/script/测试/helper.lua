@@ -184,8 +184,12 @@ function helper:reload()
 end
 
 
-
-
+--测试合成
+function helper:test_hc()
+	for i=1,1000 do 
+		self:add_item('超级扭蛋(百连抽)')
+	end
+end
 
 --创建全图视野
 function helper:icu()

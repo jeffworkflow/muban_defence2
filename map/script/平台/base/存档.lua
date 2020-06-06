@@ -1,6 +1,6 @@
 local player = require 'ac.player'
 local japi = require 'jass.japi'
-local ui = require 'ui.client.util'
+-- local ui = require 'ui.client.util'
 register_japi[[
 	native DzAPI_Map_SaveServerValue        takes player whichPlayer, string key, string value returns boolean
     native DzAPI_Map_GetServerValue         takes player whichPlayer, string key returns string
@@ -218,33 +218,33 @@ function player.__index:GetServerValueErrorCode()
 end
 
 --同步数据 在阿七自定义ui里不可用，有冲突，直接掉线
-function player.__index:SyncData(msg,f)
-    if not self:is_self() then
-        print('未进入异步，不需要同步') 
-        return 
-    end
-    if not ui then 
-        print('没有加载ui.encode')
-        return 
-    end
-    if type(msg) == 'table' then 
-        msg = ui.encode(msg)
-    end
-    japi.DzSyncData("ac",msg)
-    local trg = CreateTrigger()
-    japi.DzTriggerRegisterSyncData(trg,"ac",false)
+-- function player.__index:SyncData(msg,f)
+--     if not self:is_self() then
+--         print('未进入异步，不需要同步') 
+--         return 
+--     end
+--     if not ui then 
+--         print('没有加载ui.encode')
+--         return 
+--     end
+--     if type(msg) == 'table' then 
+--         msg = ui.encode(msg)
+--     end
+--     japi.DzSyncData("ac",msg)
+--     local trg = CreateTrigger()
+--     japi.DzTriggerRegisterSyncData(trg,"ac",false)
     
-    function action()
-        local message = japi.DzGetTriggerSyncData()
-        local player = japi.DzGetTriggerSyncPlayer()
-        player = ac.player(GetPlayerId(player) + 1)
-        message = ui.decode(message)
-        -- print(message,player)
-        if f then f(player,message)end
-    end   
-    TriggerAddAction(trg,action)  
+--     function action()
+--         local message = japi.DzGetTriggerSyncData()
+--         local player = japi.DzGetTriggerSyncPlayer()
+--         player = ac.player(GetPlayerId(player) + 1)
+--         message = ui.decode(message)
+--         -- print(message,player)
+--         if f then f(player,message)end
+--     end   
+--     TriggerAddAction(trg,action)  
     
-end
+-- end
 
 --===================================================
 --                  下面的一般用不到

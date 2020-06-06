@@ -138,7 +138,7 @@ function player.__index:sp_get_rank_season1(f)
                 print(self:get_name(),post,'上传失败')
             end         
         else
-            print('服务器返回数据异常:',retval,post)
+            print('服务器返回数据异常2:',post)
         end    
     end)
 end

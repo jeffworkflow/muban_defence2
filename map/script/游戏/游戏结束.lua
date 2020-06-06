@@ -96,7 +96,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	--停止刷兵
 	for i=1,3 do 
 		if type(ac.creep['刷怪'..i]) =='table' and ac.creep['刷怪'..i].finish then 
-			ac.creep['刷怪'..i]:finish()
+            pcall(ac.creep['刷怪'..i].finish)
 		end	
 	end	
 	--停止吸怪
@@ -130,6 +130,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		u:set_animation_speed(0)
 		if u:get_name() =='虚空诺亚' then print('捕捉到游戏失败时，最终boss,是否有禁锢：',u:has_restriction '禁锢') end
 
+		-- print('1游戏结束时:',u,u:get_name(),u.name,u.handle,u.id,u.unit_type,u:has_restriction '禁锢')
 		if not u:has_restriction '禁锢' then
 			table.insert(group, u)
 		end
