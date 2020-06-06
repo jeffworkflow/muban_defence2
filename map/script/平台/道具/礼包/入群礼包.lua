@@ -12,7 +12,7 @@ tip = [[
 
 |cffFFE799【领取条件】|r进入官方交流群|cffff0000(群号288678028)|r 获得隐藏密码
 
-|cffFFE799【礼包奖励】|r|cff00ff00全属性+10000，杀敌数+500|r
+|cffFFE799【礼包奖励】|r|cff00ff00全属性+10000，初始杀敌数+250|r
  ]],
 --物品类型
 item_type = '神符',
@@ -20,7 +20,7 @@ item_type = '神符',
 target_type = ac.skill.TARGET_TYPE_NONE,
 qq_qum = [[good魔灵]],
 award_all_attr = 10000,
-award_kill_cnt = 500,
+award_kill_cnt = 250,
 }
 
 function mt:on_cast_start()

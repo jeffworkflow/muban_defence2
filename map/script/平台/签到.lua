@@ -239,13 +239,13 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+150 杀怪加全属性|r
 |cff00ff00+5%  闪避|r
-|cff00ff00+15  每秒加木头|r
+|cff00ff00+10  每秒加木头|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 150,
-['每秒加木头'] = 15,
+['每秒加木头'] = 10,
 ['闪避'] = 5,
 need_map_level = 13,
 }
