@@ -2075,6 +2075,22 @@ function helper:cs()
 	end
 end
 
+--测试加属性0 引起的玩家崩溃
+function helper:test_sx()
+	ac.loop(1000,function()
+		print('开始测试',self)
+		for i = 1,60 do
+			--生命上限
+			japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, self:get('生命上限'))
+			--攻击速度
+			japi.SetUnitState(self.handle, jass.ConvertUnitState(0x51), 1+(self:get('攻击速度')/100))
+			--魔法上限
+			japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_MANA, self:get('魔法上限'))
+		end
+	end)
+end
+
+
 local function main()
 	ac.game:event '玩家-聊天' (function(self, player, str)
         if str:sub(1, 1) ~= '-' and str:sub(1, 1) ~= '.' then
