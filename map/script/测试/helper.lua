@@ -940,6 +940,8 @@ function helper:test_n8()
 		p.mall['入群礼包'] = 1
 		p.mall['五星好评礼包'] = 1
 		p.mall['首充礼包'] = 1
+		p.mall['成长礼包'] = 1
+		p.mall['初级赞助'] = 1
 
 		p.mall['热血青年'] = 1
 		p.mall['逆天改命'] = 1
@@ -1047,6 +1049,15 @@ function helper:test_n9()
 		p.mall['入群礼包'] = 1
 		p.mall['五星好评礼包'] = 1
 		p.mall['首充礼包'] = 1
+		p.mall['成长礼包'] = 1
+		p.mall['初级赞助'] = 1
+		p.mall['剑仙'] = 1
+		p.mall['藏宝阁通行证'] = 1
+		p.mall['藏经阁通行证'] = 1
+		p.mall['剑冢通行证'] = 1
+		p.mall['百花宫通行证'] = 1
+		p.mall['龙宫通行证'] = 1
+		p.mall['罪恶城堡通行证'] = 1
 
 		p.mall['热血青年'] = 1
 		p.mall['逆天改命'] = 1
