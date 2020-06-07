@@ -11,22 +11,23 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00杀怪加388全属性，攻击加888全属性，每秒加1688全属性
+|cff00ff00杀怪加888全属性，攻击加888全属性，每秒加888全属性
 |cff00ffff攻击减甲+地图等级*15
 减少周围护甲+地图等级*250
 |cffffff00物理伤害加深+地图等级*100%
 技能伤害加深+地图等级*50%
 |cffff0000全伤加深+地图等级*25%
 对BOSS额外伤害+地图等级*10%
+|cffff0000每秒加护甲+地图等级*5
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --几率
 chance = 10,
-['杀怪加全属性'] = 388,
+['杀怪加全属性'] = 888,
 ['攻击加全属性'] = 888,
-['每秒加全属性'] = 1688,
+['每秒加全属性'] = 888,
 
 ['攻击减甲'] = function(self)
     local p = self.owner:get_owner()
@@ -61,6 +62,11 @@ end,
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     return 10 * map_level
+end,
+['每秒加护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 5 * map_level
 end,
 
 

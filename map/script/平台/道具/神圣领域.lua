@@ -45,14 +45,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【领域属性】：|r
 |cff00ff00+336  杀怪加生命上限|r
 |cff00ff00+400  减少周围护甲|r
-|cff00ff00+10   每秒加魔丸|r
+|cff00ff00+5   每秒加魔丸|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 336,
 ['减少周围护甲'] = 400,
-['每秒加魔丸'] = 10,
+['每秒加魔丸'] = 5,
 need_map_level = 4,
 --特效
 effect = [[lingyu13.mdx]]
@@ -104,7 +104,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【领域属性】：|r
 |cff00ff00+576  杀怪加生命上限|r
 |cff00ff00+800  减少周围护甲|r
-|cff00ff00+15   每秒加魔丸|r
+|cff00ff00+8   每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
@@ -112,7 +112,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 576,
 ['减少周围护甲'] = 800,
-['每秒加魔丸'] = 15,
+['每秒加魔丸'] = 8,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 10,
@@ -165,7 +165,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【领域属性】：|r
 |cff00ff00+816  杀怪加生命上限|r
 |cff00ff00+1200  减少周围护甲|r
-|cff00ff00+20   每秒加魔丸|r
+|cff00ff00+10   每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
@@ -173,7 +173,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 816,
 ['减少周围护甲'] = 1200,
-['每秒加魔丸'] = 20,
+['每秒加魔丸'] = 10,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 16,
@@ -227,7 +227,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【领域属性】：|r
 |cff00ff00+1056  杀怪加生命上限|r
 |cff00ff00+1600  减少周围护甲|r
-|cff00ff00+25   每秒加魔丸|r
+|cff00ff00+13   每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
@@ -235,7 +235,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 1056,
 ['减少周围护甲'] = 1600,
-['每秒加魔丸'] = 25,
+['每秒加魔丸'] = 13,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 22,
@@ -288,7 +288,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【领域属性】：|r
 |cff00ff00+1296  杀怪加生命上限|r
 |cff00ff00+2000  减少周围护甲|r
-|cff00ff00+30    每秒加魔丸|r
+|cff00ff00+15    每秒加魔丸|r
 |cff00ff00+10%  羊皮纸\无字天书掉落概率|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
@@ -296,7 +296,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加生命上限'] = 1296,
 ['减少周围护甲'] = 2000,
-['每秒加魔丸'] = 30,
+['每秒加魔丸'] = 15,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 28,

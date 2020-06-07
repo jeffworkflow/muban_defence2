@@ -510,7 +510,7 @@ tip = [[
 |cff00ff00+2500W  初始生命|r
 |cff00ff00+2500   初始护甲|r
 |cff00ff00+20%  对BOSS额外伤害|r
-|cff00ff00+25   每秒加魔丸|r
+|cff00ff00+15   每秒加魔丸|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -520,7 +520,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['初始生命'] = 25000000,
 ['护甲'] = 2500,
 ['对BOSS额外伤害'] = 20,
-['每秒加魔丸'] = 25,
+['每秒加魔丸'] = 15,
 need_map_level = 28,
 --特效
 effect = [[chibang03.mdx]]
