@@ -955,7 +955,7 @@ end
 
 	--设置索敌范围
 	function mt:set_search_range(r)
-		jass.SetUnitAcquireRange(self.handle, r)
+		jass.SetUnitAcquireRange(self.handle, tonumber(r))
 	end
 
 	--添加单位视野(依然不能超过1800)
@@ -1922,6 +1922,9 @@ function unit.registerJassTriggers()
         -- print('触发丢弃物品',it.owner,it.name,it._model)
 		if not it then
 			return
+		end
+		if not u then 
+			return 
 		end
 		u:event_notify('单位-丢弃物品', u, it)
 	end)

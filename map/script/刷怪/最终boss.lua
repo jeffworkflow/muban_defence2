@@ -17,6 +17,11 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:add_skill('屠戮_黑夜降临','隐藏')
     boss:add_skill('屠戮_神魂一击','隐藏')
     boss:add_skill('屠戮_屠戮盛宴','隐藏')
+
+    boss:add_skill('超级分身','英雄')
+    if ac.g_game_degree_attr>=3 then 
+        boss:add_skill('死亡之指','英雄')
+    end
     
 
     boss:add('减伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
@@ -30,6 +35,9 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:event '单位-死亡'(function(_,unit,killer) 
         ac.final_boss = nil
         ac.final_boss_death = true
+        if ac.main_unit then
+            ac.main_unit:add_restriction('无敌')
+        end
         if ac.g_game_degree_attr >= 11 then 
             --无尽开始
             ac.game:event_notify('游戏-无尽开始')

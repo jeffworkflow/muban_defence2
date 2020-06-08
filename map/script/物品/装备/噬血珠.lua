@@ -15,7 +15,7 @@ mt{
     art = [[shixiezhu.blp]],
     ugrade_tip = function(self)
         local str =''
-        if self.level >= self.max_level then 
+        if ac.g_game_degree_attr < self.sec_degree_attr and self.level == self.max_level  then 
             str = '|cffcccccc【更多玩法在高难度开放】|r'
         else 
             str = '|cffFFE799【进阶】|r杀满 %kill_cnt% 只怪后，点击前往杀死心魔BOSS'

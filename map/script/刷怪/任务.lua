@@ -111,10 +111,11 @@ local task_detail = {
                 time = 2
             }
             unit:event '单位-死亡' (function(_,unit,killer) 
-                local p = killer.owner
+                -- local p = killer.owner
                 local name = ac.skill[task_name..'1'].fall_item
                 
                 local mt = ac.skill[name]
+                mt.owner_ship = p
                 if p:Map_GetMapLevel() >= 5 then 
                     mt.item_type = '神符'
                     mt.level =1
@@ -122,7 +123,7 @@ local task_detail = {
                     mt.item_type = '消耗品'
                 end
                 ac.item.create_item(name,unit:get_point())
-
+                
             end)    
             p:sendMsg('|cffFFE799【系统消息】|r|cffff0000BOSS'..task_name..'|r|cff00ff00出现在上方，请小心！',2)
 

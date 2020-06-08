@@ -310,12 +310,11 @@ function mt:next()
         self.allow_next = false
         self:finish() 
         return
-    end    
-    -- if self.timerdialog then 
-    --     self.timerdialog:remove()
-    --     self.timerdialog = nil
-    -- end    
+    end     
     if  self.force_cool and self.index < self.max_index then 
+        if self.timerdialog then 
+            self.timerdialog:remove()
+        end   
         --创建计时器窗口
         self.timerdialog = ac.timer_ex 
         {
@@ -323,6 +322,7 @@ function mt:next()
             title = self.timer_ex_title ,
             func = function ()
                 self:next()   
+                self.timerdialog = nil
             end,
         }
     end    

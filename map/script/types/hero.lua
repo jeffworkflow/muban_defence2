@@ -139,15 +139,15 @@ function mt:transform(target_id)
 
 	--恢复攻击距离
 	self.default_attack_range = nil
-	self:add('攻击距离', 0)
+	self:add('攻击距离', 0.000001)
 	--恢复攻击力
-	self:add('攻击', 0)
+	self:add('攻击', 0.000001)
 	--恢复移动速度
-	self:add('移动速度', 0)
+	self:add('移动速度', 0.000001)
 	--恢复攻击间隔
-	self:add('攻击间隔', 0)
-	self:add('生命上限', 0)
-	self:add('魔法上限', 0)
+	self:add('攻击间隔', 0.000001)
+	self:add('生命上限', 0.000001)
+	self:add('魔法上限', 0.000001)
 	
 	--可以飞行
 	self:add_ability 'Arav'

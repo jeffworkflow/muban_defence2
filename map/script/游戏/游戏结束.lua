@@ -96,7 +96,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	--停止刷兵
 	for i=1,3 do 
 		if type(ac.creep['刷怪'..i]) =='table' and ac.creep['刷怪'..i].finish then 
-            pcall(ac.creep['刷怪'..i].finish)
+			-- pcall()
+			ac.creep['刷怪'..i]:finish()
 		end	
 	end	
 	--停止吸怪

@@ -9,7 +9,7 @@ function move.update_speed(u, move_speed)
 		if u:is_hero() then 
 			return 
 		end	
-		print('插入速度表',u,u.handle,u:get_point(),u:is_alive(),#move.group)
+		-- print('插入速度表',u,u.handle,u:get_point(),u:is_alive(),#move.group)
 		if not u.on_remove then 
 			u.on_remove = function(self)
 				if move.last[u] then 

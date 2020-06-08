@@ -255,10 +255,10 @@ ac.timer_ex = function(data)
 		time = time,
 	}
 	jass.TimerStart(jtm,time,false,function ()
-		timer:remove()
 		if func then 
 			func()
 		end 
+		if timer then timer:remove() end
 	end)
 	
 	function timer:PauseTimer()

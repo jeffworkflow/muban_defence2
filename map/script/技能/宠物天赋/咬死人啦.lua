@@ -79,17 +79,10 @@ function mt:on_cast_start()
                 model = skill.effect2
             }
             hero:add('全伤加深',skill.value)
-            for i=1,10 do 
-                local pp = ac.player(i)
-                if pp:is_player() then 
-                    --自己扣500 其他人加500木头
-                    if pp == p then 
-                        pp.hero:add_wood(-skill.ex_wood)
-                    else 
-                        pp.hero:add_wood(skill.ex_wood)
-                    end    
-                end  
-            end      
+            --目标加木头
+            target.owner:add_wood(skill.ex_wood)
+            --自己减木头
+            p:add_wood(-skill.ex_wood)
         end
     }
    

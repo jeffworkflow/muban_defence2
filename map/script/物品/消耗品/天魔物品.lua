@@ -396,7 +396,8 @@ for i,value in ipairs(magic_item) do
 	--忽略技能冷却
 	mt.ignore_cool_save = true
     mt.passive = true
-
+    --谁掉落，谁的
+    mt.owner_ship = true
     --使用物品
     function mt:on_cast_start()
         local hero = self.owner

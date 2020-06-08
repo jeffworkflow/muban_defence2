@@ -20,11 +20,8 @@ end
 
 function mt:on_remove(new)
 	if self.eff then
-		if new then
-			new.eff = self.eff
-		else
-			self.eff:remove()
-		end
+		self.eff:remove()
+		self.eff = nil
 	end
 	self.target:remove_restriction '晕眩'
 end

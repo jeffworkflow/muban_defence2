@@ -61,7 +61,7 @@ end
 --添加单位
 function ac.unit.__index:add_aut_skill()
     api.list:insert(self)
-    self:event '单位-死亡'(function(trg)
+    self:event '单位-移除'(function(trg)
         api.list:remove(self)
         trg:remove()
     end)

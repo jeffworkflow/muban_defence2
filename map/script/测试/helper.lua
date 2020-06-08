@@ -281,6 +281,12 @@ function helper:god()
 	for y = 1,16 do
 		player:enableControl(ac.player(y))
 	end	
+	for i=1,12 do 
+		local p = ac.player(i)
+		p:add_wood(100000000)
+		p:addGold(700000)
+		p:add_rec_ex(7000000)
+	end
 end	
 function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
@@ -1250,16 +1256,23 @@ function helper:create(str,cnt, playerid)
 	if not playerid then
 		playerid = 12
 	end
+	local data = ac.table.UnitData[str]
+	if not data  then 
+		print('没有对应的物编数据')
+		return 
+	end
+	local is_hero = data.unit_type == '英雄' 
+
 	local p = ac.player[tonumber(playerid)]
 	for i = 1 ,(cnt or 1) do
 		local point = ac.map.rects['出生点']
-		local unit = p:create_unit(str,point)
-		local data = ac.table.UnitData[str]
-		-- print(unit:get('护甲'),unit:get('护甲%'),data.attribute['护甲'])
-		unit:set('移动速度',455)
-		-- ac.wait(0.5*1000,function()
-		-- 	print(unit:get('护甲'),unit:get('护甲%'),data.attribute['护甲'])
-		-- end)
+		if is_hero then 
+			local hero = p:createHero(str,point,270);
+			p.hero = hero
+			p:event_notify('玩家-注册英雄', p, p.hero)
+		else  
+			p:create_unit(str,point)
+		end
 	end	
 end
 --创建一个敌方英雄在地图中间，如果playerid有参数，则是为playerid玩家创建
@@ -1488,37 +1501,46 @@ function helper:wldh()
 end	
 
 --进入地狱，7个光环
-function helper:tt()
-	ac.item.add_skill_item('战鼓光环',self)
+function helper:tt(all)
+	local function strong(hero)
+		local self = hero
+		self:add('杀怪加全属性',3000)
+		-- self:add('攻击距离',2000)
+		self:add('暴击几率',90)
+		self:add('会心几率',90)
+		self:add('多重射',10)
+		self:add('分裂伤害',100)
+		self:add('全属性',10000000000)
+		self:add('护甲',1000000000)
+		self:add('会心伤害',10000000000)
+		-- self.flag_dodge = true --突破极限
+		self:add('闪避极限',5)
+		self:add('闪避',100)
+		self:add('减伤',90)
+		self:add('免伤几率',90)
+		self:add('全伤加深',10030000000)
+		self:add('暴击伤害',1003000)
+		self:add('攻击速度',500)
+		self:add('攻击间隔',-1)
+		self:addGold(300000)
+		self:add_kill_count(10000000)
+		self:add_wood(10000000)
+		self:add_rec_ex(10000000)
+		helper.dtdj(self,50)
+		helper.reload_mall(self)
+	end
 
-	self:add('杀怪加全属性',3000)
-	-- self:add('攻击距离',2000)
-	self:add('暴击几率',90)
-	self:add('会心几率',90)
-	self:add('多重射',10)
-	self:add('分裂伤害',100)
-	self:add('全属性',10000000000)
-	self:add('护甲',1000000000)
-	self:add('会心伤害',10000000000)
-	-- self.flag_dodge = true --突破极限
-	self:add('闪避极限',5)
-	self:add('闪避',100)
-	self:add('减伤',90)
-	self:add('免伤几率',90)
-	self:add('全伤加深',10030000000)
-	self:add('暴击伤害',1003000)
-	self:add('攻击速度',500)
-	self:add('攻击间隔',-1)
-	self:addGold(300000)
-	self:add_kill_count(10000000)
-	self:add_wood(10000000)
-	self:add_rec_ex(10000000)
-	helper.dtdj(self,50)
-	helper.reload_mall(self)
-	-- if not ac.wtf then
-	-- 	helper.wtf(self)
-	-- end
-	-- self:add_restriction '免死'
+	if all then 
+		for i=1,12 do 
+			local p = ac.player(i)
+			if p.hero then 
+				strong(p.hero)
+			end
+		end
+	else
+		strong(self)
+	end
+	
 end
 
 function helper:tt2()
@@ -1921,6 +1943,13 @@ function helper:add_skill_suit()
 	ac.item.add_skill_item('龙凤佛杀',self)
 end
 
+--搜敌范围
+function helper:set_range(distance)
+	self:set_search_range(tonumber(distance))
+end
+
+
+
 function helper:never_dead(flag)
 	if flag == nil then
 		flag = true
@@ -2047,6 +2076,9 @@ function helper:fb(str)
 	for i=1,3 do 
 		local creep = ac.creep['刷怪'..i]
 		creep.index = tonumber(str) - 1
+		if i==1 then 
+			creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
+		end
 		if creep.has_started  then 
 			creep:next()
 		else

@@ -22,7 +22,7 @@ ac.texttag_jump = function(data)
         player.texttag_jump = 0
     end
     player.texttag_jump = player.texttag_jump + 1
-    if player.texttag_jump > 10 then 
+    if player.texttag_jump > 30 then 
         return 
     end
 
@@ -106,7 +106,7 @@ end)
 
 
 --防卡
-ac.loop(33,function()
+ac.loop(500,function()
     for i=1,10 do 
         local p = ac.player(i)
         if p:is_player() then 

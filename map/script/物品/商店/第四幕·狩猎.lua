@@ -262,6 +262,7 @@ for i,value in ipairs(magic_item) do
     mt.content_tip = ''
     mt.item_type_tip = ''
     mt.passive = true
+    mt.owner_ship = true
 
     --使用物品
     function mt:on_cast_start()

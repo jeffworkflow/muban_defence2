@@ -23,3 +23,4 @@ require '界面.客户端.动态边框'
 require '界面.客户端.抽奖'
 
 require '界面.客户端.签到'
+require '界面.客户端.伤害统计'

@@ -272,9 +272,9 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end    
     p.flag_all[temp[name]] = true 
     local mt = ac.skill[temp[name]]
+    mt.owner_ship = p
     if p:Map_GetMapLevel() >= 5 then 
         mt.item_type = '神符'
-        mt.owner_ship = p
     else
         mt.item_type = '消耗品'
     end

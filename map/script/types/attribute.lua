@@ -228,6 +228,9 @@ function mt:add_tran(name, value)
 end	
 --默认or false add('攻速%'，10) 先*再+，若攻速为200，最终值为220
 function mt:add(name, value)
+	if not value or  tonumber(value) == 0 or not tonumber(value) then 
+		return 
+	end
 	local v1, v2 = 0, 0
 	if name:sub(-1, -1) == '%' then
 		v2 = value
@@ -763,7 +766,8 @@ set['攻击距离'] = function(self, attack_range)
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x16), attack_range)
 	if self.owner:is_player() then
 		--修改攻击距离后同时修改主动攻击范围
-		local search_range = math.max(500,self:get '攻击距离')
+		local search_range = math.max(500,self:get '攻击距离' + 100)
+		print('搜敌范围：',self,search_range)
 		self:set_search_range(search_range)
 
 		--修改相关的弹道速度

@@ -149,4 +149,17 @@ ac.game:event '玩家-离开' (function(trg, tp)
 		h:remove()
 		hero.getAllHeros()[h] = nil
 	end
+	local peon = tp.peon
+	if peon then
+		peon:remove()
+	end
+	local mojian = tp.unit_mojian
+	if mojian then
+		mojian:remove()
+	end
+	
+	local unit_fs = tp.unit_fs
+	if unit_fs then
+		unit_fs:remove()
+	end
 end)

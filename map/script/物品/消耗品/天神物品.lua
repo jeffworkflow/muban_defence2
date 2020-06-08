@@ -273,6 +273,8 @@ for i,value in ipairs(magic_item) do
     mt.ignore_cool_save = true
     mt.passive = true
     mt.not_use_state = true --消耗品使用时不添加属性
+    --谁掉落，谁的
+    mt.owner_ship = true
 
     --使用物品
     function mt:on_cast_start()

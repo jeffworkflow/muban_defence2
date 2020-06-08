@@ -13,6 +13,7 @@ local function create_u(skill,unit_name,target_rect,f)
     local rect = ac.rect.j_rect(target_rect)
     local point = rect:get_point()
     local u = ac.player(12):create_unit(unit_name,point)
+    u.owner_ship = p
     u:event '单位-死亡'(function(_,unit,killer)
         --多面板显示
         p.flag_mszl = true
@@ -25,7 +26,9 @@ local function create_u(skill,unit_name,target_rect,f)
             : of_not_building()
             : ipairs()
         do 
-            u:remove()
+            if u.owner_ship == p then 
+                u:remove()
+            end
         end
         p.flag_ms = false
     end)
@@ -67,6 +70,8 @@ function mt:on_cast_start()
             
             local it_name = p:random(ac.tm_item,true)
             if it_name then 
+                local mt = ac.skill[it_name]
+                mt.owner_ship = p
                 ac.item.create_item(it_name,unit:get_point())
             end
             --p:sendMsg('恭喜击败'..name,5)
@@ -131,32 +136,36 @@ function mt:on_cast_start()
     p.flag_dz = true
     --扣除次数
     p.cnt_dz = p.cnt_dz -1
-
-    ac.wait(2*1000,function()
-        local bff = hero:add_buff '渡劫' {
+    local bff 
+    local wait = ac.wait(2*1000,function()
+        bff = hero:add_buff '渡劫' {
             skill = self,
             damage = 250000000 * ((p.cnt_succ_dz or 0) + 1),
             time = self.dz_cnt * self.pulse,
             pulse = self.pulse,
             dz_cnt = self.dz_cnt
         }
-
-        --创建区域离开事件
-        local reg = ac.map.regions['dujie2']
-        reg:event '区域-离开'(function(trg,unit)
-            if hero ~= unit then 
-                return 
-            end  
-            --删掉buff
-            if bff then 
-                bff:remove()
-                bff =nil 
-            end
-            --删除自己的
-            trg:remove()  
-        end)
     end)
 
+    --创建区域离开事件
+    local reg = ac.map.regions['dujie2']
+    reg:event '区域-离开'(function(trg,unit)
+        if hero ~= unit then 
+            return 
+        end  
+        --删掉buff
+        if bff then 
+            bff:remove()
+            bff =nil 
+        end
+        if wait then 
+            wait:remove()
+            wait = nil
+        end
+        p.flag_dz = false
+        --删除自己的
+        trg:remove()  
+    end)
 end
 
 --渡劫buff
