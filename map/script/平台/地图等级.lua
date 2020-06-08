@@ -206,14 +206,14 @@ tip = [[
 
 |cffFFE799【礼包属性】|r
 |cff00ff00全属性加成+5%
-初始全属性+100万 
+初始全属性+150万 
 初始金币+80万
 初始杀敌数+1500|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['全属性'] = 1000000,
+['全属性'] = 1500000,
 ['力量%'] = 5,
 ['敏捷%'] = 5,
 ['智力%'] = 5,
@@ -243,7 +243,7 @@ tip = [[
 |cffff0000地图等级≥18|r|cffcccccc（可与 【商城道具】成长礼包 叠加属性）
 
 |cffFFE799【礼包属性】|r
-|cff00ff00杀怪加38全属性，攻击加68全属性，每秒加108全属性 
+|cff00ff00杀怪加68全属性，攻击加188全属性，每秒加688全属性 
 |cff00ffff杀敌数加成+15% 木头加成+15% 
 物品获取率+15% 魔丸加成+15% |r
 |cffff0000全伤加深+地图等级*10%|r
@@ -251,6 +251,11 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+
+['杀怪加全属性'] = 68,
+['攻击加全属性'] = 188,
+['每秒加全属性'] = 688,
+
 ['全伤加深'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
@@ -273,10 +278,11 @@ tip = [[
 |cffff0000地图等级≥28|r|cffcccccc（可与 【商城道具】初级赞助 叠加属性）
 
 |cffFFE799【礼包属性】|r
-|cff00ff00杀怪加188全属性，攻击加388全属性，每秒加888全属性
+|cff00ff00杀怪加188全属性，攻击加688全属性，每秒加1888全属性
 |cff00ffff杀敌数加成+75% 木头加成+75% 
 物品获取率+75% 魔丸加成+75% |r
 |cffff0000攻击减甲+50 减少周围护甲1000|r
+|cffff0000每秒加护甲+10|r
 
 |cffffff00地图等级>=5，效果翻倍|r
 
@@ -299,18 +305,18 @@ end,
 ['攻击加全属性'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local value = 388
+    local value = 688
     if map_level >= self.double_map_level then 
-        value = 388 * 2
+        value = 688 * 2
     end    
     return value 
 end,
 ['每秒加全属性'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local value = 888
+    local value = 1888
     if map_level >= self.double_map_level then 
-        value = 888 * 2
+        value = 1888 * 2
     end    
     return value 
 end,
@@ -368,6 +374,15 @@ end,
     end    
     return value 
 end,
+['每秒加护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 10
+    if map_level >= self.double_map_level then 
+        value = 10 * 2
+    end    
+    return value 
+end,
 }
 
 local mt = ac.skill['地图等级高级赞助']
@@ -385,22 +400,24 @@ tip = [[
 |cffff0000地图等级≥35|r|cffcccccc（可与 【商城道具】高级赞助 叠加属性）
 
 |cffFFE799【礼包属性】|r
-|cff00ff00杀怪加388全属性，攻击加888全属性，每秒加1688全属性
+|cff00ff00杀怪加888全属性，攻击加888全属性，每秒加888全属性
 |cff00ffff攻击减甲+地图等级*15
 减少周围护甲+地图等级*250
 |cffffff00物理伤害加深+地图等级*100%
 技能伤害加深+地图等级*50%
 |cffff0000全伤加深+地图等级*25%
 对BOSS额外伤害+地图等级*10%
+|cffff0000每秒加护甲+地图等级*5
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --几率
 chance = 10,
-['杀怪加全属性'] = 388,
+['杀怪加全属性'] = 888,
 ['攻击加全属性'] = 888,
-['每秒加全属性'] = 1688,
+['每秒加全属性'] = 888,
+
 
 ['攻击减甲'] = function(self)
     local p = self.owner:get_owner()
@@ -435,5 +452,10 @@ end,
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     return 10 * map_level
+end,
+['每秒加护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    return 5 * map_level
 end,
 }

@@ -16,7 +16,7 @@ mt{
     ugrade_tip = function(self)
         local str =''
         if self.level >= self.max_level then 
-            str = ''
+            str = '\n|cffcccccc【天下至凶，生者勿近】'
         else 
             str = '\n|cffFFE799【进阶】|r杀满 %kill_cnt% 只怪后，点击前往杀死心魔BOSS'
         end        
@@ -84,6 +84,9 @@ mt{
         -- end     
         if self['吸血'] >0 then 
             str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..''
+        end   
+        if self['多重暴击'] >0 then 
+            str = str ..'+|cffffff00'..bignum2string(self['多重暴击'])..'|r 多重暴击'..'\n'
         end     
         return str
     end,   
