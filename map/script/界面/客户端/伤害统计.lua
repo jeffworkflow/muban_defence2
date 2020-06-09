@@ -113,7 +113,7 @@ local new_ui = class.panel:builder{
             local it = ac.item.create_item(k)
             it:set_item_count((tonumber(v) or 1))
             hero:add_item(it)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..(it.color_name or it.name)..'|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..(it.color_name or it.name)..'*'..(tonumber(v) or 1)..'个|r',5)
         end
     end,
 
