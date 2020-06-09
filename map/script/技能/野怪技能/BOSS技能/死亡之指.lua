@@ -28,6 +28,7 @@ damage = function(self)
 end,  
 --冷却
 cool = 300,
+-- cool = 6,
 area = 3000,
 effect = [[Abilities\Spells\Demon\DemonBoltImpact\DemonBoltImpact.mdl]]
 -- time = 5

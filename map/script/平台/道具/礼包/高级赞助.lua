@@ -18,7 +18,7 @@ tip = [[
 技能伤害加深+地图等级*50%
 |cffff0000全伤加深+地图等级*25%
 对BOSS额外伤害+地图等级*10%
-|cffff0000每秒加护甲+地图等级*5
+|cffff0000每秒加护甲+地图等级*10
 
 ]],
 --目标类型
@@ -66,7 +66,7 @@ end,
 ['每秒加护甲'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    return 5 * map_level
+    return 10 * map_level
 end,
 
 

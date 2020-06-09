@@ -35,9 +35,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >25 then 
-        val = math.min(p.server['挖宝熟练度'], lv*lv*400+1000)*0.1
+        val = math.min(p.server['看书熟练度'], lv*lv*400+1000)*0.1
     else
-        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.1
+        val = math.min(p.server['看书熟练度'], lv*10000)*0.1
     end
     return val
 end,
@@ -46,9 +46,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >25 then 
-        val = math.min(p.server['挖宝熟练度'], lv*lv*400+1000)*0.1
+        val = math.min(p.server['打造熟练度'], lv*lv*400+1000)*0.1
     else
-        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.1
+        val = math.min(p.server['打造熟练度'], lv*10000)*0.1
     end
     return val
 end,
@@ -57,9 +57,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >25 then 
-        val = math.min(p.server['挖宝熟练度'], lv*lv*400+1000)*0.002
+        val = math.min(p.server['种树熟练度'], lv*lv*400+1000)*0.003
     else
-        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.002
+        val = math.min(p.server['种树熟练度'], lv*10000)*0.003
     end
     return val
 end,
@@ -68,9 +68,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >25 then 
-        val = math.min(p.server['挖宝熟练度'], lv*lv*400+1000)*1
+        val = math.min(p.server['白嫖熟练度'], lv*lv*400+1000)*1
     else
-        val = math.min(p.server['挖宝熟练度'], lv*10000)*1
+        val = math.min(p.server['白嫖熟练度'], lv*10000)*1
     end
     return val
 end,
@@ -79,9 +79,9 @@ end,
     local lv = p:Map_GetMapLevel()
     local val
     if lv >25 then 
-        val = math.min(p.server['挖宝熟练度'], lv*lv*400+1000)*0.2
+        val = math.min(p.server['摇骰子熟练度'], lv*lv*400+1000)*0.2
     else
-        val = math.min(p.server['挖宝熟练度'], lv*10000)*0.2
+        val = math.min(p.server['摇骰子熟练度'], lv*10000)*0.2
     end
     return val
 end,

@@ -17,7 +17,7 @@ tip = [[
 ]],
 force_cast=1,
 --冷却
-cool = 10
+cool = 15
 }
 
 function mt:on_cast_start()

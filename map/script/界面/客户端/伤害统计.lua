@@ -70,7 +70,7 @@ local new_ui = class.panel:builder{
             h = 80,
             level = 3,
             type = 'text',
-            text = '|cfff18f24伤害列表|r', --文本内容
+            text = '|cfff18f24BOSS伤害列表|r', --文本内容
             -- align = 0, --对齐方式
             font_size = 14, --字体大小
         },

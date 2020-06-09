@@ -397,7 +397,7 @@ tip = [[
 |cff00ff00万古传芳8段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00使得召唤出来的爱国者导弹，多重射+5
+|cff00ff00使得召唤出来的爱国者导弹，多重射+2
 
 ]],
 need_map_level = 12,
@@ -414,10 +414,10 @@ art = [[paotai.blp]],
 --说明
 tip = [[
 
-|cff00ffff多重射+5
+|cff00ffff多重射+2
 
 ]],
-['多重射'] = 5
+['多重射'] = 2
 }
 function mt:on_add()
     print('炮台多重射被添加')
