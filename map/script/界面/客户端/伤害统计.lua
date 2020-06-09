@@ -4,7 +4,6 @@ local new_ui = class.panel:builder{
     y = 300,--屏幕界面Y坐标
     w = 334*1.4,
     h = 206*1.9,
-    level = 1,
     is_show = true,
     normal_image = 'Transparent.tga',
     total_damage = 0,
@@ -17,7 +16,7 @@ local new_ui = class.panel:builder{
         [6] = {id=6,color = '|cfffff9e7', bg_path = [[image\orange.tga]],damage = 0,rank = 0,rate = 0},
     },
     fresh = function(self)
-        
+        local panel = self
         --改变总伤害
         self.bg.zongsh_p.zongsh_t.damage:set_text(('%s [%s]'):format(bn2str(self.total_damage),'100%'))
         -- local temp = ac.table_copy(self.player_info)
@@ -35,9 +34,26 @@ local new_ui = class.panel:builder{
         for i,tab in ipairs(self.bg.player_damages) do 
             -- print(i,tab,temp,temp[i])
             tab:set_normal_image(temp[i].bg_path)
-            tab:set_width(temp[i].rate/100*420)
+            -- tab:set_width(temp[i].rate/100*420)
+            --设置动画
+            tab:set_process({
+                handle = '伤害统计_背景',
+                target = temp[i].rate/100*420,
+                show = function(self,source)
+                    tab:set_width(source)
+                end
+            })
             tab.player:set_text(temp[i].color..ac.player(temp[i].id):get_name()..'|r')
-            tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
+
+            -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
+            --设置动画
+            tab.player.damage:set_process({
+                handle = '伤害统计_文字',
+                target = temp[i].damage,
+                show = function(self,source)
+                    tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(source),string.format("%.f",(source / panel.total_damage * 100))))  
+                end
+            })
         end
 
     end,
@@ -76,6 +92,7 @@ local new_ui = class.panel:builder{
         local rand_name,rand_rate = ac.get_reward_name(rand_list)
         -- print(rand_list,rand_name) 
         if not rand_name then 
+            print(rand_list,rand_name)  
             return true
         end  
         local flag
@@ -87,7 +104,7 @@ local new_ui = class.panel:builder{
         end    
         --发送消息
         if flag then 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..rand_name..'|r',2)
         end  
         --处理掉落物品相关
         for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
@@ -95,9 +112,50 @@ local new_ui = class.panel:builder{
             local it = ac.item.create_item(k)
             it:set_item_count((tonumber(v) or 1))
             hero:add_item(it)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
         end
+    end,
 
+    create_hide_button = function(self)
+        local panel = self
+        local hide_button = class.panel:builder
+        {
+            x = panel.x+400,--屏幕界面X坐标
+            y =  panel.y+20,--屏幕界面Y坐标
+            w = 36,
+            h = 36,
+            -- level = 30,
+            type = 'button',
+            normal_image = [[]],
+            bt = {
+                type = 'button',
+                normal_image = [[yincang.blp]],
+                on_button_clicked = function(self)
+                    if not panel.flag_hide or panel.flag_hide == false then
+                        panel:hide1(true)
+                    else
+                        panel:show1(true)
+                    end
+                end,
+            },
+        }
+        panel.ht = hide_button
+    end,
+    hide1 = function(self,flag)
+        if not flag then 
+            self.ht:hide()
+        end
+        self.flag_hide = true
+        self:hide()
+        self.ht.bt:set_normal_image([[dakai.blp]])
+    end,
+    show1 = function(self,flag)
+        if not flag then 
+            self.ht:show()
+        end
+        self.flag_hide = false
+        self:show()
+        self.ht.bt:set_normal_image([[yincang.blp]])
     end,
     --伤害列表bg
     bg = {
@@ -105,7 +163,7 @@ local new_ui = class.panel:builder{
         -- y = 0,--屏幕界面Y坐标
         -- w = 0,
         -- h = 0,
-        level = 1,
+        -- level = 1,
         type = 'texture',
         normal_image = [[image\ui_shlb.tga]],
         --title 总伤害
@@ -114,7 +172,7 @@ local new_ui = class.panel:builder{
             y = 25,--屏幕界面Y坐标
             w = 80,
             h = 80,
-            level = 3,
+            -- level = 3,
             type = 'text',
             text = '|cfff18f24BOSS伤害列表|r', --文本内容
             -- align = 0, --对齐方式
@@ -123,7 +181,7 @@ local new_ui = class.panel:builder{
         --总伤害 底色+文字
         zongsh_p = {
             x = 25,--屏幕界面X坐标
-            y = 91,--屏幕界面Y坐标
+            y = 93,--屏幕界面Y坐标
             w = 420,
             h = 32,
             level = 1,
@@ -134,7 +192,7 @@ local new_ui = class.panel:builder{
                 -- y = 70,--屏幕界面Y坐标
                 -- w = 80,
                 -- h = 80,
-                level = 3,
+                -- level = 3,
                 type = 'text',
                 text = '总伤害|r',
                 font_size = 14, --字体大小
@@ -167,21 +225,21 @@ local new_ui = class.panel:builder{
                         w = 1 or math.random(50,420),
                         h = 32,
                         parent = self,
-                        level = 1,
+                        -- level = 1,
                         type = 'texture',
                         normal_image = self.parent.player_info[i].bg_path,
                         alpha = 0.8,
                         player = {
                             x = 10,--屏幕界面X坐标
                             y = 5,
-                            level = 3,
+                            -- level = 3,
                             type = 'text',
                             text = self.parent.player_info[i].color..ac.player(i):get_name()..'|r',
                             font_size = 12, --字体大小
                             damage = {
                                 x = 320,--屏幕界面X坐标
                                 w = 80,
-                                level = 3,
+                                -- level = 3,
                                 align = 2,
                                 type = 'text',
                                 text = self.parent.player_info[i].color..'0  [0%]',
@@ -198,7 +256,8 @@ local new_ui = class.panel:builder{
 
 }
 new_ui.bg:create_player_damage()
-new_ui:hide()
+new_ui:create_hide_button()
+new_ui:hide1()
 
 
 -- 万：代表的是10的四次方。 
@@ -271,7 +330,7 @@ function ac.ui:add_damage_total(u)
     end
     damage_units[u.handle] = u
     --显示ui
-    new_ui:show()
+    new_ui:show1()
     --每一秒刷新一次统计数据
     if not new_ui.trg then 
         new_ui.trg = ac.loop(1000,function()
@@ -311,7 +370,7 @@ function ac.ui:add_damage_total(u)
             
             --等待10秒隐藏面板
             ac.wait(10*1000,function()
-                new_ui:hide()
+                new_ui:hide1()
                 --初始化ui数据
                 new_ui:init_data()
             end)
