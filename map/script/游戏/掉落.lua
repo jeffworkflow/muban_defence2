@@ -1120,8 +1120,8 @@ local unit_reward = {
 
         {    rand = 3.0, name = '吞噬丹*1',},
         {    rand = 3.0, name = '无谓因果*1',},
-        {    rand = 6.0, name = '天魂融合丹*1',},
-        {    rand = 6.0, name = '地魂融合丹*1',},
+        {    rand = 6.0, name = '天魂融血丹*1',},
+        {    rand = 6.0, name = '地魂融血丹*1',},
         {    rand = 3.0, name = '龙之血珠*1',},
         {    rand = 6.0, name = '火龙气息*1',},
         {    rand = 6.0, name = '三眼赤痕*1',},
