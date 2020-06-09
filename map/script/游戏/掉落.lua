@@ -1105,20 +1105,19 @@ local unit_reward = {
     --特殊额外掉落
     ['刑天'] = {{rand =100,name = '宠物经验书(大)*5'}},
 
+    ['伤害排行榜'] =  {	
+        {    rand = 43.54, name = '无' },
+        {    rand = 30.05, name = '黑暗骰子*20',},
+        {    rand = 20.05, name = '扭蛋券（十连抽）*1',},
+        
+    },
     -- ------旧概率------------------
     -- ['熔炼石boss1'] = {{rand =100,name = '一号熔炼石'}},
     -- ['熔炼石boss2'] = {{rand =100,name = '二号熔炼石'}},
     -- ['熔炼石boss3'] = {{rand =100,name = '三号熔炼石'}},
     -- ['熔炼石boss4'] = {{rand =100,name = '四号熔炼石'}},
 
-
-    ['奶牛'] = {
-        {rand =0.3,name = '扭蛋券(十连抽)'},
-        {rand =0.3,name = '扭蛋券(百连抽)'},
-        {rand =0.3,name = '超级扭蛋券'},
-        {rand =0.3,name = '超级扭蛋券(十连抽)'},
-        {rand =0.3,name = '超级扭蛋券(百连抽)'},
-    },
+   
 
     ['随机物品'] =  {
         { rand = 100,      name = {
@@ -1139,35 +1138,6 @@ local unit_reward = {
             }
         }
     },
-    ['随机神符'] =  {
-        {    rand = 11, name = '无敌' },
-        {    rand = 11, name = '治疗',},
-        {    rand = 11, name = '暴击',},
-        {    rand = 11, name = '攻击',},
-        {    rand = 11, name = '法术',},
-        {    rand = 11, name = '减甲',},
-        {    rand = 11, name = '中毒',},
-        {    rand = 11, name = '沉默',},
-        {    rand = 12, name = '定身',},
-    },
-    ['抽奖券'] =  {
-        {    rand = 70,  name ={
-                { rand = 0.5, name = '欧皇达人'},
-                { rand = 99.5, name = '无'}, 
-            }
-        },
-        {    rand = 5, name = '金币' },
-        {    rand = 5, name = '经验',},
-        {    rand = 10, name = '随机物品',},
-        {    rand = 4, name = '随机技能',},
-        {    rand = 1, name = '召唤boss',},
-        {    rand = 1, name = '召唤练功怪',},
-        {    rand = 1, name = '吞噬丹',},
-        {    rand = 1, name = '宠物经验书',},
-        {    rand = 2, name = '随机恶魔果实',},
-    },
-    
-
 
    
 }
@@ -1175,6 +1145,7 @@ ac.unit_reward = unit_reward
 
 --递归匹配唯一奖励
 local function get_reward_name(tbl)
+    if not tbl then print('没有tbl') return end
     local rand = math.random(1,100000) / 1000
     local num = 0
     for index,info in ipairs(tbl) do 
