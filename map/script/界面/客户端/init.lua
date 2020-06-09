@@ -2,7 +2,6 @@ ac.ui = {}
 ac.ui.client = {}
 ac.ui.server = {}
 require '界面.客户端.控制台'
-require '界面.客户端.base_ex'
 --覆盖整个屏幕的面板
 ac.ui.client.panel = class.panel.create('', 0, 0, 1920, 1080)
 

@@ -46,12 +46,13 @@ local new_ui = class.panel:builder{
             tab.player:set_text(temp[i].color..ac.player(temp[i].id):get_name()..'|r')
 
             -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
-            --设置动画
+            --设置动画 temp[i].rate  string.format("%.f",(source / panel.total_damage * 100))
             tab.player.damage:set_process({
                 handle = '伤害统计_文字',
                 target = temp[i].damage,
+
                 show = function(self,source)
-                    tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(source),string.format("%.f",(source / panel.total_damage * 100))))  
+                    tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(source),temp[i].rate))  
                 end
             })
         end
@@ -104,7 +105,7 @@ local new_ui = class.panel:builder{
         end    
         --发送消息
         if flag then 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..rand_name..'|r',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..rand_name..'|r',5)
         end  
         --处理掉落物品相关
         for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
@@ -112,7 +113,7 @@ local new_ui = class.panel:builder{
             local it = ac.item.create_item(k)
             it:set_item_count((tonumber(v) or 1))
             hero:add_item(it)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..(it.color_name or it.name)..'|r',5)
         end
     end,
 
