@@ -248,7 +248,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         --进行多个处理
         local it 
         for i=1,tonumber(v) do 
-            it = hero:add_item(k,true)
+            it = self.owner:add_item(k,true)
         end  
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end

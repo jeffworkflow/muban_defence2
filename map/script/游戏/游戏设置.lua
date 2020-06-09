@@ -205,6 +205,8 @@ function player.__index:random(tab,flag)
 		print('传入的table不是序列号型')
 		return 
 	end
+	local tab = ac.table_copy(tab) --使 不改变全局
+	
 	local index = math.random(#tab)
 	local name = tab[index]
 	if not name then print('没有 name') return end 

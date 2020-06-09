@@ -53,26 +53,26 @@ function mt:boss_skill_shot(old_point)
     end
     
     --死亡一指
-    local function demon_bolt()
-        for i, u in ac.selector()
-            : in_range(hero,self.area)
-            : is_enemy(hero)
-			: of_not_building()
-			: sort_nearest_hero(hero) --优先选择距离英雄最近的敌人。
-			: ipairs()
-        do
-			local ln = ac.lightning('TWLN', hero, u,get_hith(hero),get_hith(u))
-			ln:fade(-5)
-			-- u:add_effect('origin',[[AZ_SSCrow_D.mdx]]):remove()
-			u:add_effect('origin',self.effect):remove()
-			u:damage{
-				source = hero,
-				skill = self,
-				damage = self.damage
-			}
-        end
-    end
-    demon_bolt()
+	local function demon_bolt(u)
+		if not u then print('单位u 为nil') return end 
+		local ln = ac.lightning('TWLN', hero, u,get_hith(hero),get_hith(u))
+		ln:fade(-5)
+		-- u:add_effect('origin',[[AZ_SSCrow_D.mdx]]):remove()
+		u:add_effect('origin',self.effect):remove()
+		u:damage{
+			source = hero,
+			skill = self,
+			damage = self.damage
+		}
+	end
+	for i=1,6 do 
+		local p = ac.player(i)
+		if p.hero then 
+			demon_bolt(p.hero) 
+		end
+	end
+	--对基地造成伤害
+	demon_bolt(ac.main_unit) 
 
 end
 
@@ -81,7 +81,7 @@ function mt:on_cast_start()
 	local skill =self
 	
 	--预警圈
-	ac.warning_effect_ring
+	ac.warning_effect_circle
 	{
 		point = hero:get_point(),
 		area = self.area,

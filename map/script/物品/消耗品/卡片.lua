@@ -256,11 +256,23 @@ function mt:on_cast_start()
     local p = self.owner.owner 
     local hero = p.hero 
     local all_attr = math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
+    local base_all_attr = math.min(hero['属性']['力量'],hero['属性']['敏捷'],hero['属性']['智力'])
+    if all_attr <0 then 
+        p:sendMsg('属性不够',5)
+        if self.add_item_count then  
+            self:add_item_count(1) 
+        end   
+        return true
+    end
+
     if math.random(100) <= self.rate then 
         hero:add('全属性',all_attr)
         p:sendMsg('|cff00ff00翻倍',2)
     else 
-        hero:add('全属性',-all_attr * 0.95 + 100)
+        -- print('gg 需要扣除全属性：',-all_attr * 0.95 + 100,hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
+        --输的时候，取 base_all_attr 或是 all_attr 最小值
+        local new_val = math.min(all_attr,base_all_attr)
+        hero:add('全属性',-new_val * 0.95 + 100)
         p:sendMsg('|cffff0000凉凉',2)
         hero:add_item('神奇的令牌')
     end    

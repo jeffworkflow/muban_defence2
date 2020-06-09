@@ -321,8 +321,8 @@ function mt:next()
             time = self.force_cool,
             title = self.timer_ex_title ,
             func = function ()
-                self:next()   
                 self.timerdialog = nil
+                self:next()   
             end,
         }
     end    
@@ -436,7 +436,7 @@ function mt:next()
                     return 
                 end    
                 --防守时刷怪倒计时，如果怪物全杀死也不进入下一波
-                if self.timerdialog then 
+                if self.force_cool then 
                     return 
                 end    
                 --如果有刷新时间配置 则 按照时间等待后刷新，没有的话立即刷新

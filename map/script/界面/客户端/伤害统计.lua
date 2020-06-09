@@ -53,6 +53,52 @@ local new_ui = class.panel:builder{
         end
     end,
 
+    give_award =function(self)
+        if get_player_count() < 2 then 
+            return
+        end
+        local temp = ac.table_copy(self.player_info)
+        --排序
+        table.sort(temp,function(a,b)
+            return a.damage>b.damage 
+        end)
+        if not temp[1] then 
+            return 
+        end
+        --给伤害最高的人奖励
+        local id = temp[1].id
+        local p = ac.player(id)
+        local player = ac.player(id)
+        local hero = p.hero
+
+        --取奖励名
+        local rand_list = ac.unit_reward['伤害排行榜']
+        local rand_name,rand_rate = ac.get_reward_name(rand_list)
+        -- print(rand_list,rand_name) 
+        if not rand_name then 
+            return true
+        end  
+        local flag
+        local temp_rand_name = rand_name
+        --先处理属性相关
+        for k,v in string.gsub(temp_rand_name,'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
+            flag = true
+            hero:add(k,v)
+        end    
+        --发送消息
+        if flag then 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
+        end  
+        --处理掉落物品相关
+        for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
+            --进行多个处理
+            local it = ac.item.create_item(k)
+            it:set_item_count((tonumber(v) or 1))
+            hero:add_item(it)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        end
+
+    end,
     --伤害列表bg
     bg = {
         -- x = 0,--屏幕界面X坐标
@@ -260,6 +306,9 @@ function ac.ui:add_damage_total(u)
                 new_ui.trg:remove()
                 new_ui.trg = nil
             end
+            --给奖励
+            new_ui:give_award()
+            
             --等待10秒隐藏面板
             ac.wait(10*1000,function()
                 new_ui:hide()

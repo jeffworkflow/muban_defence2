@@ -441,8 +441,6 @@
                     item:add_item_count(1)
                 end)  
             end  
-            --消耗品使用 增加对应的属性值
-            item:on_use_state()
 
             if not item.no_use and item._count < 1 then 
                 item:item_remove()
@@ -471,6 +469,11 @@
             end)
         else
             item:_call_event 'on_cast_shot'
+        end
+        
+        --消耗品使用 增加对应的属性值
+        if item.item_type == '消耗品'  then
+            item:on_use_state()
         end
         
         -- print('调用物品施法：',slot_id,item.name)

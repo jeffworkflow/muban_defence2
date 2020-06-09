@@ -271,6 +271,13 @@ function mt:setPoint(point)
 	return true
 end
 
+--设置位置
+function mt:set_point(point)
+	local x, y = point:get()
+	jass.SetItemPosition(self.handle, x, y) --设置物品的位置
+	self:show(true)
+	return true
+end
 --设置是否可丢弃
 function mt:disable_drop(is)
 	jass.SetItemDroppable(self.handle, is)

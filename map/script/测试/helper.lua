@@ -228,16 +228,6 @@ function helper:remove_buff(name)
 	end
 end
 
---创建瀑布
-function helper:wave()
-	require('maps.spring').start()
-end
-
---创建宝箱
-function helper:box()
-	require('maps.spring').createBox()
-end
-
 --满级
 function helper:lv(lv)
 	self:set_level(tonumber(lv))
@@ -308,30 +298,24 @@ function helper:reload_mall(flag)
 	peon:add_skill('宠物技能','英雄',8)
 
 	--宠物重载身上技能
-    if p:Map_GetMapLevel() >= 3 then 
-        -- u:add_skill('一键出售','英雄',7)
-        peon:add_skill('一键合成','英雄',6)
-        peon:add_skill('一键丢弃','英雄',7)
+	if p:Map_GetMapLevel() >= 3 then 
+		local skl = peon:find_skill('一键合成')
+		if skl then skl:remove() end
+		peon:add_skill('一键合成','英雄',6)
+		
+		local skl = peon:find_skill('一键丢弃')
+		if skl then skl:remove() end
+		peon:add_skill('一键丢弃','英雄',7)
+		
+		local skl = peon:find_skill('一键分类')
+		if skl then skl:remove() end
+		peon:add_skill('一键分类','英雄',10)
     end
 
-
-end	
-
---积分 正常模式下，101波，boss打完就进入无尽，没有保存当前积分。 貌似要在回合结束统计分数。
-function helper:jifen(jf)
-	local p = self:get_owner()
-	p.putong_jifen = jf
-	
-	local value = p.putong_jifen --* (p.hero:get '积分加成' + 1)
-	print('积分',value)
-	--保存积分
-	p:add_jifen(value)
-
-	print('服务器积分：',jifen)
-end	
---ac.save_jifen
-function helper:save_jifen()
-	ac.save_jifen()
+	--重载 一键神魂修炼
+	-- if p and p:Map_GetMapLevel() >=3 then 
+    --     shop:add_skill('一键修炼','英雄',4)
+    -- end
 end	
 
 
@@ -350,15 +334,6 @@ function helper:save(key,value)
 		p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器
 	end	
 end	
---服务器清空档案
-function helper:clear_server(flag)
-	if flag then 
-		ac.clear_all_server()
-	else	
-		local p = self and self:get_owner() or ac.player(ac.player.self.id) 
-		p:clear_server()
-	end	
-end
 
 --服务器存档 读取 
 function helper:get_server(key)
@@ -404,67 +379,7 @@ function helper:print_item(unit,all)
 	end	
 	print(pt)
 end
---测试item.handle 
-function helper:it1()
-	ac.loop(1000,function()
-		for i=1,30 do 
-			local item = ac.item.create_item('冰剑',ac.point(0,0))
-			-- local item = self:add_item('冰剑',true)
-			-- print(item.handle)
-			ac.wait(1*1000,function()
-				item:item_remove()
-			end)
-		end	
-	end)
 
-
-end	
---测试杀怪内存
-function helper:c1()
-	local point = ac.map.rects['出生点']
-	local u = ac.player(1):create_unit('甲虫',point)
-	u:kill()
-end	
-function helper:c2()
-	local point = ac.map.rects['选人出生点']
-	for i=1,15 do 
-		local u = ac.player(12):create_unit('甲虫',point)
-		u:set('生命上限',32000000)
-		-- ac.wait(5*1000,function()
-		-- 	u:kill()
-		-- end)
-
-	end	
-end	
-
---测试杀怪内存
-function helper:test_k_u()
-	local point = ac.map.rects['出生点']
-	-- local u = ac.player(1):create_unit('甲虫',point)
-	local temp = {}
-	ac.test_unit = ac.loop(1000,function()
-		for i=1,100 do
-			local u = ac.player(12):create_unit('甲虫',point)
-			u:kill()
-			-- u:remove()
-			-- table.insert(temp,u)
-		end    
-	end)
-	ac.test_unit:on_timer()
-	ac.loop(10000,function()
-        --开始清理物品
-		ac.game:clear_item()
-	end)	
-end	
-
-
---测试杀怪内存
-function helper:test_stop()
-	if ac.test_unit then 
-		ac.test_unit:remove()
-		ac.test_unit = nil
-	end	
-end	
 --测试掉线
 function helper:test_offline()
 	ac.loop(3000,function()
@@ -1273,38 +1188,9 @@ function helper:damage(damage)
 	}
 end
 
-function helper:setre()
-	all_lb[11] = 20
-end
 
 function helper:hotfix()
 	require('types.hot_fix').main(self:get_owner())
-end
-
---显示伤害漂浮文字
-function helper:show()
-	local function text(damage)
-		local size = 20
-		local x, y,z = damage.target:get_point():get()
-		-- local z = damage.target:get_point():getZ()
-		local tag = ac.texttag
-		{
-			string = ('%d'):format(math.floor(damage:get_current_damage())),
-			size = size,
-			position = ac.point(x - 60, y, z - 30),
-			speed = 86,
-			angle = 90,
-			red = 100,
-			green = 20,
-			blue = 20,
-		}
-	end
-	ac.game:event '造成伤害效果' (function(trg, damage)
-		if not damage.source or not damage.source:is_hero() then
-			return
-		end
-		text(damage)
-	end)
 end
 
 --计时器测试
@@ -1348,32 +1234,7 @@ end
 function helper:add_restriction(str)
 	self:add_restriction(str)
 end
---插入魔法书
-function helper:add_sub_skill(skill,book_skill)
-	local hero = self --,'杀鸡狂魔'
-	local temp_skill = {
-		'倒霉蛋','游戏王','挖宝达人','五道杠少年','输出机器','八个技能的男人','实在是菜','浴火重生','ONE_PIECE','法老的遗产'
-	}
-	for i,name in ipairs(temp_skill) do
-		print(name)
-		ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
-	end	
-end
 
---强制下一波
-function helper:add_red()
-	for i =1,6 do 
-		local name = ac.quality_item['红'][math.random(#ac.quality_item['红'])]
-		self:add_item(name,true)
-	end	
-end	
-function helper:add_black()
-	for i =1,6 do 
-		print(ac.quality_item['黑'][1])
-		local name = ac.quality_item['黑'][math.random(#ac.quality_item['黑'])]
-		self:add_item(name,true)
-	end	
-end	
 
 --强制下一波
 function helper:next()
@@ -1480,7 +1341,7 @@ function helper:get(key)
 	if _in(key,ac.player_attr) then 
 		print('玩家属性：',key,self.owner:get(key))
 	else 
-		print('英雄属性：',key,self:get(key))
+		print('英雄属性：',key,self:get(key),self['属性'][key],self['属性'][key..'%'])
 	end	
 end	
 
@@ -1636,8 +1497,59 @@ function helper:wldh()
 	ac.game.start_wldh()
 end	
 
+--测试 warning ring
+function helper:eff(time)
+	local hero =self
+	local range = range or 200
+	local type=  tonumber(type) or 1
+	local time = time or 5
+	for i=1,3 do 
+		local type = i
+		if type == 1 then 
+			model = [[F2_model\warming_ring_red.mdl]]
+		elseif type == 2 then  
+			model =[[F2_model\warming_ring_red2.mdx]]
+		else
+			model = [[F2_model\warming_ring.mdl]]
+		end
+		ac.effect_ex{
+			model = model,
+			point = hero:get_point() - {0,(i-1)*400*5},
+			size = 5,
+			time = time,
+
+			speed = 1/time 
+		}
+	end
+end
+--测试 warning ring
+function helper:ring(type,range)
+	local hero =self
+	local range = range or 200
+	local type=  tonumber(type) or 1
+	if type == 1 then 
+		ac.warning_effect_ring
+		{
+			point = hero:get_point(),
+			area = range,
+			time = 5,
+		}
+	else 
+		ac.warning_effect_circle
+		{
+			point = hero:get_point(),
+			area = range,
+			time = 5,
+		}
+	end
+
+
+end	
+
+
+
 --进入地狱，7个光环
-function helper:tt(all)
+function helper:tt(flag)
 	local function strong(hero)
 		local self = hero
 		self:add('杀怪加全属性',3000)
@@ -1650,14 +1562,11 @@ function helper:tt(all)
 		self:add('护甲',1000000000)
 		self:add('会心伤害',10000000000)
 		-- self.flag_dodge = true --突破极限
-		self:add('闪避极限',5)
-		self:add('闪避',100)
-		self:add('减伤',90)
-		self:add('免伤几率',90)
 		self:add('全伤加深',10030000000)
 		self:add('暴击伤害',1003000)
 		self:add('攻击速度',500)
 		self:add('攻击间隔',-1)
+		self:add_restriction '免死'
 		self:addGold(300000)
 		self:add_kill_count(10000000)
 		self:add_wood(10000000)
@@ -1666,13 +1575,22 @@ function helper:tt(all)
 		helper.reload_mall(self)
 	end
 
-	if all then 
-		for i=1,12 do 
-			local p = ac.player(i)
-			if p.hero then 
-				strong(p.hero)
-			end
-		end
+	if flag then 
+		self:remove_restriction '免死'
+		self:add('杀怪加全属性',-3000)
+		-- self:add('攻击距离',2000)
+		self:add('暴击几率',-90)
+		self:add('会心几率',-90)
+		self:add('多重射',-10)
+		self:add('分裂伤害',-100)
+		self:add('全属性',-10000000000)
+		self:add('护甲',-1000000000)
+		self:add('会心伤害',-10000000000)
+		-- self.flag_dodge = true --突破极限
+		self:add('全伤加深',-10030000000)
+		self:add('暴击伤害',-1003000)
+		self:add('攻击速度',-500)
+		self:add('攻击间隔',1)
 	else
 		strong(self)
 	end
@@ -1833,6 +1751,15 @@ function helper:ai(str,cnt)
 	if not str or str =='' then 
 		return 
 	end	
+	--优先添加品质物品
+	if ac.quality_item and ac.quality_item[str] then 
+		local name = ac.quality_item[str][math.random(#ac.quality_item[str])]
+		for i=1,tonumber(cnt) or 1 do 
+			self:add_item(name)
+		end	
+		return 
+	end
+
 	local ok 
 	for name,data in pairs(ac.table.ItemData) do 
 		if finds(name,str) and data.category ~='商品' then 
@@ -1855,53 +1782,29 @@ function helper:ai(str,cnt)
 	end
 
 end
---测试 region 1000个泄漏10M
+
+--添加漂浮文字称号
+function helper:add_ch(str,zoffset)
+	if self.ch then 
+		self.ch:remove()
+	end	
+	self.ch = ac.nick_name(str,self,zoffset)
+end
+
+--添加技能羁绊
+function helper:add_skill_suit()
+	ac.item.add_skill_item('财富',self)
+	ac.item.add_skill_item('贪婪者的心愿',self)
+	ac.item.add_skill_item('凰燃天成',self)
+	ac.item.add_skill_item('龙凤佛杀',self)
+end
+
+
 function helper:point()
 	local p = self.owner 
 	p:pingMinimap(ac.point(0,0),3)
 end
---测试 region 1000个泄漏10M
-function helper:test_reg()
-	local reg = ac.region.create(ac.rect.j_rect('F2cs'))
-	for i=1,100 do 
-		local reg = ac.map.regions['tupo2']
-		print(reg)
-		 --创建区域离开事件
-		-- reg:event '区域-离开'(function(trg,unit)
-		-- 	print('离开了',i)
-		-- 	--删除自己的
-		-- 	trg:remove()  
-        --     reg:remove()
-		-- end)
-	end	
-end	
---测试 
-function helper:test_uu()
-	print('当前怪物数量：',ac.unit_cnt)
-	for i=1,3 do 
-		local crep = ac.creep['刷怪-无尽'..i]
-		print(i,#crep.group)
-		for i,u in ipairs(crep.group) do 
-			if u:is_in_range(ac.point(0,0),500) then 
-				print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
-			end	
-		end	
-	end	
-end	
---测试 
-function helper:test_uu2()
-	print('当前怪物数量：',ac.unit_cnt)
-	for i=1,3 do 
-		local crep = ac.creep['刷怪-无尽'..i]
-		print(i,#crep.group)
-		for i,u in ipairs(crep.group) do 
-			if u:is_in_range(ac.point(0,0),500) then 
-				print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
-				u:kill()
-			end	
-		end	
-	end	
-end	
+
 --测试 魔法书功能
 function helper:test_b1(str,cnt)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
@@ -1993,7 +1896,7 @@ function helper:test_s(num)
 		self.owner:showSysWarning('物品栏已满')
 	end
 end	
-
+--测试通行点
 function helper:pp()
 	local function add_block(where,fly)
 		local x0,y0=where:get()
@@ -2020,28 +1923,22 @@ function helper:pp()
     
 end	
 
+--重改难度
+function helper:degree(cnt)
+	local cnt = tonumber(cnt)
+	local list = {}
+	--翻转
+	for i=#ac.g_game_degree_list,1,-1 do 
+		table.insert(list,ac.g_game_degree_list[i])
+	end
 
+	ac.g_game_degree = cnt
+	ac.g_game_degree_attr = cnt
+	ac.g_game_degree_name = list[cnt] or '没有'
+	--多面板
+	ac.game.multiboard:setTitle('【'..(ac.server_config and ac.server_config['map_name'] or '魔灵降世')..'】难度：'..(ac.g_game_degree_name or ''))
+end
 
---创建 魔兽自带兵
-function helper:u1()
-	local point = ac.map.rects['出生点']
-	local x,y = point:get()
-	local handle = jass.CreateUnit(ac.player(1).handle, base.string2id('u002'), x, y,0)
-end	
---创建 英萌兵
-function helper:u2()
-	local point = ac.map.rects['出生点']
-	ac.player(1):create_unit('甲虫',point)
-end	
-
---测试 魔法书功能
-function helper:t_dummy()
-	local p = self and self:get_owner() or ac.player(ac.player.self.id)
-	local hero = p.hero
-	local u = p:create_dummy('e001',ac.point(0,0))
-	print(u:get_class())
-
-end	
 
 --打印hero键值对应的key值
 function helper:print_hero()
@@ -2052,7 +1949,6 @@ function helper:print_hero()
            print(player,hero,hero:is_alive())
         end 
     end 
-
 end
 
 --test_print_all_unit
@@ -2060,23 +1956,6 @@ function helper:test_print()
 	for handle,u in pairs(ac.unit.all_units) do 
 		print(handle,u,u.handle,u.id,u:get_name(),u.unit_type,ac.unit.remove_handle_map[handle])
 	end
-
-	
-end
---添加漂浮文字称号
-function helper:add_ch(str,zoffset)
-	if self.ch then 
-		self.ch:remove()
-	end	
-	self.ch = ac.nick_name(str,self,zoffset)
-end
-
---添加技能羁绊
-function helper:add_skill_suit()
-	ac.item.add_skill_item('财富',self)
-	ac.item.add_skill_item('贪婪者的心愿',self)
-	ac.item.add_skill_item('凰燃天成',self)
-	ac.item.add_skill_item('龙凤佛杀',self)
 end
 
 --搜敌范围
@@ -2097,42 +1976,79 @@ function helper:never_dead(flag)
 	end
 end
 
-ac.test_unit ={}
-function helper:cr1()
-	-- if str =='1' then 
-		for i=1,500 do
-			local u = ac.player(16):create_unit('金币怪',ac.point(100,200))
-			u:set('生命上限',20000000)
-			u:set('移动速度',300)
-			ac.test_unit[u] = true
+
+--测试副本
+function helper:fb(str)
+	for i=1,3 do 
+		local creep = ac.creep['刷怪'..i]
+		creep.index = tonumber(str) - 1
+		if i==1 then 
+			creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
 		end
-	-- end	
-	-- print(1111111111111111111111111111111111111)
-end
-function helper:cr2()
-	for u in pairs(ac.test_unit) do
-		print(u.handle,u,math.random(100000))
-		-- u:remove()
-		-- ac.test_unit[u] = false
+		if creep.has_started  then 
+			creep:next()
+		else
+			creep:start()
+		end		
 	end	
+end
+--测试副本
+function helper:wj(str)
+	for i=1,3 do 
+		local creep = ac.creep['刷怪'..i]
+		if creep then 
+			creep:finish()
+		end	
+	end	
+	for i=1,3 do 
+		local creep = ac.creep['刷怪-无尽'..i]
+		creep.index = tonumber(str) - 1
+		if creep.timerdialog then 
+			creep.timerdialog:remove()
+			creep.timerdialog = nil
+		end	
+		if creep.has_started  then 
+			creep:next()
+		else
+			creep:start()
+		end		
+	end	
+end
+--测试商店
+function helper:cs()
+ --调整镜头锁定区域
+	for i = 1,60 do
+		xpcall(function ()
+			local shop5 = ac.shop.create('图书馆',0,0,270)
+		end,runtime.error_handle)
+	end
 end
 
-function helper:cr3()
-	-- if str =='1' then 
-		for i=1,500 do
-			local k = {id = i }
-			dbg.gchash(k,i)
-			k.gchash = i
-			ac.test_unit[k] = i 
-		end	
-	-- end	
-	-- print(1111111111111111111111111111111111111)
+--测试加属性0 引起的玩家崩溃
+function helper:test_sx()
+	ac.loop(1000,function()
+		print('开始测试',self)
+		for i = 1,60 do
+			--生命上限
+			japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, self:get('生命上限'))
+			--攻击速度
+			japi.SetUnitState(self.handle, jass.ConvertUnitState(0x51), 1+(self:get('攻击速度')/100))
+			--魔法上限
+			japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_MANA, self:get('魔法上限'))
+		end
+	end)
 end
-function helper:cr4()
-	for k,v in pairs(ac.test_unit) do
-		print(k.id)
-	end	
+
+--测试玩家random 唯一值
+function helper:rd()
+	local p = self.owner
+	for i=1,10 do 
+		local it_name = p:random(ac.tm_item,true)
+		print(it_name)
+	end
 end
+
+
 
 
 --设置昼夜模型
@@ -2205,70 +2121,6 @@ function helper:player(cmd)
     table.remove(cmd, 1)
     call_method(self:get_owner(), cmd)
 end
-
-
---测试副本
-function helper:fb(str)
-	for i=1,3 do 
-		local creep = ac.creep['刷怪'..i]
-		creep.index = tonumber(str) - 1
-		if i==1 then 
-			creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
-		end
-		if creep.has_started  then 
-			creep:next()
-		else
-			creep:start()
-		end		
-	end	
-end
---测试副本
-function helper:wj(str)
-	for i=1,3 do 
-		local creep = ac.creep['刷怪'..i]
-		if creep then 
-			creep:finish()
-		end	
-	end	
-	for i=1,3 do 
-		local creep = ac.creep['刷怪-无尽'..i]
-		creep.index = tonumber(str) - 1
-		if creep.timerdialog then 
-			creep.timerdialog:remove()
-			creep.timerdialog = nil
-		end	
-		if creep.has_started  then 
-			creep:next()
-		else
-			creep:start()
-		end		
-	end	
-end
---测试商店
-function helper:cs()
- --调整镜头锁定区域
-	for i = 1,60 do
-		xpcall(function ()
-			local shop5 = ac.shop.create('图书馆',0,0,270)
-		end,runtime.error_handle)
-	end
-end
-
---测试加属性0 引起的玩家崩溃
-function helper:test_sx()
-	ac.loop(1000,function()
-		print('开始测试',self)
-		for i = 1,60 do
-			--生命上限
-			japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, self:get('生命上限'))
-			--攻击速度
-			japi.SetUnitState(self.handle, jass.ConvertUnitState(0x51), 1+(self:get('攻击速度')/100))
-			--魔法上限
-			japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_MANA, self:get('魔法上限'))
-		end
-	end)
-end
-
 
 local function main()
 	ac.game:event '玩家-聊天' (function(self, player, str)

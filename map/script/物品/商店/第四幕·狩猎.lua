@@ -272,9 +272,11 @@ for i,value in ipairs(magic_item) do
        
         local skl = hero:find_skill(self.name,nil,true)
         if skl and skl.level > 0 then 
+            --避免在魔法书内，直接使用该物品
             if self.add_item_count then  
                 self:add_item_count(1) 
             end   
+            player:sendMsg('|cffffff00已激活|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',3)
             return true --不加true的话，会执行加属性。   
         end
         player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)

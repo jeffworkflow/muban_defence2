@@ -48,6 +48,7 @@ function player.__index:create_pets(name)
         -- u:add_skill('一键出售','英雄',7)
         u:add_skill('一键合成','英雄',6)
         u:add_skill('一键丢弃','英雄',7)
+        u:add_skill('一键分类','英雄',10)
     end
     -- 测试魔法书
     -- u:add_skill('魔法书demo','英雄')
