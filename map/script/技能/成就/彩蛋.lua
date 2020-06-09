@@ -391,17 +391,17 @@ mt{
     is_spellbook = 1,
     level = 1,
     is_order = 2,
-    art = [[bawangshe.blp]],
+    art = [[bujulunhui.blp]],
     tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00每5秒触发一次|cff00ffff“不惧轮回” |cff00ff00对周围敌人造成全属性*30的伤害，并晕眩0.8秒|r
+|cff00ff00每5秒触发一次|cff00ffff“不惧轮回” |cff00ff00对周围敌人造成全属性*200的伤害，并晕眩1秒|r
     ]],
 	--伤害
 	damage = function(self)
-        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*30
+        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*200
     end,
-    stun_time = 0.8,
+    stun_time = 1,
     damage_area = 800,
     damage_type = '法术',
     effect = [[Hero_DoomBringer_N3S_V_mega.mdx]]

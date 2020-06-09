@@ -207,6 +207,7 @@ tip = [[
 |cffFFE799【礼包属性】|r
 |cff00ff00全属性加成+5%
 初始全属性+150万 
+初始护甲+1万
 初始金币+80万
 初始杀敌数+1500|r
 
@@ -214,6 +215,7 @@ tip = [[
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['全属性'] = 1500000,
+['护甲'] = 10000,
 ['力量%'] = 5,
 ['敏捷%'] = 5,
 ['智力%'] = 5,
@@ -244,6 +246,7 @@ tip = [[
 
 |cffFFE799【礼包属性】|r
 |cff00ff00杀怪加68全属性，攻击加188全属性，每秒加688全属性 
+|cff00ff00每秒加护甲+15
 |cff00ffff杀敌数加成+15% 木头加成+15% 
 物品获取率+15% 魔丸加成+15% |r
 |cffff0000全伤加深+地图等级*10%|r
@@ -255,6 +258,11 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
 ['攻击加全属性'] = 188,
 ['每秒加全属性'] = 688,
+['每秒加护甲'] = 15,
+['杀敌数加成'] = 15,
+['木头加成'] = 15,
+['物品获取率'] = 15,
+['魔丸加成'] = 15,
 
 ['全伤加深'] = function(self)
     local p = self.owner:get_owner()
@@ -407,7 +415,7 @@ tip = [[
 技能伤害加深+地图等级*50%
 |cffff0000全伤加深+地图等级*25%
 对BOSS额外伤害+地图等级*10%
-|cffff0000每秒加护甲+地图等级*5
+|cffff0000每秒加护甲+地图等级*10
 
 ]],
 --目标类型
@@ -456,6 +464,6 @@ end,
 ['每秒加护甲'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    return 5 * map_level
+    return 10 * map_level
 end,
 }

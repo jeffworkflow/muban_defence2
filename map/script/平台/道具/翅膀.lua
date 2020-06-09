@@ -16,7 +16,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+36 杀怪加力量|r
-|cff00ff00+2  每秒加护甲|r
+|cff00ff00+4  每秒加护甲|r
 |cff00ff00+25 移动速度|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -25,7 +25,7 @@ need_map_level = 3,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 36,
-['每秒加护甲'] = 2,
+['每秒加护甲'] = 4,
 ['移动速度'] = 25,
 --特效
 effect = [[CB_01.mdx]]
@@ -47,7 +47,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+56 杀怪加力量|r
-|cff00ff00+4  每秒加护甲|r
+|cff00ff00+8  每秒加护甲|r
 |cff00ff00+5% 木头加成|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -56,7 +56,7 @@ need_map_level = 6,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 56,
-['每秒加护甲'] = 4,
+['每秒加护甲'] = 8,
 ['木头加成'] = 5,
 --特效
 effect = [[smchibang1.mdx]]
@@ -78,7 +78,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+76  杀怪加力量|r
-|cff00ff00+6   每秒加护甲|r
+|cff00ff00+12   每秒加护甲|r
 |cff00ff00+15% 黑暗骰子掉落概率|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -87,7 +87,7 @@ need_map_level = 9,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 76,
-['每秒加护甲'] = 6,
+['每秒加护甲'] = 12,
 ['黑暗骰子掉落概率'] = 15,
 --特效
 effect = [[az_cb105.mdx]]
@@ -109,7 +109,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+96   杀怪加力量|r
-|cff00ff00+8    每秒加护甲|r
+|cff00ff00+16    每秒加护甲|r
 |cff00ff00+5%   触发概率加成|r
 |cff00ff00+7.5% 木头加成|r
 
@@ -119,7 +119,7 @@ need_map_level = 12,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 96,
-['每秒加护甲'] = 8,
+['每秒加护甲'] = 16,
 ['木头加成'] = 7.5,
 ['触发概率加成'] = 5,
 --特效
@@ -142,7 +142,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+116  杀怪加力量|r
-|cff00ff00+10    每秒加护甲|r
+|cff00ff00+20    每秒加护甲|r
 |cff00ff00+3.5% 减伤|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -151,7 +151,7 @@ need_map_level = 15,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 116,
-['每秒加护甲'] = 10,
+['每秒加护甲'] = 20,
 ['减伤'] = 3.5,
 --特效
 effect = [[JD-CHIB123.mdx]]
@@ -173,7 +173,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+136 杀怪加力量|r
-|cff00ff00+12   每秒加护甲|r
+|cff00ff00+24   每秒加护甲|r
 |cff00ff00+10% 木头加成|r
 |cff00ff00+15% 黑暗骰子掉落概率|r
 
@@ -183,7 +183,7 @@ need_map_level = 18,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 136,
-['每秒加护甲'] = 12,
+['每秒加护甲'] = 24,
 ['木头加成'] = 10,
 ['黑暗骰子掉落概率'] = 15,
 --特效
@@ -206,7 +206,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+156  杀怪加力量|r
-|cff00ff00+14    每秒加护甲|r
+|cff00ff00+28    每秒加护甲|r
 |cff00ff00+3.5% 免伤几率|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -215,7 +215,7 @@ need_map_level = 3,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 156,
-['每秒加护甲'] = 14,
+['每秒加护甲'] = 28,
 ['免伤几率'] = 3.5,
 --特效
 effect = [[chibang8.mdx]]
@@ -237,7 +237,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+176  杀怪加力量|r
-|cff00ff00+16    每秒加护甲|r
+|cff00ff00+32    每秒加护甲|r
 |cff00ff00+250  减少周围护甲|r
 |cff00ff00+12.5% 木头加成|r
 
@@ -247,7 +247,7 @@ need_map_level = 24,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 176,
-['每秒加护甲'] = 16,
+['每秒加护甲'] = 32,
 ['木头加成'] = 12.5,
 ['减少周围护甲'] = 250,
 --特效
@@ -270,7 +270,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+196 杀怪加力量|r
-|cff00ff00+18   每秒加护甲|r
+|cff00ff00+36   每秒加护甲|r
 |cff00ff00+3.5% 闪避|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
@@ -279,7 +279,7 @@ need_map_level = 27,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 196,
-['每秒加护甲'] = 18,
+['每秒加护甲'] = 36,
 ['闪避'] = 3.5,
 --特效
 effect = [[Cb_tianlongshengyi.MDX]]
@@ -301,7 +301,7 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+216 杀怪加力量|r
-|cff00ff00+20  每秒加护甲|r
+|cff00ff00+40  每秒加护甲|r
 |cff00ff00+15% 木头加成|r
 |cff00ff00+15% 黑暗骰子掉落概率|r
 
@@ -311,7 +311,7 @@ need_map_level = 30,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 216,
-['每秒加护甲'] = 20,
+['每秒加护甲'] = 40,
 ['木头加成'] = 15,
 ['黑暗骰子掉落概率'] = 15,
 --特效
@@ -427,71 +427,71 @@ need_map_level = 10,
 effect = [[chibang3.mdx]]
 }
 
-local mt = ac.skill['白龙凝酥翼']
-mt{
---等级
-level = 0,
---图标
-art = [[chibang9.blp]],
---说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['白龙凝酥翼']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[chibang9.blp]],
+-- --说明
+-- tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff巅峰王者15星
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff巅峰王者15星
 
-|cffFFE799【翅膀属性】：|r
-|cff00ff00+200  杀怪加全属性|r
-|cff00ff00+5    每秒加护甲|r
-|cff00ff00+20%  触发概率加成
-|cff00ff00+5%   技暴几率|r
-|cff00ff00+50%  技暴伤害|r
+-- |cffFFE799【翅膀属性】：|r
+-- |cff00ff00+200  杀怪加全属性|r
+-- |cff00ff00+5    每秒加护甲|r
+-- |cff00ff00+20%  触发概率加成
+-- |cff00ff00+5%   技暴几率|r
+-- |cff00ff00+50%  技暴伤害|r
 
-|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 150,
-['每秒加护甲'] = 5,
-['触发概率加成'] = 20,
-['技暴几率'] = 5,
-['技暴伤害'] = 50,
-need_map_level = 15,
---特效
-effect = [[chibang9.mdx]]
-}
+-- |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
+-- ]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 150,
+-- ['每秒加护甲'] = 5,
+-- ['触发概率加成'] = 20,
+-- ['技暴几率'] = 5,
+-- ['技暴伤害'] = 50,
+-- need_map_level = 15,
+-- --特效
+-- effect = [[chibang9.mdx]]
+-- }
 
-local mt = ac.skill['天使之光']
-mt{
---等级
-level = 0,
---图标
-art = [[tszg.blp]],
---说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['天使之光']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[tszg.blp]],
+-- --说明
+-- tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=150波
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=150波
 
-|cffFFE799【翅膀属性】：|r
-|cff00ff00+250  杀怪加全属性|r
-|cff00ff00+750  减少周围护甲|r
-|cff00ff00+5    每秒加护甲
-|cff00ff00+1500 初始护甲|r
-|cff00ff00+10%  技能冷却|r
+-- |cffFFE799【翅膀属性】：|r
+-- |cff00ff00+250  杀怪加全属性|r
+-- |cff00ff00+750  减少周围护甲|r
+-- |cff00ff00+5    每秒加护甲
+-- |cff00ff00+1500 初始护甲|r
+-- |cff00ff00+10%  技能冷却|r
 
-|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 250,
-['减少周围护甲'] = 750,
-['每秒加护甲'] = 5,
-['护甲'] = 1500,
-['技能冷却'] = 10,
-need_map_level = 18,
---特效
-effect = [[Hero_Slayer_N5S_F_Chest.mdx]]
-}
+-- |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
+-- ]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 250,
+-- ['减少周围护甲'] = 750,
+-- ['每秒加护甲'] = 5,
+-- ['护甲'] = 1500,
+-- ['技能冷却'] = 10,
+-- need_map_level = 18,
+-- --特效
+-- effect = [[Hero_Slayer_N5S_F_Chest.mdx]]
+-- }
 
 local mt = ac.skill['白羽金虹翼']
 mt{

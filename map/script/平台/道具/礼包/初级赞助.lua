@@ -15,7 +15,7 @@ tip = [[
 |cff00ffff杀敌数加成+75% 木头加成+75% 
 物品获取率+75% 魔丸加成+75% |r
 |cffff0000攻击减甲+50 减少周围护甲1000|r
-|cffff0000每秒加护甲+10|r
+|cffff0000每秒加护甲+20|r
 
 |cffffff00地图等级>=5，效果翻倍|r
 
@@ -110,9 +110,9 @@ end,
 ['每秒加护甲'] = function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
-    local value = 10
+    local value = 20
     if map_level >= self.double_map_level then 
-        value = 10 * 2
+        value = 20 * 2
     end    
     return value 
 end,

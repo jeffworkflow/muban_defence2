@@ -295,13 +295,13 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+250 杀怪加全属性|r
 |cff00ff00+5%  减伤|r
-|cff00ff00+10  每秒加护甲|r
+|cff00ff00+20  每秒加护甲|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 250,
-['每秒加护甲'] = 10,
+['每秒加护甲'] = 20,
 ['减伤'] = 5,
 need_map_level = 17,
 }

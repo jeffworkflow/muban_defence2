@@ -27,6 +27,7 @@ cnt = function(self)
 end, 
 --冷却
 cool = 180,
+-- cool = 1,
 }
 -- mt.effect1 = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]
 
