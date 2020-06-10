@@ -1922,7 +1922,37 @@ function helper:pp()
 	end
     
 end	
+--测试血条
+function helper:start()
+	local self = ac.ui.damage 
+    ac.ui.damage.t_t = ac.loop(1000,function()
+        for i,tab in ipairs(self.bg.player_damages) do 
+            -- print(i,tab,temp,temp[i])
+            -- tab:set_width(temp[i].rate/100*420)
+            local rate = math.random(1,100)
+            -- print('进度:',rate)
+            --设置动画
+            tab:set_process({
+                handle = '伤害统计_背景',
+				target = rate/100*420,
+				time = 1,
+                show = function(self,source)
+                    --底层 黑色动画延迟
+                    tab:set_width(source)
+                    tab.img:set_width(self.target)
+                end
+            })
+        end
+    end)
+end	
 
+function helper:stop()
+	local self = ac.ui.damage 
+	if ac.ui.damage.t_t then 
+		ac.ui.damage.t_t:remove()
+		ac.ui.damage.t_t = nil
+	end
+end	
 --重改难度
 function helper:degree(cnt)
 	local cnt = tonumber(cnt)

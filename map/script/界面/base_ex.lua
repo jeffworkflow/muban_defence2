@@ -40,54 +40,74 @@ setmetatable(process, process)
 --结构
 local mt = {}
 process.__index = mt
-mt.source = 0
-mt.target = 0
-function mt:get_target()
-    return self.target
+mt.source = 0 --起始
+mt.target = 0 --目标
+mt.now = 0 --当前
+mt.last_max=0 --上次结束时的值 作为下次起点
+mt.min_per_val = 1 --最小步长(%)
+mt.tween_speed = 1.5
+mt.tween_flag = false
+mt.t=0 --插值因子 动态
+function mt:get(str)
+    return self[str]
 end
-function mt:get_source()
-    return self.source
+function mt:set(k,v)
+    self[k] = v
+    return v
 end
-function mt:set_target(v)
-    self.target = v
-    return self.target
+
+--获取增量时间 Time.deltaTime 理解
+function mt:get_deltatime()
+    local fps = japi.GetFps()
+    return 1/fps
 end
-function mt:set_source(v)
-    self.source = v
-    return self.source
+
+function mt:update()
+    if self.tween_flag then 
+        local target = self:get('target')
+        local source = self:get('source')
+        self.t = self.t + self.tween_speed * self:get_deltatime()
+        -- print('插值因子：',self.t,self.tween_speed,self:get_deltatime(),japi.GetFps())
+        if self.t > 1 then
+            self.t = 1
+            self:set('last_max',target)
+            self:set('tween_flag',false)
+        end
+        local old_now = self:get('now')
+        local now = math.lerp(source, target, self.t);
+        -- print('现在的位置宽度：',now,now/420*100,now - old_now,(now - old_now)/420*100)
+        self:set('now',now)
+        self:show(now)
+    end
+end
+function mt:remove()
+    if self.t_timer then 
+        self.t_timer:remove()
+        self.t_timer = nil
+    end
+    
 end
 
 function mt:start(data)
     if self.t_timer then 
         --刷新数据
-        self:set_target(data.target)
+        -- self:set_target(data.target)
+        for k,v in pairs(data) do 
+            self[k] = v 
+        end
+        self:set('source',self:get('last_max'))
+        self:set('target',data.target)
+        self:set('t',0)
+        self:set('tween_flag',true)
+        
+        -- start_x = last_max_x;        
+        -- tween_flag = true;
+        -- tm_t = 0;
         return 
     end
     
-    if self.source == data.target then 
-        -- print('相同的源',self.source,self.target,data.target)
-        return 
-    end
-
-    local time = self.time or 2
-    local cnt = math.floor( time/0.001 )
-    self.t_timer = ac.timer(1,cnt,function(t)
-        if t.count == 0 then 
-            t:remove()
-            self.t_timer = nil
-            return
-        end    
-        local target = self:get_target()
-        local source = self:get_source()
-        -- print(t.count,'目标值和当前值',target,source)
-
-        local distance = target - source
-        local per_val = math.floor( distance / t.count)
-        if per_val ~= 0 then 
-            source = source + per_val
-            self:set_source(source)
-            self:show(source)
-        end    
+    self.t_timer = ac.loop(10,function(t)
+        self:update()
     end)
 
 end
@@ -100,13 +120,21 @@ function class.ui_base:set_process(data)
     self.all_process = self.all_process  or {}
     --初始化
     if not self.all_process[handle] then 
-        setmetatable(data, process)
-        self.all_process[handle] = data
-        pr = data
+        pr = setmetatable({}, process)
+        for k,v in pairs(data) do 
+            pr[k] = v 
+        end
+        self.all_process[handle] = pr
     else
         pr = self.all_process[handle]
     end
     
     pr:start(data)
-    
 end   
+
+function class.ui_base:remove_process(handle)
+    if self.all_process[handle] then 
+        self.all_process[handle]:remove()
+        self.all_process[handle] = nil 
+    end
+end

@@ -53,3 +53,9 @@ function math.frexp(n)
 		end	
 	end	
 end	
+--差值运算
+-- start end t 
+-- t去 0 到 1
+function math.lerp(v0, v1, t) 
+    return v0*(1-t)+v1*t
+end

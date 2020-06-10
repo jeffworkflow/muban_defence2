@@ -33,26 +33,29 @@ local new_ui = class.panel:builder{
 
         for i,tab in ipairs(self.bg.player_damages) do 
             -- print(i,tab,temp,temp[i])
-            tab:set_normal_image(temp[i].bg_path)
+            tab.img:set_normal_image(temp[i].bg_path)
             -- tab:set_width(temp[i].rate/100*420)
             --设置动画
             tab:set_process({
                 handle = '伤害统计_背景',
                 target = temp[i].rate/100*420,
                 show = function(self,source)
+                    --底层 黑色动画延迟
                     tab:set_width(source)
+                    tab.img:set_width(self.target)
                 end
             })
-            tab.player:set_text(temp[i].color..ac.player(temp[i].id):get_name()..'|r')
+            tab.img.player:set_text(temp[i].color..ac.player(temp[i].id):get_name()..'|r')
 
-            -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
+            -- tab.img.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
             --设置动画 temp[i].rate  string.format("%.f",(source / panel.total_damage * 100))
-            tab.player.damage:set_process({
+            tab.img.player.damage:set_process({
                 handle = '伤害统计_文字',
                 target = temp[i].damage,
-
+                rate = temp[i].rate,
                 show = function(self,source)
-                    tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(source),temp[i].rate))  
+                    -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate)) 
+                    tab.img.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(  bn2str(source), self.rate ))  
                 end
             })
         end
@@ -66,7 +69,9 @@ local new_ui = class.panel:builder{
             data.rate = 0 
         end
         for i,tab in ipairs(self.bg.player_damages) do 
+            tab.img:set_width(1)
             tab:set_width(1)
+            tab.img.player.damage:set_text((self.player_info[i].color..'%s [%s%%]|r'):format(0,0))  
         end
     end,
 
@@ -223,28 +228,32 @@ local new_ui = class.panel:builder{
                     {
                         x = 25,--屏幕界面X坐标
                         y = 131 + index*40,--屏幕界面Y坐标
-                        w = 1 or math.random(50,420),
+                        w = 420 or math.random(50,420),
                         h = 32,
                         parent = self,
                         -- level = 1,
                         type = 'texture',
-                        normal_image = self.parent.player_info[i].bg_path,
+                        normal_image = [[image\white.tga]],
                         alpha = 0.8,
-                        player = {
-                            x = 10,--屏幕界面X坐标
-                            y = 5,
-                            -- level = 3,
-                            type = 'text',
-                            text = self.parent.player_info[i].color..ac.player(i):get_name()..'|r',
-                            font_size = 12, --字体大小
-                            damage = {
-                                x = 320,--屏幕界面X坐标
-                                w = 80,
-                                -- level = 3,
-                                align = 2,
+
+                        img = {
+                            type = 'texture',
+                            normal_image = self.parent.player_info[i].bg_path,
+                            alpha = 0.8,
+                            player = {
+                                x = 10,--屏幕界面X坐标
+                                y = 5,
                                 type = 'text',
-                                text = self.parent.player_info[i].color..'0  [0%]',
+                                text = self.parent.player_info[i].color..ac.player(i):get_name()..'|r',
                                 font_size = 12, --字体大小
+                                damage = {
+                                    x = 320,--屏幕界面X坐标
+                                    w = 80,
+                                    align = 2,
+                                    type = 'text',
+                                    text = self.parent.player_info[i].color..'0  [0%]',
+                                    font_size = 12, --字体大小
+                                },
                             },
                         },
                     }
@@ -258,7 +267,8 @@ local new_ui = class.panel:builder{
 }
 new_ui.bg:create_player_damage()
 new_ui:create_hide_button()
-new_ui:hide1()
+-- new_ui:hide1()
+ac.ui.damage = new_ui
 
 
 -- 万：代表的是10的四次方。 
