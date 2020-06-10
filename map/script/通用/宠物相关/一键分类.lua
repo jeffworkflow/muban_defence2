@@ -16,7 +16,7 @@ mt{
 	--技能图标
 	art = [[yijianfenlei.blp]],
 	--施法范围 半径
-	area = 750,
+	area = 550,
 	--cd
 	cool = 0.5,
 	--施法距离

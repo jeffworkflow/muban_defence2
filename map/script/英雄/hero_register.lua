@@ -69,7 +69,7 @@ local function hero_register_main()
 		-- hero:add_skill('保持原位','英雄',11)
 		
 		
-		-- hero:add_item('新手攻略') 
+		-- hero:add_item('新人引导') 
 		-- hero:add_item('随机技能书') 
 		
 		--武器

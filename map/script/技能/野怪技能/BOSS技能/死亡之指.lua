@@ -27,7 +27,7 @@ damage = function(self)
     return self.owner:get('攻击')*500
 end,  
 --冷却
-cool = 300,
+cool = 150,
 -- cool = 6,
 area = 3000,
 effect = [[Abilities\Spells\Demon\DemonBoltImpact\DemonBoltImpact.mdl]]

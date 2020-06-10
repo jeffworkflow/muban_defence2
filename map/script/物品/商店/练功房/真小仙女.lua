@@ -24,6 +24,7 @@ for key,value in pairs(ac.exchange_kill) do
     mt{
     --等久
     level = 1,
+    is_order = 1,
     --图标
     art = value[5],
     --说明

@@ -14,9 +14,8 @@ art = [[ReplaceableTextures\CommandButtons\BTNStoneArchitecture.blp]],
 tip = [[
  
 
-提升基地 |cff00ff00100%护甲|r 和 |cff00ff00100%生命上限|r 并获得一个|cff00ff00【免伤次数】|r
-
-|cffcccccc当前免伤次数：%cnt%]],
+提升基地 |cff00ff00100%护甲|r 和 |cff00ff00100%生命上限|r
+ ]],
 
 --物品类型
 item_type = '神符',

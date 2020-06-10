@@ -8,7 +8,7 @@ mt{
     tip = [[
 
 
-根据提示，到指定地点，挖开即可获得|cffdf19d0 各种宝藏 |r
+根据提示，到指定地点，挖开即可获得|cffdf19d0 各种宝藏 |r|cffffff00（仅英雄单位可以使用）
 
 |cffffe799每点挖宝熟练度|r 奖励 |cff00ff00每秒加敏捷+0.1
 |cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
@@ -89,8 +89,8 @@ function mt:on_cast_start()
             self.trg = region:event '区域-进入' (function(trg, unit)
                 if  unit == hero then
                     if not player.peon_wabao and  (hero.unit_type == '宠物' or hero.unit_type == '召唤物') then 
-                        player:sendMsg('|cff00ffff宠物不能挖图|r',3)
-                        player:sendMsg('|cff00ffff宠物不能挖图|r',3)
+                        player:sendMsg('|cffffe799【系统消息】|cffff0000宠物无法使用藏宝图|r',3)
+                        player:sendMsg('|cffffe799【系统消息】|cffff0000宠物无法使用藏宝图|r',3)
                         return true
                     end 
                     -- print('单位进入')
@@ -124,8 +124,8 @@ function mt:on_cast_start()
         --点在区域内
         if region < point  then
             if not player.peon_wabao and  ( hero.unit_type == '宠物' or hero.unit_type == '召唤物') then 
-                player:sendMsg('|cff00ffff宠物不能挖图|r',3)
-                player:sendMsg('|cff00ffff宠物不能挖图|r',3)
+                player:sendMsg('|cffffe799【系统消息】|cffff0000宠物无法使用藏宝图|r',3)
+                player:sendMsg('|cffffe799【系统消息】|cffff0000宠物无法使用藏宝图|r',3)
                 return true
             end    
 

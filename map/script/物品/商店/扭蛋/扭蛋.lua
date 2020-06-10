@@ -151,7 +151,7 @@ function mt:add_content()
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |r',2)
     elseif  rand_name == '随机技能' then
         local rand_list = ac.unit_reward['商店随机技能']
         local rand_name = ac.get_reward_name(rand_list)

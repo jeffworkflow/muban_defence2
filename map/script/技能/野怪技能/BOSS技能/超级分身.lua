@@ -26,7 +26,7 @@ cnt = function(self)
 	return ac.g_game_degree_attr and math.max(1,math.floor(ac.g_game_degree_attr/2)) or 1
 end, 
 --冷却
-cool = 180,
+cool = 120,
 -- cool = 1,
 }
 -- mt.effect1 = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]

@@ -89,7 +89,7 @@ mt{
             str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..'\n'
         end     
         if self['多重暴击'] >0 then 
-            str = str ..'+|cffffff00'..bignum2string(self['多重暴击'])..'|r 多重暴击'..''
+            str = str ..'+|cffffff00'..bignum2string(self['多重暴击'])..'|r 多重暴击'..'\n'
         end 
         return str
     end,   
