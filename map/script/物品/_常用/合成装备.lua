@@ -17,12 +17,15 @@ for name,data in pairs(ac.table.ItemData) do
         if finds(color,'白','蓝','金','红') then 
             table.insert(all_item,name)
         end   
-        if data.item_type =='装备' then
-            table.insert(equipment,name)
-        end    
-        if data.item_type =='消耗品' then
-            table.insert(consumable_item,name)
-        end      
+        
+        if finds(color,'白','蓝','金','红','黑') then 
+            if data.item_type =='装备' then
+                table.insert(equipment,name)
+            end    
+            if data.item_type =='消耗品' then
+                table.insert(consumable_item,name)
+            end      
+        end
     end 
 
     if color and data.category == '存档' then 

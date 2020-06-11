@@ -192,6 +192,7 @@ function mt:add_content()
         --添加给购买者
         local name = list[math.random(#list)]
         local it = ac.item.add_skill_item(name,self.owner)
+        local color = it and it.color 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 掉落了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
     elseif  rand_name == '魔丸' then
         self.owner:add_rec_ex(10000)

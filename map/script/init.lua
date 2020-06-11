@@ -59,9 +59,9 @@ ac.wait(0,function ()
     ac.player(16):setColor(7)    
 end);
 --测试难2
-ac.wait(1199,function ()
-    for i=1,6 do 
-        local p = ac.player(i)
-        p:Map_SaveServerValue('wxnd',10) --网易服务器
-    end
-end)
+-- ac.wait(1199,function ()
+--     for i=1,6 do 
+--         local p = ac.player(i)
+--         p:Map_SaveServerValue('wxnd',10) --网易服务器
+--     end
+-- end)

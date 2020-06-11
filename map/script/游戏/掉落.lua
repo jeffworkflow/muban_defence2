@@ -1243,6 +1243,9 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit:is_hero() then 
         return 
     end 
+    if unit:is_illusion() then 
+        return 
+    end 
     --无尽后，死亡不掉落任何东西
     if ac.creep and type(ac.creep['刷怪-无尽1']) == 'table' and ac.creep['刷怪-无尽1'].index >= 1 then 
         return 
