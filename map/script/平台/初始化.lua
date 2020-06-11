@@ -33,9 +33,14 @@ for i=1,10 do
     if p:is_player() then
         for n=1,#ac.mall do
             local has_item = p:Map_HasMallItem(ac.mall[n][1])
+            local need_map_level = ac.mall[n][3] or 0
             local name = ac.mall[n][2]
             local skl = ac.skill[name]
-            if has_item and type(skl) == 'table' and skl:get('局内地图等级') then 
+            if has_item 
+               and  p:Map_GetMapLevel() >= need_map_level 
+               and type(skl) == 'table' 
+               and skl:get('局内地图等级') 
+            then 
                 p:add('局内地图等级',skl:get('局内地图等级'))
             end
         end    
@@ -132,7 +137,7 @@ for i=1,10 do
     if p:is_player() then 
         p:event '读取存档数据' (function()
             for n=1,#ac.mall do
-                -- print("01",p:Map_HasMallItem(ac.mall[n][1]))
+                -- print("地图等级要求：",ac.mall[n][1],ac.mall[n][3],p:Map_GetMapLevel())
                 local need_map_level = ac.mall[n][3] or 0
                 if p:Map_GetMapLevel() >= need_map_level then 
                     if ac.mall[n][4] then 

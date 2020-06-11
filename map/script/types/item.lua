@@ -554,12 +554,12 @@ function mt:get_tip()
 
 	if owner then
 		--有所属单位则说明物品在身上
-		if self:sell_price() > 0 then 
-			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
-		end	
-		if self:sell_wood() > 0 then 
-			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_wood()..'(木头)|r|n'
-		end	
+		-- if self:sell_price() > 0 then 
+		-- 	gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
+		-- end	
+		-- if self:sell_wood() > 0 then 
+		-- 	gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_wood()..'(木头)|r|n'
+		-- end	
 		if self.get_sell_tip then 
 			gold = self.get_sell_tip
 		end	
