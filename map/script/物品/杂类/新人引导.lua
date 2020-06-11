@@ -4,7 +4,7 @@ mt{
     --物品技能
     is_skill = true,
     level = 1 ,
-    wood = 20,
+    wood = 10,
     --颜色
     -- color = '紫',
     tip = [[

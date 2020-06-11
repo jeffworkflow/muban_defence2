@@ -725,11 +725,11 @@ local unit_reward = {
     ['剑魔'] = {{rand =33,name = '强化石*1'},{rand =9,name = '天谕*1'}},
 
     ['装备升级'] =  {	
-        {    rand = 0.2, name = '真·复制装备',},
-        {    rand = 96.8, name = '无' },
-        {    rand = 2, name = '随机物品',},
-        {    rand = 0.6, name = '吞噬丹*1',},
-        {    rand = 0.4, name = '复制装备',},
+        {    rand = 0.15, name = '真·复制装备',},
+        {    rand = 97.65, name = '无' },
+        {    rand = 1.5, name = '随机物品',},
+        {    rand = 0.4, name = '吞噬丹*1',},
+        {    rand = 0.3, name = '复制装备',},
 
     },
 
