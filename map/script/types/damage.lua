@@ -784,17 +784,18 @@ function mt:Injury()
 	if dmg <=0 then 
 		dmg = 0
 	end
-
-	local hero = self.target
-	if target:get('免伤几率') > math.random(0, 99) then
-		show_block(hero,'免伤!')	
-		self.current_damage = 0
-	else
-		if self.current_damage <= target:get '伤害减少'  then 
+	if not self.allow_god then 
+		local hero = self.target
+		if target:get('免伤几率') > math.random(0, 99) then
+			show_block(hero,'免伤!')	
 			self.current_damage = 0
-		else 
-			self.current_damage = (self.current_damage - target:get '伤害减少') * (1 - dmg/100)
-		end	
+		else
+			if self.current_damage <= target:get '伤害减少'  then 
+				self.current_damage = 0
+			else 
+				self.current_damage = (self.current_damage - target:get '伤害减少') * (1 - dmg/100)
+			end	
+		end
 	end
 
 end
@@ -950,20 +951,22 @@ function damage:__call()
 		self.current_damage = 0
 		return
 	end
-	if self.damage_type == "物理" then
-		if target:has_restriction '物免' then
-			self.current_damage = 0
-			return
-		end
-		
-	else
-		if target:has_restriction '魔免' then
-			self.current_damage = 0
-			return
+	--默认不允许对无敌造成伤害,allow_god=true 可以对无敌造成伤害
+	if not self.allow_god then 
+		if self.damage_type == "物理" then
+			if target:has_restriction '物免' then
+				self.current_damage = 0
+				return
+			end
+		else
+			if target:has_restriction '魔免' then
+				self.current_damage = 0
+				return
+			end
 		end
 	end
-	--不是技能造成的，进行攻击丢失处理
-	if not self:is_skill() then 
+	--普通攻击丢失处理
+	if self:is_common_attack() then 
 		local rand = math.random(100)
 		if rand <= self.source:get('攻击丢失') then 
 			self:on_attack_drop()
@@ -971,8 +974,8 @@ function damage:__call()
 		end 
 	end	
 
-	--不是技能造成的，进行闪避处理
-	if not self:is_skill() then 
+	--普通攻击 闪避处理
+	if self:is_common_attack() then 
 		local rand = math.random(100)
 		if rand <= self.target:get('闪避') then 
 			self:on_miss()

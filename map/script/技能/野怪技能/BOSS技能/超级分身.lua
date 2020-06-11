@@ -23,10 +23,11 @@ tip = [[
 ]],
 
 cnt = function(self)
-	return ac.g_game_degree_attr and math.max(1,math.floor(ac.g_game_degree_attr/2)) or 1
+	return ac.g_game_degree_attr and math.floor(ac.g_game_degree_attr/2) or 0 
 end, 
+has_cnt = 0,
 --冷却
-cool = 120,
+cool = 10,
 -- cool = 1,
 }
 -- mt.effect1 = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]
@@ -39,19 +40,18 @@ end
 function mt:on_ai()
 	local hero = self.owner
 	local skill =self
-	local target = ac.selector():in_range(hero,self.area):is_enemy(hero):random()
-	if not target then 
-		return false
-	end
-	self:set('target',target)
-	return true
+	if self.cnt > self.has_cnt then 
+		self:set('has_cnt',self.has_cnt+1)
+		return true
+    end
 end
 
 function mt:boss_skill_shot(old_point)
 	-- print('1开始分身啦：',self.cnt)
 	local hero = self.owner
 	local skill =self
-	for i=1,self.cnt do 
+	local cnt = 2^(self.has_cnt-1)
+	for i=1,cnt do 
 		-- print('2开始分身啦：',self.cnt)
 		local point = hero:get_point() - {math.random(360),math.random(100,300)}
 		local u =  hero:create_illusion(point)
@@ -77,6 +77,10 @@ function mt:boss_skill_shot(old_point)
 			['会心几率'] = hero:get('会心几率'),
 			['会心伤害'] = hero:get('会心伤害'),
 		}
+		
+		for k,v in pairs(ac.unit.attribute) do 
+			attribute[k] = hero:get(k)
+		end
 
 		u:remove_ability 'AInv'
 

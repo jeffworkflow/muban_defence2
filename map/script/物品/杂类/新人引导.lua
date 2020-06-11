@@ -16,4 +16,12 @@ mt{
 |cffcccccc更多玩法自行摸索！愿君旗开得胜！|r]],
     --技能图标
     art = [[yxsm.blp]],
+    item_type ='消耗品'
 }
+
+
+ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+    if player:Map_GetMapLevel()<=5 then 
+        hero:add_item('新人引导')
+    end
+end)

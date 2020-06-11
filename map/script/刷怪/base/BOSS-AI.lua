@@ -77,8 +77,7 @@ end)
 --技能事件
 ac.game:event '技能-施法停止' (function(trg, _, skill)
     local unit = skill.owner
-    local skill_str = table.concat(ac.skill_list3)
-    if unit and finds(skill_str,skill.name) then 
+    if unit and unit:is_type('boss') then 
         ac.attack_hero(unit)
     end
 end)

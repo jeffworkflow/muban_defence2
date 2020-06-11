@@ -53,27 +53,28 @@ function mt:on_cast_start()
     hero = player.hero
     hero:add('全属性',self.award_all_attr)
     player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff00268888全属性|r',2)
-    unit:add_restriction '免死'
-    --增加 免伤次数
-    unit.wtf_cnt = (unit.wtf_cnt or 0) + 1
-    --注册事件
-    if not unit.wtf_trg then 
-        unit.wtf_trg = unit:event '受到伤害前效果' (function(trg, damage)
-            print(unit.wtf_cnt)
-            if unit.wtf_cnt >0 then 
-                if not unit.bmfy_flg then 
-                    unit:add('免伤几率',100)
-                    unit:add('免伤几率极限',100)
-                    unit.bmfy_flg = true
-                end    
-                unit.wtf_cnt = unit.wtf_cnt -1
-            else
-                unit:add('免伤几率',-100)
-                unit:add('免伤几率极限',-100)
-                unit.bmfy_flg = false
-            end    
-        end)    
-    end
+    
+    -- --增加 免伤次数
+    -- unit.wtf_cnt = (unit.wtf_cnt or 0) + 1
+    -- --注册事件
+    -- if not unit.wtf_trg then 
+    --     unit.wtf_trg = unit:event '受到伤害前效果' (function(trg, damage)
+    --         print(unit.wtf_cnt)
+    --         if unit.wtf_cnt >0 then 
+    --             if not unit.bmfy_flg then 
+    --                 unit:add('免伤几率',100)
+    --                 unit:add('免伤几率极限',100)
+    --                 unit.bmfy_flg = true
+    --             end    
+    --             unit.wtf_cnt = unit.wtf_cnt -1
+    --         else
+    --             unit:add('免伤几率',-100)
+    --             unit:add('免伤几率极限',-100)
+    --             unit.bmfy_flg = false
+    --         end    
+    --     end)    
+    -- end
+
     --概率得 五道杠少年
     local rate = 1
     -- local rate = 80 --测试用

@@ -44,6 +44,13 @@ function mt:on_cast_start()
     end 
     if #list == 0 then 
         p:sendMsg('没有可升级的技能')
+        --取消 --取消
+        if self._count > 1 then 
+            self:add_item_count(1) 
+        else
+            --重新添加给英雄
+            owner:add_item(self.name)
+        end   
         return 
     end    
 

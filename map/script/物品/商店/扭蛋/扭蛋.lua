@@ -151,7 +151,7 @@ function mt:add_content()
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |r',2)
+        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了  |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif  rand_name == '随机技能' then
         local rand_list = ac.unit_reward['商店随机技能']
         local rand_name = ac.get_reward_name(rand_list)
@@ -161,8 +161,9 @@ function mt:add_content()
         local list = ac.quality_skill[rand_name]
         --添加给购买者
         local name = list[math.random(#list)]
-        ac.item.add_skill_item(name,self.owner)
-        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffffff00【技能书】'..name..'|r',2)
+        local it = ac.item.add_skill_item(name,self.owner)
+        local color = it and it.color 
+        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
     elseif  finds(rand_name,'技能升级书') then
         self.owner:add_item(rand_name,true)
         tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)

@@ -110,7 +110,7 @@ function mt:add_content()
         --添加给购买者
         local name = list[math.random(#list)]
         local it = ac.item.add_skill_item(name,self.owner)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cffffff00【技能书】'..(it.color_name or name)..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
     elseif  rand_name == '魔丸' then
         self.owner:add_rec_ex(10000)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cffff0000'..rand_name..'+10000|r',2) 

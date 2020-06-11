@@ -129,7 +129,7 @@ end
 
 local mt = ac.buff['绽·风华']
 
-mt.cover_type = 1
+mt.cover_type = 0
 
 
 function mt:on_add()
@@ -159,9 +159,6 @@ function mt:on_remove()
 end
 
 function mt:on_cover(new)
-	if new.time > self:get_remaining() then
-		self:set_remaining(new.time)
-	end
-	return false
+	return  new.skill.level > self.skill.level 
 end
 

@@ -191,7 +191,8 @@ function mt:on_pulse()
         source = self.target,
         skill = self.skill,
         damage = self.damage,
-        real_damage =  true
+        real_damage =  true,
+        allow_god = true, --伤害忽视无敌
     }
 
 end

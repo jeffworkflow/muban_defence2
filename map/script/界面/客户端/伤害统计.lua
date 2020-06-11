@@ -229,7 +229,7 @@ local new_ui = class.panel:builder{
                     {
                         x = 25,--屏幕界面X坐标
                         y = 131 + index*40,--屏幕界面Y坐标
-                        w = 420 or math.random(50,420),
+                        w = 1 or math.random(50,420),
                         h = 32,
                         parent = self,
                         -- level = 1,
@@ -268,7 +268,7 @@ local new_ui = class.panel:builder{
 }
 new_ui.bg:create_player_damage()
 new_ui:create_hide_button()
--- new_ui:hide1()
+new_ui:hide1()
 ac.ui.damage = new_ui
 
 
