@@ -27,13 +27,13 @@ mt{
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加智力'] = {12800,256000},
+['每秒加智力'] = {20000,400000},
 	--介绍
 	tip = [[
 
-|cffffff00【每秒加智力】+12800*Lv|r
+|cffffff00【每秒加智力】+20000*Lv|r
 
-|cff00bdec【被动效果】攻击10%几率触发|cffff0000技暴几率+20% 技暴伤害+300%|r，|cff00bdec持续0.75秒|r
+|cff00bdec【被动效果】攻击10%几率触发|cffff0000技暴几率+20% 技暴伤害+600%|r，|cff00bdec持续0.75秒|r
 
 ]],
 	--技能图标
@@ -42,7 +42,7 @@ mt{
 	effect4 = [[参考赤灵的渡业妖爆]],
     time = 0.75,
     skill_rate = 20,
-    skill_damage = 300
+    skill_damage = 600
 }
 function mt:damage_start(damage)
     local skill = self

@@ -22,7 +22,7 @@ mt{
 	cool = 1.5,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*40+10012)* self.level
+  return (self.owner:get('敏捷')*25+10012)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -39,7 +39,7 @@ end,
 【强大的永生系统】
 
 |cff00ffff【被动效果】攻击10%几率造成多次突袭伤害
-【伤害公式】（敏捷*40+10000）*Lv
+【伤害公式】（敏捷*25+10000）*Lv
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标

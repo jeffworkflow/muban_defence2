@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 2*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -24,7 +24,7 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*64+100000000)* self.level
+  return (self.owner:get('力量')*60+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
@@ -33,8 +33,8 @@ end,
 	--介绍
 	tip = [[
 
-|cff00bdec【被动效果】对周围敌人造成范围技能伤害，并晕眩0.2S
-【伤害公式】（力量*45+100000000）*Lv|r
+|cff00bdec【被动效果】攻击2%概率对周围敌人造成范围技能伤害，并晕眩1S
+【伤害公式】（力量*60+100000000）*Lv|r
 
 ]],
 	--技能图标
@@ -46,7 +46,7 @@ end,
 	--特效4
 	effect4 = [[参考赤灵的践踏]],
 	--持续时间
-	time = 0.2 ,
+	time = 1 ,
 	damage_type ='法术'
 }
 function mt:damage_start(damage)

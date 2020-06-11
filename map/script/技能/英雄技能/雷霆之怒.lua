@@ -24,21 +24,21 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*12+10000000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*8+10000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['杀怪加全属性'] = {40,800},
-['攻击加全属性'] = {40,800},
-['每秒加全属性'] = {40,800},
+['杀怪加全属性'] = {80,1600},
+['攻击加全属性'] = {80,1600},
+['每秒加全属性'] = {80,1600},
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+40*Lv
-【攻击加全属性】+40*Lv
-【每秒加全属性】+40*Lv
+	tip = [[|cffffff00【杀怪加全属性】+80*Lv
+【攻击加全属性】+80*Lv
+【每秒加全属性】+80*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*12+10000000）*Lv
+【伤害公式】（全属性*8+10000000）*Lv
  ]],
 	--技能图标
 	art = [[ltzj.blp]],

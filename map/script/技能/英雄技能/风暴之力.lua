@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*20+1000000)* self.level
+  return (self.owner:get('智力')*15+1000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['攻击加智力'] = {480,9600},
+['攻击加智力'] = {960,19200},
 	--介绍
-	tip = [[|cffffff00【攻击加智力】+480*Lv
+	tip = [[|cffffff00【攻击加智力】+960*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（智力*20+1000000）*Lv
+【伤害公式】（智力*15+1000000）*Lv
  ]],
 	--技能图标
 	art = [[fengbaozhili.blp]],

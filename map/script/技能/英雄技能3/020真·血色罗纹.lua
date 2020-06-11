@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('生命上限')*18+1000000000)* self.level
+  return (self.owner:get('生命上限')*7+1000000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
 	--属性加成
-['杀怪加生命上限'] = {4000,80000},
+['杀怪加生命上限'] = {3000,60000},
 	--介绍
-	tip = [[|cffffff00【杀怪加生命上限】+4000*Lv
+	tip = [[|cffffff00【杀怪加生命上限】+3000*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（生命上限*18+10亿）*Lv|r
+【伤害公式】（生命上限*7+10亿）*Lv|r
  ]],
 	--技能图标
 	art = [[yeqiu.blp]],

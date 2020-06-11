@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*45+100000000)* self.level
+  return (self.owner:get('敏捷')*25+100000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['杀怪加敏捷'] = {320,6400},
+['杀怪加敏捷'] = {640,12800},
 	--介绍
-	tip = [[|cffffff00【杀怪加敏捷】+320*Lv
+	tip = [[|cffffff00【杀怪加敏捷】+640*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*45+100000000）*Lv
+【伤害公式】（敏捷*25+100000000）*Lv
  ]],
 	--技能图标
 	art = [[tianwaifeike.blp]],

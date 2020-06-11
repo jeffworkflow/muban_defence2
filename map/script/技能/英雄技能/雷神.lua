@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*30+10000000)* self.level
+  return (self.owner:get('智力')*20+10000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加智力'] = {3200,64000},
+['每秒加智力'] = {6400,128000},
 	--介绍
-	tip = [[|cffffff00【每秒加智力】+3200*Lv
+	tip = [[|cffffff00【每秒加智力】+6400*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（智力*30+10000000）*Lv
+【伤害公式】（智力*20+10000000）*Lv
  ]],
 	--技能图标
 	art = [[leibao.blp]],

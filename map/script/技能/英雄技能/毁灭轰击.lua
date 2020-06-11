@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*20+10000000)* self.level
+  return (self.owner:get('敏捷')*15+10000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['攻击加敏捷'] = {960,19200},
+['攻击加敏捷'] = {1920,38400},
 	--介绍
-	tip = [[|cffffff00【攻击加敏捷】+960*Lv
+	tip = [[|cffffff00【攻击加敏捷】+1920*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*30+10000000）*Lv
+【伤害公式】（敏捷*20+10000000）*Lv
  ]],
 	--技能图标
 	art = [[hlqk.blp]],

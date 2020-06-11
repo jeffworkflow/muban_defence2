@@ -24,21 +24,21 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*12+1000000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10+1000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
 	--属性加成
-['杀怪加全属性'] = {240,4800},
-['攻击加全属性'] = {240,4800},
-['每秒加全属性'] = {240,4800},
+['杀怪加全属性'] = {300,6000},
+['攻击加全属性'] = {300,6000},
+['每秒加全属性'] = {300,6000},
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+240*Lv
-【攻击加全属性】+240*Lv
-【每秒加全属性】+240*Lv
+	tip = [[|cffffff00【杀怪加全属性】+300*Lv
+【攻击加全属性】+300*Lv
+【每秒加全属性】+300*Lv
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（全属性*18*Lv+2%敌人的最大生命值）|r
+【伤害公式】（全属性*12*Lv+2%敌人的最大生命值）|r
  ]],
 	--技能图标
 	art = [[qikai.blp]],

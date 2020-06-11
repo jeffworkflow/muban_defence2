@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 2*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -24,25 +24,25 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*18+100000000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*24+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
 	--施法范围
 	area = 500,
 	--属性加成
-['杀怪加全属性'] = {80,1600},
-['攻击加全属性'] = {80,1600},
-['每秒加全属性'] = {80,1600},
+['杀怪加全属性'] = {100,2000},
+['攻击加全属性'] = {100,2000},
+['每秒加全属性'] = {100,2000},
 	--介绍
 	tip = [[
 
-|cffffff00【杀怪加全属性】+80*Lv
-【攻击加全属性】+80*Lv
-【每秒加全属性】+80*Lv
+|cffffff00【杀怪加全属性】+100*Lv
+【攻击加全属性】+100*Lv
+【每秒加全属性】+100*Lv
 
-|cff00bdec【被动效果】对周围敌人造成范围技能伤害
-【伤害公式】（全属性*18+100000000）*Lv|r
+|cff00bdec【被动效果】攻击有2%概率对周围敌人造成范围技能伤害
+【伤害公式】（全属性*24+100000000）*Lv|r
 
 ]],
 	--技能图标

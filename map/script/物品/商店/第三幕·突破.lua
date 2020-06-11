@@ -28,7 +28,7 @@ mt{
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+300W 全属性
-|cff00ff00攻击有10%几率造成|cffffff00（全属性*20）|cff00ff00的范围技能伤害
+|cff00ff00攻击有10%几率造成|cffffff00（全属性*35）|cff00ff00的范围技能伤害
 
 ]],
     ['全属性'] = 3000000,
@@ -39,7 +39,7 @@ mt{
    distance = 2000,
    --伤害
    damage = function(self)
-        return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*20)
+        return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*35)
    end,
    --冷却
    cool = 1,

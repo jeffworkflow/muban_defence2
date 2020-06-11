@@ -21,13 +21,13 @@ mt{
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加力量'] = {3200,64000},
+['每秒加力量'] = {12000,240000},
 	--介绍
 	tip = [[
 
-|cffffff00【每秒加力量】+3200*Lv|r
+|cffffff00【每秒加力量】+12000*Lv|r
 
-|cff00bdec【主动施放】增加|cffff0000暴击几率+(9+0.6*Lv)% 暴击伤害+(250+16*Lv)%，|r|cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加|cffff0000暴击几率+(9+0.6*Lv)% 暴击伤害+(500+32*Lv)%，|r|cff00bdec持续5秒|r
 
 ]],
 	--技能图标
@@ -40,7 +40,7 @@ mt{
     end ,
     --技暴伤害
     crit_damage = function(self) 
-        return 250 + self.level * 16
+        return 500 + self.level * 32
     end ,
     damage_type = '法术',
     time = 5

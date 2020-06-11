@@ -20,13 +20,13 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*20+1000000)* self.level*3
+  return (self.owner:get('敏捷')*15+1000000)* self.level*3
 end,
 	--介绍
 	tip = [[
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害，并晕眩1S
-【伤害公式】(敏捷*20+100w)*Lv*3|r
+【伤害公式】(敏捷*15+100w)*Lv*3|r
 
 ]],
 	--技能图标

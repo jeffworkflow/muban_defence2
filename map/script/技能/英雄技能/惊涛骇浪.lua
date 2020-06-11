@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*20+1000000)* self.level
+  return (self.owner:get('力量')*15+1000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加力量'] = {1600,32000},
+['每秒加力量'] = {3200,64000},
 	--介绍
-	tip = [[|cffffff00【每秒加力量】+1600*Lv
+	tip = [[|cffffff00【每秒加力量】+3200*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（力量*20+1000000）*Lv
+【伤害公式】（力量*15+1000000）*Lv
  ]],
 	--技能图标
 	art = [[3.blp]],

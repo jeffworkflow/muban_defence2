@@ -22,7 +22,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*25+10008)* self.level
+  return (self.owner:get('力量')*20+10008)* self.level
 end,
 	--施法范围
 	area = 500,
@@ -41,7 +41,7 @@ end,
 【物理伤害加深】+300%
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害，并短暂晕眩敌人
-【伤害公式】（力量*25+10000）*Lv+1%敌人的最大生命值
+【伤害公式】（力量*20+10000）*Lv+1%敌人的最大生命值
 
 |cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
 	--技能图标

@@ -21,13 +21,13 @@ mt{
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加敏捷'] = {1600,32000},
+['每秒加敏捷'] = {8000,160000},
 	--介绍
 	tip = [[
 
-|cffffff00【每秒加敏捷】+1600*Lv|r
+|cffffff00【每秒加敏捷】+8000*Lv|r
 
-|cff00bdec【主动施放】增加|cffff0000会心几率+(5+0.3*Lv)% 会心伤害+(50+3*Lv)%，|r|cff00bdec持续3秒|r
+|cff00bdec【主动施放】增加|cffff0000会心几率+(5+0.3*Lv)% 会心伤害+(100+6*Lv)%，|r|cff00bdec持续3秒|r
 
 ]],
 	--技能图标
@@ -40,7 +40,7 @@ mt{
     end ,
     --技暴伤害
     crit_damage = function(self) 
-        return 50 + self.level * 3
+        return 100 + self.level * 6
     end ,
     damage_type = '法术',
     time = 3

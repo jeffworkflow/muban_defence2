@@ -27,13 +27,13 @@ mt{
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加力量'] = {12800,256000},
+['每秒加力量'] = {20000,400000},
 	--介绍
 	tip = [[
 
-|cffffff00【每秒加力量】+12800*Lv|r
+|cffffff00【每秒加力量】+20000*Lv|r
 
-|cff00bdec【被动效果】攻击10%几率触发 |cffff0000暴击几率+20% 暴击伤害+600%|r，|cff00bdec持续0.75秒|r
+|cff00bdec【被动效果】攻击10%几率触发 |cffff0000暴击几率+20% 暴击伤害+1200%|r，|cff00bdec持续0.75秒|r
 
 ]],
 	--技能图标
@@ -42,7 +42,7 @@ mt{
 	effect4 = [[参考赤灵的狂龙爆]],
     time = 0.75,
     crit_rate = 20,
-    crit_damage = 600
+    crit_damage = 1200
 }
 function mt:damage_start(damage)
     local skill = self

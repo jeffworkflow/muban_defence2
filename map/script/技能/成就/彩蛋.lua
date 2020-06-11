@@ -292,13 +292,13 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*250
+        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*200
 end,
 	--介绍
 	tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00攻击10%几率造成范围全属性*250的技能伤害
+|cff00ff00攻击10%几率造成范围全属性*200的技能伤害
 
 ]],
 	--特效
@@ -395,11 +395,11 @@ mt{
     tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00每5秒触发一次|cff00ffff“不惧轮回” |cff00ff00对周围敌人造成全属性*200的伤害，并晕眩1秒|r
+|cff00ff00每5秒触发一次|cff00ffff“不惧轮回” |cff00ff00对周围敌人造成全属性*175的伤害，并晕眩1秒|r
     ]],
 	--伤害
 	damage = function(self)
-        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*200
+        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*175
     end,
     stun_time = 1,
     damage_area = 800,

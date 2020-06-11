@@ -24,17 +24,17 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*45+100000000)* self.level
+  return (self.owner:get('敏捷')*25+100000000)* self.level
 end,
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加敏捷'] = {6400,128000},
+['每秒加敏捷'] = {12800,256000},
 	--介绍
-	tip = [[|cffffff00【每秒加敏捷】+6400*Lv
+	tip = [[|cffffff00【每秒加敏捷】+12800*Lv
 
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】（敏捷*45+100000000）*Lv
+【伤害公式】（敏捷*25+100000000）*Lv
  ]],
 	--技能图标
 	art = [[yewuqingchen.blp]],

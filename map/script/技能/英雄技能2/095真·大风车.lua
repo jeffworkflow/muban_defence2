@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 2*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -24,25 +24,25 @@ mt{
 	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*45+100000000)* self.level
+  return (self.owner:get('敏捷')*60+100000000)* self.level
 end,
 	--被动事件
 	event_name = "造成伤害效果",
 	--施法范围
 	area = 500,
 	--属性加成
-['杀怪加敏捷'] = {160,3200},
-['攻击加敏捷'] = {160,3200},
-['每秒加敏捷'] = {160,3200},
+['杀怪加敏捷'] = {240,4800},
+['攻击加敏捷'] = {240,4800},
+['每秒加敏捷'] = {240,4800},
 	--介绍
 	tip = [[
 
-|cffffff00【杀怪加敏捷】+160*Lv
-【攻击加敏捷】+160*Lv
-【每秒加敏捷】+160*Lv
+|cffffff00【杀怪加敏捷】+240*Lv
+【攻击加敏捷】+240*Lv
+【每秒加敏捷】+240*Lv
 
-|cff00bdec【被动效果】对周围敌人造成范围技能伤害
-【伤害公式】（敏捷*45+100000000）*Lv|r
+|cff00bdec【被动效果】攻击2%概率对周围敌人造成范围技能伤害
+【伤害公式】（敏捷*60+100000000）*Lv|r
 
 ]],
 	--技能图标

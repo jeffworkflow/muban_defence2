@@ -21,13 +21,13 @@ mt{
 	--施法范围
 	area = 500,
 	--属性加成
-['每秒加智力'] = {6400,128000},
+['每秒加智力'] = {16000,320000},
 	--介绍
 	tip = [[
 
-|cffffff00【每秒加智力】+6400*Lv|r
+|cffffff00【每秒加智力】+16000*Lv|r
 
-|cff00bdec【主动施放】增加|cffff0000技暴几率+(10+0.75*Lv)% 技暴伤害+(150+10*Lv)%，|r|cff00bdec持续5秒|r
+|cff00bdec【主动施放】增加|cffff0000技暴几率+(10+0.75*Lv)% 技暴伤害+(300+20*Lv)%，|r|cff00bdec持续5秒|r
 
 ]],
 	--技能图标
@@ -40,7 +40,7 @@ mt{
     end,
     --技暴伤害
     skill_damage = function(self)
-        return 150 + self.level*10
+        return 300 + self.level*20
     end,
     damage_type = '法术',
     time = 5
