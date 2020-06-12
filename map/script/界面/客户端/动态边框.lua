@@ -1,6 +1,7 @@
 
 local tools ={
-    add_frame = function (self,off_x,off_y,size,off_size,is_show)
+    add_frame = function (self,off_x,off_y,size,off_size,is_show,on_hide)
+        print(333,self)
         if self.model_frame then 
             self.model_frame.is_show1 = is_show
             self.model_frame:show()
@@ -27,7 +28,8 @@ local tools ={
             get_show = function(self)
                 -- print('动态边框',self.is_show1)
                 return self.is_show1
-            end
+            end,
+            on_hide = on_hide
         }
         new_ui.is_show1 = is_show
         --默认为传进来控件的坐标
@@ -49,6 +51,9 @@ local tools ={
         function new_ui.btn:on_button_mouse_enter()  
             if not new_ui:get_show() then 
                 new_ui:hide()
+                if new_ui.on_hide then 
+                    new_ui:on_hide()
+                end
             end     
         end   
         self.model_frame = new_ui

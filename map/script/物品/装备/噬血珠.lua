@@ -126,6 +126,9 @@ function mt:on_upgrade()
                 end
                 if item._count < item.kill_cnt then 
                     item:add_item_count(1)
+                elseif item._count == item.kill_cnt then 
+                    local p = hero.owner
+                    p:event_notify('玩家-噬血珠满灵魂',p,item)
                 end    
             end    
         end)

@@ -244,6 +244,18 @@ ac.game:event '玩家-选择单位' (function(self, player, hero)
     if player:is_self()then
         new_ui:show()
     end 
+
+    --item_frame 显示
+    if not player.first_item then
+        return
+    end
+    local slot = player.first_item.slot_id
+    if player:is_self()  then            
+        ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},nil,function()
+            player.first_item = nil
+        end)
+    end 
+
 end)
 ac.game:event '玩家-取消选择单位' (function(self, player, hero)
     if hero ~= player.hero then 
@@ -252,6 +264,16 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
      
     if player:is_self()then
         new_ui:hide()
+    end 
+
+    
+    --item_frame 隐藏
+    if not player.first_item then
+        return
+    end
+    local slot = player.first_item.slot_id
+    if player:is_self()  then
+        ac.ui.client.panel.itemPanel.buttonList[slot].model_frame:hide()
     end 
 end)
 
@@ -285,3 +307,26 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
 end)
 
 
+
+--业务 ： 噬血珠 第一次满灵魂 加动态边框
+ac.game:event '玩家-噬血珠满灵魂' (function(trg, player, item)
+    if item.flag_first then 
+        return 
+    end
+    if player.first_item then 
+        return 
+    end
+    item.flag_first = true
+    player.first_item = item
+    local slot = item.slot_id
+    local hero = player.hero 
+    --当前选择的英雄
+    if hero == player.selected then 
+        if player:is_self()  then
+            -- print(2222,ac.ui.client.panel.itemPanel.buttonList[slot],ac.ui.client.panel.skillPanel.buttonList[slot])
+            ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},nil,function()
+                player.first_item = nil
+            end)
+        end 
+    end
+end)

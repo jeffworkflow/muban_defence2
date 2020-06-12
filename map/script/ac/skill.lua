@@ -42,7 +42,7 @@ mt.type = 'skill'
 mt.name = ''
 
 --最大等级
-mt.max_level = 10
+mt.max_level = 100
 
 --等级（等级为0时表示技能无效）
 mt.level = 1
