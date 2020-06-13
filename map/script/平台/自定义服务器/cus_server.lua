@@ -491,7 +491,7 @@ function player.__index:sp_save_player()
     local post = 'exec=' .. json.encode({
         sp_name = 'sp_save_player',
         para1 = map_name,
-        para1 = player_name,
+        para2 = player_name,
     })
     -- print(url,post)
     local f = f or function (retval)  end

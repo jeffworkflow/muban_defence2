@@ -1,7 +1,6 @@
 require '平台.base'
 require '平台.config'
 require '平台.自定义服务器'
--- require '平台.房间显示'
 require '平台.初始化'
 
 require '平台.道具'
@@ -24,6 +23,7 @@ require '平台.通关难度'
 require '平台.签到'
 require '平台.熟练度奖励'
 
+require '平台.房间显示'
 
 
 --[[流程：
