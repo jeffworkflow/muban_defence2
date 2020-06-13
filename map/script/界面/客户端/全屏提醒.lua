@@ -236,7 +236,7 @@ ac.game:event '玩家-注册英雄' (function(self, player, hero)
     end)
 end)    
 
-local time = 5
+local time = 8
 --业务 ： 噬血珠 第一次满灵魂 加动态边框
 ac.game:event '玩家-噬血珠满灵魂' (function(trg, player, item)
     if item.flag_first then 

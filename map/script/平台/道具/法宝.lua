@@ -307,7 +307,7 @@ tip = [[
 
 |cffff0000【点击可更换法宝外观，所有法宝属性可叠加】|r
 ]],
-need_map_level = 210,
+need_map_level = 30,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加智力'] = 36,

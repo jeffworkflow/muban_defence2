@@ -1667,7 +1667,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_cbg3=Rect(- 11488.0, 12672.0, - 10048.0, 13408.0)
     set gg_rct_cbg2=Rect(- 11488.0, 11776.0, - 10048.0, 12512.0)
     set gg_rct_cbg4=Rect(- 10784.0, 13696.0, - 10720.0, 13760.0)
-    set gg_rct_cbt2=Rect(3136.0, 6272.0, 6240.0, 8864.0)
+    set gg_rct_cbt2=Rect(3232.0, 6432.0, 6112.0, 8864.0)
     set gg_rct_cjg1=Rect(- 4672.0, 12160.0, - 4608.0, 12224.0)
     set gg_rct_cjg2=Rect(- 5504.0, 12704.0, - 5120.0, 13056.0)
     set gg_rct_cjg3=Rect(- 4096.0, 12704.0, - 3712.0, 13056.0)
