@@ -22,6 +22,9 @@ function mt:on_finish()
 	if self.remove_when_hit then
 		self.target:remove()
 	end
+	if self.on_finish_ex then 
+		self:on_finish_ex()
+	end
 end
 
 --淡化*改

@@ -26,7 +26,7 @@ mt{
 	--施法距离
 	range = 99999,
 	--移动距离
-	blink_range = 500,
+	blink_range = 550,
 	--新目标点
 	new_point =nil,
 	is_skill = true,
@@ -108,6 +108,11 @@ function mt:on_cast_shot()
 	if not hero:has_restriction '定身' then 
 		hero:add_restriction '定身'
 	end	
+	-- print('释放凌波微步啦：',self.mvr)
+	if self.mvr then 
+		self.mvr:remove()
+		self.mvr = nil 
+	end
 	local model_size = hero:get_slk 'modelScale'
 	--开始跳跃
 	local mvr = ac.mover.target
@@ -123,33 +128,35 @@ function mt:on_cast_shot()
 		do_reset_high = true, --还原高度
 		turn_speed =360, --立即转身
 		--高度
-		height = 25,
-		on_move_skip =2,
+		-- height = 250,
+		-- on_move_skip =2,
 	}
 	if not mvr then
 		return
 	end
+	self:set('mvr',mvr)
 	function mvr:on_move()
 		local total_distance = new_point *source_point
 		
 		local eff= ac.effect(self.mover:get_point(),skill.effect,self.mover:get_facing(),model_size,'chest',self.high)
 		eff.unit:setColor(10,10,10)
 		-- eff.unit:setAlpha(70)
-		ac.wait(0.5*1000,function()
-			eff:remove()
-			eff.unit:remove() --特效马上删除，不播放死亡动作
-		end)
 
-		-- ac.effect_ex{
-		-- 	model = skill.effect,
-		-- 	point = self.mover:get_point(),
-		-- 	time = 0.1,
-		-- }
-		-- if  self.moved >= total_distance*0.8 then 
-		-- 	-- print(self.speed)
-		-- 	self.speed = self.speed /1.5
-		-- end	
-		-- self.accel 0.03 * 1500  45 500/45 运动11次。 
+		-- 老版本
+		-- ac.wait(0.2*1000,function()
+		-- 	eff:remove()
+		-- 	eff.unit:remove() --特效马上删除，不播放死亡动作
+		-- end)
+		
+		-- 新版本
+		eff.unit:add_buff '淡化'
+		{
+			time = 0.3,
+			on_finish_ex = function()
+				eff:remove()
+			end
+		}
+
 	end	
 	function mvr:on_block()
 		if  hero:has_restriction '缴械' then 
@@ -167,6 +174,7 @@ function mt:on_cast_shot()
 		if  hero:has_restriction '定身' then 
 			hero:remove_restriction '定身'
 		end	
+		hero:issue_order('attack',hero:get_point())
 	end	
                     
    
@@ -175,6 +183,7 @@ function mt:on_cast_finish()
 	local hero = self.owner
 	-- hero:remove_restriction '缴械'
 	hero:issue_order('stop')
+	-- print('222222222222222',hero:get_point())
 	
 end	
 
@@ -187,6 +196,10 @@ end
 
 function mt:on_remove()
 
+	if self.mvr then 
+		self.mvr:remove()
+		self.mvr = nil 
+	end
 end
 
 
