@@ -128,7 +128,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end   
     elseif finds(rand_name,'鉴宝大师') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -141,7 +142,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end   
 
     -- elseif rand_name == '鉴宝大师' then
@@ -178,7 +180,8 @@ function mt:add_content()
                 p:sendMsg('|cffff0000【可存档成就】'..rand_name..'+1 ',2)  
             end   
         else 
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end      
     end   
 end

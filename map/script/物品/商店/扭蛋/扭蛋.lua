@@ -85,7 +85,8 @@ function mt:add_content()
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+500w，护甲+5000，吸血+10%，攻击回血+50W|r',6)
         else
-            player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end
     elseif rand_name == '黄金罗盘' then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -104,7 +105,8 @@ function mt:add_content()
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000藏宝图10张，挖宝熟练度100点，特殊技能：自动寻宝（点击藏宝图试试）|r',6)
         else
-            player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end  
     elseif rand_name == '发光的草药' then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -114,7 +116,8 @@ function mt:add_content()
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+500W，种树熟练度100点，特殊技能：自动种树（点击神奇的种子试试）|r',6)
         else
-            player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end  
     elseif rand_name == '奇美拉的头颅' then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -124,7 +127,8 @@ function mt:add_content()
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+500w，分裂伤害+50%，攻击速度+50%|r',6)
         else
-            player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end
     elseif rand_name == '倒霉蛋' then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -134,7 +138,8 @@ function mt:add_content()
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000时来运转!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得成就 |cffff0000"'..rand_name..'" |r，奖励 |cffff0000木头+16888，魔丸+16888，杀敌数+16888|r',6)
         else
-            player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
@@ -203,7 +208,8 @@ function mt:add_content()
             --给全部玩家发送消息
             ac.player.self:sendMsg1('|cffffe799【系统消息】|r|cffff0000时来运转!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得成就 |cffff0000"'..rand_name..'" |r，奖励 |cffff0000+500w全属性 +50攻击距离 +35攻击减甲|r',6)
         else
-            player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
         end
     end  
 

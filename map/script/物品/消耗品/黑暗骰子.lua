@@ -114,7 +114,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150w，杀敌数+5000、木头+10000、魔丸+25000',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150w，杀敌数+5000、木头+10000、魔丸+25000',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end   
     elseif finds(rand_name,'玄远之学') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -127,7 +128,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300w，技能冷却+10%， 触发概率加成+10%， 翻倍概率似乎得到了提高',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300w，技能冷却+10%， 触发概率加成+10%， 翻倍概率似乎得到了提高',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end 
 
     elseif finds(rand_name,'三冬暖') then
@@ -141,7 +143,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600w，免伤几率+10%， 每秒回血+10%， 凉凉时返还5%资源',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600w，免伤几率+10%， 每秒回血+10%， 凉凉时返还5%资源',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end 
     elseif finds(rand_name,'源源不断的本钱') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -154,7 +157,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200w，每秒加杀敌数+10，每秒加木头+50，每秒加魔丸+100，每秒加全属性+10w',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200w，每秒加杀敌数+10，每秒加木头+50，每秒加魔丸+100，每秒加全属性+10w',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end 
     elseif finds(rand_name,'骰子王') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -167,7 +171,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，杀敌数加成+75%， 木头加成+75%， 物品获取率+75%， 魔丸加成+75%|r',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff00001800万全属性，杀敌数加成+75%， 木头加成+75%， 物品获取率+75%， 魔丸加成+75%|r',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end 
 
     elseif finds(rand_name,'du神') then
@@ -181,7 +186,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+5%， 会心伤害+50%， 多重暴击几率+5%， 多重暴击+1',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+24000000，会心几率+5%， 会心伤害+50%， 多重暴击几率+5%， 多重暴击+1',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生|r',2)
         end 
 
     
@@ -223,7 +229,8 @@ function mt:add_content()
                 p:sendMsg('|cffff0000【可存档成就】'..rand_name..'+1 ',2)  
             end   
         else 
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..' )|r',2)
         end   
     end   
 end

@@ -212,7 +212,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150W，每秒加木头+10，木头加成+25%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+150W，每秒加木头+10，木头加成+25%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
     elseif finds(rand_name,'果实累累') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -225,7 +226,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300W，+5W魔丸，每秒加魔丸+25，魔丸加成+25%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+300W，+5W魔丸，每秒加魔丸+25，魔丸加成+25%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
     elseif finds(rand_name,'辛勤的园丁') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -238,7 +240,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600W，攻击速度+100%， 分裂伤害+100%，攻击减甲+100，减少周围护甲+1000',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+600W，攻击速度+100%， 分裂伤害+100%，攻击减甲+100，减少周围护甲+1000',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
     elseif finds(rand_name,'冷月葬花魂') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -251,7 +254,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+5% ，技暴伤害+100% ，攻击间隔-0.05',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000全属性+1200W，攻击距离+100，技暴几率+5% ，技暴伤害+100% ，攻击间隔-0.05',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
     elseif finds(rand_name,'蚂蚁森林') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -264,7 +268,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff0000全属性+2400W，全属性+10%， 全伤加深+100%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff0000全属性+2400W，全属性+10%， 全伤加深+100%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
     elseif finds(rand_name,'园艺大师') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -277,7 +282,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff00001800万全属性，每秒回血+5%， 闪避+5%， 免伤几率+5%， 减伤+5%|r',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r奖励 |cffff00001800万全属性，每秒回血+5%， 闪避+5%， 免伤几率+5%， 减伤+5%|r',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 砍掉了|cff00ff00'..self.name..'|r 什么事情都没有发生 )|r',2)
         end   
 
     -- elseif rand_name == '园艺大师' then
@@ -314,7 +320,8 @@ function mt:add_content()
                 p:sendMsg('|cffff0000【可存档成就】'..rand_name..'+1 ',2)  
             end   
         else 
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(种树熟练度+1，当前种树熟练度 '..player.server['种树熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(种树熟练度+1，当前种树熟练度 '..player.server['种树熟练度']..' )|r',2)
         end      
     end   
 end

@@ -130,7 +130,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r ,奖励 |cffff0000全属性+150万，生命上限+5%，护甲+1500',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r ,奖励 |cffff0000全属性+150万，生命上限+5%，护甲+1500',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end   
     elseif finds(rand_name,'洗髓经') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -143,7 +144,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，减伤+5%， 每秒回血+5%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，减伤+5%， 每秒回血+5%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end 
     elseif finds(rand_name,'易筋经') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -156,7 +158,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，免伤几率5%， 闪避+5%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+600万，免伤几率5%， 闪避+5%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end 
     elseif finds(rand_name,'天诀') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -169,7 +172,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1200万， 技暴几率+5%， 技暴伤害+100%， 技能伤害加深+50%， 对BOSS额外伤害+15%，',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1200万， 技暴几率+5%， 技暴伤害+100%， 技能伤害加深+50%， 对BOSS额外伤害+15%，',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end 
 
     elseif finds(rand_name,'七十二绝技') then
@@ -183,7 +187,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+2400万，多重暴击+1，多重暴击几率+5%， 全伤加深+50%',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end 
     elseif finds(rand_name,'鉴宝大师') then
         local skl = hero:find_skill(rand_name,nil,true)
@@ -196,7 +201,8 @@ function mt:add_content()
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff00001800万全属性，魔丸+25W，每秒加魔丸+75，魔丸加成+75%|r',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它什么都不是 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end 
 
     
@@ -234,7 +240,8 @@ function mt:add_content()
                 p:sendMsg('|cffff0000【可存档成就】'..rand_name..'+1 ',2)  
             end   
         else 
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
+            self:add_content() --已挖到再随机一次
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)
         end             
     end   
 end

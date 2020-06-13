@@ -107,9 +107,9 @@ end)
 
 --防卡
 ac.loop(500,function()
-    for i=1,10 do 
+    for i=1,16 do 
         local p = ac.player(i)
-        if p:is_player() then 
+        if (i<=6 and p:is_player()) or i>6 then 
             p.texttag_jump = 0
         end
     end
