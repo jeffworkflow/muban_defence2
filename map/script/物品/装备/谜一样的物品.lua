@@ -131,3 +131,32 @@ function mt:on_remove()
         self.trg = nil
     end    
 end
+
+ac.game:event '单位-死亡'(function(trg,unit,killer)
+    if not _in(unit:get_name(),'灵魂','熊猫人')  then 
+        return
+    end		
+    local p = killer.owner
+    p.flag = p.flag or {}
+    --掉落谜一样的箱子
+    if unit:get_name() == '灵魂' then 
+        local name = '谜一样的箱子'
+        if not p.flag[name] then 
+            ac.item.create_item(name,unit:get_point())
+            p.flag[name] = true
+        end
+    end
+
+    --掉落谜一样的天书
+    if unit:get_name() == '熊猫人' then 
+        local name = '谜一样的天书'
+        if not p.flag[name] then 
+            ac.item.create_item(name,unit:get_point())
+            p.flag[name] = true
+        end
+    end
+
+end)
+
+
+
