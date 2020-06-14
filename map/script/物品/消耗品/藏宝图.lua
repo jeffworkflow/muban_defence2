@@ -37,7 +37,7 @@ mt{
     effect = function(self)
         local str = ''
         if self.owner:get_owner():is_self() then 
-            str='wbdd.mdx'
+            str='biaoji_gantanhao.mdx'
         end
         return str    
     end   
