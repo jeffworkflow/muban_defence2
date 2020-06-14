@@ -43,11 +43,48 @@ mt{
     end   
 }
     
+local npc = {'基地','第一幕·圣龙气运','第二幕·一个人的踢馆','第三幕·突破','第四幕·狩猎','第五幕·战就战','第六幕·魔神之路'}
+
+local function get_random_point()
+	local flag
+	local point
+	while not flag do 
+		point = ac.map.rects['藏宝区']:get_random_point(true)
+		for i,name in ipairs(npc) do 
+			local where = ac.table.UnitData[name].where
+			local npc_point = ac.rect.j_rect(where[1]) and ac.rect.j_rect(where[1]):get_point() 
+			-- print(name,npc_point,point)
+			if point:is_in_range(npc_point,150) then 
+				-- print('点在npc周围',name,point,npc_point,point*npc_point)
+				-- get_random_point()
+				break
+			else
+				if i ==#npc then 
+					flag = true
+				end
+			end
+		end
+	end
+	return point
+end
+--测试：
+-- ac.wait(10*1000,function()
+--     ac.loop(500,function()
+--         local point = get_random_point()
+--         print('藏宝区随机的点：',point)
+--         ac.effect_ex{
+--             model = 'wbdd.mdx',
+--             point = point
+--         }
+--     end)
+-- end)
+
+
 function mt:on_add()
     --全图随机刷 正式用
-    self.random_point =  ac.map.rects['藏宝区']:get_random_point(true)
+    -- self.random_point =  ac.map.rects['藏宝区']:get_random_point(true)
+    self.random_point =  get_random_point()
     -- print(ac.map.rects['藏宝区']:get_random_point(true))
-
     --测试用
     -- self.random_point = self.owner:get_point()
 end
