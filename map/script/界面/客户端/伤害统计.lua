@@ -40,7 +40,7 @@ local new_ui = class.panel:builder{
                 handle = '伤害统计_背景',
                 target = temp[i].rate/100*420,
                 show = function(self,source)
-                    --底层 黑色动画延迟
+                    --底层 白色动画延迟
                     tab:set_width(source)
                     tab.img:set_width(self.target)
                 end

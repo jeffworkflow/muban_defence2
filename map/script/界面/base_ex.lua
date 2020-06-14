@@ -45,7 +45,7 @@ mt.target = 0 --目标
 mt.now = 0 --当前
 mt.last_max=0 --上次结束时的值 作为下次起点
 mt.min_per_val = 1 --最小步长(%)
-mt.tween_speed = 1.5
+mt.tween_speed = 1
 mt.tween_flag = false
 mt.t=0 --插值因子 动态
 function mt:get(str)

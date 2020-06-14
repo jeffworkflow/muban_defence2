@@ -1925,6 +1925,7 @@ end
 --测试血条
 function helper:start()
 	local self = ac.ui.damage 
+	ac.ui.damage:show()
     ac.ui.damage.t_t = ac.loop(1000,function()
         for i,tab in ipairs(self.bg.player_damages) do 
             -- print(i,tab,temp,temp[i])
@@ -1940,6 +1941,18 @@ function helper:start()
                     --底层 黑色动画延迟
                     tab:set_width(source)
                     tab.img:set_width(self.target)
+                end
+			})
+			
+			local damage = math.random(1,10000000)
+			ac.ui.damage.total_damage = (ac.ui.damage.total_damage or 0) + damage
+            tab.img.player.damage:set_process({
+                handle = '伤害统计_文字',
+                target = damage,
+                -- rate = temp[i].rate,
+                show = function(self,source)
+                    -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate)) 
+                    tab.img.player.damage:set_text(('%s [%s%%]|r'):format(  bn2str(source), string.format("%.f",(source / ac.ui.damage.total_damage * 100))))  
                 end
             })
         end
