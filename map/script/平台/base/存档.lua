@@ -138,16 +138,18 @@ end
 
 --可能造成回档。 因为server的局内值受到地图等级影戏已经降为有限值，此时只是在有限值+1
 function player.__index:Map_AddServerValue(key,value)
-    local handle = self.handle
-    local real_value = self:Map_GetServerValue(key)+ tonumber(value)
-    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(real_value))
-
-    local key_name = ac.server.key2name(key)  
     if not self.server then 
         self.server ={}
-    end     
+    end
+    local key_name = ac.server.key2name(key)       
     self.server[key_name] = (self.server[key_name] or 0 ) + tonumber(value) 
+
     --直接调用底层函数，避免游戏内的值影响了存档值，造成回档。
+    local handle = self.handle
+    local real_value = self:Map_GetServerValue(key)+ tonumber(value) --服务器数据，不受地图等级等影响
+    local v = math.max(self.server[key_name],real_value)
+    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(v))
+    
 end
 
 --获取全局存档 返回字符串型

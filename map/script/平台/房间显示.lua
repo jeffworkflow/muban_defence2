@@ -27,7 +27,9 @@ local function set_fj_data(player)
     -- end    
 
     --段位
+    if temp[1] then
     player:Map_Stat_SetStat('DW',temp[1].key..temp[1].value..'段')
+    end
     --战斗力
     player:Map_Stat_SetStat('ZDL',(player.cus_server[temp[1].key..'战斗力'] or 0))
     --装备总评分
