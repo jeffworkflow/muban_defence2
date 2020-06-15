@@ -1999,6 +1999,12 @@ function helper:cc()
 		}
 	end)
 end	
+function helper:mall(str)
+	local str = string.upper(str)
+	local name = ac.server.key2name(str)
+	local p = self.owner
+	p.mall[name] = 1
+end	
 --重改难度
 function helper:degree(cnt)
 	local cnt = tonumber(cnt)

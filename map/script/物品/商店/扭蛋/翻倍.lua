@@ -172,6 +172,11 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
         rate =100 
         fb_it:add_item_count(-1)
     end
+    --全属性 值限制
+    if self.coin =='全属性' then 
+        coin_val = coin_val > 10000000000 and 10000000000 or coin_val
+        coin_val = coin_val < -10000000000 and -10000000000 or coin_val
+    end
     --进行决策
     if rand <= rate then 
         --翻倍： 加对应资源
