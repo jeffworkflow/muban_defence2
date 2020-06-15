@@ -29,8 +29,8 @@ mt{
 	blink_range = 99999,
 	--新目标点
 	new_point =nil,
-	is_skill = true
-
+	is_skill = true,
+	smart_type = 1,
 }
 
 
@@ -39,6 +39,13 @@ function mt:on_add()
 	local hero = self.owner
 	local skill = self
 	-- print('添加全图闪烁技能')
+	-- local hero = self.owner
+	-- local skill = self
+	-- local i = self.slotid
+	-- if not hero.smart_cast_type then
+	-- 	hero.smart_cast_type = {}
+	-- end
+	-- hero.smart_cast_type[i] = self.smart_type
 end
 
 function mt:on_can_cast()

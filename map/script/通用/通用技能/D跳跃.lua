@@ -176,7 +176,10 @@ function mt:on_cast_shot()
 		if  hero:has_restriction '定身' then 
 			hero:remove_restriction '定身'
 		end	
-		hero:issue_order('attack',hero:get_point())
+		--移动结束，再往前走50码
+		local new_point = hero:get_point() - {self.angle,50}
+		hero:issue_order('attack',new_point) --移动攻击
+		-- hero:issue_order('move',new_point) --移动
 	end	
                     
    

@@ -127,7 +127,8 @@ local function cast_spell(msg, hero, name, force)
 	--由于 TARGET_TYPE_POINT 与官方快捷施法冲突，所以默认设置这些类型的都是快捷施法
 	if skl.target_type == ac.skill.TARGET_TYPE_POINT then
 		--or (not force and get_smart_cast_type(hero,name) ~= 1)
-		if (x == 0 and y == 0) then
+		--改为 指向点的,无范围area的,进入快捷施法。
+		if (x == 0 and y == 0 or (not force and skl.area)) then
 			save_last_skill(msg, hero, name)
 			return false
 		end
