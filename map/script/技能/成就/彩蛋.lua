@@ -58,12 +58,12 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+30W 全属性
-+25% 杀敌数加成|r
+|cff00ff00+50W 全属性
++35% 杀敌数加成|r
 
 ]],
   ['全属性'] = 300000, 
-  ['杀敌数加成'] = 25,
+  ['杀敌数加成'] = 35,
 }
 function mt:on_add()
     local hero  = self.owner
@@ -242,12 +242,12 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+5000 护甲
-+1000W  生命上限|r
+|cff00ff00+1w 护甲
++1E  生命上限|r
 
 ]],
-    ['护甲'] = 5000,
-    ['生命上限'] = 10000000,
+    ['护甲'] = 10000,
+    ['生命上限'] = 100000000,
 }
 
 local mt = ac.skill['至尊赌神']
@@ -469,9 +469,9 @@ local task_detail = {
         award = '大屠杀',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+50w全属性 +35%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+50w全属性 +35%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+50w全属性 +35%杀敌数加成|r',5)
         end,
     },
     
@@ -571,9 +571,9 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','实在是菜')
             player.is_show_nickname = '实在是菜'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+5000护甲 +1000W生命上限|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+5000护甲 +1000W生命上限|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+5000护甲 +1000W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
         end
     end    
 

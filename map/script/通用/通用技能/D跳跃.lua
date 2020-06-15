@@ -8,14 +8,14 @@ mt{
 	]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBlink.blp]],
-	cool = 1,
-	cost = 1,
+	cool = 0.9,
+	-- cost = 1,
 
 	target_type = ac.skill.TARGET_TYPE_POINT,
 
 	--施法动作
     cast_animation = '',
-    cast_animation_speed = 1.5,
+    -- cast_animation_speed = 1.5,
 
     --施法前摇后摇
     cast_start_time = 0.0,
@@ -26,7 +26,7 @@ mt{
 	--施法距离
 	range = 99999,
 	--移动距离
-	blink_range = 550,
+	blink_range = 700,
 	--新目标点
 	new_point =nil,
 	is_skill = true,
@@ -121,12 +121,14 @@ function mt:on_cast_shot()
 		target = new_point,
 		mover = hero,
 		-- missile = true,
-		speed = 2000,
+		speed = 3500,
+		
 		skill = skill,
 		block = true,
 		-- mover_type ='unit',
 		do_reset_high = true, --还原高度
 		turn_speed =360, --立即转身
+		-- accel =1360,
 		--高度
 		-- height = 250,
 		-- on_move_skip =2,

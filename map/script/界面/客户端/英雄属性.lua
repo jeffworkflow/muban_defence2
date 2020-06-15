@@ -186,7 +186,7 @@ class.hero_info_panel = extends(class.panel){
                         new_value = string.format("%.2f",hero:get(name))
                     end   
                     if name == '攻击速度' then 
-                        new_value = string.format("%.f",hero:get(name)-75)
+                        new_value = string.format("%.f",hero:get(name)-50)
                     end    
                     new_value = bignum2string(new_value)
                     if not finds(ac.base_attr,name) then 

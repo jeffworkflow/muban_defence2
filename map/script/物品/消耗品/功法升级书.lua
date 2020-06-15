@@ -43,7 +43,7 @@ function mt:on_cast_start()
         end
     end 
     if #list == 0 then 
-        p:sendMsg('没有可升级的技能')
+        p:sendMsg('|cffffe799【系统提示】|cffff0000没有可升级的功法')
         --取消 --取消
         if self._count > 1 then 
             self:add_item_count(1) 
@@ -61,14 +61,14 @@ function mt:on_cast_start()
     table.insert(list,info)
 
     if not self.dialog  then 
-        self.dialog = create_dialog(player,'升级技能',list,function (index)
+        self.dialog = create_dialog(player,'升级功法',list,function (index)
             self.dialog = nil
             local skl = list[index].skill
             if skl then 
                 skl:upgrade(self.upgrade_cnt)
                 if self._count > 0 then  
                     print(123,'再一次升级')
-                    p:sendMsg('【系统消息】升级成功',5)
+                    p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
                     self:on_cast_start()
                     self:add_item_count(-1)
                 end  
