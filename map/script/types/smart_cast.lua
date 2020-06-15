@@ -33,8 +33,8 @@ local function get_select()
 end
 
 --技能是否开启了智能施法
-local function get_smart_cast_type(name)
-	local hero = ac.player.self.hero
+local function get_smart_cast_type(hero,name)
+	local hero = hero or ac.player.self.hero
 	if not hero then
 		return 0
 	end
@@ -124,8 +124,10 @@ local function cast_spell(msg, hero, name, force)
 		flag = flag + FLAG_RESUME
 	end
 	--print(order, ('%X'):format(order_id)) 
+	--由于 TARGET_TYPE_POINT 与官方快捷施法冲突，所以默认设置这些类型的都是快捷施法
 	if skl.target_type == ac.skill.TARGET_TYPE_POINT then
-		if (x == 0 and y == 0) or (not force and get_smart_cast_type(name) ~= 1) then
+		--or (not force and get_smart_cast_type(hero,name) ~= 1)
+		if (x == 0 and y == 0) then
 			save_last_skill(msg, hero, name)
 			return false
 		end
@@ -144,7 +146,7 @@ local function cast_spell(msg, hero, name, force)
 		message.order_immediate(order_id, flag + FLAG_INSTANT)
 		return true
 	else
-		if (x == 0 and y == 0) or (not force and get_smart_cast_type(name) ~= 1) then
+		if (x == 0 and y == 0) or (not force and get_smart_cast_type(hero,name) ~= 1) then
 			save_last_skill(msg, hero, name)
 			return false
 		end
@@ -162,7 +164,7 @@ local function cast_spell(msg, hero, name, force)
 			return true
 		end
 	end
-	if get_smart_cast_type(name) == 1 then
+	if get_smart_cast_type(hero,name) == 1 then
 		return true
 	end
 	save_last_skill(msg, hero, name)
@@ -182,7 +184,7 @@ function save_last_skill(msg, hero, name)
 			clean_last_skill()
 			return false
 		end
-		if code and (code ~= msg.code or get_smart_cast_type(name) ~= 2) then
+		if code and (code ~= msg.code or get_smart_cast_type(hero,name) ~= 2) then
 			return false
 		end
 		if cast_spell(msg, hero, name, true) then

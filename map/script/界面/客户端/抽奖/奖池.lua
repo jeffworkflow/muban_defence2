@@ -198,6 +198,9 @@ function mt:on_cast_start()
     local p = hero.owner 
     if p.flag_cj then 
         p:sendMsg('|cffffe799【系统提示】|cff00ff00请勿打开幸运转盘',5)
+        if p:is_self() then 
+            new_ui:show()
+        end
         self:add_item_count(1)
         return 
     end

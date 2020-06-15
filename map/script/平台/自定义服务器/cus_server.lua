@@ -250,14 +250,14 @@ local event = {
                     player.cus_server[name] = tonumber(val)
                     player.mall[name] = tonumber(val)
 
-                    if finds(key ,'today_cntwb','today_cntks','today_cntdz','today_cntzs','today_cntbp','today_cntytz') and val>=1 and val<=10 then
+                    if finds(key ,'rank') and val>=1 and val<=10 then
                         player.cus_server['风骚'] = 1
                         player.mall['风骚'] = 1
 
                         player.cus_server['江山代有才人出'] = 1
                         player.mall['江山代有才人出'] = 1
-                        print('同步后的数据：',player:get_name(),'风骚',player.cus_server['风骚'])
-                        print('同步后的数据：',player:get_name(),'江山代有才人出',player.cus_server['江山代有才人出'])
+                        print('同步后的数据：',key,val,player:get_name(),'风骚',player.cus_server['风骚'])
+                        print('同步后的数据：',key,val,player:get_name(),'江山代有才人出',player.cus_server['江山代有才人出'])
                     end
                     if key =='jifen' then 
                         player.jifen =  tonumber(val)

@@ -135,6 +135,10 @@ function mt:on_cast_start()
                         skl[key] = val
                     end
                 end
+                -- print('吞噬物品，物品等级：',item.level)
+                if item.level == 1 then 
+                    ac.game:event_notify('技能-升级',hero,skl)
+                end
                 skl:set_level(item.level)
                 --吞噬个数 +1
                 if not player.tunshi_cnt then 

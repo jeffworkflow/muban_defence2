@@ -245,23 +245,24 @@ ac.wait(100,function()
     new_ui:new()
 end)
 --关闭F7
--- local game_event = {}
--- game_event.on_key_down = function (code)
---     -- if code == KEY.F5 then 
---     --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
---     -- end
---     if code == KEY.F7 then 
---         if new_ui == nil then return end 
---         if new_ui.is_show then 
---             new_ui:hide()
---         else 
---             new_ui:show()
---         end 
---     elseif code == KEY.ESC then 
---         new_ui:hide()
---     end 
--- end 
--- game.register_event(game_event)
+local game_event = {}
+game_event.on_key_down = function (code)
+    -- if code == KEY.F5 then 
+    --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
+    -- end
+    -- if code == KEY.F7 then 
+    --     if new_ui == nil then return end 
+    --     if new_ui.is_show then 
+    --         new_ui:hide()
+    --     else 
+    --         new_ui:show()
+    --     end 
+    -- else
+    if code == KEY.ESC then 
+        new_ui:hide()
+    end 
+end 
+game.register_event(game_event)
 
 local ui = require 'ui.server.util'
 --处理同步请求
