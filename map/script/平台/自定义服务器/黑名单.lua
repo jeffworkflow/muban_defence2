@@ -53,7 +53,9 @@ local function punish_black()
             player:sp_black_list2(function(flag)
                 ac.wait(10,function()
                     -- 清空网易服务器存档数据
-                    ac.player.self:sendMsg('【系统消息】检测到玩家作弊，请尽快退出游戏，避免进黑名单或封号！')
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|cffff0000检测到玩家作弊，请尽快退出游戏，避免进黑名单或封号！')
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|cffff0000检测到玩家作弊，请尽快退出游戏，避免进黑名单或封号！')
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|cffff0000检测到玩家作弊，请尽快退出游戏，避免进黑名单或封号！')
                     log.debug('【系统消息】 检测到作弊',player) 
                 end)
             end)
@@ -101,7 +103,7 @@ end
 
 
 --处理黑名单数据 每5分钟执行一次判断
-local time = 1*60
+local time = 3*60
 if not global_test  then 
     ac.loop(time*1000,function()
         --执行黑名单惩罚
