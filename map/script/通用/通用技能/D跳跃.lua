@@ -122,13 +122,16 @@ function mt:on_cast_shot()
 		mover = hero,
 		-- missile = true,
 		speed = 3500,
+		-- speed = 500,
+	
 		
 		skill = skill,
 		block = true,
 		-- mover_type ='unit',
 		do_reset_high = true, --还原高度
 		turn_speed =360, --立即转身
-		-- accel =1360,
+		accel = -450,
+		--每0.03秒减低一次移动速度
 		--高度
 		-- height = 250,
 		-- on_move_skip =2,
@@ -160,7 +163,7 @@ function mt:on_cast_shot()
 		}
 		--距离150码时，解除 缴械 定身
 		local distance = new_point * self.mover:get_point()
-		if distance <=150 and not self.flag_end then 
+		if distance <=50 and not self.flag_end then 
 			self.flag_end = true
 			-- print('d冲锋在150内：')
 			if  hero:has_restriction '缴械' then 
@@ -191,9 +194,10 @@ function mt:on_cast_shot()
 			hero:remove_restriction '定身'
 		end	
 		-- --移动结束，再往前走50码
-		local new_point = hero:get_point() - {self.angle,50}
-		hero:issue_order('attack',new_point) --移动攻击
-		-- -- hero:issue_order('move',new_point) --移动
+
+		-- local new_point = hero:get_point() - {self.angle,35}
+		-- hero:issue_order('attack',new_point) --移动攻击
+		-- hero:issue_order('move',new_point) --移动
 	end	
                     
    
