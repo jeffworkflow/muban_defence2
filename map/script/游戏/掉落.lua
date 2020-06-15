@@ -1141,7 +1141,7 @@ local unit_reward = {
         {    rand = 3.0, name = '全属性保本卡*1',},
         {    rand = 3.0, name = '杀敌数翻倍卡*1',},
         {    rand = 3.0, name = '木头翻倍卡*1',},
-        {    rand = 3.0, name = '魔灵翻倍卡*1',},
+        {    rand = 3.0, name = '魔丸翻倍卡*1',},
         {    rand = 3.0, name = '全属性翻倍卡*1',},
         {    rand = 3.0, name = '炸弹卡*1',},
         {    rand = 3.0, name = '大炸弹卡*1',},
