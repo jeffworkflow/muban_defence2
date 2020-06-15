@@ -8,7 +8,7 @@ mt{
 	tip = [[
 
 |cffFFE799【使用说明】：|r
-|cff00ff00对指定范围的内物品，进行|cff00ffff自动合成
+|cff00ff00对指定范围的内物品，进行|cff00ffff自动分类
 
 ]],
 
