@@ -138,7 +138,7 @@ function mt:on_cast_shot()
 	end
 	self:set('mvr',mvr)
 	function mvr:on_move()
-		local total_distance = new_point *source_point
+		-- local total_distance = new_point *source_point
 		
 		local eff= ac.effect(self.mover:get_point(),skill.effect,self.mover:get_facing(),model_size,'chest',self.high)
 		eff.unit:setColor(10,10,10)
@@ -158,6 +158,20 @@ function mt:on_cast_shot()
 				eff:remove()
 			end
 		}
+		--距离150码时，解除 缴械 定身
+		local distance = new_point * self.mover:get_point()
+		if distance <=150 and not self.flag_end then 
+			self.flag_end = true
+			-- print('d冲锋在150内：')
+			if  hero:has_restriction '缴械' then 
+				hero:remove_restriction '缴械'
+			end	
+			if  hero:has_restriction '定身' then 
+				hero:remove_restriction '定身'
+			end	
+			
+			-- hero:issue_order('attack',new_point) --移动攻击
+		end
 
 	end	
 	function mvr:on_block()
@@ -176,18 +190,18 @@ function mt:on_cast_shot()
 		if  hero:has_restriction '定身' then 
 			hero:remove_restriction '定身'
 		end	
-		--移动结束，再往前走50码
+		-- --移动结束，再往前走50码
 		local new_point = hero:get_point() - {self.angle,50}
 		hero:issue_order('attack',new_point) --移动攻击
-		-- hero:issue_order('move',new_point) --移动
+		-- -- hero:issue_order('move',new_point) --移动
 	end	
                     
    
 end
 function mt:on_cast_finish()
 	local hero = self.owner
-	-- hero:remove_restriction '缴械'
 	hero:issue_order('stop')
+	-- hero:remove_restriction '缴械'
 	-- print('222222222222222',hero:get_point())
 	
 end	
