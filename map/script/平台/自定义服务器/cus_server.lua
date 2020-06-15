@@ -246,31 +246,31 @@ local event = {
                 ok = true 
             else    
                 local name = ac.server.key2name(key)
-                if name then 
-                    player.cus_server[name] = tonumber(val)
-                    player.mall[name] = tonumber(val)
+                name = name or key
+                player.cus_server[name] = tonumber(val)
+                player.mall[name] = tonumber(val)
 
-                    if finds(key ,'rank') and val>=1 and val<=10 then
-                        player.cus_server['风骚'] = 1
-                        player.mall['风骚'] = 1
+                if finds(key ,'rank') and val>=1 and val<=10 then
+                    player.cus_server['风骚'] = 1
+                    player.mall['风骚'] = 1
 
-                        player.cus_server['江山代有才人出'] = 1
-                        player.mall['江山代有才人出'] = 1
-                        print('同步后的数据：',key,val,player:get_name(),'风骚',player.cus_server['风骚'])
-                        print('同步后的数据：',key,val,player:get_name(),'江山代有才人出',player.cus_server['江山代有才人出'])
-                    end
-                    if key =='jifen' then 
-                        player.jifen =  tonumber(val)
-                    end  
-                    if key =='vip'  then 
-                        for i,data in ipairs(ac.mall) do 
-                            if not data[3] and data[2] ~='天尊' then 
-                                player.mall[data[2]] = tonumber(val)
-                            end    
+                    player.cus_server['江山代有才人出'] = 1
+                    player.mall['江山代有才人出'] = 1
+                    print('同步后的数据：',key,val,player:get_name(),'风骚',player.cus_server['风骚'])
+                    print('同步后的数据：',key,val,player:get_name(),'江山代有才人出',player.cus_server['江山代有才人出'])
+                end
+                if key =='jifen' then 
+                    player.jifen =  tonumber(val)
+                end  
+                if key =='vip'  then 
+                    for i,data in ipairs(ac.mall) do 
+                        --禁止给地图等级送的英雄
+                        if not data[4] then 
+                            player.mall[data[2]] = tonumber(val)
                         end    
-                    end 
-                    print('同步后的数据：',player:get_name(),name,player.cus_server[name])
-                end    
+                    end    
+                end 
+                print('同步后的数据：',player:get_name(),name,player.cus_server[name])
                 -- print('同步后的数据：',player,key,name,player.cus_server[name]) 
             end    
             -- print('同步后的数据：',player,key,name,player.cus_server[name]) 

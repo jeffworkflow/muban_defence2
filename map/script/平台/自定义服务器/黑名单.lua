@@ -102,12 +102,11 @@ end
 
 --处理黑名单数据 每5分钟执行一次判断
 local time = 1*60
-if global_test == true then 
-    time = 10
+if not global_test  then 
+    ac.loop(time*1000,function()
+        --执行黑名单惩罚
+        punish_black();
+    end);
 end    
-ac.loop(time*1000,function()
-    --执行黑名单惩罚
-    punish_black();
-end);
 
 
