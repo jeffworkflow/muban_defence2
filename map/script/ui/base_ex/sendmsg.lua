@@ -29,7 +29,7 @@ class.playermsg = extends(class.panel){
         
         local line_height = 30  --行高
         local font_size = 14  --字体大小
-
+        if not str then return end
         local tt,cnt = string.gsub(str,'\n','\n')
         -- for s in string.gmatch(str, '[^\r\n]+') do 
         --     local ts = s:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
