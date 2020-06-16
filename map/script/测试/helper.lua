@@ -2005,6 +2005,14 @@ function helper:mall(str)
 	local p = self.owner
 	p.mall[name] = 1
 end	
+function helper:test_sm()
+	ac.loop(1*1000,function()
+		for i=1,500 do 
+			local rd = math.random(1,10000000000)
+			ac.player.self:sendMsg('|cffffe799【系统消息】|r 使用|cff00ff00藏宝图|r 什么事情都没有发生 |cffff0000(挖宝熟练度+1，当前挖宝熟练度 '..rd..' )|r',2)
+		end
+	end)
+end	
 --重改难度
 function helper:degree(cnt)
 	local cnt = tonumber(cnt)

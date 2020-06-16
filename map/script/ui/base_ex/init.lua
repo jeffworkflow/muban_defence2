@@ -1,3 +1,3 @@
 
--- require 'ui.base_ex.sendmsg'
+require 'ui.base_ex.sendmsg'
 

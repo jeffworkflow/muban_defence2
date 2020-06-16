@@ -9,7 +9,7 @@ local tsk = japi.FrameGetTooltip()
 
 class.playermsg = extends(class.panel){
     create = function ()
-        local w = 900 --宽度
+        local w = 1100 --宽度
         local h = 425 --高度
         local panel = class.panel.create('',122,206,w,h)
         panel.__index = class.playermsg
