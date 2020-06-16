@@ -976,9 +976,9 @@ function unit.__index:add_item(it,is_fall,p)
 		it:_call_event 'on_add'
 		it:_call_event 'on_upgrade'	
 		--显示冷却
-		if it.passive then 
+		-- if it.passive then 
 			it:set_show_cd() 
-		end
+		-- end
 		-- ac.game:event_notify('技能-升级',self,it) --属性（刷新）
 	end
 			

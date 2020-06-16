@@ -6,7 +6,9 @@ tip = [[
     闪烁,cd%cool%s.
 ]],
 
-cool = 10,
+color = "金",
+cool = 20,
+level =3,
 max_level =10,
 target_type = ac.skill.TARGET_TYPE_POINT,
 

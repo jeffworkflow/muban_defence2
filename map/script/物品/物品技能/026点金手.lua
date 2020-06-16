@@ -49,7 +49,6 @@ function mt:on_cast_start()
 		unit.wood= unit.wood and unit.wood * self.value
 		unit.rec_ex= unit.rec_ex and  unit.rec_ex * self.value
 		unit:kill(hero) --无法激活cd，需要手动激活
-		self:active_cd()
 	else
 		p:sendMsg('不可对boss使用',5)
 	end

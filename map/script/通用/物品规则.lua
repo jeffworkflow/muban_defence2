@@ -455,6 +455,10 @@
         end    
     end
     local function item_cast(item)
+        -- item:cast()
+        -- 设置cd
+        item:cost_mana()
+        item:start_cd_by_cast()
         if item:_call_event 'on_cast_start' then 
             item_on_finish(item)
             if item.item_type == '消耗品' and item._count < 1  then

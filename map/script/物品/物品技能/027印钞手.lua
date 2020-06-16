@@ -57,8 +57,6 @@ function mt:on_cast_start()
 		u.rec_ex= u.rec_ex and  u.rec_ex * self.value
 		u:kill(hero) --无法激活cd，需要手动激活
 	end	
-	self:active_cd()
-	-- self:active_cd()
 	
 end
 

@@ -452,7 +452,7 @@ local function save_wb()
     end   
 end  
 ac.game:event '选择难度' (function() 
-    local time =60 * 2
+    local time =60 * 1
     save_wb()
     ac.loop(time*1000,function()
         save_wb()
@@ -478,7 +478,13 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     p.cus_server3['种树'] = (p.cus_server3['种树'] or 0) + 1
 end)
 
-ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
+ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
+    if not finds(__u_raffle.name,'扭蛋券') then 
+        return 
+    end    
+    --__it 为神符类，已经被销毁
+    local self = __u_raffle
+    local hero = u
     local p = hero.owner
     p.cus_server3['白嫖'] = (p.cus_server3['白嫖'] or 0) + 1
 end)
