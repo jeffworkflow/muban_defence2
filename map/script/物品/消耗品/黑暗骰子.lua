@@ -79,7 +79,7 @@ function mt:add_content()
     end
 
     if rand_name == '无' then
-        player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生 |cffff0000(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..'|r',2)
+        player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生 |cffffff00(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..'|r',2)
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
@@ -202,7 +202,7 @@ function mt:add_content()
     --         --给全部玩家发送消息
     --         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去, 惊喜获得 |cffff0000【彩蛋】'..rand_name..' |r 奖励 |cffff00001000万全属性，物品获取率+50%|r',6)
     --     else
-    --         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去, 什么事情都没有发生 |cffff0000(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..'|r',2)
+    --         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去, 什么事情都没有发生 |cffffff00(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..'|r',2)
     --     end    
 
     elseif rand_name == 'du徒' then
@@ -210,7 +210,7 @@ function mt:add_content()
             p.flag_yccj = {} 
         end    
         if p.flag_yccj[rand_name] then 
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..' )|r',2)
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffffff00(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..' )|r',2)
             return 
         end   
         p.flag_yccj[rand_name] = true --一局只能获得一次
@@ -230,7 +230,7 @@ function mt:add_content()
             end   
         else 
             self:add_content() --已挖到再随机一次
-            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..' )|r',2)
+            -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffffff00(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..' )|r',2)
         end   
     end   
 end
