@@ -167,6 +167,29 @@ local reward = {
     },
 
 }
+
+local new_ui = ac.ui.client.draw
+
+local function fresh_item(p)
+    local temp = {}
+    for i =1,#new_ui.award_list do 
+        local name = ac.get_reward_name(reward['神奇的令牌']) or '空白'
+        if finds(name,'级物品') then
+            local lv = tonumber(string.sub(name,1,1))
+            local color = ac.get_reward_name(ac.unit_reward['存档物品'])
+            if not color then 
+                return 
+            end    
+            local rand = math.random(#ac.save_item[lv][color])
+            name = ac.save_item[lv][color][rand]
+        end
+        p.award_list = p.award_list or ac.table_copy(new_ui.award_list)
+        p.award_list[i].name = name
+    end
+    if p:is_self() then 
+        new_ui:fresh()
+    end
+end
 ac.game:event '选择难度' (function(_,g_game_degree_name)
     --难度系数
     local name = '难'..ac.g_game_degree_attr 
@@ -175,11 +198,15 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
             data.name = ac.unit_reward[name][1].name
         end
     end
+    --刷新奖池
+    for i=1,10 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            fresh_item(p)
+        end
+    end
     -- print_r(reward)
 end)
-
-local new_ui = ac.ui.client.draw
-
 --神奇的令牌
 local mt = ac.skill['神奇的令牌']
 mt{
@@ -207,24 +234,9 @@ function mt:on_cast_start()
     p.flag_cj = true
     p.save_coin = (p.save_coin or 0) + 1
 
-    local temp = {}
-    for i =1,#new_ui.award_list do 
-        local name = ac.get_reward_name(reward['神奇的令牌']) or '空白'
-        if finds(name,'级物品') then
-            local lv = tonumber(string.sub(name,1,1))
-            local color = ac.get_reward_name(ac.unit_reward['存档物品'])
-            if not color then 
-                return 
-            end    
-            local rand = math.random(#ac.save_item[lv][color])
-            name = ac.save_item[lv][color][rand]
-        end
-        p.award_list = p.award_list or ac.table_copy(new_ui.award_list)
-        p.award_list[i].name = name
-    end
+    fresh_item(p)
 
     if p:is_self() then 
         new_ui:show()
-        new_ui:fresh()
     end
 end

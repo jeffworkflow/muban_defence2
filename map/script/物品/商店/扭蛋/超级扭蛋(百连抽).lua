@@ -195,6 +195,12 @@ function mt:add_content()
         end
 
     elseif finds(rand_name,'熔炼石') then
+        player.flag = player.flag or {}
+        if player.flag[rand_name] then 
+            self:add_content() --已挖到再随机一次
+            return
+        end
+        player.flag[rand_name] = true
         self.owner:add_item(rand_name,true)
         if tran_player then 
         tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)

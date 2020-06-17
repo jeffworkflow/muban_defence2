@@ -33,10 +33,10 @@ function mt:on_cast_shot()
 	local hero = self.owner
 	local p = hero:get_owner()
 	-- local target = 
-	local lefttop = self.target:get_point() -{135,self.area}
-	local leftbuttom = self.target:get_point() -{225,self.area}
-	local righttop = self.target:get_point() -{45,self.area}
-	local rightbuttom = self.target:get_point() -{315,self.area}
+	local lefttop = self.target:get_point() -{135,self.area/2}
+	local leftbuttom = self.target:get_point() -{225,self.area/2}
+	local righttop = self.target:get_point() -{45,self.area/2}
+	local rightbuttom = self.target:get_point() -{315,self.area/2}
 
 	local selected_item = {}
     for _,v in sortpairs(ac.item.item_map) do 

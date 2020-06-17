@@ -63,18 +63,23 @@ end,
 	time = 0.1
 }
 
-function mt:atk_pas_shot(target)
+function mt:atk_pas_shot(target,source)
 	local skill = self
 	local hero = self.owner
 
-	local source = hero:get_point()
+	local source = source or hero:get_point()
+	
+	local u = ac.player[16]:create_dummy('e001', source, 0)
+	local path = hero:get_model()
+	-- print('路径：',path)
+	u:add_effect('chest',path)
 	local mvr = ac.mover.target
 	{
 		source = hero,
 		target = target,
 		model = skill.effect,
 		skill = skill,
-		mover =  hero,
+		mover =  u,
 		speed = 5000,
 		do_reset_high = true, --还原高度
 		size = 1,
@@ -96,12 +101,14 @@ function mt:atk_pas_shot(target)
 			}
 			skill:set('cnt',(skill.cnt or 0) + 1)
 			--
+			
+			local source = self.mover:get_point():copy()
 			if skill.cnt < skill.max_cnt then 
 				--重新选择周围500码内的敌人
 				ac.wait(0.1*1000,function()
 					local target = ac.selector():in_range(target:get_point(),skill.area):is_enemy(hero):random()
 					if target then
-						skill:atk_pas_shot(target)
+						skill:atk_pas_shot(target,source)
 					else
 						skill:set('cnt',0)
 					end	
@@ -109,7 +116,11 @@ function mt:atk_pas_shot(target)
 			else 
 				skill:set('cnt',0)
 			end	
-		end	
+			self.mover:remove()
+		end	,
+		on_remove =function(self)
+			self.mover:remove()
+		end
 	}
 
 end

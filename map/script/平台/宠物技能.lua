@@ -318,13 +318,14 @@ for i,data in ipairs(peon_xp_item) do
     --目标类型
     target_type = ac.skill.TARGET_TYPE_NONE,
     --冷却
-    cool = 0.1,
+    -- cool = 1,
     --经验
     xp = data[2],
     --购买价格
     gold = 0,
     --物品数量
     _count = 1,
+    map_level = 3,
     --物品模型
     specail_model = [[ScrollHealing.mdx]],
     model_size = 1.3,
@@ -337,6 +338,9 @@ for i,data in ipairs(peon_xp_item) do
         local player = hero:get_owner()
         hero = player.peon
         hero:peon_add_xp(self.xp)
+        if self.map_level and player:Map_GetMapLevel()>=self.map_level  then 
+            player:sendMsg('宠物经验+'..self.xp,2)
+        end
     end
 end
 

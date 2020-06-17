@@ -880,7 +880,6 @@ end
 --true,满格掉地上。默认是阻止添加。
 --应用： 合成装备时，满格掉落地上,给与装备，满格掉落
 function unit.__index:add_item(it,is_fall,p)
-
 	--如果没有初始化则创建
 	if type(it) =='string'  then 	
 		--不创建特效
@@ -899,6 +898,11 @@ function unit.__index:add_item(it,is_fall,p)
 		--不阻止 丢弃物品事件
 		it.is_discard_event = false 
 		return 
+	end
+	--获得物品前，如果该物品有指定map_level ，则改变物品类型为神符
+	local p = self.owner
+	if it.map_level and p:Map_GetMapLevel()>=it.map_level and it:get_item_count() == 1 then 
+		it.item_type = '神符'
 	end
 	-- 统一修复，如果英雄死亡时给与，统一掉地上。
 	if not self:is_alive() then 
@@ -1178,7 +1182,6 @@ function item.create_item(name,poi,hide,p)
 		items.old_status = nil 
 	end
 	-- print(items['全属性'])
-	
 
 	--读取一个句柄
 	local type_id = ac.get_item_handle()

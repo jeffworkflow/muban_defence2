@@ -33,31 +33,35 @@ local new_ui = class.panel:builder{
 
         for i,tab in ipairs(self.bg.player_damages) do 
             -- print(i,tab,temp,temp[i])
-            tab.img:set_normal_image(temp[i].bg_path)
-            -- tab:set_width(temp[i].rate/100*420)
-            --设置动画
-            tab:set_process({
-                handle = '伤害统计_背景',
-                target = temp[i].rate/100*420,
-                show = function(self,source)
-                    --底层 白色动画延迟
-                    tab:set_width(source)
-                    tab.img:set_width(self.target)
-                end
-            })
-            tab.img.player:set_text(temp[i].color..ac.player(temp[i].id):get_name()..'|r')
+            if temp[i] then 
+                tab.img:set_normal_image(temp[i].bg_path)
+                -- tab:set_width(temp[i].rate/100*420)
+                --设置动画
+                tab:set_process({
+                    handle = '伤害统计_背景',
+                    target = temp[i].rate/100*420,
+                    show = function(self,source)
+                        --底层 白色动画延迟
+                        tab:set_width(source)
+                        tab.img:set_width(self.target)
+                    end
+                })
+                tab.img.player:set_text(temp[i].color..ac.player(temp[i].id):get_name()..'|r')
 
-            -- tab.img.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
-            --设置动画 temp[i].rate  string.format("%.f",(source / panel.total_damage * 100))
-            tab.img.player.damage:set_process({
-                handle = '伤害统计_文字',
-                target = temp[i].damage,
-                rate = temp[i].rate,
-                show = function(self,source)
-                    -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate)) 
-                    tab.img.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(  bn2str(source), self.rate ))  
-                end
-            })
+                -- tab.img.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate))  
+                --设置动画 temp[i].rate  string.format("%.f",(source / panel.total_damage * 100))
+                tab.img.player.damage:set_process({
+                    handle = '伤害统计_文字',
+                    target = temp[i].damage,
+                    rate = temp[i].rate,
+                    show = function(self,source)
+                        -- tab.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(bn2str(temp[i].damage),temp[i].rate)) 
+                        tab.img.player.damage:set_text((temp[i].color..'%s [%s%%]|r'):format(  bn2str(source), self.rate ))  
+                    end
+                })
+            else
+                print('伤害统计有bug:',i,tab,temp,temp[i])
+            end
         end
 
     end,

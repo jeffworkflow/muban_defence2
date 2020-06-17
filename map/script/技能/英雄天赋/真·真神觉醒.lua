@@ -63,56 +63,7 @@ end,
 	time = 0.05
 }
 
-function mt:atk_pas_shot(target)
-	local skill = self
-	local hero = self.owner
-
-	local source = hero:get_point()
-	local mvr = ac.mover.target
-	{
-		source = hero,
-		target = target,
-		model = skill.effect,
-		skill = skill,
-		mover =  hero,
-		speed = 5000,
-		do_reset_high = true, --还原高度
-		size = 1,
-		on_finish = function(self)
-			--晕眩
-			target:add_buff '晕眩'
-			{
-				time = skill.time,
-				skill = skill,
-				source = hero,
-			}
-			--技能伤害
-			target:damage
-			{
-				source = hero,
-				skill = skill,
-				damage = skill.damage,
-				damage_type = '法术'
-			}
-			skill:set('cnt',(skill.cnt or 0) + 1)
-			--
-			if skill.cnt < skill.max_cnt then 
-				--重新选择周围500码内的敌人
-				ac.wait(skill.pulse_time*1000,function()
-					local target = ac.selector():in_range(target:get_point(),skill.area):is_enemy(hero):random()
-					if target then
-						skill:atk_pas_shot(target)
-					else
-						skill:set('cnt',0)
-					end	
-				end)
-			else 
-				skill:set('cnt',0)
-			end	
-		end	
-	}
-
-end
+mt.atk_pas_shot = ac.skill['真神觉醒'].atk_pas_shot
 
 function mt:on_add()
     local skill = self

@@ -189,6 +189,15 @@ end
 		return self.user_data[key]
 	end
 
+	--获得model 路径
+	function mt:get_model()
+		local path = self:get_slk 'file'
+		--取后缀
+		if not getextension(path) then 
+			path = path..'.mdl'
+		end	
+		return path
+	end
 --死亡	
 	--杀死单位
 	--	[致死伤害]

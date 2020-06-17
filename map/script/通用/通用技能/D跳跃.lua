@@ -156,7 +156,7 @@ function mt:on_cast_shot()
 		-- 新版本
 		eff.unit:add_buff '淡化'
 		{
-			time = 0.3,
+			time = 0.2,
 			on_finish_ex = function()
 				eff:remove()
 			end
