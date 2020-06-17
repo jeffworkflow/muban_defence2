@@ -23,9 +23,9 @@ for ix =1 ,5 do
         tip = [[%change_tip%]],
         change_tip = [[
 
-|cff00ffff可熔炼出装备的套装属性，但合成材料会消失，激活的属性可在套装系统中查看|r
+|cff00ffff可熔炼出装备的套装属性，但|cffff0000合成材料会消失
                 
-|cff00ff00【合成材料】5个同套装装备+熔炼石|r
+|cff00ff00【合成材料】5个相同套装的装备|r
 
 |cffcccccc【同一套装属性只能激活一次】|r]],
         --物品类型
@@ -66,7 +66,7 @@ for ix =1 ,5 do
         end    
 
         if not hero.suit then 
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000熔炼失败|r 请检查合成材料',2)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000熔炼失败|r |cff00ff00请检查身上是否佩戴 |cff00ffff5个相同套装的装备',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
                 
@@ -104,7 +104,7 @@ for ix =1 ,5 do
                     for k,v in string.gsub(val[3][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         player.hero:add(k,v)
                     end 
-                    player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可以在套装系统中查看',2)
+                    player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00熔炼成功|r 激活的属性可在圣龙气运-熔炼石系统中查看',2)
                     --标记已经熔炼过（不可熔炼两套海贼王）
                     player.hero.flag_suit[key] =true
                     break
