@@ -434,7 +434,11 @@
         if item.item_type == '消耗品'  then
             -- print('使用消耗品',item.name,item.type_id)
             -- 数量-1
-            item._count = item._count - 1
+            if item.cool>0 then 
+                item:add_item_count(-1)
+            else
+                item._count = item._count - 1
+            end
             if item.no_use then 
                 -- print(item.name)
                 ac.wait(0,function()
