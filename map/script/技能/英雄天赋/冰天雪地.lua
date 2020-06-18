@@ -193,7 +193,7 @@ end
 
 local mt = ac.buff['冰天雪地-护甲']
 
-mt.cover_type = 1
+mt.cover_type = 0
 
 
 function mt:on_add()
