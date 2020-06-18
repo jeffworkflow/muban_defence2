@@ -90,7 +90,7 @@ for i =1,3 do
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
             if i==1 then 
                 --播放音效
-                -- print(ac.final_sound)
+                print('加载背景音乐：',ac.final_sound)
                 jass.StartSound(ac.final_sound)
             end
         end  
