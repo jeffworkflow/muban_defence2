@@ -2013,6 +2013,45 @@ function helper:test_sm()
 		end
 	end)
 end	
+--测试播放背景音乐
+function helper:sd()
+	-- print('播放背景音乐:',ac.final_sound)
+	jass.StartSound(ac.final_sound)
+end
+--测试双层字
+function helper:test_sm_ui()
+	local new_ui = class.panel:builder
+	{
+		x = 700,--假的
+		y = 700,--假的
+		w = 200,
+		h = 50,
+		level = 5,
+		is_show = true,
+		normal_image = '',
+		
+		title = {
+			type = 'text',
+			font_size = 15,
+			level = 3,
+			align = 'center',
+            text = '开始' ,
+			color = 0xffff0000,
+			
+		},
+		shawdow = {
+			x=1.5,
+			y=1.5,
+			type = 'text',
+			level = 1,
+			font_size = 15,
+			align = 'center',
+			text = '开始' ,
+			color = 0xff000000,
+		}
+	}
+end
+
 --重改难度
 function helper:degree(cnt)
 	local cnt = tonumber(cnt)
