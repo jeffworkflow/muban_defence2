@@ -2016,7 +2016,25 @@ end
 --测试播放背景音乐
 function helper:sd()
 	-- print('播放背景音乐:',ac.final_sound)
-	jass.StartSound(ac.final_sound)
+	-- jass.StartSound(ac.final_sound)
+	--PlayMusic
+	--SetMapMusic
+	--PlayThematicMusic --播放主题音乐
+
+	--会掉线 resource\yinyue1_11.wav
+	if self.owner:is_self() then 
+		jass.PlayThematicMusic([[resource\shouchao.mp3]])
+	end
+
+
+	-- for i=1,6 do 
+	-- 	local p = ac.player(i)
+	-- 	if p:is_player() then 
+	-- 		if p:is_self() then 
+	-- 			p:play_sound([[resource\yinyue1_11.wav]])
+	-- 		end
+	-- 	end
+	-- end
 end
 --测试双层字
 function helper:test_sm_ui()

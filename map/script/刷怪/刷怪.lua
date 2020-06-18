@@ -88,10 +88,20 @@ for i =1,3 do
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
             ac.player.self:sendMsg("|cffff0000敌人发起了世界上最猛烈的进攻！请注意保护基地！|r",5)
+            
+            -- print('加载背景音乐：',ac.final_sound)
+            -- jass.StartSound(ac.final_sound)
             if i==1 then 
                 --播放音效
-                print('加载背景音乐：',ac.final_sound)
-                jass.StartSound(ac.final_sound)
+                for ix =1,6 do 
+                    local p = ac.player(ix)
+                    if p:is_player() then 
+                        --异步播放主题音乐
+                        if p:is_self() then 
+                            jass.PlayThematicMusic([[resource\yinyue1_11.mp3]])
+                        end
+                    end
+                end
             end
         end  
         
