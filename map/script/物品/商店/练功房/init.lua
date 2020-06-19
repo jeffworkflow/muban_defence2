@@ -36,6 +36,26 @@ for i =1 ,6 do
                     hero:blink(ac.map.rects['主城'],true,false,true)
                     player:sendMsg('不可进入')   
                 end   
+
+                --处理第一次进入刷练功师问题。
+                if p.flag_lgs then 
+                    return 
+                end 
+                if hero:is_hero() then 
+                    local group = ac.selector()
+                                :in_range(hero:get_point(),1500)
+                                :allow_god()
+                                :add_filter(function(dest) 
+                                    return dest:get_name() == '练功师' 
+                                end)
+                                :get()
+                    local seller = group[1]
+                    local shop_item = ac.item.shop_item_map['经验怪']
+                    local ok = hero:event_dispatch('单位-点击商店物品',seller,hero,shop_item)
+                    if ok then 
+                        p.flag_lgs = true 
+                    end
+                end
             end     
         end)    
         -- region:event '区域-离开' (function(trg, hero, self)

@@ -91,7 +91,7 @@ class.wjphb_panel = extends(class.panel){
         }
         function more_tip1:on_button_mouse_enter()
             if info then 
-                self:tooltip(info.name,info.tip,-1,200,84,10)
+                self:tooltip(info.name,info.tip,-1,300,84,10)
             end
         end    
         local info = {
@@ -108,7 +108,7 @@ class.wjphb_panel = extends(class.panel){
         }
         function more_tip2:on_button_mouse_enter()
             if info then 
-                self:tooltip(info.name,info.tip,-1,200,140,10)
+                self:tooltip(info.name,info.tip,-1,300,84,10)
             end
         end    
 

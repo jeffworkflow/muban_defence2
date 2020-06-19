@@ -53,21 +53,4 @@ function mt:on_cast_start()
 
     local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
     hero:blink(point,true,false,true)  
-    if p.flag_lgs then 
-        return 
-    end 
-
-    local group = ac.selector()
-                :in_range(hero:get_point(),1500)
-                :allow_god()
-                :add_filter(function(dest) 
-                    return dest:get_name() == '练功师' 
-                end)
-                :get()
-    local seller = group[1]
-    local shop_item = ac.item.shop_item_map['经验怪']
-    local ok = hero:event_dispatch('单位-点击商店物品',seller,hero,shop_item)
-    if ok then 
-        p.flag_lgs = true 
-    end
 end
