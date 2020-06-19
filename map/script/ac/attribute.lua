@@ -36,6 +36,8 @@ local Care = {
     '无谓因果使用上限',
     '吞噬丹使用上限',
     
+    '万分之一空气概率',
+    
 }
 ac.player_attr = Care
 

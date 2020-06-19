@@ -250,18 +250,18 @@ function helper:dtdj(lv)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	p.map_level = tonumber(lv)
 	--重载商城道具。
-	for n=1,#ac.mall do
-		local need_map_level = ac.mall[n][3] or 999999999999
-		-- print(ac.mall[n][1],need_map_level)
-		if     (p:Map_HasMallItem(ac.mall[n][1]) 
-			or (p:Map_GetServerValue(ac.mall[n][1]) == '1') 
-			or (p:Map_GetMapLevel() >= need_map_level) 
-			or (p.cheating)) 
-		then
-			local key = ac.mall[n][2]  
-			p.mall[key] = 1  
-		end  
-	end    
+	-- for n=1,#ac.mall do
+	-- 	local need_map_level = ac.mall[n][3] or 999999999999
+	-- 	-- print(ac.mall[n][1],need_map_level)
+	-- 	if     (p:Map_HasMallItem(ac.mall[n][1]) 
+	-- 		or (p:Map_GetServerValue(ac.mall[n][1]) == '1') 
+	-- 		or (p:Map_GetMapLevel() >= need_map_level) 
+	-- 		or (p.cheating)) 
+	-- 	then
+	-- 		local key = ac.mall[n][2]  
+	-- 		p.mall[key] = 1  
+	-- 	end  
+	-- end    
 end
 
 --允许控制所有单位

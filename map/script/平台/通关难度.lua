@@ -268,7 +268,18 @@ tip = [[
 need_map_level = 3,
 target_type = ac.skill.TARGET_TYPE_POINT,
 range = 1000,
-item_type = '消耗品'
+item_type = '消耗品',
+has_mall = function(self)
+    local p = self.owner.owner 
+    local hero = p.hero
+    return hero:find_skill('黑科技礼包',nil) and 1 
+end,
+mul = function(self)
+    local p = self.owner.owner 
+    local hero = p.hero
+    local val = hero:find_skill('黑科技礼包',nil)  and 2 or 1
+    return val
+end
 }
 function mt:on_cast_start()
     local hero = self.owner
@@ -284,10 +295,11 @@ function mt:on_cast_start()
         ['弹道出手'] = {15, 0, 66},
     }
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')+500000000 end,
-
-        ['攻击速度'] = function() return hero:get('攻击速度') end ,
-        ['攻击间隔'] = function() return hero:get('攻击间隔') end ,
+        ['攻击'] = function() return (hero:get('攻击')+500000000)*self.mul end,
+        ['攻击距离'] = 650 * self.mul ,
+        
+        ['攻击速度'] = function() return hero:get('攻击速度') + (self.has_mall or 0)*200 end ,
+        ['攻击间隔'] = function() return hero:get('攻击间隔') - (self.has_mall or 0)*0.2 end ,
         ['暴击几率'] = function() return hero:get('暴击几率') end ,
         ['暴击伤害'] = function() return hero:get('暴击伤害') end , 
         ['会心几率'] = function() return hero:get('会心几率') end ,
@@ -308,9 +320,13 @@ function mt:on_cast_start()
         skill = self,
         search_area = 800, --搜敌路径
     }
+    if self.has_mall then 
+        u:add('多重射',1)
+    end
 
     --添加回收技能
     u:add_skill('回收','英雄',4)
+    u:add_skill('攻击','英雄',9)
 
     --如果有多重射 （存档）
     if hero:find_skill('炮台多重射',nil) then 

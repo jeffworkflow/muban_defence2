@@ -549,11 +549,10 @@ local function check_air(p)
         p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
     end
 end
---统一概率
-local rate = 1
 -- local rate = 50.01
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner
+    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
@@ -562,7 +561,9 @@ end)
 
 ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
     local p = hero.owner
-    if math.random(500000)/1000 < rate then 
+    local rate = 0.2 * (1 + p:get('万分之一空气概率')/100)
+    -- print('触发万分之一空气概率，',rate)
+    if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
     end
@@ -570,6 +571,7 @@ end)
 
 ac.game:event '触发黑暗骰子事件'(function(trg,skill,hero)
     local p = hero.owner
+    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
@@ -578,6 +580,7 @@ end)
 
 ac.game:event '触发羊皮无字事件'(function(trg,skill,hero)
     local p = hero.owner
+    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
@@ -586,6 +589,7 @@ end)
 
 ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     local p = hero.owner
+    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
