@@ -110,9 +110,9 @@ function get_max_line(str)
 end 
 -- 去掉颜色代码
 function clean_color(str)
-	str = str:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
+	str = str:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)','%1'):gsub('|[rR]',''):gsub('|n','\n'):gsub('\r','\n')
     return str
-end    
+end     
 
 
 --获取路径
