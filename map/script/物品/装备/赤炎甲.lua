@@ -8,7 +8,8 @@ mt{
     tip = [[
 
 %show_tip%
-%ugrade_tip%]],
+%ugrade_tip%
+|cff00ff00(升至顶级后，可用|cffffff00 圣龙精魄 |cff00ff00进行熔炼入体)]],
 
     --技能图标
     art = [[chiyanjia.blp]],

@@ -56,18 +56,18 @@ end,
     --晕眩时间
 	yun_time = 0.1,
     --护甲
-    defence_rate = 300,
+    defence_rate = 50,
     --碎片数量
     de_count = 24,
 	--范围
     hit_area = 600,
     --护盾抵消伤害
 	shield = function(self,hero)
-        return hero:get '攻击' * 1 + hero:get '智力' * 3
+        return hero:get '攻击' * 1 + hero:get '智力' * 1
 	end,
     --晕眩伤害
     yun_damage = function(self,hero)
-        return hero:get '攻击' * 1 + hero:get '智力' * 3
+        return hero:get '攻击' * 1 + hero:get '智力' * 1
     end,
 	--暴风雪特效
 	effect = [[Abilities\Spells\Human\Blizzard\BlizzardTarget.mdx]],

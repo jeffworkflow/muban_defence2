@@ -336,6 +336,7 @@ rect gg_rct_ronglian102= null
 rect gg_rct_ronglian106= null
 rect gg_rct_ronglian103= null
 rect gg_rct_ronglian107= null
+rect gg_rct_huohai= null
 endglobals
 
     
@@ -1780,6 +1781,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_ronglian106=Rect(13344.0, 18688.0, 13536.0, 18912.0)
     set gg_rct_ronglian103=Rect(13952.0, 17632.0, 14144.0, 17856.0)
     set gg_rct_ronglian107=Rect(16448.0, 19168.0, 16576.0, 19264.0)
+	set gg_rct_huohai=Rect(2752.0, 22976.0, 2880.0, 23072.0)
 endfunction
 
 //===========================================================================
