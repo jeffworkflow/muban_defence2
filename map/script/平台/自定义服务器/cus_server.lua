@@ -208,6 +208,19 @@ local event = {
         ac.flag_map = val
         -- print('同步后的数据',ac.flag_map)
     end,
+    map_level = function (val)
+        local player = ui.player 
+        player.cl_map_level = val
+        player.mall = player.mall or {}
+        player.mall['赤灵地图等级'] = 10
+        print('获取赤灵地图等级：',val)
+        if val >= 10 then 
+            player.mall['赤灵限定'] = 1
+        end
+        -- print('同步后的数据',ac.flag_map)
+    end,
+
+    
     on_get = function (key,val,update_time)
         local player = ui.player 
         if not player.cus_server then 
@@ -435,6 +448,7 @@ ac.server.init = init
 
 
 --===============网易数据与自定义服务器数据交互===========================
+local ui = require 'ui.client.util'
 --copy 网易数据 到 map_test 
 function player.__index:CopyServerValue(key,f)
     if not self:is_self() and self.id < 11 then 
@@ -479,6 +493,46 @@ function player.__index:CopyAllServerValue()
     end    
 end   
 
+--读取 赤灵传说 地图等级
+function player.__index:sp_get_player()
+    if not self:is_self() and self.id < 11 then 
+        return 
+    end    
+    local player_name = self:get_name()
+    local map_name = '赤灵传说'
+    local url = config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_get_player',
+        para1 = map_name,
+        para2 = player_name
+    })
+    -- print(url,post)
+    local f = f or function (retval)  end
+    post_message(url,post,function (retval)  
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
+            local tbl = json.decode(retval)
+            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
+            if tbl then 
+                local map_level = tbl.data[1][1].level
+                ac.wait(10,function()
+                    local info = {
+                        type = 'cus_server',
+                        func_name = 'map_level',
+                        params = {
+                            [1] = tonumber(map_level),
+                        }
+                    }
+                    ui.send_message(info)
+                end)   
+                f(tbl)
+            else
+                -- print(self:get_name(),post,'上传失败')
+            end    
+        end    
+    end)
+end
+
 --保存玩家名 记录审核人员
 function player.__index:sp_save_player()
     if not self:is_self() and self.id < 11 then 
@@ -488,10 +542,12 @@ function player.__index:sp_save_player()
     local map_name = config.map_name
     local url = config.url2
     -- print(map_name,player_name,key,key_name,is_mall,value)
+    local map_level = math.max(japi.DzAPI_Map_GetMapLevel(self.handle),1)
     local post = 'exec=' .. json.encode({
         sp_name = 'sp_save_player',
         para1 = map_name,
         para2 = player_name,
+        para3 = map_level
     })
     -- print(url,post)
     local f = f or function (retval)  end
@@ -501,12 +557,19 @@ end
 for i=1,10 do
     local p = ac.player(i)
     if p:is_player() then 
-        p:sp_save_player()
-    end
-end      
+        --读取赤灵地图等级数据
+        p:sp_get_player()
 
---读取全局开关，是否读服务器存档
-local ui = require 'ui.client.util'
+        --保存玩家名和本图地图等级
+        p:sp_save_player()
+
+        --保存地图等级
+        local map_level = math.max(japi.DzAPI_Map_GetMapLevel(p.handle),1)
+        p:SetServerValue('level',map_level)
+        
+    end
+end       
+
 function player.__index:sp_get_map_flag(f)
     local player_name = self:get_name()
     local map_name = config.map_name
