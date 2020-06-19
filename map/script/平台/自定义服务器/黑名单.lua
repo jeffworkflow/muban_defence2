@@ -71,7 +71,7 @@ function player.__index:sp_black_list2(f)
         return 
     end  
     local has_mall = self.mall['寻宝大飞侠'] or self:Map_HasMallItem('XBDFX')
-    if not has_mall or has_mall == 0 then 
+    if not has_mall or has_mall == 0 or self.cheating then 
         return 
     end
 

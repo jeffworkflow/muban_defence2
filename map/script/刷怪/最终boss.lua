@@ -9,7 +9,7 @@ ac.game:event '游戏-最终boss' (function(trg)
     local boss = ac.player.com[2]:create_unit(ac.attack_boss[#ac.attack_boss],point)
     
     boss:add_buff '攻击英雄' {}
-    boss:add_skill('无敌','英雄')
+    boss:add_skill('净化','英雄')
     boss:add_skill('大地崩','英雄')
     boss:add_skill('伤害守卫','英雄')
     boss:add_skill('boss光子灵枪','英雄')

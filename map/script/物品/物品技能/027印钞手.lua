@@ -52,9 +52,18 @@ function mt:on_cast_start()
 		: of_not_type('boss')
 		: ipairs()
 	do
-		u.gold= u.gold and u.gold * self.value
-		u.wood= u.wood and u.wood * self.value
-		u.rec_ex= u.rec_ex and  u.rec_ex * self.value
+		-- u.gold= u.gold and u.gold * self.value
+		-- u.wood= u.wood and u.wood * self.value
+		-- u.rec_ex= u.rec_ex and  u.rec_ex * self.value
+		if u.gold then 
+			hero:addGold(u.gold * (self.value-1))
+		end
+		if u.wood then 
+			hero:add_wood(u.wood * (self.value-1))
+		end
+		if u.rec_ex then 
+			hero:add_rec_ex(u.rec_ex * (self.value-1))
+		end
 		u:kill(hero) --无法激活cd，需要手动激活
 	end	
 	

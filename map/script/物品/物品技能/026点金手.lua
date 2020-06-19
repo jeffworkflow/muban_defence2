@@ -45,9 +45,18 @@ function mt:on_cast_start()
 	local unit = self.target
 	-- print('单位类型：',unit.is_type('boss'),unit.unit_type)
 	if not unit:is_type('boss')   then 
-		unit.gold= unit.gold and unit.gold * self.value
-		unit.wood= unit.wood and unit.wood * self.value
-		unit.rec_ex= unit.rec_ex and  unit.rec_ex * self.value
+		-- unit.gold= unit.gold and unit.gold * self.value
+		-- unit.wood= unit.wood and unit.wood * self.value
+		-- unit.rec_ex= unit.rec_ex and  unit.rec_ex * self.value
+		if u.gold then 
+			hero:addGold(u.gold * (self.value-1))
+		end
+		if u.wood then 
+			hero:add_wood(u.wood * (self.value-1))
+		end
+		if u.rec_ex then 
+			hero:add_rec_ex(u.rec_ex * (self.value-1))
+		end
 		unit:kill(hero) --无法激活cd，需要手动激活
 	else
 		p:sendMsg('不可对boss使用',5)

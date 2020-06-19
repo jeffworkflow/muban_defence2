@@ -181,7 +181,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             local boss = ac.player.com[2]:create_unit(ac.attack_boss[ix],point)
             -- table.insert(ac.creep['刷怪1'].group,boss)
             boss:add_buff '攻击英雄' {}
-            boss:add_skill('无敌','英雄')
+            boss:add_skill('净化','英雄')
             boss:add_skill('大地崩','英雄')
             boss:add_skill(skl_list[ix],'英雄')
 
