@@ -279,12 +279,12 @@ function mt:on_cast_start()
     u:add_restriction '定身'
     u.weapon = {
         ['弹道模型'] = [[Abilities\Weapons\Mortar\MortarMissile.mdl]],
-        ['弹道速度'] = 3000,
+        ['弹道速度'] = 2500,
         ['弹道弧度'] = 0,
         ['弹道出手'] = {15, 0, 66},
     }
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')+1000000000 end,
+        ['攻击'] = function() return hero:get('攻击')+500000000 end,
 
         ['攻击速度'] = function() return hero:get('攻击速度') end ,
         ['攻击间隔'] = function() return hero:get('攻击间隔') end ,
