@@ -552,7 +552,7 @@ end
 -- local rate = 50.01
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero.owner
-    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
+    local rate = 0.95 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
@@ -561,7 +561,7 @@ end)
 
 ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
     local p = hero.owner
-    local rate = 0.2 * (1 + p:get('万分之一空气概率')/100)
+    local rate = 0.15 * (1 + p:get('万分之一空气概率')/100)
     -- print('触发万分之一空气概率，',rate)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
@@ -571,7 +571,7 @@ end)
 
 ac.game:event '触发黑暗骰子事件'(function(trg,skill,hero)
     local p = hero.owner
-    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
+    local rate = 0.95 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
@@ -580,7 +580,7 @@ end)
 
 ac.game:event '触发羊皮无字事件'(function(trg,skill,hero)
     local p = hero.owner
-    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
+    local rate = 0.95 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
@@ -589,7 +589,7 @@ end)
 
 ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     local p = hero.owner
-    local rate = 1 * (1 + p:get('万分之一空气概率')/100)
+    local rate = 0.95 * (1 + p:get('万分之一空气概率')/100)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)

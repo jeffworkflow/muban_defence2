@@ -156,7 +156,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00超绝群伦10段
 
 |cffFFE799【天赋属性】：|r
-【杀怪加敏捷】+240*Lv
+|cffffff00【杀怪加敏捷】+240*Lv
 【移动速度】+125
 【闪避】+25%
 【物理伤害加深】+500%
@@ -233,7 +233,11 @@ tip = [[
 |cff00ff00堡垒4段
 
 |cffFFE799【能力说明】：|r
-|cff00ff00开局赠送一个可召唤|cff00ffff “爱国者导弹” |cff00ff00的物品，发放至宠物背包
+|cff00ff00开局赠送一个可召唤|cff00ffff “爱国者导弹” |cff00ff00的物品，发放至背包
+
+|cff00ffff导弹攻击力=英雄攻击力+5E
+|cffffff00导弹攻击距离=650
+|cffff0000导弹继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
 ]],
 need_map_level = 8,
@@ -290,7 +294,7 @@ function mt:on_cast_start()
     u:add_restriction '定身'
     u.weapon = {
         ['弹道模型'] = [[Abilities\Weapons\Mortar\MortarMissile.mdl]],
-        ['弹道速度'] = 2500,
+        ['弹道速度'] = 3500,
         ['弹道弧度'] = 0,
         ['弹道出手'] = {15, 0, 66},
     }
@@ -299,7 +303,7 @@ function mt:on_cast_start()
         ['攻击距离'] = 650 * self.mul ,
         
         ['攻击速度'] = function() return hero:get('攻击速度') + (self.has_mall or 0)*200 end ,
-        ['攻击间隔'] = function() return hero:get('攻击间隔') - (self.has_mall or 0)*0.2 end ,
+        ['攻击间隔'] = function() return hero:get('攻击间隔') end ,
         ['暴击几率'] = function() return hero:get('暴击几率') end ,
         ['暴击伤害'] = function() return hero:get('暴击伤害') end , 
         ['会心几率'] = function() return hero:get('会心几率') end ,
@@ -318,7 +322,7 @@ function mt:on_cast_start()
     u:add_buff "召唤物"{
         attribute = attribute,
         skill = self,
-        search_area = 800, --搜敌路径
+        search_area = 1300, --搜敌路径
     }
     if self.has_mall then 
         u:add('多重射',1)
