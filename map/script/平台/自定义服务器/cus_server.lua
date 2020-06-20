@@ -513,7 +513,7 @@ function player.__index:sp_get_player()
         if not finds(retval,'http','https','') or finds(retval,'成功')then 
             local tbl = json.decode(retval)
             -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
-            if tbl then 
+            if tbl and tbl.data[1] and tbl.data[1][1] then 
                 local map_level = tbl.data[1][1].level
                 ac.wait(10,function()
                     local info = {

@@ -624,7 +624,7 @@ local task_detail = {
     },
     
     ['身陷火海的小老鼠'] = {
-        rate = 100,
+        rate = 10,
         award = '拯救仓鼠',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
@@ -650,7 +650,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
     local rate =task_detail[name].rate
     local award = task_detail[name].award
     local sendMsg = task_detail[name].sendMsg
-    if math.random(10000)/100 < rate then 
+    if math.random(100000)/1000 < rate then 
         local p = killer.owner
         local hero = p.hero
         --死亡单位如果有所有者，则奖励为所有者的。
@@ -708,7 +708,7 @@ end)
 
 --给彩蛋 拯救仓鼠
 local time = 20*60
-time = 20 --测试
+-- time = 20 --测试
 local function create_u()
     local point = ac.rect.j_rect('huohai'):get_point()
     local u = ac.player(13):create_unit('身陷火海的小老鼠',point)
