@@ -47,7 +47,7 @@ function mt:on_cast_start()
 	local target = self.target
 
 	for i, u in ac.selector()
-		: in_range(target,self.damage_area)
+		: in_range(target,self.area)
 		: is_enemy(hero)
 		: of_not_type('boss')
 		: ipairs()
@@ -60,6 +60,7 @@ function mt:on_cast_start()
 		end
 		if u.wood then 
 			hero:add_wood(u.wood * (self.value-1))
+			-- print('增加了木头',u.wood * (self.value-1))
 		end
 		if u.rec_ex then 
 			hero:add_rec_ex(u.rec_ex * (self.value-1))

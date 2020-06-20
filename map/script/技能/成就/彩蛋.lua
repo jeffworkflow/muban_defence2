@@ -463,6 +463,115 @@ function mt:on_remove()
 end
 
 
+local mt = ac.skill['拯救仓鼠']
+mt{
+    --初始等级
+    level = 1,
+    --最大等级
+   max_level = 1,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+    --伤害范围
+   area = 800,
+	--被动
+	passive = true,
+	--冷却时间
+	cool = 1,
+	--伤害
+	damage = function(self)
+        return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*50
+end,
+	--介绍
+	tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00攻击10%几率造成范围全属性*200的技能伤害
+
+]],
+	--特效 Abilities\Spells\Human\HolyBolt.mdl
+    effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdx]],
+    --Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl
+    --Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx
+    art = [[daweiwang.blp]],
+    damage_type = '法术',
+   
+    ['全属性'] = 10000000,
+    ['攻击距离'] = 50,
+    ['每秒加魔丸'] = 15,
+}
+function mt:on_add()
+    local skill = self
+    local hero = self.owner
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+        if math.random(100) <= self.chance then
+            -- print('造成伤害效果：',self.name)
+            for i, u in ac.selector()
+                : in_range(hero,self.area)
+                : is_enemy(hero)
+                : of_not_building()
+                : ipairs()
+            do
+                u:add_effect('chest',self.effect):remove()
+                u:damage
+                {
+                    source = hero,
+                    damage = self.damage,
+                    skill = self,
+                    damage_type = self.damage_type
+                }
+                u:damage
+                {
+                    source = hero,
+                    damage = u:get('生命上限')*0.01,
+                    skill = self,
+                    real_damage = true
+                }
+            end	
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+
+end
+function mt:on_remove()
+    local hero = self.owner
+    if self.trg then
+        self.trg:remove()
+        self.trg = nil
+    end
+end
+   
+
+local mt = ac.skill['不朽金身']
+mt{
+--等级
+level = 1, 
+max_level = 1,
+--图标
+art = [[beimiao.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+10W*Lv 全属性
++%减少复活时间% |cff00ff00秒 减少复活时间
+
+|cffcccccc获得概率与死亡次数/通关难度/地图等级相关]],
+['全属性'] = 1000,
+['减少复活时间'] = 1,
+
+}
+
+
+
 local task_detail = {
     ['血魔'] = {
         rate = 0.1,
@@ -500,6 +609,15 @@ local task_detail = {
     ['爱我你就爆了我6'] = {
         rate = 100,
         award = '第六根柱子',
+        sendMsg = function(p)
+            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的|cffff0000 "第六根柱子" |r 已被击毙，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
+        end,
+    },
+    
+    ['身陷火海的小老鼠'] = {
+        rate = 100,
+        award = '拯救仓鼠',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的|cffff0000 "第六根柱子" |r 已被击毙，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
@@ -577,4 +695,53 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
         end
     end    
 
+end)
+
+
+--给彩蛋 拯救仓鼠
+local time = 20*60
+time = 20 --测试
+local function create_u()
+    local point = ac.rect.j_rect('huohai'):get_point()
+    local u = ac.player(13):create_unit('身陷火海的小老鼠',point)
+    u:add_buff '随机逃跑'{}
+    --重新复活
+    u:event '单位-死亡'(function(_,unit,killer)
+        ac.wait(8*1000,function()
+            create_u()
+        end)
+    end)
+end
+ac.wait(time*1000,function()
+    create_u()
+end)
+
+
+
+--给彩蛋 不朽金身
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if creep.name ~= '刷怪1' then
+        return
+    end    
+    if index > 10 then 
+        --在线玩家数 >=2 杀死进攻怪>=180 没死亡过
+        local player_cnt =get_player_count()
+        if player_cnt >=2 then 
+            for i=1,6 do 
+                local p = ac.player(i)
+                local player = ac.player(i) 
+                if p:is_player() and 
+                  (p.cnt_death or 0) == 0 and 
+                  (p.kill_attack_cnt or 0 )>=180 then 
+                    local hero = p.hero 
+                    local skl = hero:find_skill('不朽金身',nil,true)
+                    if not skl then 
+                        --动态插入彩蛋
+                        ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','不朽金身')
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+                    end
+                end
+            end
+        end
+    end
 end)

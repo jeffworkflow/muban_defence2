@@ -12,13 +12,23 @@ end
 -- end)
 
 local player = require 'ac.player'
-
+local points = {}
+local base_point = ac.rect.j_rect('chongwu'):get_point()
+for x =1,3 do 
+    for y=1,2 do 
+        local off_x =100
+        local base_x,base_y = base_point:get()
+        local new_point =ac.point(base_x -off_x +(y-1)*150,base_y -(x-1)*150) 
+        -- print(new_point:get())
+        table.insert(points,new_point)
+    end
+end
 function player.__index:create_pets(name)
     local name =name or '宠物'
     -- local x,y = ac.map.rects['出生点']:get_point():get()
     -- local u = self:create_unit(name,ac.point(x-500,y))
 
-    local u = self:create_unit(name,ac.rect.j_rect('chongwu'),270)
+    local u = self:create_unit(name,points[self.id],180)
     u.unit_type = '宠物'
     u:set('移动速度',522)
 

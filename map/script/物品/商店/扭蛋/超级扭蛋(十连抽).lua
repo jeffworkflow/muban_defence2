@@ -72,6 +72,11 @@ function mt:add_content()
     --再处理特殊的 
     if rand_name == '空蛋' then
         player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
+    elseif finds(rand_name,'强化石','天谕') then
+        self.owner:add_item(rand_name,true)
+        if tran_player then 
+        tran_player:sendMsg1('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+        end
     elseif rand_name == '玻璃大炮' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 

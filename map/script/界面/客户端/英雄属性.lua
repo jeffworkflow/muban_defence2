@@ -336,7 +336,7 @@ ac.wait(100,function()
                     end  
 
                     local p=self.owner.owner 
-                    if p:Map_GetMapLevel() > self.need_map_level then
+                    if p:Map_GetMapLevel() >= self.need_map_level then
                     -- local color  =  p:Map_GetMapLevel() > self.need_map_level and '绿' or '红'
                         return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
                     else 

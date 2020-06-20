@@ -442,9 +442,13 @@ local function save_wb()
                     --自定义服务器 保存总积分 
                     p:AddServerValue(key,p.cus_server3[name])  
                     --自定义服务器 保存今日最高积分
-                    if p.cus_server3['总'..name] >= (p.cus_server['今日'..name] or 0 ) then 
-                        p:SetServerValue('today_'..key,p.cus_server3['总'..name])  
-                    end
+                    -- if p.cus_server3['总'..name] >= (p.cus_server['今日'..name] or 0 ) then 
+                    --     p:SetServerValue('today_'..key,p.cus_server3['总'..name])  
+                    -- end
+                    
+                    --自定义服务器 保存今日累计
+                    p:AddServerValue('today_'..key,p.cus_server3[name])  
+                    
                     --保存完需要清空，下次保存时才能正确增加上去
                     p.cus_server3[name] = 0 
                 end    

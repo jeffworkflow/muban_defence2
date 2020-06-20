@@ -1,9 +1,10 @@
 
 local tools ={
     add_frame = function (self,off_x,off_y,size,off_size,is_show,on_hide)
-        print(333,self)
+        -- print(333,self)
         if self.model_frame then 
             self.model_frame.is_show1 = is_show
+            self.model_frame.on_hide = on_hide
             self.model_frame:show()
             return
         end

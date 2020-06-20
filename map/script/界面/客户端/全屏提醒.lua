@@ -359,6 +359,35 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
     end 
 end)
 
+
+ac.game:event '玩家-选择单位' (function(self, player, hero)
+    if hero ~= player.peon then 
+        return 
+    end      
+    if player.flag_peon_frame then 
+        return 
+    end
+    if player:is_self() then
+        ac.ui.client.panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},nil,function()
+            player.flag_peon_frame =true
+        end)
+    end 
+end)
+ac.game:event '玩家-取消选择单位' (function(self, player, hero)
+    if hero ~= player.peon then 
+        return 
+    end 
+    if player.flag_peon_frame then 
+        return 
+    end   
+    if player:is_self()then
+        ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
+    end 
+end)
+
+
+
+
 -- ac.wait(60*1000,function()
 --     for i=1,6 do 
 --         local p = ac.player(i) 

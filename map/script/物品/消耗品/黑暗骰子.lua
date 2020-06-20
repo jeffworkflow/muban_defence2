@@ -66,17 +66,34 @@ function mt:add_content()
     if flag then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,奖励 |cffff0000'..rand_name..'|r',2)
     end  
+    
+    p.flag_hatz = p.flag_hatz or {} 
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
         --进行多个处理
-        local it = ac.item.create_item(k)
-        it:set_item_count((tonumber(v) or 1))
-        if it.owner_ship then
-            it.owner_ship = p
+        local it 
+        if finds(k,'熔炼石')  then
+            if not p.flag_hatz[k] then  
+                for i=1,tonumber(v) do 
+                    it = self.owner:add_item(k,true)
+                end 
+                p.flag_hatz[k] = true
+                tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
+            else
+                print('重新再随机一次',self.name,k)
+                self:add_content()
+                return
+            end
+        else
+            it = ac.item.create_item(k)
+            it:set_item_count((tonumber(v) or 1))
+            if it.owner_ship then
+                it.owner_ship = p
+            end
+            it = self.owner:add_item(it,true) 
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
         end
-        it = self.owner:add_item(it,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
-    end
+    end 
 
     if rand_name == '无' then
         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,什么事情都没有发生 |cffffff00(摇骰子熟练度+1，当前摇骰子熟练度 '..player.server['摇骰子熟练度']..'|r',2)

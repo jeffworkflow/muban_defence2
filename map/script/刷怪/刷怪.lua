@@ -105,7 +105,6 @@ for i =1,3 do
             end
         end  
         
-        
 
     end
 
@@ -117,7 +116,10 @@ for i =1,3 do
         local point = ac.map.rects['主城']:get_point()
         unit:issue_order('attack',point)
         -- unit:add_buff '攻击英雄'{}
-
+        unit:event '单位-死亡'(function(_,unit,killer)
+            local p = killer.owner 
+            p.kill_attack_cnt = (p.kill_attack_cnt or 0) + 1
+        end)
     end
     --每3秒刷新一次攻击目标 原地不动才发起攻击
     function mt:attack_hero() 

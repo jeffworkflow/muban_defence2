@@ -211,16 +211,33 @@ function mt:add_content()
     --发送消息
     if flag then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
-    end  
+    end 
+    
+    p.flag_cbt = p.flag_cbt or {} 
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
         --进行多个处理
         local it 
-        for i=1,tonumber(v) do 
-            it = hero:add_item(k,true)
-        end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
-    end
+        if finds(k,'熔炼石')  then
+            if not p.flag_cbt[k] then  
+                for i=1,tonumber(v) do 
+                    it = self.owner:add_item(k,true)
+                end 
+                p.flag_cbt[k] = true
+                tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
+            else
+                print('重新再随机一次',self.name,k)
+                self:add_content()
+                return
+            end
+        else
+            for i=1,tonumber(v) do 
+                it = self.owner:add_item(k,true)
+            end 
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        end
+    end 
+
     --加挖宝熟练度
     player:Map_AddServerValue('sldwb',1) --网易服务器
     -- player:AddServerValue('wbjf',1) 自定义服务器

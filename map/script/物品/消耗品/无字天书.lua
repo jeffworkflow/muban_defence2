@@ -82,15 +82,31 @@ function mt:add_content()
     if flag then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开|cff00ff00'..self.name..'|r封印的过程中，一阵醍醐灌顶，获得  |cffff0000'..rand_name..'|r',2)
     end  
+    
+    p.flag_wzts = p.flag_wzts or {} 
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
         --进行多个处理
         local it 
-        for i=1,tonumber(v) do 
-            it = self.owner:add_item(k,true)
-        end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
-    end 
+        if finds(k,'熔炼石')  then
+            if not p.flag_wzts[k] then  
+                for i=1,tonumber(v) do 
+                    it = self.owner:add_item(k,true)
+                end 
+                p.flag_wzts[k] = true
+                tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
+            else
+                print('重新再随机一次',k)
+                self:add_content()
+                return
+            end
+        else
+            for i=1,tonumber(v) do 
+                it = self.owner:add_item(k,true)
+            end 
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        end
+    end
 
     if rand_name == '无' then
         player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 解开了|cff00ff00'..self.name..'|r的封印，什么事情都没有发生 |cffffff00(看书熟练度+1，当前看书熟练度 '..player.server['看书熟练度']..' )|r',2)

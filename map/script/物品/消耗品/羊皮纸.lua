@@ -83,14 +83,30 @@ function mt:add_content()
     if flag then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r解密过程中，一阵醍醐灌顶，获得 |cffff0000'..rand_name..'|r',2)
     end  
+    
+    p.flag_ypz = p.flag_ypz or {} 
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
         --进行多个处理
         local it 
-        for i=1,tonumber(v) do 
-            it = self.owner:add_item(k,true)
-        end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        if finds(k,'熔炼石')  then
+            if not p.flag_ypz[k] then  
+                for i=1,tonumber(v) do 
+                    it = self.owner:add_item(k,true)
+                end 
+                p.flag_ypz[k] = true
+                tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
+            else
+                print('重新再随机一次',k)
+                self:add_content()
+                return
+            end
+        else
+            for i=1,tonumber(v) do 
+                it = self.owner:add_item(k,true)
+            end 
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 对|cff00ff00'..self.name..'|r进行解密，原来它是 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        end
     end
 
     if rand_name == '无' then

@@ -103,9 +103,9 @@ end
 
 
 --处理黑名单数据 每5分钟执行一次判断
-local time = 3*60
+local time = 10*60
 if not global_test  then 
-    ac.loop(time*1000,function()
+    ac.wait(time*1000,function()
         --执行黑名单惩罚
         punish_black();
     end);
