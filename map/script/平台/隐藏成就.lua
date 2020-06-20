@@ -453,7 +453,7 @@ mt.skills = {
 --隐藏成就 注册获得事件
 local task_detail = {
     ['血魔'] = {
-        rate = 0.015,
+        rate = 0.02,
         -- rate = 10,
         award = '我是大魔头',
         sendMsg = function(p)

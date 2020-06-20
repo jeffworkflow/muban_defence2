@@ -17,7 +17,7 @@ tip = [[
 ]],
 force_cast=1,
 --冷却
-cool = 15
+cool = 4
 }
 
 function mt:on_cast_start()
@@ -31,7 +31,7 @@ function mt:on_cast_shot()
     local hero = self.owner
     print('使用净化')
     hero:add_buff '净化' {
-        time = 3
+        time = 1
     }
     self:active_cd()
 end
