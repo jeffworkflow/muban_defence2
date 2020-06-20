@@ -286,7 +286,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         for i=1,tonumber(v) do 
             it = self.owner:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 
     if rand_name == '无' then
@@ -300,10 +300,10 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif rand_name == '复制装备' then
         local it = self.owner:add_item(_item.name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
     elseif rand_name == '真·复制装备' then
         -- local it = ac.dummy:add_item(_item.name,true)
         -- it:upgrade(_item.level-1)
@@ -315,7 +315,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
                 up_item(it)
             end
             print('真复制装备：',it.level)
-            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)  
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)  
         -- end)
     end   
 
