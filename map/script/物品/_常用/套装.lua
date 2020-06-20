@@ -110,7 +110,7 @@ local function unit_add_suit(unit,item)
                     unit.suit[name][cnt][4] = tip  
                 end
             end   
-            local foot_tip = '|cff00ffff集齐五件后，找练功房右边的套装熔炼NPC进行熔炼入体'
+            local foot_tip = '|cff00ffff集齐五件后，在|cffffff00套装熔炼NPC|cff00ffff（练功房右边）进行熔炼入体'
             tip = tip ..'\n'..foot_tip..'\n' 
             item.suit_tip = tip
             --刷新单位身上的所有物品说明
@@ -161,7 +161,7 @@ local function unit_remove_suit(unit,item)
         end 
     end 
     -- print(tip)
-    local foot_tip = '|cff00ffff集齐五件后，找练功房右边的套装熔炼NPC进行熔炼入体'
+    local foot_tip = '|cff00ffff集齐五件后，在|cffffff00套装熔炼NPC|cff00ffff（练功房右边）进行熔炼入体'
     tip = tip ..'\n'..foot_tip..'\n'
     item_self_tip = item_self_tip ..'\n'..foot_tip..'\n'
     --先刷新丢地上的物品
@@ -220,7 +220,7 @@ ac.game:event '物品-创建' (function (_,item)
                 end
             end    
             -- print(item:get_tip()..tip)
-            local foot_tip = '|cff00ffff集齐五件后，找练功房右边的套装熔炼NPC进行熔炼入体'
+            local foot_tip = '|cff00ffff集齐五件后，在|cffffff00套装熔炼NPC|cff00ffff（练功房右边）进行熔炼入体'
             item.suit_tip = tip
             item:set_tip(item:get_tip()..tip..'\n'..foot_tip..'\n')    
             --更改物品名字
