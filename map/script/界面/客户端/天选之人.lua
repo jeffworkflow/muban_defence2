@@ -23,28 +23,29 @@ local new_ui = class.panel:builder
             align = 'center',
             color = 0xffff0000,
             text = '10:00'
-        }
+        },
+        on_button_clicked = function (self)
+            print('天选之人点击传送',ac.player.self)
+            local info = {
+                type = 'txzr',
+                func_name = 'cs',
+                params = {
+                    [1] = 1,
+                }
+            }
+            ui.send_message(info)
+        end,
+
+        on_button_mouse_enter = function (self)
+            local p = ac.player.self
+            if p.current_task then 
+                local title = p.current_task.name
+                local tip = p.current_task.tip
+                self:tooltip('|cffffe799'..title..'|r',tip,-1,300,94)
+            end
+        end,
     },
     
-    on_button_clicked = function (self)
-        local info = {
-            type = 'txzr',
-            func_name = 'cs',
-            params = {
-                [1] = 1,
-            }
-        }
-        ui.send_message(info)
-    end,
-
-    on_button_mouse_enter = function (self)
-        local p = ac.player.self
-        if p.current_task then 
-            local title = p.current_task.name
-            local tip = p.current_task.tip
-            self:tooltip('|cffffe799'..title..'|r',tip,-1,300,94)
-        end
-    end,
     fresh_name = function(self)
         --处理 在线奖励 
         local total_time = 600 
@@ -119,6 +120,7 @@ local event = {
     cs = function (val)
         local player = ui.player 
         local p = ui.player 
+        print('点击同步后,准备弹窗1',p)
         if not p.current_task then 
             return
         end
@@ -126,6 +128,7 @@ local event = {
         if p:is_self() then 
             new_ui.bt.model_frame:hide()
         end
+        print('点击同步后,准备弹窗2',p)
         local list = {
             { name = "是" },
             { name = "否" },
@@ -321,9 +324,9 @@ local award_list = {
 ac.game:event '任务-圣龙气运'(function(self,p)
     local time = 2*60
     -- time = 20
-    local rate = 10
+    local rate = 80
     print('触发圣龙精魄：',p)
-    p.hero:loop(time*1000,function()
+    -- p.hero:loop(time*1000,function()
         --概率触发事件
         if math.random(100000)/1000 <= rate then 
 
@@ -376,7 +379,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             end
 
         end
-    end)
+    -- end)
 
 end)
 
