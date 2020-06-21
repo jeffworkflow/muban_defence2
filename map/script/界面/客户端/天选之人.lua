@@ -162,8 +162,9 @@ local award_list = {
         need = '藏宝图',
         need_cnt = 30,
         tip = [[
-|cffffe799【任务条件】|r
-|cff00ff00点击前往|cff00ffff 藏宝阁|cff00ff00，        
+|cff00ff00点击前往|cff00ffff 藏宝阁|cff00ff00
+
+|cffffe799【任务条件】|r     
 |cff00ff00获得并成功使用|cffffff0030张藏宝图     
 
 |cffffe799【任务奖励】|r|cff00ff00随机红装         
@@ -186,8 +187,9 @@ local award_list = {
         need = '羊皮无字', 
         need_cnt = 30,
         tip = [[
-|cffffe799【任务条件】|r
-|cff00ff00点击传送到|cff00ffff 藏经阁|cff00ff00，        
+|cff00ff00点击传送到|cff00ffff 藏经阁
+
+|cffffe799【任务条件】|r 
 |cff00ff00获得并成功使用|cffffff0030张羊皮纸或
 无字天书     
 
@@ -212,8 +214,9 @@ local award_list = {
         need = '超强石头',
         need_cnt = 30,
         tip = [[
-|cffffe799【任务条件】|r
-|cff00ff00点击前往|cff00ffff 剑冢|cff00ff00，        
+|cff00ff00点击前往|cff00ffff 剑冢
+
+|cffffe799【任务条件】|r 
 |cff00ff00获得并成功使用
 |cffffff0030个强化石或天谕     
   
@@ -236,8 +239,9 @@ local award_list = {
         need = '超强伤害',
         need_cnt = 30,
         tip = [[
-|cffffe799【任务条件】|r
-|cff00ff00点击前往|cff00ffff 百花宫|cff00ff00，        
+|cff00ff00点击前往|cff00ffff 百花宫|cff00ff00   
+
+|cffffe799【任务条件】|r 
 |cff00ff00获得并成功使用
 |cffffff0030个一个神奇的种子    
    
@@ -259,8 +263,9 @@ local award_list = {
         need = '超强属性',
         need_cnt = 30,
         tip = [[
-|cffffe799【任务条件】|r
-|cff00ff00点击前往|cff00ffff 龙宫|cff00ff00，        
+|cff00ff00点击前往|cff00ffff 龙宫
+
+|cffffe799【任务条件】      
 |cff00ff00获得并成功使用|cffffff0030张扭蛋券（十连抽）或 
 超级扭蛋券（十连抽）   
 
@@ -284,8 +289,9 @@ local award_list = {
         need = '超强卡片',
         need_cnt = 30,
         tip = [[
-|cffffe799【任务条件】|r
-|cff00ff00点击前往|cff00ffff 罪恶城堡|cff00ff00，        
+|cff00ff00点击前往|cff00ffff 罪恶城堡
+
+|cffffe799【任务条件】|r 
 |cff00ff00获得并成功使用|cffffff0030个黑暗骰子     
 
 |cffffe799【任务奖励】|r|cff00ff00随机超强卡片         
