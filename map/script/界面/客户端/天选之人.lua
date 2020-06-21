@@ -162,33 +162,36 @@ local award_list = {
         need = '藏宝图',
         need_cnt = 30,
         tip = [[
-【任务条件】
-获得并使用30张藏宝图
+|cffffe799【任务条件】|r
+|cff00ff00点击前往|cff00ffff 藏宝阁|cff00ff00，        
+|cff00ff00获得并成功使用|cffffff0030张藏宝图     
 
-【任务奖励】随机红色装备一个
-               
+|cffffe799【任务奖励】|r|cff00ff00随机红装         
         ]],
         --奖励
         award = function(self,p,hero)
             local list = ac.quality_item['红']
             local name = list[math.random(#list)]
             local it = hero:add_item(name)
-            ac.player.self:sendMsg('恭喜玩家 '..p:get_name()..' 获得了'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
         end,
     },
 
     ['超强功法'] ={
         name = '超强功法',
-        rect = 'cbg1',
-        art = 'cqzb.blp',
-        need = '羊皮无字',
+        rect = 'cjg1',
+        art = 'cqgf.blp',
+        need = '羊皮无字', 
         need_cnt = 30,
         tip = [[
-【任务条件】
-获得并使用30张羊皮纸
+|cffffe799【任务条件】|r
+|cff00ff00点击传送到|cff00ffff 藏经阁|cff00ff00，        
+|cff00ff00获得并成功使用|cffffff0030张羊皮纸或
+无字天书     
 
-【任务奖励】随机天阶功法一个
-               
+|cffffe799【任务奖励】|r|cff00ff00随机天阶功法         
         ]],
         --奖励
         award = function(self,p,hero)
@@ -196,84 +199,96 @@ local award_list = {
             --添加给购买者
             local name = list[math.random(#list)]
             local it = ac.item.add_skill_item(name,hero)
-            ac.player.self:sendMsg('恭喜玩家 '..p:get_name()..' 获得了'..(it.color_name or name),5)
+            
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
         end, 
     },
     ['超强石头'] ={
         name = '超强石头',
-        rect = 'cbg1',
-        art = 'cqzb.blp',
+        rect = 'jianzhong1',
+        art = 'cqst.blp',
         need = '超强石头',
         need_cnt = 30,
         tip = [[
-【任务条件】
-获得并使用30张羊皮纸
-
-【任务奖励】随机天阶功法一个
-               
+|cffffe799【任务条件】|r
+|cff00ff00点击前往|cff00ffff 剑冢|cff00ff00，        
+|cff00ff00获得并成功使用
+|cffffff0030个强化石或天谕     
+  
+|cffffe799【任务奖励】|r|cff00ff008个天谕        
         ]],
         --奖励
         award = function(self,p,hero)
             local it = ac.item.create_item('天谕',hero:get_point())
             it:set_item_count(8)
             hero:add_item(it)
-            ac.player.self:sendMsg('恭喜玩家 '..p:get_name()..' 获得了'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
         end, 
     },
     ['超强伤害'] ={
         name = '超强伤害',
-        rect = 'cbg1',
-        art = 'cqzb.blp',
+        rect = 'bhg1',
+        art = 'cqsh.blp',
         need = '超强伤害',
         need_cnt = 30,
         tip = [[
-【任务条件】
-获得并使用30张羊皮纸
-
-【任务奖励】随机天阶功法一个
-               
-        ]],
+|cffffe799【任务条件】|r
+|cff00ff00点击前往|cff00ffff 百花宫|cff00ff00，        
+|cff00ff00获得并成功使用
+|cffffff0030个一个神奇的种子    
+   
+|cffffe799【任务奖励】|r|cff00ff00全伤加深+50%
+       ]],
         --奖励 全伤加深50%
         award = function(self,p,hero)
             local hero = p.hero
             hero:add('全伤加深',50)
-            ac.player.self:sendMsg('恭喜玩家 '..p:get_name()..' 获得了全伤加深',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
         end, 
     },
     ['超强属性'] ={
         name = '超强属性',
-        rect = 'cbg1',
-        art = 'cqzb.blp',
+        rect = 'longgong1',
+        art = 'cqsx.blp',
         need = '超强属性',
         need_cnt = 30,
         tip = [[
-【任务条件】
-获得并使用30张羊皮纸
+|cffffe799【任务条件】|r
+|cff00ff00点击前往|cff00ffff 龙宫|cff00ff00，        
+|cff00ff00获得并成功使用|cffffff0030张扭蛋券（十连抽）或 
+超级扭蛋券（十连抽）   
 
-【任务奖励】随机天阶功法一个
-               
+|cffffe799【任务奖励】|r|cff00ff00全属性+10%         
         ]],
         --奖励 全属性加5%
         award = function(self,p,hero)
             local hero = p.hero
-            hero:add('力量%',5)
-            hero:add('敏捷%',5)
-            hero:add('智力%',5)
-            ac.player.self:sendMsg('恭喜玩家 '..p:get_name()..' 获得了 全属性加5%',5)
+            hero:add('力量%',10)
+            hero:add('敏捷%',10)
+            hero:add('智力%',10)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
         end, 
     },
     ['超强卡片'] ={
         name = '超强卡片',
-        rect = 'cbg1',
-        art = 'cqzb.blp',
+        rect = 'zeds1',
+        art = 'ahtxz.blp',
         need = '超强卡片',
         need_cnt = 30,
         tip = [[
-【任务条件】
-获得并使用30张羊皮纸
+|cffffe799【任务条件】|r
+|cff00ff00点击前往|cff00ffff 罪恶城堡|cff00ff00，        
+|cff00ff00获得并成功使用|cffffff0030个黑暗骰子     
 
-【任务奖励】随机天阶功法一个
-               
+|cffffe799【任务奖励】|r|cff00ff00随机超强卡片         
         ]],
         --奖励
         award = function(self,p,hero)
@@ -284,7 +299,9 @@ local award_list = {
             }
             local name = list[math.random(#list)]
             local it = hero:add_item(name)
-            ac.player.self:sendMsg('恭喜玩家 '..p:get_name()..' 获得了'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
         end, 
     },
 
@@ -319,8 +336,9 @@ ac.game:event '任务-圣龙气运'(function(self,p)
                 point = hero:get_point(),
                 size = 1.5
             }:remove()
-
-            ac.player.self:sendMsg(p:get_name()..'【系统消息】天将降大任于斯人也！一道闪电划过，玩家 XXX 成为天选之人，获得了 【'..rand_name..'】 的任务！',3)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
             --创建对话框 询问是否替换已有的任务
             print('触发天选之人：',p)
             if p.current_task then 
@@ -361,7 +379,7 @@ ac.game:event '挖图成功'(function(trg,hero)
     p.task['藏宝图'] = (p.task['藏宝图'] or 0) + 1
     --文字提醒
     if p.current_task and p.current_task.name =='超强装备' then 
-        p:sendMsg('任务进度'..p.task['藏宝图']..'/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffffe799【系统消息】|r当前挖宝任务进度 |cffff0000'..p.task['藏宝图']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['藏宝图'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -379,7 +397,7 @@ ac.game:event '触发羊皮无字事件'(function(trg,skill,hero)
     p.task['羊皮无字'] = (p.task['羊皮无字'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强功法' then 
-        p:sendMsg('任务进度'..p.task['羊皮无字']..'/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffffe799【系统消息】|r当前看书任务进度 |cffff0000'..p.task['羊皮无字']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['羊皮无字'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -399,7 +417,7 @@ ac.game:event '触发锻造事件'(function(trg,skill,hero)
     p.task['超强石头'] = (p.task['超强石头'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强石头' then 
-        p:sendMsg('任务进度'..p.task['超强石头']..'/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffffe799【系统消息】|r当前强化任务进度 |cffff0000'..p.task['超强石头']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强石头'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -418,7 +436,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     p.task['超强伤害'] = (p.task['超强伤害'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强伤害' then 
-        p:sendMsg('任务进度'..p.task['超强伤害']..'/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffffe799【系统消息】|r当前种树任务进度 |cffff0000'..p.task['超强伤害']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强伤害'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -443,7 +461,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     p.task['超强属性'] = (p.task['超强属性'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强属性' then 
-        p:sendMsg('任务进度'..p.task['超强属性']..'/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffffe799【系统消息】|r当前白嫖任务进度 |cffff0000'..p.task['超强属性']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强属性'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -462,7 +480,7 @@ ac.game:event '触发黑暗骰子事件'(function(trg,skill,hero)
     p.task['超强卡片'] = (p.task['超强卡片'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强卡片' then 
-        p:sendMsg('任务进度'..p.task['超强卡片']..'/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffffe799【系统消息】|r当前摇骰子任务进度 |cffff0000'..p.task['超强卡片']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强卡片'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
