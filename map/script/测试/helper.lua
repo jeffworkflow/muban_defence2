@@ -2036,6 +2036,11 @@ function helper:sd()
 	-- 	end
 	-- end
 end
+--测试天选之人
+function helper:ts2()
+	local p = self.owner
+	ac.game:event_notify('任务-圣龙气运',p) 
+end
 --测试双层字
 function helper:test_sm_ui()
 	local new_ui = class.panel:builder

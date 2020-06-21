@@ -49,6 +49,8 @@ function mt:on_cast_start()
             skl:upgrade(skl.max_level)
         end    
         p.flag_sljp = true
+        --发布 
+        ac.game:event_notify('任务-圣龙气运',p) 
         p:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看',5)
         return
     end
@@ -75,6 +77,7 @@ function mt:on_cast_start()
         end 
         
         p.flag_sljp = true
+        ac.game:event_notify('任务-圣龙气运',p) 
         p:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看',5)
     else
         self:add_item_count(1)
