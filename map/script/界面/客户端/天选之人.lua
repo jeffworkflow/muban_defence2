@@ -5,7 +5,7 @@ local new_ui = class.panel:builder
     y = 408,--假的
     w = 120,
     h = 120,
-    is_show = true,
+    is_show = false,
     name = '天选之人', 
 
     normal_image = '',
