@@ -91,6 +91,10 @@ local new_ui = class.panel:builder
             self.timer = nil
         end
         self:hide()
+    end,
+    show1 = function(self)
+        self:show()
+        self.bt:add_frame(38,-42,1.24,{1,1.38,1},true)
     end
 }
 
@@ -118,6 +122,8 @@ local event = {
         if not p.current_task then 
             return
         end
+        --取消动态边框
+        new_ui.bt.model_frame:hide()
         local list = {
             { name = "是" },
             { name = "否" },
@@ -307,6 +313,14 @@ ac.game:event '任务-圣龙气运'(function(self,p)
                 print('没有预设任务',rand_name)
                 return 
             end
+            local hero = p.hero 
+            ac.effect_ex{
+                model = [[206.mdx]],
+                point = hero:get_point(),
+                size = 1.5
+            }:remove()
+
+            ac.player.self:sendMsg(p:get_name()..'【系统消息】天将降大任于斯人也！一道闪电划过，玩家 XXX 成为天选之人，获得了 【'..rand_name..'】 的任务！',3)
             --创建对话框 询问是否替换已有的任务
             print('触发天选之人：',p)
             if p.current_task then 
@@ -323,7 +337,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
                         clear_task(p,award_list[rand_name])
                         if p:is_self() then 
                             new_ui:fresh()
-                            new_ui:show()
+                            new_ui:show1()
                         end
                     end  
                 end) 
@@ -331,7 +345,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
                 clear_task(p,award_list[rand_name])
                 if p:is_self() then 
                     new_ui:fresh()
-                    new_ui:show()
+                    new_ui:show1()
                 end
             end
 
