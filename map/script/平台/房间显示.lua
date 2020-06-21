@@ -3,7 +3,7 @@
 local function set_fj_data(player) 
     local temp = {}
     local yxj =  ac.g_game_degree_list
-    for key,value in pairs(player.server) do
+    for key,value in pairs(player.cus_server) do
         for i,name in ipairs(yxj) do
             if key == name then
                 if value > 0 then 
@@ -28,10 +28,14 @@ local function set_fj_data(player)
 
     --段位
     if temp[1] then
-    player:Map_Stat_SetStat('DW',temp[1].key..temp[1].value..'段')
+        print('房间显示',temp[1].key..temp[1].value..'段')
+        player:Map_Stat_SetStat('DW',temp[1].key..temp[1].value..'段')
     end
-    --战斗力
-    player:Map_Stat_SetStat('ZDL',(player.cus_server[temp[1].key..'战斗力'] or 0))
+        --战斗力
+    if temp[1] then
+        print('房间显示',(player.cus_server[temp[1].key..'战斗力'] or 0))
+        player:Map_Stat_SetStat('ZDL',(player.cus_server[temp[1].key..'战斗力'] or 0))
+    end
     --装备总评分
     player:Map_Stat_SetStat('ZBZPF',(player.pf or 0))
 
@@ -39,22 +43,26 @@ end
 
 --设置房间显示数据
 ac.game:event '游戏-结束' (function(trg,flag)
-    for i=1,10 do
-        local player = ac.player[i]
-        if player:is_player() then
-            --设置房间数据
-            set_fj_data(player)
+    ac.wait(0,function()
+        for i=1,10 do
+            local player = ac.player[i]
+            if player:is_player() then
+                --设置房间数据
+                set_fj_data(player)
+            end
         end
-    end
+    end)
 end) 
 
 --设置房间显示数据
 ac.game:event '游戏-无尽开始'(function(trg) 
-    for i=1,10 do
-        local player = ac.player[i]
-        if player:is_player() then
-            --设置房间数据
-            set_fj_data(player)
+    ac.wait(0,function()
+        for i=1,10 do
+            local player = ac.player[i]
+            if player:is_player() then
+                --设置房间数据
+                set_fj_data(player)
+            end
         end
-    end
+    end)
 end)    

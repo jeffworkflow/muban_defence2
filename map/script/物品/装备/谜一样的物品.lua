@@ -14,6 +14,7 @@ mt{
     kill_cnt = 1000,
     --唯一
     unique = true,
+    owner_ship = true,
     --升级特效
     effect2 = [[Void Teleport Target.mdx]],
     --物品详细介绍的title
@@ -81,6 +82,7 @@ mt{
     kill_cnt = 1000,
     --唯一
     unique = true,
+    owner_ship = true,
     --升级特效
     effect2 = [[Void Teleport Target.mdx]],
     --物品详细介绍的title
@@ -142,7 +144,8 @@ ac.game:event '单位-死亡'(function(trg,unit,killer)
     if unit:get_name() == '灵魂' then 
         local name = '谜一样的箱子'
         if not p.flag[name] then 
-            ac.item.create_item(name,unit:get_point())
+            local it = ac.item.create_item(name,unit:get_point())
+            it.owner_ship = p
             p.flag[name] = true
         end
     end
@@ -151,7 +154,8 @@ ac.game:event '单位-死亡'(function(trg,unit,killer)
     if unit:get_name() == '熊猫人' then 
         local name = '谜一样的天书'
         if not p.flag[name] then 
-            ac.item.create_item(name,unit:get_point())
+            local it = ac.item.create_item(name,unit:get_point())
+            it.owner_ship = p
             p.flag[name] = true
         end
     end

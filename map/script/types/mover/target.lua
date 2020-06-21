@@ -78,6 +78,11 @@
 					end
 				end
 				self.distance = self.start:get_point() * self.target:get_point()
+				--modify by jeff 20200621 如果距离超过2100码，且没有预设加速度，统一设置加速度300
+				if self.distance > 2100 and (not self.accel or self.accel == 0) then 
+					self.accel = 300
+					-- print('预设加速度')
+				end
 				if not self.path and not self.on_block then
 					self.path = true
 				end

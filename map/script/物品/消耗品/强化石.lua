@@ -223,9 +223,9 @@ local temp = {
     -- ['剑瞎子'] =2,
     ['天外飞仙'] =245,
 }  
-local function up_item(item)
-    local lni_data = ac.table.ItemData[item.name]
-    if not lni_data then print('没有取到数据') return end 
+local function up_item(item)  
+    local lni_data = ac.skill[item.name].v1 and ac.skill[item.name] or ac.table.ItemData[item.name] 
+    if not lni_data or type(lni_data) == 'function'  then print('没有取到数据') return end 
     for key in sortpairs(ac.unit.attribute) do
         if item[key] and lni_data[key]  then 
             item[key] = lni_data[key] * (1+strong_attr[item.level]/100)
@@ -261,7 +261,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     local rand_list = ac.unit_reward['装备升级']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
     -- print(rand_list,rand_name)  
-    print('装备升级掉落：',rand_name,_item,_item.name)
+    -- print('装备升级掉落：',rand_name,_item,_item.name)
     if not rand_name then 
         return true
     end  
@@ -305,15 +305,18 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         local it = self.owner:add_item(_item.name,true)
         ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
     elseif rand_name == '真·复制装备' then
-        -- local it = ac.dummy:add_item(_item.name,true)
-        -- it:upgrade(_item.level-1)
-        -- ac.dummy:remove_item(it)
-        
+        local it = ac.dummy:add_item(_item.name,true)
+        --升级
+        for i=1,(_item.level-1) do 
+            up_item(it)
+        end
+        ac.dummy:remove_item(it)
+        self.owner:add_item(it)
         -- ac.wait(10,function()
-            local it = self.owner:add_item(_item.name,true)
-            for i=1,(_item.level-1) do 
-                up_item(it)
-            end
+            -- local it = self.owner:add_item(_item.name,true)
+            -- for i=1,(_item.level-1) do 
+            --     up_item(it)
+            -- end
             print('真复制装备：',it.level)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)  
         -- end)

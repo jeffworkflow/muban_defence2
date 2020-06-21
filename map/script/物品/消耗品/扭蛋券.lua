@@ -227,7 +227,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     local rand_list = ac.unit_reward['扭蛋券']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
     -- print(rand_list,rand_name)  
-    print('扭蛋券奖励：',rand_name)
+    -- print('扭蛋券奖励：',rand_name)
     if not rand_name then 
         return true
     end  

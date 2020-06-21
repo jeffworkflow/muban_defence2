@@ -45,7 +45,7 @@ function mt:add_content()
     local rand_list = ac.unit_reward['黑暗骰子']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
     -- print(rand_list,rand_name)  
-    print('黑暗骰子奖励掉落：',rand_name)
+    -- print('黑暗骰子奖励掉落：',rand_name)
     if not rand_name then 
         return true
     end  
