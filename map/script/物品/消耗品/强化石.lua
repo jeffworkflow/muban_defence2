@@ -199,9 +199,9 @@ local function insert_book(hero,name)
                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
             else 
                 skl:upgrade(1)  
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..rand_name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..rand_name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..rand_name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
             end 
         end   
     else
