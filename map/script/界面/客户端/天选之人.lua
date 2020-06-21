@@ -123,7 +123,9 @@ local event = {
             return
         end
         --取消动态边框
-        new_ui.bt.model_frame:hide()
+        if p:is_self() then 
+            new_ui.bt.model_frame:hide()
+        end
         local list = {
             { name = "是" },
             { name = "否" },
