@@ -19,7 +19,7 @@ function mt:on_cast_start()
     for i=1,10 do 
         local skl = owner:find_skill(slot[i],'英雄')
         if skl then
-            print(skl.name,skl.level)
+            -- print(skl.name,skl.level)
             skl:cast_force() --开始施法
         end
     end

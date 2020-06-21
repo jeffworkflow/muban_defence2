@@ -224,6 +224,7 @@ for i,value in ipairs(magic_item) do
     --商店名词缀
     mt.store_affix = ''
     mt.passive = true
+    mt.cool = 1
 
     --使用物品
     function mt:on_cast_start()
@@ -281,10 +282,10 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     --掉落物品
     local it = ac.item.create_item(temp[name],unit:get_point())
 
-    print('测试神器掉落：',p,temp[name],p.flag_all[temp[name]],unit:get_point())
-    if it then 
-        print('神器掉落位置：',it:get_point())
-    end
+    -- print('测试神器掉落：',p,temp[name],p.flag_all[temp[name]],unit:get_point())
+    -- if it then 
+    --     print('神器掉落位置：',it:get_point())
+    -- end
 end)
 
 

@@ -67,7 +67,7 @@ function mt:on_cast_start()
             if skl then 
                 skl:upgrade(self.upgrade_cnt)
                 if self._count > 0 then  
-                    print(123,'再一次升级')
+                    -- print(123,'再一次升级')
                     p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
                     self:on_cast_start()
                     self:add_item_count(-1)

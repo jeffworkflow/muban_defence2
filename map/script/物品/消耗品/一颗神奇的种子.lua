@@ -71,7 +71,7 @@ function mt:on_cast_start(next_point)
     local player = hero:get_owner()
     local point = next_point or self.target 
 
-    print('创建了一颗神奇的种子',hero,next_point,self.target)
+    -- print('创建了一颗神奇的种子',hero,next_point,self.target)
     create_u(self,hero,point)
     if self.auto_plant then 
         if self:get_item_count() > 1 then 
@@ -143,7 +143,7 @@ function mt:add_content()
     local rand_list = ac.unit_reward['一颗神奇的种子']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
     -- print(rand_list,rand_name)  
-    print('一颗神奇的种子掉落：',rand_name)
+    -- print('一颗神奇的种子掉落：',rand_name)
     if not rand_name then 
         return true
     end  

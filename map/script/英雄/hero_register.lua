@@ -116,7 +116,15 @@ ac.game:event '玩家-选择单位后' (function(self, player, hero)
 		return 
 	end 
 	player.selected = hero 
+	--刷新技能
 	for skill in hero:each_skill('英雄',true) do 
 		skill:fresh()
 	end 
+	--刷新物品技能
+	-- for i=1,6 do 
+	-- 	local it = hero:get_slot_item(i)
+	-- 	if it then 
+	-- 		it:fresh()
+	-- 	end
+	-- end
 end)

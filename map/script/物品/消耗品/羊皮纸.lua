@@ -61,7 +61,7 @@ function mt:add_content()
     local rand_list = ac.unit_reward['羊皮纸']
     local rand_name,rand_rate = ac.get_reward_name(rand_list)
     -- print(rand_list,rand_name)  
-    print('羊皮纸掉落：',rand_name)
+    -- print('羊皮纸掉落：',rand_name)
     if not rand_name then 
         return true
     end  

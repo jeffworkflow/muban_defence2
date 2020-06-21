@@ -45,7 +45,7 @@ mt{
     damage_type = '法术',
     time = 5
 }
-mt.on_cast_start = ac.skill['狂兽决'].on_cast_start
+mt.on_cast_start = ac.skill['狂兽诀'].on_cast_start
 function mt:on_remove()
     local hero = self.owner
     local p = hero:get_owner()
