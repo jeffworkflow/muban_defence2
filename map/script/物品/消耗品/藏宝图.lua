@@ -413,7 +413,9 @@ function mt:add_content()
                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000【可存档成就】'..rand_name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
             else 
                 skl:upgrade(1)  
-                p:sendMsg('|cffff0000【可存档成就】'..rand_name..'+1 ',2)  
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r |cffff0000【可存档成就】'..rand_name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r |cffff0000【可存档成就】'..rand_name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r |cffff0000【可存档成就】'..rand_name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
             end   
         else 
             self:add_content() --已挖到再随机一次

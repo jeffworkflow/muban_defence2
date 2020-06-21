@@ -116,7 +116,7 @@ local task_detail = {
                 
                 local mt = ac.skill[name]
                 mt.owner_ship = p
-                if p:Map_GetMapLevel() >= 5 then 
+                if p:Map_GetMapLevel() >= 3 then 
                     mt.item_type = '神符'
                     mt.level =1
                 else

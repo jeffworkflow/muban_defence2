@@ -582,7 +582,7 @@ tip = [[
 
 local task_detail = {
     ['血魔'] = {
-        rate = 0.1,
+        rate = 0.15,
         award = '大屠杀',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
@@ -593,7 +593,7 @@ local task_detail = {
     },
     
     ['藏宝阁阁主、藏经阁少阁主、剑魔、苏若颜、哪吒、牛头马面'] = {
-        rate = 1.7,
+        rate = 1.6,
         award = function(killer, target)
             local p = killer.owner
             if not p.flag_dlgzz then 
@@ -624,7 +624,7 @@ local task_detail = {
     },
     
     ['身陷火海的小老鼠'] = {
-        rate = 10,
+        rate = 18,
         award = '拯救仓鼠',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)

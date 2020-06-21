@@ -14,10 +14,15 @@ local function active_yccj(p,name,sendmsg,sendmsg2)
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
                 local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
                 p:sendMsg(msg,5)
             else 
                 skl:upgrade(1)  
-                local msg = sendmsg2 or ('|cffffe799【系统消息】|cffff0000【可存档成就】'..name..'+1|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】 |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】 |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】 |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                
                 p:sendMsg(msg,5)
             end    
         else
@@ -45,7 +50,7 @@ tip = [[
 
 |cffcccccc杀死血魔获得，获得概率与通关难度/地图等级相关]],
 
-['全属性'] = {10000,1000000},
+['全属性'] = {100000,1000000},
 ['分裂伤害'] = {5,50},
 ['杀敌数加成'] = {5,50},
 
@@ -466,6 +471,8 @@ local task_detail = {
         --存档升级
         sendMsg1 = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
         end,
     },

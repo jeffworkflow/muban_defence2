@@ -173,7 +173,9 @@ local function insert_book(hero,name,self)
                 end)
             else 
                 skl:upgrade(1)  
-                p:sendMsg('|cffff0000【可存档成就】'..name..'+1 ',6)  
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
             end   
         end   
     else
