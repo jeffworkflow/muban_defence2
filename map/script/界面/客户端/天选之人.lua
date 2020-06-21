@@ -95,7 +95,7 @@ local new_ui = class.panel:builder
     end,
     show1 = function(self)
         self:show()
-        self.bt:add_frame(38,-42,1.24,{1,1.38,1},true)
+        self.bt:add_frame(38,-42,1.24,{1,1.38,1})
     end
 }
 
@@ -120,15 +120,17 @@ local event = {
     cs = function (val)
         local player = ui.player 
         local p = ui.player 
-        print('点击同步后,准备弹窗1',p)
+        -- print('点击同步后,准备弹窗1',p)
         if not p.current_task then 
             return
         end
         --取消动态边框
         if p:is_self() then 
-            new_ui.bt.model_frame:hide()
+            if new_ui.bt.model_frame then 
+                new_ui.bt.model_frame:hide()
+            end
         end
-        print('点击同步后,准备弹窗2',p)
+        -- print('点击同步后,准备弹窗2',p)
         local list = {
             { name = "是" },
             { name = "否" },
@@ -326,7 +328,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
     -- time = 20
     local rate = 80
     print('触发圣龙精魄：',p)
-    -- p.hero:loop(time*1000,function()
+    p.hero:loop(time*1000,function()
         --概率触发事件
         if math.random(100000)/1000 <= rate then 
 
@@ -379,7 +381,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             end
 
         end
-    -- end)
+    end)
 
 end)
 

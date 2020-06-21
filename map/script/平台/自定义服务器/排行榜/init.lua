@@ -97,6 +97,43 @@ function player.__index:sp_get_rank2(key,f)
         end    
     end)
 end
+
+--读取排名数据
+function player.__index:sp_get_rank3(key,f)
+    if not ac.flag_map or ac.flag_map  < 1 then 
+        return 
+    end
+    if not self:is_self() then 
+        return 
+    end
+    local player_name = self:get_name()
+    local map_name = ac.server_config.map_name
+    local url = ac.server_config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_get_rank3',
+        para1 = map_name,
+        para2 = key,
+    })
+    -- print(url,post)
+    local f = f or function (retval)  end
+    post_message(url,post,function (retval) 
+        local is_json = json.is_json(retval)
+        if is_json then 
+            local tbl = json.decode(retval)
+            if tbl.code == 0 then 
+                if  tbl.data[1] then 
+                    f(tbl.data[1])
+                end    
+            else
+                print(key,'获取排名失败')
+                print_r(tbl)
+            end  
+        else
+            print('服务器请求失败',post,retval)
+        end    
+    end)
+end
 --读取s0排行榜奖励
 local ui = require 'ui.client.util'
 function player.__index:sp_get_rank_season1(f)

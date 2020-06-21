@@ -359,11 +359,11 @@ local rank = {
 }
 --处理,显示排行榜数据
 --取前10名数据
-ac.wait(60*1000,function() 
+ac.wait(40*1000,function() 
     for i,content in ipairs(rank) do
         local p = ac.player(1);
         ac.wait(200*i,function()
-            p:sp_get_rank2(content[1],function(data)
+            p:sp_get_rank3(content[1],function(data)
                 -- print_r(data)
                 ac.wait(10,function()
                     if not panel.rank then 
@@ -374,6 +374,7 @@ ac.wait(60*1000,function()
                     end
                     for i = 1, #data do
                         data[i].player_name =  ZZBase64.encode(data[i].player_name)
+                        data[i].rank = i
                         table.insert(panel.rank[content[2]],data[i])
                     end  
 

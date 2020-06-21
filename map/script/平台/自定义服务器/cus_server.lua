@@ -118,7 +118,7 @@ local function sync_t(temp_tab)
             ui.send_message(info)
         end)
     end
-    ac.loop(700,function(t)
+    ac.timer(700,500,function(t)
         -- print_r(ac.player.self.sync_t)
         --取同步列表中，未同步成功的数据
         local sync_tab
@@ -607,7 +607,7 @@ end
 ac.player(1):sp_get_map_flag()
 
 --每3秒读服务器数据
-ac.loop(5*1000,function(t)
+ac.timer(5*1000,60,function(t)
     local ok =true
     for i=1,6 do 
         local p = ac.player(i)
