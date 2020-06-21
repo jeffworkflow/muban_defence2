@@ -164,12 +164,12 @@ local event = {
 }
 ui.register_event('rank_season',event)
 
-for i=1,10 do 
-    local p = ac.player(i)
-    if p:is_player() then 
-        p:sp_get_rank_season1()  
-    end    
-end    
+-- for i=1,10 do 
+--     local p = ac.player(i)
+--     if p:is_player() then 
+--         p:sp_get_rank_season1()  
+--     end    
+-- end    
 
 require("平台.自定义服务器.排行榜.排行榜")
 require("平台.自定义服务器.排行榜.无尽榜")

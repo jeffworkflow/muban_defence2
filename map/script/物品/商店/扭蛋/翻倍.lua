@@ -159,16 +159,21 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
     local fb_it = self.owner:has_item(self.coin..'翻倍卡') 
     local zd_it = self.owner:has_item('炸弹卡') 
     local bzd_it = self.owner:has_item('大炸弹卡') 
+    local base_mul = mul
     --炸弹卡 影响倍数
     if zd_it then 
-        mul = mul * 3
+        mul = base_mul * 3
         zd_it:add_item_count(-1)
     end    
     --大炸弹卡 影响倍数
     if bzd_it then 
-        mul = mul * 7
+        mul = base_mul * 7
+        if zd_it then 
+            mul = base_mul * 11
+        end
         bzd_it:add_item_count(-1)
     end   
+    print('翻倍：',mul)
     --翻倍卡 影响概率
     if fb_it then 
         rate =100 

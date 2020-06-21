@@ -162,4 +162,9 @@ ac.game:event '玩家-离开' (function(trg, tp)
 	if unit_fs then
 		unit_fs:remove()
 	end
+	--移除炮台
+	if tp.paotai then 
+		tp.paotai:remove()
+		tp.paotai = nil
+	end
 end)

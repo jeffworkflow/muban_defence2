@@ -40,7 +40,7 @@ function player.__index:create_pets(name)
     u:add('魔法恢复',1)
     -- u:set_animation_speed(1000)
     --添加切换背包
-    u:add_skill('切换背包','英雄',5)
+    -- u:add_skill('切换背包','英雄',5)
     u:add_restriction '无敌'
     u:add_restriction '缴械'
     u:add_skill('拾取','拾取',1)

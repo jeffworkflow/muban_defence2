@@ -564,8 +564,8 @@ for i=1,10 do
         p:sp_save_player()
 
         --保存地图等级
-        local map_level = math.max(japi.DzAPI_Map_GetMapLevel(p.handle),1)
-        p:SetServerValue('level',map_level)
+        -- local map_level = math.max(japi.DzAPI_Map_GetMapLevel(p.handle),1)
+        -- p:SetServerValue('level',map_level)
         
     end
 end       

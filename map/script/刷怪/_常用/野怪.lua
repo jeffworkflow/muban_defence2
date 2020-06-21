@@ -66,7 +66,7 @@ function creeps.start()
                 local count = max_cnt - (#creep_groop or 0)
                 for i = 1, count do
                     local point = max_cnt == 1 and rct:get_point() or rct:get_random_point()
-                    local u = ac.player(player_id or 13):create_unit(name, point, 270)
+                    local u = ac.player(player_id or 12):create_unit(name, point, 270)
                     -- print(name,u)
                     --不主动进攻
                     -- u:add_ability 'A00V'

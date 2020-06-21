@@ -550,7 +550,8 @@ local function check_air(p)
         p.flag_air = true
         p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
         --激活隐藏成就、魔剑
-        p.hero:add_item('魔剑卡片')
+        local it = p.hero:add_item('魔剑卡片')
+        it.owner_ship = p
         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00功夫不负有心人，|cff00ffff '..p:get_name()..' |cff00ff00集齐了七份万分之一空气，获得了|cffff0000召唤魔剑|cff00ff00的权利！',5)
     else
         p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)

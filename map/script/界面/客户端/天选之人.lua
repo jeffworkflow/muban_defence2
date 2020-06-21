@@ -2,10 +2,10 @@ local ui = require 'ui.client.util'
 local new_ui = class.panel:builder
 {
     x = 1800,--假的
-    y = 378,--假的
+    y = 408,--假的
     w = 120,
     h = 120,
-    is_show = false,
+    is_show = true,
     name = '天选之人', 
 
     normal_image = '',
@@ -14,12 +14,12 @@ local new_ui = class.panel:builder
         w = 84,
         h = 84,
         type = 'button',
-        normal_image = 'image\\控制台\\jingong.tga',
+        normal_image = 'ahtxz.blp',
 
         remain_time = {
             type = 'text',
-            y = 54,
-            font_size = 15,
+            y = 64,
+            font_size = 12,
             align = 'center',
             color = 0xffff0000,
             text = '10:00'
@@ -321,9 +321,9 @@ local award_list = {
 ac.game:event '任务-圣龙气运'(function(self,p)
     local time = 2*60
     -- time = 20
-    local rate = 80
+    local rate = 10
     print('触发圣龙精魄：',p)
-    -- p.hero:loop(time*1000,function()
+    p.hero:loop(time*1000,function()
         --概率触发事件
         if math.random(100000)/1000 <= rate then 
 
@@ -376,7 +376,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             end
 
         end
-    -- end)
+    end)
 
 end)
 

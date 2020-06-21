@@ -61,6 +61,7 @@ function mt:on_add()
     local p = hero.owner 
     -- print('是否拥有爱国者导弹：',p.server['爱国者导弹'])
     if p.server['爱国者导弹'] < 1 then 
-        hero:add_item('爱国者导弹1')
+        local it = hero:add_item('爱国者导弹1')
+        it.owner_ship = p
     end
 end

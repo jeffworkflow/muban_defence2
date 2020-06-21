@@ -251,7 +251,11 @@ need_map_level = 8,
 
 function mt:on_add()
     local hero = self.owner
-    hero:add_item('爱国者导弹1')
+    local p = hero.owner
+    local it = hero:add_item('爱国者导弹1')
+    -- print(it,p,hero)
+    it.owner_ship = p
+    -- print(it,p,hero,it.owner_ship)
 end
 
 
@@ -336,6 +340,7 @@ function mt:on_cast_start()
     if hero:find_skill('炮台多重射',nil) then 
         u:add_skill('炮台多重射1','英雄')
     end
+    p.paotai = u
 end
 
 
@@ -356,8 +361,11 @@ need_map_level = 3,
 }
 function mt:on_cast_start()
     local u = self.owner
-    ac.item.create_item('爱国者导弹1',u:get_point())  
+    local p = u.owner
+    local it = ac.item.create_item('爱国者导弹1',u:get_point())  
+    it.owner_ship = p
     u:remove()
+    p.paotai = nil
 end
 
 

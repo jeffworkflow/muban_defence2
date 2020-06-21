@@ -36,14 +36,4 @@ v2 = {5,20},
 }
 mt.aura = {'专注','战鼓'}
 mt.on_upgrade = ac.skill['风暴狮角'].on_upgrade
-function mt:on_remove()
-    local hero = self.owner
-    if self.timer then 
-        self.timer:remove()
-        self.timer = nil
-    end 
-    if self.eff then 
-        self.eff:remove()
-        self.eff = nil
-    end 
-end
+mt.on_remove = ac.skill['风暴狮角'].on_remove
