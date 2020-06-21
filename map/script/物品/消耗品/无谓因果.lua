@@ -162,6 +162,8 @@ function mt:on_cast_start()
                 if player.ruti_cnt  == 8 then 
                     ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','不惧轮回')
                     ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
                 end   
                 
 

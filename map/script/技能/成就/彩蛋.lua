@@ -620,6 +620,8 @@ local task_detail = {
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的|cffff0000 "第六根柱子" |r 已被击毙，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的|cffff0000 "第六根柱子" |r 已被击毙，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 的|cffff0000 "第六根柱子" |r 已被击毙，奖励 |cffff0000+1500W全属性 +1W木头 +1练功房数量|r',5)
         end,
     },
     
@@ -628,6 +630,8 @@ local task_detail = {
         award = '拯救仓鼠',
         sendMsg = function(p)
             -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..p:get_name()..'|r |cff00ff00 不断地让身陷火海的小老鼠得到了解脱，惊喜获得彩蛋|cffffff00【拯救仓鼠】 |cff00ff00奖励 |cffff0000+1000W全属性 +50攻击距离 +15每秒加魔丸 攻击10%几率造成（全属性*75+1%敌人的最大生命值）的范围技能伤害|r',5)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..p:get_name()..'|r |cff00ff00 不断地让身陷火海的小老鼠得到了解脱，惊喜获得彩蛋|cffffff00【拯救仓鼠】 |cff00ff00奖励 |cffff0000+1000W全属性 +50攻击距离 +15每秒加魔丸 攻击10%几率造成（全属性*75+1%敌人的最大生命值）的范围技能伤害|r',5)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..p:get_name()..'|r |cff00ff00 不断地让身陷火海的小老鼠得到了解脱，惊喜获得彩蛋|cffffff00【拯救仓鼠】 |cff00ff00奖励 |cffff0000+1000W全属性 +50攻击距离 +15每秒加魔丸 攻击10%几率造成（全属性*75+1%敌人的最大生命值）的范围技能伤害|r',5)
         end,
     },
@@ -746,6 +750,8 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
                     if not skl then 
                         --动态插入彩蛋
                         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','不朽金身')
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff '..player:get_name()..' |r|cff00ff00保家卫国非常出色，竟然没死过，|r 获得惊喜彩蛋|cffffff00 【不朽金身】|r，奖励 |cffff0000全属性+1500W 攻击减甲+75 护甲+2W 每秒加杀敌数+5 英雄复活时间-1S|r',6)
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff '..player:get_name()..' |r|cff00ff00保家卫国非常出色，竟然没死过，|r 获得惊喜彩蛋|cffffff00 【不朽金身】|r，奖励 |cffff0000全属性+1500W 攻击减甲+75 护甲+2W 每秒加杀敌数+5 英雄复活时间-1S|r',6)
                         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff '..player:get_name()..' |r|cff00ff00保家卫国非常出色，竟然没死过，|r 获得惊喜彩蛋|cffffff00 【不朽金身】|r，奖励 |cffff0000全属性+1500W 攻击减甲+75 护甲+2W 每秒加杀敌数+5 英雄复活时间-1S|r',6)
                     end
                 end
