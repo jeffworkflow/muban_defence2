@@ -488,7 +488,7 @@ end,
 |cff00ff00+1000万 全属性
 |cff00ff00+50   攻击距离
 |cff00ffff+15   每秒加魔丸
-|cffff0000攻击10%几率造成|cffffff00（全属性*50+1%敌人的最大生命值）|cffff0000的范围技能伤害
+|cffff0000攻击10% 几率造成|cffffff00（全属性*50+1%敌人的最大生命值）|cffff0000的范围技能伤害
 
 ]],
 	--特效 Abilities\Spells\Human\HolyBolt.mdl
