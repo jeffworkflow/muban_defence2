@@ -127,7 +127,7 @@ for i,name in ipairs({'扭蛋券','扭蛋券(十连抽)','扭蛋券(百连抽)',
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local p = self.owner.owner 
-        p:sendMsg('【系统消息】无法使用，请前往练功房右下角-扭蛋NPC处进行 兑换',5)
+        p:sendMsg('|cffffe799【系统消息】|r|cffff0000无法使用 |cff00ff00请前往练功房左下角- |cff00ffff扭蛋NPC |cff00ff00处进行兑换',5)
     end
 end
 
