@@ -18,8 +18,9 @@ mt{
  ['减少复活时间'] = 1,
 	--介绍
 	tip = [[ 
-|cffffe799每秒加木头+2，
-天选之人的事件触发概率提升50%
+|cffffe799减少复活时间-1S
+
+|cff00ff00当有英雄死亡时，给所有玩家发放150木头
 
 ]],
 	--技能图标
@@ -40,7 +41,7 @@ function mt:on_add()
 			end
 		end
 		--发送文字
-		ac.player.self:sendMsg('【系统消息】玩家 '..killer.owner:get_name()..' 的宠物“死亡羔羊”，分解了尸体，所有玩家获得150木头',5)
+		ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..self.owner.owner:get_name()..' |cff00ff00的宠物【死亡羔羊】，对尸体进行分解，所有玩家获得|cffff0000150木头',5)
 	
 	end)
 end
