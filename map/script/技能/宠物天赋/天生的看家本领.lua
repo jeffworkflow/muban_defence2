@@ -26,7 +26,7 @@ mt{
 	tip = [[ 
 |cffffe799【攻击】+20%
 
-|cff00ff00杀死进攻怪额外获得|cffffff0010木
+|cff00ff00杀死进攻怪额外获得|cffffff0012木
 
 ]],
 	--技能图标
@@ -36,7 +36,7 @@ function mt:on_add()
     local skill = self
     local hero = self.owner
     local p = self.owner.owner
-    p.hero:add('杀死进攻怪加木头',10)
+    p.hero:add('杀死进攻怪加木头',12)
 end
 function mt:on_remove()
     local hero = self.owner

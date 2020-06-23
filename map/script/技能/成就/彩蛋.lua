@@ -744,7 +744,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
                 local player = ac.player(i) 
                 if p:is_player() and 
                   (p.cnt_death or 0) == 0 and 
-                  (p.kill_attack_cnt or 0 )>=180 then 
+                  (p.kill_attack_cnt or 0 )>=150 then 
                     local hero = p.hero 
                     local skl = hero:find_skill('不朽金身',nil,true)
                     if not skl then 
