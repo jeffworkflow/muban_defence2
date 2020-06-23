@@ -39,7 +39,7 @@ v1 = {1,0.5},
 |cffffe799【唯一被动-献祭】|r
 每隔 %v1% 秒能对周围敌人造成 %damage% 点真实伤害
 ]],
-	--特效
+	--特效 
 	effect = [[Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl]],
 	--备注
 	effect4 = [[宠物携带无效
@@ -51,35 +51,55 @@ v1 = {1,0.5},
 当怪物同时只会受到一个献祭的效果]],
 	--业务技能代码
 }
-function mt:on_add()
+function mt:on_upgrade()
     local skill = self
     local hero = self.owner 
-    if not hero:is_hero() then return end
-    self.trg = hero:loop(1000,function ()
-		if not hero:is_alive() then return end 
-        for i, u in ac.selector()
-            : in_range(hero,self.area)
-            : is_enemy(hero)
-			: of_not_building()
-			: ipairs()
-        do 
-            u:add_buff('火焰')
-			{
-				source = hero,
-				skill = skill,
-				time =  self.v1,
-				pulse = self.v1,
-				is_damage_on_add = false,
-                damage = self.damage,
-			}
-        end
-    end)
+	if not hero:is_hero() then return end
+	if self.buf then 
+		self.buf:remove()
+	end
+	self.buf = hero:add_buff '火焰2' {
+		source = hero,
+		skill = skill,
+		pulse = self.v1,
+		is_damage_on_add = false,
+		damage = self.damage,
+	}
+	-- if not self.eff then 
+	-- 	self.eff = hero:add_effect('chest',self.effect)
+	-- 	print('添加了英雄身上特效')
+	-- end
+
+	-- if self.trg then 
+	-- 	self.trg:remove()
+	-- end
+    -- self.trg = hero:loop(self.v1*1000,function ()
+	-- 	if not hero:is_alive() then return end 
+    --     for i, u in ac.selector()
+    --         : in_range(hero,self.area)
+    --         : is_enemy(hero)
+	-- 		: of_not_building()
+	-- 		: ipairs()
+	-- 	do 
+	-- 		--
+	-- 		print('给单位增加了火焰',u)
+    --         u:add_buff('火焰')
+	-- 		{
+	-- 			source = hero,
+	-- 			skill = skill,
+	-- 			time =  self.v1,
+	-- 			pulse = self.v1,
+	-- 			is_damage_on_add = false,
+    --             damage = self.damage,
+	-- 		}
+    --     end
+    -- end)
 end
 function mt:on_remove()
     local hero = self.owner
     local p = hero:get_owner()
-    if self.trg then
-        self.trg:remove()
-        self.trg = nil
+    if self.buf then
+        self.buf:remove()
+        self.buf = nil
     end
 end

@@ -11,6 +11,7 @@ function mt:on_add()
     --Abilities\Spells\NightElf\Immolation\ImmolationDamage.mdl
 
     --Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx
+    --Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl
     self.target:add_effect('overhead', [[Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx]]):remove()
     if self.is_damage_on_add then  
         self.target:damage

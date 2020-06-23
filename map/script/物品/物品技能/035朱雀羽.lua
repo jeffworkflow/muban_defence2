@@ -42,6 +42,7 @@ v3 = {20,300},
  ]],
 	--特效
 	effect = [[Abilities\Spells\Other\BreathOfFire\BreathOfFireMissile.mdl]],
+	-- effect = [[Abilities\Spells\Undead\FrostNova\FrostNovaTarget.mdl]],
 	--备注
 	effect4 = [[参考 火焰呼吸；]],
 	--业务技能代码
@@ -63,7 +64,25 @@ function mt:damage_start(damage)
 	
 	--创建特效
 	local angle = hero:get_point() / target:get_point()
-	ac.effect(hero:get_point(),skill.effect,angle,1,'origin'):remove()
+	-- ac.effect_ex{
+	-- 	point = hero:get_point(),
+	-- 	model = skill.effect,
+	-- 	angle = angle,
+	-- 	time = 2,
+	-- 	size = 2
+	-- }:remove()
+	local mvr = ac.mover.line
+	{
+		source = hero,
+		skill = skill,
+		model =  skill.effect,
+		speed = 800,
+		angle = angle,
+		distance = 800,
+		start = hero:get_point() - {angle,200},
+		high = 120,
+		size = 2,
+	}
 	--计算伤害
 	for _,unit in ac.selector()
 	: in_sector(hero:get_point(),self.damage_area,angle,120 )

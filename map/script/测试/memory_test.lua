@@ -93,6 +93,17 @@ ac.loop(30 * 1000, function()
 		item_removed_count = item_removed_count + 1
 	end
 	print((('物品 正常[%d],等待释放[%d]'):format(item_normal_count, item_removed_count)))
+	local effect_normal_count = 0
+	for _, it in pairs(ac.effects.effect_map) do
+		effect_normal_count = effect_normal_count + 1
+	end
+	local effect_removed_count = 0
+	for eff in pairs(ac.effects.removed_effects) do
+		if not eff.item_show then 
+			effect_removed_count = effect_removed_count + 1
+		end
+	end
+	print((('特效 正常[%d],等待释放[%d]'):format(effect_normal_count, effect_removed_count)))
 	print(('-----------------------------------------------------------'))
 end)
 
@@ -184,6 +195,12 @@ ac.game:event '游戏-结束' (function()
 			local x,y =self:get_point():get()
 			print((('++++物品[%s][%s][x:%s y:%s]'):format(self.name, self.type_id,x,y)))
 			print(('所有者:' .. (self.owner and self.owner:get_name() or '无')))
+		end
+		
+		print( '==========================')
+		print( '统计已经被移除但是依然被引用的特效')
+		for eff in pairs(ac.effects.removed_effects) do
+			print(('++++特效[%s]'):format(eff.model))
 		end
 	end
 

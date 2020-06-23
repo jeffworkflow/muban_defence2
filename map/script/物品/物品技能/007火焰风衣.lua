@@ -54,35 +54,6 @@ v1 = {1,0.5},
 当怪物同时只会受到一个献祭的效果]],
 	--业务技能代码
 }
-function mt:on_add()
-    local skill = self
-    local hero = self.owner 
-    if not hero:is_hero() then return end
-    self.trg = hero:loop(1000,function ()
-		if not hero:is_alive() then return end 
-        for i, u in ac.selector()
-            : in_range(hero,self.area)
-            : is_enemy(hero)
-			: of_not_building()
-			: ipairs()
-        do 
-            u:add_buff('火焰')
-			{
-				source = hero,
-				skill = skill,
-				time =  self.v1,
-				pulse = self.v1,
-				is_damage_on_add = false,
-                damage = self.damage,
-			}
-        end
-    end)
-end
-function mt:on_remove()
-    local hero = self.owner
-    local p = hero:get_owner()
-    if self.trg then
-        self.trg:remove()
-        self.trg = nil
-    end
-end
+
+mt.on_upgrade = ac.skill['火焰宝珠'].on_upgrade
+mt.on_remove = ac.skill['火焰宝珠'].on_remove

@@ -18,8 +18,6 @@ item_type = '消耗品',
 no_use = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---冷却
-cool = 1,
 --物品数量
 _count = 1,
 specail_model = [[WP4.mdx]],
@@ -45,8 +43,6 @@ item_type = '消耗品',
 no_use = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---冷却
-cool = 1,
 --物品数量
 _count = 1,
 --物品详细介绍的title
@@ -70,8 +66,6 @@ item_type = '消耗品',
 no_use = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---冷却
-cool = 1,
 --物品数量
 _count = 1,
 --物品详细介绍的title
@@ -100,8 +94,6 @@ model_size = 1.3,
 no_use = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---冷却
-cool = 1,
 --物品数量
 _count = 1,
 --物品详细介绍的title
@@ -125,14 +117,19 @@ item_type = '消耗品',
 no_use = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---冷却
-cool = 1,
+--
 --物品数量
 _count = 1,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
-
+for i,name in ipairs({'扭蛋券','扭蛋券(十连抽)','扭蛋券(百连抽)','超级扭蛋券','超级扭蛋券(十连抽)','超级扭蛋券(百连抽)'}) do 
+    local mt = ac.skill[name]
+    function mt:on_cast_start()
+        local p = self.owner.owner 
+        p:sendMsg('【系统消息】无法使用，请前往练功房右下角-扭蛋NPC处进行 兑换',5)
+    end
+end
 
 local function insert_book(hero,name,self)
     local p = hero.owner

@@ -6,7 +6,9 @@ setmetatable(mt,mt)
 mt.__index = effect_class
 
 effect_ex = mt
-
+ac.effects = {}
+ac.effects.effect_map = {}
+ac.effects.removed_effects = setmetatable({}, { __mode = 'kv' })
 
 function mt:get_name()
     return '特效' .. tostring(self.handle)
@@ -116,6 +118,48 @@ function mt:kill(time)
     self:remove()
 end
 
+--移除
+function mt:remove()
+	if self.removed then
+		return
+	end
+
+	ac.effects.effect_map[self.handle] = nil
+    ac.effects.removed_effects[self] = self
+
+	--判断绑在单位身上的特效
+	if self.UnitEffectData then
+		if self.UnitEffectData[self.socket..self.model].num > 1 then
+			self.UnitEffectData[self.socket..self.model].num = self.UnitEffectData[self.socket..self.model].num - 1
+		else
+			self.UnitEffectData[self.socket..self.model] = nil
+			jass.DestroyEffect(self.handle)
+			dbg.handle_unref(self.handle)
+			self.handle = nil
+		end
+	else
+		jass.DestroyEffect(self.handle)
+		dbg.handle_unref(self.handle)
+		self.handle = nil
+	end
+
+    
+	self.removed = true
+
+	--从单位身上删除记录
+	if self.unit then
+		for i, v in ipairs(self.unit._effect_list) do
+			if v == self then
+				table.remove(self.unit._effect_list, i)
+				break
+			end
+		end
+	end
+	if self.follow_timer then
+		self.follow_timer:remove()
+		self.follow_timer = nil
+	end
+end
 -----------替代单位的方法------------------
 
 --移动单位到指定位置(检查碰撞)
@@ -208,7 +252,8 @@ local function point_effect_simple(self, point)
 
     setmetatable(self, {__index = effect_ex})
     self.start_point = self.point
-
+    --记录到总表
+    ac.effects.effect_map[self.handle] = self
     self:model_init()
 	return self
 end
@@ -237,7 +282,13 @@ ac.effect_ex = function(data)
             end
         end)
     else
-        print('[warining]创建了一个永久存在的特效',data.model)
+        -- print('[warining]创建了一个永久存在的特效',data.model,data.time)
+        -- 需要想想，加入到 memtest
+        -- ac.wait(5*1000,function()
+        --     if effect:is_alive() and not effect.item_show then 
+        --         print('[warining]创建了一个永久存在的特效',data.model,effect:is_alive())
+        --     end
+        -- end)
     end
     if data.follow then
         effect.follow_timer = ac.loop(33, function()

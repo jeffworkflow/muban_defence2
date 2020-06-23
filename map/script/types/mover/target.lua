@@ -67,9 +67,9 @@
 				
 				--modify by jeff 20200621 如果距离超过2100码，且没有预设加速度，统一设置加速度300
 				if self.distance > 2100 and (not self.accel or self.accel <= 1000) then 
-					self.accel = 1000
-					-- self.speed = 5000
-					-- print('预设加速度')
+					-- self.accel = 1000
+					self.speed = self.speed + 1000
+					-- print('设加速度')
 				end
 			end,
 

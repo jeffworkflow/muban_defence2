@@ -38,16 +38,17 @@ ac.warning_effect_circle = function(data)
 		model = circle_model,
 		size = size,
 		speed = 1/time,
+		time = data.time,
 		item_show = true, --关闭特效时，预警圈也不关闭
 	}
 
-	if time then
-		ac.timer(time*1000,1,function()
-			if effect then
-				effect:remove()
-			end
-		end)
-	end
+	-- if time then
+	-- 	ac.timer(time*1000,1,function()
+	-- 		if effect then
+	-- 			effect:remove()
+	-- 		end
+	-- 	end)
+	-- end
 
 	return effect
 end
@@ -68,16 +69,17 @@ ac.warning_effect_ring = function(data)
 		model = ring_model,
 		size = size,
 		speed = 1/time,
+		time = data.time,
 		item_show = true, --关闭特效时，预警圈也不关闭
 	}
 
-	if time then
-		ac.timer(time*1000,1,function()
-			if effect then
-				effect:remove()
-			end
-		end)
-	end
+	-- if time then
+	-- 	ac.timer(time*1000,1,function()
+	-- 		if effect then
+	-- 			effect:remove()
+	-- 		end
+	-- 	end)
+	-- end
 
 	return effect
 end

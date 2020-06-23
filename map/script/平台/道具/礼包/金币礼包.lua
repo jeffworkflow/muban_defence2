@@ -15,14 +15,18 @@ tip = [[
 |cffFFE799【礼包奖励】|r|cff00ff00每秒加1000金币，杀怪+1000金币，攻击+1000金币
 |cff00ffff开局赠送一本功法书，发放英雄背包|r
  ]],
---物品类型
-item_type = '消耗品',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+['每秒加金币'] = 1000,
+['杀怪加金币'] = 1000,
+['攻击加金币'] = 1000,
 }
 function mt:on_add()
     local hero = self.owner
     hero:add_item('金币礼包 ')
+    local p = hero.owner
+    local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活 |cff00ffff金币礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
+    p:sendMsg(tip,3)
 end
 
 local function get_skl(skill)
@@ -81,12 +85,6 @@ tip = [[
 attr_tip = '',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---每秒金币
-per_gold = 1000,
---杀怪加金币
-kill_gold = 1000,
---攻击加金币
-attack_gold = 1000,
 cnt = 4,
 passive = true
 } 
@@ -98,13 +96,7 @@ function mt:on_cast_start()
     -- 宠物可以帮忙吃
     hero = hero:get_owner().hero
     local name = self.name
-    --添加给英雄
-    hero:add('每秒加金币',self.per_gold)
-    hero:add('杀怪加金币',self.kill_gold)
-    hero:add('攻击加金币',self.attack_gold)
     --选择技能
     get_skl(self)
     
-    local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活 |cff00ffff金币礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
-    p:sendMsg(tip,3)
 end
