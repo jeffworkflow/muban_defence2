@@ -15,7 +15,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-    cool = 200,
+    cool = 180,
     target_type = ac.skill.TARGET_TYPE_POINT,
     target_data = "联盟 玩家单位",
     area = 200,
