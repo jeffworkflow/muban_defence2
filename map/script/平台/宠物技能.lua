@@ -105,7 +105,8 @@ function mt:on_add()
     end
     ac.wait(500,function()
         if value >= 0 then
-            hero:peon_add_xp(value)
+            --每次添加宠物技能时，都需要从重载加经验
+            hero:peon_add_xp(value,true)
             hero:peon_add_lv()
         end    
     end )
@@ -187,13 +188,13 @@ for k,v in sortpairs(peon_skill) do
     end    
 end
 
-ac.game:event'单位-获得技能' (function (_,hero,skill)
-    -- if finds(skill.name,'宠物') then
-    --     ac.wait(500,function ()
-    --         skill:set_art(skill.art)
-    --     end)
-    -- end
-end)
+-- ac.game:event'单位-获得技能' (function (_,hero,skill)
+--     -- if finds(skill.name,'宠物') then
+--     --     ac.wait(500,function ()
+--     --         skill:set_art(skill.art)
+--     --     end)
+--     -- end
+-- end)
 
 
 
@@ -242,8 +243,11 @@ function unit.__index:peon_add_lv()
     end
 end
 --增加经验
-function unit.__index:peon_add_xp(xp)
+function unit.__index:peon_add_xp(xp,reload)
     local player = self:get_owner()
+    if reload then 
+        self.peon_xp = 0 
+    end
     self.peon_xp = (self.peon_xp or 0) + xp 
     --保存经验到服务器存档
     -- player:SetServerValue('cwjn',tonumber(self.peon_xp)) 自定义服务器

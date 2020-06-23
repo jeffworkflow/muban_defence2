@@ -48,8 +48,7 @@ function mt:boss_skill_shot(old_point)
 		model = self.effect,
 		point = target:get_point(),
 		size = 1.8,
-		time = self.time2
-	}
+	}:remove()
 	for _,u in ac.selector()
 		: in_range(target,self.area/2)
 		: is_enemy(hero)

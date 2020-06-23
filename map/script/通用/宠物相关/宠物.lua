@@ -23,11 +23,10 @@ for x =1,3 do
         table.insert(points,new_point)
     end
 end
-function player.__index:create_pets(name)
+function player.__index:create_pets(name,re)
     local name =name or '宠物'
     -- local x,y = ac.map.rects['出生点']:get_point():get()
     -- local u = self:create_unit(name,ac.point(x-500,y))
-
     local u = self:create_unit(name,points[self.id],180)
     u.unit_type = '宠物'
     u:set('移动速度',522)
@@ -35,7 +34,17 @@ function player.__index:create_pets(name)
 
     self.peon = u
     if u.data and u.data.skill_name then 
-        u:add_skill(u.data.skill_name ,'英雄',9)
+        local skl = u:add_skill(u.data.skill_name ,'英雄',9)
+        if skl and not skl.passive then 
+            skl:active_cd()
+        end
+        ac.wait(0,function()
+            if not re then 
+                self:sendMsg('【系统消息】本局宠物是'..name..'，天赋:'..u.data.skill_name..'，2分钟内输入“re”可重置一次',10)
+            else
+                self:sendMsg('【系统消息】本局宠物是'..name..'，天赋:'..u.data.skill_name..'',10)
+            end
+        end)
     end    
     u:add('魔法恢复',1)
     -- u:set_animation_speed(1000)
@@ -64,13 +73,34 @@ function player.__index:create_pets(name)
     -- u:add_skill('魔法书demo','英雄')
 end
 
--- local n = 0
--- local point = ac.rect.j_rect('chongwu')
--- ac.game:event '玩家-聊天' (function(self, player, str)
---     for i =1,5 do
---         n=n+1
---         local name = ac.peon_list[n]
---         local u = player:create_unit(name,point)
---         u.unit_type = '宠物'
---     end
--- end)
+--注册 输入 re 随机得一只宠物 
+local point = ac.rect.j_rect('chongwu')
+ac.game:event '玩家-聊天' (function(self, player, str)
+    if string.lower(str) ~= 're' then
+        return 
+    end
+    --测试
+    --有随机过一次的
+    if player.flag_re  then 
+        return 
+    end 
+
+    --2分钟后
+    if ac.g_game_time >120 then 
+        return 
+    end
+    --没有选英雄就输的
+    if not player.peon then
+        return 
+    end
+    player.flag_re = true
+
+    --移除 
+    if player.peon then 
+        player.peon:remove()
+        player.peon = nil
+    end
+    --重新随机一只
+	player:create_pets(ac.peon_list[math.random(#ac.peon_list)],true)
+    
+end)

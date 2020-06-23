@@ -53,17 +53,20 @@ function mt:damage_start(damage)
 	if not damage:is_common_attack()  then 
 		return 
 	end 
+	print('触发了星落')
 	for i, u in ac.selector()
 		: in_range(hero,self.damage_area)
 		: is_enemy(hero)
 		: ipairs()
 	do
-		u:add_effect('origin',skill.effect):remove()
-		-- ac.effect_ex{
-		-- 	model = skill.effect,
-		-- 	point = u:get_point(),
-		-- }:remove()
-		ac.wait(900,function()
+		if i<=10 then 
+			u:add_effect('origin',skill.effect):remove()
+			-- ac.effect_ex{
+			-- 	model = skill.effect,
+			-- 	point = u:get_point(),
+			-- }:remove()
+		end
+		-- ac.wait(900,function()
 			u:damage
 			{
 				source = hero,
@@ -71,7 +74,7 @@ function mt:damage_start(damage)
 				damage = skill.damage,
 				damage_type = '法术'
 			}
-		end)
+		-- end)
 	end	
 end
 function mt:on_remove()

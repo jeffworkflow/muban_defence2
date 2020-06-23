@@ -28,6 +28,7 @@ end
 function mt:on_cast_start()
     local hero = self.owner
     local it = self.target
+    print('打印拾取技能：',it)
     -- hero:event_notify('单位-拾取物品',hero,it)
     -- 点太快 重复触发两次拾取。
     if it.owner then 

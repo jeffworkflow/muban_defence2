@@ -129,7 +129,11 @@ function mt:on_cast_start()
     local wood = self.wood_cnt
     local has_wood = p.wood
     local item = hero:has_item(self.name)
-    if item.level == item.max_level then
+    if not item then
+        print('没有烧火棍',p,hero)
+        return 
+    end
+    if (item and item.level == item.max_level ) then
         return 
     end    
     if has_wood >= wood and not p.flag_shg  then 
@@ -206,3 +210,41 @@ function mt:on_remove()
     end    
 
 end
+local temp = {
+    ['三眼灵猴'] = '烧火棍',
+    ['焰皇'] = '赤炎甲',
+}
+ac.game:event '单位-死亡'(function(_,unit,killer)
+    local name = unit:get_name()
+    if not finds(name,'三眼灵猴','焰皇') then
+        return
+    end
+    print('三眼灵猴 焰皇 进入事件')
+    local p = killer.owner 
+    p.flag = p.flag or {}
+    if not p.flag[name] then 
+        p.flag[name] = true 
+        local it_name = temp[name]
+        local it = ac.item.create_item(it_name,unit:get_point())
+        it.owner_ship = p 
+    end
+    local ok = true
+    --移除 event 事件 只要有一个人没打，就不移除。全部打完才移除事件
+    for i=1,6 do 
+        local p =ac.player(i)
+        if p:is_player() then 
+            if p.flag then 
+                if not p.flag['三眼灵猴']  or not p.flag['焰皇'] then
+                    ok = false 
+                end
+            else 
+                ok = false
+            end
+        end
+    end
+    if ok then
+        print('三眼灵猴 焰皇 移除事件')
+        _:remove()
+    end
+end)
+

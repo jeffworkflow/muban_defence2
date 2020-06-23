@@ -71,12 +71,12 @@ function mt:on_cast_start()
     -- if self:is_cooling() then 
     --     return 
     -- end    
-    self.eft = ac.warning_effect_ring
-    {
-        point = self.target,
-        area = self.area,
-        time = self.cast_channel_time,
-    }
+    -- self.eft = ac.warning_effect_ring
+    -- {
+    --     point = self.target,
+    --     area = self.area,
+    --     time = self.cast_channel_time,
+    -- }
 end
 
 function mt:on_cast_shot()

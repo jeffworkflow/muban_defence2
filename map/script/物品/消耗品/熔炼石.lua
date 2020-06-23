@@ -76,7 +76,7 @@ for ix =1 ,5 do
         
         local skl = player.hero:find_skill(self.name,nil,true)
         if skl and skl.level >=1 then 
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在套装系统中查看',2)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.name..'已被激活，可以在套装系统中查看',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    
