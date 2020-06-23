@@ -232,12 +232,6 @@ function mt:on_attribute_defence()
 	end
 end
 
-local function on_damage_a(self)
-	self.current_damage = self.current_damage
-		* (self.source and self.source:getDamageRate() / 100 or 1)
-		* (self.target:getDamagedRate() / 100)
-end
-
 local function show_block(u,str)
 	local str = str or '格挡!'
 	local x, y,z = u:get_point():get()
@@ -255,12 +249,6 @@ local function show_block(u,str)
 	}
 end
 
--- 计算暴击伤害
-local function on_crit(self)
-	if self:is_physicals_crit() then
-		self:mul(self['暴击伤害'] / 100 - 1)
-	end
-end
 
 local function on_block(self)
 	local hero = self.target
@@ -279,30 +267,6 @@ end
 --护甲减免伤害
 mt.DEF_SUB = tonumber(slk.misc.Misc.DefenseArmor)
 mt.DEF_ADD = tonumber(slk.misc.Misc.DefenseArmor)
-
-local function on_defence(self)
-	local target = self.target
-	local pene, pene_rate = self['破甲'], self['穿透']
-	local def = self['护甲']
-	if def > 0 then
-		if pene_rate < 100 then
-			def = def * (1 - pene_rate / 100)
-		else
-			def = 0
-		end
-	end
-	if pene then
-		def = def - pene
-	end
-	if def < 0 then
-		--每点负护甲相当于受到的伤害加深
-		local def = - def
-		self.current_damage = self.current_damage * (1 + self.DEF_ADD * def)
-	elseif def > 0 then
-		--每点护甲相当于生命值增加 X%
-		self.current_damage = self.current_damage / (1 + self.DEF_SUB * def)
-	end
-end
 
 local function on_life_steal(self)
 	--是攻击就吸血 普攻吸血
@@ -357,22 +321,6 @@ local function on_splash(self)
 	--在地上创建特效
 	target:get_point():add_effect([[ModelDEKAN\Weapon\Dekan_Weapon_Sputtering.mdl]]):remove()
 end
-
---攻击分裂伤害(直接加深AOE伤害)
-local function on_splash_aoe(self)
-	if not self:is_attack() or not self:is_aoe() then
-		return
-	end
-	local source, target = self.source, self.target
-	local splash = self['分裂伤害']
-	if splash == 0 then
-		return
-	end
-	self:mul(splash / 1000)
-	target:get_point():add_effect([[ModelDEKAN\Weapon\Dekan_Weapon_Sputtering.mdl]]):remove()
-end
-
-
 
 --伤害音效
 local function on_sound(self)
@@ -1092,9 +1040,9 @@ function damage:__call()
 		self.current_damage = (self.current_damage ) * (1 + ewsh/100)
 
 		--加成
-		if not on_damage_mul_div(self) then 
-			return 
-		end	
+		-- if not on_damage_mul_div(self) then 
+		-- 	return 
+		-- end	
 	end
 
 	self.success = true

@@ -236,6 +236,8 @@ ac.effect_ex = function(data)
                 effect:remove()
             end
         end)
+    else
+        print('[warining]创建了一个永久存在的特效',self.model)
     end
     if data.follow then
         effect.follow_timer = ac.loop(33, function()

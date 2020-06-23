@@ -277,6 +277,9 @@ function helper:god()
 		p:addGold(700000)
 		p:add_rec_ex(7000000)
 	end
+	if ac.main_unit then 
+		ac.main_unit:add_buff '无敌'{}
+	end
 end	
 function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
@@ -2006,10 +2009,11 @@ function helper:mall(str)
 	p.mall[name] = 1
 end	
 function helper:test_sm()
-	ac.loop(1*1000,function()
-		for i=1,10 do 
-			local rd = math.random(1,10000000000)
-			ac.player.self:sendMsg('|cffffe799【系统消息】|r 使用|cff00ff00藏宝图|r 什么事情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..rd..' )|r',2)
+	local rd= 0
+	ac.loop(1000,function()
+		for i=1,200 do 
+		rd= rd + 1
+		ac.player.self:sendMsg('|cffffe799【系统消息】|r 使用|cff00ff00藏宝图|r 什么事sdfadfewfewfwefwefwef情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..rd..' )|r',2)
 		end
 	end)
 end	

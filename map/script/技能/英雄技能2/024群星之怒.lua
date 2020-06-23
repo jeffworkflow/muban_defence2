@@ -44,36 +44,7 @@ end,
 	--特效4
 	effect4 = [[参考赤灵的群星陨落]],
 }
-function mt:damage_start(damage)
-    local skill = self
-    local hero = self.owner
-    local p = hero:get_owner()
-    local target = damage.target
-
-	if not damage:is_common_attack()  then 
-		return 
-	end 
-	for i, u in ac.selector()
-		: in_range(hero,self.damage_area)
-		: is_enemy(hero)
-		: ipairs()
-	do
-		u:add_effect('origin',skill.effect):remove()
-		-- ac.effect_ex{
-		-- 	model = skill.effect,
-		-- 	point = u:get_point(),
-		-- }:remove()
-		ac.wait(900,function()
-			u:damage
-			{
-				source = hero,
-				skill = skill,
-				damage = skill.damage,
-				damage_type = '法术'
-			}
-		end)
-	end	
-end
+mt.damage_start = ac.skill['星落'].damage_start
 function mt:on_remove()
     local hero = self.owner
     local p = hero:get_owner()

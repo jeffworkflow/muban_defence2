@@ -423,10 +423,20 @@ function mt:show(is)
 	local handle = self.handle
 	jass.SetItemVisible(handle,true)
 	if is then
-        -- self.recycle = false
+		-- self.recycle = false
+		--已经有物品的话，不删除，设置位置
 		if self._eff then
-			self._eff:remove()
-			self._eff = nil
+			-- self._eff:remove() 
+			-- self._eff = nil
+			self._eff:set_position(self:get_point())
+		else 
+			self._eff = ac.effect_ex{
+				point = self:get_point(),
+				model =self._model,
+				size = self.model_size or 1,
+				item_show = true,
+				angle = 270
+			}
 		end
 		-- -- print(self:get_point())
 		-- self._eff = ac.effect(self:get_point(),self._model,270,1,'origin')
@@ -435,13 +445,6 @@ function mt:show(is)
 		-- if self.model_size and self._eff then 
 		-- 	self._eff.unit:set_size(self.model_size )
 		-- end
-		self._eff = ac.effect_ex{
-		 	point = self:get_point(),
-		 	model =self._model,
-			size = self.model_size or 1,
-			item_show = true,
-			angle = 270
-		}
 	end
 end
 

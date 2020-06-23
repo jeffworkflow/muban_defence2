@@ -321,14 +321,16 @@ local award_list = {
     
 }
 
-
-
 ac.game:event '任务-圣龙气运'(function(self,p)
     local time = 2*60
-    -- time = 20
-    local rate = 80
-    print('触发圣龙精魄：',p)
+    -- time = 10
     p.hero:loop(time*1000,function()
+        -- 天选之人概率
+        p.txzr_cnt = (p.txzr_cnt or 0) + 1
+        local rate = 18 - ((p.txzr_cnt-1)*0.5)
+        rate = rate * (1 + p:get('天选之人概率')/100)
+        print('触发天选之人：',p,rate,p.txzr_cnt,p:get('天选之人概率'))
+
         --概率触发事件
         if math.random(100000)/1000 <= rate then 
 
@@ -353,7 +355,6 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
             --创建对话框 询问是否替换已有的任务
-            print('触发天选之人：',p)
             if p.current_task then 
                 local list = {
                     { name = "是" },

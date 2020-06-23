@@ -58,12 +58,19 @@
 					end
 				end
 				--self.missile and  modify by jeff 20200214
-				if self.angle then
+				if self.angle and self.missile  then
 					self.mover:set_facing(self.angle + self.off_angle)
 				end
 				
 				--向前位移
 				self.next_point = p1 - {self.angle, speed}
+				
+				--modify by jeff 20200621 如果距离超过2100码，且没有预设加速度，统一设置加速度300
+				if self.distance > 2100 and (not self.accel or self.accel <= 1000) then 
+					self.accel = 1000
+					-- self.speed = 5000
+					-- print('预设加速度')
+				end
 			end,
 
 			create = function(self)
@@ -78,11 +85,6 @@
 					end
 				end
 				self.distance = self.start:get_point() * self.target:get_point()
-				--modify by jeff 20200621 如果距离超过2100码，且没有预设加速度，统一设置加速度300
-				if self.distance > 2100 and (not self.accel or self.accel == 0) then 
-					self.accel = 300
-					-- print('预设加速度')
-				end
 				if not self.path and not self.on_block then
 					self.path = true
 				end
