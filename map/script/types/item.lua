@@ -232,7 +232,9 @@ function mt:set_name(name)
 	end	
 
 	local str = suit_name..'|cff'..color..tostring(name)..show_lv..'|r'
-	self.store_name = str
+	if not self.store_name then 
+		self.store_name= str
+	end
 	self.color_name = str
 	japi.EXSetItemDataString(base.string2id(id),4,str)
 end

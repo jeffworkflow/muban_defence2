@@ -95,8 +95,16 @@ ac.game:event '玩家-聊天' (function(self, player, str)
     end
     player.flag_re = true
 
-    --移除 
+    --丢弃物品在地上再移除 
     if player.peon then 
+        for i=1,6 do
+            local it = player.peon:get_slot_item(i)
+            if it then 
+                if it.name ~= '勇士徽章' then 
+                    player.peon:remove_item(it)
+                end	
+            end
+        end
         player.peon:remove()
         player.peon = nil
     end
