@@ -74,7 +74,7 @@ function mt:on_strong(skill)
     local slot_id = skill.slot_id
     --强化技能
     hero:replace_skill(skill.name,'真·'..skill.name)
-    player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 英雄技能栏 查看')
+    player:sendMsg('|cffffe799【系统消息】|r|cffffff00功法强化成功|r 强化后的功法可以在 英雄技能栏 查看')
     
 end
 function mt:on_cast_start()
