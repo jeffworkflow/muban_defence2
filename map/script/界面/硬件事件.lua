@@ -10,8 +10,8 @@ local event = {
     ac.player.self.last_click_time = ac.player.self.last_click_time or 0
     local time = current_time - ac.player.self.last_click_time
     if time < 50 then
-        print('小于50')
-        return false
+        -- print('小于50')
+        return true
     end
     ac.player.self.last_click_time = current_time
 end,
