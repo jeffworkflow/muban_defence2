@@ -11,8 +11,8 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00会心几率+10% 每秒加全属性+8888|r
-|cff00ffff开局赠送5张扭蛋券(十连抽)、2张超级扭蛋券(十连抽)
+|cff00ff00会心几率+10% 每秒加全属性+16888|r
+|cff00ffff开局赠送8张扭蛋券(十连抽)、2张超级扭蛋券(十连抽)
 扭蛋券(十连抽)、超级扭蛋券(十连抽)掉落概率提高一倍
 |cffff0000局内地图等级+1
 
@@ -20,7 +20,7 @@ tip = [[
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 -- ['移动速度'] = 150,
-['每秒加全属性'] = 8888,
+['每秒加全属性'] = 16888,
 ['会心几率'] = 10,
 ['扭蛋券(十连抽)掉落概率'] = 100,
 ['超级扭蛋券(十连抽)掉落概率'] = 100,
@@ -58,7 +58,7 @@ function mt:on_cast_start()
     local p = hero:get_owner()
     local peon = p.peon
     local it = ac.item.create_item('扭蛋券(十连抽)')
-    it:set_item_count(5)
+    it:set_item_count(8)
     peon:add_item(it)
 
     local it = ac.item.create_item('超级扭蛋券(十连抽)')

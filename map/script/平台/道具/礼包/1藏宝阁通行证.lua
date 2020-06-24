@@ -11,8 +11,8 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00移速+125 每秒加木头+18|r
-|cff00ffff开局赠送5张藏宝图
+|cff00ff00移速+175 每秒加木头+18|r
+|cff00ffff开局赠送10张藏宝图
 藏宝图掉落概率提高一倍
 |cffffff00可自动寻宝（点击藏宝图试试）
 |cffff0000局内地图等级+1
@@ -45,7 +45,7 @@ item_type ='消耗品',
 --说明
 tip = [[
 
-|cff00ff00点击获取 |cff00ffff5张藏宝图
+|cff00ff00点击获取 |cff00ffff10张藏宝图
  ]],
 attr_tip = '',
 --目标类型
@@ -59,7 +59,7 @@ function mt:on_cast_start()
     local p = hero:get_owner()
     local peon = p.peon
     local it = ac.item.create_item('藏宝图')
-    it:set_item_count(5)
+    it:set_item_count(10)
     peon:add_item(it)
     -- 藏经阁通行证
 end    

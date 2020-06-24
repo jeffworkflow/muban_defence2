@@ -5,11 +5,11 @@ mt{
 level = 1,
 is_order = 1,
 --图标
-art = [[zyt.blp]],
+art = [[duanwu.blp]],
 --说明
 tip = [[ 
-|cffffe799活动时间：6月25日-7月1日
-仲夏端午，烹鹜角黍。又逢佳节，怎么能少了美味粽子呢？侠士们在日常活动中会获得各种包粽子的材料，将它们制作成粽子，吃了之后可以获得意外的奖励。
+|cffffe799【活动时间】|r|cff00ff006月25日-7月1日
+|cffffe799【活动说明】|r|cff00ff00仲夏端午，烹鹜角黍。|cff00ffff侠士们如果获得了包粽子的材料，记得来此处进行制作，获得|cffffff00 意外的奖励
 ]],
 --物品类型
 item_type = '神符',
@@ -20,7 +20,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|粽香飘四海，共话端午情|r',
+store_name = '|cffdf19d0粽香飘四海，共话端午情|r',
 --物品详细介绍的title
 content_tip = ''
 }
@@ -29,7 +29,7 @@ content_tip = ''
 local new_ui = class.panel:builder
 {
     x = 10,--假的
-    y = 784,--假的
+    y = 465,--假的
     w = 300,
     h = 100,
     is_show = false,
@@ -37,7 +37,7 @@ local new_ui = class.panel:builder
     normal_image = '',
     data = {
         ['粽叶'] = 'zongye.blp',
-        ['糯米'] = 'muomi.blp',
+        ['糯米'] = 'nuomi.blp',
         ['棕馅'] = 'zongxian.blp',
     },
     -- close_button = {
@@ -62,7 +62,7 @@ local new_ui = class.panel:builder
             local h = 64
             local btn = class.panel:builder
             {
-                x = (i-1)*gap + (i-1)*width,--假的
+                y = (i-1)*gap + (i-1)*width,
                 w = width,
                 h = h,
                 parent = self,
@@ -73,7 +73,10 @@ local new_ui = class.panel:builder
                     type = 'button',
                     on_button_mouse_enter = function (self)
                         local title = self.parent.name
-                        local tip = [[【粽叶】+【糯米】+【棕馅】=【美味的粽子】（可在“活动大使”处，进行兑换）端午节活动材料]]
+                        local tip = [[
+|cff00ffff【粽叶】+【糯米】+【棕馅】=|cffdf19d0【美味的粽子】|cff00ff00（可在“活动大使”处，进行兑换）
+
+|cffcccccc端午节活动物品|r]]
                         self:tooltip('|cffffe799'..title..'|r',tip,0,300,94)
                     end,
                 },
@@ -85,18 +88,16 @@ local new_ui = class.panel:builder
                     name = '材料数量',
                     type = 'texture',
                     normal_image = [[image\12.blp]],
-                },
-                cnt = {
-                    x = width*0.54,
-                    y = h*0.65,
-                    w = width*0.4,
-                    h = h*0.3,
-                    name = '材料数量',
-                    type = 'text',
-                    text = 33,
-                    color = 0xffffffff,
-                    font_size = 8,
-                    align = 'center'
+                    
+                    cnt = {
+                        y = 1,
+                        name = '材料数量',
+                        type = 'text',
+                        text = 33,
+                        color = 0xffffffff,
+                        font_size = 8,
+                        align = 'center'
+                    },
                 },
 
             }
@@ -113,7 +114,7 @@ local new_ui = class.panel:builder
             local img = self.data[name]
             self.btns[i]:set_normal_image(img)
             self.btns[i].name = name
-            self.btns[i].cnt:set_text(v)
+            self.btns[i].shadow.cnt:set_text(v)
             self.btns[i]:show()
         end
         -- p.cnt[]
@@ -130,25 +131,25 @@ print('加载了端午节活动')
 --奖品
 local award_list = { 
     ['魔灵精品粽'] =  {
-        { rand = 6, name = '金'},
-        { rand = 6, name = '红'},
-        { rand = 6, name = '地阶'},
-        { rand = 6, name = '天阶'},
-        { rand = 6, name = '天谕*1'},
-        { rand = 6, name = '天谕*5'},
-        { rand = 6, name = '功法连升书*1'},
-        { rand = 6, name = '无谓因果*1'},
-        { rand = 6, name = '龙之血珠*1'},
-        { rand = 6, name = '吞噬丹*1'},
-        { rand = 6, name = '三眼赤痕*1'},
-        { rand = 6, name = '火龙气息*1'},
-        { rand = 6, name = '天魂融血丹*1'},
-        { rand = 6, name = '地魂融血丹*1'},
-        { rand = 6, name = '随机卡片'},
-        { rand = 6, name = '神奇的令牌*1'},
-        { rand = 6, name = '魔灵精品粽'},
+        { rand = 4, name = '金'},
+        { rand = 4, name = '红'},
+        { rand = 4, name = '地阶'},
+        { rand = 4, name = '天阶'},
+        { rand = 4, name = '天谕*1'},
+        { rand = 4, name = '天谕*5'},
+        { rand = 4, name = '功法连升书*1'},
+        { rand = 4, name = '无谓因果*1'},
+        { rand = 4, name = '龙之血珠*1'},
+        { rand = 4, name = '吞噬丹*1'},
+        { rand = 4, name = '三眼赤痕*1'},
+        { rand = 4, name = '火龙气息*1'},
+        { rand = 4, name = '天魂融血丹*1'},
+        { rand = 4, name = '地魂融血丹*1'},
+        { rand = 4, name = '随机卡片'},
+        { rand = 4, name = '神奇的令牌*1'},
+        { rand = 4, name = '魔灵精品粽'},
         
-        { rand = 34, name = '无'},
+        { rand = 32, name = '无'},
     },
 }
 
@@ -164,7 +165,7 @@ local function give_award(hero)
         return true
     end
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00兔子欢快地跳走了',3) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ffff美味的粽子|cff00ff00果真名不虚传阿',3) 
     elseif  finds(rand_name,'天谕','功法连升书','无谓因果','龙之血珠','吞噬丹','三眼赤痕','火龙气息','天魂融血丹','地魂融血丹','神奇的令牌') then
         local it
         --处理掉落物品相关
@@ -173,20 +174,20 @@ local function give_award(hero)
                 it = hero:add_item(k,true)
             end 
         end
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00兔子慌慌张张地跳走了，好像掉落了什么，仔细一看是|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
-        local it = hero:add_item(rand_name)
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00兔子慌慌张张地跳走了，好像掉落了什么，仔细一看是|cffff0000'..(it.color_name or rand_name)..'|r',4)
+        local it = hero:add_item(name)
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(it.color_name or rand_name)..'|r',4)
     elseif  finds('地阶 天阶',rand_name) then   
         local list = ac.quality_skill[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = ac.item.add_skill_item(name,hero)
         local color = it and it.color 
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00兔子慌慌张张地跳走了，好像掉落了什么，仔细一看是|cffff0000获得了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
     elseif finds(rand_name,'随机卡片')  then    
         local list = {
             '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
@@ -195,7 +196,7 @@ local function give_award(hero)
         }
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00兔子慌慌张张地跳走了，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
     elseif  rand_name == '魔灵精品粽' then 
         local key = ac.server.name2key(rand_name)
         if p:Map_GetServerValue(key) < ac.skill[rand_name].max_level  then 
@@ -205,10 +206,10 @@ local function give_award(hero)
             local skl = hero:find_skill(rand_name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开了宝盒，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r，成就属性可在“巅峰神域-精彩活动”中查看',6) 
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 不断食用美味的粽子，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
             else
                 skl:upgrade(1)
-                p:sendMsg('|cffff0000【可存档成就】'..rand_name..'+1',6) 
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 不断食用美味的粽子，使|cffff0000【可存档成就】'..rand_name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
             end   
         else   
             --重新来一次
@@ -224,11 +225,13 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[zyt.blp]],
+art = [[mljpz.blp]],
 is_order = 1,
 --说明
 tip = [[ 
-|cffffe799消耗 【粽叶】+【糯米】+【棕馅】 制作一个 【美味的粽子】，并自动食用，增加【系统提示】XXX食用了美味的粽子，惊喜获得
+|cffffe799【制作说明】|r
+
+|cff00ff00消耗 |cffff0000【粽叶】+【糯米】+【棕馅】 |cff00ff00制作 |cffffff00【美味的粽子】
 ]],
 --物品类型
 item_type = '神符',
@@ -247,7 +250,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero.owner
     p.cnt = p.cnt or {}
-    if p.cnt['粽叶'] >= 1 and p.cnt['糯米']>=1 and p.cnt['棕馅']>=1 then 
+    if p.cnt['粽叶'] and p.cnt['粽叶'] >= 1 and p.cnt['糯米'] and p.cnt['糯米']>=1 and p.cnt['棕馅'] and  p.cnt['棕馅']>=1 then 
         --扣材料
         p.cnt['粽叶'] = p.cnt['粽叶'] - 1
         p.cnt['糯米'] = p.cnt['糯米'] - 1
@@ -260,7 +263,7 @@ function mt:on_cast_start()
         --给奖励
         give_award(hero)
     else
-        p:sendMsg('条件不足兑换')
+        p:sendMsg('|cffffe799【系统消息】|cffff0000制作条件不足',5)
     end    
 
 end
@@ -268,9 +271,9 @@ end
 --获得事件
 local unit_reward = { 
     ['端午怪'] =  {
-        { rand = 20.05,     name = '粽叶'},
-        { rand = 20.05,     name = '糯米'},
-        { rand = 20.05,     name = '棕馅'},
+        { rand = 0.04,     name = '粽叶'},
+        { rand = 0.04,     name = '糯米'},
+        { rand = 0.04,     name = '棕馅'},
     },
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
@@ -291,7 +294,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end
     p.max_fall_cnt[rand_name] = (p.max_fall_cnt[rand_name] or 0) +1
     --获得最多次数
-    local max_fall_cnt = 15   
+    local max_fall_cnt = 12   
     if p.max_fall_cnt[rand_name] <= max_fall_cnt then 
         --当前个数+1
         p.cnt[rand_name] = (p.cnt[rand_name] or 0) +1
