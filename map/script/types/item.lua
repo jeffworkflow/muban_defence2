@@ -1154,6 +1154,10 @@ function unit.__index:get_type_count(it)
 	return false
 end
 
+local item_dummy
+ac.wait(0,function() 
+	item_dummy= ac.item.create_item('物品模板',ac.point(0,0),true)
+end)
 
 --创建物品
 --物品名称
@@ -1192,7 +1196,7 @@ function item.create_item(name,poi,hide,p)
 	local type_id = ac.get_item_handle()
 	if not type_id then 
 		ac.player.self:sendMsg('|cffFFE799【系统消息】|r|cffff0000物品超出上限，请及时清理地上物品!|r',10)
-		return 
+		return item_dummy
 	end	
 	items.type_id = type_id
 	--如果有坐标，则说明创建在地上的

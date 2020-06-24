@@ -1,3 +1,4 @@
+require '通用.hotkey'
 require '通用.初始化'
 require '通用.宠物相关'
 require '通用.物品规则'
@@ -13,3 +14,8 @@ require '通用.特效跳字'
 
 
 require '通用.AI施法'
+
+require '通用.dialog'
+
+
+

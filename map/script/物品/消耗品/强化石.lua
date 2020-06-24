@@ -56,8 +56,7 @@ function mt:on_cast_start()
         if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  and item.level < (item.qh_max_level or 999) then 
             count = count + 1
             local info = {
-                name = "|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r ',
-                item = item
+                tostring(item.handle),'',"|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r '
             }
             table.insert(list,info)
         end
@@ -69,8 +68,7 @@ function mt:on_cast_start()
         if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  and item.level < (item.qh_max_level or 999) then 
             count = count + 1
             local info = {
-                name = "|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r |cffdf19d0(宠)|r',
-                item = item
+                tostring(item.handle),'',"|cff"..ac.color_code['淡黄']..'强化 '..item.color_name  .. '|r |cffdf19d0(宠)|r'
             }
             table.insert(list,info)
         end
@@ -87,82 +85,76 @@ function mt:on_cast_start()
         return 
     end 
     local info = {
-        name = '取消 (Esc)',
-        key = 512
+        '取消',512,"取消 (Esc)",
     }
     table.insert(list,info)
+    table.insert(list,1,'强化装备')
+    local skill = self
+    local dialog = player:dialog(list)
+    function dialog:onClick(handle)
+        local item = ac.item.item_map[tonumber(handle)]
+        if item then 
+            if item.level<10 then 
+                local rt = rate[item.level]+ player:get('强化成功概率')
+                --打造熟练度
+                player:Map_AddServerValue('slddz',1) --网易服务器
+                if math.random(10000)/100 <= rt then 
+                    --改变属性
+                    local lni_data = ac.skill[item.name].v1 and ac.skill[item.name] or ac.table.ItemData[item.name] 
+                    if not lni_data or type(lni_data) == 'function'  then print('没有取到数据') return end 
+                    -- print('打印值：',lni_data,lni_data.name,lni_data['攻击'],ac.table.ItemData['321'] )
+                    -- print_r(lni_data)
+                    for key in sortpairs(ac.unit.attribute) do
+                        if item[key] and lni_data[key]  then 
+                            item[key] = lni_data[key] * (1+strong_attr[item.level]/100)
+                        end 
+                        if item[key..'%'] and lni_data[key..'%']  then 
+                            item[key..'%'] = lni_data[key..'%'] * (1+strong_attr[item.level]/100)
+                        end 
+                    end
+                    item.show_level = true
+                    item.qh_max_level = 10
+                    item.max_level = 15
+                    item:upgrade(1)
+                    item:set_name(item.name)
+                    player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
 
-    if not self.dialog  then 
-        self.dialog = create_dialog(player,'强化装备',list,function (index)
-            self.dialog = nil
-            local item = list[index].item
-            if item then 
-                if item.level<10 then 
-                    local rt = rate[item.level]+ player:get('强化成功概率')
-                    --打造熟练度
-                    player:Map_AddServerValue('slddz',1) --网易服务器
-                    if math.random(10000)/100 <= rt then 
-                        --改变属性
-                        local lni_data = ac.skill[item.name].v1 and ac.skill[item.name] or ac.table.ItemData[item.name] 
-                        if not lni_data or type(lni_data) == 'function'  then print('没有取到数据') return end 
-                        -- print('打印值：',lni_data,lni_data.name,lni_data['攻击'],ac.table.ItemData['321'] )
-                        -- print_r(lni_data)
-                        for key in sortpairs(ac.unit.attribute) do
-                            if item[key] and lni_data[key]  then 
-                                item[key] = lni_data[key] * (1+strong_attr[item.level]/100)
-                            end 
-                            if item[key..'%'] and lni_data[key..'%']  then 
-                                item[key..'%'] = lni_data[key..'%'] * (1+strong_attr[item.level]/100)
-                            end 
-                        end
-                        item.show_level = true
-                        item.qh_max_level = 10
-                        item.max_level = 15
-                        item:upgrade(1)
-                        item:set_name(item.name)
-                        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
-
-                        if item.level == 10 then 
-                            player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
-                        end
-                        -- 物品升级为 '..item.color_name..'
-                        -- |cffffff00+'..item.level -1 ..'|r 
-                    else 
-                        player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
-                    end    
-                    self.owner = unit
-                    ac.game:event_notify('触发锻造事件',self,hero,item) --发布事件回调
-                    if self._count > 0 then  
-                        self:on_cast_start()
-                        self:add_item_count(-1)
-                    end  
+                    if item.level == 10 then 
+                        player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
+                    end
+                    -- 物品升级为 '..item.color_name..'
+                    -- |cffffff00+'..item.level -1 ..'|r 
                 else 
-                    player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)
-                    if self._count > 1 then 
-                        -- print('数量')
-                        self:set_item_count(self._count+1)
-                    else
-                        --重新添加给英雄
-                        unit:add_item(name,true)
-                    end  
+                    player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                 end    
-
-            else
-                -- print('取消更换技能')
-                if self._count > 1 then 
+                skill.owner = unit
+                ac.game:event_notify('触发锻造事件',skill,hero,item) --发布事件回调
+                if skill._count > 0 then  
+                    skill:on_cast_start()
+                    skill:add_item_count(-1)
+                end  
+            else 
+                player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)
+                if skill._count > 1 then 
                     -- print('数量')
-                    self:set_item_count(self._count+1)
+                    skill:set_item_count(skill._count+1)
                 else
                     --重新添加给英雄
                     unit:add_item(name,true)
-                end        
-            end
-            
-        end)
-    else
-        self:add_item_count(1)    
-    end    
+                end  
+            end    
 
+        else
+            -- print('取消更换技能')
+            if skill._count > 1 then 
+                -- print('数量')
+                skill:set_item_count(skill._count+1)
+            else
+                --重新添加给英雄
+                unit:add_item(name,true)
+            end        
+        end 
+    end
 
 end
 

@@ -119,7 +119,7 @@ ac.wait(1100,function()
             end
             --发布事件
             player:event_notify '读取存档数据前' 
-            ac.wait(900,function()
+            ac.wait(100,function()
                 -- print(player,' 2获取满赞：',player.mall and player.mall['满赞'])
                 -- print(player,' 2获取地图等级：',player:Map_GetMapLevel())
                 player:event_notify '读取存档数据'
