@@ -180,11 +180,12 @@ local function create_boss(where)
     end)
 
 end
+--检测 天选之人 全体完成次数，进入 神魔之剑
 local succ_cnt = 0
 local function check_txzr(flag) 
     succ_cnt = succ_cnt + 1
     if not flag then 
-        if succ_cnt ~= 2 then 
+        if succ_cnt ~= 10 then 
             return 
         end
     end
@@ -233,7 +234,7 @@ local award_list = {
         rect = 'cbg1',
         art = 'cqzb.blp',
         need = '藏宝图',
-        need_cnt = 1,
+        need_cnt = 30,
         tip = [[
 |cff00ff00点击前往|cff00ffff 藏宝阁|cff00ff00
 
@@ -259,7 +260,7 @@ local award_list = {
         rect = 'cjg1',
         art = 'cqgf.blp',
         need = '羊皮无字', 
-        need_cnt = 1,
+        need_cnt = 30,
         tip = [[
 |cff00ff00点击传送到|cff00ffff 藏经阁
 
@@ -287,7 +288,7 @@ local award_list = {
         rect = 'jianzhong1',
         art = 'cqst.blp',
         need = '超强石头',
-        need_cnt = 1,
+        need_cnt = 30,
         tip = [[
 |cff00ff00点击前往|cff00ffff 剑冢
 
@@ -313,7 +314,7 @@ local award_list = {
         rect = 'bhg1',
         art = 'cqsh.blp',
         need = '超强伤害',
-        need_cnt = 1,
+        need_cnt = 30,
         tip = [[
 |cff00ff00点击前往|cff00ffff 百花宫|cff00ff00   
 
@@ -396,7 +397,7 @@ local award_list = {
 ac.game:event '任务-圣龙气运'(function(self,p)
     local time = 2*60
     -- time = 10
-    -- p.hero:loop(time*1000,function()
+    p.hero:loop(time*1000,function()
         -- 天选之人概率
         p.txzr_cnt = (p.txzr_cnt or 0) + 1
         local rate = 18 - ((p.txzr_cnt-1)*0.5)
@@ -455,7 +456,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             end
 
         end
-    -- end)
+    end)
 
 end)
 
