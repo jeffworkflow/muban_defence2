@@ -446,7 +446,17 @@ local function save_wb()
                     -- if p.cus_server3['总'..name] >= (p.cus_server['今日'..name] or 0 ) then 
                     --     p:SetServerValue('today_'..key,p.cus_server3['总'..name])  
                     -- end
-                    
+
+                    --凌晨数据弄为0 
+                    local str = os.date("%Y-%m-%d 00:00:00", os.time())
+                    local ox = string2time(str)
+                    if os.time() - ox  < 240 and not p.flag_save_wb then 
+                        -- print(os.time(),ox,os.time() - ox,str,p.flag_save_wb)
+                        p.flag_save_wb = true 
+                        local t_name = ac.server.key2name('today_'..key)
+                        p.cus_server[t_name] = 0
+                        -- print('保存服务器：',t_name,p.cus_server[t_name],p.cus_server3[name])
+                    end
                     --自定义服务器 保存今日累计
                     p:AddServerValue('today_'..key,p.cus_server3[name])  
                     
@@ -459,7 +469,6 @@ local function save_wb()
 end  
 ac.game:event '选择难度' (function() 
     local time =60 * 1
-    save_wb()
     ac.loop(time*1000,function()
         save_wb()
     end)

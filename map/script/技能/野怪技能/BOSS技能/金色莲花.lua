@@ -40,7 +40,8 @@ function mt:on_ai()
 	if not target then 
 		return false
 	end
-	self:set('target',target)
+	local point = target:get_point():copy()
+	self:set('target',point)
 	return true
 end
 

@@ -16,8 +16,9 @@ local event = {
     ac.player.self.last_click_time = current_time
 end,
 }
+if not global_test then 
 game.register_event(event)
-
+end
 -- local time = 1/60
 -- local tx = 0
 -- ac.loop(time*1000,function()
