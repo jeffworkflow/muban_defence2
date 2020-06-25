@@ -546,9 +546,9 @@ function mt:get_tip()
 	end	
 	--如果物品tip和技能tip一致，不添加技能tip
 	--去掉颜色代码
-	local t_str = skill_tip:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
-	local s_str = item_tip:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
-	-- print(t_str,s_str)
+	local t_str = clean_color(skill_tip)
+	local s_str = clean_color(item_tip)
+	-- print('地图等级：',t_str,s_str)
 	-- print(self.color)
 	if self.color then 
 		color_tip = '|cff'..ac.color_code['淡黄'].. '品质：|R|cff'..ac.color_code[self.color]..self.color..'|r\n'
