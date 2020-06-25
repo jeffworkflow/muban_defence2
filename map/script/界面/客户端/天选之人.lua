@@ -190,14 +190,18 @@ local function check_txzr(flag)
     end
     --触发万象天工
     ac.wait(0,function()
-        ac.player.self:sendMsg('【系统消息】万象天宫 已经开始，通过基地左上角的传送阵进入',5)
+        ac.player.self:sendMsg('|cffffe799【团队任务开启！】|r |cffffff00基地左上方|cff00ff00出现了一个古老的魔法阵，传说通过它可以前往|cff00ffff 万象天宫 |cff00ff00，杀死里面的太阳神，所有玩家可获得 |cffff0000可存档神器【绝世神剑】|r',5)
+        ac.player.self:sendMsg('|cffffe799【团队任务开启！】|r |cffffff00基地左上方|cff00ff00出现了一个古老的魔法阵，传说通过它可以前往|cff00ffff 万象天宫 |cff00ff00，杀死里面的太阳神，所有玩家可获得 |cffff0000可存档神器【绝世神剑】|r',5)
+        ac.player.self:sendMsg('|cffffe799【团队任务开启！】|r |cffffff00基地左上方|cff00ff00出现了一个古老的魔法阵，传说通过它可以前往|cff00ffff 万象天宫 |cff00ff00，杀死里面的太阳神，所有玩家可获得 |cffff0000可存档神器【绝世神剑】|r',5)
     end)
     --创建魔法阵
     local rect = ac.rect.j_rect('npc2')
     local target_rect = ac.rect.j_rect('jueshishenjian') 
     ac.effect_ex{
         model = [[dr_chuansongzhan.mdx]],
+        size = 1.5,
         point = rect:get_point()
+
     }
     local reg = ac.region.create(rect)  
     reg:event '区域-进入' (function(trg, hero)
@@ -396,6 +400,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
         -- 天选之人概率
         p.txzr_cnt = (p.txzr_cnt or 0) + 1
         local rate = 18 - ((p.txzr_cnt-1)*0.5)
+        -- local rate = 90 - ((p.txzr_cnt-1)*0.5)
         rate = rate * (1 + p:get('天选之人概率')/100)
         print('触发天选之人：',p,rate,p.txzr_cnt,p:get('天选之人概率'))
 

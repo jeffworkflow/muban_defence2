@@ -317,7 +317,8 @@ chance = 10,
 cool = 1,
 damage_area = 600,
 skill_attack = 10,
-effect = [[MXXXT28 -  F.mdx]]
+
+effect = [[Hero_Slayer_N5S_T_Blast.mdx]]
 }
 
 function mt:damage_start(damage)
@@ -333,6 +334,7 @@ function mt:damage_start(damage)
     -- print('释放: ',self.name,source)
     ac.effect_ex{
         model = skill.effect,
+        size = 0.8,
         point = target:get_point()
     }:remove()
     for i, u in ac.selector()
@@ -356,7 +358,7 @@ mt{
 --等级
 level = 1,
 --图标
-art = [[jueshimojian.blp]],
+art = [[jueshishenjian.blp]],
 --说明
 tip = [[
 
@@ -367,7 +369,8 @@ chance = 10,
 cool = 1,
 damage_area = 600,
 skill_attack = 10,
-effect = [[Hero_Slayer_N5S_T_Blast.mdx]]
+
+effect = [[Dekan_LOL_Garen_Blade.mdx]]
 }
 mt.damage_start = ac.skill['魔剑击'].damage_start
 
@@ -387,6 +390,9 @@ tip = [[
 |cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
 |cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
 |cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
+
+|cffffe799【魔神之剑】（拥有神剑+魔剑后激活）
+|cffdf19d0攻击10% 概率造成范围物理伤害（伤害公式：攻击力*20+1%敌人的最大生命值）
 
 |cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
 
@@ -445,9 +451,9 @@ function mt:on_upgrade()
     else 
         skl.skill_attack = self.skill_attack
     end  
-    --如果拥有魔剑，则添加神魔之剑
+    --如果拥有魔剑，则添加魔神之剑
     if p.server['绝世魔剑']>=1 and p.server['绝世神剑']>=1 then 
-        p.unit_mojian:add_skill('神魔之剑','隐藏')
+        p.unit_mojian:add_skill('魔神之剑','隐藏')
     end
 end
 function mt:on_cast_start()
@@ -467,7 +473,7 @@ level = 1, --要动态插入
 max_level = 10,
 -- cool= 1,
 --图标
-art = [[jueshimojian.blp]],
+art = [[jueshishenjian.blp]],
 --说明
 tip = [[
 
@@ -477,7 +483,10 @@ tip = [[
 |cffffff00神剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
 |cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
-|cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
+|cffffe799【魔神之剑】（拥有神剑+魔剑后激活）
+|cffdf19d0攻击10% 概率造成范围物理伤害（伤害公式：攻击力*20+1%敌人的最大生命值）
+
+|cffcccccc进入万象天宫获得，获得概率与通关难度/地图等级相关]],
 
 need_map_level = 3,
 attack = {100,550},
@@ -535,9 +544,9 @@ function mt:on_upgrade()
         skl.skill_attack = self.skill_attack
     end   
 
-    --如果拥有魔剑，则添加神魔之剑
+    --如果拥有魔剑，则添加魔神之剑
     if p.server['绝世魔剑']>=1 and p.server['绝世神剑']>=1 then 
-        p.unit_shenjian:add_skill('神魔之剑','隐藏')
+        p.unit_shenjian:add_skill('魔神之剑','隐藏')
     end
     
 end
@@ -552,12 +561,12 @@ function mt:on_cast_start()
 end
 
 --魔剑技能
-local mt = ac.skill['神魔之剑'] 
+local mt = ac.skill['魔神之剑'] 
 mt{
 --等级
 level = 1,
 --图标
-art = [[jueshimojian.blp]],
+art = [[jueshishenjian.blp]],
 --说明
 tip = [[
 
@@ -568,7 +577,7 @@ chance = 10,
 cool = 1,
 damage_area = 600,
 skill_attack = 20,
-effect = [[Dekan_LOL_Garen_Blade.mdx]]
+effect = [[MXXXT28 -  F.mdx]]
 }
 
 function mt:damage_start(damage)
@@ -583,9 +592,10 @@ function mt:damage_start(damage)
     end 
     ac.effect_ex{
         model = skill.effect,
+        
         point = target:get_point()
     }:remove()
-    -- print('释放神魔之剑',source)
+    -- print('释放魔神之剑',source)
     for i, u in ac.selector()
 		: in_range(target,self.damage_area)
 		: is_enemy(source)
@@ -745,7 +755,7 @@ end)
 
 ac.game:event '触发超级扭蛋事件'(function(trg,skill,hero)
     local p = hero.owner
-    local rate = 0.15 * (1 + p:get('万分之一空气概率')/100)
+    local rate = 0.1 * (1 + p:get('万分之一空气概率')/100)
     -- print('触发万分之一空气概率，',rate)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
