@@ -115,7 +115,7 @@ mt{
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
-        {    rand = 20.2, name = '谢谢参与',},
+        {    rand = 19.2, name = '谢谢参与',},
 
         {    rand = 4, name = '挖宝熟练度+100' },
         {    rand = 4, name = '看书熟练度+100',},
@@ -151,6 +151,7 @@ local reward = {
         {    rand = 1, name = '血牛',},
         {    rand = 1, name = '一出门就被秒',},
         {    rand = 1, name = '绝世魔剑',},
+        {    rand = 1, name = '绝世神剑',},
 
         {    rand = 1, name = '番天印',},
         {    rand = 1, name = '战舰之舵',},

@@ -311,7 +311,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         hero:add_rec_ex(p.rec_ex*0.5)
         hero:add('全属性',all_attr*0.05)
         flag = '平'
-    elseif p_num-sys_num > 0 or p_num-sys_num == -2 then 
+    elseif p_num-sys_num == 1 or p_num-sys_num == -2 then 
     --赢 杀敌数/木头/魔丸/全属性全部翻倍
         hero:add_kill_count(p.kill_count)
         hero:add_wood(p.wood)

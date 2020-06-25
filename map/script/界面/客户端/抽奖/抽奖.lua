@@ -302,20 +302,23 @@ local event = {
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档装备】'..skl.color_name,10)
         else 
             local key = ac.server.name2key(player.reward_name)
-            player:Map_AddServerValue(key,1)
-            local book_name 
-            if finds(player.reward_name,'我是大魔头','黄金矿工','书呆子','剑瞎子','采蘑菇的小姑娘','扭蛋人生','du徒','强悍之人','血牛','一出门就被秒','绝世魔剑') then 
-                book_name = '隐藏成就'
-            else
-                book_name = '成神'
-            end
-            local skl = hero:find_skill(player.reward_name,nil,true)
-            if not skl then 
-                ac.game:event_notify('技能-插入魔法书',hero,book_name,player.reward_name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
-            else
-                skl:upgrade(1)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
+            if p:Map_GetServerValue(key) < ac.skill[player.reward_name].max_level  then 
+                player:Map_AddServerValue(key,1)
+                local book_name 
+            --'我是大魔头','黄金矿工','书呆子','剑瞎子','采蘑菇的小姑娘','扭蛋人生','du徒','强悍之人','血牛','一出门就被秒','绝世魔剑')
+                if finds(player.reward_name, ac.skill['隐藏成就'].skill_name) then 
+                    book_name = '隐藏成就'
+                else
+                    book_name = '成神'
+                end
+                local skl = hero:find_skill(player.reward_name,nil,true)
+                if not skl then 
+                    ac.game:event_notify('技能-插入魔法书',hero,book_name,player.reward_name)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
+                else
+                    skl:upgrade(1)
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
+                end
             end
         end
     end

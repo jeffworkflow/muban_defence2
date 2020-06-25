@@ -13,3 +13,5 @@ require '技能.野怪技能.BOSS技能.超级分身'
 require '技能.野怪技能.BOSS技能.死亡之指'
 
 require '技能.野怪技能.BOSS技能.净化'
+require '技能.野怪技能.BOSS技能.金色鎏金'
+require '技能.野怪技能.BOSS技能.金色莲花'

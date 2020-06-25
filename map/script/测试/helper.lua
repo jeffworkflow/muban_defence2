@@ -1537,11 +1537,20 @@ function helper:ring(type,range)
 			area = range,
 			time = 5,
 		}
-	else 
+	elseif type ==2 then  
 		ac.warning_effect_circle
 		{
 			point = hero:get_point(),
 			area = range,
+			time = 5,
+		}
+	else
+		ac.warning_effect_rect
+		{
+			point = hero:get_point(),
+			len = 100,
+			wid = 200,
+			angle = 0,
 			time = 5,
 		}
 	end
@@ -2044,6 +2053,11 @@ end
 function helper:ts2()
 	local p = self.owner
 	ac.game:event_notify('任务-圣龙气运',p) 
+end
+--测试 绝世神剑
+function helper:ts3()
+	local p = self.owner
+	ac.check_txzr(true)
 end
 --测试双层字
 function helper:test_sm_ui()

@@ -35,15 +35,26 @@ end
 --字符串是否包含 字符串 字符串 字符串 模糊匹配
 function finds(str,...)
 	local flag = false
-	if not str or type(str) =='table' or  type(str) =='function' then 
+	if not str or type(str) =='function' or not ... then 
+		print('传入的str or ... 不是正确的值',str,...)
 		return flag
 	end	
-	for key , value in sortpairs{...} do
-		local _, q=string.find(str, value)
-		if _ then 
-			flag= true
-			break
-		end	
+	if type(...) == 'table' then 
+		for key , value in sortpairs(...) do
+			local _, q=string.find(str, value)
+			if _ then 
+				flag= true
+				break
+			end	
+		end
+	else
+		for key , value in sortpairs{...} do
+			local _, q=string.find(str, value)
+			if _ then 
+				flag= true
+				break
+			end	
+		end
 	end
 	return flag
 end

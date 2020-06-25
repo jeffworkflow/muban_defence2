@@ -13,17 +13,17 @@ local function active_yccj(p,name,sendmsg,sendmsg2)
             local skl = hero:find_skill(name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
-                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
-                p:sendMsg(msg,5)
+                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                ac.player.self:sendMsg(msg,5)
             else 
                 skl:upgrade(1)  
-                local msg = sendmsg2 or ('|cffffe799【系统消息】 |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg2 or ('|cffffe799【系统消息】 |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg2 or ('|cffffe799【系统消息】 |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
                 
-                p:sendMsg(msg,5)
+                ac.player.self:sendMsg(msg,5)
             end    
         else
             p:sendMsg('',5)
@@ -35,7 +35,7 @@ ac.active_yccj = active_yccj
 local mt = ac.skill['我是大魔头']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '我是大魔头',
 --图标
@@ -65,7 +65,7 @@ tip = [[
 local mt = ac.skill['黄金矿工']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '黄金矿工',
 --图标
@@ -90,7 +90,7 @@ tip = [[
 local mt = ac.skill['书呆子']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '书呆子',
 --图标
@@ -114,7 +114,7 @@ tip = [[
 local mt = ac.skill['剑瞎子']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '剑瞎子',
 --图标
@@ -138,7 +138,7 @@ tip = [[
 local mt = ac.skill['采蘑菇的小姑娘']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '采蘑菇的小姑娘',
 --图标
@@ -163,7 +163,7 @@ tip = [[
 local mt = ac.skill['扭蛋人生']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '扭蛋人生',
 --图标
@@ -186,7 +186,7 @@ tip = [[
 local mt = ac.skill['du徒']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = 'du徒',
 --图标
@@ -211,7 +211,7 @@ tip = [[
 local mt = ac.skill['强悍之人']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 title = '强悍之人',
 --图标
@@ -230,7 +230,7 @@ tip = [[
 local mt = ac.skill['血牛']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 --图标
 art = [[xieniu.blp]],
@@ -248,7 +248,7 @@ tip = [[
 local mt = ac.skill['一出门就被秒']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 --图标
 art = [[beimiao.blp]],
@@ -314,6 +314,7 @@ tip = [[
  ]],
 event_name = '造成伤害效果',
 chance = 10,
+cool = 1,
 damage_area = 600,
 skill_attack = 10,
 effect = [[MXXXT28 -  F.mdx]]
@@ -329,6 +330,7 @@ function mt:damage_start(damage)
 	if not damage:is_common_attack()  then 
 		return 
     end 
+    -- print('释放: ',self.name,source)
     ac.effect_ex{
         model = skill.effect,
         point = target:get_point()
@@ -347,10 +349,32 @@ function mt:damage_start(damage)
         }
 	end	
 end
+
+--魔剑技能
+local mt = ac.skill['神剑击'] 
+mt{
+--等级
+level = 1,
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+
+攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+ ]],
+event_name = '造成伤害效果',
+chance = 10,
+cool = 1,
+damage_area = 600,
+skill_attack = 10,
+effect = [[Hero_Slayer_N5S_T_Blast.mdx]]
+}
+mt.damage_start = ac.skill['魔剑击'].damage_start
+
 local mt = ac.skill['绝世魔剑']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 max_level = 10,
 -- cool= 1,
 --图标
@@ -420,8 +444,11 @@ function mt:on_upgrade()
         skl.skill_attack = self.skill_attack
     else 
         skl.skill_attack = self.skill_attack
-    end   
-    --  
+    end  
+    --如果拥有魔剑，则添加神魔之剑
+    if p.server['绝世魔剑']>=1 and p.server['绝世神剑']>=1 then 
+        p.unit_mojian:add_skill('神魔之剑','隐藏')
+    end
 end
 function mt:on_cast_start()
     local p=self.owner.owner
@@ -432,6 +459,155 @@ function mt:on_cast_start()
         self:on_upgrade()
     end
 end
+
+local mt = ac.skill['绝世神剑']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 10,
+-- cool= 1,
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+
+|cffFFE799【神剑属性】：|r
+|cff00ff00点击获得/收回一个随从
+|cff00ffff神剑攻击力=%attack% |cff00ffff%英雄攻击力
+|cffffff00神剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
+|cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
+
+|cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
+
+need_map_level = 3,
+attack = {100,550},
+skill_attack = {10,10},
+attack_gap = {1,0.5}
+}
+function mt:on_upgrade()
+    local skill =self
+    local hero = self.owner
+    local p = hero:get_owner()
+    if p.id >10 then return end 
+    
+    local attribute ={
+        ['攻击'] = function() return hero:get('攻击')*skill.attack*0.01 end,
+        ['攻击间隔'] = function() return skill.attack_gap end,
+        ['攻击速度'] = function() return hero:get('攻击速度') end,
+        ['生命上限'] = function() return hero:get('生命上限') end,
+        ['魔法上限'] = function() return hero:get('魔法上限') end,
+        ['生命恢复'] = function() return hero:get('生命恢复') end,
+        ['魔法恢复'] = function() return hero:get('魔法恢复') end,
+        ['移动速度'] = 522,
+
+        ['暴击几率'] = function() return hero:get('暴击几率') end,
+        ['暴击伤害'] = function() return hero:get('暴击伤害') end,
+        ['会心几率'] = function() return hero:get('会心几率') end,
+        ['会心伤害'] = function() return hero:get('会心伤害') end,
+        ['物理伤害加深'] = function() return hero:get('物理伤害加深') end,
+        ['全伤加深'] = function() return hero:get('全伤加深') end,
+
+        ['物品获取率'] = function() return hero:get('物品获取率') end,
+        ['木头加成'] = function() return hero:get('木头加成') end,
+        ['金币加成'] = function() return hero:get('金币加成') end,
+        ['杀敌数加成'] = function() return hero:get('杀敌数加成') end,
+        ['魔丸加成'] = function() return hero:get('魔丸加成') end,
+    }
+    if  not p.unit_shenjian then 
+        p.unit_shenjian = p:create_unit(self.name,hero:get_point()-{math.random(360),100})
+        p.unit_shenjian:remove_ability 'AInv'
+        p.unit_shenjian:add_ability 'Aloc'
+        p.unit_shenjian:add_restriction '无敌'
+        p.unit_shenjian:add_buff "召唤物"{
+            attribute = attribute,
+            skill = self,
+            follow = true,
+            search_area = 500, --搜敌路径    
+        }
+    end   
+    
+    --技能相关
+    local skl = p.unit_shenjian:find_skill('神剑击',nil)
+    if not skl then 
+        skl = p.unit_shenjian:add_skill('神剑击','隐藏')
+        skl.skill_attack = self.skill_attack
+    else 
+        skl.skill_attack = self.skill_attack
+    end   
+
+    --如果拥有魔剑，则添加神魔之剑
+    if p.server['绝世魔剑']>=1 and p.server['绝世神剑']>=1 then 
+        p.unit_shenjian:add_skill('神魔之剑','隐藏')
+    end
+    
+end
+function mt:on_cast_start()
+    local p=self.owner.owner
+    if p.unit_shenjian then 
+        p.unit_shenjian:remove()
+        p.unit_shenjian = nil
+    else
+        self:on_upgrade()
+    end
+end
+
+--魔剑技能
+local mt = ac.skill['神魔之剑'] 
+mt{
+--等级
+level = 1,
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+
+    伤害公式：攻击力*20+1%敌人的最大生命值
+ ]],
+event_name = '造成伤害效果',
+chance = 10,
+cool = 1,
+damage_area = 600,
+skill_attack = 20,
+effect = [[Dekan_LOL_Garen_Blade.mdx]]
+}
+
+function mt:damage_start(damage)
+    local source =self.owner
+    local p = source.owner
+    local hero = source
+    local skill =self
+    local target = damage.target
+
+	if not damage:is_common_attack()  then 
+		return 
+    end 
+    ac.effect_ex{
+        model = skill.effect,
+        point = target:get_point()
+    }:remove()
+    -- print('释放神魔之剑',source)
+    for i, u in ac.selector()
+		: in_range(target,self.damage_area)
+		: is_enemy(source)
+		: ipairs()
+	do
+        u:damage
+        {
+            source = source,
+            skill = skill,
+            damage = source:get('攻击')*skill.skill_attack,
+            damage_type = '物理'
+        }
+        u:damage
+        {
+            source = source,
+            skill = skill,
+            damage = u:get('生命上限')/100*1,
+            real_damage = true
+        }
+	end	
+end
+
 
 
 local mt = ac.skill['隐藏成就']
@@ -448,7 +624,7 @@ mt{
 }
 mt.skill_name ={
     '我是大魔头','黄金矿工','书呆子','剑瞎子','采蘑菇的小姑娘','扭蛋人生','du徒',
-    '强悍之人','血牛','一出门就被秒','绝世魔剑'
+    '强悍之人','血牛','一出门就被秒','绝世魔剑','绝世神剑'
 }
 
 mt.skills = {

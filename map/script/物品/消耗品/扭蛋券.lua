@@ -157,9 +157,9 @@ local function insert_book(hero,name,self)
         p.flag_yccj[name] = true --一局只能获得一次
         --存档
         local key = ac.server.name2key(name)
-        print('打印：4',name,p:Map_GetServerValue(key))
+        -- print('打印：4',name,p:Map_GetServerValue(key))
         if ac.g_game_degree_attr > p:Map_GetServerValue(key) then 
-            print('打印：4',name,p:Map_GetServerValue(key))
+            -- print('打印：4',name,p:Map_GetServerValue(key))
             p:Map_AddServerValue(key,1)
             local skl = hero:find_skill(name,nil,true) 
             if not skl  then 

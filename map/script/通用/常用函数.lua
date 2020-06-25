@@ -21,7 +21,24 @@ local ring_model = [[F2_model\warming_ring_red.mdl]]
 local rect_model = [[F2_model\warming_rect.mdl]]
 --外到内
 local circle_model = [[F2_model\warming_ring_red2.mdx]]
-
+--太丑，不用
+ac.warning_effect_rect = function(data)
+	local point = data.point
+	local time = data.time
+	local rotate = {0,0,data.angle}
+	local scale = {data.len/200,data.wid/200,0}
+	local effect = ac.effect_ex
+	{
+		rotate = rotate,
+		point = point,
+		model = rect_model,
+		speed = 1/time,
+		scale = scale,
+		high = 50,
+		time = data.time,
+	}
+	return effect
+end
 ac.warning_effect_circle = function(data)
 	local point = data.point
 	local size = data.area/200

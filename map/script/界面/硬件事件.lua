@@ -5,11 +5,11 @@ local event = {
 --     i = i + 1 
 --     print('on_update:',i)
 --    end ,
-   on_mouse_down = function()
+   on_mouse_up = function()
     local current_time = ac.clock()
     ac.player.self.last_click_time = ac.player.self.last_click_time or 0
     local time = current_time - ac.player.self.last_click_time
-    if time < 50 then
+    if time < 100 then
         -- print('小于50')
         return true
     end

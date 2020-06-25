@@ -43,7 +43,7 @@ class.screen_button = extends(class.button){
                 japi.SendMessage(0x100,KEY[key],0)
                 japi.SendMessage(0x101,KEY[key],1)
             end
-            if finds(self.info.name,'绝世魔剑','风骚') then 
+            if finds(self.info.name,'绝世','风骚') then 
                 local skl = ac.player.self.hero:find_skill(self.info.name,nil,true)
                 if skl and not skl:is_cooling() then 
                     local info = {
@@ -151,6 +151,22 @@ ac.wait(30*1000,function()
         }
         table.insert(ui_info,temp)
     end
+    
+    if ac.player.self.server['绝世神剑'] and ac.player.self.server['绝世神剑'] >0 then 
+        local temp =
+        {
+            name = '绝世神剑',  
+            path = ac.skill['绝世神剑'].art,
+            -- key = 'F3', 
+            tip = ac.skill['绝世神剑']:get_tip(),
+            x = 10 + 52 + 10,
+            y = 350,
+            w = 52,
+            h = 52,
+        }
+        table.insert(ui_info,temp)
+    end
+
     for index,info in ipairs(ui_info) do 
         local button 
         if info.x and info.y then 

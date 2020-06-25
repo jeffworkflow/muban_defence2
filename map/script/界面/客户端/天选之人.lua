@@ -149,7 +149,69 @@ local event = {
     end
 }
 ui.register_event('txzr',event)
+local function create_boss(where)
+    local u = ac.player(12):create_unit('太阳神',where)
+    u:add_skill('金色鎏金','英雄')
+    u:add_skill('金色莲花','英雄')
+    u:add_skill('净化','英雄')
+    u:event '单位-死亡'(function(_,unit,killer)
+        --绝世神剑
+        for i=1,6 do 
+            local p = ac.player(i)
+            local hero =p.hero
+            if p:is_player() then 
+                local name = '绝世神剑'
+                local key = ac.server.name2key(name)
+                if p:Map_GetServerValue(key) < ac.skill[name].max_level  then 
+                    --激活成就（存档） 
+                    p:Map_AddServerValue(key,1) --网易服务器
+                    --动态插入魔法书
+                    local skl = hero:find_skill(name,nil,true) 
+                    if not skl  then 
+                        ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 不断食用美味的粽子，惊喜获得|cffff0000【可存档成就】'..name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
+                    else
+                        skl:upgrade(1)
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 不断食用美味的粽子，使|cffff0000【可存档成就】'..name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
+                    end   
+                end   
+            end
+        end
+    end)
 
+end
+local succ_cnt = 0
+local function check_txzr(flag) 
+    succ_cnt = succ_cnt + 1
+    if not flag then 
+        if succ_cnt ~= 2 then 
+            return 
+        end
+    end
+    --触发万象天工
+    ac.wait(0,function()
+        ac.player.self:sendMsg('【系统消息】万象天宫 已经开始，通过基地左上角的传送阵进入',5)
+    end)
+    --创建魔法阵
+    local rect = ac.rect.j_rect('npc2')
+    local target_rect = ac.rect.j_rect('jueshishenjian') 
+    ac.effect_ex{
+        model = [[dr_chuansongzhan.mdx]],
+        point = rect:get_point()
+    }
+    local reg = ac.region.create(rect)  
+    reg:event '区域-进入' (function(trg, hero)
+        if reg < hero:get_point()  then --不加区域判断，会有莫名其妙的问题，在练功房传送到其他地方，可能会出现在其他区域。
+            --传送到另一个地方
+            hero:blink(target_rect,true,false,true)
+
+        end
+    end)
+    --创建boss
+    local where = ac.rect.j_rect('jueshishenjian1'):get_point()
+    create_boss(where)
+end
+ac.check_txzr = check_txzr
 --业务：完成圣龙气运后触发 ac.game:event_notify('任务-圣龙气运',p) 
 --奖品
 local award_list = { 
@@ -167,7 +229,7 @@ local award_list = {
         rect = 'cbg1',
         art = 'cqzb.blp',
         need = '藏宝图',
-        need_cnt = 30,
+        need_cnt = 1,
         tip = [[
 |cff00ff00点击前往|cff00ffff 藏宝阁|cff00ff00
 
@@ -178,6 +240,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
+            check_txzr()
             local list = ac.quality_item['红']
             local name = list[math.random(#list)]
             local it = hero:add_item(name)
@@ -192,7 +255,7 @@ local award_list = {
         rect = 'cjg1',
         art = 'cqgf.blp',
         need = '羊皮无字', 
-        need_cnt = 30,
+        need_cnt = 1,
         tip = [[
 |cff00ff00点击传送到|cff00ffff 藏经阁
 
@@ -204,6 +267,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
+            check_txzr()
             local list = ac.quality_skill['天阶']
             --添加给购买者
             local name = list[math.random(#list)]
@@ -219,7 +283,7 @@ local award_list = {
         rect = 'jianzhong1',
         art = 'cqst.blp',
         need = '超强石头',
-        need_cnt = 30,
+        need_cnt = 1,
         tip = [[
 |cff00ff00点击前往|cff00ffff 剑冢
 
@@ -231,6 +295,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
+            check_txzr()
             local it = ac.item.create_item('天谕',hero:get_point())
             it:set_item_count(8)
             hero:add_item(it)
@@ -244,7 +309,7 @@ local award_list = {
         rect = 'bhg1',
         art = 'cqsh.blp',
         need = '超强伤害',
-        need_cnt = 30,
+        need_cnt = 1,
         tip = [[
 |cff00ff00点击前往|cff00ffff 百花宫|cff00ff00   
 
@@ -256,6 +321,7 @@ local award_list = {
        ]],
         --奖励 全伤加深50%
         award = function(self,p,hero)
+            check_txzr()
             local hero = p.hero
             hero:add('全伤加深',50)
             ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
@@ -280,6 +346,7 @@ local award_list = {
         ]],
         --奖励 全属性加5%
         award = function(self,p,hero)
+            check_txzr()
             local hero = p.hero
             hero:add('力量%',10)
             hero:add('敏捷%',10)
@@ -305,6 +372,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
+            check_txzr()
             local list = {
                 '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
                 '杀敌数翻倍卡','木头翻倍卡','魔丸翻倍卡','全属性翻倍卡',
@@ -324,7 +392,7 @@ local award_list = {
 ac.game:event '任务-圣龙气运'(function(self,p)
     local time = 2*60
     -- time = 10
-    p.hero:loop(time*1000,function()
+    -- p.hero:loop(time*1000,function()
         -- 天选之人概率
         p.txzr_cnt = (p.txzr_cnt or 0) + 1
         local rate = 18 - ((p.txzr_cnt-1)*0.5)
@@ -382,7 +450,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             end
 
         end
-    end)
+    -- end)
 
 end)
 
