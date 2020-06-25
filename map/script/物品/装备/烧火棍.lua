@@ -225,8 +225,10 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
     if not p.flag[name] then 
         p.flag[name] = true 
         local it_name = temp[name]
-        local it = ac.item.create_item(it_name,unit:get_point())
-        it.owner_ship = p 
+        if it_name then 
+            local it = ac.item.create_item(it_name,unit:get_point())
+            it.owner_ship = p 
+        end
     end
     local ok = true
     --移除 event 事件 只要有一个人没打，就不移除。全部打完才移除事件

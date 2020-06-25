@@ -52,14 +52,16 @@ mt.skills = {
 function mt:on_add()
     local hero = self.owner 
     local player = hero:get_owner()
-    for i=1,#self.skill_name do 
-        local name = self.skill_name[i]
-        local has_mall = player.mall[name] or (player.server and player.server[name])
+    -- print('添加精彩活动',#self.skill_name)
+    --已经在 最强魔灵处 处理
+    -- for i=1,#self.skill_name do 
+    --     local name = self.skill_name[i]
+    --     local has_mall = player.mall[name] or (player.server and player.server[name])
 
-        if has_mall and has_mall > 0 then 
-            ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
-            local skl = hero:find_skill(name,nil,true)
-            skl:set_level(has_mall)
-        end
-    end 
+    --     if has_mall and has_mall > 0 then 
+    --         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
+    --         local skl = hero:find_skill(name,nil,true)
+    --         skl:set_level(has_mall)
+    --     end
+    -- end 
 end    

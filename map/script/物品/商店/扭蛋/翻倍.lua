@@ -152,7 +152,7 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
 
     local rand = math.random(100)
     local rate = self.rate
-    print('翻倍概率：',rate)
+    -- print('翻倍概率：',rate)
     local mul = self.coin == '全属性' and 0.1 or 1 --要加的倍数
     local base_mul = self.coin == '全属性' and 0.1 or 1 --要加的倍数
     local bb_it = self.owner:has_item(self.coin..'保本卡') 
@@ -173,7 +173,7 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
         end
         bzd_it:add_item_count(-1)
     end   
-    print('翻倍：',mul)
+    -- print('翻倍：',mul)
     --翻倍卡 影响概率
     if fb_it then 
         rate =100 

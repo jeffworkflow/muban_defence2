@@ -113,8 +113,7 @@ function mt:on_cast_start()
         return 
     end 
     local info = {
-        name = '取消 (Esc)',
-        key = 512
+        '取消',512,"取消 (Esc)",
     }
     table.insert(list,info)
     table.insert(list,1,'强化装备')
