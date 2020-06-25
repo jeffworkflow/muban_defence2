@@ -3,7 +3,7 @@ mt{
 --施法信息
 cast_start_time = 0,
 --施法时长
-cast_channel_time = 0.8, 
+cast_channel_time = 0.9, 
 cast_shot_time = 0,
 cast_finish_time = 0.0,
 
@@ -25,7 +25,7 @@ damage = function(self)
     return self.owner:get('攻击')*100
 end,  
 --冷却
-cool = 11,
+cool = 12,
 -- cool = 6,
 area = 500,
 effect = [[101.mdx]]
