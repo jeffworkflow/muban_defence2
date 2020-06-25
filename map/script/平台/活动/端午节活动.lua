@@ -74,7 +74,7 @@ local new_ui = class.panel:builder
                     on_button_mouse_enter = function (self)
                         local title = self.parent.name
                         local tip = [[
-|cff00ffff【粽叶】+【糯米】+【棕馅】=|cffdf19d0【美味的粽子】|cff00ff00（可在“活动大使”处，进行兑换）
+|cff00ffff【粽叶】+【糯米】+【棕馅】=|cffdf19d0【美味的粽子】|cff00ff00（可在“活动大使”（基地右上角）处，进行兑换）
 
 |cffcccccc端午节活动物品|r]]
                         self:tooltip('|cffffe799'..title..'|r',tip,0,300,94)
