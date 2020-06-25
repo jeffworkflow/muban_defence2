@@ -20,6 +20,7 @@ item_type = '消耗品',
 rate =3,
 specail_model = [[OrbofDarkness.mdx]],
 model_size = 1.15,
+time_removed = 200,
 
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'

@@ -32,7 +32,7 @@ mt{
     --全部玩家发送信息概率
     rate = 0.3,
     --多少秒后地上物品消失
-    time_removed = 100,
+    time_removed = 200,
     --可能会掉线
     effect = function(self)
         local str = ''
@@ -82,8 +82,9 @@ end
 
 function mt:on_add()
     --全图随机刷 正式用
-    -- self.random_point =  ac.map.rects['藏宝区']:get_random_point(true)
-    self.random_point =  get_random_point()
+    self.random_point =  ac.map.rects['藏宝区']:get_random_point(true)
+    -- self.random_point =  get_random_point()
+
     -- print(ac.map.rects['藏宝区']:get_random_point(true))
     --测试用
     -- self.random_point = self.owner:get_point()

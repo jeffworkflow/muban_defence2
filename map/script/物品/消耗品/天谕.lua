@@ -18,6 +18,7 @@ model_size = 1.1,
 -- color = "紫",
 --冷却
 cool = 0,
+time_removed = 200,
 --描述
 tip = [[ 
 

@@ -20,7 +20,7 @@ mt{
     --全部玩家发送信息概率
     rate = 0.3,
     --多少秒后地上物品消失
-    time_removed = 100,
+    time_removed = 200,
     --物品详细介绍的title
     content_tip = '|cffffe799使用说明：|r',
 

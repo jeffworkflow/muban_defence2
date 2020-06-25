@@ -125,6 +125,7 @@ content_tip = '|cffffe799使用说明：|r'
 }
 for i,name in ipairs({'扭蛋券','扭蛋券(十连抽)','扭蛋券(百连抽)','超级扭蛋券','超级扭蛋券(十连抽)','超级扭蛋券(百连抽)'}) do 
     local mt = ac.skill[name]
+    mt.time_removed = 200
     function mt:on_cast_start()
         local p = self.owner.owner 
         p:sendMsg('|cffffe799【系统消息】|r|cffff0000无法使用 |cff00ff00请前往练功房左下角- |cff00ffff扭蛋NPC |cff00ff00处进行兑换',5)

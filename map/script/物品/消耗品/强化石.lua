@@ -29,6 +29,7 @@ tip = [[
 
 --物品技能
 is_skill = true,
+time_removed = 200,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 auto_fresh_tip = true,
