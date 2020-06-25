@@ -362,7 +362,7 @@ tip = [[
 |cff00ff00点击获得/收回一个随从
 |cff00ffff魔剑攻击力=%attack% |cff00ffff%英雄攻击力
 |cffffff00魔剑攻击10%概率造成范围物理伤害（伤害公式：攻击力*10）
-|cffff0000继承英雄攻击减甲、暴击几率/伤害，会心几率/伤害，物伤/全伤加深
+|cffff0000继承英雄暴击几率/伤害，会心几率/伤害，物伤/全伤加深
 
 |cffcccccc集齐万分之一空气获得，获得概率与通关难度/地图等级相关]],
 
@@ -381,7 +381,6 @@ function mt:on_upgrade()
         ['攻击'] = function() return hero:get('攻击')*skill.attack*0.01 end,
         ['攻击间隔'] = function() return skill.attack_gap end,
         ['攻击速度'] = function() return hero:get('攻击速度') end,
-        ['攻击减甲'] = function() return hero:get('攻击减甲') end,
         ['生命上限'] = function() return hero:get('生命上限') end,
         ['魔法上限'] = function() return hero:get('魔法上限') end,
         ['生命恢复'] = function() return hero:get('生命恢复') end,
