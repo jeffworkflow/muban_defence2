@@ -28,6 +28,8 @@ need_map_level = 2,
 effect = [[JD_066_D.mdx]],
 size = 2,--坐骑大小
 high = 90, --人物高度
+zq_hight = 0, --坐骑高度
+-- distance =100,
 }
 
 local mt = ac.skill['兜兜猪']
@@ -351,6 +353,7 @@ for i,name in ipairs({'风速狗','兜兜猪','星空麋鹿','烈焰凤凰','地
             size = self.size,
             high = self.high or 100,
             zq_hight = self.zq_hight,
+            distance = self.distance
         }
     end    
     -- mt.on_add = mt.on_cast_start --自动显示特效
