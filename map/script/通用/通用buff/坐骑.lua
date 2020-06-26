@@ -22,6 +22,7 @@ function mt:on_add()
         distance = self.distance or 0,
         high = zq_hight,
         skill = false,
+        angle = self.angle,
         size = size or 1,
         remove_instant = true, --立即移除
     }

@@ -3,6 +3,7 @@ mt{
     level = 1 ,
     specail_model = [[File00000376 - RC.mdx]],
     unique = true,
+    title = '|cffdf19d0噬魂棒|r',
     tip = [[ 
 |cffcccccc上古时期，一根充满戾气的魔棒，可吸引天地洪荒之气
 

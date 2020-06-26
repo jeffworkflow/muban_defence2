@@ -185,7 +185,7 @@ local succ_cnt = 0
 local function check_txzr(flag) 
     succ_cnt = succ_cnt + 1
     if not flag then 
-        if succ_cnt ~= 7 then 
+        if succ_cnt ~= 6 then 
             return 
         end
     end
