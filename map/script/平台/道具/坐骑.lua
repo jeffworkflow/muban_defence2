@@ -25,9 +25,14 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击速度'] = 25,
 need_map_level = 2,
 --特效
-effect = [[JD_066_D.mdx]],
-size = 2,--坐骑大小
-high = 90, --人物高度
+-- effect = [[JD_066_D.mdx]],
+-- size = 2,--坐骑大小
+-- high = 90, --人物高度
+
+effect = [[186e8aea6a983e82.mdx]],
+size = 0.9,
+high = 220,
+zq_hight = 50,
 }
 
 local mt = ac.skill['兜兜猪']
