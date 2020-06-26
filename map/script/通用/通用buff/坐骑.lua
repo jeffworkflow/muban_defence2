@@ -13,13 +13,13 @@ function mt:on_add()
     local model = self.model
     local zq_hight = self.zq_hight or 0
     hero:set_high(high)
-
+    -- print('坐骑高度:',high,zq_hight,self.distance)
     self.follow = self.target:follow{
         source = self.target,
         model = self.model,
         angle_follow = true,
         face_follow = true,
-        distance = 0,
+        distance = self.distance or 0,
         high = zq_hight,
         skill = false,
         size = size or 1,

@@ -505,6 +505,13 @@ function mt:get_item_lni_tip(str)
 	local item_tip = str or (self.lni_data and self.lni_data.tip ) or ''
 	item_tip = item_tip:gsub('%%([%S_]*)%%', function(k)
 		local value = self[k]
+		local dv = self.data[k]
+		-- 如果表里的这项是函数或表,则总是以表里的为准
+		local dvt = type(dv)
+		if not value or dvt == 'function' or dvt == 'table' then
+			value = dv
+		end
+		-- local value = self[k]
 		local tp = type(value)
 		local color_flag
 		if tp == 'function' then

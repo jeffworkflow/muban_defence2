@@ -469,6 +469,7 @@ local function save_wb()
 end  
 ac.game:event '选择难度' (function() 
     local time =60 * 1
+    save_wb()--包含初始化，不可断
     ac.loop(time*1000,function()
         save_wb()
     end)

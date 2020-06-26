@@ -117,9 +117,6 @@ function mt:on_add()
 			end
 
 			function mvr:on_remove()
-				if timer then
-					timer:remove()
-				end
 			end
 		end
 	end
