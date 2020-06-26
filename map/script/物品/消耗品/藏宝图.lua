@@ -115,7 +115,11 @@ function mt:on_cast_start()
     if p.eff then 
         p.eff:remove()
     end    
-    p.eff = ac.effect(self.random_point,self.effect,0,1,'origin')
+    p.eff = ac.effect_ex{
+        model = self.effect,
+        point = self.random_point,
+        item_show = true
+    }
 
     local tx,ty = self.random_point:get()
     --自动寻宝

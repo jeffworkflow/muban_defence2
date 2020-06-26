@@ -9,7 +9,7 @@ local event = {
     local current_time = ac.clock()
     ac.player.self.last_click_time = ac.player.self.last_click_time or 0
     local time = current_time - ac.player.self.last_click_time
-    if time < 100 then
+    if time < 15 then
         -- print('小于50')
         return true
     end
@@ -17,7 +17,9 @@ local event = {
 end,
 }
 if not global_test then 
-game.register_event(event)
+    ac.wait(5*60*1000,function()
+        game.register_event(event)
+    end)
 end
 -- local time = 1/60
 -- local tx = 0
