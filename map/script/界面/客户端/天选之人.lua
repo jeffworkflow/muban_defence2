@@ -199,8 +199,10 @@ local function check_txzr(flag)
     local rect = ac.rect.j_rect('npc2')
     local target_rect = ac.rect.j_rect('jueshishenjian') 
     ac.effect_ex{
-        model = [[dr_chuansongzhan.mdx]],
-        size = 1.5,
+        -- model = [[dr_chuansongzhan.mdx]],
+        model = [[Void Teleport Yellow To.mdx]],
+        
+        size = 1.1,
         point = rect:get_point()
 
     }
