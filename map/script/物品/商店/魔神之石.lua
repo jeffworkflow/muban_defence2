@@ -24,6 +24,11 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 0,
 --物品技能
 is_skill = true,
+
+--最大购买次数
+max_buy_cnt = 49,
+
+
 }
 
 function mt:on_cast_start()
@@ -46,7 +51,7 @@ function mt:on_cast_start()
         return 
     end    
     if first_cnt < need_cnt then 
-        p:sendMsg('当前单位的强化石不够，一并扣除了宠物/英雄身上的',5)
+        -- p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00兑换成功|r',5)
     end
     
     if first_cnt > 0 then 
@@ -63,7 +68,7 @@ function mt:on_cast_start()
     
     --给物品
     first_u:add_item('天谕')
-    p:sendMsg('|cff00ff00兑换成功|r')
+    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00兑换成功|r')
 end
 
 function mt:on_remove()

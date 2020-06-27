@@ -144,8 +144,8 @@ ac.wait(30*1000,function()
             path = ac.skill['风骚'].art,
             -- key = 'F3', 
             tip = ac.skill['风骚']:get_tip(),
-            x = 10 + 52 + 10,
-            y = 410,
+            x = 10,
+            y = is_jsmj and 410 or 350,
             w = 52,
             h = 52,
         }
@@ -163,6 +163,8 @@ ac.wait(30*1000,function()
             y = 350,
             w = 52,
             h = 52,
+
+            
         }
         table.insert(ui_info,temp)
     end
@@ -174,8 +176,10 @@ ac.wait(30*1000,function()
             path = ac.skill['月神'].art,
             -- key = 'F3', 
             tip = ac.skill['月神']:get_tip(),
-            x = 10,
-            y = is_jsmj and 410 or 350,
+            
+
+            x = 10 + 52 + 10,
+            y = 410,
             w = 52,
             h = 52,
         }

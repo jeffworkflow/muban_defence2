@@ -23,7 +23,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --最大购买次数
-max_buy_cnt = 12,
+max_buy_cnt = 11,
 --物品技能
 is_skill = true,
 }
