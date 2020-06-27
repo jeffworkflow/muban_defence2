@@ -22,6 +22,7 @@ require '技能.宠物天赋.不是一般的鸡'
 require '技能.宠物天赋.得天独厚'
 require '技能.宠物天赋.你怎么不去死'
 require '技能.宠物天赋.脸黑'
+require '技能.宠物天赋.流逝的神力'
 -- ac.peon_skill_list = {
 -- '财源滚滚',
 -- '你真棒',

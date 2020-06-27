@@ -36,8 +36,9 @@ function mt:on_cast_start()
             local key = skill:get_hotkey() 
             local str = clean_color(skill:get_title())
             local info = {
-                name = '|cff00ff00升级 |cff'..ac.color_code[skill.color].. str .. ' |r',
-                skill = skill,
+                -- name = '|cff00ff00升级 |cff'..ac.color_code[skill.color].. str .. ' |r',
+                -- skill = skill,
+                skill.name,'','|cff00ff00升级 |cff'..ac.color_code[skill.color].. str .. ' |r'
             }
             table.insert(list,info)
         end
@@ -55,36 +56,56 @@ function mt:on_cast_start()
     end    
 
     local info = {
-        name = '取消 (Esc)',
-        key = 512
+        '取消 (Esc)','Esc'
     }
     table.insert(list,info)
-
-    if not self.dialog  then 
-        self.dialog = create_dialog(player,'升级功法',list,function (index)
-            self.dialog = nil
-            local skl = list[index].skill
-            if skl then 
-                skl:upgrade(self.upgrade_cnt)
-                if self._count > 0 then  
-                    -- print(123,'再一次升级')
-                    p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
-                    self:on_cast_start()
-                    self:add_item_count(-1)
-                end  
+    table.insert(list,1,'升级功法')
+    local skill = self
+    local dialog = player:dialog(list)
+    function dialog:onClick(rname)
+        local skl = hero:find_skill(rname,'英雄')
+        if skl then 
+            skl:upgrade(skill.upgrade_cnt)
+            if skill._count > 0 then  
+                -- print(123,'再一次升级')
+                p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
+                skill:on_cast_start()
+                skill:add_item_count(-1)
+            end  
+        else
+            -- print('取消更换技能')
+            if skill._count > 1 then 
+                skill:set_item_count(skill._count+1)
             else
-                --取消 --取消
-                if self._count > 1 then 
-                    self:add_item_count(1) 
-                else
-                    --重新添加给英雄
-                    owner:add_item(self.name,true)
-                end     
-            end
-        end) 
-    else 
-        self:add_item_count(1) 
-    end   
+                ac.item.add_skill_item(name,owner)
+            end        
+        end
+    end
+    -- if not self.dialog  then 
+    --     self.dialog = create_dialog(player,'升级功法',list,function (index)
+    --         self.dialog = nil
+    --         local skl = list[index].skill
+    --         if skl then 
+    --             skl:upgrade(self.upgrade_cnt)
+    --             if self._count > 0 then  
+    --                 -- print(123,'再一次升级')
+    --                 p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
+    --                 self:on_cast_start()
+    --                 self:add_item_count(-1)
+    --             end  
+    --         else
+    --             --取消 --取消
+    --             if self._count > 1 then 
+    --                 self:add_item_count(1) 
+    --             else
+    --                 --重新添加给英雄
+    --                 owner:add_item(self.name,true)
+    --             end     
+    --         end
+    --     end) 
+    -- else 
+    --     self:add_item_count(1) 
+    -- end   
 
 end 
 

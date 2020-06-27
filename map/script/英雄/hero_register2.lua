@@ -7,7 +7,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	end
 	--取消控制 玩家16 （中立单位）
     local id = player.id - 1
-	ac.player.force[1][id]:disableControl(ac.player[16])
+	player:disableControl(ac.player[16])
 
 	--复活时间 减少复活时间 
 	hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))

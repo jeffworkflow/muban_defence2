@@ -144,8 +144,8 @@ ac.wait(30*1000,function()
             path = ac.skill['风骚'].art,
             -- key = 'F3', 
             tip = ac.skill['风骚']:get_tip(),
-            x = 10,
-            y = is_jsmj and 420 or 350,
+            x = 10 + 52 + 10,
+            y = 410,
             w = 52,
             h = 52,
         }
@@ -174,8 +174,8 @@ ac.wait(30*1000,function()
             path = ac.skill['月神'].art,
             -- key = 'F3', 
             tip = ac.skill['月神']:get_tip(),
-            x = 10 + 52 + 10,
-            y = 420,
+            x = 10,
+            y = is_jsmj and 410 or 350,
             w = 52,
             h = 52,
         }

@@ -77,8 +77,9 @@ function mt:on_cast_start()
         if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')   then 
             count = count + 1
             local info = {
-                name = "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r ',
-                item = item
+                tostring(item.handle),'', "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r ',
+                -- name = "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r ',
+                -- item = item
             }
             table.insert(list,info)
         end
@@ -90,8 +91,9 @@ function mt:on_cast_start()
         if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  then 
             count = count + 1
             local info = {
-                name = "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r |cffdf19d0(宠)|r',
-                item = item
+                tostring(item.handle),'', "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r |cffdf19d0(宠)|r'
+                -- name = "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r |cffdf19d0(宠)|r',
+                -- item = item
             }
             table.insert(list,info)
         end
@@ -108,75 +110,133 @@ function mt:on_cast_start()
         return 
     end 
     local info = {
-        name = '取消 (Esc)',
-        key = 512
+        '取消 (Esc)','Esc'
     }
     table.insert(list,info)
-
-    if not self.dialog  then 
-        self.dialog = create_dialog(player,'吞噬装备',list,function (index)
-            local item = list[index].item
-            if item then 
-                --移除装备，移除一次属性
-                item:item_remove()
-                local skl = ac.game:event_dispatch('技能-插入魔法书',hero,'吞噬神丹',item.name)
-                skl.title = item.name
-                skl.store_name = item.store_name
-                skl.art = item.art
-                skl.tip = item:get_tip()
-                --改变数值
-                for key,val in pairs(item) do  
-                    local attr = key
-                    if key:sub(-1, -1) == '%' then
-                        attr = key:sub(1, -2)
-                    end
-                    -- print('吞噬：',key,attr,ac.unit.attribute[attr],_in(attr,ac.player_attr))
-                    if ac.unit.attribute[attr] or _in(attr,ac.player_attr) then 
-                        skl[key] = val
-                    end
+    table.insert(list,1,'强化装备')
+    local skill = self
+    local dialog = player:dialog(list)
+    function dialog:onClick(handle)
+        local item = ac.item.item_map[tonumber(handle)]
+        if item then 
+            --移除装备，移除一次属性
+            item:item_remove()
+            local skl = ac.game:event_dispatch('技能-插入魔法书',hero,'吞噬神丹',item.name)
+            skl.title = item.name
+            skl.store_name = item.store_name
+            skl.art = item.art
+            skl.tip = item:get_tip()
+            --改变数值
+            for key,val in pairs(item) do  
+                local attr = key
+                if key:sub(-1, -1) == '%' then
+                    attr = key:sub(1, -2)
                 end
-                -- print('吞噬物品，物品等级：',item.level)
-                if item.level == 1 then 
-                    ac.game:event_notify('技能-升级',hero,skl)
+                -- print('吞噬：',key,attr,ac.unit.attribute[attr],_in(attr,ac.player_attr))
+                if ac.unit.attribute[attr] or _in(attr,ac.player_attr) then 
+                    skl[key] = val
                 end
-                skl:set_level(item.level)
-                --吞噬个数 +1
-                if not player.tunshi_cnt then 
-                    player.tunshi_cnt =0
-                end    
-                player.tunshi_cnt = player.tunshi_cnt + 1
-                player:sendMsg('|cffffe799【系统消息】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
-                --吞噬名
-                if not player.tunshi then 
-                    player.tunshi = {}
-                end    
-                table.insert(player.tunshi,skl)
+            end
+            -- print('吞噬物品，物品等级：',item.level)
+            if item.level == 1 then 
+                ac.game:event_notify('技能-升级',hero,skl)
+            end
+            skl:set_level(item.level)
+            --吞噬个数 +1
+            if not player.tunshi_cnt then 
+                player.tunshi_cnt =0
+            end    
+            player.tunshi_cnt = player.tunshi_cnt + 1
+            player:sendMsg('|cffffe799【系统消息】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
+            --吞噬名
+            if not player.tunshi then 
+                player.tunshi = {}
+            end    
+            table.insert(player.tunshi,skl)
 
-                --触发超级彩蛋
-                if player.tunshi_cnt  == 8 then 
-                    ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-                end    
+            --触发超级彩蛋
+            if player.tunshi_cnt  == 8 then 
+                ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+            end    
+        else
+            if skill._count > 1 then 
+                -- print('数量')
+                skill:set_item_count(skill._count+1)
+            else
+                --重新添加给英雄
+                unit:add_item(name,true)
+            end  
+        end
+                    
+    end
+
+    -- if not self.dialog  then 
+    --     self.dialog = create_dialog(player,'吞噬装备',list,function (index)
+    --         local item = list[index].item
+    --         if item then 
+    --             --移除装备，移除一次属性
+    --             item:item_remove()
+    --             local skl = ac.game:event_dispatch('技能-插入魔法书',hero,'吞噬神丹',item.name)
+    --             skl.title = item.name
+    --             skl.store_name = item.store_name
+    --             skl.art = item.art
+    --             skl.tip = item:get_tip()
+    --             --改变数值
+    --             for key,val in pairs(item) do  
+    --                 local attr = key
+    --                 if key:sub(-1, -1) == '%' then
+    --                     attr = key:sub(1, -2)
+    --                 end
+    --                 -- print('吞噬：',key,attr,ac.unit.attribute[attr],_in(attr,ac.player_attr))
+    --                 if ac.unit.attribute[attr] or _in(attr,ac.player_attr) then 
+    --                     skl[key] = val
+    --                 end
+    --             end
+    --             -- print('吞噬物品，物品等级：',item.level)
+    --             if item.level == 1 then 
+    --                 ac.game:event_notify('技能-升级',hero,skl)
+    --             end
+    --             skl:set_level(item.level)
+    --             --吞噬个数 +1
+    --             if not player.tunshi_cnt then 
+    --                 player.tunshi_cnt =0
+    --             end    
+    --             player.tunshi_cnt = player.tunshi_cnt + 1
+    --             player:sendMsg('|cffffe799【系统消息】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
+    --             --吞噬名
+    --             if not player.tunshi then 
+    --                 player.tunshi = {}
+    --             end    
+    --             table.insert(player.tunshi,skl)
+
+    --             --触发超级彩蛋
+    --             if player.tunshi_cnt  == 8 then 
+    --                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')
+    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+    --             end    
                     
 
-            else
-                -- print('取消更换技能')
-                if self._count > 1 then 
-                    -- print('数量')
-                    self:set_item_count(self._count+1)
-                else
-                    --重新添加给英雄
-                    unit:add_item(name,true)
-                end        
-            end
+    --         else
+    --             -- print('取消更换技能')
+    --             if self._count > 1 then 
+    --                 -- print('数量')
+    --                 self:set_item_count(self._count+1)
+    --             else
+    --                 --重新添加给英雄
+    --                 unit:add_item(name,true)
+    --             end        
+    --         end
             
-            self.dialog = nil
-        end)
-    else
-        self:add_item_count(1)    
-    end    
+    --         self.dialog = nil
+    --     end)
+    -- else
+    --     self:add_item_count(1)    
+    -- end    
 
 
 end

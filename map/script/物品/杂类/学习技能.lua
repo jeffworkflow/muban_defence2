@@ -63,10 +63,13 @@ function mt:on_cast_shot()
         local skill = hero:find_skill(i,'英雄')
         if skill then 
             local key = skill:get_hotkey() 
+            -- local info = {
+            --     name = '|cff00ff00更换 |cff'..ac.color_code[skill.color or '白'].. clean_color(skill:get_title()) .. ' ( ' .. key.. ' )',
+            --     key = key:byte(),
+            --     skill = skill,
+            -- }
             local info = {
-                name = '|cff00ff00更换 |cff'..ac.color_code[skill.color or '白'].. clean_color(skill:get_title()) .. ' ( ' .. key.. ' )',
-                key = key:byte(),
-                skill = skill,
+                skill.name,key:byte(),'|cff00ff00更换 |cff'..ac.color_code[skill.color or '白'].. clean_color(skill:get_title()) .. ' ( ' .. key.. ' )'
             }
             table.insert(list,info)
         end
@@ -89,42 +92,60 @@ function mt:on_cast_shot()
         end    
     else 
         local info = {
-            name = '取消 (Esc)',
-            key = 512
+            '取消 (Esc)','Esc'
         }
         table.insert(list,info)
-
-        if not self.dialog  then 
-            self.dialog = create_dialog(player,'更换技能',list,function (index)
-                local skl = list[index].skill
-                if skl then 
-                    local id = skl.slotid
-                    local level = skl.level
-                    skl:remove()
-                    local new_skl = hero:add_skill(name,'英雄',id)
-                    new_skl:set_level(level)
+        table.insert(list,1,'更换技能')
+        local skill = self
+        local dialog = player:dialog(list)
+        function dialog:onClick(rname)
+            local skl = hero:find_skill(rname,'英雄')
+            if skl then 
+                local id = skl.slotid
+                local level = skl.level
+                skl:remove()
+                local new_skl = hero:add_skill(name,'英雄',id)
+                new_skl:set_level(level)
+            else
+                -- print('取消更换技能')
+                if skill._count > 1 then 
+                    skill:set_item_count(skill._count+1)
                 else
-                    -- print('取消更换技能')
-                    if self._count > 1 then 
-                        self:set_item_count(self._count+1)
-                    else
-                        if hero:is_alive() then 
-                            ac.item.add_skill_item(name,owner)
-                        else    
-                            if hero.xuexijineng_trg then hero.suijijineng_trg:remove() end
-                            hero.xuexijineng_trg = hero:event '单位-复活' (function ()
-                                ac.item.add_skill_item(name,hero)
-                                hero.xuexijineng_trg:remove()
-                            end)    
-                        end    
-                    end        
-                end
+                    ac.item.add_skill_item(name,owner)
+                end        
+            end
+        end
+        -- if not self.dialog  then 
+        --     self.dialog = create_dialog(player,'更换技能',list,function (index)
+        --         local skl = list[index].skill
+        --         if skl then 
+        --             local id = skl.slotid
+        --             local level = skl.level
+        --             skl:remove()
+        --             local new_skl = hero:add_skill(name,'英雄',id)
+        --             new_skl:set_level(level)
+        --         else
+        --             -- print('取消更换技能')
+        --             if self._count > 1 then 
+        --                 self:set_item_count(self._count+1)
+        --             else
+        --                 if hero:is_alive() then 
+        --                     ac.item.add_skill_item(name,owner)
+        --                 else    
+        --                     if hero.xuexijineng_trg then hero.suijijineng_trg:remove() end
+        --                     hero.xuexijineng_trg = hero:event '单位-复活' (function ()
+        --                         ac.item.add_skill_item(name,hero)
+        --                         hero.xuexijineng_trg:remove()
+        --                     end)    
+        --                 end    
+        --             end        
+        --         end
                 
-                self.dialog = nil
-            end)
-        else
-            self:add_item_count(1)    
-        end    
+        --         self.dialog = nil
+        --     end)
+        -- else
+        --     self:add_item_count(1)    
+        -- end    
     end
 
     --学习技能后，刷新技能

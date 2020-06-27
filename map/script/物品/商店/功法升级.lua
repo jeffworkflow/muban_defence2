@@ -48,8 +48,7 @@ function mt:on_cast_start()
             local key = skill:get_hotkey() 
             local str = clean_color(skill:get_title())
             local info = {
-                name = '|cff00ff00升级 |cff'..ac.color_code[skill.color].. str .. ' |r|cffff0000( 魔丸:' .. skill.rec_ex .. ' )',
-                skill = skill,
+                skill.name,'','|cff00ff00升级 |cff'..ac.color_code[skill.color].. str .. ' |r|cffff0000( 魔丸:' .. skill.rec_ex .. ' )'
             }
             table.insert(list,info)
         end
@@ -60,30 +59,48 @@ function mt:on_cast_start()
     end    
 
     local info = {
-        name = '取消 (Esc)',
-        key = 512
+        '取消 (Esc)','Esc'
     }
     table.insert(list,info)
+    table.insert(list,1,'升级功法')
+    local skill = self
+    local dialog = player:dialog(list)
+    function dialog:onClick(rname)
+        local skl = hero:find_skill(rname,'英雄')
+        if skl then 
+            if p.rec_ex >= skl.rec_ex then 
+                --扣钱
+                hero:add_rec_ex(-skl.rec_ex)
+                --升级技能
+                skl:upgrade(1)
+            else 
+                p:sendMsg('|cffffe799【系统消息】|cffff0000魔丸不足',5)
+            end    
+            --再执行一遍
+            hero:event_notify('单位-点击商店物品',skill.seller,hero,skill)
+        else      
+        end
+    end
 
-    if not self.dialog  then 
-        self.dialog = create_dialog(player,'升级功法',list,function (index)
-            local skl = list[index].skill
-            if skl then 
-                if p.rec_ex >= skl.rec_ex then 
-                    --扣钱
-                    hero:add_rec_ex(-skl.rec_ex)
-                    --升级技能
-                    skl:upgrade(1)
-                else 
-                    p:sendMsg('|cffffe799【系统消息】|cffff0000魔丸不足',5)
-                end    
-                --再执行一遍
-                hero:event_notify('单位-点击商店物品',self.seller,hero,self)
-            else
-                --取消
-            end
-            self.dialog = nil
-        end) 
-    end   
+    -- if not self.dialog  then 
+    --     self.dialog = create_dialog(player,'升级功法',list,function (index)
+    --         local skl = list[index].skill
+    --         if skl then 
+    --             if p.rec_ex >= skl.rec_ex then 
+    --                 --扣钱
+    --                 hero:add_rec_ex(-skl.rec_ex)
+    --                 --升级技能
+    --                 skl:upgrade(1)
+    --             else 
+    --                 p:sendMsg('|cffffe799【系统消息】|cffff0000魔丸不足',5)
+    --             end    
+    --             --再执行一遍
+    --             hero:event_notify('单位-点击商店物品',self.seller,hero,self)
+    --         else
+    --             --取消
+    --         end
+    --         self.dialog = nil
+    --     end) 
+    -- end   
 
 end 
