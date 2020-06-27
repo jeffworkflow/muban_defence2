@@ -98,7 +98,7 @@ local function hero_register_main()
 		player:create_pets(ac.peon_list[math.random(#ac.peon_list)])
 		
 		-- 创建宠物
-		-- player:create_pets('高级鸡')
+		-- player:create_pets('脸黑的羊')
 
 		-- player:selectUnit(player.peon)
 		

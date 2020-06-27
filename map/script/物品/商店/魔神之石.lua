@@ -11,9 +11,9 @@ art = [[tianyu.blp]],
 --说明
 tip = [[
 
-消耗 |cffff000010个强化石|r 兑换 |cff00ff001个天谕|r|n|n|cffcccccc最大兑换次数50次
+消耗 |cffff000010个强化石|r 兑换 |cff00ff001个天谕|r
 
-|cffcccccc最大兑换次数12次]],
+|cffcccccc最大兑换次数50次]],
 
 content_tip = '|cffFFE799【说明】：|r|n',
 --物品类型
