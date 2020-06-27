@@ -323,27 +323,32 @@ mt{
 level = 0,
 is_order = 1,
 --图标
-art = [[fabao10.blp]],
+art = [[yujian.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥165000
+|cffff0000商城购买|r后自动激活
 
 |cffFFE799【法宝属性】：|r
-|cff00ff00+216  杀怪加智力|r
-|cff00ff00+100% 技能伤害加深|r
-|cff00ff00-0.1  攻击间隔|r
+|cff00ff00+10  每秒加护甲
+|cff00ffff+5% 减伤
+|cff00ffff+5% 免伤几率
+|cffffff00+5% 闪避
+|cffffff00+5% 每秒回血
+|cffff0000+1  练功房数量
 
 |cffff0000【点击可更换法宝外观，所有法宝属性可叠加】|r
 ]],
 need_map_level = 30,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加智力'] = 36,
-['技能伤害加深'] = 100,
-['攻击间隔'] = -0.1,
+['每秒加护甲'] = 10,
+['减伤'] = 5,
+['免伤几率'] = 5,
+['闪避'] = 5,
+['每秒回血'] = 5,
+['练功房怪'] = 1,
 --特效
 effect = [[az_yujianshouhu02.mdx]]
 }
@@ -360,6 +365,21 @@ for i,name in ipairs({'东皇钟','轩辕剑','缚妖索','青莲宝色旗','莫
             hero.effect_fabao:remove()
         end     
         hero.effect_fabao = hero:add_effect('chest',self.effect)
+    end   
+    -- mt.on_add = mt.on_cast_start --自动显示特效
+end    
+
+for i,name in ipairs({'御剑守护'}) do
+    local mt = ac.skill[name]
+    function mt:on_cast_start()
+        local hero = self.owner
+        local player = self.owner:get_owner()
+        hero = player.hero 
+        --改变外观，添加武器
+        if hero.effect_fabao then 
+            hero.effect_fabao:remove()
+        end     
+        hero.effect_fabao = hero:add_effect('origin',self.effect)
     end   
     -- mt.on_add = mt.on_cast_start --自动显示特效
 end    

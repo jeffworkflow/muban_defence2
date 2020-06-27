@@ -3,33 +3,35 @@ mt{
 --等级
 level = 0, 
 max_level = 1,
-cool = 1,
+-- cool = 1,
 --图标
 art = [[yueshen.blp]],
+['练功房怪'] = 3,
+['吞噬丹使用上限'] = 2,
+['龙之血珠使用上限'] = 2,
+['无谓因果使用上限'] = 2,
+['全伤加深'] = 488,
+
 --说明
 tip = [[
 |cffffe799【获得方式】：|r
 |cff00ffff商城购买后自动激活
 
-【属性】
-获得一个可自动跟随的知己-月神
-吞噬丹吞噬上限+2
-功法强化上限+2
-练功房数量+3
-英雄全伤加深+488%
-每隔5分钟赠送下面任意一项东西
-吞噬丹*1
-天谕*5
-功法连升书*2
-龙之血珠*1
-无谓因果*1
+|cffFFE799【属性】：|r
+|cff00ff00获得一个可自动跟随的知己-月神
+|cff00ffff吞噬丹使用上限+2
+|cff00ffff龙之血珠使用上限+2，无谓因果使用上限+2
+|cffffff00练功房数量+3
+|cffffff00英雄全伤加深+488%
+|cffff0000每隔5分钟赠送下面任意一项东西
+|cff00ff00（吞噬丹*1、天谕*5、功法连升书*2、龙之血珠*1、无谓因果*1）
 
 |cffFFE799【知己属性】：|r
 |cff00ff00点击获得/收回一个知己
-|cff00ffff单位攻击力=800%英雄攻击力
-|cffffff00单位攻击10%概率让她的敌人神魂颠倒，晕眩敌人2.5秒，并造成范围物理伤害（伤害公式：攻击力*100）
+|cff00ffff单位攻击力=1000%英雄攻击力
+|cffffff00单位攻击10%概率让她的敌人神魂颠倒，晕眩敌人2.5秒，并造成范围物理伤害（伤害公式：攻击力*150）
 |cffff0000继承英雄分裂伤害、攻击减甲、暴击几率/伤害，会心几率/伤害，物伤/全伤加深
-]],
+ ]],
 }
 local function create_unit(self)
     local skill =self
@@ -37,7 +39,7 @@ local function create_unit(self)
     local p = hero:get_owner()
     if p.id >10 then return end 
     local attribute ={
-        ['攻击'] = function() return hero:get('攻击')*8 end,
+        ['攻击'] = function() return hero:get('攻击')*10 end,
         ['攻击间隔'] = function() return hero:get('攻击间隔') end,
         ['攻击速度'] = function() return hero:get('攻击速度') end,
         ['生命上限'] = function() return hero:get('生命上限') end,
@@ -130,12 +132,12 @@ art = [[huolinger.blp]],
 tip = [[
 
 |cffFFE799【能力说明】：|r
-|cff00ff00攻击10%概率让她的敌人神魂颠倒，晕眩敌人1.5秒，并造成范围物理伤害（伤害公式：英雄攻击力*15）
+|cff00ff00攻击10%概率让她的敌人神魂颠倒，晕眩敌人2.5秒，并造成范围物理伤害（伤害公式：英雄攻击力*150）
  ]],
 event_name = '造成伤害效果',
 chance = 10,
 damage_area = 600,
-skill_attack = 100,
+skill_attack = 150,
 effect = [[MXXXT28 -  F.mdx]],
 effect2 = [[ZHeart.MDX]]
 }

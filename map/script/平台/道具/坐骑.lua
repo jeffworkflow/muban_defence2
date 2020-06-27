@@ -345,23 +345,26 @@ tip = [[|cffffe799【获得方式】：|r
 |cff00ff00+8888 杀怪加全属性|r
 |cff00ff00+250  移动速度|r
 |cff00ff00+500  攻击距离|r
-|cff00ff00+488% 技能伤害加深|r
-|cff00ff00+488% 物理伤害加深|r
-|cff00ff00+488% 全伤加深|r
-|cff00ff00+10%  多重暴击几率|r
-|cff00ff00+1    多重暴击|r
+|cffffff00+488% 技能伤害加深|r
+|cffffff00+488% 物理伤害加深|r
+|cffffff00+488% 全伤加深|r
+|cffff0000+10%   多重暴击几率|r
+|cffff0000+1      多重暴击|r
 
-|cff00ffff【祖龙气息】攻击10%几率造成范围技能伤害 （模型jn_tf3.mdx，模型大小1.5，参考英雄技能-火焰气息，喷的距离1000码）
+|cff00ffff【祖龙气息】攻击10%几率造成范围技能伤害
 【伤害公式】（全属性*250+2%敌人的最大生命值）
 
 |cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加敏捷'] = 216,
-['物理伤害加深'] = 200,
-['每秒加杀敌数'] = 5,
-['扭蛋券(十连抽)掉落概率'] = 10,
-['超级扭蛋券(十连抽)掉落概率'] = 10,
+['杀怪加全属性'] = 8888,
+['移动速度'] = 250,
+['攻击距离'] = 500,
+['技能伤害加深'] = 488,
+['物理伤害加深'] = 488,
+['全伤加深'] = 488,
+['多重暴击几率'] = 10,
+['多重暴击'] = 1,
 need_map_level = 29,
 --特效
 effect = [[186e8aea6a983e82.mdx]],
@@ -375,13 +378,13 @@ angle = 5,
 damage = function(self)
 return (self.owner:get('敏捷')+self.owner:get('力量')+self.owner:get('智力'))*250
 end,
-damage_area = 1000,
+damage_area = 1300,
 --被动事件
 event_name = "造成伤害效果",
 cool = 1,
-chance = function(self) return 2*(1+self.owner:get('触发概率加成')/100) end,
+chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 model = [[jn_tf3.mdx]],
-model_size = 1.5,
+model_size = 10,
 }
 
 function mt:damage_start(damage)
@@ -398,9 +401,10 @@ function mt:damage_start(damage)
     local angle = hero:get_point() / target:get_point()
     ac.effect_ex{
         model = skill.model,
+        size = 1.5,
         point = hero:get_point(),
         angle = angle,
-        size = skill.mode_size 
+        -- size = skill.mode_size 
     }:remove()
 
 	--计算伤害
