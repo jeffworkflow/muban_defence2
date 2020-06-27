@@ -132,20 +132,21 @@ local event = {
         end
         -- print('点击同步后,准备弹窗2',p)
         local list = {
-            { name = "是" },
-            { name = "否" },
+            {"是"},
+            {"否"},
         }
         local task_detail = p.current_task.tip 
         local title = task_detail..'\n'.."是否传送到目的地？"
-        create_dialog(p,title,list,function (index)  
-            --是 传送
-            if index == 1 then   
+        table.insert(list,1,title)
+        local dialog = p:dialog(list)
+        function dialog:onClick(name)
+            if name =='是' then 
                 local hero = p.hero 
                 local ret_handle = p.current_task.rect
                 local blink_rect = ac.rect.j_rect(ret_handle)
                 hero:blink(blink_rect,true,false,true)
-            end  
-        end) 
+            end
+        end
     end
 }
 ui.register_event('txzr',event)
@@ -447,22 +448,24 @@ ac.game:event '任务-圣龙气运'(function(self,p)
             --创建对话框 询问是否替换已有的任务
             if p.current_task then 
                 local list = {
-                    { name = "是" },
-                    { name = "否" },
+                    {"是"},
+                    {"否"},
+                    -- { name = "是" },
+                    -- { name = "否" },
                 }
                 local task_detail = award_list[rand_name].tip 
                 local title = task_detail..'\n'.."是否替换已有任务？"
-                create_dialog(p,title,list,function (index)  
-                    -- local name = list[index].name
-                    --是 替换
-                    if index == 1 then   
+                table.insert(list,1,title)
+                local dialog = p:dialog(list)
+                function dialog:onClick(name)
+                    if name =='是' then 
                         clear_task(p,award_list[rand_name])
                         if p:is_self() then 
                             new_ui:fresh()
                             new_ui:show1()
                         end
-                    end  
-                end) 
+                    end
+                end
             else
                 clear_task(p,award_list[rand_name])
                 if p:is_self() then 
