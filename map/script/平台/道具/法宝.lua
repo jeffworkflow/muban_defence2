@@ -317,8 +317,39 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[JL-FB10.mdx]]
 }
 
+local mt = ac.skill['御剑守护']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[fabao10.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-for i,name in ipairs({'东皇钟','轩辕剑','缚妖索','青莲宝色旗','莫邪宝剑','盘古斧','招妖幡','昊天塔','太极符印','崆峒印'}) do
+|cffffe799【获得方式】：|r
+|cff00ffff挖宝熟练度≥165000
+
+|cffFFE799【法宝属性】：|r
+|cff00ff00+216  杀怪加智力|r
+|cff00ff00+100% 技能伤害加深|r
+|cff00ff00-0.1  攻击间隔|r
+
+|cffff0000【点击可更换法宝外观，所有法宝属性可叠加】|r
+]],
+need_map_level = 30,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加智力'] = 36,
+['技能伤害加深'] = 100,
+['攻击间隔'] = -0.1,
+--特效
+effect = [[az_yujianshouhu02.mdx]]
+}
+
+
+for i,name in ipairs({'东皇钟','轩辕剑','缚妖索','青莲宝色旗','莫邪宝剑','盘古斧','招妖幡','昊天塔','太极符印','崆峒印','御剑守护'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

@@ -252,7 +252,8 @@ end
 --设置物品描述
 function mt:set_tip(str)
 	local id = self.type_id
-	japi.EXSetItemDataString(base.string2id(id),3,str)
+	--已经用自定义ui模拟
+	-- japi.EXSetItemDataString(base.string2id(id),3,str)
 	japi.EXSetItemDataString(base.string2id(id),5,str)
 end
 

@@ -157,10 +157,17 @@ ac.game:event '玩家-离开' (function(trg, tp)
 	if mojian then
 		mojian:remove()
 	end
-	
+	local unit_shenjian = tp.unit_shenjian
+	if unit_shenjian then
+		unit_shenjian:remove()
+	end
 	local unit_fs = tp.unit_fs
 	if unit_fs then
 		unit_fs:remove()
+	end
+	local unit_ys = tp.unit_ys
+	if unit_ys then
+		unit_ys:remove()
 	end
 	--移除炮台
 	if tp.paotai then 

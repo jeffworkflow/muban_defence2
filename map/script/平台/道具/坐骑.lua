@@ -330,10 +330,114 @@ high = 170, --人物高度
 }
 
 
+local mt = ac.skill['元祖巨龙']
+mt{
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[zulong.blp]],
+--说明
+tip = [[|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【坐骑属性】：|r
+|cff00ff00+8888 杀怪加全属性|r
+|cff00ff00+250  移动速度|r
+|cff00ff00+500  攻击距离|r
+|cff00ff00+488% 技能伤害加深|r
+|cff00ff00+488% 物理伤害加深|r
+|cff00ff00+488% 全伤加深|r
+|cff00ff00+10%  多重暴击几率|r
+|cff00ff00+1    多重暴击|r
+
+|cff00ffff【祖龙气息】攻击10%几率造成范围技能伤害 （模型jn_tf3.mdx，模型大小1.5，参考英雄技能-火焰气息，喷的距离1000码）
+【伤害公式】（全属性*250+2%敌人的最大生命值）
+
+|cffff0000【点击可更换坐骑外观，所有坐骑属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加敏捷'] = 216,
+['物理伤害加深'] = 200,
+['每秒加杀敌数'] = 5,
+['扭蛋券(十连抽)掉落概率'] = 10,
+['超级扭蛋券(十连抽)掉落概率'] = 10,
+need_map_level = 29,
+--特效
+effect = [[186e8aea6a983e82.mdx]],
+size = 0.75,
+high = 250,
+zq_hight = 95,
+distance = 90,
+angle = 5,
+
+--伤害
+damage = function(self)
+return (self.owner:get('敏捷')+self.owner:get('力量')+self.owner:get('智力'))*250
+end,
+damage_area = 1000,
+--被动事件
+event_name = "造成伤害效果",
+cool = 1,
+chance = function(self) return 2*(1+self.owner:get('触发概率加成')/100) end,
+model = [[jn_tf3.mdx]],
+model_size = 1.5,
+}
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+	local target = damage.target
+
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+	
+	--创建特效
+    local angle = hero:get_point() / target:get_point()
+    ac.effect_ex{
+        model = skill.model,
+        point = hero:get_point(),
+        angle = angle,
+        size = skill.mode_size 
+    }:remove()
+
+	--计算伤害
+	for _,unit in ac.selector()
+	: in_sector(hero:get_point(),self.damage_area,angle,120 )
+	: is_enemy(hero)
+	: ipairs()
+	do 
+		unit:damage
+		{
+			source = hero,
+			damage = skill.damage,
+			skill = skill,
+			damage_type = '法术'
+		}
+		unit:damage
+		{
+			source = hero,
+			damage = unit:get('生命上限')/100*2,
+			skill = skill,
+			real_damage = true
+		}
+	end 
+end
+function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    if self.trg then
+        self.trg:remove()
+        self.trg = nil
+    end
+end
 
 
 
-for i,name in ipairs({'风速狗','兜兜猪','星空麋鹿','烈焰凤凰','地狱蜘蛛','紫霜龙鹰','炎宿朱雀','苍魂青龙','晶蓝天马','金角天马'}) do
+
+for i,name in ipairs({'风速狗','兜兜猪','星空麋鹿','烈焰凤凰','地狱蜘蛛','紫霜龙鹰','炎宿朱雀','苍魂青龙','晶蓝天马','金角天马','元祖巨龙'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

@@ -38,7 +38,7 @@ ac.game:event '游戏-最终boss' (function(trg)
         if ac.main_unit then
             ac.main_unit:add_restriction('无敌')
         end
-        if ac.g_game_degree_attr >= 11 then 
+        if ac.g_game_degree_attr >= 100000 then 
             --无尽开始
             ac.game:event_notify('游戏-无尽开始')
         else    

@@ -93,11 +93,18 @@ function mt:on_cast_shot()
 				for i,index in ipairs(hecheng[item.color]) do 
 					--优先处理消耗品
 					if selected_item[index]._count > 1 then 
-						local new_item = ac.item.create_item(selected_item[index].name,self.target) --创建物品
-						new_item:set_item_count(selected_item[index]._count-1)
-						table.insert(selected_item,new_item)
+						-- local type = finds(item.color,'阶') and '技能' or '物品'
+						-- local new_item
+						-- if type =='技能' then 
+						-- 	new_item= ac.item.create_skill_item(selected_item[index].name,self.target) --创建物品
+						-- else 
+						-- 	new_item = ac.item.create_item(selected_item[index].name,self.target) --创建物品
+						-- end
+						selected_item[index]:add_item_count(-1)
+						table.insert(selected_item,selected_item[index])
+					else
+						selected_item[index]:item_remove()
 					end	
-					selected_item[index]:item_remove()
 					selected_item[index] = nil
 				end	
 				--清空表

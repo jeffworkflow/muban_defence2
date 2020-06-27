@@ -209,8 +209,22 @@ local function check_txzr(flag)
     local reg = ac.region.create(rect)  
     reg:event '区域-进入' (function(trg, hero)
         if reg < hero:get_point()  then --不加区域判断，会有莫名其妙的问题，在练功房传送到其他地方，可能会出现在其他区域。
+            --进入 播放特效
+            ac.effect_ex{
+                model = [[Void Teleport Yellow Target.mdx]],
+                point = rect:get_point() 
+            }:remove()
             --传送到另一个地方
-            hero:blink(target_rect,true,false,true)
+            ac.wait(500,function()
+                hero:blink(target_rect,true,false,true)
+            end)
+            --传送到目的地，再播放一次特效
+            ac.wait(1000,function()
+                ac.effect_ex{
+                    model = [[Void Teleport Yellow Target.mdx]],
+                    point = target_rect:get_point() 
+                }:remove()
+            end)
 
         end
     end)
