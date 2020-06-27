@@ -50,7 +50,7 @@ function mt:on_cast_start()
     end
     
     if first_cnt > 0 then 
-        if first_cnt> need_cnt then 
+        if first_cnt>= need_cnt then 
             first_item:add_item_count(-need_cnt)
         else
             local dis_cnt = need_cnt - first_cnt
