@@ -2001,12 +2001,17 @@ local function get_random_point()
 	end
 	return point
 end
+
+local ret1 = ac.rect.j_rect('cbt2')
+local ret2 = ac.rect.j_rect('cbt3')
+local region = ac.region.create(ret1,ret2)
 function helper:cc()
-	ac.loop(200,function()
-		local point = get_random_point()
+	ac.loop(10,function()
+		local point = region:get_point()
 		print('藏宝区随机的点：',point)
 		ac.effect_ex{
-			model = 'wbdd.mdx',
+			-- model = 'wbdd.mdx',
+			model = 'biaoji_gantanhao.mdx',
 			point = point
 		}
 	end)

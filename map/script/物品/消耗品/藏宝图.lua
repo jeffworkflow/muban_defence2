@@ -68,21 +68,13 @@ local function get_random_point()
 	return point
 end
 --测试：
--- ac.wait(10*1000,function()
---     ac.loop(500,function()
---         local point = get_random_point()
---         print('藏宝区随机的点：',point)
---         ac.effect_ex{
---             model = 'wbdd.mdx',
---             point = point
---         }
---     end)
--- end)
-
+local ret1 = ac.rect.j_rect('cbt2')
+local ret2 = ac.rect.j_rect('cbt3')
+local region = ac.region.create(ret1,ret2)
 
 function mt:on_add()
     --全图随机刷 正式用
-    self.random_point =  ac.map.rects['藏宝区']:get_random_point(true)
+    self.random_point =  region:get_point()
     -- self.random_point =  get_random_point()
 
     -- print(ac.map.rects['藏宝区']:get_random_point(true))
