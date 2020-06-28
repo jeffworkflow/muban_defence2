@@ -323,7 +323,7 @@ for i,name in ipairs({'火炎之力 ','水寒之力 ','暴风之力 ','天雷之
                 local skl = hero:find_skill(real_name,nil,true)
                 if skl and skl.level<1 then 
                     skl:set_level(1)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-战就战系统中查看',2)
+                    p:sendMsg('|cffebb608【系统】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-战就战系统中查看',2)
                 end    
                 --传送回练功房
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()

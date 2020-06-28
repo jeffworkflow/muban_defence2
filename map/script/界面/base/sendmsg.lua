@@ -57,7 +57,7 @@ class.playermsg = extends(class.panel){
         -- print(no_color_str)
         shadow:set_color(0Xff000000)
 
-        local tip = shadow:add_text(str,-1,-1,self.w,125,font_size,'auto_newline')
+        local tip = shadow:add_text(str,-2,-2,self.w,125,font_size,'auto_newline')
         shadow.tip = tip
         shadow.off_line_height = off_line_height
         shadow:set_time_ex(time or 60) --默认销毁时长
@@ -75,7 +75,7 @@ class.playermsg = extends(class.panel){
         end
     end
 }
-
+ac.wait(0,function()
 local pannel = class.playermsg.get_instance()
 function ac.player.__index:sendMsg(str,time)
     if self:is_self() then 
@@ -93,7 +93,7 @@ function ac.player.__index:clearMsg()
         pannel:clearMsg()
     end    
 end    
-
+end)
 
 -- text 扩展方法
 function class.text:set_time_ex(time)

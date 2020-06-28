@@ -170,10 +170,10 @@ local function create_boss(where)
                     local skl = hero:find_skill(name,nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
-                        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00太阳神已被击杀，恭喜玩家 |cff00ffff'..p:get_name()..'|r获得|cffff0000【可存档成就】'..name..'|r，成就属性可在“最强魔灵-隐藏成就”中查看',6) 
+                        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00太阳神已被击杀，恭喜玩家 |cff00ffff'..p:get_name()..'|r获得|cffff0000【可存档成就】'..name..'|r，成就属性可在“最强魔灵-隐藏成就”中查看',6) 
                     else
                         skl:upgrade(1)
-                        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00太阳神已被击杀，恭喜玩家|cff00ffff'..p:get_name()..'|r 的|cffff0000【可存档成就】'..name..'|r得到了升级，升级后的属性可在“最强魔灵-隐藏成就”中查看',6) 
+                        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00太阳神已被击杀，恭喜玩家|cff00ffff'..p:get_name()..'|r 的|cffff0000【可存档成就】'..name..'|r得到了升级，升级后的属性可在“最强魔灵-隐藏成就”中查看',6) 
                     end   
                 end   
             end
@@ -266,9 +266,9 @@ local award_list = {
             local list = ac.quality_item['红']
             local name = list[math.random(#list)]
             local it = hero:add_item(name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强装备】|cff00ff00，获得'..(it.color_name or name),5)
         end,
     },
 
@@ -295,9 +295,9 @@ local award_list = {
             local name = list[math.random(#list)]
             local it = ac.item.add_skill_item(name,hero)
             
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强功法】|cff00ff00，获得'..(it.color_name or name),5)
         end, 
     },
     ['超强石头'] ={
@@ -321,9 +321,9 @@ local award_list = {
             local it = ac.item.create_item('天谕',hero:get_point())
             it:set_item_count(8)
             hero:add_item(it)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强石头】|cff00ff00，获得 |cffff00008个天谕',5)
         end, 
     },
     ['超强伤害'] ={
@@ -346,9 +346,9 @@ local award_list = {
             check_txzr()
             local hero = p.hero
             hero:add('全伤加深',50)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
         end, 
     },
     ['超强属性'] ={
@@ -373,9 +373,9 @@ local award_list = {
             hero:add('力量%',10)
             hero:add('敏捷%',10)
             hero:add('智力%',10)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强属性】|cff00ff00，奖励 |cffff0000全属性+10%',5)
         end, 
     },
     ['超强卡片'] ={
@@ -402,9 +402,9 @@ local award_list = {
             }
             local name = list[math.random(#list)]
             local it = hero:add_item(name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强卡片】|cff00ff00，获得|cffff0000'..it.name,5)
         end, 
     },
 
@@ -442,9 +442,9 @@ ac.game:event '任务-圣龙气运'(function(self,p)
                 point = hero:get_point(),
                 size = 1.5
             }:remove()
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00天将降大任于斯人也！天空突然一道闪电划过，|cff00ffff '..p:get_name()..' |cff00ff00成为了|cffff0000 天选之人|cff00ff00，获得任务 |cffffff00【'..rand_name..'】 |cff00ff00，任务可在|cffffff00屏幕右方|cff00ff00查看',8)
             --创建对话框 询问是否替换已有的任务
             if p.current_task then 
                 local list = {
@@ -486,7 +486,7 @@ ac.game:event '挖图成功'(function(trg,hero)
     p.task['藏宝图'] = (p.task['藏宝图'] or 0) + 1
     --文字提醒
     if p.current_task and p.current_task.name =='超强装备' then 
-        p:sendMsg('|cffffe799【系统消息】|r当前挖宝任务进度 |cffff0000'..p.task['藏宝图']..'|r/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffebb608【系统】|r当前挖宝任务进度 |cffff0000'..p.task['藏宝图']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['藏宝图'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -504,7 +504,7 @@ ac.game:event '触发羊皮无字事件'(function(trg,skill,hero)
     p.task['羊皮无字'] = (p.task['羊皮无字'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强功法' then 
-        p:sendMsg('|cffffe799【系统消息】|r当前看书任务进度 |cffff0000'..p.task['羊皮无字']..'|r/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffebb608【系统】|r当前看书任务进度 |cffff0000'..p.task['羊皮无字']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['羊皮无字'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -524,7 +524,7 @@ ac.game:event '触发锻造事件'(function(trg,skill,hero)
     p.task['超强石头'] = (p.task['超强石头'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强石头' then 
-        p:sendMsg('|cffffe799【系统消息】|r当前强化任务进度 |cffff0000'..p.task['超强石头']..'|r/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffebb608【系统】|r当前强化任务进度 |cffff0000'..p.task['超强石头']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强石头'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -543,7 +543,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     p.task['超强伤害'] = (p.task['超强伤害'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强伤害' then 
-        p:sendMsg('|cffffe799【系统消息】|r当前种树任务进度 |cffff0000'..p.task['超强伤害']..'|r/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffebb608【系统】|r当前种树任务进度 |cffff0000'..p.task['超强伤害']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强伤害'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -568,7 +568,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     p.task['超强属性'] = (p.task['超强属性'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强属性' then 
-        p:sendMsg('|cffffe799【系统消息】|r当前白嫖任务进度 |cffff0000'..p.task['超强属性']..'|r/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffebb608【系统】|r当前白嫖任务进度 |cffff0000'..p.task['超强属性']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强属性'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)
@@ -587,7 +587,7 @@ ac.game:event '触发黑暗骰子事件'(function(trg,skill,hero)
     p.task['超强卡片'] = (p.task['超强卡片'] or 0) + 1
 
     if p.current_task and p.current_task.name =='超强卡片' then 
-        p:sendMsg('|cffffe799【系统消息】|r当前摇骰子任务进度 |cffff0000'..p.task['超强卡片']..'|r/'..p.current_task.need_cnt,2)
+        p:sendMsg('|cffebb608【系统】|r当前摇骰子任务进度 |cffff0000'..p.task['超强卡片']..'|r/'..p.current_task.need_cnt,2)
         --完成，给奖励
         if p.task['超强卡片'] == p.current_task.need_cnt then 
             p.current_task:award(p,hero)

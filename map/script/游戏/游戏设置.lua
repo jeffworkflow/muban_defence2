@@ -186,7 +186,7 @@ end
 local function find_unit(name)
 	local unit
 	for key,val in pairs(ac.unit.all_units) do 
-		if val:get_name() == name then 
+		if finds(val:get_name(),name) then 
 			unit = val
 			break
 		end

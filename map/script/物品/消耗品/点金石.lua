@@ -53,7 +53,7 @@ function mt:on_cast_start()
         end
     end 
     if count < 1 then 
-        player:sendMsg('|cffffe799【系统消息】|r英雄物品栏没有可点金的装备',4)
+        player:sendMsg('|cffebb608【系统】|r英雄物品栏没有可点金的装备',4)
         if self._count > 1 then 
             -- print('数量')
             self:set_item_count(self._count+1)

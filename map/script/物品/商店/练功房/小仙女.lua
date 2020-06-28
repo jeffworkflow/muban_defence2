@@ -197,7 +197,7 @@ for _,name in ipairs(fairy) do
                         if math.random(10000)/100 <= rate then 
                             skl.unit_name = '变异狗熊'
                             skl.mul = 3
-                            ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 触发事件-|cffff0000变异|r',5)   
+                            ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 触发事件-|cffff0000变异|r',5)   
                         end    
                     end
                     skl:set_level(1) 
@@ -205,7 +205,7 @@ for _,name in ipairs(fairy) do
                     --删除技能
                     self:remove()
                 end 
-                p:sendMsg('|cffffe799【系统消息】|cffffff00恭喜抽中|cff00ff00，铭文属性可在圣龙气运-古老的铭文中查看',5)   
+                p:sendMsg('|cffebb608【系统】|cffffff00恭喜抽中|cff00ff00，铭文属性可在圣龙气运-古老的铭文中查看',5)   
                 --创建真小仙女
                 p.fw_cnt =  (p.fw_cnt or 0) + 1
                 -- print('玩家小仙女激活个数：',p,p.fw_cnt,#fairy )
@@ -220,13 +220,13 @@ for _,name in ipairs(fairy) do
                     local skl = hero:find_skill('铭文就是力量',nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'古老的铭文','铭文就是力量')
-                        p:sendMsg('|cffffe799【系统消息】|cff00ff00终于全部抽到了！获得成就|cffffff00 铭文就是力量 |cff00ff00奖励 |cffff0000力量+100万，攻击速度+35%',5)  
+                        p:sendMsg('|cffebb608【系统】|cff00ff00终于全部抽到了！获得成就|cffffff00 铭文就是力量 |cff00ff00奖励 |cffff0000力量+100万，攻击速度+35%',5)  
                     end   
                 end
             else
                 --抽取失败 提升概率
                 self:set('rate',self.rate + self.up_rate)
-                p:sendMsg('|cffffe799【系统消息】|cff00ff00差一点就抽中了，祝你下次好运|cffffff00（下次抽取的命中率提升了5%）',5)  
+                p:sendMsg('|cffebb608【系统】|cff00ff00差一点就抽中了，祝你下次好运|cffffff00（下次抽取的命中率提升了5%）',5)  
                 -- 下次抽中概率:'..self.rate + self.up_rate,5)  
                
                 --概率激活彩蛋
@@ -240,7 +240,7 @@ for _,name in ipairs(fairy) do
                 end    
             end 
         else 
-            p:sendMsg('|cffffe799【系统消息】|cffff0000杀敌数不足',5)    
+            p:sendMsg('|cffebb608【系统】|cffff0000杀敌数不足',5)    
         end
     end  
 end     

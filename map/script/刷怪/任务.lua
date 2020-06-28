@@ -22,7 +22,7 @@ local task_detail = {
         local rate = 0.5
         if math.random(10000)/100 < rate and (p.flxm or 0) < 11 then 
             p:create_unit('俘虏·血魔',killer:get_point()-{math.random(360),100})
-            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00触发俘虏事件',2)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00触发俘虏事件',2)
             p.flxm = (p.flxm or 0)+ 1
         end
 
@@ -36,12 +36,12 @@ local task_detail = {
             --处理每20只奖励杀怪+金币
             local cnt = math.floor(p.tsjx_cnt/per_kill_cnt)
 
-            p:sendMsg('|cffFFE799【系统消息】|r当前屠魔进度：|cffff0000'..(p.tsjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
+            p:sendMsg('|cffebb608【系统】|r当前屠魔进度：|cffff0000'..(p.tsjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.tsjx_cnt % per_kill_cnt == 0 then 
                 hero:add('攻击速度',5)
                 hero:add('分裂伤害',5)
                 hero:add('全属性',200)
-                p:sendMsg('|cffFFE799【系统消息】|r完成屠魔任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000全属性+200，分裂伤害+5%，攻击速度+5%|r',2)
+                p:sendMsg('|cffebb608【系统】|r完成屠魔任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000全属性+200，分裂伤害+5%，攻击速度+5%|r',2)
             end
 
             if p.tsjx_cnt == max_kill_cnt then
@@ -59,13 +59,13 @@ local task_detail = {
                     local rate = 2.5
                     if math.random(10000)/100 < rate then 
                         p:create_unit('俘虏·黑心老人',killer:get_point()-{math.random(360),100})
-                        p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00触发俘虏事件',2)
+                        p:sendMsg('|cffebb608【系统】|r|cff00ff00触发俘虏事件',2)
                     end
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00剿灭魔教成功，奖励|r |cffff0000【噬血珠】|r',6)
+                    p:sendMsg('|cffebb608【系统】|r|cff00ff00剿灭魔教成功，奖励|r |cffff0000【噬血珠】|r',6)
                     hero:add_item('噬血珠',true)
                     p.revive_point = nil --还原复活点
                 end)    
-                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000黑心老人|r已出现，小心他的|cffff0000冰火爪|r',2)
+                p:sendMsg('|cffebb608【系统】|r|cffff0000黑心老人|r已出现，小心他的|cffff0000冰火爪|r',2)
                 p.flag_tsjx = true
             end
         end    
@@ -92,10 +92,10 @@ local task_detail = {
         if not hero then return end 
         local skl = hero:add_skill(skill_name..'1','隐藏')
         if finds(skill_name,'侍卫') then
-            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00猎杀进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)，奖励|cffff0000'..skl:get_tip()..'|r',2)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00猎杀进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)，奖励|cffff0000'..skl:get_tip()..'|r',2)
         else    
             print(111,skl:get_name(),skl:get_tip())
-            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00猎杀成功，掉落了'..skl:get_tip()..'|r',2)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00猎杀成功，掉落了'..skl:get_tip()..'|r',2)
         end
         
         if p.task_cnt[task_name] == 4 then 
@@ -125,7 +125,7 @@ local task_detail = {
                 ac.item.create_item(name,unit:get_point())
                 
             end)    
-            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000BOSS'..task_name..'|r|cff00ff00出现在上方，请小心！',2)
+            p:sendMsg('|cffebb608【系统】|r|cffff0000BOSS'..task_name..'|r|cff00ff00出现在上方，请小心！',2)
 
 
         end    
@@ -148,7 +148,7 @@ local task_detail = {
         local hero = p.hero
         if not hero then return end 
         if finds(skill_name,'侍卫') then
-            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00第五号熔炼石获取进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)|r',2)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00第五号熔炼石获取进度(|cffff0000'..p.task_cnt[task_name].. '|r|cff00ff00/4)|r',2)
         end
         
         if p.task_cnt[task_name] == 4 then 
@@ -165,9 +165,9 @@ local task_detail = {
             unit:event '单位-死亡' (function(_,unit,killer) 
                 local p = killer.owner
                 ac.item.create_item('五号熔炼石',unit:get_point())
-                p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00猎杀成功，掉落了|r',2)
+                p:sendMsg('|cffebb608【系统】|r|cff00ff00猎杀成功，掉落了|r',2)
             end)    
-            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000五号熔炼石BOSS |r|cff00ff00出现在上方，请小心！',2)
+            p:sendMsg('|cffebb608【系统】|r|cffff0000五号熔炼石BOSS |r|cff00ff00出现在上方，请小心！',2)
         end    
 
     end

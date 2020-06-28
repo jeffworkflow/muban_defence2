@@ -225,7 +225,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero.owner 
     if p.flag_cj then 
-        p:sendMsg('|cffffe799【系统提示】|cff00ff00请勿打开幸运转盘',5)
+        p:sendMsg('|cffebb608【系统】|cff00ff00请勿打开幸运转盘',5)
         if p:is_self() then 
             new_ui:show()
         end

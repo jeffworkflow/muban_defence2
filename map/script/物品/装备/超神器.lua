@@ -453,7 +453,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
             local rand_item = ac.god_item[math.random(#ac.god_item)]
             ac.item.create_item(rand_item,unit:get_point())
         end)    
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000超级大菠萝|r已出现，小心他超强的攻击力和毁天灭地的魔法 ',2)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000超级大菠萝|r已出现，小心他超强的攻击力和毁天灭地的魔法 ',2)
 
 
         p.kill_nainiu = 0

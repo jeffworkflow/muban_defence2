@@ -123,16 +123,16 @@ function mt:on_cast_start()
     p.dh_sqlp = p.dh_sqlp or 0 
 
     if p.dh_sqlp >= (2 + ac.g_game_degree_attr) then 
-        p:sendMsg('|cffffe799【系统消息】|cff00ff00本局已达兑换上限',5)
+        p:sendMsg('|cffebb608【系统】|cff00ff00本局已达兑换上限',5)
         return 
     end
     if min_allattr > self.all_attr then 
         p.dh_sqlp = p.dh_sqlp + 1
         hero:add_item('神奇的令牌')
         hero:add('全属性',-self.all_attr)
-        p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜兑换成功',5)
+        p:sendMsg('|cffebb608【系统】|cff00ff00恭喜兑换成功',5)
     else
-        p:sendMsg('|cffffe799【系统消息】|cffff0000兑换条件不足',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000兑换条件不足',5)
     end
 end
 

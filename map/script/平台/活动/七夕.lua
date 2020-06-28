@@ -299,7 +299,7 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
                 p:sendMsg('本局已达兑换上限')    
             end    
         else
-            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00材料不足|r')    
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00材料不足|r')    
         end    
     end    
 end    
@@ -398,7 +398,7 @@ ac.game:event '挖图成功'(function(trg,hero)
         if (p.max_cnt[name] or 0 ) < max_cnt then 
             hero:add_item(name,true)
             p.max_cnt[name] = (p.max_cnt[name] or 0) + 1
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000喜鹊翎毛|r',6) 
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000喜鹊翎毛|r',6) 
         end    
     end  
 

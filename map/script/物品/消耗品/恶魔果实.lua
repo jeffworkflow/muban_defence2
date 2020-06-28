@@ -80,7 +80,7 @@ function mt:on_strong(skill)
         --先删除
         skill:remove() 
         ac.game:event_notify('技能-插入魔法书',hero,'神技入体',skill.name)
-        player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 圣龙气运-吞噬系统中 查看')
+        player:sendMsg('|cffebb608【系统】|r|cffffff00技能强化成功|r 强化后的技能可以在 圣龙气运-吞噬系统中 查看')
         --设置入体技能为5级
         ac.wait(300,function() 
             local skl = hero:find_skill(skill.name,nil,true)
@@ -89,7 +89,7 @@ function mt:on_strong(skill)
     else
         -- hero:add_skill('强化后的'..skill.name,'英雄',slot_id)
         hero:replace_skill(skill.name,'强化后的'..skill.name)
-        player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 英雄技能栏 查看')
+        player:sendMsg('|cffebb608【系统】|r|cffffff00技能强化成功|r 强化后的技能可以在 英雄技能栏 查看')
     end   
     
 end
@@ -171,7 +171,7 @@ function mt:on_cast_start()
                 --触发超级彩蛋
                 if player.ruti_cnt  == 8 then 
                     ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','霸王色的霸气')
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用恶魔果实|r 惊喜获得技能|cffff0000 "霸王色的霸气" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*30的伤害，并晕眩0.8秒|r',6)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用恶魔果实|r 惊喜获得技能|cffff0000 "霸王色的霸气" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*30的伤害，并晕眩0.8秒|r',6)
                 end   
                 
 

@@ -47,11 +47,11 @@ function mt:on_cast_start()
     local second_cnt = second_item and second_item:get_item_count() or 0 
     local need_cnt = 10
     if first_cnt + second_cnt < need_cnt  then 
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000材料不足')
+        p:sendMsg('|cffebb608【系统】|r|cffff0000材料不足')
         return 
     end    
     if first_cnt < need_cnt then 
-        -- p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00兑换成功|r',5)
+        -- p:sendMsg('|cffebb608【系统】|r|cff00ff00兑换成功|r',5)
     end
     
     if first_cnt > 0 then 
@@ -68,7 +68,7 @@ function mt:on_cast_start()
     
     --给物品
     first_u:add_item('天谕')
-    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00兑换成功|r')
+    p:sendMsg('|cffebb608【系统】|r|cff00ff00兑换成功|r')
 end
 
 function mt:on_remove()

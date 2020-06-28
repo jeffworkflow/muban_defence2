@@ -52,7 +52,7 @@ function mt:on_cast_start()
     local p=self.owner.owner
     local hero =p.hero 
     if (p.cnt_succ_ms or 0) >= self.max_succ_cnt then
-        p:sendMsg('|cffffe799【系统消息】|r更多挑战在高难度开放',5)
+        p:sendMsg('|cffebb608【系统】|r更多挑战在高难度开放',5)
         return true
     end
 
@@ -87,18 +87,18 @@ function mt:on_cast_start()
                 unit:add_sell_item('魔神的交易',9)
                 unit:add_sell_item('魔神的合成',12)
                 
-                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
             end
             if p.cnt_total_succ == 16 and not ac.flag_mszs  then
                 ac.flag_mszs = true
                 local unit = ac.find_unit('第六幕·魔神之路')
                 unit:add_sell_item('魔神之石',4)
                 
-                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
             end
         end)
     end
@@ -136,7 +136,7 @@ function mt:on_cast_start()
     local p=self.owner.owner
     local hero = p.hero 
     if (p.cnt_dz or 0) <=0 then
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000挑战次数不够',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000挑战次数不够',5)
         return true
     end
 
@@ -229,7 +229,7 @@ function mt:on_remove()
         --传送回练功房
         local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
         hero:blink(point,true,false,true)
-        ac.player.self:sendMsg('|cffffe799【系统提示】|r|cff00ff00恭喜|cff00ffff'..p:get_name()..'|r|cff00ff00渡劫成功，获得5%全属性',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜|cff00ffff'..p:get_name()..'|r|cff00ff00渡劫成功，获得5%全属性',5)
     end
 end
 

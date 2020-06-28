@@ -2001,12 +2001,17 @@ local function get_random_point()
 	end
 	return point
 end
+
+local ret1 = ac.rect.j_rect('cbt2')
+local ret2 = ac.rect.j_rect('cbt3')
+local region = ac.region.create(ret1,ret2)
 function helper:cc()
-	ac.loop(200,function()
-		local point = get_random_point()
+	ac.loop(10,function()
+		local point = region:get_point()
 		print('藏宝区随机的点：',point)
 		ac.effect_ex{
-			model = 'wbdd.mdx',
+			-- model = 'wbdd.mdx',
+			model = 'biaoji_gantanhao.mdx',
 			point = point
 		}
 	end)
@@ -2022,7 +2027,7 @@ function helper:test_sm()
 	ac.loop(1000,function()
 		for i=1,200 do 
 		rd= rd + 1
-		ac.player.self:sendMsg('|cffffe799【系统消息】|r 使用|cff00ff00藏宝图|r 什么事sdfadfewfewfwefwefwef情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..rd..' )|r',2)
+		ac.player.self:sendMsg('|cffebb608【系统】|r 使用|cff00ff00藏宝图|r 什么事sdfadfewfewfwefwefwef情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..rd..' )|r',2)
 		end
 	end)
 end	
@@ -2217,9 +2222,45 @@ function helper:rd()
 		print(it_name)
 	end
 end
+local temp = {}
+local timer 
+local tags ={}
+local last_unit
+--用漂浮文字展示怪物属性
+function helper:show(str,attr)
+	local unit = ac.find_unit(str)
+	if not unit then 
+		unit = last_unit
+		temp[str] = true
+	end
+	last_unit = unit
 
-
-
+	if attr then 
+		temp[attr] = true
+	end
+	if  timer then 
+		return
+	end
+	timer = ac.loop(1000,function()
+		for i,tag in ipairs(tags) do 
+			tag:remove()
+			tags[i] = nil
+		end
+		local i = 0
+		for key in pairs(temp) do 
+			local str = key..' : '..unit:get(key)
+			-- if not tags[key] then
+			-- 	tags[key] = ac.nick_name(str,unit,i*50,100,i*50,10)
+			-- else
+			-- 	tags[key]:setText(str)
+			-- end
+			-- print('z,x,y:',i*50,100,i*50)
+			local tag = ac.nick_name(str,unit,i*50,100,i*50,10)
+			table.insert(tags,tag)
+			i = i + 1
+		end
+	end)
+end
 
 --设置昼夜模型
 function helper:light(type)

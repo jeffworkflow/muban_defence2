@@ -58,8 +58,8 @@ function mt:on_cast_start()
     --随机装备
     local name = ac.equipment[math.random(1,#ac.equipment)]
     local it = hero:add_item(name,true)
-    p:sendMsg('|cffffe799【系统消息】|r |cff00ff00这个月饼里面怎么有东西硬硬的，获得'..it.color_name..'',6) 
-    --|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r
+    p:sendMsg('|cffebb608【系统】|r |cff00ff00这个月饼里面怎么有东西硬硬的，获得'..it.color_name..'',6) 
+    --|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r
 end    
 
 local mt = ac.skill['大西瓜']
@@ -93,7 +93,7 @@ function mt:on_cast_start()
     --随机消耗品
     local name = ac.consumable_item[math.random(1,#ac.consumable_item)]
     local it = hero:add_item(name,true)
-    p:sendMsg('|cffffe799【系统消息】|r |cff00ff00这个绝对不是普通的西瓜，获得'..it.color_name..'',6) 
+    p:sendMsg('|cffebb608【系统】|r |cff00ff00这个绝对不是普通的西瓜，获得'..it.color_name..'',6) 
 end    
 
 
@@ -142,7 +142,7 @@ function mt:on_cast_start()
     local skl = hero:find_skill(save_name,nil,true) 
     if not skl  then 
         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','第一个吃螃蟹的人')
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了“肥美的螃蟹”，成为本局|cffff0000'..save_name..'（可存档成就）|r 成就属性可在“最强魔灵-精彩活动”中查看',6) 
+        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 食用了“肥美的螃蟹”，成为本局|cffff0000'..save_name..'（可存档成就）|r 成就属性可在“最强魔灵-精彩活动”中查看',6) 
     else
         skl:upgrade(1)
         p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6)  
@@ -256,7 +256,7 @@ reg:event '区域-进入' (function(trg,unit)
         local skl = hero:find_skill(real_name,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
-            p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】四海共团圆|r 奖励 |cff00ff00+26.8杀怪加全属性|r |cff00ff00+26.8攻击减甲|r |cff00ff00+26.8%杀敌数加成|r |cff00ff00+26.8%全伤加深|r',6)
+            p:sendMsg('|cffebb608【系统】|r任务完成，恭喜获得|cffff0000【可存档成就】四海共团圆|r 奖励 |cff00ff00+26.8杀怪加全属性|r |cff00ff00+26.8攻击减甲|r |cff00ff00+26.8%杀敌数加成|r |cff00ff00+26.8%全伤加深|r',6)
         else 
             skl:upgrade(1)   
             p:sendMsg('|cffff0000【可存档成就】'..real_name..'+1',6)  

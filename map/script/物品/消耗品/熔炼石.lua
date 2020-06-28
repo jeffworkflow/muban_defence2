@@ -66,7 +66,7 @@ for ix =1 ,5 do
         end    
 
         if not hero.suit then 
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000熔炼失败|r |cff00ff00请检查身上是否佩戴 |cff00ffff5个相同套装的装备',2)
+            player:sendMsg('|cffebb608【系统】|r|cffff0000熔炼失败|r |cff00ff00请检查身上是否佩戴 |cff00ffff5个相同套装的装备',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
                 
@@ -76,7 +76,7 @@ for ix =1 ,5 do
         
         local skl = player.hero:find_skill(self.name,nil,true)
         if skl and skl.level >=1 then 
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.name..'已被激活，可以在套装系统中查看',2)
+            player:sendMsg('|cffebb608【系统】|r|cffff0000操作失败|r '..self.name..'已被激活，可以在套装系统中查看',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    
@@ -104,7 +104,7 @@ for ix =1 ,5 do
                     for k,v in string.gsub(val[3][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         player.hero:add(k,v)
                     end 
-                    player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00熔炼成功|r 激活的属性可在圣龙气运-熔炼石系统中查看',2)
+                    player:sendMsg('|cffebb608【系统】|r|cff00ff00熔炼成功|r 激活的属性可在圣龙气运-熔炼石系统中查看',2)
                     --标记已经熔炼过（不可熔炼两套海贼王）
                     player.hero.flag_suit[key] =true
                     break
@@ -120,7 +120,7 @@ for ix =1 ,5 do
                 end    
             end  
         else
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000熔炼失败|r 合成材料出错或者该套装已被激活',2)
+            player:sendMsg('|cffebb608【系统】|r|cffff0000熔炼失败|r 合成材料出错或者该套装已被激活',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    

@@ -197,7 +197,7 @@ function mt:on_cast_start()
 
         end    
     else 
-        p:sendMsg('|cffffe799【系统消息】|cffff0000木头不足，或已有玩家正在挑战',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000木头不足，或已有玩家正在挑战',5)
     end    
 
 end    
@@ -219,7 +219,7 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
     if not finds(name,'三眼灵猴','焰皇') then
         return
     end
-    print('三眼灵猴 焰皇 进入事件')
+    -- print('三眼灵猴 焰皇 进入事件')
     local p = killer.owner 
     p.flag = p.flag or {}
     if not p.flag[name] then 
@@ -245,7 +245,7 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
         end
     end
     if ok then
-        print('三眼灵猴 焰皇 移除事件')
+        -- print('三眼灵猴 焰皇 移除事件')
         _:remove()
     end
 end)

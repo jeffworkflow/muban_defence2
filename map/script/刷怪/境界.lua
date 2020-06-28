@@ -238,7 +238,7 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
     local killer = p.hero
     if finds(name,'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝','斗神') then
         local skl = killer:find_skill(name,nil,true)
-        p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00境界突破成功|r 突破后的属性可以在境界系统中查看',3)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00境界突破成功|r 突破后的属性可以在境界系统中查看',3)
         if skl then 
             skl:set_level(1)
         end    

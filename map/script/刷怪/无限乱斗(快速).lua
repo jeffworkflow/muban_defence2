@@ -226,53 +226,53 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
         end)
 
         if name == '蔚蓝石像的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff蔚蓝石像的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff蔚蓝石像的祝福|r|cffffe799
 【祝福属性】|cff00ff00智力+500% 触发概率加成+50% |cffffff00技暴几率+50% 技暴伤害+4000% 会心伤害+2000% |cffff0000技能伤害加深+1000% 全伤加深+500%]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '疾风的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff疾风的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff疾风的祝福|r|cffffe799
 【祝福属性】|cff00ff00全属性+100% 攻击减甲+15000 |cffffff00移动速度+200 攻击距离+1000 |cffff0000极致的攻击速度]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '幽灵的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff幽灵的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff幽灵的祝福|r|cffffe799
 【祝福属性】|cff00ff00敏捷+500% |cffffff00暴击几率+50% 暴击伤害+5000% 会心伤害+2500% |cffff0000物理伤害加深+1250% 全伤加深+625%]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '战神的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff战神的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff战神的祝福|r|cffffe799
 【祝福属性】|cff00ff00力量+500% 攻击+1000% |cffffff00分裂伤害+1000% 减少周围护甲+150000 |cffff0000全伤加深+1250%]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '墨翟的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff墨翟的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff墨翟的祝福|r|cffffe799
 【祝福属性】|cff00ff00护甲/减伤/免伤几率/闪避/每秒回血+35% |cffff0000杀怪/攻击/每秒加护甲+75]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '虚灵的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff虚灵的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff虚灵的祝福|r|cffffe799
 【祝福属性】|cff00ff00杀怪/攻击/每秒加全属性+100000]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '我爱罗的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff我爱罗的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff我爱罗的祝福|r|cffffe799
 【祝福属性】|cff00ff00暴击几率+25% 技暴几率+25% 会心几率+25% |cffff0000暴击伤害+4000% 技暴伤害+4000% 会心伤害+4000%]]
             ac.player.self:sendMsg(str)    
         end   
         if name == '铁匠的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff铁匠的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff铁匠的祝福|r|cffffe799
 【祝福属性】|cff00ff00送5个红装、20个点金石、两个吞噬丹、两本随机技能书、技能升级书Lv1-4各两本、两个恶魔果实，|cffff0000发放到每个人的练功房]]
             ac.player.self:sendMsg(str)    
         end   
         if name == '商人的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff商人的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff商人的祝福|r|cffffe799
 【祝福属性】|cff00ff00杀敌数加成+500% 物品获取率+500% |cffff0000木头加成+500% 魔丸加成+500%]]
             ac.player.self:sendMsg(str)    
         end   
 
         if name == '葛布的祝福' then
-            local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff葛布的祝福|r|cffffe799
+            local str = [[|cffebb608【系统】|r|cff00ff00新的祝福开始：|cff00ffff葛布的祝福|r|cffffe799
 【祝福属性】|cff00ff00宠物也可以帮助挖宝，藏宝图掉落概率翻五倍，挖宝一次得五次收益]]
             ac.player.self:sendMsg(str)    
         end    

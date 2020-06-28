@@ -110,7 +110,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     local key = ac.server.name2key(self.name)
     p:Map_AddServerValue(key,1)
-    p:sendMsg('|cffffe799【系统消息】|r|cff00ff00庆生蟠桃+1，总量可在“F4-可存档面板”查看',5) 
+    p:sendMsg('|cffebb608【系统】|r|cff00ff00庆生蟠桃+1，总量可在“F4-可存档面板”查看',5) 
     --特殊处理
     local has_mall = p.server['庆生蟠桃'] or 0
     if has_mall >=1000 then 
@@ -142,7 +142,7 @@ ac.game:event '游戏-开始'(function()
     local time = 5*60
     ac.wait(time*1000,function()
         give_seed()
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00盛世耀华夏，神州共欢腾！百花仙子大发慈悲，给所有玩家发放了一枚|cffff0000蟠桃种子|r',5) 
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00盛世耀华夏，神州共欢腾！百花仙子大发慈悲，给所有玩家发放了一枚|cffff0000蟠桃种子|r',5) 
     end)
     
     --2.每8分钟随机创建一个在地上
@@ -184,7 +184,7 @@ ac.game:event '挖图成功'(function(trg,hero)
         if not ac.flag_ptzj then 
             ac.func_give_suipian(hero:get_point(),temp)
             ac.flag_ptzj = true 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 在挖宝时挖塌了|cffff0000种子幼儿园|r，一大堆种子散落|cffff0000老家周围|r，大家快去枪啊|r',5) 
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 在挖宝时挖塌了|cffff0000种子幼儿园|r，一大堆种子散落|cffff0000老家周围|r，大家快去枪啊|r',5) 
 
            
         end    

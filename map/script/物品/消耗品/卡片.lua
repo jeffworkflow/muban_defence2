@@ -326,7 +326,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         hero:add('全属性',-all_attr*0.1 + 100)
         flag = '输'
     end
-    p:sendMsg('|cffffe799【系统消息】|r |cffffff00【'..flag..'】，|cff00ff00系统出的拳是 |cffffff00'..sys_str,2)
+    p:sendMsg('|cffebb608【系统】|r |cffffff00【'..flag..'】，|cff00ff00系统出的拳是 |cffffff00'..sys_str,2)
     --扣卡
     it:add_item_count(-1)
 end)  
