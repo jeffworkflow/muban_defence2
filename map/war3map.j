@@ -349,6 +349,7 @@ rect gg_rct_xiangzi7= null
 rect gg_rct_xiangzi8= null
 rect gg_rct_xiangzi9= null
 rect gg_rct_xiangzi10= null
+rect gg_rct_cbt3= null
 endglobals
 
     
@@ -1555,7 +1556,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_zxzw1=Rect(8064.0, - 6592.0, 8608.0, - 6080.0)
     set gg_rct_zxzw2=Rect(8160.0, - 5216.0, 8704.0, - 4704.0)
     set gg_rct_zxzw3=Rect(7456.0, - 3840.0, 8000.0, - 3328.0)
-    set gg_rct_npc2=Rect(3552.0, 8416.0, 3616.0, 8480.0)
+    set gg_rct_npc2=Rect(3360.0, 8608.0, 3424.0, 8672.0)
     set gg_rct_npc3=Rect(3552.0, 7968.0, 3616.0, 8032.0)
     set gg_rct_npc4=Rect(3552.0, 7520.0, 3616.0, 7584.0)
     set gg_rct_npc5=Rect(3552.0, 7072.0, 3616.0, 7136.0)
@@ -1680,7 +1681,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_cbg3=Rect(- 11488.0, 12672.0, - 10048.0, 13408.0)
     set gg_rct_cbg2=Rect(- 11488.0, 11776.0, - 10048.0, 12512.0)
     set gg_rct_cbg4=Rect(- 10784.0, 13696.0, - 10720.0, 13760.0)
-    set gg_rct_cbt2=Rect(3232.0, 6432.0, 6112.0, 8864.0)
+    set gg_rct_cbt2=Rect(3296.0, 6368.0, 6176.0, 8416.0)
     set gg_rct_cjg1=Rect(- 4672.0, 12160.0, - 4608.0, 12224.0)
     set gg_rct_cjg2=Rect(- 5504.0, 12704.0, - 5120.0, 13056.0)
     set gg_rct_cjg3=Rect(- 4096.0, 12704.0, - 3712.0, 13056.0)
@@ -1806,6 +1807,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_xiangzi8=Rect(- 12384.0, 256.0, - 12352.0, 288.0)
     set gg_rct_xiangzi9=Rect(- 5024.0, - 1280.0, - 4992.0, - 1216.0)
     set gg_rct_xiangzi10=Rect(3328.0, 12352.0, 3360.0, 12384.0)
+	set gg_rct_cbt3=Rect(3616.0, 8384.0, 6176.0, 8704.0)
 endfunction
 
 //===========================================================================
