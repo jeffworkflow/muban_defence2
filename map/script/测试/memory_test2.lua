@@ -407,6 +407,14 @@ ac.game:event '游戏-结束' (function()
 				end
 			end
 		end
+		
+		log.debug( '==========================')
+		log.debug( '统计已经被移除但是依然被引用的物品')
+		for self in pairs(item.removed_items) do
+			local x,y =self:get_point():get()
+			log.debug((('++++物品[%s][%s][x:%s y:%s]'):format(self.name, self.type_id,x,y)))
+			log.debug(('所有者:' .. (self.owner and self.owner:get_name() or '无')))
+		end
 	end
 
 	unit.__gc = nil

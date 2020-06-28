@@ -80,6 +80,7 @@ end
 function mt:on_cast_start()
     local unit = self.owner
     local hero = self.owner
+    local owner = self.owner
     local player = hero:get_owner()
     local count = 0
     local name = self:get_name()
@@ -155,7 +156,7 @@ function mt:on_cast_start()
             if skill._count > 1 then 
                 skill:set_item_count(skill._count+1)
             else
-                ac.item.add_skill_item(name,owner)
+                owner:add_item(skill.name)
             end        
         end
     end

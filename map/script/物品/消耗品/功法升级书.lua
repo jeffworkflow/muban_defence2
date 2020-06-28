@@ -77,7 +77,8 @@ function mt:on_cast_start()
             if skill._count > 1 then 
                 skill:set_item_count(skill._count+1)
             else
-                ac.item.add_skill_item(name,owner)
+                -- print(skill.name,skill.owner)
+                owner:add_item(skill.name)
             end        
         end
     end
