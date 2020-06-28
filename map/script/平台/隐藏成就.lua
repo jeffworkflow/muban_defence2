@@ -612,7 +612,7 @@ function mt:damage_start(damage)
         {
             source = source,
             skill = skill,
-            damage = u:get('生命上限')/100*1,
+            damage = u:get('生命上限')/100*0.5,
             real_damage = true
         }
 	end	
