@@ -176,7 +176,7 @@ function mt:on_cast_start()
 
         end    
     else 
-        p:sendMsg('|cffffe799【系统消息】|cffff0000木头不足，或已有玩家正在挑战',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000木头不足，或已有玩家正在挑战',5)
     end    
 
 

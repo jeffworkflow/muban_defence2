@@ -18,7 +18,7 @@ ac.wait(30,function()
             hero:add('力量%',1)
             hero:add('敏捷%',1)
             hero:add('智力%',1)
-            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00隐藏的箱子被打爆了，恭喜获得|cffff0000 全属性+1%',5)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00隐藏的箱子被打爆了，恭喜获得|cffff0000 全属性+1%',5)
         end)
     end
 end)

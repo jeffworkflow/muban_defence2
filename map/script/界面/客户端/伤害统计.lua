@@ -114,7 +114,7 @@ local new_ui = class.panel:builder{
         end    
         --发送消息
         if flag then 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..rand_name..'|r',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00 对boss造成了成吨的伤害 |r 得到了 |cffff0000'..rand_name..'|r',5)
         end  
         --处理掉落物品相关
         for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
@@ -122,7 +122,7 @@ local new_ui = class.panel:builder{
             local it = ac.item.create_item(k)
             it:set_item_count((tonumber(v) or 1))
             hero:add_item(it)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 对BOSS造成了成吨的伤害，得到奖励 |cffff0000'..rand_name..'',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r玩家 |cff00ffff'..player:get_name()..'|r 对BOSS造成了成吨的伤害，得到奖励 |cffff0000'..rand_name..'',5)
             --|cffff0000'..(tonumber(v) or 1)..'|cffff0000个|r
         end
     end,

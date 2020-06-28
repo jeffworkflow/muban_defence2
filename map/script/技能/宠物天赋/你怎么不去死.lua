@@ -41,7 +41,7 @@ function mt:on_add()
 			end
 		end
 		--发送文字
-		ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..self.owner.owner:get_name()..' |cff00ff00的宠物【死亡羔羊】，对尸体进行分解，所有玩家获得|cffff0000150木头',5)
+		ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..self.owner.owner:get_name()..' |cff00ff00的宠物【死亡羔羊】，对尸体进行分解，所有玩家获得|cffff0000150木头',5)
 	
 	end)
 end

@@ -13,15 +13,15 @@ local function active_yccj(p,name,sendmsg,sendmsg2)
             local skl = hero:find_skill(name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
-                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg or ('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 激活 |cffff0000【可存档成就】'..name..'|cff00ff00 属性可在最强魔灵-隐藏成就中查看')
                 ac.player.self:sendMsg(msg,5)
             else 
                 skl:upgrade(1)  
-                local msg = sendmsg2 or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg2 or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
-                local msg = sendmsg2 or ('|cffffe799【系统消息】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
+                local msg = sendmsg2 or ('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..'  |cffff0000【可存档成就】'..name..'得到升级，|cff00ff00 升级后的属性可在最强魔灵-隐藏成就中查看')
                 
                 ac.player.self:sendMsg(msg,5)
             end    
@@ -648,18 +648,18 @@ local task_detail = {
         -- rate = 10,
         award = '我是大魔头',
         sendMsg = function(p)
-            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
+            -- p:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00这也太残忍了！！！谁才是真正的大魔头？？？|cff00ffff'..p:get_name()..'|r |cff00ff00获得|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00，属性可在最强魔灵-隐藏成就中查看',5)
 
         end,
         --存档升级
         sendMsg1 = function(p)
-            -- p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
+            -- p:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00简直！惨不忍睹！|cff00ffff'..p:get_name()..'|r |cff00ff00的|cffff0000【可存档成就】"我是大魔头" |r|cff00ff00得到升级，升级后的属性可在最强魔灵-隐藏成就中查看',5)
         end,
     },
     
@@ -719,7 +719,7 @@ end)
 --             ok = false 
 --         end
 --     end
---     p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..has_cnt..'/'..#temp,5)
+--     p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..has_cnt..'/'..#temp,5)
 --     --激活隐藏成就、魔剑
 --     if ok then 
 --         --激活
@@ -734,13 +734,13 @@ local function check_air(p)
     local all_cnt = 7
     if p.air >= all_cnt then 
         p.flag_air = true
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
         --激活隐藏成就、魔剑
         local it = p.hero:add_item('魔剑卡片')
         it.owner_ship = p
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00功夫不负有心人，|cff00ffff '..p:get_name()..' |cff00ff00集齐了七份万分之一空气，获得了|cffff0000召唤魔剑|cff00ff00的权利！',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00功夫不负有心人，|cff00ffff '..p:get_name()..' |cff00ff00集齐了七份万分之一空气，获得了|cffff0000召唤魔剑|cff00ff00的权利！',5)
     else
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得|cffff0000 万分之一空气 |cff00ff00！当前集齐进度：'..p.air..'/'..all_cnt,5)
     end
 end
 -- local rate = 50.01

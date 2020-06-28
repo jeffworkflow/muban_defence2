@@ -165,7 +165,7 @@ local function give_award(hero)
         return true
     end
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ffff美味的粽子|cff00ff00果真名不虚传阿',3) 
+        p:sendMsg('|cffebb608【系统】|r |cff00ffff美味的粽子|cff00ff00果真名不虚传阿',3) 
     elseif  finds(rand_name,'天谕','功法连升书','无谓因果','龙之血珠','吞噬丹','三眼赤痕','火龙气息','天魂融血丹','地魂融血丹','神奇的令牌') then
         local it
         --处理掉落物品相关
@@ -174,20 +174,20 @@ local function give_award(hero)
                 it = hero:add_item(k,true)
             end 
         end
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = hero:add_item(name)
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(it.color_name or rand_name)..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(it.color_name or rand_name)..'|r',4)
     elseif  finds('地阶 天阶',rand_name) then   
         local list = ac.quality_skill[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = ac.item.add_skill_item(name,hero)
         local color = it and it.color 
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
     elseif finds(rand_name,'随机卡片')  then    
         local list = {
             '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
@@ -196,7 +196,7 @@ local function give_award(hero)
         }
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
     elseif  rand_name == '魔灵精品粽' then 
         local key = ac.server.name2key(rand_name)
         if p:Map_GetServerValue(key) < ac.skill[rand_name].max_level  then 
@@ -206,10 +206,10 @@ local function give_award(hero)
             local skl = hero:find_skill(rand_name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 不断食用美味的粽子，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
+                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 不断食用美味的粽子，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
             else
                 skl:upgrade(1)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 不断食用美味的粽子，使|cffff0000【可存档成就】'..rand_name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
+                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 不断食用美味的粽子，使|cffff0000【可存档成就】'..rand_name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
             end   
         else   
             --重新来一次
@@ -263,7 +263,7 @@ function mt:on_cast_start()
         --给奖励
         give_award(hero)
     else
-        p:sendMsg('|cffffe799【系统消息】|cffff0000制作条件不足',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000制作条件不足',5)
     end    
 
 end

@@ -410,13 +410,13 @@ for i,value in ipairs(magic_item) do
             if self.add_item_count then  
                 self:add_item_count(1) 
             end   
-            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00无法重复激活成功|r ',2)
+            player:sendMsg('|cffebb608【系统】|r|cff00ff00无法重复激活成功|r ',2)
             return true --不加true的话，会执行加属性。 
         end
         
         ac.game:event_notify('技能-插入魔法书',hero,'入魔',self.name)
         local skl = hero:find_skill(self.name,nil,true)
-        player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可在圣龙气运-入魔中查看',2)
+        player:sendMsg('|cffebb608【系统】|r|cff00ff00激活成功|r 可在圣龙气运-入魔中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         

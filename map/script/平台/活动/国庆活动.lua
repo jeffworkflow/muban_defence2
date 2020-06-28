@@ -56,7 +56,7 @@ local function give_award(hero,unit)
 
 
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，普天同庆|cff00ff00!',3) 
+        p:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，普天同庆|cff00ff00!',3) 
 
     elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
         --满时，掉在地上
@@ -65,7 +65,7 @@ local function give_award(hero,unit)
         else 
             hero:add_item(rand_name,true)
         end        
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4) 
+        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
@@ -76,7 +76,7 @@ local function give_award(hero,unit)
         else 
             it = hero:add_item(name,true)
         end      
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
     elseif finds(rand_name,'点金石','恶魔果实','吞噬丹','蟠桃种子')  then
         --满时，掉在地上
         local it 
@@ -85,7 +85,7 @@ local function give_award(hero,unit)
         else 
             it = hero:add_item(rand_name,true)
         end  
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4)
     elseif finds(rand_name,'随机技能书')  then    
         local rand_list = ac.unit_reward['商店随机技能']
         local rand_name = ac.get_reward_name(rand_list)
@@ -101,7 +101,7 @@ local function give_award(hero,unit)
         else 
             ac.item.add_skill_item(name,hero)
         end  
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
     elseif  rand_name == '九洲帝王' then 
         local key = ac.server.name2key(rand_name)
         if p:Map_GetServerValue(key) < 1  then 
@@ -111,7 +111,7 @@ local function give_award(hero,unit)
             local skl = hero:find_skill(rand_name,nil,true) 
             if skl  then 
                 skl:set_level(1) 
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r |cff00ff00放烟花一时爽，一直放一直爽，惊喜获得|cffff0000【可存档称号】'..rand_name..'|r |cff00ff00属性可在最强魔灵-荣耀称号中查看',6) 
+                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r |cff00ff00放烟花一时爽，一直放一直爽，惊喜获得|cffff0000【可存档称号】'..rand_name..'|r |cff00ff00属性可在最强魔灵-荣耀称号中查看',6) 
             end 
         else   
             --重新来一次

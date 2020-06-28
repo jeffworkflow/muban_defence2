@@ -75,7 +75,7 @@ function mt:on_cast_start()
         end
     end 
     if count < 1 then 
-        player:sendMsg('|cffffe799【系统消息】|r英雄物品栏没有可强化的装备',4)
+        player:sendMsg('|cffebb608【系统】|r英雄物品栏没有可强化的装备',4)
         if self._count > 1 then 
             -- print('数量')
             self:set_item_count(self._count+1)
@@ -118,15 +118,15 @@ function mt:on_cast_start()
                     item.max_level = 15
                     item:upgrade(1)
                     item:set_name(item.name)
-                    player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
+                    player:sendMsg('|cffebb608【系统】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
 
                     if item.level == 10 then 
-                        player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
+                        player:sendMsg(item.color_name..'|cffebb608【系统】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)  
                     end
                     -- 物品升级为 '..item.color_name..'
                     -- |cffffff00+'..item.level -1 ..'|r 
                 else 
-                    player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
+                    player:sendMsg('|cffebb608【系统】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                 end    
                 skill.owner = unit
                 ac.game:event_notify('触发锻造事件',skill,hero,item) --发布事件回调
@@ -135,7 +135,7 @@ function mt:on_cast_start()
                     skill:add_item_count(-1)
                 end  
             else 
-                player:sendMsg(item.color_name..'|cffffe799【系统消息】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)
+                player:sendMsg(item.color_name..'|cffebb608【系统】|cff00ff00当前物品超过10级，请使用|cffffff00 天谕 |cff00ff00继续升级|r',4)
                 if skill._count > 1 then 
                     -- print('数量')
                     skill:set_item_count(skill._count+1)
@@ -169,7 +169,7 @@ local function insert_book(hero,name)
     -- if finds(name,'鬼斧神工') then 
     --     if not skl then 
     --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
-    --         ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。'..p:get_name()..'获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
+    --         ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00只要功夫深，铁杵磨成针。'..p:get_name()..'获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
     --     end
     -- else
     if finds(name,'剑瞎子') then 
@@ -187,22 +187,22 @@ local function insert_book(hero,name)
             local skl = hero:find_skill(name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极，惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
             else 
                 skl:upgrade(1)  
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r强化装备的水平已登峰造极， |cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
             end 
         end   
     else
         if not skl then 
             ac.game:event_notify('技能-插入魔法书',hero,'剑冢',name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00只要功夫深，铁杵磨成针。|cff00ffff '..p:get_name()..' |cff00ff00获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-剑冢中查看',2)
         end
     end
  
@@ -272,7 +272,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
     end    
     --发送消息
     if flag then 
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..rand_name..'|r',2)
+        tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..rand_name..'|r',2)
     end  
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
@@ -281,11 +281,11 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         for i=1,tonumber(v) do 
             it = self.owner:add_item(k,true)
         end  
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 
     if rand_name == '无' then
-        -- player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，额外获得 |cffff0000打造熟练度+1，当前打造熟练度 '..player.server['打造熟练度']..'|r',2)
+        -- player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，额外获得 |cffff0000打造熟练度+1，当前打造熟练度 '..player.server['打造熟练度']..'|r',2)
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
@@ -295,10 +295,10 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif rand_name == '复制装备' then
         local it = self.owner:add_item(_item.name,true)
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
+        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
     elseif rand_name == '真·复制装备' then
         local it = ac.dummy:add_item(_item.name,true)
         --升级
@@ -313,7 +313,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
             --     up_item(it)
             -- end
             print('真复制装备：',it.level)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)  
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)  
         -- end)
     end   
 

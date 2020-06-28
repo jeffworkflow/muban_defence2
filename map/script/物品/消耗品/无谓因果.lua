@@ -76,7 +76,7 @@ function mt:on_strong(skill)
     --先删除
     skill:remove() 
     ac.game:event_notify('技能-插入魔法书',hero,'神技入体',skill.name)
-    player:sendMsg('|cffffe799【系统消息】|r|cffffff00功法吞噬成功|r 吞噬后的功法可以在 圣龙气运-吞噬系统中 查看')
+    player:sendMsg('|cffebb608【系统】|r|cffffff00功法吞噬成功|r 吞噬后的功法可以在 圣龙气运-吞噬系统中 查看')
     --设置入体技能为5级
     ac.wait(300,function() 
         local skl = hero:find_skill(skill.name,nil,true)
@@ -164,9 +164,9 @@ function mt:on_cast_start()
             --触发超级彩蛋
             if player.ruti_cnt  == 8 then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','不惧轮回')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
             end   
         else               
             -- print('取消更换技能')
@@ -198,9 +198,9 @@ function mt:on_cast_start()
     --             --触发超级彩蛋
     --             if player.ruti_cnt  == 8 then 
     --                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','不惧轮回')
-    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
-    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
-    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+    --                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+    --                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
+    --                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..self:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
     --             end   
                 
 

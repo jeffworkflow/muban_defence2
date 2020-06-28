@@ -63,9 +63,9 @@ local function up_item(item,player)
     item.max_level = 15
     item:upgrade(1)
     item:set_name(item.name)
-    player:sendMsg('|cffffe799【系统消息】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
+    player:sendMsg('|cffebb608【系统】|r|cff00ff00强化成功|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
     if item.level == item.max_level then 
-        player:sendMsg('|cffffe799【系统消息】恭喜强化成功，|cff00ff00当前物品已经到达顶级|r')
+        player:sendMsg('|cffebb608【系统】恭喜强化成功，|cff00ff00当前物品已经到达顶级|r')
     end
     -- 物品升级为 '..item.color_name..'
 
@@ -103,7 +103,7 @@ function mt:on_cast_start()
         end
     end 
     if count < 1 then 
-        player:sendMsg('|cffffe799【系统消息】|r英雄物品栏没有可强化的装备',4)
+        player:sendMsg('|cffebb608【系统】|r英雄物品栏没有可强化的装备',4)
         if self._count > 1 then 
             -- print('数量')
             self:set_item_count(self._count+1)
@@ -141,10 +141,10 @@ function mt:on_cast_start()
                     --改变属性
                     up_item(item,player)
                 else 
-                    player:sendMsg('|cffffe799【系统消息】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
+                    player:sendMsg('|cffebb608【系统】|r|cffff0000强化失败|r |cffdf19d0(打造熟练度+1，当前打造熟练度 |cffffff00'..player.server['打造熟练度']..' )|r')
                 end   
             else
-                player:sendMsg('|cffffe799【系统消息】|cff00ff00当前物品已经到达顶级|r')
+                player:sendMsg('|cffebb608【系统】|cff00ff00当前物品已经到达顶级|r')
                 if skill._count > 1 then 
                     skill:set_item_count(skill._count+1)
                 else

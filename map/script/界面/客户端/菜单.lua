@@ -21,7 +21,7 @@ class.screen_button = extends(class.button){
             self.tx_name:set_text(str)
             if total_time == 0  then
                 --发送文字
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r游戏开局已过10分钟 |cff00ffff所有玩家|r获得一个|cffff0000神奇的令牌|r 请查看英雄的背包栏')
+                ac.player.self:sendMsg('|cffebb608【系统】|r游戏开局已过10分钟 |cff00ffff所有玩家|r获得一个|cffff0000神奇的令牌|r 请查看英雄的背包栏')
                 for i=1,10 do 
                     local p = ac.player(i)
                     if p:is_player() then 

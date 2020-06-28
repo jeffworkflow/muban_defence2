@@ -709,7 +709,7 @@ function mt:on_use_state()
 	end	
 	hero.use_item[self.name] = (hero.use_item[self.name] or 0) + 1
 	if hero.use_item[self.name] > self.max_use_count then 
-		-- hero:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在神器系统中查看',2)
+		-- hero:get_owner():sendMsg('|cffebb608【系统】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在神器系统中查看',2)
 		return 
 	end	
 	--播放特效
@@ -964,7 +964,8 @@ function unit.__index:add_item(it,is_fall,p)
 	--获取一个空槽位
 	local slot = self:get_nil_slot()
 	if not slot then
-		self.owner:showSysWarning('物品栏已满')
+		-- self.owner:showSysWarning('物品栏已满')
+		self.owner:sendMsg('|cffebb608物品栏已满|r',5)
 		it.recycle = false
 		it:on_recycle(self)
 		return it
@@ -1203,7 +1204,7 @@ function item.create_item(name,poi,hide,p)
 	--读取一个句柄
 	local type_id = ac.get_item_handle()
 	if not type_id then 
-		ac.player.self:sendMsg('|cffFFE799【系统消息】|r|cffff0000物品超出上限，请及时清理地上物品!|r',10)
+		ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000物品超出上限，请及时清理地上物品!|r',10)
 		return item_dummy
 	end	
 	items.type_id = type_id

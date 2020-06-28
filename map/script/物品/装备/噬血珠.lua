@@ -142,7 +142,7 @@ function mt:on_cast_start()
     --需要先增加一个，否则消耗品点击则无条件先消耗
     -- self:add_item_count(1) 
     local item = hero:has_item(self.name)
-    if item._count >= item.kill_cnt and not p.flag_sxz  then 
+    if item and item._count >= item.kill_cnt and not p.flag_sxz  then 
         if item.level == item.max_level and ac.g_game_degree_attr < self.sec_degree_attr then 
             return 
         end    
@@ -183,7 +183,7 @@ function mt:on_cast_start()
                 else 
                     item:add_item_count(-item.kill_cnt+1)
                     item:upgrade(1)
-                    p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜 |cff00ffff'..self.name..' |r|cff00ff00升级成功',3)
+                    p:sendMsg('|cffebb608【系统】|cff00ff00恭喜 |cff00ffff'..self.name..' |r|cff00ff00升级成功',3)
                 end    
                 --传送回练功房
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()

@@ -58,7 +58,7 @@ local new_ui = class.panel:builder
                 pannel:start(pannel.last_selected or 1)
                 self:hide()
             else
-                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000票子不够')
+                p:sendMsg('|cffebb608【系统】|r|cffff0000票子不够')
             end
         end,
         text = {
@@ -288,19 +288,19 @@ local event = {
             ok = true
         end    
         if ok then 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000'..player.reward_name..'|cff00ff00，熟练度存档可按F4进行查看',10)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000'..player.reward_name..'|cff00ff00，熟练度存档可按F4进行查看',10)
             return 
         end
 
         local skl = ac.skill[player.reward_name]
         if skl.name =='谢谢参与' then 
-            player:sendMsg('|cffffe799【系统消息】|r|cff00ff00幸运转盘不断旋转，最终停在了|cffff0000'..player.reward_name..'|cff00ff00的位置',10)
+            player:sendMsg('|cffebb608【系统】|r|cff00ff00幸运转盘不断旋转，最终停在了|cffff0000'..player.reward_name..'|cff00ff00的位置',10)
             return 
         end
         if skl.skill_type == '存档物品' then 
             hero:add_item(player.reward_name) 
             -- player:sendMsg('恭喜获得'..skl.color_name,5)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档装备】'..skl.color_name,10)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档装备】'..skl.color_name,10)
         else 
             local key = ac.server.name2key(player.reward_name)
             if player:Map_GetServerValue(key) < ac.skill[player.reward_name].max_level  then 
@@ -315,10 +315,10 @@ local event = {
                 local skl = hero:find_skill(player.reward_name,nil,true)
                 if not skl then 
                     ac.game:event_notify('技能-插入魔法书',hero,book_name,player.reward_name)
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
                 else
                     skl:upgrade(1)
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000【可存档成就】'..player.reward_name..'|cff00ff00，成就属性可最强魔灵-隐藏成就/天神物品中查看',10)
                 end
             end
         end
@@ -341,7 +341,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             end
         end
         new_ui:show()
-        -- player:sendMsg('|cffffe799【系统消息】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！',5)
+        -- player:sendMsg('|cffebb608【系统】|r|cff00ff00胜败乃兵家常事，大侠请重新来过！',5)
     end
 end)
 

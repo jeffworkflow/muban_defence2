@@ -192,7 +192,7 @@ for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实
                 p:sendMsg('本局已达兑换上限')    
             end    
         else 
-            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000材料不够')    
+            p:sendMsg('|cffebb608【系统】|r|cffff0000材料不够')    
         end    
     end    
 end    
@@ -217,7 +217,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end    
     local key = ac.server.name2key(rand_name)
     p:Map_AddServerValue(key,1)
-    p:sendMsg('|cffffe799【系统消息】|cffff0000'..rand_name..'+1|r，|cff00ff00可按F4查看总量',3)  
+    p:sendMsg('|cffebb608【系统】|cffff0000'..rand_name..'+1|r，|cff00ff00可按F4查看总量',3)  
 
 end)
 
@@ -273,6 +273,6 @@ reg:event '区域-进入' (function(trg,unit)
         end 
         --播放特效
         hero:add_effect('chest','Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx'):remove()
-        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%魔丸加成|r |cff00ff00+23.8%全伤加深|r',6)
+        p:sendMsg('|cffebb608【系统】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%魔丸加成|r |cff00ff00+23.8%全伤加深|r',6)
     end
 end)

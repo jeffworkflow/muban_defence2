@@ -132,7 +132,7 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
         min_attr = 10000
     end
     if coin_val <= 10 or coin_val <= min_attr then 
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000不够资源|r',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不够资源|r',5)
         return 
     end  
     --检测彩蛋
@@ -143,9 +143,9 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
             local skl = hero:find_skill('至尊赌神',nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','至尊赌神')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00007500万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00007500万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00007500万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00007500万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00007500万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "至尊赌神" |r，奖励 |cffff00007500万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
             end    
         end
     end
@@ -215,7 +215,7 @@ ac.game:event '单位-触发翻倍'(function(_,u,skill)
                 local skl = hero:find_skill('一代幸运神',nil,true)
                 if not skl then 
                     ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','一代幸运神')
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "一代幸运神" |r，奖励 |cffff00005000万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r 翻倍一时爽，一直翻倍一直爽，|r 获得成就|cffff0000 "一代幸运神" |r，奖励 |cffff00005000万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%魔丸加成|r',6)
                 end    
             end
         end  

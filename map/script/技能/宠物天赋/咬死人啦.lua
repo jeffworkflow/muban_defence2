@@ -72,7 +72,7 @@ function mt:on_cast_start()
         height = 110,
         skill = skill,
         on_finish = function(self)
-            ac.player.self:sendMsg('|cffffe799【系统消息】 |cff00ffff'..p:get_name()..'的宠物 |cff00ff00袭击了 |cff00ffff'..target.owner:get_name()..' 的宠物 |cff00ff00，赔偿了500木头',5)
+            ac.player.self:sendMsg('|cffebb608【系统】 |cff00ffff'..p:get_name()..'的宠物 |cff00ff00袭击了 |cff00ffff'..target.owner:get_name()..' 的宠物 |cff00ff00，赔偿了500木头',5)
             target:add_buff '定身'{
                 time = skill.time,
                 ref = 'overhead',

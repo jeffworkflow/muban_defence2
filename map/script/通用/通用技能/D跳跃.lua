@@ -159,6 +159,7 @@ function mt:on_cast_shot()
 			time = 0.2,
 			on_finish_ex = function()
 				eff:remove()
+				eff.unit:remove()
 			end
 		}
 		--距离150码时，解除 缴械 定身

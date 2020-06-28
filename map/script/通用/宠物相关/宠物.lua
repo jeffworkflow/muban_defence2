@@ -40,9 +40,9 @@ function player.__index:create_pets(name,re)
         end
         ac.wait(0,function()
             if not re then 
-                self:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得宠物 |cff00ffff'..name..'|cffffff00(拥有天赋:'..u.data.skill_name..')|cff00ff00，2分钟内输入 “|cffff0000re|cff00ff00” 可重置一次',6)
+                self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得宠物 |cff00ffff'..name..'|cffffff00(拥有天赋:'..u.data.skill_name..')|cff00ff00，2分钟内输入 “|cffff0000re|cff00ff00” 可重置一次',6)
             else
-                self:sendMsg('|cffffe799【系统消息】|r|cff00ff00恭喜获得宠物 |cff00ffff'..name..'|cffffff00(拥有天赋:'..u.data.skill_name..')',6)
+                self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得宠物 |cff00ffff'..name..'|cffffff00(拥有天赋:'..u.data.skill_name..')',6)
             end
         end)
     end    

@@ -280,7 +280,7 @@ for i,value in ipairs(magic_item) do
             player:sendMsg('|cffffff00已激活|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',3)
             return true --不加true的话，会执行加属性。   
         end
-        player:sendMsg('|cffFFE799【系统消息】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
+        player:sendMsg('|cffebb608【系统】|r|cffffff00激活成功|r |cff00ff00属性可在圣龙气运-狩猎系统中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         

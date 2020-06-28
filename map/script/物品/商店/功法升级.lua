@@ -54,7 +54,7 @@ function mt:on_cast_start()
         end
     end 
     if #list == 0 then 
-        p:sendMsg('|cffffe799【系统提示】|cffff0000没有可升级的功法')
+        p:sendMsg('|cffebb608【系统】|cffff0000没有可升级的功法')
         return 
     end    
 
@@ -74,7 +74,7 @@ function mt:on_cast_start()
                 --升级技能
                 skl:upgrade(1)
             else 
-                p:sendMsg('|cffffe799【系统消息】|cffff0000魔丸不足',5)
+                p:sendMsg('|cffebb608【系统】|cffff0000魔丸不足',5)
             end    
             --再执行一遍
             hero:event_notify('单位-点击商店物品',skill.seller,hero,skill)
@@ -92,7 +92,7 @@ function mt:on_cast_start()
     --                 --升级技能
     --                 skl:upgrade(1)
     --             else 
-    --                 p:sendMsg('|cffffe799【系统消息】|cffff0000魔丸不足',5)
+    --                 p:sendMsg('|cffebb608【系统】|cffff0000魔丸不足',5)
     --             end    
     --             --再执行一遍
     --             hero:event_notify('单位-点击商店物品',self.seller,hero,self)

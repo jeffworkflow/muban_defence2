@@ -25,7 +25,7 @@ function mt:on_add()
     local hero = self.owner
     hero:add_item('金币礼包 ')
     local p = hero.owner
-    local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活 |cff00ffff金币礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
+    local tip = '|cffebb608【系统】|r|cff00ff00自动激活 |cff00ffff金币礼包|r|cff00ff00 礼包属性可在最强魔灵-礼包中查看'
     p:sendMsg(tip,3)
 end
 

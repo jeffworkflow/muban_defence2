@@ -128,7 +128,7 @@ for i,name in ipairs({'扭蛋券','扭蛋券(十连抽)','扭蛋券(百连抽)',
     mt.time_removed = 200
     function mt:on_cast_start()
         local p = self.owner.owner 
-        p:sendMsg('|cffffe799【系统消息】|r|cffff0000无法使用 |cff00ff00请前往练功房左下角- |cff00ffff扭蛋NPC |cff00ff00处进行兑换',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000无法使用 |cff00ff00请前往练功房左下角- |cff00ffff扭蛋NPC |cff00ff00处进行兑换',5)
     end
 end
 
@@ -141,7 +141,7 @@ local function insert_book(hero,name,self)
     --     if not skl then 
     --         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',name)
     --         ac.wait(0,function()
-    --             ac.player.self:sendMg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
+    --             ac.player.self:sendMg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得|cffffff00【彩蛋】'..name..'|cff00ff00 属性可在圣龙气运-彩蛋中查看',2)
     --         end)
     --     end
     -- else
@@ -165,24 +165,24 @@ local function insert_book(hero,name,self)
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'隐藏成就',name)
                 ac.wait(0,function()
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,惊喜获得 |cffff0000【可存档成就】'..name..' |r 属性可在最强魔灵-隐藏成就中查看',6)
                 end)
             else 
                 skl:upgrade(1)  
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,|cffff0000【可存档成就】'..name..' 得到升级|r 升级后的属性可在最强魔灵-隐藏成就中查看',6)
             end   
         end   
     else
         if not skl then 
             ac.game:event_notify('技能-插入魔法书',hero,'龙宫',name)
             ac.wait(0,function()
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r兑换|cff00ff00'..self.name..'|r的时候,获得成就|cffffff00'..name..'|cff00ff00 属性可在圣龙气运-踢馆-龙宫中查看',2)
             end)
         end
     end
@@ -241,7 +241,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     end    
     --发送消息
     if flag then 
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
+        tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
     end  
     --处理掉落物品相关
     for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
@@ -250,7 +250,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         for i=1,tonumber(v) do 
             it = self.owner:add_item(k,true)
         end  
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000'..(it.color_name or it.name)..'|r',2)
+        tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
 
     local skl = u:find_skill(__it.name,nil,true)
@@ -259,7 +259,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     end    
 
     if rand_name == '无' then
-        player:sendMsg('|cffffe799【系统消息】|r|cffffff00白嫖熟练度+1，当前白嫖熟练度 '..player.server['白嫖熟练度']..'|r',2)
+        player:sendMsg('|cffebb608【系统】|r|cffffff00白嫖熟练度+1，当前白嫖熟练度 '..player.server['白嫖熟练度']..'|r',2)
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
@@ -269,26 +269,26 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        -- tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        -- tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
 
     elseif rand_name == '多抽一次' then
         local cnt =1 
         for i=1,cnt do 
             skl:on_cast_start()
         end
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来十次|cffcccccc（文字部分不做提醒）|r',2)
+        tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来十次|cffcccccc（文字部分不做提醒）|r',2)
     elseif rand_name == '多抽十次' then
         local cnt =5 
         for i=1,cnt do 
             skl:on_cast_start()
         end
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来五十次|cffcccccc（文字部分不做提醒）|r',2)
+        tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来五十次|cffcccccc（文字部分不做提醒）|r',2)
     elseif rand_name == '多抽百次' then
         local cnt =10 
         for i=1,cnt do 
             skl:on_cast_start()
         end
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来一百次|cffcccccc（文字部分不做提醒）|r',2)
+        tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来一百次|cffcccccc（文字部分不做提醒）|r',2)
     end   
 
 end)

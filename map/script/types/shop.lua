@@ -18,14 +18,14 @@ mt.unit_type = 'shop'
 mt.page_stack = nil
 
 --文字显示
-local function on_texttag(string,hero,zoffset,xoffset,yoffset)
+local function on_texttag(string,hero,zoffset,xoffset,yoffset,size)
 	local target = hero
 	local x, y,z = target:get_point():get()
 	-- local z = target:get_point():getZ()
 	local tag = ac.texttag
 	{
 		string = string,
-		size = 14,
+		size = size or 14,
 		position = target:get_point(),
 		xoffset = tonumber(xoffset) or -100,
 		yoffset = tonumber(yoffset) or 0,

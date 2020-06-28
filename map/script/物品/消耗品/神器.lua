@@ -243,7 +243,7 @@ for i,value in ipairs(magic_item) do
 
         ac.game:event_notify('技能-插入魔法书',hero,self.skill_book_name,self.name)
         local skl = hero:find_skill(self.name,nil,true)
-        player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可在圣龙气运-踢馆中查看',2)
+        player:sendMsg('|cffebb608【系统】|r|cff00ff00激活成功|r 可在圣龙气运-踢馆中查看',2)
         skl:set_level(1)
         skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         

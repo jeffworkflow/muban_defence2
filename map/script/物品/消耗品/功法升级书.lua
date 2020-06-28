@@ -44,7 +44,7 @@ function mt:on_cast_start()
         end
     end 
     if #list == 0 then 
-        p:sendMsg('|cffffe799【系统提示】|cffff0000没有可升级的功法')
+        p:sendMsg('|cffebb608【系统】|cffff0000没有可升级的功法')
         --取消 --取消
         if self._count > 1 then 
             self:add_item_count(1) 
@@ -68,7 +68,7 @@ function mt:on_cast_start()
             skl:upgrade(skill.upgrade_cnt)
             if skill._count > 0 then  
                 -- print(123,'再一次升级')
-                p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
+                p:sendMsg('|cffebb608【系统】|cff00ff00升级成功',5)
                 skill:on_cast_start()
                 skill:add_item_count(-1)
             end  
@@ -90,7 +90,7 @@ function mt:on_cast_start()
     --             skl:upgrade(self.upgrade_cnt)
     --             if self._count > 0 then  
     --                 -- print(123,'再一次升级')
-    --                 p:sendMsg('|cffffe799【系统消息】|cff00ff00升级成功',5)
+    --                 p:sendMsg('|cffebb608【系统】|cff00ff00升级成功',5)
     --                 self:on_cast_start()
     --                 self:add_item_count(-1)
     --             end  

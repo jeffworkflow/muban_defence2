@@ -286,7 +286,7 @@ for i,value in ipairs(magic_item) do
         local key = ac.server.name2key(self.name)
         p.flag_tswp = p.flag_tswp or {} 
         if p.flag_tswp[self.name]  then 
-            p:sendMsg('|cffffe799【系统消息】|r|cffff0000存档失败|r 该存档物品在本局激活一次')
+            p:sendMsg('|cffebb608【系统】|r|cffff0000存档失败|r 该存档物品在本局激活一次')
             if self.add_item_count then  
                 self:add_item_count(1) 
             end
@@ -294,7 +294,7 @@ for i,value in ipairs(magic_item) do
         end
 
         if ac.g_game_degree_attr <= p:Map_GetServerValue(key) then 
-            p:sendMsg('|cffffe799【系统消息】|r|cffff0000存档失败|r 该存档物品已拥有，请挑战更高难度进行升级')
+            p:sendMsg('|cffebb608【系统】|r|cffff0000存档失败|r 该存档物品已拥有，请挑战更高难度进行升级')
             if self.add_item_count then  
                 self:add_item_count(1) 
             end
@@ -312,7 +312,7 @@ for i,value in ipairs(magic_item) do
             ac.game:event_notify('技能-插入魔法书',hero,'成神',self.name)
             local skl = hero:find_skill(self.name,nil,true)
             skl.item_type = nil
-            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00存档成功|r 可在最强魔灵-成神中查看',2)
+            player:sendMsg('|cffebb608【系统】|r|cff00ff00存档成功|r 可在最强魔灵-成神中查看',2)
             skl:set_level(1)
             -- skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
         end

@@ -68,7 +68,7 @@ function mt:on_cast_start()
     local cnt = player:get('吞噬丹使用上限')+8 
     if (player.tunshi_cnt or 0) >= cnt then 
         self:add_item_count(1)
-        player:sendMsg('|cffffe799【系统消息】|r已经吞噬过多物品(最多'..cnt..'个)，无法继续吞噬')
+        player:sendMsg('|cffebb608【系统】|r已经吞噬过多物品(最多'..cnt..'个)，无法继续吞噬')
         return 
     end    
 
@@ -99,7 +99,7 @@ function mt:on_cast_start()
         end
     end 
     if count < 1 then 
-        player:sendMsg('|cffffe799【系统消息】|r英雄物品栏没有可吞噬的装备',4)
+        player:sendMsg('|cffebb608【系统】|r英雄物品栏没有可吞噬的装备',4)
         if self._count > 1 then 
             -- print('数量')
             self:set_item_count(self._count+1)
@@ -147,7 +147,7 @@ function mt:on_cast_start()
                 player.tunshi_cnt =0
             end    
             player.tunshi_cnt = player.tunshi_cnt + 1
-            player:sendMsg('|cffffe799【系统消息】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
+            player:sendMsg('|cffebb608【系统】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
             --吞噬名
             if not player.tunshi then 
                 player.tunshi = {}
@@ -157,9 +157,9 @@ function mt:on_cast_start()
             --触发超级彩蛋
             if player.tunshi_cnt  == 8 then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
             end    
         else
             if skill._count > 1 then 
@@ -205,7 +205,7 @@ function mt:on_cast_start()
     --                 player.tunshi_cnt =0
     --             end    
     --             player.tunshi_cnt = player.tunshi_cnt + 1
-    --             player:sendMsg('|cffffe799【系统消息】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
+    --             player:sendMsg('|cffebb608【系统】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
     --             --吞噬名
     --             if not player.tunshi then 
     --                 player.tunshi = {}
@@ -215,9 +215,9 @@ function mt:on_cast_start()
     --             --触发超级彩蛋
     --             if player.tunshi_cnt  == 8 then 
     --                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','大胃王')
-    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
-    --                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+    --                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+    --                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
+    --                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断吞噬物品|r 惊喜获得技能|cffff0000 "大胃王" |r |cff00ff00攻击10%几率造成范围全属性*200的技能伤害|r',6)
     --             end    
                     
 

@@ -187,12 +187,12 @@ mover.__index = {
 			mover.mover_group[self] = nil
 			mover.count = mover.count - 1
 		end
-
+		--投射物类型的，将杀死自己，等待移除。
 		if self.missile and not skip_remove then
 			self.mover:kill()
 			self.mover:removeAllEffects()
 		end
-
+		--self.effect  指通过create_dummy:add_effect 的特效
 		if not self.missile and self.effect then
 			self.effect:remove()
 		end

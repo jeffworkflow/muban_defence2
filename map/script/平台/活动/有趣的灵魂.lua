@@ -235,7 +235,7 @@ for i,name in ipairs({'祭祀-格里芬','祭祀-黑暗项链','祭祀-最强生
                 p:sendMsg('本局已达兑换上限')    
             end    
         else 
-            p:sendMsg('|cffFFE799【系统消息】|r|cffff0000材料不够')    
+            p:sendMsg('|cffebb608【系统】|r|cffff0000材料不够')    
         end    
     end    
 end    
@@ -274,14 +274,14 @@ ac.game:event '游戏-开始'(function()
                     local skl = hero:find_skill(save_name,nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','有趣的灵魂')
-                        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..save_name..'|r，成就属性可在“最强魔灵-精彩活动”中查看',6) 
+                        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..save_name..'|r，成就属性可在“最强魔灵-精彩活动”中查看',6) 
                     else
                         --有魔法书的情况下，升级
                         skl:upgrade(1)
                         p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6) 
                     end   
                 else
-                    p:sendMsg('|cffffe799【系统消息】|r阁下人品略低 |cffff0000超度失败',6) 
+                    p:sendMsg('|cffebb608【系统】|r阁下人品略低 |cffff0000超度失败',6) 
                 end     
             end)
         end    

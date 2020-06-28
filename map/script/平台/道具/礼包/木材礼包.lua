@@ -37,10 +37,10 @@ function mt:on_cast_start()
         hero:add_kill_count(self.award_all_attr)
         -- hero:add('全属性',self.award_all_attr)
         p.mall_flag[name] = true
-        local tip = '|cffFFE799【系统消息】|r|cff00ff00自动激活 |cff00ffff木材礼包|r |cff00ff00 礼包属性可在最强魔灵-礼包中查看'
+        local tip = '|cffebb608【系统】|r|cff00ff00自动激活 |cff00ffff木材礼包|r |cff00ff00 礼包属性可在最强魔灵-礼包中查看'
         p:sendMsg(tip,3)
     else
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不足或已领取过',2)    
+        p:sendMsg('|cffebb608【系统】|r|cffff0000条件不足或已领取过',2)    
     end    
 end
 mt.on_add = mt.on_cast_start
