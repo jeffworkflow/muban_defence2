@@ -1201,7 +1201,7 @@ function mt:update()
 	end
 	life_recover = life_recover + self:get('生命上限') * self:get '每秒回血'/100
 	--再乘以生命恢复效果 
-	life_recover = life_recover + life_recover * self:get('生命恢复效果')
+	life_recover = life_recover + life_recover * self:get('生命恢复效果')/100
 	if life_recover > 0 then
 		self:add('生命', life_recover / unit.frame)
 	end

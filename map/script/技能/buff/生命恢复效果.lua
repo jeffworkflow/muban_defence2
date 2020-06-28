@@ -2,8 +2,7 @@
 local mt = ac.buff['生命恢复效果']
 
 mt.control = 2
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
 mt.effect = nil
 mt.ref = 'overhead'
 mt.model = [[Abilities\Spells\Orc\Bloodlust\BloodlustTarget.mdl]]
