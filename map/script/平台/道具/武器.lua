@@ -10,7 +10,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥2000
+|cff00ffff打造熟练度≥1500
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+72  杀怪加攻击|r
@@ -39,7 +39,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥7500
+|cff00ffff打造熟练度≥6000
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+112  杀怪加攻击|r
@@ -69,7 +69,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥16000
+|cff00ffff打造熟练度≥12800
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+152  杀怪加攻击|r
@@ -98,7 +98,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥27500
+|cff00ffff打造熟练度≥22000
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+192  杀怪加攻击|r
@@ -127,7 +127,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥42000
+|cff00ffff打造熟练度≥33600
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+232  杀怪加攻击|r
@@ -159,7 +159,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥59500
+|cff00ffff打造熟练度≥47600
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+272  杀怪加攻击|r
@@ -188,7 +188,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥80000
+|cff00ffff打造熟练度≥64000
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+312   杀怪加攻击|r
@@ -219,7 +219,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥103500
+|cff00ffff打造熟练度≥82800
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+352  杀怪加攻击|r
@@ -248,7 +248,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥130000
+|cff00ffff打造熟练度≥104000
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+392  杀怪加攻击|r
@@ -280,7 +280,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥159500
+|cff00ffff打造熟练度≥127600
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+432  杀怪加攻击|r

@@ -628,7 +628,7 @@ mt{
     title = '隐藏成就',
     tip = [[
 
-点击查看 |cff00ffff隐藏成就
+点击查看 |cff00ffff隐藏成就|r，通过完成 |cffffff00隐藏任务|r 获得
     ]],
     
 }

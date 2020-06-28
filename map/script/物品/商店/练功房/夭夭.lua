@@ -57,7 +57,7 @@ mt{
     is_order = 2,
     art = [[xiulian10.blp]],
     title = name,
-    tip = '\n点击查看 |cff00ff00神魂修炼\n|r',
+    tip = '\n点击查看 |cff00ff00神魂修炼|r，通过 |cffffff00练功房左上角NPC |r修炼获得\n|r',
 }
 for _,tab in ipairs(devil_deal) do 
     if not mt.skills then 

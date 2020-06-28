@@ -12,7 +12,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥3000
+|cff00ffff挖宝熟练度≥1500
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+36  杀怪加智力|r
@@ -44,7 +44,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥9000
+|cff00ffff挖宝熟练度≥4500
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+56  杀怪加智力|r
@@ -77,7 +77,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥18000
+|cff00ffff挖宝熟练度≥9000
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+76  杀怪加智力|r
@@ -108,7 +108,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥30000
+|cff00ffff挖宝熟练度≥15000
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+96  杀怪加智力|r
@@ -139,7 +139,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥45000
+|cff00ffff挖宝熟练度≥22500
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+116 杀怪加智力|r
@@ -172,7 +172,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥63000
+|cff00ffff挖宝熟练度≥31500
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+136 杀怪加智力|r
@@ -203,7 +203,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥84000
+|cff00ffff挖宝熟练度≥42000
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+156  杀怪加智力|r
@@ -234,7 +234,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥108000
+|cff00ffff挖宝熟练度≥54000
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+176  杀怪加智力|r
@@ -265,7 +265,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥135000
+|cff00ffff挖宝熟练度≥67500
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+196  杀怪加智力|r
@@ -298,7 +298,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝熟练度≥165000
+|cff00ffff挖宝熟练度≥82500
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+216  杀怪加智力|r
@@ -328,7 +328,7 @@ art = [[yujian.blp]],
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cffff0000商城购买|r后自动激活
+|cff00ffff商城购买后自动激活
 
 |cffFFE799【法宝属性】：|r
 |cff00ff00+10  每秒加护甲

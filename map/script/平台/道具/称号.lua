@@ -41,7 +41,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥6000
+|cff00ffff种树熟练度≥4800
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+28  杀怪加全属性|r
@@ -71,7 +71,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥14000
+|cff00ffff种树熟练度≥11200
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+38  杀怪加全属性|r
@@ -101,7 +101,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥25000
+|cff00ffff种树熟练度≥20000
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+48  杀怪加全属性|r
@@ -133,7 +133,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥39000
+|cff00ffff种树熟练度≥31200
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+58  杀怪加全属性|r
@@ -166,7 +166,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥56000
+|cff00ffff种树熟练度≥44800
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+68   杀怪加全属性|r
@@ -196,7 +196,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥76000
+|cff00ffff种树熟练度≥60800
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+78   杀怪加全属性|r
@@ -230,7 +230,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥99000
+|cff00ffff种树熟练度≥79200
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+88   杀怪加全属性|r
@@ -260,7 +260,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥125000
+|cff00ffff种树熟练度≥100000
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+98   杀怪加全属性|r
@@ -293,7 +293,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥154000
+|cff00ffff种树熟练度≥123200
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+108  杀怪加全属性|r
