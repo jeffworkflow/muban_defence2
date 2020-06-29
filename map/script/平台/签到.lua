@@ -6,7 +6,9 @@ mt{
     art = [[qiandao.blp]],
     title = '签到',
     tip = [[
+
 点击查看 |cff00ffff签到成就|r，通过|cffffff00 屏幕右方的每日签到 |r获得    
+
 %is_qd% 
 |cffffe799累计签到次数：|r%has_qd%
 |cffffe799本次签到奖励：|r|cff00ff00每秒加全属性+%本次签到奖励%

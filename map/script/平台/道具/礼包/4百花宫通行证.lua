@@ -46,7 +46,7 @@ item_type ='消耗品',
 --说明
 tip = [[
 
-|cff00ff00点击获取 |cff00ffff10个一颗神奇的种子
+|cff00ff00点击获取并自动使用 |cff00ffff10个一颗神奇的种子
  ]],
 attr_tip = '',
 --目标类型

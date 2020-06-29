@@ -14,7 +14,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNMagicLariet.blp]],
 tip = [[
 
 
-使得怪物|cff00ff00暂停进攻90秒|r
+使得怪物|cff00ff00暂停进攻（85+难度*5）秒|r
 
 |cffcccccc请确保木头足够再购买，否则技能会进入CD，切勿瞎点|r]],
 shop_count = 0, --初始个数
@@ -31,7 +31,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 690,
 --停怪时长
 stu_time = function()
-    return 75 + ac.g_game_degree_attr*15
+    return 85 + ac.g_game_degree_attr*5
 end,
 
 content_tip = '|cffFFE799【使用说明】：|r',
@@ -61,7 +61,7 @@ function mt:on_cast_start()
             ac.main_stop_timer = nil
         end,
     }
-    ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00玩家|cff00ffff '..p:get_name()..' |cff00ff00购买了|cffff0000停怪！|r|cff00ff00停怪90秒。')
+    ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00玩家|cff00ffff '..p:get_name()..' |cff00ff00购买了|cffff0000停怪！|r|cff00ff00停怪'..self.stu_time..'秒')
 end
 
 -- ac.game:event '单位-货币不足' (function(_,seller,u,it)

@@ -33,6 +33,7 @@ end)
 ac.wait(100,function()
     ac.effect_ex{
         model =[[AZ_TX3_2.mdx]],
+        size = 1.5,
         point = ac.rect.j_rect('npc1'):get_point(),
         time = 60,
     }

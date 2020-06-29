@@ -58,6 +58,7 @@ for i =1 ,6 do
                         --同时创建新人引导
                         ac.effect_ex{
                             model =[[AZ_TX3_2.mdx]],
+                            size = 1.5,
                             point = ac.rect.j_rect('lgfnpc'..p.id..'3'):get_point(),
                             time = 30,
                         }

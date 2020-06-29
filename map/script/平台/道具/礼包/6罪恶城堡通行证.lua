@@ -48,7 +48,7 @@ item_type ='消耗品',
 --说明
 tip = [[
 
-|cff00ff00点击获取 |cff00ffff10个黑暗骰子
+|cff00ff00点击获取并自动使用 |cff00ffff10个黑暗骰子
  ]],
 attr_tip = '',
 --目标类型
