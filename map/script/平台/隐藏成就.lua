@@ -612,7 +612,7 @@ function mt:damage_start(damage)
         {
             source = source,
             skill = skill,
-            damage = u:get('生命上限')/100*1,
+            damage = u:get('生命上限')/100*0.5,
             real_damage = true
         }
 	end	
@@ -628,7 +628,7 @@ mt{
     title = '隐藏成就',
     tip = [[
 
-点击查看 |cff00ffff隐藏成就
+点击查看 |cff00ffff隐藏成就|r，通过完成 |cffffff00隐藏任务|r 获得
     ]],
     
 }

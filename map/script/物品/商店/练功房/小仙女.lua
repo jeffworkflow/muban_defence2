@@ -156,7 +156,7 @@ mt{
     is_order = 2,
     art = [[mingwen8.blp]],
     title = '古老的铭文',
-    tip = '\n点击查看 |cff00ff00古老的铭文\n|r',
+    tip = '\n点击查看 |cff00ff00古老的铭文|r，通过 |cffffff00练功房右上角NPC|r 抽奖获得\n|r',
 }
 mt.skills = fairy
 for _,name in ipairs(fairy) do 

@@ -142,7 +142,7 @@ mt{
     title = '套装熔炼',
     tip = [[
         
-点击查看 |cff00ff00套装熔炼|r
+点击查看 |cff00ff00套装熔炼|r，通过 |cffffff00圣龙精魄|r 或|cffffff00熔炼石|r 熔炼装备获得
     ]],
 }
 mt.skills = {

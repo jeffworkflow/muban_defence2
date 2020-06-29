@@ -58,7 +58,7 @@ local function init_attribute(unit)
     end 
 
     if _in(unit:get_name(),'一棒男','戴瑟提克','格里弗','克尔苏加德','虚空诺亚') then
-        unit:set('每秒回血',1 * ((ac.g_game_degree_attr or 1 ) -1))
+        unit:set('每秒回血',1.25 * ((ac.g_game_degree_attr or 1 ) -1))
     end  
     
 end

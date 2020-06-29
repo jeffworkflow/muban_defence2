@@ -7,7 +7,7 @@ mt{
     title = '最强魔灵',
     tip = [[
 
-点击查看 |cff00ffff最强魔灵|r
+点击查看 |cff00ffff最强魔灵|r，里面包含所有 |cffffff00可存档内容
     ]],
     
 }
@@ -41,7 +41,7 @@ mt{
     title = '成神',
     tip = [[
 
-点击查看 |cff00ffff成神|r
+点击查看 |cff00ffff成神|r，完成 |cffffff00第六幕任务|r 获得
     ]],
     
 }
@@ -93,7 +93,7 @@ mt{
     title = '礼包',
     tip = [[
 
-点击查看 |cff00ffff礼包
+点击查看 |cff00ffff礼包|r
     ]],
     
 }--'五星好评礼包'
@@ -163,7 +163,7 @@ mt{
     title = '神器',
     tip = [[
 
-点击查看 |cff00ffff神器
+点击查看 |cff00ffff神器|r，主要通过 |cffffff00不断打造|r 获得
     ]],
     
 }
@@ -180,7 +180,7 @@ mt{
     title = '翅膀',
     tip = [[
 
-点击查看 |cff00ffff翅膀
+点击查看 |cff00ffff翅膀|r，主要通过 |cffffff00不断摇骰子|r 获得
     ]],
     
 }
@@ -196,7 +196,7 @@ mt{
     title = '称号',
     tip = [[
 
-点击查看 |cff00ffff称号
+点击查看 |cff00ffff称号|r，主要通过 |cffffff00不断种树|r 获得
     ]],
     
 }
@@ -254,7 +254,7 @@ mt{
     title = '领域',
     tip = [[
 
-点击查看 |cff00ffff领域
+点击查看 |cff00ffff领域|r，主要通过 |cffffff00不断看书|r 获得
     ]],
     
 }
@@ -283,7 +283,7 @@ mt{
     title = '坐骑',
     tip = [[
 
-点击查看 |cff00ffff坐骑
+点击查看 |cff00ffff坐骑|r，主要通过 |cffffff00不断白嫖|r 获得
     ]],
     
 }
@@ -299,7 +299,7 @@ mt{
     title = '法宝',
     tip = [[
 
-点击查看 |cff00ffff法宝
+点击查看 |cff00ffff法宝|r，主要通过 |cffffff00不断挖宝|r 获得
     ]],
     
 }

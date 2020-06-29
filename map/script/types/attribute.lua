@@ -395,7 +395,7 @@ local str_phy_split_damage = 0
 local agi_speed = 0
 local agi_heart = 0
 local agi_defense = 0
-local agi_attack = 0.5
+local agi_attack = 1
 
 --智力
 local int_mp = 8
