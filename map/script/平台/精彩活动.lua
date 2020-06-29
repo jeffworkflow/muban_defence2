@@ -37,7 +37,7 @@ mt{
     title = '活动成就',
     tip = [[
 
-查看 |cff00ffff活动成就|r，通过完成 |cffffff00限时活动|r 获得
+点击查看 |cff00ffff活动成就|r，通过完成 |cffffff00限时活动|r 获得
     ]],
     
 }

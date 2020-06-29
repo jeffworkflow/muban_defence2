@@ -2,16 +2,17 @@ local mt = ac.skill['新的征程']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[cwpf.blp]],
+    art = [[ditupaoxiao.blp]],
     title = '新的征程',
     tip = [[
 
-点击查看 |cff00ffff新的征程|r|cffcccccc（可存档成就）|r
+点击查看 |cff00ffff新的征程|r，通过通关 |cffffff00超高难度|r 获得
     ]],
     
 }
 mt.skills = {
-    '新的征程1','新的征程2','新的征程3','新的征程4','新的征程5',
+    '新的征程1','新的征程2','新的征程3',
+    --'新的征程4','新的征程5',
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -41,46 +42,53 @@ end
 
 --所有属性
 local mt = ac.skill['新的征程1']
-mt['杀怪加敏捷'] = 35
-mt['移动速度'] = 35
-mt['木头加成'] = 35
-mt['暴击伤害'] = 35
+mt['杀怪加全属性'] = 350
+mt['攻击减甲'] = 175
+mt['暴击伤害'] = 100
+mt['物理伤害加深'] = 50
+mt['多重暴击'] = 1
+
 mt{
 title = '登峰造极',
+art = [[dengfengzaoji.blp]],
 tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00携带编号为【001】-【005】的宠物通关N2以上
+|cff00ff00通关难度-|cffffff00新的征程（一）-（五）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
-+35  杀怪加敏捷
-+35  移动速度
-+35% 木头加成
-+35% 暴击伤害
+|cff00ff00+350   杀怪加全属性|r
+|cff00ff00+175   攻击减甲|r
+|cff00ff00+100%  暴击伤害|r
+|cff00ff00+50%   物理伤害加深|r
+|cff00ff00+1      多重暴击|r
 
 ]],
 content = '',
 }
 
 local mt = ac.skill['新的征程2']
-mt['杀怪加智力'] = 35
-mt['攻击距离'] = 35
-mt['魔丸加成'] = 35
-mt['技暴伤害'] = 35
+mt['杀怪加全属性'] = 450
+mt['攻击减甲'] = 225
+mt['技暴伤害'] = 100
+mt['技能伤害加深'] = 50
+mt['对BOSS额外伤害'] = 25
 mt{
-title = '神奇宝贝',
+title = '返璞归真',
+art = [[fanpuguizhen.blp]],
 tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00携带编号为【006】-【010】的宠物通关N2以上
+|cff00ff00通关难度-|cffffff00新的征程（六）-（十）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
-+35  杀怪加智力
-+35  攻击距离
-+35% 魔丸加成
-+35% 技暴伤害
+|cff00ff00+450   杀怪加全属性|r
+|cff00ff00+225   攻击减甲|r
+|cff00ff00+100%  技暴伤害|r
+|cff00ff00+50%   技能伤害加深|r
+|cff00ff00+25%   对BOSS额外伤害|r
 
 ]],
 content = '',
@@ -89,23 +97,24 @@ content = '',
 
 
 local mt = ac.skill['新的征程3']
-mt['杀怪加力量'] = 35
-mt['攻击减甲'] = 100
-mt['杀敌数加成'] = 35
-mt['会心伤害'] = 35
+mt['杀怪加全属性'] = 550
+mt['攻击减甲'] = 275
+mt['会心伤害'] = 100
+mt['全伤加深'] = 50
 mt{
-title = '驯宠小霸王',
+title = '破碎虚空',
+art = [[posuixukong.blp]],
 tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00携带编号为【011】-【015】的宠物通关N2以上
+|cff00ff00通关难度-|cffffff00新的征程（十一）-（十五）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
-+35  杀怪加力量
-+100 攻击减甲
-+35% 杀敌数加成
-+35% 会心伤害
+|cff00ff00+550   杀怪加全属性|r
+|cff00ff00+275   攻击减甲|r
+|cff00ff00+100%  会心伤害|r
+|cff00ff00+50%   全伤加深|r
 
 ]],
 content = '',
@@ -167,7 +176,7 @@ for i=1,10 do
     max_level = 1,
     strong_hero = 1, --作用在人身上
     --图标
-    art = [[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],
+    -- art = [[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],
     --说明
     -- tip = [[
 

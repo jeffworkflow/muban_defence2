@@ -43,9 +43,9 @@ end,
 	--特效4
 	effect4 = [[触发两次]],
     time =8,
-    attr_mul = function(self)
-        return 100*self.level
-    end
+    -- attr_mul = function(self)
+    --     return 100*self.level
+    -- end
 }
 
 function mt:atk_pas_shot(target)
@@ -56,7 +56,7 @@ function mt:atk_pas_shot(target)
     local u =  hero:create_illusion(source-{math.random(360),100})
 
     local attribute ={
-        ['攻击'] = hero:get('攻击') * (1+self.level * 0.07),
+        ['攻击'] = hero:get('攻击') * (2+self.level * 0.14),
         ['护甲'] = hero:get('护甲') * (0.1+self.level * 0.01),
         ['攻击间隔'] = hero:get('攻击间隔'),
         ['攻击速度'] = hero:get('攻击速度'),
@@ -91,7 +91,7 @@ function mt:atk_pas_shot(target)
         model = model,
         time = self.time,
         attribute = attribute,
-        attr_mul=self.attr_mul,
+        -- attr_mul=self.attr_mul,
         remove_target = true,
         skill = self,
         follow = true,

@@ -287,6 +287,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
                     local key = ac.server.name2key('新的征程奖励')
                     player:Map_AddServerValue(key,degree)  
                 end
+
+                ac.player.self:sendMsg("|cffebb608【游戏胜利】|r|cff00ff00恭喜通关此难度！下一个难度等你来挑战！")
             end
 
             --保存短位数
@@ -300,7 +302,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             -- end    
             -- print(name,key)
             player:Map_AddServerValue(key,1) --网易服务器
-            player:sendMsg('【游戏胜利】|cffff0000'..name..'通关次数+1|r')
+            player:sendMsg('|cffebb608【游戏胜利】|cffff0000'..name..'段位+1|r')
 
             --保存战斗力 只保存自定义服务器
             local name = name..'战斗力'
@@ -312,7 +314,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
                     player:SetServerValue(key,player.zdl) --自定义服务器
                 -- end    
             end    
-            player:sendMsg('【游戏胜利】|cffff0000本次通关战斗力：'..player.zdl..'|r')  
+            player:sendMsg('|cffebb608【游戏胜利】|cff00ff00本次通关战斗力：|cffff0000'..player.zdl..'|r')  
 
         end
     end
