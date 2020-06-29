@@ -1879,6 +1879,22 @@ function unit.registerJassTriggers()
 		if not u._current_issue_order then
 			u._current_issue_order = id2order[order]
 		end
+		-- local item_handle = jass.GetOrderTargetItem()
+		-- if item_handle ~= nil and item_handle ~= 0 then
+		-- 	if order == 851983 then
+		-- 		print('不能攻击物品')
+		-- 		ac.wait(0,function ()
+		-- 			u:issue_order('stop')
+		-- 		end)
+
+		-- 		return
+		-- 	else
+		-- 		u:event_notify('单位-发布指令', u, id2order[order], ac.item.j_item(item_handle), player_order, order)
+		-- 		u._current_issue_order = nil
+		-- 		return
+		-- 	end
+		-- end
+
 		u:event_notify('单位-发布指令', u, id2order[order], unit.j_unit(jass.GetOrderTargetUnit()), player_order, order)
 		u._current_issue_order = nil
 	end)

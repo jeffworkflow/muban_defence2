@@ -55,31 +55,59 @@ mt{
 -- 		hero:add_item(name)
 -- 	end)   
 -- end
+-- local function give_award(self,flag)
+-- 	local skill = self
+-- 	local hero = self.owner
+-- 	if skill:is_cooling() then 
+-- 		return 
+-- 	end
+-- 	if skill.owner then 
+-- 		--随机装备
+-- 		local name = ac.all_item[math.random(#ac.all_item)]
+-- 		print('给了随机装备',name)
+-- 		hero:add_item(name)
+-- 		--激活cd
+-- 		if flag then 
+-- 			ac.wait(0,function()
+-- 				skill:active_cd()
+-- 			end)
+-- 		else
+-- 			skill:active_cd()
+-- 		end
 
+-- 	end
+-- end
 function mt:on_upgrade()
 	local skill = self
 	local hero = self.owner
+	-- give_award(self,true)
+	--计时器检测
 	if not self.timer then 
 		self.timer = ac.loop(1000,function()
 			if skill:is_cooling() then 
 				return 
 			end
-			--随机装备
-			local name = ac.all_item[math.random(#ac.all_item)]
-			print('给了随机装备',name)
-			hero:add_item(name)
-			if self.owner then 
-				self:active_cd()
-			else
+			--物品施法
+			ac.item_cast(self)
+			if not self.owner then 
 				self.timer:remove()
 				self.timer = nil
 			end
 		end)
 	end
 end
+function mt:on_cast_start()
+	-- print('使用物品：',self.name)
+	local skill = self
+	local hero = self.owner
+	local name = ac.all_item[math.random(#ac.all_item)]
+	print('给了随机装备',name)
+	hero:add_item(name)
+end
 
 function mt:on_remove()
-    local hero = self.owner
+	local hero = self.owner
+	-- print('进入on_remove',self.name,self.timer)
     if self.timer then 
         self.timer:remove()
         self.timer = nil

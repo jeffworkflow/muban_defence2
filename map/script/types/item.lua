@@ -990,12 +990,12 @@ function unit.__index:add_item(it,is_fall,p)
 	-- print(it.owner,self.handle,it.is_skill_init)
 	if not it.is_skill_init then
 		it:item_init_skill()
-	else
-		it:_call_event 'on_add'
-		it:_call_event 'on_upgrade'	
-		--显示冷却
-		-- if it.passive then 
-			it:set_show_cd() 
+	-- else
+	-- 	it:_call_event 'on_add'
+	-- 	it:_call_event 'on_upgrade'	
+	-- 	--显示冷却
+	-- 	-- if it.passive then 
+	-- 		it:set_show_cd() 
 		-- end
 		-- ac.game:event_notify('技能-升级',self,it) --属性（刷新）
 	end
@@ -1058,6 +1058,7 @@ function unit.__index:remove_item(it)
 		if it.ability_id and not it.no_ability then
 			it.owner:remove_ability(it.ability_id)
 		end
+		it.is_skill_init = false
 	end	
 
 	--神符类的物品，有所有者，但是没有slot_id 所以，需要做一重判断
@@ -1168,6 +1169,9 @@ ac.wait(0,function()
 	item_dummy= ac.item.create_item('物品模板',ac.point(0,0),true)
 end)
 
+function item.j_item(handle)
+	return ac.item.item_map[handle]
+end
 --创建物品
 --物品名称
 --位置
@@ -1497,7 +1501,37 @@ function mt:pause(flag)
 	end
 end
 
+--拾取物品相关的优化。
+-- ac.game:event '单位-发布指令' (function(trg, unit, order, target, player_order, order_id)
 
-	
+-- 	if unit._item_order_timer then
+-- 		unit._item_order_timer:remove()
+-- 		unit._item_order_timer = nil
+-- 	end
+
+-- 	local item = target
+-- 	-- print(unit, order, target, player_order, order_id)
+-- 	--满格拾取符文
+-- 	if order == 'smart' and target and ac.item.item_map[item.handle]  then
+-- 		local list = unit.item_list or {}
+
+-- 		if #list == 6 then
+-- 			unit:issue_order('move',item:get_point())
+-- 			unit._item_order_timer = ac.loop(300,function ()
+-- 				if unit:get_point() * item:get_point() < 250 then
+-- 					-- item.owner = unit
+-- 					unit:add_item(item)
+
+-- 					if unit._item_order_timer then
+-- 						unit._item_order_timer:remove()
+-- 						unit._item_order_timer = nil
+-- 					end
+-- 					unit:issue_order('stop')
+-- 				end
+-- 			end)
+-- 		end
+
+-- 	end
+-- end)	
 return item
 

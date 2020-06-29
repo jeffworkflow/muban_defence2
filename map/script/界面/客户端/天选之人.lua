@@ -204,7 +204,8 @@ local function check_txzr(flag)
         model = [[Void Teleport Yellow To.mdx]],
         
         size = 1.1,
-        point = rect:get_point()
+        point = rect:get_point(),
+        itme_show = true, --tx 依旧可看特效
 
     }
     local reg = ac.region.create(rect)  
@@ -213,7 +214,8 @@ local function check_txzr(flag)
             --进入 播放特效
             ac.effect_ex{
                 model = [[Void Teleport Yellow Target.mdx]],
-                point = rect:get_point() 
+                point = rect:get_point() ,
+                itme_show = true, --tx 依旧可看特效
             }:remove()
             --传送到另一个地方
             ac.wait(500,function()
@@ -223,7 +225,8 @@ local function check_txzr(flag)
             ac.wait(1000,function()
                 ac.effect_ex{
                     model = [[Void Teleport Yellow Target.mdx]],
-                    point = target_rect:get_point() 
+                    point = target_rect:get_point() ,
+                    itme_show = true, --tx 依旧可看特效
                 }:remove()
             end)
 
