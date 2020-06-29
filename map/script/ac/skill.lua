@@ -650,6 +650,20 @@ function mt:get_simple_tip(hero, level, need_level)
 	end
 	return tip
 end
+--create by jeff 使通过get_key 读取到类似和tip一样的数据
+function mt:get_key(key,hero, level, need_level)
+	if not level then
+		level = self.level
+	end
+	local tip = self[key] 
+	if type(tip) == 'function' then
+		tip = format_function(self, tip, hero, level, need_level)
+	end
+	if tip then
+		tip = format_string(self, tip, hero, level, need_level)
+	end
+	return tip
+end
 
 function mt:get_tip(hero, level, need_level)
 	if self.is_order then

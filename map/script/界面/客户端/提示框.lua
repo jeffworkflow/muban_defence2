@@ -63,7 +63,11 @@ local function skill_tooltip(skill,unit)
     tool.tip:set_position(16,65+22)
     
     if unit.unit_type == '商店' then
-        title = skill.store_name or title
+        local store_name
+        if skill.get_store_name then 
+            store_name = skill:get_store_name()
+        end
+        title = store_name or title
         local item =  skill
         local gold,show_gold,player_gold = item:buy_price()
         local wood,show_wood,player_wood = item:buy_wood()

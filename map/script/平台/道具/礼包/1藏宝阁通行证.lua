@@ -55,11 +55,17 @@ passive = true
 
 function mt:on_cast_start()
     local hero = self.owner
-    local items = self
-    local p = hero:get_owner()
-    local peon = p.peon
-    local it = ac.item.create_item('藏宝图')
-    it:set_item_count(10)
-    peon:add_item(it)
+    -- local items = self
+    -- local p = hero:get_owner()
+    -- local peon = p.peon
+    -- local it = ac.item.create_item('藏宝图')
+    -- it:set_item_count(10)
+    -- peon:add_item(it)
     -- 藏经阁通行证
+    
+    --直接给10藏宝图奖励 ac.skill['藏宝图']
+    local skl = hero:add_skill('藏宝图','隐藏')
+    for i=1,10 do 
+        skl:add_content()
+    end
 end    

@@ -240,7 +240,12 @@ function mt:set_name(name)
 end
 --获取商店物品显示名字
 function mt:get_store_name()
-	return self.store_name or self.name or ''
+	local name = self.store_name
+	if type(self.store_name) =='function' then 
+		name = self:store_name()
+	end
+	name = name ..self:get_hotkey_tip(hero)
+	return name or self.name or ''
 end
 --设置物品说明
 --物品掉落地上时，点击物品的说明
@@ -1376,8 +1381,9 @@ end
 
 --商店标题
 function mt:set_store_title(title)
-	local title = (self.store_affix or '购买 ')..title..'|r'
-	japi.EXSetItemDataString(base.string2id(self.type_id), 2,title)
+	--已经用自定义ui模拟，不需要刷新到魔兽端
+	-- local title = (self.store_affix or '购买 ')..title..'|r'
+	-- japi.EXSetItemDataString(base.string2id(self.type_id), 2,title)
 end
 
 --更新商店信息

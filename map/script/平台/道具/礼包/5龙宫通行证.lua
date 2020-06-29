@@ -54,14 +54,21 @@ passive = true
 
 function mt:on_cast_start()
     local hero = self.owner
-    local items = self
-    local p = hero:get_owner()
-    local peon = p.peon
-    local it = ac.item.create_item('扭蛋券(十连抽)')
-    it:set_item_count(8)
-    peon:add_item(it)
+    -- local items = self
+    -- local p = hero:get_owner()
+    -- local peon = p.peon
+    -- local it = ac.item.create_item('扭蛋券(十连抽)')
+    -- it:set_item_count(8)
+    -- peon:add_item(it)
 
-    local it = ac.item.create_item('超级扭蛋券(十连抽)')
-    it:set_item_count(2)
-    peon:add_item(it)
+    -- local it = ac.item.create_item('超级扭蛋券(十连抽)')
+    -- it:set_item_count(2)
+    -- peon:add_item(it)
+    for i=1,8 do 
+        hero:add_item('扭蛋(十连抽)')
+    end
+
+    for i=1,2 do 
+        hero:add_item('超级扭蛋(十连抽)')
+    end
 end    

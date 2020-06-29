@@ -63,15 +63,24 @@ passive = true
 
 function mt:on_cast_start()
     local hero = self.owner
-    local items = self
-    local p = hero:get_owner()
-    local peon = p.peon
-    local it = ac.item.create_item('羊皮纸')
-    it:set_item_count(8)
-    peon:add_item(it)
+    -- local items = self
+    -- local p = hero:get_owner()
+    -- local peon = p.peon
+    -- local it = ac.item.create_item('羊皮纸')
+    -- it:set_item_count(8)
+    -- peon:add_item(it)
     
-    local it = ac.item.create_item('无字天书')
-    it:set_item_count(2)
-    peon:add_item(it)
+    -- local it = ac.item.create_item('无字天书')
+    -- it:set_item_count(2)
+    -- peon:add_item(it)
     -- 藏经阁通行证
+    local skl = hero:add_skill('羊皮纸','隐藏')
+    for i=1,8 do 
+        skl:cast()
+    end
+
+    local skl = hero:add_skill('无字天书','隐藏')
+    for i=1,2 do 
+        skl:cast()
+    end
 end    

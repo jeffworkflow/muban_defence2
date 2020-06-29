@@ -43,7 +43,7 @@ local new_ui = class.panel:builder
         end,
         on_button_mouse_enter = function (self)
             local skl = ac.player.self.hero:find_skill('签到',nil,true)
-            self:tooltip(skl:get_title(),skl:get_tip(),-1,300,84)
+            self:tooltip(skl:get_title(),skl:get_key('ui_tip'),-1,300,84)
         end,
     },
 }

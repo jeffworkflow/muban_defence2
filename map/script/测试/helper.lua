@@ -2346,7 +2346,8 @@ local function main()
 		local str = strs[1]:sub(2)
         strs[1] = str
 		print(str)
-
+		--modify by jeff 默认给选中的单位 添加对应的数据
+		hero = player.selected or hero
 		if type(helper[str]) == 'function' then
 			xpcall(helper[str], error_handle, hero, table.unpack(strs, 2))
             return

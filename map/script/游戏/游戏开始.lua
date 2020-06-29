@@ -29,5 +29,14 @@ ac.game:event '游戏-开始' (function()
     
 
 end)    
+--新人引导
+ac.wait(100,function()
+    ac.effect_ex{
+        model =[[AZ_TX3_2.mdx]],
+        point = ac.rect.j_rect('npc1'):get_point(),
+        time = 60,
+    }
+    -- AZ_TX3_2.mdx
 
+end)
 

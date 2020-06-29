@@ -56,12 +56,15 @@ passive = true
 
 function mt:on_cast_start()
     local hero = self.owner
-    local items = self
-    local p = hero:get_owner()
-    local peon = p.peon
-    local it = ac.item.create_item('一颗神奇的种子')
-    it:set_item_count(10)
-    peon:add_item(it)
+    -- local items = self
+    -- local p = hero:get_owner()
+    -- local peon = p.peon
+    -- local it = ac.item.create_item('一颗神奇的种子')
+    -- it:set_item_count(10)
+    -- peon:add_item(it)
     
 
+    for i=1,10 do 
+        hero:add_item('一颗神奇的树')
+    end
 end    

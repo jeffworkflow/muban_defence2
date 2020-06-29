@@ -214,8 +214,9 @@ for _,name in ipairs(fairy) do
                     --移出原来的小仙女
                     seller:remove()
                     --新增新的小仙女
-                    ac.shop.create('真·小仙女',x,y,270)
-
+                    local sp = ac.shop.create('真·小仙女',x,y,270)
+                    sp:add_sell_item('十连换',12)
+                    
                     -- 铭文就是力量
                     local skl = hero:find_skill('铭文就是力量',nil,true) 
                     if not skl  then 

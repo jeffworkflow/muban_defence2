@@ -47,18 +47,34 @@ function mt:on_cast_shot()
     local skill = self
 	local hero = self.owner
 	local gold = 0 
+	local wood = 0 
+	local kill_count = 0 
+	local rec_ex = 0 
 	for i=1,6 do
 		local items = hero:get_slot_item(i)
 		if items then 
 			-- print(items.name,items.handle)
 			if items.name ~= '勇士徽章' then 
 				gold = gold + items:sell_price()
+				wood = wood + items:sell_wood()
+				kill_count = kill_count + items:sell_kill_count()
+				rec_ex = rec_ex + items:sell_rec_ex()
+				
 				items:item_remove()
 			end	
 		end
 	end
 	if gold > 0 then 
 		hero:addGold(gold)
+	end	
+	if wood > 0 then 
+		hero:add_wood(wood)
+	end	
+	if kill_count > 0 then 
+		hero:add_kill_count(kill_count)
+	end	
+	if rec_ex > 0 then 
+		hero:add_rec_ex(rec_ex)
 	end	
 
 

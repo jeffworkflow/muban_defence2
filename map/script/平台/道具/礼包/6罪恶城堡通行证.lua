@@ -58,11 +58,15 @@ passive = true
 
 function mt:on_cast_start()
     local hero = self.owner
-    local items = self
-    local p = hero:get_owner()
-    local peon = p.peon
-    local it = ac.item.create_item('黑暗骰子')
-    it:set_item_count(10)
-    peon:add_item(it)
+    -- local items = self
+    -- local p = hero:get_owner()
+    -- local peon = p.peon
+    -- local it = ac.item.create_item('黑暗骰子')
+    -- it:set_item_count(10)
+    -- peon:add_item(it)
 
+    local skl = hero:add_skill('黑暗骰子','隐藏')
+    for i=1,10 do 
+        skl:cast()
+    end
 end    

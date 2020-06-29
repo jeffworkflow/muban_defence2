@@ -11,6 +11,7 @@ require '物品.商店.练功房.真小仙女'
 require '物品.商店.练功房.爱我你就爆了我'
 require '物品.商店.练功房.武学功法'
 require '物品.商店.练功房.一键修炼'
+require '物品.商店.练功房.十连换'
 
 -- require '物品.商店.练功房.魔鬼的交易'
 --注册魔兽事件 区域不可其他进入
@@ -54,6 +55,12 @@ for i =1 ,6 do
                     local ok = hero:event_dispatch('单位-点击商店物品',seller,hero,shop_item)
                     if ok then 
                         p.flag_lgs = true 
+                        --同时创建新人引导
+                        ac.effect_ex{
+                            model =[[AZ_TX3_2.mdx]],
+                            point = ac.rect.j_rect('lgfnpc'..p.id..'3'):get_point(),
+                            time = 30,
+                        }
                     end
                 end
             end     

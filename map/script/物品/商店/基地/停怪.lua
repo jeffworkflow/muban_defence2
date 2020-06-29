@@ -30,7 +30,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 690,
 --停怪时长
-stu_time = 90,
+stu_time = function()
+    return 75 + ac.g_game_degree_attr*15
+end,
 
 content_tip = '|cffFFE799【使用说明】：|r',
 
@@ -42,6 +44,7 @@ is_skill = true,
 function mt:on_cast_start()
     local unit = self.seller
     local p = self.owner:get_owner()
+    print('停怪：',self.stu_time)
     for i=1,3 do 
         local creep = ac.creep['刷怪'..i]
         creep:PauseTimer(self.stu_time)

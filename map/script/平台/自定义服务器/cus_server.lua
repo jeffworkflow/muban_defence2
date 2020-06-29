@@ -172,7 +172,7 @@ function player.__index:sp_get_map_test(f)
     post_message(url,post,function (retval) 
         if not finds(retval,'http','https','') or finds(retval,'成功')then 
             if retval and #retval<1000 then 
-                print(json.is_json(retval),#retval,retval)
+                -- print(json.is_json(retval),#retval,retval)
             else 
                 print('超出长度')    
             end   
