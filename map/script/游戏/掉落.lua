@@ -1280,7 +1280,8 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
             local cnt = math.floor(3+get_player_count()/2)
             ac.timer(200,cnt,function()
                 print('存档物品掉落：',fall_save_rate)
-                hero_kill_unit(unit_reward['难'..ac.g_game_degree_attr],player,killer,unit,fall_save_rate)
+                local degree = ac.g_game_degree_attr > 11 and 11 or ac.g_game_degree_attr
+                hero_kill_unit(unit_reward['难'..degree],player,killer,unit,fall_save_rate)
             end)
         end
     end

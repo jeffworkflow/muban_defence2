@@ -42,21 +42,23 @@ ac.wait(1200,function()
             { name = "冠世一绝" },
             { name = "超绝群伦" },
         }
-        
-        ac.g_game_degree_list = {} 
-        for i = #list ,1 ,-1 do 
-            local name = list[i].name  
-            table.insert(ac.g_game_degree_list,name)  
-        end  
         local list3 = {}
         local bit = player.server['无限难度'] or 0
-        print(player.server['无限难度'],bit)
+        -- print(player.server['无限难度'],bit)
         local max_degree = bit + 1
         for i=1,max_degree do 
             if list[i] then 
                 table.insert(list3,list[i] )
+            else
+                local name = '新的征程('..formatNumber(i-11)..')'
+                table.insert(list3,{name = name} )
             end    
         end    
+        ac.g_game_degree_list = {} 
+        for i = #list3 ,1 ,-1 do 
+            local name = list3[i].name  
+            table.insert(ac.g_game_degree_list,name)  
+        end  
         ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
         if player then 
             t_create_dialog(player,"选择难度",list3,1,function (index,page)  

@@ -22,6 +22,7 @@ require '平台.宠物纪念册'
 require '平台.通关难度'
 require '平台.签到'
 require '平台.熟练度奖励'
+require '平台.新的征程'
 
 require '平台.房间显示'
 

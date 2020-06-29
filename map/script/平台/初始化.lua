@@ -80,28 +80,6 @@ ac.wait(0,function()
     end
 end)
 
-
---初始化2 读取自定义服务器 部分数据
-ac.game:event '游戏-开始' (function()
-    for i=1,10 do
-        local player = ac.player[i]
-        local p = ac.player[i]
-        if player:is_player() then
-            if player:is_self() then 
-                local key = ac.server.name2key(ac.g_game_degree_name)
-                player:GetServerValue(key)
-
-                local key = ac.server.name2key(ac.g_game_degree_name..'无尽')
-                if key then 
-                    player:GetServerValue(key)
-                end    
-            end
-        end
-    end
-    
-end)
-
-
 --初始化2 读取网易服务器的数据 p.server[jifen] = 0 | 读取有延迟
 ac.wait(1100,function()
     for i=1,10 do
@@ -251,25 +229,72 @@ for i=1,10 do
 end
 
 --处理通关难度
-
+--获取是否可以存到自定义服务器里面，只要有玩家通过所选难度的上一个难度即可全部存。
+local function get_save_flag()    
+    local ok
+    if ac.g_game_degree>11 then 
+        for i=1,10 do
+            local player = ac.player[i]
+            if player:is_player() then
+                -- local bit_val = 2^(ac.g_game_degree-3)
+                local val = ac.g_game_degree-12
+                if (player.cus_server['新的征程'] or 0) >=val then 
+                    ok = true 
+                    break
+                end  
+            end    
+        end    
+    end
+    return ok
+end
 --注册 保存青铜，王者等星数
 ac.game:event '游戏-结束' (function(trg,flag)
     if not flag then 
         return 
     end         
-
+    local ok = get_save_flag()
     for i=1,10 do
         local player = ac.player[i]
+        local p = ac.player[i]
         if player:is_player() then
             --无限难度相关
             local key = ac.server.name2key('无限难度')
-            if ac.g_game_degree > (player.server['无限难度'] or 0) then
-                player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
-            end 
+            if ac.g_game_degree <=11 then 
+                if ac.g_game_degree > (player.server['无限难度'] or 0) then
+                    player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
+                end 
+            else
+                if ok then  
+                    if ac.g_game_degree > (player.server['无限难度'] or 0) then
+                        player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
+                    end 
+                end
+            end
+            
+            if ok then  
+                local key = ac.server.name2key('新的征程')
+                local degree = ac.g_game_degree -11
+                if degree > (player.cus_server['新的征程'] or 0) then
+                    player:SetServerValue(key,degree) 
+                end    
+                --今日最榜
+                if degree > (player.cus_server['今日新的征程']  or 0) then
+                    player:SetServerValue('today_'..key,degree)  
+                end
+                --保存无限难度奖励 网易服务器
+                degree = 2^(degree-1)
+                if not has_flag((p.server['新的征程奖励'] or 0),degree) then
+                    local key = ac.server.name2key('新的征程奖励')
+                    player:Map_AddServerValue(key,degree)  
+                end
+            end
 
-            --保存星数
+            --保存短位数
             local name = ac.g_game_degree_name
             local key = ac.server.name2key(name)
+            if not key then 
+                return 
+            end
             -- if player:Map_GetMapLevel() >=3 then 
                 player:AddServerValue(key,1)  -- 自定义服务器
             -- end    
@@ -277,7 +302,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             player:Map_AddServerValue(key,1) --网易服务器
             player:sendMsg('【游戏胜利】|cffff0000'..name..'通关次数+1|r')
 
-            --保存游戏时长 只保存自定义服务器
+            --保存战斗力 只保存自定义服务器
             local name = name..'战斗力'
             local key = ac.server.name2key(name)
             local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 0)
@@ -287,9 +312,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
                     player:SetServerValue(key,player.zdl) --自定义服务器
                 -- end    
             end    
-            --文字提醒
-            -- local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
             player:sendMsg('【游戏胜利】|cffff0000本次通关战斗力：'..player.zdl..'|r')  
+
         end
     end
 end)    

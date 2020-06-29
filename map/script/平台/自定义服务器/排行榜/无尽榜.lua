@@ -13,6 +13,7 @@ class.wjphb_panel = extends(class.panel){
         panel.menu_titles = {
             -- '深渊乱斗无尽','无限乱斗无尽','无上之境无尽','斗破苍穹无尽',
             '挖宝','看书','打造','种树','白嫖','摇骰子',
+            '新的征程',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -349,6 +350,7 @@ local rank = {
     {'cntzs','种树'},
     {'cntbp','白嫖'},
     {'cntytz','摇骰子'},
+    {'xdzc','新的征程'},
     
     {'today_cntwb','今日挖宝'},
     {'today_cntks','今日看书'},
@@ -356,6 +358,7 @@ local rank = {
     {'today_cntzs','今日种树'},
     {'today_cntbp','今日白嫖'},
     {'today_cntytz','今日摇骰子'},
+    {'today_xdzc','今日新的征程'},
 }
 --处理,显示排行榜数据
 --取前10名数据

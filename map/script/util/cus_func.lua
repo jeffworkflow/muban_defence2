@@ -281,3 +281,40 @@ function table_copy(tbl)
     end 
     return res 
 end
+
+local zhChar = {'一','二','三','四','五','六','七','八','九'}
+local places = {'','十','百','千','万','十','百','千','亿','十','百','千','万'}
+
+function formatNumber( num )
+	if type(num) ~= 'number' then
+		return num .. 'is not a num'
+	end
+	local numStr = tostring(num)
+	local len = string.len(numStr)
+	local str = ''
+	local has0 = false
+	for i = 1, len do
+		local n = tonumber(string.sub(numStr,i,i))
+		local p = len - i + 1
+		if n > 0 and has0 == true then --连续多个零只显示一个
+			str = str .. '零'
+			has0 = false
+		end
+		if p % 4 == 2 and n == 1 then --十位数如果是首位则不显示一十这样的
+			if len > p then
+				str = str .. zhChar[n]
+			end
+			str = str .. places[p]
+		elseif n > 0 then
+			str = str .. zhChar[n]
+			str = str .. places[p]
+		elseif n == 0 then
+			if p % 4 == 1 then --各位是零则补单位
+				str = str .. places[p]
+			else
+				has0 = true
+			end
+		end
+	end
+	return str
+end

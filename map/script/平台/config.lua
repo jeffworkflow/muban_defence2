@@ -72,7 +72,6 @@ local cus_key = {
     {'zdlgsyj','冠世一绝战斗力'},
     {'zdlcjql','超绝群伦战斗力'},
 
-    {'wxnd','无限难度'},
     {'cwjn','宠物技能'},
                              --奖励        所需值 所需地图等级 返回值
     {'cwjnc','宠物纪念册',{ ['宠物纪念册'] = {1,1,value = function(self,p) return p:Map_GetServerValue('cwjnc') end}}},
@@ -204,7 +203,13 @@ local cus_key = {
     {'jssj','绝世神剑',{ ['绝世神剑'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('jssj'))  end}}},
 
     
+    {'wxnd','无限难度'},
     --自定义服务器用到的内容
+    {'xdzc','新的征程'},
+    {'today_xdzc','新的征程'},
+    {'today_xdzcrank','新的征程排名'},
+    {'xdzcjl','新的征程奖励'},
+
     {'cntwb','挖宝'},
     {'today_cntwb','今日挖宝'},
     {'today_cntwbrank','今日挖宝排名'},
