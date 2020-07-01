@@ -26,35 +26,42 @@ for i=1,10 do
         require '测试.helper'
     end  
 end
---处理局内地图等级
-ac.wait(0,function()
-for i=1,10 do
-    local p = ac.player[i]
-    if p:is_player() then
-        for n=1,#ac.mall do
-            local has_item = p:Map_HasMallItem(ac.mall[n][1])
-            local need_map_level = ac.mall[n][3] or 0
-            local name = ac.mall[n][2]
-            local skl = ac.skill[name]
-            if has_item 
-               and  p:Map_GetMapLevel() >= need_map_level 
-               and type(skl) == 'table' 
-               and skl:get('局内地图等级') 
-            then 
-                p:add('局内地图等级',skl:get('局内地图等级'))
-            end
-        end    
+local function init_map_level()
+    for i=1,10 do
+        local p = ac.player[i]
+        if p:is_player() then
+            p:set('局内地图等级',0)
+            for n=1,#ac.mall do
+                local has_item = p:Map_HasMallItem(ac.mall[n][1])
+                local need_map_level = ac.mall[n][3] or 0
+                local name = ac.mall[n][2]
+                local skl = ac.skill[name]
+                if has_item 
+                and  p:Map_GetMapLevel() >= need_map_level 
+                and type(skl) == 'table' 
+                and skl:get('局内地图等级') 
+                then 
+                    -- print('增加局内地图等级:',skl.name,skl:get('局内地图等级'),p:get('局内地图等级'))
+                    p:add('局内地图等级',skl:get('局内地图等级'))
+                end
+            end    
 
-        for n=1,#ac.server_key do
-            local has_item = p:Map_GetServerValue(ac.server_key[n][1])  or 0
-            local name = ac.server_key[n][2]
-            local skl = ac.skill[name]
-            if has_item and has_item > 0 and type(skl) == 'table' and skl:get('局内地图等级') then 
-                p:add('局内地图等级',skl:get('局内地图等级'))
-            end
-        end    
+            for n=1,#ac.server_key do
+                local has_item = p:Map_GetServerValue(ac.server_key[n][1])  or 0
+                local name = ac.server_key[n][2]
+                local skl = ac.skill[name]
+                if has_item and has_item > 0 and type(skl) == 'table' and skl:get('局内地图等级') then 
+                    -- print('增加局内地图等级:',skl.name,skl:get('局内地图等级'),p:get('局内地图等级'))
+                    p:add('局内地图等级',skl:get('局内地图等级'))
+                end
+            end    
+        end
     end
 end
+ac.init_map_level = init_map_level
+--处理局内地图等级
+ac.wait(0,function()
+    init_map_level()
 end)
 --初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0 | 读取有延迟
 ac.wait(100,function()
@@ -247,6 +254,15 @@ local function get_save_flag()
     end
     return ok
 end
+
+ac.loop(10*1000,function()
+    local ok = get_save_flag() 
+    if not ok then 
+        ac.player.self:sendMsg('此局作弊！！！！！！数据不生效',5)
+    end
+end)
+
+
 --注册 保存青铜，王者等星数
 ac.game:event '游戏-结束' (function(trg,flag)
     if not flag then 
