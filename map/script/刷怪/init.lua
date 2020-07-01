@@ -12,6 +12,7 @@ require '刷怪.境界'
 require '刷怪.难度选择'
 require '刷怪.任务'
 require '刷怪.隐藏玩法'
+require '刷怪.踢皮球'
 
 -- require '刷怪.野怪'
 -- require '刷怪.武林大会'

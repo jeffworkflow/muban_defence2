@@ -48,6 +48,14 @@
             print('物品已被删除')
             return true
         end    
+        --判断物品是否有要求拾取人的类型
+        if it.unit_type and not u:is_type(it.unit_type) then
+            local tip = it.unit_type_tip or '|cffebb608【系统】|cffff0000该单位不可拾取|r'
+            u:get_owner():sendMsg(tip,5)
+            --回收句柄
+            it.recycle = false
+            return true
+        end
         -- print(it.item_type,it.type_count)
         --先判断是否为神符类
         if it.item_type == '神符' then
@@ -79,6 +87,8 @@
             u.buy_suc = true
             --回收句柄
             it.recycle = true
+            
+	        u:event_notify('单位-获得物品后',u, it)
             return true
         end
 
@@ -125,6 +135,7 @@
                 --表示购买成功
                 u.buy_suc = true 
                 
+	            u:event_notify('单位-获得物品后',u, item)
                 return true
             end
 
