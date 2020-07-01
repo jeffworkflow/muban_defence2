@@ -164,7 +164,7 @@ function mt:on_cast_shot()
 		}
 		--距离150码时，解除 缴械 定身
 		local distance = new_point * self.mover:get_point()
-		if distance <=50 and not self.flag_end then 
+		if distance <=150 and not self.flag_end then 
 			self.flag_end = true
 			-- print('d冲锋在150内：')
 			if  hero:has_restriction '缴械' then 

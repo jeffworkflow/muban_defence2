@@ -42,7 +42,7 @@ ac.game:event '技能-升级' (function (_,hero,self)
     
 	--玩家的属性表
     for i,key in ipairs(ac.player_attr) do 
-        -- print('玩家属性',key,self[key])
+        -- print('玩家属性',self.name,key,self[key])
         if key ~='局内地图等级' then
             --处理基础值
             local value = self[key]
@@ -102,18 +102,20 @@ ac.game:event '技能-失去' (function (_,hero,self)
     
 	--玩家的属性表
     for i,key in ipairs(ac.player_attr) do 
-        --处理基础值
-        local value = self[key]
-		if value then 
-            p:add_tran(key,value)
-        end 
-       
-        --处理%值
-		key = key..'%'
-		value = self[key]
-		if value then 
-            p:add_tran(key,value)
-        end 
+        if key ~='局内地图等级' then
+            --处理基础值
+            local value = self[key]
+            if value then 
+                p:add_tran(key,-value)
+            end 
+        
+            --处理%值
+            key = key..'%'
+            value = self[key]
+            if value then 
+                p:add_tran(key,-value)
+            end 
+        end
     end
 end)    
 

@@ -83,6 +83,9 @@ function ac.player.__index:sendMsg(str,time)
     end    
 end    
 function ac.player.__index:sendMsg1(str,time)
+    if self.flag_nd_text then 
+        return
+    end    
     if self:is_self() then 
         pannel:sendMsg(str,time)
     end    

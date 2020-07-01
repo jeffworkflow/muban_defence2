@@ -578,6 +578,30 @@ tip = [[
 
 }
 
+local mt = ac.skill['小炮灰']
+mt{
+--等级
+level = 1, 
+max_level = 1,
+--图标
+art = [[buxiujinshen.blp]],
+--说明
+tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+1500W 全属性
++75    攻击减甲
++2W    护甲
++5     每秒加杀敌数
+-1秒   英雄复活时间
+ ]],
+['全属性'] = 15000000,
+['减少复活时间'] = 1,
+['攻击减甲'] = 75,
+['护甲'] = 20000,
+['每秒加杀敌数'] = 5,
+
+}
 
 
 local task_detail = {
@@ -706,6 +730,20 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
             ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
         end
     end    
+    --小炮灰
+    ac.dead_cnt = (ac.dead_cnt or 0) +1
+    if ac.dead_cnt == 1 and get_player_count()>=2 then 
+        local skl = hero:find_skill('小炮灰',nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','小炮灰')
+            player.is_show_nickname = '小炮灰'
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+        end
+    end
+
 
 end)
 

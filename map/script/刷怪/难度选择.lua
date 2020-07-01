@@ -73,6 +73,8 @@ ac.wait(1200,function()
                 end)
                 ac.player.self:sendMsg("选择了 |cffffff00"..list3[ac.g_game_degree].name.."|r")
                 ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree)
+                
+                print("选择了 |cffffff00"..list3[ac.g_game_degree].name.."|r")
 
                 if ac.g_game_degree >= 12 then
                     ac.player.self:sendMsg("|cffebb608【新的征程】|r|cff00ff00无限难度，当前难度通关后，即可开启下一个征程的挑战！")

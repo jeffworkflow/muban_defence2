@@ -255,10 +255,17 @@ local function get_save_flag()
     return ok
 end
 
-ac.loop(10*1000,function()
+
+ac.game:event '选择难度' (function(_,g_game_degree_name)
     local ok = get_save_flag() 
-    if not ok then 
-        ac.player.self:sendMsg('此局作弊！！！！！！数据不生效',5)
+    local time = 10
+    
+    if ac.g_game_degree >11 then
+        ac.loop(time*1000,function() 
+            if not ok then
+                ac.player.self:sendMsg('此局作弊！！！！！！数据不生效',5)
+            end
+        end)
     end
 end)
 
@@ -272,7 +279,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
     for i=1,10 do
         local player = ac.player[i]
         local p = ac.player[i]
+        -- print('保存新的征程到服务器',player,degree,player.cus_server['新的征程'])
         if player:is_player() then
+            -- print('保存新的征程到服务器0',player,degree,player.cus_server['新的征程'])
             --无限难度相关
             local key = ac.server.name2key('无限难度')
             if ac.g_game_degree <=11 then 
@@ -290,7 +299,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
             if ok then  
                 local key = ac.server.name2key('新的征程')
                 local degree = ac.g_game_degree -11
+                -- print('保存新的征程到服务器1',player,degree,player.cus_server['新的征程'])
                 if degree > (player.cus_server['新的征程'] or 0) then
+                    -- print('保存新的征程到服务器2',player,degree,player.cus_server['新的征程'])
                     player:SetServerValue(key,degree) 
                 end    
                 --今日最榜
@@ -307,31 +318,29 @@ ac.game:event '游戏-结束' (function(trg,flag)
                 ac.player.self:sendMsg("|cffebb608【游戏胜利】|r|cff00ff00恭喜通关此难度！下一个难度等你来挑战！")
             end
 
-            --保存短位数
+            --保存段位数
             local name = ac.g_game_degree_name
             local key = ac.server.name2key(name)
-            if not key then 
-                return 
-            end
-            -- if player:Map_GetMapLevel() >=3 then 
-                player:AddServerValue(key,1)  -- 自定义服务器
-            -- end    
-            -- print(name,key)
-            player:Map_AddServerValue(key,1) --网易服务器
-            player:sendMsg('|cffebb608【游戏胜利】|cffff0000'..name..'段位+1|r')
-
-            --保存战斗力 只保存自定义服务器
-            local name = name..'战斗力'
-            local key = ac.server.name2key(name)
-            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 0)
-            --战斗力高的储存在服务器
-            if player.zdl > cus_value then 
+            if key then 
                 -- if player:Map_GetMapLevel() >=3 then 
-                    player:SetServerValue(key,player.zdl) --自定义服务器
+                player:AddServerValue(key,1)  -- 自定义服务器
                 -- end    
-            end    
-            player:sendMsg('|cffebb608【游戏胜利】|cff00ff00本次通关战斗力：|cffff0000'..player.zdl..'|r')  
+                -- print(name,key)
+                player:Map_AddServerValue(key,1) --网易服务器
+                player:sendMsg('|cffebb608【游戏胜利】|cffff0000'..name..'段位+1|r')
 
+                --保存战斗力 只保存自定义服务器
+                local name = name..'战斗力'
+                local key = ac.server.name2key(name)
+                local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 0)
+                --战斗力高的储存在服务器
+                if player.zdl > cus_value then 
+                    -- if player:Map_GetMapLevel() >=3 then 
+                        player:SetServerValue(key,player.zdl) --自定义服务器
+                    -- end    
+                end    
+                player:sendMsg('|cffebb608【游戏胜利】|cff00ff00本次通关战斗力：|cffff0000'..player.zdl..'|r')   
+            end
         end
     end
 end)    

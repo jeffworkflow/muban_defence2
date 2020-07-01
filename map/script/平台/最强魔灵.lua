@@ -67,7 +67,7 @@ mt{
 mt.skills = {
     '黄盖','关羽','地图等级首充礼包','堕落天使',
     '地图等级成长礼包','加百列','王昭君','地图等级初级赞助',
-    '雅典娜','地图等级高级赞助',
+    '雅典娜','地图等级高级赞助','肝帝'
 }
 
 local mt = ac.skill['游戏说明']
@@ -117,7 +117,7 @@ mt{
 }
 mt.skills = {
     '初级赞助','高级赞助',
-    -- '满赞'
+    '满赞'
 }
 -- ,'肝帝'
 
@@ -339,7 +339,7 @@ local function upgrade_skill(player,skill)
                 end
                 if skill.name == '江山代有才人出' then 
                     local has_rank
-                    print('江山代有才人出:',player,player.cus_server['今日白嫖排名'],player.cus_server['今日挖宝排名'])
+                    -- print('江山代有才人出:',player,player.cus_server['今日白嫖排名'],player.cus_server['今日挖宝排名'])
                     --挖宝、看书、打造、种树、白嫖、摇骰子
                     if player.cus_server  then 
                         if  ((player.cus_server['今日挖宝排名'] or 0) >0 and (player.cus_server['今日挖宝排名'] or 0) <= 10)
@@ -353,6 +353,8 @@ local function upgrade_skill(player,skill)
                             ((player.cus_server['今日白嫖排名'] or 0) >0 and (player.cus_server['今日白嫖排名'] or 0) <= 10)
                             or
                             ((player.cus_server['今日摇骰子排名'] or 0) >0 and (player.cus_server['今日摇骰子排名'] or 0) <= 10)
+                            or
+                            ((player.cus_server['今日新的征程排名'] or 0) >0 and (player.cus_server['今日新的征程排名'] or 0) <= 10)
                         then 
                             skill:set_level(1)
                             --顺便添加 风骚技能（隐藏）
