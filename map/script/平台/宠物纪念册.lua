@@ -47,6 +47,7 @@ mt['木头加成'] = 35
 mt['暴击伤害'] = 35
 mt{
 title = '赏金猎人',
+art = [[shangjinlieren.blp]],
 tip = [[
 
 %content%
@@ -70,6 +71,7 @@ mt['魔丸加成'] = 35
 mt['技暴伤害'] = 35
 mt{
 title = '神奇宝贝',
+art = [[shenqibaobei.blp]],
 tip = [[
 
 %content%
@@ -95,6 +97,8 @@ mt['杀敌数加成'] = 35
 mt['会心伤害'] = 35
 mt{
 title = '驯宠小霸王',
+art = [[xiaobawang.blp]],
+
 tip = [[
 
 %content%
@@ -119,6 +123,7 @@ mt['物品获取率'] = 35
 mt['物理伤害加深'] = 35
 mt{
 title = '龟基赛跑',
+art = [[saipao.blp]],
 tip = [[
 
 %content%
@@ -143,6 +148,7 @@ mt['每秒回血'] = 10
 mt['技能伤害加深'] = 35
 mt{
 title = '洋洋得意',
+art = [[xiyangyang.blp]],
 tip = [[
 
 %content%
@@ -167,7 +173,7 @@ for i=1,10 do
     max_level = 1,
     strong_hero = 1, --作用在人身上
     --图标
-    art = [[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],
+    
     --说明
     -- tip = [[
 

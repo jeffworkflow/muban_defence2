@@ -134,15 +134,15 @@ tip = [[
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+90    每秒加全属性|r
-|cff00ff00+50    攻击减甲|r
-|cff00ff00+25%   物品获取率|r
+|cff00ff00+65    攻击减甲|r
+|cff00ff00+35%   物品获取率|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加全属性'] = 90,
-['物品获取率'] = 25,
-['攻击减甲'] = 50,
+['物品获取率'] = 35,
+['攻击减甲'] = 65,
 need_map_level = 5,
 }
 
@@ -162,15 +162,15 @@ tip = [[
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+270   每秒加全属性|r
-|cff00ff00+25%   技能伤害加深|r
-|cff00ff00+35%   木头加成|r
+|cff00ff00+35%   技能伤害加深|r
+|cff00ff00+50%   木头加成|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加全属性'] = 270,
-['木头加成'] = 35,
-['技能伤害加深'] = 25,
+['木头加成'] = 50,
+['技能伤害加深'] = 35,
 need_map_level = 7,
 }
 
@@ -191,13 +191,13 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+810  每秒加全属性|r
 |cff00ff00+25%  全伤加深|r
-|cff00ff00+45%  魔丸加成|r
+|cff00ff00+50%  魔丸加成|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加全属性'] = 810,
-['魔丸加成'] = 45,
+['魔丸加成'] = 50,
 ['全伤加深'] = 25,
 need_map_level = 9,
 }
@@ -218,6 +218,7 @@ tip = [[
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+100 杀怪加全属性|r
+|cff00ff00+10% 生命上限|r
 |cff00ff00+10% 每秒回血|r
 |cff00ff00+3   每秒加杀敌数|r
 
@@ -227,6 +228,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
 ['每秒加杀敌数'] = 3,
 ['每秒回血'] = 10,
+['生命上限%'] = 10,
 need_map_level = 11,
 }
 
@@ -247,13 +249,13 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+150 杀怪加全属性|r
 |cff00ff00+5%  闪避|r
-|cff00ff00+10  每秒加木头|r
+|cff00ff00+15  每秒加木头|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 150,
-['每秒加木头'] = 10,
+['每秒加木头'] = 15,
 ['闪避'] = 5,
 need_map_level = 13,
 }
@@ -303,13 +305,13 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+250 杀怪加全属性|r
 |cff00ff00+5%  减伤|r
-|cff00ff00+20  每秒加护甲|r
+|cff00ff00+25  每秒加护甲|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 250,
-['每秒加护甲'] = 20,
+['每秒加护甲'] = 25,
 ['减伤'] = 5,
 need_map_level = 17,
 }
@@ -329,15 +331,15 @@ tip = [[
 |cff00ffff累计签到次数=100 
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+300 杀怪加全属性|r
-|cff00ff00+50% 全伤加深|r
-|cff00ff00+1   多重暴击|r
+|cff00ff00+300  杀怪加全属性|r
+|cff00ff00+100% 全伤加深|r
+|cff00ff00+1    多重暴击|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 300,
-['全伤加深'] = 50,
+['全伤加深'] = 100,
 ['多重暴击'] = 1,
 need_map_level = 19,
 }

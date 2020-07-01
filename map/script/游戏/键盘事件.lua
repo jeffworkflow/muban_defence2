@@ -125,9 +125,9 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 	if str == 'nd' then
         player.flag_nd_text = not player.flag_nd_text  and true or false
         if player.flag_nd_text then 
-            player:sendMsg('扭蛋提示|cffff0000关闭|r')
+            player:sendMsg('|cffebb608【系统】|r|cff00ff00扭蛋、藏宝图等提示 |cffff0000关闭|r')
         else
-            player:sendMsg('扭蛋提示|cffff0000开启|r')
+            player:sendMsg('|cffebb608【系统】|r|cff00ff00扭蛋、藏宝图等提示 |cffffff00开启|r')
         end  
 
     end   

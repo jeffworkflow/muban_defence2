@@ -584,25 +584,23 @@ mt{
 level = 1, 
 max_level = 1,
 --图标
-art = [[buxiujinshen.blp]],
+art = [[xiaopaohui.blp]],
 --说明
 tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+1500W 全属性
-+75    攻击减甲
-+2W    护甲
-+5     每秒加杀敌数
--1秒   英雄复活时间
+|cff00ff00+50W 全属性
++5%  攻击
++50% 暴击伤害
++25% 物理伤害加深
  ]],
-['全属性'] = 15000000,
-['减少复活时间'] = 1,
-['攻击减甲'] = 75,
-['护甲'] = 20000,
-['每秒加杀敌数'] = 5,
+['全属性'] = 500000,
+['攻击%'] = 5,
+['暴击伤害'] = 50,
+['物理伤害加深'] = 25,
 
 }
-local mt = ac.skill['足球小将']
+local mt = ac.skill['神球小将']
 mt{
 --等级
 level = 1, 
@@ -614,16 +612,16 @@ tip = [[
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+1500W 全属性
-+75    攻击减甲
-+2W    护甲
-+5     每秒加杀敌数
--1秒   英雄复活时间
++100%  攻击速度
++188   攻击减甲
+-0.05  攻击间隔
++50%   对BOSS额外伤害
  ]],
 ['全属性'] = 15000000,
-['减少复活时间'] = 1,
-['攻击减甲'] = 75,
-['护甲'] = 20000,
-['每秒加杀敌数'] = 5,
+['攻击速度'] = 100,
+['攻击减甲'] = 188,
+['攻击间隔'] = -0.05,
+['对BOSS额外伤害'] = 50,
 
 }
 
@@ -763,9 +761,9 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','小炮灰')
             player.is_show_nickname = '小炮灰'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000+1W护甲 +1E生命上限|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么这么快就死了？？？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000全属性+50万，攻击+5%，暴击伤害+50%，物理伤害加深+25%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么这么快就死了？？？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000全属性+50万，攻击+5%，暴击伤害+50%，物理伤害加深+25%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么这么快就死了？？？ |r 获得成就|cffff0000 "小炮灰" |r，奖励 |cffff0000全属性+50万，攻击+5%，暴击伤害+50%，物理伤害加深+25%|r',6)
         end
     end
 

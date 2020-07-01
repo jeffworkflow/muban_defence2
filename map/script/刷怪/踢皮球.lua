@@ -6,8 +6,11 @@ is_skill = true,
 level = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_POINT,
+content_tip = '|cffffe799物品说明：|r',
 tip = [[
-    小皮球
+
+
+|cff00ff00点击进行|cffffff00射门
 ]],
 --cd
 cool = 0,
@@ -17,11 +20,11 @@ specail_model = [[bignoanimball.MDX]],
 --物品
 item_type = '消耗品',
 unit_type = '英雄',
-unit_type_tip = [[【系统】 宠物不可拾取]],
-max_use_count = 20, --最大使用次数
+unit_type_tip = [[|cffebb608【系统】|cffff0000宠物捡不起来|r]],
+max_use_count = 150, --最大使用次数
 range = 1000,
 hit_area =150,
-model_size = 2
+model_size = 1.4
 }
 
 --奖品
@@ -31,7 +34,7 @@ local award_list = {
         { rand = 5, name = '定身5秒，禁止使用物品5秒'},
         { rand = 5, name = '定身15秒，禁止使用物品15秒'},
         { rand = 5, name = '随机卡片'},
-        { rand = 5, name = '足球小将'},
+        { rand = 5, name = '神球小将'},
         
         { rand = 75, name = '无'},
     },
@@ -48,20 +51,20 @@ local function give_award(hero)
         return true
     end
     if rand_name == '无' then
-        p:sendMsg('|cffebb608【系统】|r |cff00ffff美味的粽子|cff00ff00果真名不虚传阿',3) 
+        p:sendMsg('|cffebb608【系统】|r |cff00ff00好球！干得漂亮！',3) 
     elseif  finds(rand_name,'扣除所有木头') then
         hero:add_wood(-p.wood)
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00不是让你踢假球吗，怎么进了？？？|cffff0000扣除所有木头！',4) 
     elseif  finds(rand_name,'定身5秒') then
         hero:add_buff '定身'{
             time = 5
         }
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00进球的时候脚崴了一下，|cffffff00休息5秒',4) 
     elseif  finds(rand_name,'定身15秒') then
         hero:add_buff '定身'{
             time = 15
         }
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00进球的时候闪到了腰，|cffffff00休息15秒',4) 
     elseif finds(rand_name,'随机卡片')  then    
         local list = {
             '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
@@ -70,14 +73,17 @@ local function give_award(hero)
         }
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
-    elseif  rand_name == '足球小将' then 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00违规进球，裁判掏出了|cffff0000【卡片'..name..'】|r，被你一把抢了过来',4)
+    elseif  rand_name == '神球小将' then 
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
             local new_skl = ac.game:event_dispatch('技能-插入魔法书',hero,'彩蛋',rand_name)
             player.is_show_nickname = rand_name
             --重新来一次
             give_award(hero)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
         end    
     end    
 end
