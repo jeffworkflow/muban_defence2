@@ -44,7 +44,7 @@ function mt:on_cast_start()
 	-- print(it)
 	local slot = hero:get_nil_slot()
 	if not slot then 
-		player:sendMsg('英雄背包满了，传递不过去。',5)
+		player:sendMsg('|cffebb608【系统】|cffff0000英雄背包已满！|r',5)
 		return 
 	end
 	-- 点太快 重复触发两次拾取。
