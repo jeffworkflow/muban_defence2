@@ -42,6 +42,7 @@ local item = {
     {'DJCZLB','地图等级成长礼包',18,true},
     {'DJCJZZ','地图等级初级赞助',28,true},
     {'DJGJZZ','地图等级高级赞助',35,true},
+    {'DJYJSH','商城御剑守护',23,true},
     {'GD','肝帝',60,true},
 }
 

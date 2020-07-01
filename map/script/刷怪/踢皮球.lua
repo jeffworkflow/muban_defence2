@@ -79,11 +79,12 @@ local function give_award(hero)
         if not skl  then 
             local new_skl = ac.game:event_dispatch('技能-插入魔法书',hero,'彩蛋',rand_name)
             player.is_show_nickname = rand_name
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
+        else
             --重新来一次
             give_award(hero)
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r在场上披荆斩棘，不断进球！ 获得成就|cffff0000 "神球小将" |r，奖励 |cffff0000+1500万全属性，攻击速度+100%，攻击减甲+188，攻击间隔-0.05，对BOSS额外伤害+50%|r',6)
         end    
     end    
 end
@@ -107,7 +108,7 @@ function mt:on_cast_start()
             if u:get_name() ~='球门' then 
                 return 
             end
-            print(u)
+            -- print(u)
             give_award(hero)
             return true
 		end	
@@ -142,16 +143,26 @@ local function on_create()
     -- }
     -- print(it.name,point)
 end
-
-ac.game:event '单位-获得物品后' (function (_,unit,item)
+ac.game:event '单位-丢弃物品后' (function (_,unit,item)
     if item.name ~='小皮球' then 
+        return 
+    end
+    item.flag_removed = true
+end)
+
+ac.game:event '单位-获得物品后' (function (_,unit,item,old_item)
+    local it = old_item or item
+    if it.name ~='小皮球' then 
+        return 
+    end
+    if it.flag_removed then 
         return 
     end
     on_create()
 end)
 --注册创建事件
-local time = 1 * 60
-time = 10
+local time = 15 * 60
+-- time = 10
 ac.wait(time*1000,function()
     --创建球
     on_create()
@@ -161,6 +172,8 @@ ac.wait(time*1000,function()
     local buttom_point = ac.point(x,y-400)
     local top_point = ac.point(x,y+400)
     local u = ac.player(11):create_unit('球门',rt)
+    u:add_restriction '无敌'
+    u:add_restriction '缴械'
     cf(u,buttom_point,top_point)
 
     local rt = ac.rect.j_rect('zuqiu2')
@@ -169,5 +182,7 @@ ac.wait(time*1000,function()
     local top_point = ac.point(x,y+400)
     local u = ac.player(11):create_unit('球门',rt,180)
     cf(u,buttom_point,top_point)
+    u:add_restriction '无敌'
+    u:add_restriction '缴械'
 
 end)

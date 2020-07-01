@@ -48,7 +48,8 @@ ac.game:event '单位-创建前'(function(_,id,self,j_id, x, y,face)
         -- print('1',u:get_point())
         -- local u = unit.init_unit(handle, self) --重新初始化
         -- print('2',u:get_point())
-        jass.SetUnitOwner(handle,self.handle, false) --需要重新设置所有者
+        -- jass.SetUnitOwner(handle,self.handle, false) --需要重新设置所有者
+        u:set_owner(self)
         unit.remove_handle_map[handle] = nil 
         u.removed = nil
         u._is_alive = true

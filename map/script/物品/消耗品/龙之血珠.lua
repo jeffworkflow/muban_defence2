@@ -132,7 +132,7 @@ function mt:on_cast_start()
         '取消 (Esc)','Esc'
     }
     table.insert(list,info)
-    table.insert(list,1,'请选择要吞噬的技能')
+    table.insert(list,1,'请选择要强化的技能')
     local skill = self
     local dialog = player:dialog(list)
     function dialog:onClick(rname)

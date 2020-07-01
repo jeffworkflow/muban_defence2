@@ -135,7 +135,7 @@
                 --表示购买成功
                 u.buy_suc = true 
                 
-	            u:event_notify('单位-获得物品后',u, item)
+	            u:event_notify('单位-获得物品后',u,item,it)
                 return true
             end
 

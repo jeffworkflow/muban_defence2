@@ -42,7 +42,11 @@ function mt:on_cast_start()
 	local player = unit:get_owner()
 	local hero = player.hero
 	-- print(it)
-    -- hero:event_notify('单位-拾取物品',hero,it)
+	local slot = hero:get_nil_slot()
+	if not slot then 
+		player:sendMsg('英雄背包满了，传递不过去。',5)
+		return 
+	end
 	-- 点太快 重复触发两次拾取。
 	if it.owner then 
 		unit:remove_item(it)
