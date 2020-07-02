@@ -107,7 +107,7 @@ for i =1,3 do
     --改变怪物
     function mt:on_change_creep(unit,lni_data)
         change_attr(unit,self.index)
-        unit:add_buff '攻击英雄'{}
+        -- unit:add_buff '攻击英雄'{}
     end
     --每3秒刷新一次攻击目标 原地不动才发起攻击
     function mt:attack_hero() 

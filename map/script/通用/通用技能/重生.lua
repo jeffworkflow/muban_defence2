@@ -49,18 +49,36 @@ function mt:on_add()
             }
         end    
 
-        hero:add_restriction '隐藏'
-        hero:add_restriction '定身'
-        hero:add_restriction '无敌'
-        hero:add_restriction '缴械'
+        if not hero:has_restriction '隐藏' then 
+            hero:add_restriction '隐藏'
+        end
+        if not hero:has_restriction '定身' then 
+            hero:add_restriction '定身'
+        end
+        if not hero:has_restriction '无敌' then 
+            hero:add_restriction '无敌'
+        end
+        if not hero:has_restriction '缴械' then 
+            hero:add_restriction '缴械'
+        end
 
         ac.wait(self.time*1000,function ()
 
             effect:remove()
-            hero:remove_restriction '隐藏'
-            hero:remove_restriction '无敌'
-            hero:remove_restriction '定身'
-            hero:remove_restriction '缴械'
+            if hero:has_restriction '隐藏' then 
+                hero:remove_restriction '隐藏'
+            end
+            
+            if hero:has_restriction '无敌' then
+                hero:remove_restriction '无敌'
+            end
+            
+            if hero:has_restriction '定身' then
+                hero:remove_restriction '定身'
+            end
+            if hero:has_restriction '缴械' then
+                hero:remove_restriction '缴械'
+            end
 
             --用 set,生命加成可能会有问题
             hero:add('生命', hero:get '生命上限')

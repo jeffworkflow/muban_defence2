@@ -67,6 +67,9 @@ local function create_u(skl,hero,point)
 end
 function mt:on_cast_start(next_point)
     local hero = self.owner 
+    if not hero then 
+        return 
+    end 
     local p = hero:get_owner()
     local player = hero:get_owner()
     local point = next_point or self.target 

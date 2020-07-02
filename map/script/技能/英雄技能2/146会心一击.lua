@@ -69,8 +69,8 @@ function mt:on_remove()
 end
 
 local mt = ac.buff['会心一击']
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
+-- mt.cover_max = 1
 -- mt.keep = true
 
 function mt:on_add()
