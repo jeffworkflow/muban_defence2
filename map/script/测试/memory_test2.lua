@@ -214,7 +214,9 @@ ac.loop(30 * 1000, function()
 	print(('时间: %.f'):format(ac.clock() / 1000))
 	print(('内存[%.3fk]'):format(lua_memory))
 	print(('jass句柄数[%d],历史最大句柄[%d]'):format(dbg.handlecount(), dbg.handlemax()))
-	-- ac.debug_print_timer()
+	if ac.debug_print_timer then 
+		ac.debug_print_timer()
+	end
 	print(('计时器 正常[%d]'):format(ac.timer_size()))
 	-- print(('game计时器 正常[%d]'):format(game.timer_size()))
 

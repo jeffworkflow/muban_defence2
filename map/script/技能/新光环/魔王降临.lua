@@ -64,11 +64,7 @@ function mt:on_remove()
 end
 
 local mt = ac.buff['魔王降临']
--- 魔兽中两个不同的专注光环会相互覆盖，但光环模版默认是不同来源的光环不会相互覆盖，所以要将这个buff改为全局buff。
-mt.pulse = 1
-mt.cover_type = 1
-mt.cover_max = 1
-mt.effect = [[]]
+mt.cover_type = 0
 -- mt.keep = true
 
 function mt:on_add()
@@ -80,7 +76,6 @@ end
 
 function mt:on_remove()
     local target = self.target
-    if self.eff then self.eff:remove() end
     target:add('护甲%',self.value)
 end
 function mt:on_cover(new)

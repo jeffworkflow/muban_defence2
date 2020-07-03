@@ -1,7 +1,6 @@
 local mt = ac.buff['基地保护']
 
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
 
 mt.ref = 'origin'
 mt.model = [[model\common\shield.mdx]]

@@ -1,15 +1,17 @@
 local setmetatable = setmetatable
 local ipairs = ipairs
 local pairs = pairs
-local table_insert = table.insert
 local math_max = math.max
 local math_floor = math.floor
+local table_insert = table.insert
 
 local cur_frame = 0
 local max_frame = 0
 local cur_index = 0
 local free_queue = {}
 local timer = {}
+
+ac.all_timers = setmetatable({}, {__mode = 'kv'})
 
 local function alloc_queue()
 	local n = #free_queue
@@ -22,7 +24,7 @@ local function alloc_queue()
 	end
 end
 
-local function execute(self,timeout)
+local function m_timeout(self, timeout)
 	local ti = cur_frame + timeout
 	local q = timer[ti]
 	if q == nil then
@@ -33,16 +35,16 @@ local function execute(self,timeout)
 	q[#q + 1] = self
 end
 
-local function m_timeout(self, timeout)
-	execute(self,timeout)
-	--pcall(execute,self,timeout)
-end
-
 local function m_wakeup(self)
 	if self.removed then
 		return
 	end
-	self:on_timer()
+
+	xpcall(self.on_timer, function (msg)
+		print('计时器运行错误', self._src, self._line)
+		print(msg, debug.traceback())
+	end, self)
+
 	if self.removed or self.pause_remaining then
 		return
 	end
@@ -50,6 +52,7 @@ local function m_wakeup(self)
 		m_timeout(self, self.timeout)
 	else
 		self.removed = true
+		ac.all_timers[self] = nil
 	end
 end
 
@@ -84,6 +87,38 @@ function ac.timer_size()
 	return n
 end
 
+function ac.debug_print_timer()
+	if ac.enable_debug_timer ~= true then 
+		return 
+	end 
+	local map = {}
+	for _, ts in pairs(timer) do
+		for index, t in ipairs(ts) do 
+			if t.traceback then 
+				map[t.traceback] = (map[t.traceback] or 0) + 1
+			end 
+		end 
+		
+	end
+
+	for info, count in pairs(map) do 
+		print('计时器数量', count, info)
+	end 
+end 
+
+function ac.init_timer(timer)
+	local info = debug.getinfo(3, 'Sl')
+	if info then 
+		timer._src = info.short_src
+		timer._line = info.currentline
+	end
+	ac.all_timers[timer] = true
+
+	if ac.enable_debug_timer then 
+		timer.traceback = debug.traceback(1)
+	end 
+end
+
 local jass = require 'jass.common'
 local jtimer = jass.CreateTimer()
 require('jass.debug').handle_ref(jtimer)
@@ -106,7 +141,14 @@ mt.__index = api
 mt.type = 'timer'
 
 function api:remove()
+	if self.removed then 
+		return 
+	end 
+	if self.on_remove then 
+		self:on_remove()
+	end 
 	self.removed = true
+	ac.all_timers[self] = nil
 end
 
 function api:get_remaining()
@@ -144,37 +186,35 @@ function api:resume()
 end
 
 function ac.wait(timeout, on_timer)
-	if type(timeout) ~= 'number'  or type(on_timer) ~= 'function' then 
-		print("计时器参数错误2",timeout,on_timer)
-		return 
-	end 
+	if timeout == nil or on_timer == nil then 
+		print('计时器参数不对',timeout, on_timer, debug.traceback())
+	end
 	local timeout = math_max(math_floor(timeout) or 1, 1)
 	local t = setmetatable({
 		['on_timer'] = on_timer,
 	}, mt)
+	ac.init_timer(t)
 	m_timeout(t, timeout)
 	return t
 end
 
 function ac.loop(timeout, on_timer)
-	if type(timeout) ~= 'number' or type(on_timer) ~= 'function' then 
-		print("计时器参数错误1",timeout,on_timer)
-		return 
-	end 
+	if timeout == nil or on_timer == nil then 
+		print('计时器参数不对',timeout, on_timer, debug.traceback())
+	end
 	local t = setmetatable({
 		['timeout'] = math_max(math_floor(timeout) or 1, 1),
 		['on_timer'] = on_timer,
 	}, mt)
+	ac.init_timer(t)
 	m_timeout(t, t.timeout)
 	return t
 end
 
 function ac.timer(timeout, count, on_timer)
-	if type(timeout) ~= 'number' or type(count) ~= 'number' or type(on_timer) ~= 'function' then 
-		print("计时器参数错误1",timeout,count,on_timer)
-		return 
-	end 
-
+	if timeout == nil or count == nil or on_timer == nil then 
+		print('计时器参数不对',timeout, count, on_timer, debug.traceback())
+	end
 	if count == 0 then
 		return ac.loop(timeout, on_timer)
 	end
@@ -239,7 +279,6 @@ function ac.utimer(u, timeout, count, on_timer)
 	table_insert(u._timers, t)
 	return t
 end
-
 
 --计时器原始计时器+窗口
 ac.timer_ex = function(data)

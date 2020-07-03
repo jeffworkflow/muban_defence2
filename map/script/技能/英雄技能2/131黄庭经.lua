@@ -105,8 +105,7 @@ function mt:on_remove()
 end
 
 local mt = ac.buff['水疗术']
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
 mt.pulse = 1
 -- mt.keep = true
 

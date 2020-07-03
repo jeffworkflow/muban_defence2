@@ -2,7 +2,6 @@ local mt = ac.buff['净化']
 
 mt.cover_type = 0
 mt.pulse = 0.1
-mt.model = [[]]
 mt.ref = 'overhead'
 
 function mt:on_add()

@@ -2154,19 +2154,22 @@ end
 
 
 --测试副本
-function helper:fb(str)
-	for i=1,3 do 
-		local creep = ac.creep['刷怪'..i]
-		creep.index = tonumber(str) - 1
-		if i==1 then 
-			creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
-		end
-		if creep.has_started  then 
-			creep:next()
-		else
-			creep:start()
-		end		
-	end	
+function helper:fb(str,cnt)
+	local cnt = cnt or 1
+	for x = 1,cnt do 
+		for i=1,3 do 
+			local creep = ac.creep['刷怪'..i]
+			creep.index = tonumber(str) - 1
+			if i==1 then 
+				creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
+			end
+			if creep.has_started  then 
+				creep:next()
+			else
+				creep:start()
+			end		
+		end	
+	end
 end
 --测试副本
 function helper:wj(str)
@@ -2200,6 +2203,11 @@ function helper:cs()
 	end
 end
 
+--测试加属性0 引起的玩家崩溃
+function helper:attr()
+	self:add('攻击减甲',5000)
+	self:add('分裂伤害',100)
+end
 --测试加属性0 引起的玩家崩溃
 function helper:test_sx()
 	ac.loop(1000,function()

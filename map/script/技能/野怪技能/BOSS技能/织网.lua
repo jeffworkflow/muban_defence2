@@ -118,17 +118,16 @@ end
 
 
 local mt = ac.buff['织网']
--- 魔兽中两个不同的专注光环会相互覆盖，但光环模版默认是不同来源的光环不会相互覆盖，所以要将这个buff改为全局buff。
-mt.pulse = 1
-mt.cover_type = 1
-mt.cover_max = 1
-mt.effect = [[]]
--- mt.keep = true
+mt.cover_type = 0
 
 function mt:on_add()
 	local target = self.target
 	local source = self.source
-	self.eff = target:add_effect('origin',self.effect)
+	local eff	
+    if self.effect then 
+        eff = target:add_effect('origin',self.effect)
+    end
+    self.eff = eff
 	-- print('添加buff',target,source)
 	if target == source then 
 		target:add('攻击%',35)
@@ -143,7 +142,7 @@ end
 function mt:on_remove()
 	local target = self.target
 	local source = self.source
-	if self.eff then self.eff:remove() end
+	if self.eff then self.eff:remove() self.eff = nil end
 	
 	if target == source then 
 		target:add('攻击%',-35)

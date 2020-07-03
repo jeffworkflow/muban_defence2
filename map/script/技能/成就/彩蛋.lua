@@ -424,9 +424,7 @@ end
 
 
 local mt = ac.buff['不惧轮回']
-mt.control = 2
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
 mt.ref = 'origin'
 mt.model = [[]]
 mt.value = 0

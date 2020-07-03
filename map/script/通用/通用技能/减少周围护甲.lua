@@ -78,9 +78,7 @@ end
 
 local mt = ac.buff['减少周围护甲']
 -- 魔兽中两个不同的专注光环会相互覆盖，但光环模版默认是不同来源的光环不会相互覆盖，所以要将这个buff改为全局buff。
-mt.pulse = 1
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
 mt.effect = [[]]
 -- mt.keep = true
 

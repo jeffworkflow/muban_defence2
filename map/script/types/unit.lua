@@ -10,6 +10,15 @@ local move = require 'types.move'
 local game = require 'types.game'
 local order2id = require 'war3.order_id'
 local damage = require 'types.damage'
+-- damage = {}
+-- setmetatable(damage, damage)
+-- local mt = {}
+-- damage.__index = mt
+-- function damage.__call()
+-- end
+-- function mt:on_attribute_attack()
+-- end
+
 local math = math
 local ignore_flag = false
 local table_insert = table.insert
