@@ -353,6 +353,11 @@ rect gg_rct_zuqiu1= null
 rect gg_rct_zuqiu2= null
 rect gg_rct_sylz1= null
 rect gg_rct_sylz= null
+rect gg_rct_moku= null
+rect gg_rct_moku1= null
+rect gg_rct_moku2= null
+rect gg_rct_moku3= null
+rect gg_rct_moku4= null
 endglobals
 
     
@@ -1814,6 +1819,11 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_zuqiu2=Rect(- 3584.0, - 1696.0, - 3488.0, - 1504.0)
 	set gg_rct_sylz=Rect(7808.0, 25088.0, 8096.0, 25376.0)
     set gg_rct_sylz1=Rect(7808.0, 25792.0, 8096.0, 26080.0)
+	set gg_rct_moku=Rect(12480.0, 27136.0, 12640.0, 27296.0)
+    set gg_rct_moku1=Rect(11168.0, 27904.0, 13184.0, 28416.0)
+    set gg_rct_moku2=Rect(11168.0, 26080.0, 11744.0, 27872.0)
+    set gg_rct_moku3=Rect(13408.0, 26144.0, 13984.0, 27680.0)
+    set gg_rct_moku4=Rect(11776.0, 25984.0, 12960.0, 26528.0)
 endfunction
 
 //===========================================================================
