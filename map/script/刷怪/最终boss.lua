@@ -41,7 +41,10 @@ ac.game:event '游戏-最终boss' (function(trg)
         if ac.g_game_degree_attr >= 100000 then 
             --无尽开始
             ac.game:event_notify('游戏-无尽开始')
-        else    
+        elseif finds(ac.g_game_degree_name,'贪婪魔窟') then
+            --贪婪魔窟
+            ac.game:event_notify('游戏-贪婪魔窟开始')
+        else
             --游戏结束
             ac.game:event_notify('游戏-结束',true)
         end    

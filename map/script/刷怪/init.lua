@@ -5,7 +5,7 @@ require '刷怪._常用'
 require '刷怪.单位初始化'
 require '刷怪.最终boss'
 require '刷怪.刷怪'
--- require '刷怪.刷怪无尽'
+require '刷怪.刷怪无尽'
 -- require '刷怪.boss挑战'
 -- require '刷怪.杀鸡儆猴'
 require '刷怪.境界'
@@ -13,6 +13,9 @@ require '刷怪.难度选择'
 require '刷怪.任务'
 require '刷怪.隐藏玩法'
 require '刷怪.踢皮球'
+
+require '刷怪.贪婪魔窟'
+
 
 -- require '刷怪.野怪'
 -- require '刷怪.武林大会'

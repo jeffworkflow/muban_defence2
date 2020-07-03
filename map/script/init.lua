@@ -54,6 +54,7 @@ ac.wait(0,function ()
         local name = light[tonumber(type)]
         jass.SetDayNightModels(([[Environment\DNC\DNC%s\DNC%sTerrain\DNC%sTerrain.mdx]]):format(name, name, name), ([[Environment\DNC\DNC%s\DNC%sUnit\DNC%sUnit.mdx]]):format(name, name, name))
     end
+    ac.light = light
     -- light(3)
     print('游戏开始时间：',time2string(ac.player(1):Map_GetGameStartTime()))
     ac.player(16):setColor(7)    

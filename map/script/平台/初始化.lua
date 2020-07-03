@@ -278,6 +278,10 @@ ac.game:event '游戏-结束' (function(trg,flag)
     if not flag then 
         return 
     end         
+    if finds(ac.g_game_degree_name,'贪婪魔窟') then 
+        return 
+    end
+    
     local ok = get_save_flag()
     for i=1,10 do
         local player = ac.player[i]

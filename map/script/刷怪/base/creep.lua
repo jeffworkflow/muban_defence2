@@ -152,20 +152,24 @@ function mt:set_region(rgn)
     end    
 
     local reg 
+    local rct
     local _ = 0
     local region_str = ''
-
     for name in rect_name:gmatch '%S+' do
         -- 只有一个区域时，默认为矩形区域，get_point 取中心点
         _ = _ + 1
         region_str = region_str ..' '.. name
         if _ ==1 then 
-            reg = rect.j_rect(name)	
+            rct = rect.j_rect(name)
         else
             reg = (reg or region.create()) + rect.j_rect(name)
         end   
     end
-    
+    if _ == 1 then 
+        reg = rct
+    else
+        reg = reg + rct
+    end
     self.region = reg 
     self.region_str = region_str
 end   
@@ -297,6 +301,16 @@ function mt:ResumeTimer()
     self.timerdialog:ResumeTimer()   
     return self.timerdialog
 end  
+function mt:get_group_count()
+    if not self.group then return end
+    local i = 0
+    for _, uu in ipairs(self.group) do
+        if uu:is_alive() then
+            i = i + 1
+        end
+    end
+    return i
+end
 
 function mt:next()
     --已经结束

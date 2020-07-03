@@ -192,8 +192,8 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     -- boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
     -- end    
 end)    
-
-ac.game:event '游戏-无尽开始'(function(trg) 
+--清理地图上面的 商店等
+local function clear_map()
     --删除商店
     local del_shop = [[练功师]]
     for key,unit in pairs(ac.shop.unit_list) do 
@@ -247,7 +247,12 @@ ac.game:event '游戏-无尽开始'(function(trg)
             end)
         end)
     end)
-    
+end
+ac.clear_map = clear_map
+
+ac.game:event '游戏-无尽开始'(function(trg) 
+    --清理地图上的东西
+    clear_map()
     --游戏开始后 刷怪时间  
     local time = force_cool
     ac.player.self:sendMsg("|cffebb608【系统】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波妖怪 |r|cff00ff00在".. time .. "秒后开始进攻！|r|cffff0000(部分精英怪对所有真伤型技能免疫)",10)
