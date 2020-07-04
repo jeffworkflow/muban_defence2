@@ -308,6 +308,7 @@ local new_ui = class.panel:builder
     show1 = function(self)
         self:fade(-0.5)
         self:show()
+        ac.player.self:clearMsg()
     end
 
 }
