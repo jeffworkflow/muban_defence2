@@ -43,7 +43,7 @@ ac.game:event '单位-创建前'(function(_,id,self,j_id, x, y,face)
     local handle,u = unit.get_unit_handle(id,'模拟死亡')
     -- print(handle,u)
     if handle then 
-        
+        u.born_point = ac.point(x,y)
         u:set_position(ac.point(x,y),true,true) --需要提前设置位置
         -- print('1',u:get_point())
         -- local u = unit.init_unit(handle, self) --重新初始化

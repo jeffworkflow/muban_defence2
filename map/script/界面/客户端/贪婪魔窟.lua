@@ -99,6 +99,7 @@ local new_ui = class.panel:builder
                         print('点击了按钮',i)
                         local max_zdl_player = get_max_zdl()
                         if ac.player.self ~= max_zdl_player then 
+                            ac.player.self:sendMsg('等待'..max_zdl_player:get_name()..'决定中',5) 
                             return 
                         end
                         --发起同步请求
@@ -172,7 +173,7 @@ local new_ui = class.panel:builder
         --贪婪魔窟
         ['贪婪魔窟-普通'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
         ['贪婪魔窟-噩梦'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
-        ['贪婪魔窟-地图'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
+        ['贪婪魔窟-地狱'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
 
         ['存档物品'] = {
             { rand = 65,      name = '白'},
@@ -297,15 +298,15 @@ local new_ui = class.panel:builder
         self:fresh()
     end,    
     show1 = function(self)
-        self:show()
         self:fade(-0.5)
+        self:show()
     end
 
 }
 ac.ui.cave = new_ui
 ac.wait(10000,function()
     new_ui:new()
-    new_ui:show1()
+    -- new_ui:show1()
 end)
 
 local ui = require 'ui.server.util'
@@ -324,23 +325,30 @@ local event = {
             print('创建物品，准备游戏结束')
             for i,name in ipairs(new_ui.award_list) do 
                 local point = ac.rect.j_rect('moku5'):get_random_point()
+                -- print('创建了：',name)
                 ac.item.create_item(name,point)
             end
             
             --游戏结束
-            -- ac.game:event_notify('游戏-结束',true)
+            ac.game:event_notify('游戏-结束',true)
 
         else
-            print('继续下一波')
-            ac.creep['贪婪魔窟']:next()
             local index = ac.creep['贪婪魔窟'].index 
             index = index + 1
             local max_index = ac.creep['贪婪魔窟'].max_index 
             if index > max_index then 
                 --游戏结束
-                -- ac.game:event_notify('游戏-结束',true)
-
+                print('满层')
+                for i,name in ipairs(new_ui.award_list) do 
+                    local point = ac.rect.j_rect('moku5'):get_random_point()
+                    -- print('创建了：',name)
+                    ac.item.create_item(name,point)
+                end
+                ac.game:event_notify('游戏-结束',true)
             end
+            
+            print('继续下一波')
+            ac.creep['贪婪魔窟']:next()
         end
 
     end,

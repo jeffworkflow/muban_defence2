@@ -204,11 +204,19 @@ function helper:fresh(str)
 end
 
 --移动英雄
-function helper:move()
+function helper:move(flag)
 	local data = self:get_owner():getCamera()
-	self:get_owner():sync(data, function(data)
-		self:blink(ac.point(data[1], data[2]), true)
-	end)
+
+	if flag then 
+		local rct = ac.rect.create(-200,-200,200,200)
+		local point = ac.point(-300,0)
+		self:blink(point, true)
+		self:add_restriction '飞行'
+	else
+		self:get_owner():sync(data, function(data)
+			self:blink(ac.point(data[1], data[2]), true)
+		end)
+	end
 end
 
 --添加Buff
@@ -268,6 +276,7 @@ end
 function helper:god()
 	--允许控制中立被动的单位
 	local player = self.owner
+	local p = self.owner
 	for y = 1,16 do
 		player:enableControl(ac.player(y))
 	end	
@@ -280,6 +289,8 @@ function helper:god()
 	if ac.main_unit then 
 		ac.main_unit:add_buff '无敌'{}
 	end
+	local minx, miny, maxx, maxy = ac.map_area:get()
+	p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 end	
 function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
