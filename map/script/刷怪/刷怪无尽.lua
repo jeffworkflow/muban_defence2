@@ -230,12 +230,13 @@ local function clear_map()
     local t_time = 30 --倒计时
 
     ac.wait(5*1000,function()
-        ac.player.self:sendMsg('|cffff0000'..mt.time_removed..'秒|r后，清理地上技能',10)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000'..mt.time_removed..'秒|r|cff00ff00后，清理地上技能',10)
         --倒计时清理地上技能
         ac.wait((mt.time_removed-t_time)*1000,function()
             ac.timer(1*1000,t_time,function(t)
                 t_time = t_time -1
-                ac.player.self:sendMsg('|cffff0000'..t_time..'秒|r后，清理地上技能',2)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000'..t_time..'秒|r|cff00ff00后，清理地上技能',2)
+            
                 if t_time <= 0 then 
                     --开始清理
                     for _,v in pairs(ac.item.item_map) do

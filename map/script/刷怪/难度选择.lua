@@ -65,6 +65,11 @@ ac.wait(1200,function()
             end)
             ac.player.self:sendMsg("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
             ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
+
+            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
+            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
+            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
+
             
             print("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
         end)

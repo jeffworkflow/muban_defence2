@@ -31,36 +31,74 @@ print_r(skill_list)
 
 --无尽怪物改变所有属性
 local base_attr = {
-    ['攻击'] = 1000000000,
-    ['护甲'] = 45000,
-    ['魔抗'] = 45000,
-    ['生命上限'] = 2800000000,
+    ['攻击'] = 4249976192,
+    ['护甲'] = 381932,
+    ['魔抗'] = 381932,
+    ['生命上限'] = 15560193899,
     ['魔法上限'] = 1000000,
     ['移动速度'] = 519,
     ['攻击间隔'] = 0.75,
-    ['生命恢复'] = 281902,
+    ['生命恢复'] = 74096161,
+    ['攻击减甲'] = 5,
     ['魔法恢复'] = 10000,
-    ['攻击距离'] = 200,
-    ['攻击速度'] = 300,
+    ['攻击距离'] = 250,
+    ['攻击速度'] = 450,
+    ['韧性'] = 30,
     ['暴击几率'] = 20,
-    ['暴击伤害'] = 20000,
+    ['暴击伤害'] = 15500,
     ['会心几率'] = 20,
-    ['会心伤害'] = 200,
+    ['会心伤害'] = 900,
 }
-local function change_attr(unit,index,factor)
+local boss_attr = {
+    ['攻击'] = 8499952384,
+    ['护甲'] = 763864,
+    ['魔抗'] = 763864,
+    ['生命上限'] = 31120387798,
+    ['魔法上限'] = 1000000,
+    ['移动速度'] = 519,
+    ['攻击间隔'] = 0.6,
+    ['生命恢复'] = 148192322,
+    ['攻击减甲'] = 10,
+    ['魔法恢复'] = 10000,
+    ['攻击距离'] = 450,
+    ['攻击速度'] = 700,
+    ['韧性'] = 50,
+    ['暴击几率'] = 20,
+    ['暴击伤害'] = 31000,
+    ['会心几率'] = 20,
+    ['会心伤害'] = 900,
+}
+local function change_attr(unit,index,is_boss)
     --设置搜敌范围 因子
     unit:set_search_range(6000)
     local degree_attr_mul = ac.get_difficult(ac.g_game_degree_attr)
-    local endless_attr_mul = ac.get_difficult(index,1.15)
-    local boss_mul = factor or 1
+    local endless_attr_mul = ac.get_difficult(index,1.05)
+    local renxing_attr_mul = ac.get_difficult(index,1.01)
+
+    -- local boss_mul = 1
     --设置属性
-    for key,value in sortpairs(base_attr) do 
-        if finds('攻击 护甲 魔抗 生命上限 暴击伤害',key) then 
-            unit:set(key, value * degree_attr_mul * endless_attr_mul*boss_mul)
-        else
-            unit:set(key, value)
-        end    
-    end    
+    if not is_boss then 
+        for key,value in sortpairs(base_attr) do 
+            if finds('攻击 护甲 魔抗 生命上限 暴击伤害 攻击减甲',key) then 
+                unit:set(key, value * degree_attr_mul * endless_attr_mul)
+            elseif finds('韧性',key) then 
+                unit:set(key, value * degree_attr_mul * renxing_attr_mul)
+            else
+                unit:set(key, value)
+            end    
+        end 
+    else  
+    --boss改变属性     
+        for key,value in sortpairs(boss_attr) do 
+            if finds('攻击 护甲 魔抗 生命上限 暴击伤害 攻击减甲',key) then 
+                unit:set(key, value * degree_attr_mul * endless_attr_mul)
+            elseif finds('韧性',key) then 
+                unit:set(key, value * degree_attr_mul * renxing_attr_mul)
+            else
+                unit:set(key, value)
+            end    
+        end  
+    end
     -- unit:set('移动速度', base_attr['移动速度'] + index*10) 
     if unit:get_name() =='虚空诺亚' then 
         unit:set('攻击减甲',0)
@@ -88,10 +126,10 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         region = 'moku1 moku2 moku3 moku4',
         creeps_datas = '',
         creep_player = ac.player(12),
-        create_unit_cool = 0.2,
+        create_unit_cool = 0.05,
         is_random = true,
         max_index = max_index,
-        cool_count = 30, --剩余30只时
+        cool_count = 100, --剩余30只时
         -- tip ="|cffff0000怪物开始进攻！！！|r"
 
     }
@@ -101,15 +139,15 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
 
     function mt:on_next()
     
-        ac.player.self:sendMsg("|cffff0000 （无尽） 第"..self.index.."波 怪物开始进攻！！！|r",5)
+        -- ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00 开始挑战 |cffff0000魔窟第"..self.index.."层！|r",5)
         -- local index = self.index
-        self.creeps_datas = mobing[math.random(#mobing)]..'*60'
+        self.creeps_datas = mobing[math.random(#mobing)]..'*200'
         -- self.creeps_datas = '火凤凰*20'
         self:set_creeps_datas()
         --难度 12 （斗破苍穹） 增加技能
         self.skill_name = skill_list[math.random(#skill_list)]
         if self.skill_name then 
-            ac.player.self:sendMsg('本波怪物特性： '..self.skill_name)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00当前挑战 |cffffff00魔窟第'..self.index..'层|cff00ff00，怪物特性： |cffff0000'..self.skill_name)
         end   
 
         -- 每回合开始 都会先检查计时器是否还存在，存在则清空，重新计时。
@@ -118,7 +156,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         end    
         self.timer_ex2 = ac.timer_ex 
         {
-            time = 60,
+            time = 120,
             title = "游戏失败 倒计时",
             func = function ()
                 ac.game:event_notify('游戏-结束')
@@ -184,7 +222,7 @@ local function create_boss(creep)
     --最后一波时，发布最终波数
     local boss = ac.player.com[2]:create_unit('大魔王',point)
     boss.unit_type = 'boss'
-    change_attr(boss,creep.index,1.5) --普通怪倍数
+    change_attr(boss,creep.index,true) --普通怪倍数
 
     boss:add_buff '攻击英雄' {}
     boss:add_buff '无敌' {
@@ -232,9 +270,9 @@ local function blink_tlmk(start_time)
     ac.timer_ex 
     {
         time = start_time,
-        title = '距离 贪婪魔窟 开始： ' ,
+        title = '进入 贪婪魔窟 倒计时： ' ,
         func = function ()
-            ac.wait(5*1000,function()
+            ac.wait(10*1000,function()
                 ac.creep['贪婪魔窟']:start()
             end)
             --禁止F2,F3
@@ -258,7 +296,8 @@ local function blink_tlmk(start_time)
     ac.wait( (start_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r贪婪魔窟|cffff0000 '..t_time..' |r秒后开始，请做好准备',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000 '..t_time..' |r |cff00ff00秒后进入|cffffff00贪婪魔窟|cff00ff00，请做好战前准备！',2)
+    
             if t_time <=0 then 
                 t:remove()
             end    
@@ -297,12 +336,15 @@ local function blink_tlmk(start_time)
                     --每个玩家添加传送动画（倒计时）
                     hero:add_buff '时停'
                     {
-                        time = 5,
+                        time = 10,
                         skill = '贪婪魔窟',
                         source = hero,
                         zoffset = 220,
                         show = true,
                     }
+                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 2分钟 |cff00ff00内杀死本层所有怪物，否则魔窟坍塌，|cffff0000游戏失败！")
+                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00通过每一层的挑战后，战斗力最强的玩家，可选择|cffffff00【获得装备并终止挑战】|cff00ff00或|cffffff00【继续挑战下一层】|cffff0000（挑战失败则一无所有，请量力而行！）")
+
                 end)
             end
         end        
@@ -317,7 +359,9 @@ ac.game:event '游戏-贪婪魔窟开始'(function(trg)
 
     --游戏开始后 刷怪时间  
     local time = 15
-    ac.player.self:sendMsg("|cffebb608【系统】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波妖怪 |r|cff00ff00在".. time .. "秒后开始进攻！|r|cffff0000(部分精英怪对所有真伤型技能免疫)",10)
+    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
+    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
+    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
     --启动 传送计时器
     blink_tlmk(time)
 
