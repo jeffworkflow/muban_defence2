@@ -44,12 +44,15 @@ ac.game:event '游戏-无尽开始'(function(trg)
 end)	
 
 --基地爆炸的时候结算胜负
-ac.game:event '游戏-结束' (function(trg,flag)
+ac.game:event '游戏-结束' (function(trg,flag,tip)
 	local name 
 	if flag then 
 		name = '【游戏胜利】'
-		ac.player.self:sendMsg("|cffebb608【游戏胜利】|cff00ff00战斗力已保存，|cffff00002分钟|cff00ff00后游戏结束！|r|cff00ffff可前往练功房右下角NPC-神奇的按钮，|cffffff00兑换神奇的令牌|cff00ffff，抽各种各样的可存档内容！")
-
+		if tip then 
+			ac.player.self:sendMsg(tip)
+		else
+			ac.player.self:sendMsg("|cffebb608【游戏胜利】|cff00ff00战斗力已保存，|cffff00002分钟|cff00ff00后游戏结束！|r|cff00ffff可前往练功房右下角NPC-神奇的按钮，|cffffff00兑换神奇的令牌|cff00ffff，抽各种各样的可存档内容！")
+		end
 		ac.timer_ex
         {
             time = 120,
