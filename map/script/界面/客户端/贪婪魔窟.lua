@@ -67,7 +67,7 @@ local new_ui = class.panel:builder
                     h = 45,
                     font_size = 30,
                     align = 'center',
-                    text ='获得装备并离开',
+                    text ='|cff00ff00获得装备并离开|r',
                     type = 'text'
 
                 },
@@ -243,9 +243,10 @@ local new_ui = class.panel:builder
         local max_index = type(ac.creep['贪婪魔窟']) == 'table' and ac.creep['贪婪魔窟'].max_index or 999999999
         index = index + 1
         if index > max_index then 
-            self.choose[2].text:set_text('已达满层('..(index-1)..'层),请挑战更高难度')
+            self.choose[2].text:set_text('|cffffff00    恭喜达到顶层！|n    更深层数在高难度开放！')
         else
-            self.choose[2].text:set_text('进入第'..index..'层,继续挑战')
+            self.choose[2].text:set_text('|cffffff00继续挑战，失败则|cffff0000一无所有')
+            --第'..index..'层|n|cffff0000（
         end
         
         --更新计时器
