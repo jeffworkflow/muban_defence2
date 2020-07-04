@@ -1,10 +1,16 @@
 
---淡化
+--淡化 
+--@正数：淡化 负数：渐入
 function class.ui_base:fade(time)
     --进行淡化
+    local time = time or 0.3
+    local source = time>0 and 100 or 0
+    local time = math.abs(time)
+
     ac.timer(time/100 * 1000,100,function(t)
         -- print((100-t.cnt)/100) 
-        self:set_alpha((100-t.cnt)/100)
+        local val = math.abs(source - t.cnt)/100
+        self:set_alpha(val)
     end)
 end   
 

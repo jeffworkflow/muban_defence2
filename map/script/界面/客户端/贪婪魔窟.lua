@@ -22,7 +22,7 @@ local new_ui = class.panel:builder
     w = 1920,
     h = 1080,
     -- is_show = true,
-    level =10,
+    level =5,
     is_show = false,
     normal_image = [[image\贪婪魔窟\1 - LOGIN.tga]],
     -- alpha = 0.7,
@@ -220,17 +220,18 @@ local new_ui = class.panel:builder
         self:clear()
         for i,name in ipairs(self.award_list) do 
             -- local skl = ac.table.ItemData[name]
-            local skl = ac.skill[name] 
+            local skl = ac.dummy:add_item(name)
             if skl.map_level_tip then 
                 -- print(type(skl),type(ac.skill['你是大傻逼sdfe']))
                 -- print(skl.name,skl.color_name,skl.title,skl.tip,skl.art)
                 local title = skl.color_name or skl.title or skl.name
                 local tip = skl.get_tip and skl:get_tip() or skl.tip
-                local art = skl.art
+                local art = skl:get_art()
 
                 self.save_item[i].bt.title = title
                 self.save_item[i].bt.tip = tip
                 self.save_item[i].bt:set_normal_image(art)
+                skl:item_remove()
             end
             -- self.save_item[i].btn.on_button_mouse_enter = function(self)
             --     self:tooltip(title,tip,0,400,84,10)
@@ -239,8 +240,13 @@ local new_ui = class.panel:builder
         end
         --更新文字 
         local index = type(ac.creep['贪婪魔窟']) == 'table' and ac.creep['贪婪魔窟'].index or 1
+        local max_index = type(ac.creep['贪婪魔窟']) == 'table' and ac.creep['贪婪魔窟'].max_index or 999999999
         index = index + 1
-        self.choose[2].text:set_text('进入第'..index..'层,继续挑战')
+        if index > max_index then 
+            self.choose[2].text:set_text('已达满层('..(index-1)..'层),请挑战更高难度')
+        else
+            self.choose[2].text:set_text('进入第'..index..'层,继续挑战')
+        end
         
         --更新计时器
         self:fresh_remain_time()
@@ -289,12 +295,16 @@ local new_ui = class.panel:builder
         self:create_choose()
         self:fresh()
     end,    
+    show1 = function(self)
+        self:show()
+        self:fade(-0.5)
+    end
 
 }
 ac.ui.cave = new_ui
 ac.wait(10000,function()
     new_ui:new()
-    new_ui:show()
+    new_ui:show1()
 end)
 
 local ui = require 'ui.server.util'
@@ -316,11 +326,20 @@ local event = {
                 ac.item.create_item(name,point)
             end
             
-            -- ac.game:event_notify('游戏-结束')
+            --游戏结束
+            -- ac.game:event_notify('游戏-结束',true)
 
         else
             print('继续下一波')
             ac.creep['贪婪魔窟']:next()
+            local index = ac.creep['贪婪魔窟'].index 
+            index = index + 1
+            local max_index = ac.creep['贪婪魔窟'].max_index 
+            if index > max_index then 
+                --游戏结束
+                -- ac.game:event_notify('游戏-结束',true)
+
+            end
         end
 
     end,

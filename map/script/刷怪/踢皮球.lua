@@ -103,7 +103,8 @@ function mt:on_cast_start()
 		hit_area = skill.hit_area,
 		distance = skill.range,
         high = 120,
-        hit_type = '联盟',
+        hit_type = '友方',
+        allow_god = true,
         on_hit = function(self,u)
             if u:get_name() ~='球门' then 
                 return 
@@ -162,7 +163,7 @@ ac.game:event '单位-获得物品后' (function (_,unit,item,old_item)
 end)
 --注册创建事件
 local time = 15 * 60
--- time = 10
+time = 10
 ac.wait(time*1000,function()
     --创建球
     on_create()

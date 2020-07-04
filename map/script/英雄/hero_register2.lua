@@ -26,11 +26,11 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		ac.timer(time*1000,1,function()
 
 			local random_point 
-			if ac.flag_wldh then 
-				random_point = ac.map.rects['武林大会']:get_random_point(true)
+			if ac.flag_tlmt then 
+				random_point = ac.rect.j_rect('moku5'):get_random_point()
 				hero:revive(random_point)
 				hero:add_buff '无敌' {
-					time = 3
+					time = 1
 				}
 			else	
 				random_point = p.revive_point or ac.map.rects['出生点']:get_point()

@@ -6,7 +6,6 @@ local new_ui = class.panel:builder
     y = 538,
     w = 84,
     h = 84,
-    level = 5,
     is_show = false,
     normal_image = [[]],
     button = {

@@ -95,7 +95,6 @@ local new_ui = class.panel:builder
     h = 100,
     -- w = 512,
     -- h = 96, 
-    level = 5,
     is_show = false,
     normal_image = [[ui\battle_power\ui-a10.tga]],
     md = {

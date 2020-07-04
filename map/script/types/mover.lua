@@ -380,6 +380,9 @@ mover.__index = {
 
 		self.selector = ac.selector():is_not(self.source)
 
+		if self.allow_god then
+			self.selector:allow_god()
+		end
 		if self.hit_type == '敌人' then
 			self.selector:is_enemy(self.source)
 		elseif self.hit_type == '友方' then

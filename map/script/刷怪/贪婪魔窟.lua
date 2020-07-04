@@ -79,10 +79,10 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     end    
     local max_index
     if finds(g_game_degree_name , '普通') then 
-        max_index = 25
+        max_index = 2
     end
     if finds(g_game_degree_name , '噩梦') then 
-        max_index = 50
+        max_index = 5
     end
     local mt = ac.creep['贪婪魔窟']{    
         region = 'moku1 moku2 moku3 moku4',
@@ -183,17 +183,17 @@ local function create_boss(creep)
     local point = creep.region:get_point()
     --最后一波时，发布最终波数
     local boss = ac.player.com[2]:create_unit('大魔王',point)
-    boss.unit_type = '精英'
+    boss.unit_type = 'boss'
     change_attr(boss,creep.index,1.5) --普通怪倍数
 
     boss:add_buff '攻击英雄' {}
     boss:add_buff '无敌' {
         time = 1.5
     }
-    boss:add_skill('无敌','英雄')
-    boss:add_skill('撕裂大地','英雄')
-    boss:add_skill('酒桶','英雄')
-    print('boss 出现啦。')
+    boss:add_skill('净化','英雄')
+    boss:add_skill('金色莲花','英雄')
+    boss:add_skill('金色鎏金','英雄')
+    print('boss 出现啦。',boss,boss:get_point())
     return boss
 end
 
@@ -208,11 +208,11 @@ ac.game:event '游戏-回合结束'(function(trg,index, creep)
     --boss打死了显示ui
     boss:event '单位-死亡' (function(_,unit,killer) 
         --展示ui
-        print('展示了ui')
+        print('boos死亡了，展示了ui',unit)
         local new_ui = ac.ui.cave 
         new_ui:give_award()
         new_ui:fresh()
-        new_ui:show()
+        new_ui:show1()
         -- self:next()
     end)  
 
@@ -250,6 +250,7 @@ local function blink_tlmk(start_time)
     
                 end    
             end 
+            ac.flag_tlmt = true
         end,
     }
     --快到时，进行提醒
@@ -257,7 +258,7 @@ local function blink_tlmk(start_time)
     ac.wait( (start_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r贪婪魔窟|cffff0000 '..t_time..' |r秒后开始，请做好准备')
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r贪婪魔窟|cffff0000 '..t_time..' |r秒后开始，请做好准备',5)
             if t_time <=0 then 
                 t:remove()
             end    
@@ -290,7 +291,7 @@ local function blink_tlmk(start_time)
                     peon:blink(point,true,false)
                     --锁定镜头
                     local minx, miny, maxx, maxy = ac.rect.j_rect('moku5'):get()
-                    p:setCameraBounds(minx-1000, miny-1000, maxx+1000, maxy+1000)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+                    p:setCameraBounds(minx, miny-300, maxx, maxy+300)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
                     p:setCamera(hero:get_point())
                     
                     --每个玩家添加传送动画（倒计时）
