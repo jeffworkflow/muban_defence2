@@ -117,10 +117,10 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     end    
     local max_index
     if finds(g_game_degree_name , '普通') then 
-        max_index = 2
+        max_index = 25
     end
     if finds(g_game_degree_name , '噩梦') then 
-        max_index = 5
+        max_index = 50
     end
     local mt = ac.creep['贪婪魔窟']{    
         region = 'moku1 moku2 moku3 moku4',
@@ -129,7 +129,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         create_unit_cool = 0.05,
         is_random = true,
         max_index = max_index,
-        cool_count = 100, --剩余30只时
+        cool_count = 75, --剩余30只时
         -- tip ="|cffff0000怪物开始进攻！！！|r"
 
     }
@@ -141,7 +141,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     
         -- ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00 开始挑战 |cffff0000魔窟第"..self.index.."层！|r",5)
         -- local index = self.index
-        self.creeps_datas = mobing[math.random(#mobing)]..'*200'
+        self.creeps_datas = mobing[math.random(#mobing)]..'*150'
         -- self.creeps_datas = '火凤凰*20'
         self:set_creeps_datas()
         --难度 12 （斗破苍穹） 增加技能
@@ -153,16 +153,36 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         -- 每回合开始 都会先检查计时器是否还存在，存在则清空，重新计时。
         if self.timer_ex2 then 
             self.timer_ex2:remove()
-        end    
+        end   
+        if self.timer_ex3 then 
+            self.timer_ex3:remove()
+            self.timer_ex3 = nil
+        end  
+        if self.timer_ex4 then 
+            self.timer_ex4:remove()
+            self.timer_ex4 = nil
+        end  
+
+        local time = 120
         self.timer_ex2 = ac.timer_ex 
         {
-            time = 120,
+            time = time,
             title = "游戏失败 倒计时",
             func = function ()
                 ac.game:event_notify('游戏-结束')
                 self:finish()
             end,
         }
+        self.timer_ex3 = ac.wait((time-15)*1000,function()
+            self.timer_ex4 = ac.timer(1*1000,15,function(t)
+                ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00本层挑战倒计时 |cffff0000'..t.count..' 秒|cff00ff00,请尽快清理场上怪物！！！',5)
+               
+                if t.count<=0 then 
+                    t:remove()
+                    self.timer_ex4 = nil
+                end
+            end)
+        end)
 
     end
     --改变怪物
@@ -257,7 +277,20 @@ ac.game:event '游戏-回合结束'(function(trg,index, creep)
     if self.timer_ex2 then 
         self.timer_ex2:remove()
         self.timer_ex2 = nil
-    end    
+    end  
+    if self.timer_ex3 then 
+        self.timer_ex3:remove()
+        self.timer_ex3 = nil
+    end  
+    if self.timer_ex4 then 
+        self.timer_ex4:remove()
+        self.timer_ex4 = nil
+    end  
+    if self.timer_ex5 then 
+        self.timer_ex5:remove()
+        self.timer_ex5 = nil
+    end      
+    
     --终止下回合开始
     return true
 end)    

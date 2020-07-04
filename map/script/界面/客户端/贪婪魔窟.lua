@@ -189,7 +189,7 @@ local new_ui = class.panel:builder
         --先清空
         self.award_list = {}
         local index = type(ac.creep['贪婪魔窟'])=='table' and ac.creep['贪婪魔窟'].index or 1
-        local rand = 10 * get_player_count()+index
+        local rand = 5 * get_player_count() + 1.5 * index + 5
         local rand_list = self.award_data[ac.g_game_degree_name]
         if rand_list then 
             rand_list[1].rand = rand 
