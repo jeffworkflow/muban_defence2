@@ -182,8 +182,10 @@ class.player_info_panel = extends(class.panel){
                         new_value = string.format("%.f",player.server[name] or 0)  
                     elseif name =='评论数' then
                         new_value = string.format("%.f",player:Map_CommentCount())  
-                    -- elseif name =='地图总评论数' then
-                    --     new_value = string.format("%.f",player:Map_CommentTotalCount())  
+                    elseif name =='签到' then
+                        new_value = string.format("%.f",player.server[name] or 0)
+                        new_value = new_value ..' |cffff0000(改名会清零)|r'
+                        
                     else
                         new_value = string.format("%.f",player.server[name] or 0)
                     end    

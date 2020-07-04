@@ -2163,6 +2163,16 @@ function helper:never_dead(flag)
 	end
 end
 
+--测试副本
+function helper:mk(str,cnt)
+	local creep = ac.creep['贪婪魔窟']
+	creep.index = tonumber(str) - 1
+	if creep.has_started  then 
+		creep:next()
+	else
+		creep:start()
+	end	
+end
 
 --测试副本
 function helper:fb(str,cnt)

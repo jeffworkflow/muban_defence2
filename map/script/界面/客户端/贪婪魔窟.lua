@@ -320,7 +320,7 @@ local function give_item(player)
     ac.wait(1.5*1000,function()
         for i,name in ipairs(new_ui.award_list) do 
             local point = ac.rect.j_rect('moku5'):get_random_point()
-            -- print('创建了：',name)
+            print('创建了：',name,point)
             ac.item.create_item(name,point)
         end
         local tip = '|cffebb608【系统】|cff00ffff'..player:get_name()..' |cff00ff00选择了|cffffff00 【结束挑战】|cff00ff00，2分钟后游戏结束！'

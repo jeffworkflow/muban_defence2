@@ -609,6 +609,7 @@ tip = [[
  ]],
 event_name = '造成伤害效果',
 chance = 10,
+cool = 2,
 damage_area = 600,
 skill_attack = 15,
 effect = [[MXXXT28 -  F.mdx]],
