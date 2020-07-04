@@ -172,7 +172,7 @@ local new_ui = class.panel:builder
         --贪婪魔窟
         ['贪婪魔窟-普通'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
         ['贪婪魔窟-噩梦'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
-        ['贪婪魔窟-地图'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
+        ['贪婪魔窟-地狱'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
 
         ['存档物品'] = {
             { rand = 65,      name = '白'},
@@ -296,15 +296,15 @@ local new_ui = class.panel:builder
         self:fresh()
     end,    
     show1 = function(self)
-        self:show()
         self:fade(-0.5)
+        self:show()
     end
 
 }
 ac.ui.cave = new_ui
 ac.wait(10000,function()
     new_ui:new()
-    new_ui:show1()
+    -- new_ui:show1()
 end)
 
 local ui = require 'ui.server.util'
@@ -323,6 +323,7 @@ local event = {
             print('创建物品，准备游戏结束')
             for i,name in ipairs(new_ui.award_list) do 
                 local point = ac.rect.j_rect('moku5'):get_random_point()
+                -- print('创建了：',name)
                 ac.item.create_item(name,point)
             end
             
