@@ -94,7 +94,7 @@ local new_ui = class.panel:builder
                             self.hover_bg:hide()
                         end
                     end,
-                    on_button_clicked =function(self)
+                    on_button_clicked =function()
                         --同步，并发送当前点击是第几个按钮
                         print('点击了按钮',i)
                         local max_zdl_player = get_max_zdl()
@@ -103,6 +103,8 @@ local new_ui = class.panel:builder
                             
                             return 
                         end
+                        --隐藏
+                        panel:hide()
                         --发起同步请求
                         local info = {
                             type = 'cave',
@@ -281,7 +283,7 @@ local new_ui = class.panel:builder
                     type = 'cave',
                     func_name = 'cave',
                     params = {
-                        [1] = i,
+                        [1] = 1,
                     }
                 }
                 ui.send_message(info)
@@ -296,7 +298,6 @@ local new_ui = class.panel:builder
         local pannel = self
         self:create_time()
         self:create_choose()
-        self:fresh()
     end,    
     show1 = function(self)
         self:fade(-0.5)
