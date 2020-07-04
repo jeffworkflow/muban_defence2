@@ -67,6 +67,7 @@ local boss_attr = {
     ['暴击伤害'] = 31000,
     ['会心几率'] = 20,
     ['会心伤害'] = 900,
+    ['每秒回血'] = 1,
 }
 local function change_attr(unit,index,is_boss)
     --设置搜敌范围 因子
@@ -92,7 +93,7 @@ local function change_attr(unit,index,is_boss)
         for key,value in sortpairs(boss_attr) do 
             if finds('攻击 护甲 魔抗 生命上限 暴击伤害 攻击减甲',key) then 
                 unit:set(key, value * degree_attr_mul * endless_attr_mul)
-            elseif finds('韧性',key) then 
+            elseif finds('韧性 每秒回血',key) then 
                 unit:set(key, value * degree_attr_mul * renxing_attr_mul)
             else
                 unit:set(key, value)
@@ -164,12 +165,14 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         end  
 
         local time = 120
+        -- time = 20
         self.timer_ex2 = ac.timer_ex 
         {
             time = time,
             title = "游戏失败 倒计时",
             func = function ()
-                ac.game:event_notify('游戏-结束',true)
+                local tip ='|cffebb608【系统】|cffff0000魔窟挑战失败，请再接再厉，2分钟后结束游戏！！！'
+                ac.game:event_notify('游戏-结束',true,tip)
                 self:finish()
             end,
         }
@@ -391,7 +394,7 @@ ac.game:event '游戏-贪婪魔窟开始'(function(trg)
     ac.clear_map()
 
     --游戏开始后 刷怪时间  
-    local time = 15
+    local time = 120
     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
