@@ -5,7 +5,7 @@ local function get_max_zdl()
     for i=1,10 do 
         local p = ac.player(i)
         if p:is_player() then 
-            table.insert(temp,{player = p,zdl = p.zdl})
+            table.insert(temp,{player = p,zdl = (p.zdl or 0)})
         end
     end
     table.sort(temp,function(a,b)
