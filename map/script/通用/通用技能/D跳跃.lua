@@ -8,7 +8,7 @@ mt{
 	]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBlink.blp]],
-	cool = 0.9,
+	cool = 0.6,
 	-- cost = 1,
 
 	target_type = ac.skill.TARGET_TYPE_POINT,
@@ -21,7 +21,7 @@ mt{
     cast_start_time = 0.0,
 	cast_finish_time = 0.0,
 	--忽略技能冷却
-    -- ignore_cool_save = true, 
+    ignore_cool_save = true, 
 
 	--施法距离
 	range = 99999,
