@@ -99,7 +99,8 @@ local new_ui = class.panel:builder
                         print('点击了按钮',i)
                         local max_zdl_player = get_max_zdl()
                         if ac.player.self ~= max_zdl_player then 
-                            ac.player.self:sendMsg('等待'..max_zdl_player:get_name()..'决定中',5) 
+                            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家 |cff00ffff'..max_zdl_player:get_name()..' |cff00ff00正在选择',5) 
+                            
                             return 
                         end
                         --发起同步请求
@@ -167,19 +168,19 @@ local new_ui = class.panel:builder
 
     end,
     award_list = {
-        '菲普斯的鞋子3','菲普斯的鞋子4','菲普斯的鞋子5'
+        
     },
     award_data = {
         --贪婪魔窟
-        ['贪婪魔窟-普通'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
-        ['贪婪魔窟-噩梦'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
-        ['贪婪魔窟-地狱'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
+        ['贪婪魔窟-普通'] =  {{ rand = 1.5, name = {{ rand = 75,   name = '1级物品'},{ rand = 20,   name = '2级物品'},{ rand = 5,   name = '3级物品'},{ rand = 0,   name = '4级物品'}}}},
+        ['贪婪魔窟-噩梦'] =  {{ rand = 1.5, name = {{ rand = 30,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 25,   name = '3级物品'},{ rand = 5,   name = '4级物品'}}}},
+        ['贪婪魔窟-地狱'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'}}}},
 
         ['存档物品'] = {
-            { rand = 65,      name = '白'},
-            { rand = 25,      name = '蓝'},
-            { rand = 8,      name = '金'},
-            { rand = 2,      name = '暗金'},
+            { rand = 15,      name = '白'},
+            { rand = 15,      name = '蓝'},
+            { rand = 50,      name = '金'},
+            { rand = 20,      name = '暗金'},
         },
 
     },
@@ -188,7 +189,7 @@ local new_ui = class.panel:builder
         --先清空
         self.award_list = {}
         local index = type(ac.creep['贪婪魔窟'])=='table' and ac.creep['贪婪魔窟'].index or 1
-        local rand = 10 * get_player_count()*index
+        local rand = 10 * get_player_count()+index
         local rand_list = self.award_data[ac.g_game_degree_name]
         if rand_list then 
             rand_list[1].rand = rand 
@@ -304,11 +305,22 @@ local new_ui = class.panel:builder
 
 }
 ac.ui.cave = new_ui
-ac.wait(10000,function()
+ac.wait(10,function()
     new_ui:new()
     -- new_ui:show1()
 end)
-
+local function give_item(player)
+    ac.wait(1.5*1000,function()
+        for i,name in ipairs(new_ui.award_list) do 
+            local point = ac.rect.j_rect('moku5'):get_random_point()
+            -- print('创建了：',name)
+            ac.item.create_item(name,point)
+        end
+        local tip = '|cffebb608【系统】|cff00ffff'..player:get_name()..' |cff00ff00选择了|cffffff00 【结束挑战】|cff00ff00，2分钟后游戏结束！'
+        --游戏结束
+        ac.game:event_notify('游戏-结束',true,tip)
+    end)
+end
 local ui = require 'ui.server.util'
 --处理同步请求
 local event = {
@@ -323,14 +335,7 @@ local event = {
 
         if index == 1 then 
             print('创建物品，准备游戏结束')
-            for i,name in ipairs(new_ui.award_list) do 
-                local point = ac.rect.j_rect('moku5'):get_random_point()
-                -- print('创建了：',name)
-                ac.item.create_item(name,point)
-            end
-            
-            --游戏结束
-            ac.game:event_notify('游戏-结束',true)
+            give_item(player)
 
         else
             local index = ac.creep['贪婪魔窟'].index 
@@ -339,16 +344,14 @@ local event = {
             if index > max_index then 
                 --游戏结束
                 print('满层')
-                for i,name in ipairs(new_ui.award_list) do 
-                    local point = ac.rect.j_rect('moku5'):get_random_point()
-                    -- print('创建了：',name)
-                    ac.item.create_item(name,point)
-                end
-                ac.game:event_notify('游戏-结束',true)
+                give_item(player)
             end
             
             print('继续下一波')
-            ac.creep['贪婪魔窟']:next()
+            ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff'..player:get_name()..' |cff00ff00选择了|cffffff00 【继续挑战】|cff00ff00，祝君好运！',5)
+            ac.wait(3*1000,function()
+                ac.creep['贪婪魔窟']:next()
+            end)
         end
 
     end,
