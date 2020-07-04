@@ -6,21 +6,16 @@ local playermsg = {}
 local game_ui = japi.GetGameUI()
 --魔兽的提示框
 local tsk = japi.FrameGetTooltip()
-
-class.playermsg = extends(class.panel){
-    create = function ()
-        local w = 800 --宽度
-        local h = 425 --高度
-        local panel = class.panel.create('',122,206,w,h)
-        panel.__index = class.playermsg
-        panel.tip = {}
-        panel.w=w
-        panel.h=h
-
-       
-        return panel
-    end,
-
+local new_ui = class.panel:builder
+{
+    x = 122,
+    y = 206,
+    w = 800,
+    h = 425,
+    is_show = true,
+    level = 6,
+    normal_image = [[]],
+    
     --玩家发送消息
     sendMsg = function(self,str,time)
         if not self.tip then 
@@ -76,10 +71,11 @@ class.playermsg = extends(class.panel){
     end
 }
 ac.wait(0,function()
-local pannel = class.playermsg.get_instance()
+-- local pannel = class.playermsg.get_instance()
+-- pannel:set_level(6)
 function ac.player.__index:sendMsg(str,time)
     if self:is_self() then 
-        pannel:sendMsg(str,time)
+        new_ui:sendMsg(str,time)
     end    
 end    
 function ac.player.__index:sendMsg1(str,time)
@@ -87,13 +83,13 @@ function ac.player.__index:sendMsg1(str,time)
         return
     end    
     if self:is_self() then 
-        pannel:sendMsg(str,time)
+        new_ui:sendMsg(str,time)
     end    
 end    
 
 function ac.player.__index:clearMsg()
     if self:is_self() then 
-        pannel:clearMsg()
+        new_ui:clearMsg()
     end    
 end    
 end)
