@@ -264,7 +264,7 @@ local new_ui = class.panel:builder
         end
         -- local
         self.timer = ac.timer(1000,time,function(t)
-            local str = tostring(t.count)
+            local str = string.format('%02d',t.count)
             --设置图片
             -- print('改变时间图片',str)
             local i = 1 
@@ -277,6 +277,12 @@ local new_ui = class.panel:builder
             if t.count <= 0 then 
                 t:remove()
                 self.timer = nil
+
+                local max_zdl_player = get_max_zdl()
+                if ac.player.self ~= max_zdl_player then 
+                    -- ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家 |cff00ffff'..max_zdl_player:get_name()..' |cff00ff00正在选择',5) 
+                    return 
+                end
 
                 --时间到 获得存档装备离开游戏
                 local info = {

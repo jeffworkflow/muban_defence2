@@ -159,7 +159,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
             time = 120,
             title = "游戏失败 倒计时",
             func = function ()
-                ac.game:event_notify('游戏-结束')
+                ac.game:event_notify('游戏-结束',true)
                 self:finish()
             end,
         }
