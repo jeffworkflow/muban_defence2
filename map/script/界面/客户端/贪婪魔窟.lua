@@ -99,6 +99,7 @@ local new_ui = class.panel:builder
                         print('点击了按钮',i)
                         local max_zdl_player = get_max_zdl()
                         if ac.player.self ~= max_zdl_player then 
+                            ac.player.self:sendMsg('等待'..max_zdl_player:get_name()..'决定中',5) 
                             return 
                         end
                         --发起同步请求
@@ -328,19 +329,25 @@ local event = {
             end
             
             --游戏结束
-            -- ac.game:event_notify('游戏-结束',true)
+            ac.game:event_notify('游戏-结束',true)
 
         else
-            print('继续下一波')
-            ac.creep['贪婪魔窟']:next()
             local index = ac.creep['贪婪魔窟'].index 
             index = index + 1
             local max_index = ac.creep['贪婪魔窟'].max_index 
             if index > max_index then 
                 --游戏结束
-                -- ac.game:event_notify('游戏-结束',true)
-
+                print('满层')
+                for i,name in ipairs(new_ui.award_list) do 
+                    local point = ac.rect.j_rect('moku5'):get_random_point()
+                    -- print('创建了：',name)
+                    ac.item.create_item(name,point)
+                end
+                ac.game:event_notify('游戏-结束',true)
             end
+            
+            print('继续下一波')
+            ac.creep['贪婪魔窟']:next()
         end
 
     end,
