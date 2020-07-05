@@ -72,12 +72,15 @@ function mt:on_add()
             if hero:has_restriction '无敌' then
                 hero:remove_restriction '无敌'
             end
-            
             if hero:has_restriction '定身' then
-                hero:remove_restriction '定身'
+                if unit:get_name() ~= '基地' then
+                    hero:remove_restriction '定身'
+                end
             end
             if hero:has_restriction '缴械' then
-                hero:remove_restriction '缴械'
+                if unit:get_name() ~= '基地' then
+                    hero:remove_restriction '缴械'
+                end
             end
 
             --用 set,生命加成可能会有问题

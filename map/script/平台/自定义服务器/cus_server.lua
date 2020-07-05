@@ -52,7 +52,7 @@ function player.__index:GetServerValue(KEY,f)
             end    
         else 
             f(false)
-            print('数据读取失败')
+            print('数据读取失败',post)
             -- ac.wait(10,function()print(retval)end)
         end
     end)

@@ -1,8 +1,8 @@
-local mt = ac.skill['净化'] 
+local mt = ac.skill['净化1'] 
 
 mt{
     level = 1,
-    title = "净化",
+    title = "净化1",
     tip = [[
         被动1：受到攻击时，有30%概率降低攻击者300%的攻速和60%移速，持续0.5秒
         被动2：降低自己的三维15%

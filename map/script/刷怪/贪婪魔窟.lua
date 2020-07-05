@@ -13,7 +13,7 @@ end
 table.sort(mobing,function(a,b)
     return a < b
 end)
-print_r(mobing)
+-- print_r(mobing)
 
 local skill_list = {}
 for name,data in pairs(ac.skill) do 
@@ -27,7 +27,7 @@ end
 table.sort(skill_list,function(a,b)
     return a < b
 end)
-print_r(skill_list)
+-- print_r(skill_list)
 
 --无尽怪物改变所有属性
 local base_attr = {
