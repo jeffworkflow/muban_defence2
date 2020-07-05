@@ -199,7 +199,7 @@ for i=1,10 do
                             val = data:value(player) or 0
                             -- print(key_name,'地图等级',player:Map_GetMapLevel(),val)
                         end    
-                        print(key_name,name,has_item,player.server[key_name],player:Map_GetMapLevel(),map_level,val)
+                        -- print(key_name,name,has_item,player.server[key_name],player:Map_GetMapLevel(),map_level,val)
                         if has_item and has_item > 0 
                         and player:Map_GetMapLevel() >= map_level
                         then 

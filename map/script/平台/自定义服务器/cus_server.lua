@@ -295,6 +295,7 @@ local event = {
             end 
             player.flag_read_server = true
             print(player,'又发布了一次读档回调')
+            player:event_notify '读取存档数据' 
             player:sendMsg('|cff00ff00读取成功|r')
         end  
         --移除循环  

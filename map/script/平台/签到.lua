@@ -38,19 +38,20 @@ mt{
     has_qd = function(self)
         local hero = self.owner
         local p = hero.owner
-        return p.server['签到']
+        return p.cus_server['签到'] or p.server['签到'] or 0
     end,
     ['本次签到奖励'] = function(self)
         local hero = self.owner
         local p = hero.owner
-        return (p.server['签到'] or 0) + 1
+        return (p.cus_server['签到'] or p.server['签到'] or 0) + 1
     end,
     ['每秒加全属性'] = function(self)
         local hero = self.owner
         local p = hero.owner
         local val = 0
-        if p.server['签到'] and p.server['签到'] > 0 then
-            for i=1,p.server['签到'] do 
+         
+        if self.has_qd > 0 then
+            for i=1,self.has_qd do 
                 val = val + i
             end
         end

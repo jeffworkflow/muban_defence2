@@ -67,7 +67,11 @@ ac.game:event '玩家-注册英雄' (function(_, _, hero)
     local p = _
     ac.wait(5000,function()
         if p:is_self() then 
-            print(p.qd_time)
+            -- print(p.qd_time)
+            if not p.qd_time then 
+                print('没有读取到签到时间，本局签到数据不显示。')
+                return 
+            end
             -- print('打印打印',time2string(p:Map_GetGameStartTime()),time2string(p.qd_time),timediff(p:Map_GetGameStartTime(),p.qd_time or 0 ))
             if timediff(p:Map_GetGameStartTime(),p.qd_time or 0 ) > 0 then 
                 ac.ui.client.qd:show()
