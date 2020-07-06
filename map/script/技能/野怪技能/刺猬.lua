@@ -12,7 +12,7 @@ mt{
     value = 10,
     skill_type = '野怪',
     -- 生命上限比
-    life_rate = 10,
+    life_rate = 15,
 
     -- 概率
     rate = 75,

@@ -226,8 +226,8 @@ local function clear_map()
 
     --无尽后，地上技能120秒自动消失
     local mt = ac.skill['学习技能']
-    mt.time_removed = 120 --自动消失时间
-    local t_time = 30 --倒计时
+    mt.time_removed = 60 --自动消失时间
+    local t_time = 15 --倒计时
 
     ac.wait(5*1000,function()
         ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000'..mt.time_removed..'秒|r|cff00ff00后，清理地上技能',10)
