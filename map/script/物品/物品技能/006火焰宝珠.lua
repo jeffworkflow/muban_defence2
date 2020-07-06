@@ -62,6 +62,7 @@ function mt:on_upgrade()
 		source = hero,
 		skill = skill,
 		pulse = self.v1,
+		keep = true,
 		is_damage_on_add = false,
 		damage = self.damage,
 	}

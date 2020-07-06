@@ -171,6 +171,36 @@ local reward = {
 
 local new_ui = ac.ui.client.draw
 
+--获取非满级存档的存档
+-- local function get_name(p)
+--     local name = ac.get_reward_name(reward['神奇的令牌']) or '空白'
+--     if finds(name,'级物品') then
+--         local lv = tonumber(string.sub(name,1,1))
+--         local color = ac.get_reward_name(ac.unit_reward['存档物品'])
+--         if not color then 
+--             print('不存在物品',name)
+--             return 
+--         end    
+--         local rand = math.random(#ac.save_item[lv][color])
+--         name = ac.save_item[lv][color][rand]
+--     end
+--     local key = ac.server.name2key(name)
+--     if key then 
+--         local value = p:Map_GetServerValue(key)
+--         if value >= ac.skill[name].max_level then 
+--             print('大于10级了重新随机',name)
+--             return get_name(p)
+--         else
+--             return name
+--         end
+--     else
+--         return name
+--     end
+-- end
+
+-- ac.get_name = get_name
+
+
 local function fresh_item(p)
     local temp = {}
     for i =1,#new_ui.award_list do 
@@ -185,6 +215,7 @@ local function fresh_item(p)
             name = ac.save_item[lv][color][rand]
         end
         p.award_list = p.award_list or ac.table_copy(new_ui.award_list)
+        --优化
         p.award_list[i].name = name
     end
     if p:is_self() then 

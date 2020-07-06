@@ -366,7 +366,7 @@ local function blink_tlmk(start_time)
                     peon:blink(point,true,false)
                     --锁定镜头
                     local minx, miny, maxx, maxy = ac.rect.j_rect('moku5'):get()
-                    p:setCameraBounds(minx, miny-300, maxx, maxy+300)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+                    p:setCameraBounds(minx, miny-300, maxx, maxy+300+704)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
                     p:setCamera(hero:get_point())
                     
                     --每个玩家添加传送动画（倒计时）

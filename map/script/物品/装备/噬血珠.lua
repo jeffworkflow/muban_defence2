@@ -139,6 +139,11 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
     hero = p.hero
+    --处理进入魔窟截止
+    if ac.flag_tlmt then 
+        p:sendMsg('已进入魔窟，无法传送出去',5)
+        return 
+    end
     --需要先增加一个，否则消耗品点击则无条件先消耗
     -- self:add_item_count(1) 
     local item = hero:has_item(self.name)

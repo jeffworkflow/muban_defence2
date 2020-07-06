@@ -31,7 +31,11 @@ local function init_attribute(unit)
     unit.exp= data.exp
     unit.fall_rate= data.fall_rate
     unit.fall_save_rate= data.fall_save_rate
-
+    -- unit.high = data.high
+    --设置高度
+    if data.high then 
+        unit:set_high(data.high)
+    end
     --设置搜敌范围
     unit:set_search_range(800)
     local attr_mul = get_difficult(ac.g_game_degree_attr)

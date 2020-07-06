@@ -1,11 +1,18 @@
 local slk = require 'jass.slk'
 
-class.hero_info_panel = extends(class.panel){
-    create = function ()
-        local hero = ac.player.self.hero
-        local panel = class.panel.create('image\\提示框\\bj2.tga',541,123,838,666)
-        panel.__index = class.hero_info_panel 
+local new_ui = class.panel:builder
+{
+    x = 541,--假的
+    y = 123,--假的
+    w = 838,
+    h = 666,
+    level = 5,
+    is_show = false,
+    normal_image = 'image\\提示框\\bj2.tga',
 
+    create = function (self)
+        local hero = ac.player.self.hero
+        local panel = self
         panel:add_button('',0,0,panel.w,panel.h)
         panel:set_alpha(0.7)
         -- local title_text = panel:add_text('棋子图鉴',0,0,panel.w,100,25,'center')
@@ -233,7 +240,7 @@ class.hero_info_panel = extends(class.panel){
     end,
 }
 
-local panel = class.hero_info_panel.get_instance()
+local panel = new_ui:create()
 game.loop(2*1000,function() 
     panel:fresh()
 end)

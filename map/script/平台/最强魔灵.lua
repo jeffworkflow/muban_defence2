@@ -67,8 +67,24 @@ mt{
 mt.skills = {
     '黄盖','关羽','地图等级首充礼包','堕落天使',
     '地图等级成长礼包','加百列','商城御剑守护','王昭君',
-    '地图等级初级赞助','雅典娜','地图等级高级赞助','肝帝'
+    '地图等级初级赞助','雅典娜','地图等级高级赞助',
 }
+local mt = ac.skill['地图等级-下一页']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+点击查看 |cff00ffff下一页|r
+    ]],
+    
+}
+mt.skills = {
+    '肝帝',
+}
+
 
 local mt = ac.skill['游戏说明']
 mt{

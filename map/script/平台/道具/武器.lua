@@ -10,7 +10,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥1500
+|cff00ffff打造熟练度≥1500%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+72  杀怪加攻击|r
@@ -19,6 +19,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 2,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '（当前熟练度：'..val..'）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 72,

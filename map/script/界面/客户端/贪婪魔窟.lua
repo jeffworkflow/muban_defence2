@@ -317,6 +317,26 @@ ac.wait(10,function()
     new_ui:new()
     -- new_ui:show1()
 end)
+
+-- local game_event = {}
+-- game_event.on_key_down = function (code)
+
+--     if code == KEY.F9 then 
+--         if new_ui == nil then return end 
+--         new_ui:show()
+--     elseif code == KEY.ESC then 
+--         new_ui:hide()
+--     end 
+-- end 
+-- game_event.on_key_up = function (code)
+
+--     if code == KEY.F9 then 
+--         if new_ui == nil then return end 
+--         new_ui:hide()
+--     end 
+-- end 
+-- game.register_event(game_event)
+
 local function give_item(player)
     ac.wait(1.5*1000,function()
         for i,name in ipairs(new_ui.award_list) do 

@@ -1,25 +1,43 @@
 local mt = ac.skill['一键出售']
+
 mt{
+	--必填
+	is_skill = true,
+	
 	--初始等级
 	level = 1,
+
+	max_level = 5,
+	auto_fresh_tip = false,
 	tip = [[
 
 |cffFFE799【使用说明】：|r
 可以将宠物身上的物品|cff00ff00全部出售|r
 
 ]],
+	
 	--技能图标
 	art = [[yijianchushou.blp]],
+	
     ignore_cool_save = true, --忽略技能冷却
+
 	--技能目标类型 无目标
 	target_type = ac.skill.TARGET_TYPE_NONE,
+
 	--施法范围
-	-- area = 400,
+	area = 500,
+
 	--cd
 	cool = 0.5,
+
+	--特效模型
+	effect = [[AZ_Doomdragon_T.mdx]],
+	-- effect = [[Hero_Juggernaut_N4S_F_Source.mdx]],
+	
 	--施法距离
-	-- range = 1000,
+	range = 99999,
 }
+
 
 function mt:on_add()
 	local hero = self.owner 
@@ -36,8 +54,7 @@ function mt:on_cast_shot()
 		local items = hero:get_slot_item(i)
 		if items then 
 			-- print(items.name,items.handle)
-			if (items.color and finds(items.color,'红','天阶')) or finds(items.name,'无谓因果','龙之血珠','吞噬丹') then 
-			else
+			if items.name ~= '勇士徽章' then 
 				gold = gold + items:sell_price()
 				wood = wood + items:sell_wood()
 				kill_count = kill_count + items:sell_kill_count()
@@ -63,3 +80,6 @@ function mt:on_cast_shot()
 
 end
 
+function mt:on_remove()
+
+end

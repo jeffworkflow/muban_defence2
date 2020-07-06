@@ -1,5 +1,23 @@
 
 local player_hero_tm_list = {}
+local function add_units_buff(p,time)
+	local temp = {}
+	table.insert(temp,p.unit_mojian)
+	table.insert(temp,p.unit_shenjian)
+	table.insert(temp,p.unit_fs)
+	table.insert(temp,p.unit_ys)
+	for i,u in ipairs(temp) do 
+		print('单位死亡打印：',i,u)
+		u:add_buff '隐藏'{
+			time = time
+		}
+		u:add_buff '缴械'{
+			time = time
+		}
+	end
+
+
+end
 
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	if not player_hero_tm_list[player] then
@@ -17,26 +35,28 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		--复活时间 减少复活时间 
 		hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))
 		local time = hero.revive_time
+		--给玩家随从 添加对应的buff
+		add_units_buff(p,time)
 		ac.timer_ex
 		{
 			time = time,
 			title = '英雄复活: ',
 			player = hero:get_owner(),
+			func = function ()
+				--倒计时后，复活
+				local random_point 
+				if ac.flag_tlmt then 
+					random_point = ac.rect.j_rect('moku5'):get_random_point()
+					hero:revive(random_point)
+					hero:add_buff '无敌' {
+						time = 1
+					}
+				else	
+					random_point = p.revive_point or ac.map.rects['出生点']:get_point()
+					hero:revive(random_point)
+				end	
+            end,
 		}
-		ac.timer(time*1000,1,function()
-
-			local random_point 
-			if ac.flag_tlmt then 
-				random_point = ac.rect.j_rect('moku5'):get_random_point()
-				hero:revive(random_point)
-				hero:add_buff '无敌' {
-					time = 1
-				}
-			else	
-				random_point = p.revive_point or ac.map.rects['出生点']:get_point()
-				hero:revive(random_point)
-			end	
-		end)
 		p.cnt_death = (p.cnt_death or 0) + 1
 		--文字提醒
 		ac.player.self:sendMsg('|cffebb608【系统】|r |cffff0000'..hero:get_owner():get_name()..' |cff00ff00已阵亡 等待复活中',5)

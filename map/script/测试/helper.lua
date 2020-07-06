@@ -2243,6 +2243,17 @@ function helper:test_sx()
 		end
 	end)
 end
+function helper:gn()
+	local p = self.owner
+	for i=1,100 do 
+		local name =ac.get_name(p)
+		local key = ac.server.name2key(name)
+		if key then 
+			p:Map_AddServerValue(key,1) 
+		end
+		print('随机存档并保存：',key,name,p.server[name])
+	end
+end
 
 --测试玩家random 唯一值
 function helper:rd()
