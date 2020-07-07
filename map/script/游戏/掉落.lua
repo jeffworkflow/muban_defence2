@@ -504,6 +504,11 @@ local unit_reward = {
     ['难10'] =  {{ rand = 1.5, name = {{ rand = 10,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 35,   name = '3级物品'},{ rand = 15,   name = '4级物品'}}}},
     ['难11'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'}}}},
 
+    ['难12'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 30,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 25,   name = '4级物品'},{ rand = 5,   name = '5级物品'}}}},
+    ['难13'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 20,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 30,   name = '4级物品'},{ rand = 10,   name = '5级物品'}}}},
+    ['难14'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 10,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 35,   name = '4级物品'},{ rand = 15,   name = '5级物品'}}}},
+    ['难15'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 0,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 40,   name = '4级物品'},{ rand = 20,   name = '5级物品'}}}},
+
     ['藏宝阁小弟'] = {{rand =1.35,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
