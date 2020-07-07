@@ -389,12 +389,12 @@ local function blink_tlmk(start_time)
 end    
 
 
-ac.game:event '游戏-贪婪魔窟开始'(function(trg) 
+ac.game:event '游戏-贪婪魔窟开始'(function(trg,time) 
     --清理地图的东西
     ac.clear_map()
 
     --游戏开始后 刷怪时间  
-    local time = 120
+    local time = time or 120
     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00恭喜通关！|cffff00002分钟|cff00ff00后传送至|cffffff00贪婪魔窟|r，|cff00ff00请做好战前准备！|cff00ffff因为里面有着强大的怪物守护着|cffff0000超级宝藏")
@@ -407,4 +407,37 @@ ac.game:event '游戏-贪婪魔窟开始'(function(trg)
     end
     --设置光影
     ac.light(3)
+end)
+
+
+--保存数据到自定义服务器
+ac.game:event '游戏-回合开始'(function(trg,index, creep)
+    if creep.name ~= '贪婪魔窟' then
+        return
+    end     
+
+    for i=1,6 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            local key = ac.server.name2key('贪婪魔窟')
+            if index > (p.cus_server['贪婪魔窟'] or 0) then
+                p:SetServerValue(key,index) 
+            end   
+            if index > (p.server['贪婪魔窟'] or 0) then
+                p:Map_SaveServerValue(key,index) --网易服务器
+            end   
+            --今日最榜
+            if index > (p.cus_server['今日贪婪魔窟']  or 0) then
+                p:SetServerValue('today_'..key,index)  
+            end
+
+            --累计相关
+            local key = ac.server.name2key('贪婪魔窟累计')
+            p:Map_AddServerValue(key,1) --网易服务器
+            
+
+        end
+    end
+
+
 end)

@@ -30,7 +30,7 @@ mt{
     
 }
 mt.skills = {
-    '成神','隐藏成就','精彩活动','新的征程'
+    '成神','隐藏成就','精彩活动','新的征程','贪婪魔窟'
 }
 
 local mt = ac.skill['成神']
@@ -356,28 +356,16 @@ local function upgrade_skill(player,skill)
                 if skill.name == '江山代有才人出' then 
                     local has_rank
                     -- print('江山代有才人出:',player,player.cus_server['今日白嫖排名'],player.cus_server['今日挖宝排名'])
-                    --挖宝、看书、打造、种树、白嫖、摇骰子
-                    if player.cus_server  then 
-                        if  ((player.cus_server['今日挖宝排名'] or 0) >0 and (player.cus_server['今日挖宝排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日看书排名'] or 0) >0 and (player.cus_server['今日看书排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日打造排名'] or 0) >0 and (player.cus_server['今日打造排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日种树排名'] or 0) >0 and (player.cus_server['今日种树排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日白嫖排名'] or 0) >0 and (player.cus_server['今日白嫖排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日摇骰子排名'] or 0) >0 and (player.cus_server['今日摇骰子排名'] or 0) <= 10)
-                            or
-                            ((player.cus_server['今日新的征程排名'] or 0) >0 and (player.cus_server['今日新的征程排名'] or 0) <= 10)
-                        then 
+                    player.cus_server = player.cus_server or {}
+                    for name,v in pairs(player.cus_server) do 
+                        if finds(name,'排名') and v >0 and v<=10 then 
                             skill:set_level(1)
                             --顺便添加 风骚技能（隐藏）
                             local hero = skill.owner
                             hero:add_skill('风骚','隐藏')
+                            break
                         end
-                    end    
+                    end
                 end   
                 --特殊处理 英雄 类别的
                 if finds(self.name ,'英雄','英雄-下一页','至尊宝') then 

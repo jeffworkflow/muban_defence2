@@ -7,7 +7,7 @@ local function add_units_buff(p,time)
 	table.insert(temp,p.unit_fs)
 	table.insert(temp,p.unit_ys)
 	for i,u in ipairs(temp) do 
-		print('单位死亡打印：',i,u)
+		-- print('单位死亡打印：',i,u)
 		u:add_buff '隐藏'{
 			time = time
 		}

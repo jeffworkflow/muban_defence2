@@ -38,7 +38,7 @@ for name,data in pairs(ac.table.ItemData) do
         table.insert(save_item[data.lv][color],name)
 
         if all_save_item[tonumber(data.s_id)] then 
-            print('重复存档物品id')
+            print('重复存档物品id',data.s_id,data.name)
         else    
             all_save_item[tonumber(data.s_id)] = name
         end    

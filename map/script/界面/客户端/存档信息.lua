@@ -49,8 +49,9 @@ class.player_info_panel = extends(class.panel){
             -- '深渊乱斗',
             -- '无限乱斗','无上之境','斗破苍穹','修罗模式',
             '超绝群伦','冠世一绝','超凡入圣','万古流芳','传奇','皇后','国王','堡垒','主教','骑士','士兵',
-            
-            -- '深渊(无尽-最高)','乱斗(无尽-最高)','无上(无尽-最高)',
+            '新的征程',
+            '贪婪魔窟',
+            '贪婪魔窟累计',
             
             
 
@@ -174,14 +175,8 @@ class.player_info_panel = extends(class.panel){
                     elseif finds(name,'深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
                         new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value..' 星'
-                    elseif name =='杀猴次数' then
-                        name = '杀鸡儆猴' 
-                        new_value = string.format("%.f",player.server[name] or 0)  
-                    elseif name =='神奇的五分钟' then
-                        name = '攻击减甲' 
-                        new_value = string.format("%.f",player.server[name] or 0)  
-                    elseif name =='评论数' then
-                        new_value = string.format("%.f",player:Map_CommentCount())  
+                    elseif name =='新的征程' then
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
                     elseif name =='签到' then
                         new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value ..' |cffff0000(改名会清零)|r'

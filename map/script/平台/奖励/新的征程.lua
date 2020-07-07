@@ -17,6 +17,11 @@ mt.skills = {
 function mt:on_add()
     local hero = self.owner 
     local p = hero:get_owner()
+    --黑名单和反作弊处理 有26则视为
+    local flag_val = 26
+    if has_flag(p.server['新的征程奖励'],2^(flag_val-1)) then
+        return 
+    end
     for index,skill in ipairs(self.skill_book) do 
         local min = tonumber(string.sub(skill.name,13, -1))
         min =  (min -1)*5+1

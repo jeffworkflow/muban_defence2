@@ -2043,6 +2043,30 @@ function helper:test_sm()
 		end
 	end)
 end	
+
+--测试存档物品的当前最大id
+function helper:start_id()
+	local function get_start_id()
+		local temp={}
+		for name,data in pairs(ac.table.ItemData) do 
+			if data.category == '存档' then 
+				table.insert(temp,data.s_id)
+			end
+		end
+		table.sort(temp,function(a,b)
+			return a>b
+		end)
+		return temp[1] or 1
+	end
+	print('下一次随机存档的起始id：',get_start_id()+1) 
+end	
+
+function helper:tlmk()
+	-- local str = str or '游戏-贪婪魔窟开始'
+	--贪婪魔窟
+	ac.game:event_notify('游戏-贪婪魔窟开始',20)
+end
+
 --测试播放背景音乐
 function helper:sd()
 	-- print('播放背景音乐:',ac.final_sound)

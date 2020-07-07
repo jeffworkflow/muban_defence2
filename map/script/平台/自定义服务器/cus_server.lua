@@ -185,7 +185,7 @@ function player.__index:sp_get_map_test(f)
                         temp_tab[data.key] = data.value
                     
                         --处理排行榜数据 无限难度、挖宝、看书、打造、种树、白嫖、摇骰子
-                        if finds(data.key ,'today_xdzc','today_cntwb','today_cntks','today_cntdz','today_cntzs','today_cntbp','today_cntytz') then
+                        if finds(data.key,'today_') then
                             local new_key = data.key..'rank'
                             local new_key_name = ac.server.key2name(data.key)..'排名'
                             temp_tab[new_key] = data.rank
