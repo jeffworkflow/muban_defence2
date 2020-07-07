@@ -4,7 +4,9 @@ mt.debuff = true
 mt.keep = true
 
 function mt:on_add()
-	self.target:add_restriction '隐藏'
+	if not self.target:has_restriction '隐藏' then
+		self.target:add_restriction '隐藏'
+	end
 	if self.model then
 		self.eff = self.target:add_effect('chest', self.model)
 	end
@@ -14,7 +16,9 @@ function mt:on_remove()
 	if self.eff then
 		self.eff:remove()
 	end
-	self.target:remove_restriction '隐藏'
+	if self.target:has_restriction '隐藏' then
+		self.target:remove_restriction '隐藏'
+	end
 end
 
 function mt:on_cover(new)

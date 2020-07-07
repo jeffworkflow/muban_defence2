@@ -539,5 +539,24 @@ mt{
     
 }
 mt.skills ={
-    '吕布','熊灵分裂','鬼剑愁','爱国者导弹','张飞','熊灵攻击减甲','金克丝','炮台多重射','貂蝉','熊灵粉碎击','杰拉米'
+    '通关勋章','吕布','熊灵分裂','鬼剑愁',
+    '爱国者导弹','张飞','熊灵攻击减甲','金克丝',
+    '炮台多重射','貂蝉','通关难度-下一页'
+}
+
+
+local mt = ac.skill['通关难度-下一页']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+点击查看 |cff00ffff下一页|r
+    ]],
+    
+}
+mt.skills = {
+    '熊灵粉碎击','杰拉米'
 }

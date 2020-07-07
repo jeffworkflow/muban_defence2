@@ -175,6 +175,25 @@ ac.wait(10,function()
     end
 end)
 
+local function is_cheating(player,tab,key)
+    if not tab[3] then 
+        return 
+    end
+    local has_item
+    for name,data in sortpairs(tab[3]) do 
+        -- 从网易服务器读取
+        if data.type =='二进制权限' and finds(name,'作弊') then 
+            local index = 2^(data[1]-1)
+            has_item = has_flag(player:Map_GetServerValue(key), index) and 1
+            print('作弊：',key,has_item)
+            break
+        end
+    end
+    
+    return has_item
+end
+
+
 --核心处理：每个存档所需要的值及地图等级。
 for i=1,10 do
     local player = ac.player[i]
@@ -183,11 +202,17 @@ for i=1,10 do
             for i,tab in ipairs(ac.server_key) do 
                 local key = tab[1]
                 local key_name = tab[2]
-                if tab[3] then 
+                local cheating = is_cheating(player,tab,key)
+                if tab[3] and not cheating then 
                     for name,data in sortpairs(tab[3]) do 
                         -- 从网易服务器读取
-                        local has_item = player:Map_GetServerValue(key) >= data[1] and 1 
-                        -- local has_item = player.server[key_name] >= data[1] and 1  --从客户端（已读取）
+                        local has_item
+                        if data.type =='二进制权限' then 
+                            local index = 2^(data[1]-1)
+                            has_item = has_flag(player:Map_GetServerValue(key), index) and 1
+                        else
+                            has_item= player:Map_GetServerValue(key) >= data[1] and 1 
+                        end
                         
                         --如果自定义服务器有值，以自定义服务器为准
                         if key_name == '签到' and player.cus_server and player.cus_server[key_name] then 

@@ -207,7 +207,15 @@ local cus_key = {
 
     
     {'wxnd','无限难度'},
-
+    {'tgxz','通关勋章',{
+        --奖励  所需值 地图等级
+            ['士兵勋章'] = {1,2,rate = 10, type = '二进制权限'},
+            ['骑士勋章'] = {2,3,rate = 10, type = '二进制权限'},
+            ['1作弊'] = {3,1,rate = 10, type = '二进制权限'},
+            ['主教勋章'] = {4,100,rate = 10, type = '二进制权限'},
+        }
+    },
+    
     {'tlmk','贪婪魔窟',{
         --奖励  所需值 地图等级
             ['开拓者'] = {25,10},
@@ -336,3 +344,22 @@ function ac.server.name2key(name)
     return  res
 end
 
+--通过 name 取 key
+function ac.server.get_tab(name) 
+    local res
+    --取自定义key,value
+    for i,v in ipairs(ac.server_key) do 
+        if v[2] == name then 
+            res = v
+            break
+        end
+    end  
+    --取自定义key,value
+    for i,v in ipairs(ac.mall) do 
+        if v[2] == name then 
+            res = v
+            break
+        end
+    end   
+    return  res
+end

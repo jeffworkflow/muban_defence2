@@ -35,6 +35,10 @@ ac.game:event '物品-创建' (function (_,item)
     if item.color ~= '红' then 
         return 
     end
+    
+    if item.item_type ~= '装备' then 
+        return 
+    end
     -- print('|cff00ffff可用强化石、天谕|cffffff00（第二幕-剑冢副本掉落）|cff00ffff强化，顶级红装非常强！',item.name)
     local foot_tip = '|cff00ffff可用强化石、天谕|cffffff00（第二幕-剑冢副本掉落）|cff00ffff强化，顶级红装非常强！'
     item.suit_tip = foot_tip
