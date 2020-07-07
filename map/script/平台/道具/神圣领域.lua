@@ -10,7 +10,7 @@ art = [[lingyu1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥1000
+|cff00ffff看书熟练度≥1000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+216  杀怪加生命上限|r
@@ -25,6 +25,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 1,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[lingyu1.mdx]]
 }
@@ -40,7 +46,7 @@ art = [[lingyu2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥6000
+|cff00ffff看书熟练度≥6000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+336  杀怪加生命上限|r
@@ -54,6 +60,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['减少周围护甲'] = 400,
 ['每秒加魔丸'] = 5,
 need_map_level = 4,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[lingyu13.mdx]]
 }
@@ -69,7 +81,7 @@ art = [[lingyu3.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥14000
+|cff00ffff看书熟练度≥14000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+456  杀怪加生命上限|r
@@ -84,6 +96,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['技能冷却'] = 5,
 
 need_map_level = 7,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[GH_SiFangZhiWang.mdx]]
 }
@@ -99,7 +117,7 @@ art = [[lingyu4.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥25000
+|cff00ffff看书熟练度≥25000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+576  杀怪加生命上限|r
@@ -116,6 +134,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 10,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[HarvestMana.mdx]]
 }
@@ -131,7 +155,7 @@ art = [[lingyu5.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥39000
+|cff00ffff看书熟练度≥39000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+696  杀怪加生命上限|r
@@ -145,6 +169,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['减少周围护甲'] = 1000,
 ['对BOSS额外伤害'] = 10,
 need_map_level = 13,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[TX_SLCH7.mdx]]
 }
@@ -160,7 +190,7 @@ art = [[lingyu6.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥56000
+|cff00ffff看书熟练度≥56000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+816  杀怪加生命上限|r
@@ -177,6 +207,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 16,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[az_doomdragon_d.mdx]]
 }
@@ -192,7 +228,7 @@ art = [[lingyu7.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥76000
+|cff00ffff看书熟练度≥76000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+936  杀怪加生命上限|r
@@ -207,6 +243,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['多重射'] = 2,
 
 need_map_level = 19,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[AZ_LFGH01_ICE2.mdx]]
 }
@@ -222,7 +264,7 @@ art = [[lingyu8.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥99000
+|cff00ffff看书熟练度≥99000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+1056  杀怪加生命上限|r
@@ -239,6 +281,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 22,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[2tx_36.mdx]]
 }
@@ -254,7 +302,7 @@ art = [[lingyu9.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥125000
+|cff00ffff看书熟练度≥125000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+1176  杀怪加生命上限|r
@@ -268,6 +316,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['减少周围护甲'] = 1800,
 ['攻击距离%'] = 10,
 need_map_level = 25,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[lingyu5.mdx]]
 }
@@ -283,7 +337,7 @@ art = [[lingyu10.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff看书熟练度≥154000
+|cff00ffff看书熟练度≥154000%current%
 
 |cffFFE799【领域属性】：|r
 |cff00ff00+1296  杀怪加生命上限|r
@@ -300,6 +354,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['无字天书掉落概率'] = 10,
 ['羊皮纸掉落概率'] = 10,
 need_map_level = 28,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['看书熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[lingyu8.mdx]]
 }

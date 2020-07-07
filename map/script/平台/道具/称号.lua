@@ -11,7 +11,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥1000
+|cff00ffff种树熟练度≥1000%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+18  杀怪加全属性|r
@@ -25,6 +25,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 5,
 ['每秒加木头'] = 1,
 need_map_level = 1,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[ch1.mdx]]
 }
@@ -41,7 +47,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥4800
+|cff00ffff种树熟练度≥4800%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+28  杀怪加全属性|r
@@ -55,6 +61,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 10,
 ['物品获取率'] = 10,
 need_map_level = 4,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[CH_nitiangaiming.mdx]]
 }
@@ -71,7 +83,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥11200
+|cff00ffff种树熟练度≥11200%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+38  杀怪加全属性|r
@@ -85,6 +97,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 15,
 ['一颗神奇的种子掉落概率'] = 10,
 need_map_level = 7,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[hslh2_00000.mdx]]
 }
@@ -101,7 +119,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥20000
+|cff00ffff种树熟练度≥20000%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+48  杀怪加全属性|r
@@ -117,6 +135,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 20,
 ['一颗神奇的种子掉落概率'] = 10,
 need_map_level = 10,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[bdqx3_00000.mdx]]
 }
@@ -133,7 +157,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥31200
+|cff00ffff种树熟练度≥31200%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+58  杀怪加全属性|r
@@ -150,6 +174,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['一颗神奇的种子掉落概率'] = 10,
 
 need_map_level = 13,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[CH11.mdx]]
 }
@@ -166,7 +196,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥44800
+|cff00ffff种树熟练度≥44800%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+68   杀怪加全属性|r
@@ -180,6 +210,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 30,
 ['暴击伤害'] = 100,
 need_map_level = 16,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[5_00000.mdx]]
 }
@@ -196,7 +232,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥60800
+|cff00ffff种树熟练度≥60800%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+78   杀怪加全属性|r
@@ -213,6 +249,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['一颗神奇的种子掉落概率'] = 10,
 
 need_map_level = 19,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[htmd.mdx]]
 -- effect = [[jsdycrc.mdx]]
@@ -230,7 +272,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥79200
+|cff00ffff种树熟练度≥79200%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+88   杀怪加全属性|r
@@ -244,6 +286,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 40,
 ['技暴伤害'] = 100,
 need_map_level = 22,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[bgzw123_00000.mdx]]
 }
@@ -260,7 +308,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥100000
+|cff00ffff种树熟练度≥100000%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+98   杀怪加全属性|r
@@ -277,6 +325,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['一颗神奇的种子掉落概率'] = 10,
 
 need_map_level = 25,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[zhenlongtianzi.mdx]]
 }
@@ -293,7 +347,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥123200
+|cff00ffff种树熟练度≥123200%current%
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+108  杀怪加全属性|r
@@ -307,6 +361,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 50,
 ['会心伤害'] = 100,
 need_map_level = 28,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['种树熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[bazhuan.mdx]]
 }

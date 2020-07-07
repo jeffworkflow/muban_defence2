@@ -10,7 +10,7 @@ art = [[zuoqi1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥2000
+|cff00ffff白嫖熟练度≥2000%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+36  杀怪加敏捷|r
@@ -24,6 +24,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 20,
 ['攻击速度'] = 25,
 need_map_level = 2,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[JD_066_D.mdx]],
 size = 2,--坐骑大小
@@ -41,7 +47,7 @@ art = [[zuoqi2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥7500
+|cff00ffff白嫖熟练度≥7500%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+56  杀怪加敏捷|r
@@ -55,6 +61,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 40,
 ['每秒加杀敌数'] = 1,
 need_map_level = 5,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[Txxxxxx (2).mdx]],
 size = 1,--坐骑大小
@@ -72,7 +84,7 @@ art = [[zuoqi3.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥16000
+|cff00ffff白嫖熟练度≥16000%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+76  杀怪加敏捷|r
@@ -86,6 +98,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 60,
 ['移动速度'] = 25,
 need_map_level = 8,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[JD-XIANLU123.mdx]],
 size = 2.1,--坐骑大小
@@ -103,7 +121,7 @@ art = [[zuoqi4.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥27500
+|cff00ffff白嫖熟练度≥27500%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+96  杀怪加敏捷|r
@@ -121,6 +139,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
 
 need_map_level = 11,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[Phoenix2.mdx]],
 size = 1.3,--坐骑大小
@@ -139,7 +163,7 @@ art = [[zuoqi5.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥42000
+|cff00ffff白嫖熟练度≥42000%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+116 杀怪加敏捷|r
@@ -156,6 +180,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
 need_map_level = 14,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[Beth`tilac.mdx]],
 size = 0.6,--坐骑大小
@@ -173,7 +203,7 @@ art = [[zuoqi6.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥59500
+|cff00ffff白嫖熟练度≥59500%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+136 杀怪加敏捷|r
@@ -190,6 +220,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
 need_map_level = 17,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[Hero_Phoenix_N1_purple.mdx]],
 size = 1.2,--坐骑大小
@@ -208,7 +244,7 @@ art = [[zuoqi7.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥80000
+|cff00ffff白嫖熟练度≥80000%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+156  杀怪加敏捷|r
@@ -222,6 +258,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 140,
 ['多重射'] = 1,
 need_map_level = 20,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[zhuque.mdx]],
 size = 1.3,--坐骑大小
@@ -240,7 +282,7 @@ art = [[zuoqi8.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥103500
+|cff00ffff白嫖熟练度≥103500%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+176  杀怪加敏捷|r
@@ -257,11 +299,18 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
 need_map_level = 23,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[yulong.mdx]],
 size = 1,--坐骑大小
 high = 150, --人物高度
 zq_hight = 100,
+
 }
 
 local mt = ac.skill['晶蓝天马']
@@ -275,7 +324,7 @@ art = [[zuoqi9.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥130000
+|cff00ffff白嫖熟练度≥130000%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+196  杀怪加敏捷|r
@@ -289,6 +338,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 180,
 ['多重暴击'] = 1,
 need_map_level = 26,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[Pet_TMXK.mdx]],
 size = 2.1,--坐骑大小
@@ -306,7 +361,7 @@ art = [[zuoqi10.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff白嫖熟练度≥159500
+|cff00ffff白嫖熟练度≥159500%current%
 
 |cffFFE799【坐骑属性】：|r
 |cff00ff00+216  杀怪加敏捷|r
@@ -323,6 +378,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['扭蛋券(十连抽)掉落概率'] = 10,
 ['超级扭蛋券(十连抽)掉落概率'] = 10,
 need_map_level = 29,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['挖宝熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --特效
 effect = [[JD_477_D.mdx]],
 size = 2.3,--坐骑大小

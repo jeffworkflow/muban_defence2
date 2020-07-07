@@ -22,7 +22,7 @@ need_map_level = 2,
 current = function(self)
     local p = ac.player.self
     local val = p.server and p.server['打造熟练度'] or 0
-    local str = '（当前熟练度：'..val..'）'
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
 --目标类型
@@ -45,7 +45,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥6000
+|cff00ffff打造熟练度≥6000%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+112  杀怪加攻击|r
@@ -54,6 +54,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 5,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 112,
@@ -75,7 +81,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥12800
+|cff00ffff打造熟练度≥12800%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+152  杀怪加攻击|r
@@ -84,6 +90,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 8,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 152,
@@ -104,7 +116,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥22000
+|cff00ffff打造熟练度≥22000%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+192  杀怪加攻击|r
@@ -113,6 +125,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 11,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 192,
@@ -133,7 +151,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥33600
+|cff00ffff打造熟练度≥33600%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+232  杀怪加攻击|r
@@ -143,6 +161,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 14,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 232,
@@ -165,7 +189,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥47600
+|cff00ffff打造熟练度≥47600%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+272  杀怪加攻击|r
@@ -174,6 +198,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 17,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 272,
@@ -194,7 +224,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥64000
+|cff00ffff打造熟练度≥64000%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+312   杀怪加攻击|r
@@ -204,6 +234,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 20,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 312,
@@ -225,7 +261,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥82800
+|cff00ffff打造熟练度≥82800%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+352  杀怪加攻击|r
@@ -234,6 +270,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 23,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 352,
@@ -254,7 +296,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥104000
+|cff00ffff打造熟练度≥104000%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+392  杀怪加攻击|r
@@ -264,6 +306,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 26,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 392,
@@ -286,7 +334,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff打造熟练度≥127600
+|cff00ffff打造熟练度≥127600%current%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+432  杀怪加攻击|r
@@ -295,6 +343,12 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 29,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['打造熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 432,

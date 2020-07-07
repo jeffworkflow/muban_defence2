@@ -36,7 +36,7 @@ function mt:on_cast_shot()
 		local items = hero:get_slot_item(i)
 		if items then 
 			-- print(items.name,items.handle)
-			if (items.color and finds(items.color,'红','天阶')) or finds(items.name,'无谓因果','龙之血珠','吞噬丹') then 
+			if (items.color and finds(items.color,'红','黑','天阶','神阶')) or finds(items.name,'无谓因果','龙之血珠','吞噬丹') then 
 			else
 				gold = gold + items:sell_price()
 				wood = wood + items:sell_wood()

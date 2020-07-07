@@ -135,7 +135,7 @@ function mt:on_cast_start()
     hero = p.hero
     --处理进入魔窟截止
     if ac.flag_tlmt then 
-        p:sendMsg('已进入魔窟，无法传送出去',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000已入魔窟，无法传送',5)
         return 
     end
 

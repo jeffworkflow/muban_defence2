@@ -12,7 +12,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥3000
+|cff00ffff摇骰子熟练度≥3000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+36 杀怪加力量|r
@@ -22,6 +22,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 3,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 36,
@@ -43,7 +49,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥9000
+|cff00ffff摇骰子熟练度≥9000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+56 杀怪加力量|r
@@ -53,6 +59,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 6,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 56,
@@ -74,7 +86,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥18000
+|cff00ffff摇骰子熟练度≥18000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+76  杀怪加力量|r
@@ -84,6 +96,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 9,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 76,
@@ -105,7 +123,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥30000
+|cff00ffff摇骰子熟练度≥30000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+96   杀怪加力量|r
@@ -116,6 +134,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 12,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 96,
@@ -138,7 +162,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥45000
+|cff00ffff摇骰子熟练度≥45000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+116  杀怪加力量|r
@@ -148,6 +172,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 15,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 116,
@@ -169,7 +199,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥63000
+|cff00ffff摇骰子熟练度≥63000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+136 杀怪加力量|r
@@ -180,6 +210,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 18,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 136,
@@ -202,7 +238,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥84000
+|cff00ffff摇骰子熟练度≥84000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+156  杀怪加力量|r
@@ -211,7 +247,13 @@ tip = [[
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
-need_map_level = 3,
+need_map_level = 21,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 156,
@@ -233,7 +275,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥108000
+|cff00ffff摇骰子熟练度≥108000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+176  杀怪加力量|r
@@ -244,6 +286,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 24,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 176,
@@ -266,7 +314,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥135000
+|cff00ffff摇骰子熟练度≥135000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+196 杀怪加力量|r
@@ -276,6 +324,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 27,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 196,
@@ -297,7 +351,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff摇骰子熟练度≥165000
+|cff00ffff摇骰子熟练度≥165000%current%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+216 杀怪加力量|r
@@ -308,6 +362,12 @@ tip = [[
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 need_map_level = 30,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['摇骰子熟练度'] or 0
+    local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加力量'] = 216,
