@@ -26,7 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 2,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -63,7 +63,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -100,7 +100,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 8,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -141,7 +141,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 11,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -182,7 +182,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 14,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -222,7 +222,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 17,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -260,7 +260,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 20,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -301,7 +301,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 23,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -340,7 +340,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 26,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
@@ -380,7 +380,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 29,
 current = function(self)
     local p = ac.player.self
-    local val = p.server and p.server['挖宝熟练度'] or 0
+    local val = p.server and p.server['白嫖熟练度'] or 0
     local str = '|cffdf19d0（当前熟练度：|cffffe799'..val..'|cffdf19d0）'
     return str
 end,
