@@ -344,6 +344,7 @@ local function give_item(player)
             print('创建了：',name,point)
             ac.item.create_item(name,point)
         end
+        print_r(new_ui.award_list)
         local tip = '|cffebb608【系统】|cff00ffff'..player:get_name()..' |cff00ff00选择了|cffffff00 【结束挑战】|cff00ff00，2分钟后游戏结束！'
         --游戏结束
         ac.game:event_notify('游戏-结束',true,tip)
