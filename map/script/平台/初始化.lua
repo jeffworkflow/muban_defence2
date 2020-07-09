@@ -100,6 +100,10 @@ ac.wait(1100,function()
                     player.server = {}
                 end
                 player.server[key_name] = val
+                --特殊处理
+                if key_name =='通关勋章' and val >=2^12 then 
+                    player:Map_SaveServerValue(key,0)
+                end
                 -- print('存档数据:',key,key_name,val)
             end
             --发布事件

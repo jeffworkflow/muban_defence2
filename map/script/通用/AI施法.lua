@@ -79,7 +79,7 @@ ac.game:event '技能-获得'(function(_,hero,self)
         return
     end
 
-    print('技能获得插入单位：',hero)
+    print('技能获得插入单位：',hero,self)
     if api.list:has(hero) then
         return
     end

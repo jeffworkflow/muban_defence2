@@ -288,20 +288,20 @@ mt.skills = {
 
 
 local function save(tab)
-    local index = tab[1]
-    local rate = tab.rate
     for i=1,6 do 
         local p = ac.player(i)
         if p:is_player() then 
+            local index = tab[1]
+            local rate = tab.rate
             index = 2^(index-1)
             --没有这个数据
             if not has_flag((p.server['通关勋章'] or 0),index) then
                 --概率 受通关次数影响
                 rate = rate + (p.server[ac.g_game_degree_name] or 0) * 4
-                print('获得通关勋章1：',index,rate,tab[1],ac.g_game_degree_name)
+                print('获得通关勋章1：',p,index,rate,tab[1],ac.g_game_degree_name)
                 if math.random(100000)/1000 < rate then
                     local key = ac.server.name2key('通关勋章')
-                    print('获得通关勋章2：',index,tab[1],ac.g_game_degree_name)
+                    print('获得通关勋章2：',p,index,rate,tab[1],ac.g_game_degree_name)
 
                     p:sendMsg('|cffebb608【系统】|r|cffff0000运气爆棚！！！恭喜获得本难度的勋章！|cff00ff00勋章的属性可在最强魔灵-通关难度奖励-通关勋章中查看！',8)
 

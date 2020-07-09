@@ -46,6 +46,7 @@ ac.game:event '游戏-最终boss' (function(trg)
             ac.game:event_notify('游戏-贪婪魔窟开始')
         else
             --游戏结束
+            print('最终boss死亡，游戏胜利',boss)
             ac.game:event_notify('游戏-结束',true)
         end    
 
