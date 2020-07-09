@@ -32,7 +32,7 @@ mt{
 	--技能图标
 	art = [[llzj.blp]],
 	--特效
-	effect = [[Athelas Red.mdx]],
+	effect = [[Shock Blast Red.mdx]],
 	--特效4
 	effect4 = [[触发时，从敌人身上创建特效吸收到英雄身上]],
 	--被动事件
