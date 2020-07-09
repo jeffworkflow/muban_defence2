@@ -189,7 +189,7 @@ local function is_cheating(player,tab,key)
         if data.type =='二进制权限' and finds(name,'作弊') then 
             local index = 2^(data[1]-1)
             has_item = has_flag(player:Map_GetServerValue(key), index) and 1
-            print('作弊：',key,has_item)
+            print('作弊：',player:get_name(),key,has_item,player:Map_GetServerValue(key))
             break
         end
     end

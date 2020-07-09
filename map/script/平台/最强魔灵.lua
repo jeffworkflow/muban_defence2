@@ -350,7 +350,7 @@ local function upgrade_skill(player,skill)
             else
                 local has_mall = player.mall[skill.name] or (player.server and player.server[skill.name])
                 if has_mall and has_mall > 0 then 
-                    print('激活：',skill.name,has_mall)
+                    print('激活：',player:get_name(),skill.name,has_mall)
                     skill:set_level(math.floor(has_mall))
                 end
                 if skill.name == '江山代有才人出' then 

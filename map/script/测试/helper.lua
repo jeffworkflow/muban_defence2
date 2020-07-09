@@ -2134,6 +2134,34 @@ function helper:test_sm_ui()
 	}
 end
 
+--创建特效
+local temp ={}
+function helper:eff(ix,cnt)
+	local cnt = tonumber(cnt) or 1
+	local ix = tonumber(ix) or 1
+	if ac.effect_file[ix] then
+		for i=1,cnt do 
+			local eff = ac.effect_ex{
+				model = ac.effect_file[ix],
+				point = ac.map.rects['主城']:get_point() or ac.point(0,0)
+			}
+			table.insert(temp,eff)
+		end
+		print('创建模型:',ix,ac.effect_file[ix])
+	else
+		print('输入的序号没有对应的值')
+	end
+end
+
+function helper:ceff()
+	for i,eff in ipairs(temp) do 
+		eff:remove()
+	end
+	temp = {}
+end
+
+
+
 --重改难度
 function helper:degree(cnt)
 	local cnt = tonumber(cnt)
