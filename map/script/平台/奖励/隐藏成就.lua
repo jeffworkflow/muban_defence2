@@ -446,14 +446,17 @@ function mt:on_upgrade()
     --技能相关
     local skl = p.unit_mojian:find_skill('魔剑击',nil)
     if not skl then 
-        skl = p.unit_mojian:add_skill('魔剑击','隐藏')
+        skl = p.unit_mojian:add_skill('魔剑击','英雄')
         skl.skill_attack = self.skill_attack
     else 
         skl.skill_attack = self.skill_attack
     end  
     --如果拥有魔剑，则添加魔神之剑
     if p.server['绝世魔剑']>=1 and p.server['绝世神剑']>=1 then 
-        p.unit_mojian:add_skill('魔神之剑','隐藏')
+        local skl = p.unit_mojian:find_skill('魔神之剑',nil)
+        if not skl then
+            p.unit_mojian:add_skill('魔神之剑','英雄')
+        end
     end
 end
 function mt:on_cast_start()
@@ -538,7 +541,7 @@ function mt:on_upgrade()
     --技能相关
     local skl = p.unit_shenjian:find_skill('神剑击',nil)
     if not skl then 
-        skl = p.unit_shenjian:add_skill('神剑击','隐藏')
+        skl = p.unit_shenjian:add_skill('神剑击','英雄')
         skl.skill_attack = self.skill_attack
     else 
         skl.skill_attack = self.skill_attack
@@ -546,7 +549,10 @@ function mt:on_upgrade()
 
     --如果拥有魔剑，则添加魔神之剑
     if p.server['绝世魔剑']>=1 and p.server['绝世神剑']>=1 then 
-        p.unit_shenjian:add_skill('魔神之剑','隐藏')
+        local skl = p.unit_shenjian:find_skill('魔神之剑',nil)
+        if not skl then
+            p.unit_shenjian:add_skill('魔神之剑','英雄')
+        end
     end
     
 end

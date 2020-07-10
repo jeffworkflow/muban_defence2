@@ -28,7 +28,7 @@ function mt:on_add()
     
 end
 
-function mt:on_cast_shot()
+function mt:on_cast_start()
     local hero = self.owner
     hero:add_item('装备合成')
     hero:add_item('功法合成')
