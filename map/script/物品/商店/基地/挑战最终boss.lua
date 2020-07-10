@@ -64,7 +64,6 @@ function mt:on_cast_start()
 		local creep = ac.creep['刷怪'..i]
         creep.index = self.index - 1
         creep.force_cool = 20
-        creep.creeps_datas = ac.attack_unit[self.index]..'*40'
         creep:set_creeps_datas()
 		if creep.has_started  then 
 			creep:next()

@@ -91,7 +91,7 @@ function mt:on_cast_start()
         return true
     end    
 
-    local unit = self.seller
+    local unit = self.seller or ac.main_unit
     local skl = unit:find_skill('重生')
     if not skl then 
         skl = unit:add_skill('重生','隐藏')

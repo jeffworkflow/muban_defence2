@@ -1489,6 +1489,15 @@ function helper:pk(flag)
 		ac.init_alliance()
 	end	 
 end	
+
+--测试 暂停两次
+function helper:set_time(num)
+	for i=1,3 do 
+		local creep = ac.creep['刷怪'..i]
+		creep:SetRealTimeRemaining(tonumber(num) or 40)
+	end
+
+end
 --测试 暂停两次
 function helper:pause(num)
 	for i=1,3 do 
@@ -2236,6 +2245,18 @@ function helper:fb(str,cnt)
 			if i==1 then 
 				creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
 			end
+			if creep.has_started  then 
+				creep:next()
+			else
+				creep:start()
+			end		
+		end	
+		for i=1,3 do 
+			local creep = ac.creep['刷怪'..i]
+			creep.index = self.index - 1
+			creep.force_cool = 20
+			creep.creeps_datas = ac.attack_unit[self.index]..'*40'
+			creep:set_creeps_datas()
 			if creep.has_started  then 
 				creep:next()
 			else

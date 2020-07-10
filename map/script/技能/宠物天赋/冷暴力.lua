@@ -1,13 +1,13 @@
-local mt = ac.skill['你怎么不去死']
+local mt = ac.skill['冷暴力']
 mt{
     --必填
     is_skill = true,
     --初始等级
     level = 1,
     --最大等级
-   max_level = 5,
-	--被动
-	passive = true,
+   max_level = 1,
+	--流派
+	skill_type = "技能触发类",
 	--耗蓝
 	cost = 0,
 	--忽略技能冷却
@@ -15,19 +15,15 @@ mt{
 	--作用在人身上
 	strong_hero = true,
 	--属性加成
- ['减少复活时间'] = 1,
+ ['多重暴击几率'] = 2.5,
 	--介绍
 	tip = [[ 
-|cffffe799减少复活时间-1S
-
-|cff00ff00当有英雄死亡时，给所有玩家发放150木头
-
+多重暴击几率+2.5%，|cff00ff00当有英雄死亡时，所有玩家增加1%全伤加深
 ]],
 	--技能图标
-	art = [[emogaoyang.blp]],
-	wood  = function()
-        return (ac.g_game_degree_attr or 1)*150
-    end
+    art = [[buhuiwugong.blp]],
+    --全伤加深
+	damage_rate = 1
 }
 function mt:on_add()
 	local hero = self.owner 
@@ -39,7 +35,7 @@ function mt:on_add()
 		for i=1,6 do 
 			local p = ac.player(i)
 			if p:is_player() and p.hero then 
-				p.hero:add_wood(self.wood)
+				p.hero:add('全伤加深',self.damage_rate)
 			end
 		end
 		--发送文字
@@ -54,3 +50,6 @@ function mt:on_remove()
 		self.trg = nil
 	end
 end
+
+
+

@@ -235,6 +235,7 @@ local function up_item(item)
     item:upgrade(1)
     item:set_name(item.name)
 end   
+ac.up_item = up_item
 
 
 ac.game:event '触发锻造事件'(function(_,skill,hero,_item)

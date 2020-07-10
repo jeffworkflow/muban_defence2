@@ -50,9 +50,17 @@ function mt:on_cast_start()
         creep:PauseTimer(self.stu_time)
     end
     --启用另一个计时器 显示停怪恢复倒计时	
+    local remain = 0
+    if ac.main_stop_timer then 
+        remain = ac.main_stop_timer:GetRemaining() 
+        ac.main_stop_timer:remove()
+        ac.main_stop_timer = nil
+        print('剩余时间',remain)
+    end
+    --启用另一个计时器 显示停怪恢复倒计时	
     ac.main_stop_timer = ac.timer_ex
     {
-        time = self.stu_time,
+        time = self.stu_time + (remain or 0 ),
         title = '停怪还剩：',
         func = function()
             ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')

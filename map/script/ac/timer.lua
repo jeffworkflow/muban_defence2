@@ -307,7 +307,27 @@ ac.timer_ex = function(data)
 	function timer:ResumeTimer()
 		jass.ResumeTimer(timer.handle)
 	end
+	function timer:GetRemaining()
+		return jass.TimerGetRemaining(timer.handle)
+	end
+	--设置剩余时长，和暂停 与恢复 有冲突，慎用
+	function timer:SetRealTimeRemaining(time)
+		jass.TimerDialogSetRealTimeRemaining(timer.timer_dialog,time)
 
+		if timer.wait then 
+			timer.wait:remove()
+		end
+		timer.wait = ac.wait(time*1000,function()
+			if func then 
+				func()
+			end 
+			if timer then 
+				timer:remove() 
+			end
+		end)
+	end
+
+	
 	function timer:create_timer_dialog(title)
 		local time_dialog = jass.CreateTimerDialog(jtm)
 		jass.TimerDialogSetTitle(time_dialog, title)
@@ -327,6 +347,7 @@ ac.timer_ex = function(data)
 		if timer.timer_dialog then
 			jass.DestroyTimerDialog(timer.timer_dialog)
 		end
+		if timer.wait then timer.wait:remove() end
 		jass.PauseTimer(jtm)
 		jass.DestroyTimer(jtm)
 		jtm = nil

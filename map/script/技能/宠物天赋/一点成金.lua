@@ -31,7 +31,9 @@ mt{
 |cff00ff00可以秒杀小怪并额外获得|cffffff00300木
 
 ]],
-    ex_wood = 300,
+    ex_wood = function()
+        return (ac.g_game_degree_attr or 1)*300
+    end,
 	--技能图标
 	art = [[dianjinshou.blp]],
 }

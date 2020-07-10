@@ -344,11 +344,13 @@ ac.game:event '游戏-结束' (function(trg,flag)
                 if degree > (player.cus_server['今日新的征程']  or 0) then
                     player:SetServerValue('today_'..key,degree)  
                 end
-                --保存无限难度奖励 网易服务器
-                degree = 2^(degree-1)
-                if not has_flag((p.server['新的征程奖励'] or 0),degree) then
-                    local key = ac.server.name2key('新的征程奖励')
-                    player:Map_AddServerValue(key,degree)  
+                if degree <=15 then
+                    --保存无限难度奖励 网易服务器
+                    degree = 2^(degree-1)
+                    if not has_flag((p.server['新的征程奖励'] or 0),degree) then
+                        local key = ac.server.name2key('新的征程奖励')
+                        player:Map_AddServerValue(key,degree)  
+                    end
                 end
 
                 ac.player.self:sendMsg("|cffebb608【游戏胜利】|r|cff00ff00恭喜通关此难度！下一个难度等你来挑战！")

@@ -29,7 +29,9 @@ mt{
 ]],
 	--技能图标
     art = [[jinbiguai.blp]],
-    value = 175,
+    value = function()
+        return (ac.g_game_degree_attr or 1) * 175
+    end,
 }
 function mt:on_add()
     local skill = self

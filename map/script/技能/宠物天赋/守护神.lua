@@ -35,8 +35,12 @@ mt{
     --光环影响范围
     area = 99999,
     --值
-    team_value = 5,
-    main_value = 5,
+    team_value = function()
+        return (ac.g_game_degree_attr or 1 ) * 5
+    end,
+    main_value = function()
+        return (ac.g_game_degree_attr or 1 ) * 5
+    end,
 }
 function mt:on_upgrade()
     local skill = self

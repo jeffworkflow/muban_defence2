@@ -12,6 +12,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -32,6 +33,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -53,6 +55,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -74,6 +77,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -95,6 +99,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -116,6 +121,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -137,6 +143,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -158,6 +165,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -181,6 +189,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -202,6 +211,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -226,6 +236,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 --不可点击
 no_use = true,
 --独自拥有
@@ -248,6 +259,7 @@ tip = [[
 |cffcccccc建议送给队友使用]],
 --物品类型
 item_type = '消耗品',
+is_card = true,
 rate = 50,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'

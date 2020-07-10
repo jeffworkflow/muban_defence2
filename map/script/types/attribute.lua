@@ -231,9 +231,12 @@ function mt:add(name, value)
 	if not value or  tonumber(value) == 0 or not tonumber(value) then 
 		return 
 	end
-	local v1, v2 = 0, 0
+	local v1, v2,v3 = 0, 0
 	if name:sub(-1, -1) == '%' then
 		v2 = value
+		name = name:sub(1, -2)
+	elseif name:sub(-1, -1) == '^' then
+		v3 = value
 		name = name:sub(1, -2)
 	else
 		v1 = value
@@ -244,6 +247,7 @@ function mt:add(name, value)
 	end
 	local key1 = name
 	local key2 = name .. '%'
+	local key3 = name .. '^'
 	local attr = self['属性']
 	if not attr then
 		attr = {}
@@ -252,6 +256,7 @@ function mt:add(name, value)
 	if not attr[key1] then
 		attr[key1] = get[name] and get[name](self) or 0
 		attr[key2] = 0
+		attr[key3] = 0
 	end
 	local f
 	
@@ -266,6 +271,9 @@ function mt:add(name, value)
 	end
 	if v2 then
 		attr[key2] = attr[key2] + v2
+	end
+	if v3 then
+		attr[key3] = attr[key3] + v3
 	end
 	if set[name] then
 		set[name](self, attr[key1] * (1 + attr[key2] / 100))
@@ -289,6 +297,7 @@ function mt:set(name, value)
 	end
 	local key1 = name
 	local key2 = name .. '%'
+	local key3 = name .. '^'
 	local attr = self['属性']
 	if not attr then
 		attr = {}
@@ -297,6 +306,7 @@ function mt:set(name, value)
 	if not attr[key1] then
 		attr[key1] = get[name] and get[name](self) or 0
 		attr[key2] = 0
+		attr[key3] = 0
 	end
 	local f
 	if on_set[name]  then
@@ -308,6 +318,7 @@ function mt:set(name, value)
 	end
 	attr[key1] = value
 	attr[key2] = 0
+	attr[key3] = 0
 	if set[name] then
 		set[name](self, attr[key1] * (1 + attr[key2] / 100))
 	end
@@ -322,6 +333,9 @@ function mt:get(name)
 	if name:sub(-1, -1) == '%' then
 		name = name:sub(1, -2)
 		type = 1
+	elseif name:sub(-1, -1) == '^' then
+		name = name:sub(1, -2)
+		type = 2
 	end
 	if not attribute[name] then
 		error('错误的属性名:' .. tostring(name))
@@ -329,6 +343,7 @@ function mt:get(name)
 	end
 	local key1 = name
 	local key2 = name .. '%'
+	local key3 = name .. '^'
 	local attr = self['属性']
 	if not attr then
 		attr = {}
@@ -337,9 +352,14 @@ function mt:get(name)
 	if not attr[key1] then
 		attr[key1] = get[name] and get[name](self) or 0
 		attr[key2] = 0
+		attr[key3] = 0
 	end
 	if type == 1 then
 		return attr[key2]
+	end
+	--如果固定值不为0，则范围固定值
+	if type == 2 or attr[key3]~=0 then
+		return attr[key3]
 	end
 	if on_get[name] then
 		return on_get[name](self, attr[key1] * (1 + attr[key2] / 100))

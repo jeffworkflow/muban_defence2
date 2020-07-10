@@ -38,5 +38,19 @@ require '物品.消耗品.黑暗骰子'
 require '物品.消耗品.扭蛋券'
 require '物品.消耗品.天魔物品'
 require '物品.消耗品.天神物品'
+require '物品.消耗品.卡片2'
 
-
+ac.all_card={}
+for name,data in pairs(ac.skill) do 
+    if type(data) == 'table' then 
+        if data.is_card  then 
+            table.insert(ac.all_card,name)
+        end     
+    end
+end
+-- ac.all_card = {
+--     '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
+--     '杀敌数翻倍卡','木头翻倍卡','魔丸翻倍卡','全属性翻倍卡',
+--     '炸弹卡','大炸弹卡','猜拳卡','gg卡',
+--     '基地复活次数卡','泻药卡','猜拳卡','gg卡',
+-- }

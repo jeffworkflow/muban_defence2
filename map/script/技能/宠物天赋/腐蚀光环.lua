@@ -32,8 +32,12 @@ mt{
 ]],
 	--技能图标
     art = [[kulotou.blp]],
-    value = 50,
-    value1 = 100,
+    value = function()
+        return (ac.g_game_degree_attr or 1) * 50
+    end,
+    value1 = function()
+        return (ac.g_game_degree_attr or 1) * 100
+    end,
     area = 3000,
 }
 function mt:on_upgrade()

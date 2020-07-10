@@ -23,6 +23,13 @@ require '技能.宠物天赋.得天独厚'
 require '技能.宠物天赋.你怎么不去死'
 require '技能.宠物天赋.脸黑'
 require '技能.宠物天赋.流逝的神力'
+
+require '技能.宠物天赋.万毒之王'
+require '技能.宠物天赋.我不会武功'
+require '技能.宠物天赋.冷暴力'
+require '技能.宠物天赋.寒气逼人'
+require '技能.宠物天赋.爱看书的傻雕'
+
 -- ac.peon_skill_list = {
 -- '财源滚滚',
 -- '你真棒',

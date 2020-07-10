@@ -42,6 +42,13 @@ function mt:on_cast_start()
     if p.rec_ex >= self.rec_ex then 
         self:add_content()
         hero:add_rec_ex(-self.rec_ex)
+
+        --再来一次
+        local rate = p:get('羊皮无字再一次概率')
+        if math.random(100000)/1000<=rate then 
+            print('又获得一次'..self.name,rate)
+            self:add_content()
+        end
     else 
         self:add_item_count(1) 
         p:sendMsg('|cffebb608【系统】|r|cffff0000魔丸不足',2)

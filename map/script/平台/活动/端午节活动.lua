@@ -189,11 +189,7 @@ local function give_award(hero)
         local color = it and it.color 
         p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
     elseif finds(rand_name,'随机卡片')  then    
-        local list = {
-            '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
-            '杀敌数翻倍卡','木头翻倍卡','魔丸翻倍卡','全属性翻倍卡',
-            '炸弹卡','大炸弹卡','猜拳卡','gg卡'
-        }
+        local list = ac.all_card
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
         p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)

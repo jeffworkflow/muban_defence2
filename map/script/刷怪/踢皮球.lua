@@ -66,11 +66,7 @@ local function give_award(hero)
         }
         p:sendMsg('|cffebb608【系统】|r|cff00ff00进球的时候闪到了腰，|cffffff00休息15秒',4) 
     elseif finds(rand_name,'随机卡片')  then    
-        local list = {
-            '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
-            '杀敌数翻倍卡','木头翻倍卡','魔丸翻倍卡','全属性翻倍卡',
-            '炸弹卡','大炸弹卡','猜拳卡','gg卡'
-        }
+        local list = ac.all_card
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
         p:sendMsg('|cffebb608【系统】|r|cff00ff00违规进球，裁判掏出了|cffff0000【卡片'..name..'】|r，被你一把抢了过来',4)
@@ -163,7 +159,7 @@ ac.game:event '单位-获得物品后' (function (_,unit,item,old_item)
 end)
 --注册创建事件
 local time = 15 * 60
-time = 10
+-- time = 10
 ac.wait(time*1000,function()
     --创建球
     on_create()

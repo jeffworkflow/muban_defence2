@@ -293,6 +293,17 @@ function mt:PauseTimer(time)
     return self.timerdialog
 end    
 
+
+--设置剩余时长 有问题，不用
+function mt:SetRealTimeRemaining(time)
+    if not self.timerdialog then 
+        return 
+    end
+    local time = tonumber(time) or 40
+    print('设置剩余时间',time)
+    self.timerdialog:SetRealTimeRemaining(time)   
+    return self.timerdialog
+end  
 --恢复计时
 function mt:ResumeTimer()
     if not self.timerdialog then 

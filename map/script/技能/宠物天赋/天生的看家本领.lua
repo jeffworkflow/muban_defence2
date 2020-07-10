@@ -30,13 +30,16 @@ mt{
 
 ]],
 	--技能图标
-	art = [[keji.blp]],
+    art = [[keji.blp]],
+    ex_wood = function()
+        return (ac.g_game_degree_attr or 1)*12
+    end
 }
 function mt:on_add()
     local skill = self
     local hero = self.owner
     local p = self.owner.owner
-    p.hero:add('杀死进攻怪加木头',12)
+    p.hero:add('杀死进攻怪加木头',self.ex_wood)
 end
 function mt:on_remove()
     local hero = self.owner
@@ -45,5 +48,5 @@ function mt:on_remove()
         self.trg:remove()
         self.trg = nil
     end
-    p.hero:add('杀死进攻怪加木头',-10)
+    p.hero:add('杀死进攻怪加木头',-self.ex_wood)
 end
