@@ -26,8 +26,8 @@ mt{
 	tip = [[ 
 |cffffe799【暴击几率】+5%
 
-|cff00ffff所有小怪|cffffff00【每秒加护甲-50】
-|cff00ffff所有boss|cffffff00【每秒加护甲-100】
+|cff00ffff所有小怪|cffffff00【每秒加护甲-50】*游戏难度
+|cff00ffff所有boss|cffffff00【每秒加护甲-100】*游戏难度
 
 ]],
 	--技能图标

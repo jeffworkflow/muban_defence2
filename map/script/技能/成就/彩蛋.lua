@@ -182,14 +182,26 @@ mt{
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+100W 全属性
-+15%  魔丸加成
 +15   攻击减甲
++1W   魔丸
 
 ]],
-    ['魔丸加成'] = 15,
+
     ['攻击减甲'] = 15,
     ['全属性'] = 1000000,
+
+    add_fire = 10000,
+
 }
+
+function mt:on_add()
+local hero  = self.owner
+local player = hero:get_owner()
+hero = player.hero
+
+hero:add_rec_ex(self.add_fire)
+
+end    
 
 local mt = ac.skill['五道杠少年']
 mt{

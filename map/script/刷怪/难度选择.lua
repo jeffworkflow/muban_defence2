@@ -66,8 +66,7 @@ ac.wait(1200,function()
             ac.player.self:sendMsg("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
             ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
 
-            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
-            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
+            ac.player.self:sendMsg("|cffebb608【开启条件】|r|cff00ff00通关堡垒/万古流芳/超绝群伦后开启！|cff00ffff（对应贪婪魔窟的普通/噩梦/地狱模式）")
             ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
 
             

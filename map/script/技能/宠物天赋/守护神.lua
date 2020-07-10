@@ -26,8 +26,8 @@ mt{
 	tip = [[ 
 |cffffe799【力量】+10%
 
-|cff00ffff所有队友|cffffff00【每秒加护甲+5】
-|cff00ffff基地|cffffff00【每秒加护甲+5】
+|cff00ffff所有队友|cffffff00【每秒加护甲+5】*游戏难度
+|cff00ffff基地|cffffff00【每秒加护甲+5】*游戏难度
 
 ]],
 	--技能图标

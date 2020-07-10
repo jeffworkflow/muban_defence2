@@ -28,7 +28,7 @@ mt{
     tip = [[ 
 |cffffe799【攻击速度】+50%
 
-|cff00ff00可以秒杀小怪并额外获得|cffffff00300木
+|cff00ff00可以秒杀小怪并额外获得|cffffff00300木*游戏难度
 
 ]],
     ex_wood = function()

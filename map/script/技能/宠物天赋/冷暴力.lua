@@ -17,11 +17,14 @@ mt{
 	--属性加成
  ['多重暴击几率'] = 2.5,
 	--介绍
-	tip = [[ 
-多重暴击几率+2.5%，|cff00ff00当有英雄死亡时，所有玩家增加1%全伤加深
+tip = [[ 
+|cffffe799多重暴击几率+2.5%
+
+|cff00ff00当有英雄死亡时，所有玩家|cffff0000全伤加深+1%
+
 ]],
 	--技能图标
-    art = [[buhuiwugong.blp]],
+    art = [[qingyang.blp]],
     --全伤加深
 	damage_rate = 1
 }
@@ -39,7 +42,7 @@ function mt:on_add()
 			end
 		end
 		--发送文字
-		ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..self.owner.owner:get_name()..' |cff00ff00的宠物【死亡羔羊】，对尸体进行分解，所有玩家获得|cffff0000150木头',5)
+		ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..self.owner.owner:get_name()..' |cff00ff00的宠物【阿青的羊】非常愤怒，所有玩家|cffff0000全伤加深+1%',5)
 	
 	end)
 end

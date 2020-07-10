@@ -31,13 +31,13 @@ mt{
 
 	--介绍
 	tip = [[ 
-|cffffe799【攻击速度】+50%
+|cffffe799【攻击减甲】+35
 
-|cff00ff00使得主人攻击时，5%几率吐出|cffffff00巨大豌豆
+|cff00ff00使得主人攻击时，5%几率对敌人造成大量伤害并|cffffff00减少 1%的最大生命值
 
 ]],--使得主人攻击时，有5%几率吐出一颗巨大豌豆，伤害：智力*5，范围500，内置CD1秒
 	--技能图标
-	art = [[wandou.blp]],
+	art = [[sanyanlaozu.blp]],
 	--特效
     effect = [[Abilities\Weapons\ChimaeraAcidMissile\ChimaeraAcidMissile.mdl]],
 	cool = 2,

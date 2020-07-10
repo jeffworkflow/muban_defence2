@@ -60,7 +60,7 @@ function mt:on_cast_start()
     end
 
     if p.flag_ms then 
-        p:sendMsg('已经挑战，请勿重复点击',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000魔丸不足，或已有玩家正在挑战',5)
         return true 
     end
     p.flag_ms = true
@@ -137,7 +137,7 @@ end
 
 local mt = ac.skill['渡劫']
 mt{
-    pulse =0.1,
+    pulse =0.08,
     dz_cnt = 50,
     cnt_dz = function(self)
         return ac.player.self.cnt_dz or 0
@@ -153,14 +153,14 @@ function mt:on_cast_start()
     end
 
     if p.flag_dz then 
-        p:sendMsg('已经在渡劫，请勿重复点击',5)
+        p:sendMsg('|cffebb608【系统】|cffff0000魔丸不足，或已有玩家正在渡劫',5)
         return true 
     end
     p.flag_dz = true
     --扣除次数
     p.cnt_dz = p.cnt_dz -1
     local bff 
-    local wait = ac.wait(2*1000,function()
+    local wait = ac.wait(1*1000,function()
         bff = hero:add_buff '渡劫' {
             skill = self,
             damage = 250000000 * ((p.cnt_succ_dz or 0) + 1),

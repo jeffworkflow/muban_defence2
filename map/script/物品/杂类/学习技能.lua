@@ -83,9 +83,8 @@ function mt:on_cast_shot()
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','八个技能的男人')
                 player.is_show_nickname = '八个技能的男人'
                 --给全部玩家发送消息
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r获得成就|cffff0000 "八个技能的男人" |r 奖励 |cffff0000全属性+100w，魔丸加成+15%，攻击减甲+15|r |cff00ff00 Ps:当功法学满后，点击新的功法书|cffffff00可替换|cff00ff00身上的功法，且|cffffff00功法等级可被继承|r',5)
-                ac.player.self:sendMsg('|cff00ff00 Ps:当功法学满后，点击新的功法书|cffffff00可替换|cff00ff00身上的功法，且|cffffff00功法等级可被继承|r',5)
-                ac.player.self:sendMsg('|cff00ff00 Ps:当功法学满后，点击新的功法书|cffffff00可替换|cff00ff00身上的功法，且|cffffff00功法等级可被继承|r',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r获得成就|cffff0000 "八个技能的男人" |r 奖励 |cffff0000全属性+100w，攻击减甲+15，魔丸+1W|r',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00当功法学满后，点击新的功法书|cffffff00可替换|cff00ff00身上的功法，且|cffffff00功法等级可被继承|cffff0000（大胆地去武学功法NPC处升级功法吧！）|r',8)
             end
             
 

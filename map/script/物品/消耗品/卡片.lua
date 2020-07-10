@@ -253,7 +253,7 @@ level = 1,
 art = [[ggka.blp]],
 --说明
 tip = [[ 
-|cff00ff00点击使用：
+
 |cffffff0050%概率全属性翻倍 |cffff000050%全属性归零
 
 |cffcccccc建议送给队友使用]],

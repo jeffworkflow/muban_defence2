@@ -359,6 +359,7 @@ rect gg_rct_moku2= null
 rect gg_rct_moku3= null
 rect gg_rct_moku4= null
 rect gg_rct_moku5= null
+rect gg_rct_zhuzi= null
 endglobals
 
     
@@ -1826,6 +1827,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_moku3=Rect(13408.0, 26144.0, 13984.0, 27680.0)
     set gg_rct_moku4=Rect(11776.0, 25984.0, 12960.0, 26528.0)
 	set gg_rct_moku5=Rect(11136.0, 25952.0, 13984.0, 27680.0)
+	set gg_rct_zhuzi=Rect(5472.0, - 5888.0, 5536.0, - 5824.0)
 endfunction
 
 //===========================================================================

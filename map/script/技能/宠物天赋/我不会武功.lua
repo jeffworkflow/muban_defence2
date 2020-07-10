@@ -17,13 +17,16 @@ mt{
 	--属性加成
  ['攻击距离'] = 50,
 	--介绍
-	tip = [[ 
-|cff00ff00点击获得一本|cffffff00随机功法
+tip = [[ 
+|cffffe799攻击距离+50
+
+|cff00ff00点击送给你一本|cffffff00随机功法
+
 ]],
 	--技能图标
 	art = [[buhuiwugong.blp]],
     --冷却
-    cool = 1.5,
+    cool = 300,
 }
 function mt:on_cast_start()
     local hero =self.owner

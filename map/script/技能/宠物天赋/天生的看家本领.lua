@@ -26,13 +26,13 @@ mt{
 	tip = [[ 
 |cffffe799【攻击】+20%
 
-|cff00ff00杀死进攻怪额外获得|cffffff0012木
+|cff00ff00杀死进攻怪额外获得|cffffff0015木*游戏难度
 
 ]],
 	--技能图标
     art = [[keji.blp]],
     ex_wood = function()
-        return (ac.g_game_degree_attr or 1)*12
+        return (ac.g_game_degree_attr or 1)*15
     end
 }
 function mt:on_add()

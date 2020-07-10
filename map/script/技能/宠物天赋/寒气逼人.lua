@@ -32,13 +32,14 @@ mt{
 
 	--介绍
 	tip = [[ 
-|cffffe799【攻击速度】+50%
+|cffffe799【减少周围护甲】+500
+|cffffe799【每秒回血】-1%
 
-|cff00ff00使得主人攻击时，5%几率吐出|cffffff00巨大豌豆
+|cff00ff00使得主人攻击时，5%几率对敌人造成大量伤害并|cffffff00冰冻敌人
 
 ]],--使得主人攻击时，有5%几率吐出一颗巨大豌豆，伤害：智力*5，范围500，内置CD1秒
 	--技能图标
-	art = [[wandou.blp]],
+	art = [[bingchan.blp]],
 	--特效
     effect = [[Abilities\Spells\Undead\FrostNova\FrostNovaTarget.mdl]],
     cool = 5,

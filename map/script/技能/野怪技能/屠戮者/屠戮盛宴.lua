@@ -13,7 +13,7 @@ mt{
 
     --伤害值
     damage = function(self,hero)
-        return hero:get '攻击' * 2
+        return hero:get '攻击' * 1
     end,
 
     tip = [[获得杀戮者BUFF，持续10秒，增加50%攻速，每次普攻会对周围单位造成 攻击 * 2伤害,抹除普攻伤害，所以不会造成两次伤害]],

@@ -11,9 +11,8 @@ art = [[mszw.blp]],
 --说明
 tip = [[
 
-消耗 |cffff00004个红色物品|r 兑换 |cff00ff001个黑色物品|r
-
-|cffcccccc最大兑换次数12次]],
+消耗 |cffff00002个黑色物品|r 兑换 |cff00ff00另一个1个黑色物品|r
+ ]],
 
 content_tip = '|cffFFE799【说明】：|r|n',
 --物品类型
