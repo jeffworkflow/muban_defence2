@@ -21,7 +21,7 @@ specail_model = [[bignoanimball.MDX]],
 item_type = '消耗品',
 unit_type = '英雄',
 unit_type_tip = [[|cffebb608【系统】|cffff0000宠物捡不起来|r]],
-max_use_count = 10, --最大使用次数
+max_use_count = 500, --最大使用次数
 range = 1000,
 hit_area =150,
 model_size = 1.4
@@ -171,7 +171,7 @@ ac.game:event '单位-获得物品后' (function (_,unit,item,old_item)
     on_create()
 end)
 --注册创建事件
-local time = 15 * 60
+local time = 8 * 60
 -- time = 10
 ac.wait(time*1000,function()
     --创建球
