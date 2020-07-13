@@ -46,6 +46,7 @@ local attribute = {
 	['护甲']       = true, --默认基础值
 	['魔抗']	   = true, --默认基础值
 	['攻击间隔']    = true, --默认基础值
+	['攻击间隔极限']		=	true, --默认%
 	['攻击速度']    = true, --默认默认% 
 	['攻击距离']    = true, --默认基础值
 	['移动速度']    = true, --默认基础值 
@@ -735,24 +736,20 @@ get['攻击间隔'] = function(self)
 end
 
 on_get['攻击间隔'] = function(self, attack_gap)
-	if attack_gap <= 0.5 then
-		if self.flag_attack_gap and attack_gap <= 0.45 then 
-			attack_gap = 0.45 
-		else	
-			attack_gap = 0.5
-		end	
-	end
+	-- if attack_gap <= 0.5 then
+	-- 	if self.flag_attack_gap and attack_gap <= 0.45 then 
+	-- 		attack_gap = 0.45 
+	-- 	else	
+	-- 		attack_gap = 0.5
+	-- 	end	
+	-- end
+	
+	attack_gap = math.max(attack_gap,0.5 + self:get('攻击间隔极限')) 
 	return attack_gap
 end
 
 set['攻击间隔'] = function(self, attack_gap)
-	if attack_gap <= 0.5 then
-		if self.flag_attack_gap and attack_gap <= 0.45 then 
-			attack_gap = 0.45 
-		else	
-			attack_gap = 0.5
-		end	
-	end
+	attack_gap = math.max(attack_gap,0.5 + self:get('攻击间隔极限')) 
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x25), attack_gap)
 end
 
@@ -994,6 +991,11 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	if finds(ac.attack_unit_str or '',target:get_name()) then 
 		local wood = player.hero:get('杀死进攻怪加木头') 
 		player:add_wood(wood) 
+	end
+
+	--处理杀死进攻怪加守家积分
+	if finds(ac.attack_unit_str or '',target:get_name()) then 
+		player:add('守家积分',1) 
 	end
 end) 
 

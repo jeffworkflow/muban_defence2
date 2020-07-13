@@ -539,4 +539,54 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['多重暴击'] = 1,
 }
 
+local japi = require("jass.japi")
+local slk = require 'jass.slk'
 
+for i,name in ipairs({
+    '亚瑟王','撼地神牛','不朽剑圣','暗夜寒星',
+	'诸葛亮','布莱特','吕布','鬼剑愁',
+	'张飞','金克丝','貂蝉','杰拉米','黄盖',
+	'关羽','堕落天使','加百列','王昭君','雅典娜',
+	'剑仙','天尊'
+}) do
+    local mt = ac.skill[name]
+    function mt:on_cast_start()
+        local hero = self.owner
+        local player = self.owner:get_owner()
+        local target_name = self.name
+        --连续点两下Pa取消特效
+        if player.last_tran_unit and player.last_tran_unit == self.name then 
+            target_name = hero:get_name()
+        end    
+
+        local id 
+        local new_model 
+        -- if not finds(target_name,'至尊宝','王昭君','雅典娜','不朽剑圣','魔化的小龙女','黄金圣斗士','萧若兰','复仇天神') then 
+            id = ac.table.UnitData[target_name].id
+            new_model = slk.unit[id].file
+            if new_model and not getextension(new_model) then 
+                new_model = new_model..'.mdl'
+            end	
+        -- else
+        --     new_model = self.unit_model
+        -- end    
+        -- print(new_model)
+        --改模型
+        if self.level > 0 then 
+            japi.SetUnitModel(hero.handle,new_model)
+        end   
+        player.last_tran_unit = target_name  
+        -- ac.wait(10,function() 
+        --     --改变大小
+        --     if name == '骨龙' then 
+        --         hero:set_size(2.5)
+        --     elseif name == '精灵龙' then 
+        --         hero:set_size(1.5)
+        --     else
+        --         hero:set_size(1)
+        --     end  
+            
+        -- end)
+    end 
+-- mt.on_add = mt.on_cast_start --自动显示特效
+end    

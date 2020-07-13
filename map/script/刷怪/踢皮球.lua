@@ -21,7 +21,7 @@ specail_model = [[bignoanimball.MDX]],
 item_type = '消耗品',
 unit_type = '英雄',
 unit_type_tip = [[|cffebb608【系统】|cffff0000宠物捡不起来|r]],
-max_use_count = 150, --最大使用次数
+max_use_count = 10, --最大使用次数
 range = 1000,
 hit_area =150,
 model_size = 1.4
@@ -89,6 +89,19 @@ function mt:on_cast_start()
     local skill = self
     local target = self.target
     local hero = self.owner
+    local p = hero.owner 
+    local u = p.hero 
+    if not u.use_item then 
+		u.use_item = {}
+	end	
+    u.use_item[self.name] = (u.use_item[self.name] or 0) 
+    if u.use_item[self.name] >= self.max_use_count then 
+        if self.item_type =='消耗品' then 
+            self:add_item_count(1)
+        end
+        return true
+    end
+
     local mvr = ac.mover.line
 	{
 		source = hero,
