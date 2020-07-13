@@ -13,4 +13,4 @@ require '物品.装备.赤炎甲'
 
 require '物品.装备.谜一样的物品'
 require '物品.装备.圣龙精魄'
-require '物品.装备.噬魂棒'
+require '物品.装备.特殊装备'

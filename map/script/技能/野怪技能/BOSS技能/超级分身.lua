@@ -23,7 +23,9 @@ tip = [[
 ]],
 
 cnt = function(self)
-	return ac.g_game_degree_attr and math.floor(ac.g_game_degree_attr/2) or 0 
+	local v = ac.g_game_degree_attr and math.floor(ac.g_game_degree_attr/2) or 0 
+	v = math.min(v,6) --最大为6次
+	return v
 end, 
 has_cnt = 0,
 --冷却

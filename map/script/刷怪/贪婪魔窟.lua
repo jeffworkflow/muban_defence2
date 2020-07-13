@@ -171,6 +171,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
             time = time,
             title = "游戏失败 倒计时",
             func = function ()
+                print('魔窟挑战失败，请再接再厉，2分钟后结束游戏！！！',5)
                 local tip ='|cffebb608【系统】|cffff0000魔窟挑战失败，请再接再厉，2分钟后结束游戏！！！'
                 ac.game:event_notify('游戏-结束',true,tip)
                 self:finish()

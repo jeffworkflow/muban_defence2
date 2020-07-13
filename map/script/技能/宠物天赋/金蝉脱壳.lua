@@ -28,7 +28,8 @@ mt{
 
 ]],
 	--技能图标
-	art = [[jinchan.blp]],
+    art = [[jinchan.blp]],
+    effect =[[az_juli01.mdx]]
 }
 function mt:on_add()
     local skill = self
@@ -42,6 +43,13 @@ function mt:on_cast_start()
     hero:add('力量',hero:get('力量')*0.05)  
     hero:add('敏捷',hero:get('敏捷')*0.05)  
     hero:add('智力',hero:get('智力')*0.05)  
+    hero:add_effect('chest',self.effect):remove()
+    ac.wait(0.05*1000,function()
+        hero:add_effect('chest',self.effect):remove()
+    end)
+    ac.wait(0.10*1000,function()
+        hero:add_effect('chest',self.effect):remove()
+    end)
 
 end
 function mt:on_remove()

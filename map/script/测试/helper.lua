@@ -2251,18 +2251,7 @@ function helper:fb(str,cnt)
 				creep:start()
 			end		
 		end	
-		for i=1,3 do 
-			local creep = ac.creep['刷怪'..i]
-			creep.index = self.index - 1
-			creep.force_cool = 20
-			creep.creeps_datas = ac.attack_unit[self.index]..'*40'
-			creep:set_creeps_datas()
-			if creep.has_started  then 
-				creep:next()
-			else
-				creep:start()
-			end		
-		end	
+		
 	end
 end
 --测试副本

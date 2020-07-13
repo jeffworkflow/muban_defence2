@@ -174,6 +174,8 @@ local attribute = {
 	['韧性极限'] = true,  --默认表示为% 
 
 	['减少复活时间'] = true,  --默认表示为基础 单位秒
+	['秒杀练功房的怪物'] = true,  --默认表示为基础 单位秒
+	
 	
 }
 ac.unit.attribute = attribute

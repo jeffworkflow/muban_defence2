@@ -94,13 +94,13 @@ end
 local mt = ac.buff['裂魂_攻击']
 mt.cover_type = 0
 function mt:on_add()
-    self.eff = self.target:add_effect(self.ref, self.model)
+    -- self.eff = self.target:add_effect(self.ref, self.model)
     self.target:add('攻击',self.value)
 end
 function mt:on_remove()
-    if self.eff then
-       self.eff:remove()
-    end
+    -- if self.eff then
+    --    self.eff:remove()
+    -- end
     self.target:add('攻击',-self.value)
 end
 function mt:on_cover(new)

@@ -398,102 +398,28 @@ function player.__index:AddServerValue(key,value,re_read,f)
         self:SetServerValue(key,self.cus_server[key_name])
     end
 end
---初始化自定义服务器的数据 暂时不用字段太多。
-function player.__index:initCusServerValue()
-    if not self:is_self() and self.id < 11 then 
+
+-- 清理凌晨今日数据
+function player.__index:clear_key(key)
+    self.flag_save = self.flag_save or {}
+    if not key then 
+        print('没有传入key')
         return 
-    end    
-    for i,v in ipairs(ac.server_key) do 
-        local key = v[1]
-        local player_name = self:get_name()
-        local map_name = config.map_name
-        local url = config.url2
-        local value = 0
-        local key_name = v[2]
-        -- print(map_name,player_name,key,key_name,is_mall,value)
-        local post = 'exec=' .. json.encode({
-            sp_name = 'sp_save_map_test',
-            para1 = map_name,
-            para2 = player_name,
-            para3 = key,
-            para4 = key_name,
-            para5 = value,
-            para6 = 0,
-        })
-        -- print(url,post)
-        local f = f or function (retval)  end
-        --如果当前数据>0 则不进行初始化
-        self:GetServerValue(key,function(data)
-            --没有返回,才进行初始化
-            -- print(data)
-            if not data then    
-                post_message(url,post,f)
-            end   
-        end)
-
-
-    end    
-end  
-local function init()
-    for i=1,10 do 
-        local p = ac.player(i)
-        if p:is_player() then 
-            p:CopyAllServerValue()
-            -- p:initCusServerValue()
-        end    
-    end    
-    print('上传数据')
-end  
-ac.server.init = init  
-
-
-
---===============网易数据与自定义服务器数据交互===========================
-local ui = require 'ui.client.util'
---copy 网易数据 到 map_test 
-function player.__index:CopyServerValue(key,f)
-    if not self:is_self() and self.id < 11 then 
-        return 
-    end    
-    local player_name = self:get_name()
-    local map_name = config.map_name
-    local url = config.url2
-    local value,key_name,is_mall = ac.get_server(self,key)
-    
-    local post = 'exec=' .. json.encode({
-        sp_name = 'sp_save_map_test',
-        para1 = map_name,
-        para2 = player_name,
-        para3 = key,
-        para4 = key_name,
-        para5 = value,
-        para6 = is_mall or 0,
-    })
-    -- print(url,post)
-    -- print('上传数据：',key,value,key_name,is_mall)
-    local f = f or function (retval)  end
-    post_message(url,post,function (retval)  
-        if not finds(retval,'http','https','') or finds(retval,'成功')then 
-            local tbl = json.decode(retval)
-            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
-            if tbl and tbl.code == 0 then 
-                f(tbl)
-            else
-                -- print(self:get_name(),post,'上传失败')
-            end       
-        end    
-    end)
+    end
+    if not finds(key,'today_') then 
+        key = 'today_'..key
+    end
+    local str = os.date("%Y-%m-%d 00:00:00", os.time())
+    local ox = string2time(str)
+    if os.time() - ox  < 240 and not self.flag_save[key] then 
+        self.flag_save[key] = true 
+        local name = ac.server.key2name(key)
+        self.cus_server[name] = 0
+        -- print('保存服务器：',t_name,p.cus_server[t_name],p.cus_server3[name])
+    end
 end
---copy 所有 map_test
-function player.__index:CopyAllServerValue()
-    for i,v in ipairs(ac.mall) do 
-        local key = v[1] 
-        ac.wait(1000*i,function()
-            self:CopyServerValue(key);
-        end)    
-    end    
-end   
 
+local ui = require 'ui.client.util'
 --读取 赤灵传说 地图等级
 function player.__index:sp_get_player()
     if not self:is_self() and self.id < 11 then 

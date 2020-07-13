@@ -10,3 +10,5 @@ require '平台.奖励.通关难度'
 require '平台.奖励.新的征程'
 require '平台.奖励.隐藏成就'
 require '平台.奖励.通关勋章'
+require '平台.奖励.爱心积分'
+

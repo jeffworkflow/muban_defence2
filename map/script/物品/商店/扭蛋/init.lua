@@ -9,6 +9,7 @@ require '物品.商店.扭蛋.超级扭蛋(百连抽)'
 
 
 require '物品.商店.扭蛋.翻倍'
+require '物品.商店.扭蛋.积分夺宝'
 
 --扭蛋发送文本相关特殊处理
 local player = require 'ac.player'
