@@ -832,8 +832,8 @@ on_set['减耗'] = function(self)
 end
 
 on_get['技能冷却'] = function(self, cool_reduce)
-	if cool_reduce > 80 then
-		return 80
+	if cool_reduce > 70 then
+		return 70
 	end
 	return cool_reduce
 end

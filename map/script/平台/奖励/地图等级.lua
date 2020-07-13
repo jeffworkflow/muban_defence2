@@ -417,7 +417,6 @@ tip = [[
 对BOSS额外伤害+地图等级*10%
 |cffff0000每秒加护甲+地图等级*10
 
-
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
