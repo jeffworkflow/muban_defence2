@@ -111,11 +111,27 @@ mt{
     art = [[anheishaizi.blp]],
     -- tip = [[xiexie.blp]]
 }
+local mt = ac.skill['爱心积分+20']
+mt{
+    art = [[aixin.blp]],
+}
+local mt = ac.skill['爱心积分+400']
+mt{
+    art = [[aixin.blp]],
+}
+local mt = ac.skill['爱心积分+1000']
+mt{
+    art = [[aixin.blp]],
+}
 
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
         {    rand = 19.2, name = '谢谢参与',},
+
+        {    rand = 4, name = '爱心积分+20' },
+        {    rand = 4, name = '爱心积分+400',},
+        {    rand = 4, name = '爱心积分+1000',},
 
         {    rand = 4, name = '挖宝熟练度+100' },
         {    rand = 4, name = '看书熟练度+100',},
