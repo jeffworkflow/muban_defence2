@@ -18,6 +18,7 @@ function ac.item.create_skill_item(name,poi,is)
     local art = skill:get_art()
     local gold = skill.gold
     local color = skill.color
+    local check_hecheng = skill.check_hecheng
     skill:remove()
 
     local skl = ac.skill['学习技能']
@@ -31,6 +32,7 @@ function ac.item.create_skill_item(name,poi,is)
     item.tip =  (tip or '') .. '|cff808080当功法学满后，点击可替换已学功法，且功法等级可被继承|r' 
     item:set_art(art)
     item.art = art
+    item.check_hecheng = skill.check_hecheng
 	--混合图标处理
 	local blend = item.blend or ac.blend_file[item.color or 'nil'] 
 	if blend then 

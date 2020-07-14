@@ -238,6 +238,18 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         if self.attack_hero_timer then 
             self.attack_hero_timer:remove()
         end  
+        if self.timer_ex2 then 
+            self.timer_ex2:remove()
+            self.timer_ex2 = nil
+        end   
+        if self.timer_ex3 then 
+            self.timer_ex3:remove()
+            self.timer_ex3 = nil
+        end  
+        if self.timer_ex4 then 
+            self.timer_ex4:remove()
+            self.timer_ex4 = nil
+        end  
     end   
 end)
 
@@ -277,24 +289,6 @@ ac.game:event '游戏-回合结束'(function(trg,index, creep)
         new_ui:show1()
         -- self:next()
     end)  
-
-    if self.timer_ex2 then 
-        self.timer_ex2:remove()
-        self.timer_ex2 = nil
-    end  
-    if self.timer_ex3 then 
-        self.timer_ex3:remove()
-        self.timer_ex3 = nil
-    end  
-    if self.timer_ex4 then 
-        self.timer_ex4:remove()
-        self.timer_ex4 = nil
-    end  
-    if self.timer_ex5 then 
-        self.timer_ex5:remove()
-        self.timer_ex5 = nil
-    end      
-    
     --终止下回合开始
     return true
 end)    
