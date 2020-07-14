@@ -135,6 +135,8 @@ local color_code = {
     ['玄阶'] = '00bdec',--浅蓝
     ['黄阶'] = 'ffffff',--白
 	
+    ['魔阶'] = '883A00',--紫
+    ['半魔阶'] = '883A00',--紫
 	
 }
 ac.color_code = color_code
@@ -171,7 +173,10 @@ local skill_model = {
     ['天阶'] = 'hongbianshu.mdx',--红
     ['地阶'] = 'zongbianshu.mdx',--金
     ['玄阶'] = 'lanbianshu.mdx',--浅蓝
-    ['黄阶'] = 'huibianshu.mdx',--白
+	['黄阶'] = 'huibianshu.mdx',--白
+	
+    ['魔阶'] = 'zongbianshu.mdx',
+    ['半魔阶'] = 'lanbianshu.mdx',
 }
 ac.skill_model = skill_model
 
@@ -944,6 +949,7 @@ function unit.__index:add_item(it,is_fall,p)
 	-- print('装备2',it)
 	--获取一个空槽位
 	if it.check_hecheng then 
+		print('检测合成',it.name)
 		if self:event_dispatch('单位-合成装备', self, it) then
 			self.buy_suc = true 
 			return it

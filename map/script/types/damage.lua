@@ -1038,7 +1038,8 @@ function damage:__call()
 		local ewsh = source:get '全伤加深'
 		--计算全伤加深
 		self.current_damage = (self.current_damage ) * (1 + ewsh/100)
-
+		--额外受到伤害
+		self.current_damage = (self.current_damage ) * (1 + target:get('额外受到伤害')/100) 
 		--加成
 		-- if not on_damage_mul_div(self) then 
 		-- 	return 

@@ -527,6 +527,27 @@ function unit.__index.find_buff(self, name)
 	end
 end
 
+--找buff层数（当前生效数量）
+function unit.__index.find_buff_stack(self, name)
+	if not self.buffs then
+		return
+	end
+	if not self.buff_list then
+		return
+	end
+	if not self.buff_list[name] then 
+		return 
+	end
+	local total = #self.buff_list[name]
+	local enables = 0
+	for i,buff in ipairs(self.buff_list[name]) do
+		if buff:is_enable() then 
+			enables = enables + 1
+		end
+	end
+	local disables = total - enables
+	return enables,disables,total
+end
 ac.buff = setmetatable({}, {__index = function (self, key)
 	local obj = {}
 	obj.name = key

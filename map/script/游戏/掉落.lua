@@ -60,6 +60,9 @@ local function on_texttag(string,color,hero)
         ['地阶'] = { r = 255, g = 255, b = 0,},
         ['玄阶'] = { r = 0, g = 189, b = 236,},
         ['黄阶'] = { r = 255, g = 255, b = 255,},
+
+        ['魔阶'] = { r = 223, g = 25, b = 208,},
+        ['半魔阶'] = { r = 223, g = 25, b = 208,},
     }
 
     local target = hero

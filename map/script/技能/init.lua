@@ -9,6 +9,7 @@ require '技能.宠物天赋'
 require '技能.英雄天赋'
 require '技能.英雄技能2'
 require '技能.英雄技能3'
+require '技能.英雄技能4'
 
 
 require '技能.技能总览'

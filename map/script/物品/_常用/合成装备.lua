@@ -109,19 +109,24 @@ local streng_item_list = {
 
     {'神阶^100','神阶*1 神阶*1  神魂合成*1'},
 
-    {'真·圣龙精魄^100','圣龙精魄碎片一*1 圣龙精魄碎片二*1 '},
-    {'龙之血珠^100','三眼赤痕*1 火龙气息*1 '},
-    {'无谓因果^100','地魂融血丹*1 天魂融血丹*1 '},
+    {'真·圣龙精魄^100','圣龙精魄碎片一*1 圣龙精魄碎片二*1'},
+    {'龙之血珠^100','三眼赤痕*1 火龙气息*1'},
+    {'无谓因果^100','地魂融血丹*1 天魂融血丹*1'},
     
     -- {'大乘佛法^100','彩虹天堂*1 火焰雨*1 功法合成*1'},
     -- {'青','青*1 青*1 青*1 技能融合*1'},
-    
+    {'全能精通','攻击专精*1 护甲专精*1 生命专精*1'},
+    {'恶魔之力','全属性精通*1 全能精通*1'},
+    {'全属性精通','力量专精*1 敏捷专精*1 智力专精*1'},
 }
 ac.streng_item_list = streng_item_list
 local check_hecheng = {
     '装备合成','神魂合成',
     '功法合成','魔神的合成',
     '圣龙精魄碎片一','圣龙精魄碎片二','三眼赤痕','火龙气息','地魂融血丹','天魂融血丹',
+    '全能精通','攻击专精','护甲专精','生命专精',
+    '全属性精通','力量专精','敏捷专精','智力专精',
+    '恶魔之力',
 }
 for i,name in ipairs(check_hecheng) do 
     local mt = ac.skill[name]
@@ -359,9 +364,9 @@ local function streng_item(alltable,unit,it)
             -- 品质技能
             if not ac.table.ItemData[dest_str] then 
                 -- print('类型',type(ac.skill[dest_str])) --ac.skill['蓝'] 是个table
-                -- if type(ac.skill[dest_str]) == 'function' then 
+                if not ac.skill[dest_str].skill_type then 
                     dest_str = quality_item[dest_str][math.random(1,#quality_item[dest_str])]
-                -- end
+                end
                 local max_strong_rate = 0 
                 local temp_rate 
                 --处理同名装备提升合成成功概率
