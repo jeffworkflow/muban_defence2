@@ -3,7 +3,7 @@ require '物品.装备.懒人的智慧鞋'
 
 -- require '物品.装备.紫金碧玺佩'
 require '物品.装备.黑色物品'
-require '物品.装备.超神器'
+-- require '物品.装备.超神器'
 
 
 require '物品.装备.噬血珠'

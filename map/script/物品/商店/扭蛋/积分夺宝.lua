@@ -102,7 +102,7 @@ function mt:add_content()
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
         p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
-    elseif  rand_name == '太初威丸弹弓' then 
+    elseif  finds(rand_name,'太初威丸弹弓') then 
         local it = hero:add_item(rand_name)
         p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..it.color_name..'|r',4)
     end    
