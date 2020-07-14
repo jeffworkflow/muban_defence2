@@ -47,5 +47,5 @@ end,
 	--特效4
 	effect4 = [[在目标位置播放特效]],
 }
-mt.damage_start = ac.skill['祖龙吟'].damage_start
-mt.on_remove = ac.skill['祖龙吟'].on_remove
+mt.damage_start = ac.skill['惊天一剑'].damage_start
+mt.on_remove = ac.skill['惊天一剑'].on_remove

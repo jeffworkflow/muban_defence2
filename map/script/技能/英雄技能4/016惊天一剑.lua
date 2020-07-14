@@ -48,5 +48,32 @@ end,
 	--特效4
 	effect4 = [[在目标位置播放特效]],
 }
-mt.damage_start = ac.skill['祖龙吟'].damage_start
-mt.on_remove = ac.skill['祖龙吟'].on_remove
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+    local target = damage.target
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+	--创建特效
+	ac.effect_ex{
+		model = self.effect,
+		size = 1,
+		point = target:get_point()
+	}:remove()
+	for i, u in ac.selector()
+		: in_range(target,self.damage_area)
+		: of_not_building()
+		: is_enemy(hero)
+		: ipairs()
+	do
+		u:damage
+		{
+			source = hero,
+			damage = skill.damage ,
+			skill = skill,
+			damage_type = '法术'
+		}	
+	end
+end
