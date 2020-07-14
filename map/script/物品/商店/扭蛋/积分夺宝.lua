@@ -101,8 +101,8 @@ function mt:add_content()
         local list = ac.all_card
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffebb608【系统】|r|cff00ffff守家日当午，汗滴禾下土！|cff00ff00恭喜获得|cffff0000'..name..'|r',4)
-    elseif  rand_name == '太初威丸弹弓' then 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
+    elseif  finds(rand_name,'太初威丸弹弓') then 
         local it = hero:add_item(rand_name)
         p:sendMsg('|cffebb608【系统】|r|cff00ffff守家日当午，汗滴禾下土！|cff00ff00恭喜获得|cffff0000'..it.color_name..'|r',4)
     end    
