@@ -22,6 +22,7 @@ item_type = '消耗品',
 unit_type = '英雄',
 unit_type_tip = [[|cffebb608【系统】|cffff0000宠物捡不起来|r]],
 max_use_count = 500, --最大使用次数
+-- max_use_count = 5,
 range = 1000,
 hit_area =150,
 model_size = 1.4
@@ -99,6 +100,7 @@ function mt:on_cast_start()
         if self.item_type =='消耗品' then 
             self:add_item_count(1)
         end
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00由于你多次踢假球，已被足协开除，|cffff0000从此再也不能踢皮球',4) 
         return true
     end
 

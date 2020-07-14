@@ -17,7 +17,8 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 450,
+    cool = 450,
+    -- cool = 4,
 	--属性加成
 ['杀怪加全属性'] = {250,5000},
 ['攻击加全属性'] = {250,5000},
@@ -27,7 +28,9 @@ mt{
 【攻击加全属性】+250*Lv
 【每秒加全属性】+250*Lv
 
-|cff00bdec【主动施放】获得|cffffff00【（3%+0.2%*Lv）当前属性值】|cff00bdec的属性]],
+|cff00bdec【主动施放】获得|cffffff00【（3% +0.2%*Lv）当前属性值】|cff00bdec的属性
+
+]],
 	--技能图标
 	art = [[rizhaowuhua.blp]],
 	--特效
@@ -41,10 +44,10 @@ mt{
 function mt:play_eff()
     local hero = self.owner
     hero:add_effect('chest',self.effect):remove()
-    ac.wait(0.05*1000,function()
+    ac.wait(0.1*1000,function()
         hero:add_effect('chest',self.effect):remove()
     end)
-    ac.wait(0.10*1000,function()
+    ac.wait(0.2*1000,function()
         hero:add_effect('chest',self.effect):remove()
     end)
 end

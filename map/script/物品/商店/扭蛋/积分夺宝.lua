@@ -41,9 +41,9 @@ local award_list = {
         { rand = 3, name = '地魂融血丹*1'},
         { rand = 3, name = '神奇的令牌*1'},
         { rand = 10, name = '随机卡片'},
-        { rand = 45, name = '太初威丸弹弓*1'},
+        { rand = 15, name = '太初威丸弹弓'},
         
-        { rand = 0, name = '无'},
+        { rand = 30, name = '无'},
     },
 }
 --右击使用
@@ -101,7 +101,7 @@ function mt:add_content()
         local list = ac.all_card
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ffff守家日当午，汗滴禾下土！|cff00ff00恭喜获得|cffff0000'..name..'|r',4)
     elseif  finds(rand_name,'太初威丸弹弓') then 
         local it = hero:add_item(rand_name)
         p:sendMsg('|cffebb608【系统】|r|cff00ffff守家日当午，汗滴禾下土！|cff00ff00恭喜获得|cffff0000'..it.color_name..'|r',4)

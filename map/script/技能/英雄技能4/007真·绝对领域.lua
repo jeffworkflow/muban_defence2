@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 4,
+	cool = 5,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--属性加成
@@ -31,19 +31,17 @@ mt{
 【攻击加力量】+600*Lv
 【每秒加力量】+600*Lv
 
-|cff00bdec【被动效果】攻击2%几率在目标点创建一个由小到大的绝对领域，（0.2秒变到最大，最大时候直径500码），持续3秒；
-3秒内，碰到绝对领域的所有敌人，会立刻不动并更加虚弱（额外受到(5%+1%*Lv)伤害），持续至绝对领域消失
-
-虚弱效果唯一]],
+|cff00bdec【被动效果】攻击2%几率 创造出一个绝对领域，让敌人动弹不得且额外受到(5% +1%*Lv)伤害
+ ]],
 	--技能图标
 	art = [[jueduilingyu.blp]],
 	--特效
 	effect = [[blackhole0.mdx]],
 	--被动事件
 	event_name = "造成伤害效果",
-    time = 3,
+    time = 1,
     val = function(self)
-        return 5+1*self.level+100000
+        return 5+1*self.level
     end
 }
 function mt:damage_start(damage)

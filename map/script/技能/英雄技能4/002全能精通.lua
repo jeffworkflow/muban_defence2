@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 1*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -31,10 +31,9 @@ mt{
 |cffffff00【护甲】+0.65%*Lv
 |cffffff00【生命上限】+0.65%*Lv
 
-|cff00bdec【被动效果】杀怪0.1%几率获得0.65%永久攻击、护甲、生命上限
-（已获得has_val%攻击）
-（已获得has_val%护甲）
-（已获得has_val%生命上限）]],
+|cff00bdec【被动效果】杀怪1%几率 获得0.065%攻击、护甲、生命上限
+|cffff0000（已获得 %has_val% |cffff0000%）
+ ]],
 	--技能图标
 	art = [[bnzj.blp]],
 	--特效
@@ -46,7 +45,7 @@ mt{
 	attr_name1 = '攻击%',
 	attr_name2 = '护甲%',
 	attr_name3 = '生命上限%',
-	value = 0.1,
+	value = 0.065,
 	has_val = function(self)
 		return self.spell_stack * self.value
 	end,

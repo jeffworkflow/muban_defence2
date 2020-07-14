@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 5*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -31,8 +31,9 @@ mt{
 【攻击加敏捷】+500*Lv
 【每秒加敏捷】+500*Lv
 
-|cff00bdec【被动效果】攻击5%几率造成范围技能伤害，并叠加一层持续时间为5秒的“影割”状态
-【伤害公式】（敏捷*12.5*Lv*影割层数）|r]],
+|cff00bdec【被动效果】攻击5%几率造成范围技能伤害，并叠加一层持续时间为5秒的“影割”
+【伤害公式】（敏捷*12.5*Lv*影割层数）|r
+ ]],
 	--技能图标
 	art = [[shanuyishu.blp]],
 	--特效

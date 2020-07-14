@@ -18,6 +18,7 @@ mt{
 	cost = 0,
 	--冷却时间
 	cool = 20,
+	-- cool = 5,
 	--施法范围
 	area = 500,
 	--属性加成
@@ -29,19 +30,18 @@ mt{
 【攻击加力量】+500*Lv
 【每秒加力量】+500*Lv
 
-|cff00bdec【主动施放】参考虚空假面的大招，在目标点创建一个由小到大的绝对领域，（0.2秒变到最大，最大时候直径500码），持续3秒；
-3秒内，碰到绝对领域的所有敌人，会立刻不动并更加虚弱（额外受到(5%+1%*Lv)伤害），持续至绝对领域消失
+|cff00bdec【主动施放】创造出一个绝对领域，让敌人动弹不得且额外受到(5% +1%*Lv)伤害
 
-虚弱效果唯一]],
+]],
 	--技能图标
 	art = [[jueduilingyu.blp]],
 	--特效
     effect = [[blackhole0.mdx]],
     target_type = ac.skill.TARGET_TYPE_POINT,
     range = 1000,
-    time = 3,
+    time = 2,
     val = function(self)
-        return 5+1*self.level+100000
+        return 5+1*self.level
     end
 }
 function mt:on_cast_start()

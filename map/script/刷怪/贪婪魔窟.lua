@@ -164,7 +164,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
             self.timer_ex4 = nil
         end  
 
-        local time = 120
+        local time = 180
         -- time = 20
         self.timer_ex2 = ac.timer_ex 
         {
@@ -373,7 +373,7 @@ local function blink_tlmk(start_time)
                         zoffset = 220,
                         show = true,
                     }
-                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 2分钟 |cff00ff00内杀死本层所有怪物，否则魔窟坍塌，|cffff0000游戏失败！")
+                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 3分钟 |cff00ff00内杀死本层所有怪物，否则魔窟坍塌，|cffff0000游戏失败！")
                     ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00通过每一层的挑战后，战斗力最强的玩家，可选择|cffffff00【获得装备并终止挑战】|cff00ff00或|cffffff00【继续挑战下一层】|cffff0000（挑战失败则一无所有，请量力而行！）")
 
                 end)

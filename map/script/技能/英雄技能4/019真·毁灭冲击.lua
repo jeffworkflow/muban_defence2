@@ -38,15 +38,16 @@ end,
 【每秒加智力】+300*Lv
 
 |cff00bdec【被动效果】攻击10%几率对敌人造成范围技能伤害
-【伤害公式】（智力*35+10亿)*Lv）|r]],
+【伤害公式】（智力*35+10亿)*Lv）|r
+ ]],
 	--技能图标
 	art = [[huimiechongji.blp]],
 	--特效
 	effect = [[EXshexian-black.mdx]],
 	--特效4
 	effect4 = [[类似火焰呼吸，不过伤害区域是一个长方形，区域大小400*1200]],
-	distance = 1200,
-	hit_area = 250,
+	distance = 1500,
+	hit_area = 300,
 	time =1
 }
 mt.damage_start = ac.skill['毁灭冲击'].damage_start

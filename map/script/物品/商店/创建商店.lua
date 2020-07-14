@@ -81,9 +81,9 @@ ac.game:event '单位-创建商店'(function(trg,shop)
     
     if name == '游戏说明' then
         shop:remove_restriction '无敌'
-        shop:set('生命上限',500000000000)
-        shop:set('生命恢复',500000000000)
-        shop:set('护甲',500000000000)
+        shop:set('生命上限',999999999999)
+        shop:set('生命恢复',999999999999)
+        shop:set('护甲',999999999999)
     end   
     
     if name == '夭夭' then

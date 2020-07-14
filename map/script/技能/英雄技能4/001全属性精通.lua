@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 1*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -29,7 +29,8 @@ mt{
 	--介绍
 	tip = [[|cffffff00【全属性】+0.65%*Lv
 
-|cff00bdec【被动效果】杀怪0.1%几率获得0.65%永久全属性（已获得 %has_val% |cffff0000% 永久全属性）]],
+|cff00bdec【被动效果】杀怪1%几率 获得0.065%全属性|cffff0000（已获得 %has_val% |cffff0000%）
+ ]],
 	--技能图标
 	art = [[qsxzj.blp]],
 	--特效
@@ -41,7 +42,7 @@ mt{
 	attr_name1 = '力量%',
 	attr_name2 = '敏捷%',
 	attr_name3 = '智力%',
-	value = 0.1,
+	value = 0.065,
 	has_val = function(self)
 		return self.spell_stack * self.value
 	end,
@@ -67,7 +68,7 @@ function mt:damage_start(source,target)
 		angle =   angle ,
 		turn_speed = turn_speed,
 		skill = skill,
-		size =0.3
+		size =0.2
 	}
 	if not mvr then
 		return

@@ -15,7 +15,8 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 450,
+    cool = 450,
+    -- cool = 4,
 	--作用在人身上
 	strong_hero = true,
 	--属性加成
@@ -44,10 +45,10 @@ function mt:on_cast_start()
     hero:add('敏捷',hero:get('敏捷')*0.05)  
     hero:add('智力',hero:get('智力')*0.05)  
     hero:add_effect('chest',self.effect):remove()
-    ac.wait(0.05*1000,function()
+    ac.wait(0.1*1000,function()
         hero:add_effect('chest',self.effect):remove()
     end)
-    ac.wait(0.10*1000,function()
+    ac.wait(0.2*1000,function()
         hero:add_effect('chest',self.effect):remove()
     end)
 

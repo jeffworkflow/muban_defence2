@@ -37,10 +37,11 @@ end,
 【攻击加智力】+600*Lv
 【每秒加智力】+600*Lv
 
-|cff00bdec【被动效果】攻击10%几率对敌人造成范围技能伤害，并提升周围友军250%的技暴伤害（可叠加），持续5秒
-【伤害公式】（智力*30+10亿)*Lv）|r]],
+|cff00bdec【被动效果】攻击10%几率 对敌人造成范围技能伤害，并提升周围友军250%的技暴伤害（可叠加），持续5秒
+【伤害公式】（智力*30+10亿)*Lv）|r
+ ]],
 	--技能图标
-	art = [[siwnagjianjiao.blp]],
+	art = [[siwangjianjiao.blp]],
 	--特效
 	effect = [[203.mdx]],
 	--特效4
@@ -51,7 +52,7 @@ end,
 --被动事件
 event_name = "造成伤害效果",
 damage = function(self)
-	return (self.owner:get('智力')*25+100000000)* self.level
+	return (self.owner:get('智力')*30+1000000000)* self.level
 end,
 val = 250,
 time =5

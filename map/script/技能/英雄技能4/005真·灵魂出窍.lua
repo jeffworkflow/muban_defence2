@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 1*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 10,
+	cool = 1,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--属性加成
@@ -31,7 +31,8 @@ mt{
 【攻击加全属性】+300*Lv
 【每秒加全属性】+300*Lv
 
-|cff00bdec【被动效果】杀怪 0.01% 几率获得|cffffff00【5%当前属性值】|cff00bdec的属性]],
+|cff00bdec【被动效果】杀怪 1% 几率获得|cffffff00【0.05%当前属性值】|cff00bdec的属性
+ ]],
 	--技能图标
 	art = [[rizhaowuhua.blp]],
 	--特效
@@ -40,15 +41,15 @@ mt{
 	effect4 = [[触发时，每隔0.05秒在英雄身上播放一次特效，持续3次]],
 	--被动事件
 	event_name = "单位-杀死单位",
-	val =5
+	val =0.05
 }
 function mt:play_eff()
     local hero = self.owner
     hero:add_effect('chest',self.effect):remove()
-    ac.wait(0.05*1000,function()
+    ac.wait(0.1*1000,function()
         hero:add_effect('chest',self.effect):remove()
     end)
-    ac.wait(0.10*1000,function()
+    ac.wait(0.2*1000,function()
         hero:add_effect('chest',self.effect):remove()
     end)
 end

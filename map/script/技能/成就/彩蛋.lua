@@ -647,16 +647,18 @@ mt{
     item_type_tip = '',
     --商店名词缀
     store_affix = '',
-    art = [[datusha.blp]], 
+    art = [[scjq.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+50W 全属性
-+35% 杀敌数加成|r
+|cff00ff00+300W 全属性
++100% 攻击速度
++25%  物品获取率
 
 ]],
-  ['全属性'] = 300000, 
-  ['杀敌数加成'] = 35,
+  ['全属性'] = 3000000, 
+  ['攻击速度'] = 100,
+  ['物品获取率'] = 25,
 }
 
 
@@ -860,14 +862,16 @@ ac.game:event '游戏-开始' (function()
         if not damage.source:is_hero() then 
             return 
         end    
-        local rate = 20 
+        local rate = 0.45
         if math.random(100000)/1000 <= rate then 
             local hero = damage.source
             local player = hero:get_owner()
             local skl = hero:find_skill('输出机器',nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','输出机器')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 打桩爽翻了天，|r 获得成就|cffff0000 "神格护体" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+300W全属性 +100%攻击速度 +25%物品获取率|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+300W全属性 +100%攻击速度 +25%物品获取率|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+300W全属性 +100%攻击速度 +25%物品获取率|r',6)
             end
         end
     end)

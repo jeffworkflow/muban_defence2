@@ -20,7 +20,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cff00ffff【被动效果】攻击10%几率变身魔神，持续8秒
 
-|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 2,
@@ -49,7 +49,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（智力*10+10000）*Lv
 
-|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 6,
@@ -78,7 +78,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（力量*15+10000）*Lv
 
-|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 9,
@@ -106,7 +106,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（敏捷*17.5+10000）*Lv+1%敌人的最大生命值
 
-|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 11,
@@ -135,7 +135,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff【被动效果】攻击10%几率触发法阵， 闪避+50%, 触发概率加成+50%, 技能冷却+50%，持续8秒；法阵生成及消失时都会造成范围技能伤害
 【伤害公式】（智力*20+10000）*Lv
 
-|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 13,
@@ -165,7 +165,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff【被动效果】攻击10%几率造成范围技能伤害
 【伤害公式】（敏捷*22.5+10000）*Lv+1%敌人的最大生命值
 
-|cff00ff00【月球漫步】按D向鼠标方向飘逸500码距离]],
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 15,
