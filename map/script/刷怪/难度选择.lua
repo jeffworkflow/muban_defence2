@@ -90,6 +90,9 @@ ac.wait(1200,function()
             end)
             ac.player.self:sendMsg("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
             ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
+
+            ac.player.self:sendMsg("|cffebb608【开启条件】|r|cff00ff00通关士兵后开启！")
+            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00每间隔12分钟，玩家会开始PK，胜利者将获得丰厚的奖励！")
         end)
     end
 

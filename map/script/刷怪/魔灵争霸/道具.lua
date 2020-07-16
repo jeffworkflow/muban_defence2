@@ -4,10 +4,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[shandian.blp]],
 --说明
 tip = [[ 
-    点击后，在其它玩家的脚下，播放倒计时0.5秒的预警圈，倒计时结束，50%的概率会劈下一道闪电(闪电模型：Lightnings Long.mdx)，如果命中立刻死亡
+|cff00ff00使用后会风云变色，电闪雷鸣，令其它玩家遭受雷劈！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -20,7 +20,7 @@ function mt:on_cast_start()
    --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r'..p:get_name()..'|cffff0000使用【闪电】，顿时风云变色，电闪雷鸣！',5)
 
     for i=1,6 do 
         local pp = ac.player(i)
@@ -53,10 +53,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[daodan.blp]],
 --说明
 tip = [[ 
-    点击后，在其它玩家的脚下，播放倒计时0.5秒的预警圈，倒计时结束，50%的概率会劈下一道闪电(闪电模型：Lightnings Long.mdx)，如果命中立刻死亡
+|cff00ff00请选择你想轰炸的玩家！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -128,7 +128,7 @@ function mt:on_cast_start()
    --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg(p:get_name()..'使用了导弹',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r'..p:get_name()..'|cffff0000使用【导弹】，大家小心！',5)
     self:atk_pas_shot(self.target)
 end
 
@@ -138,10 +138,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[zhuizongdaodan.blp]],
 --说明
 tip = [[ 
-    施法距离10000，点击选择一名玩家，在该玩家的脚下，创建一个会跟随英雄的瞄准特效，0.7秒后，在玩家的头上，从天降下一个导弹，100%命中死亡
+|cff00ff00请选择你想轰炸的玩家！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -211,7 +211,7 @@ function mt:on_cast_start()
    --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg(p:get_name()..'使用了导弹',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r'..p:get_name()..'|cffff0000使用【追踪导弹】，小心也没用！',5)
     self:atk_pas_shot(self.target)
 end
 
@@ -335,7 +335,7 @@ level = 1,
 art = [[shadidubo.blp]],
 --说明
 tip = [[ 
-    点击在目标位置召唤出可以控制的一只地狱火（等待创建），持续时间60秒
+    点击在目标位置召唤出可以控制的一只地狱火（等待创建），持续时间20秒
 ]],
 --物品类型
 item_type = '消耗品',
@@ -344,7 +344,7 @@ range = 10000,
 area = 200,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
-time = 60,
+time = 20,
 }
 function mt:on_cast_start()
     local target = self.target
@@ -415,7 +415,13 @@ end
 --奖品
 local award_list = { 
     ['魔灵争霸'] =  {
-        { rand = 64, name = '闪电*1'},
+        { rand = 1, name = '闪电*1'},
+        { rand = 1, name = '导弹*1'},
+        { rand = 1, name = '追踪导弹*1'},
+        { rand = 1, name = '磁铁*1'},
+        { rand = 1, name = '香蕉*1'},
+        { rand = 1, name = '大魔王*1'},
+        { rand = 1, name = '定时炸弹*1'},
         
     },
 }
