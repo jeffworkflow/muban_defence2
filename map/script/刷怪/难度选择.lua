@@ -137,7 +137,7 @@ ac.wait(1200,function()
 
         --根据无限难度 开发对应模式
         local list4 = {}
-        if bit >= 2 then 
+        if bit >= 1 then 
             table.insert(show_list,{name = '段位挑战'})
             table.insert(show_list,{name = '魔灵争霸',attr = 1})
         end

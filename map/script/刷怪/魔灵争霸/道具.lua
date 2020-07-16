@@ -248,9 +248,9 @@ function mt:on_cast_start()
     ac.player.self:sendMsg(p:get_name()..'使用了导弹',5)
 
     --自己加属性
-    hero:add('力量',hero:get('力量')*0.05)  
-    hero:add('敏捷',hero:get('敏捷')*0.05)  
-    hero:add('智力',hero:get('智力')*0.05)  
+    hero:add('力量',self.target:get('力量')*0.05)  
+    hero:add('敏捷',self.target:get('敏捷')*0.05)  
+    hero:add('智力',self.target:get('智力')*0.05)  
     hero:add_effect('chest',self.effect):remove()
     ac.wait(0.1*1000,function()
         hero:add_effect('chest',self.effect):remove()
@@ -291,7 +291,7 @@ content_tip = '|cffffe799使用说明：|r',
 range = 10000,
 area = 200,
 --特效
-effect =[[az_juli01.mdx]],
+effect =[[bananaa.mdx]],
 time = 30,
 stu_time = 4,
 }
@@ -304,12 +304,12 @@ function mt:on_cast_start()
 
     local eff = ac.effect_ex{
         point = target:get_point(),
-        model = self.model,
+        model = self.effect,
         time = self.time
     }
 
     region:event '区域-进入' (function(trg, hero)
-        if reg < hero:get_point()  then --不加区域判断，会有莫名其妙的问题，在练功房传送到其他地方，可能会出现在其他区域。
+        if region < hero:get_point()  then --不加区域判断，会有莫名其妙的问题，在练功房传送到其他地方，可能会出现在其他区域。
             if not hero:is_hero() then 
                 return 
             end
@@ -410,7 +410,325 @@ function mt:on_cast_start()
 
 end
 
+local mt = ac.skill['均富']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+]],
+--物品类型
+item_type = '消耗品',
+-- target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+}
+function mt:on_cast_start()
+    local wood = 0
+    local rec_ex = 0
+    for i=1,6 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            wood = wood + p.wood
+            rec_ex = rec_ex + p.rec_ex
+        end
+    end
 
+    for i=1,6 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            p:add_wood(-p.wood)
+            p:add_wood(wood/get_player_count())
+
+            p:add_rec_ex(-p.rec_ex)
+            p:add_rec_ex(rec_ex/get_player_count())
+        end
+    end
+end
+
+
+local mt = ac.skill['均贫']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+]],
+--物品类型
+item_type = '消耗品',
+range = 10000,
+target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+}
+function mt:on_cast_start()
+    local wood = 0
+    local rec_ex = 0
+    local target = self.target
+    local hero = self.owner 
+    local p = self.owner.owner
+    local target_p = target.owner
+    if not self.target:is_hero() then 
+        p:sendMsg('不可对非英雄单位使用',5)
+        return true
+    end
+    wood = wood + p.wood + target_p.wood
+    rec_ex = rec_ex + p.rec_ex + target_p.rec_ex
+
+    p:add_wood(-p.wood)
+    p:add_wood(wood/get_player_count())
+    p:add_rec_ex(-p.rec_ex)
+    p:add_rec_ex(rec_ex/get_player_count())
+
+    target_p:add_wood(-target_p.wood)
+    target_p:add_wood(wood/get_player_count())
+    target_p:add_rec_ex(-target_p.rec_ex)
+    target_p:add_rec_ex(rec_ex/get_player_count())
+   
+end
+
+
+local mt = ac.skill['抢夺']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+]],
+--物品类型
+item_type = '消耗品',
+range = 10000,
+target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+rate = 50
+}
+function mt:on_cast_start()
+    local target = self.target
+    local hero = self.owner 
+    local p = self.owner.owner
+    local target_p = target.owner
+    if not self.target:is_hero() then 
+        p:sendMsg('不可对非英雄单位使用',5)
+        return true
+    end
+    local temp = {}
+    for i=1,6 do 
+        local it = target:get_slot_item(i)
+        if it and finds(it.color,'白','蓝','金','红','黑') then 
+            table.insert(temp,it)
+        end
+    end
+    if #temp <=0 then 
+        p:sendMsg('抢夺失败,对方没有任何物品',5)
+        return 
+    end
+    --实施抢夺
+    if math.random(100000)/1000 <= self.rate then
+        local it = temp[math.random(#temp)]
+        target:remove_item(it)
+        hero:add_item(it)
+        ac.player.self:sendMsg(p:get_name()..'抢夺了 '..target_p:get_name()..' 的'..it.color_name,5)
+    end
+
+end
+
+
+local mt = ac.skill['抢钱']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+]],
+--物品类型
+item_type = '消耗品',
+range = 10000,
+target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+}
+function mt:on_cast_start()
+    local target = self.target
+    local hero = self.owner 
+    local p = self.owner.owner
+    local target_p = target.owner
+    if not self.target:is_hero() then 
+        p:sendMsg('不可对非英雄单位使用',5)
+        return true
+    end
+    local rate = math.random(100)
+    local wood = target_p.wood * rate /100
+    local rec_ex = target_p.rec_ex * rate /100
+    p:add_wood(wood)
+    p:add_rec_ex(rec_ex)
+    target_p:add_wood(-wood)
+    target_p:add_rec_ex(-rec_ex)
+    ac.player.self:sendMsg(p:get_name()..'抢夺了 '..target_p:get_name()..rate..'% 资源',5)
+end
+
+local mt = ac.skill['冬眠']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+    点击后，在其它玩家的脚下，播放倒计时0.5秒的预警圈，倒计时结束，50%的概率会劈下一道闪电(闪电模型：Lightnings Long.mdx)，如果命中立刻死亡
+]],
+--物品类型
+item_type = '消耗品',
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+effect =[[Abilities\Spells\Undead\Sleep\SleepTarget.mdl]],
+time =10
+}
+
+function mt:on_cast_start()  
+    --使用 
+    local hero = self.owner 
+    local p =hero.owner 
+    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡',5)
+
+    for i=1,6 do 
+        local pp = ac.player(i)
+        if pp:is_player() then 
+            if pp ~= p and pp.hero then 
+                pp.hero:add_buff '晕眩'{
+                    time = self.time,
+                    model = self.effect
+                }
+            end
+        end
+    end
+end
+
+
+local mt = ac.skill['梦游']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+]],
+--物品类型
+item_type = '消耗品',
+range = 10000,
+target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+time = 15,
+effect = [[Abilities\Spells\Undead\Sleep\SleepTarget.mdl]],
+}
+function mt:on_cast_start()
+    local target = self.target
+    local hero = self.owner 
+    local p = self.owner.owner
+    local target_p = target.owner
+    if not self.target:is_hero() then 
+        p:sendMsg('不可对非英雄单位使用',5)
+        return true
+    end
+    target:add_buff '晕眩'{
+        time = self.time,
+        model = self.effect
+    }
+    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡'..target_p:get_name(),5)
+end
+
+
+local mt = ac.skill['乌龟']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+    移动速度降低90%，攻击速度降低250%，攻击间隔+0.5，持续时间10秒
+]],
+--物品类型
+item_type = '消耗品',
+range = 10000,
+target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+time = 15,
+effect = [[Turtle.mdx]],
+}
+function mt:on_cast_start()
+    local target = self.target
+    local hero = self.owner 
+    local p = self.owner.owner
+    local target_p = target.owner
+    if not self.target:is_hero() then 
+        p:sendMsg('不可对非英雄单位使用',5)
+        return true
+    end
+    target:add_buff '召唤物' {
+        skill = self,
+        time = self.time,
+        model = self.effect,
+        remove_target = false
+    }
+    target:add('移动速度%',-90) 
+    target:add('攻击速度',-250) 
+    target:add('攻击间隔',0.5) 
+
+    target:wait(self.time * 1000,function()
+        target:add('移动速度%',90) 
+        target:add('攻击速度',250) 
+        target:add('攻击间隔',-0.5) 
+    end)
+    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡'..target_p:get_name(),5)
+end
+
+local mt = ac.skill['充公']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shadidubo.blp]],
+--说明
+tip = [[ 
+点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+]],
+--物品类型
+item_type = '消耗品',
+range = 10000,
+target_type = ac.skill.TARGET_TYPE_UNIT,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
+}
+function mt:on_cast_start()
+    local target = self.target
+    local hero = self.owner 
+    local p = self.owner.owner
+    local target_p = target.owner
+    if not self.target:is_hero() then 
+        p:sendMsg('不可对非英雄单位使用',5)
+        return true
+    end
+    target_p:add_wood(-target_p.wood)
+    target_p:add_rec_ex(-target_p.rec_ex)
+    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡'..target_p:get_name(),5)
+end
 
 --奖品
 local award_list = { 
