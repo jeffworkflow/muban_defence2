@@ -61,6 +61,7 @@ class.player_info_panel = extends(class.panel){
         }
         
         panel.titles2 = {
+            '魔灵争霸'
             -- '斗破(无尽-最高)','修罗(无尽-最高)',
             -- '深渊(无尽-累计)','乱斗(无尽-累计)','无上(无尽-累计)','斗破(无尽-累计)','修罗(无尽-累计)',
 
@@ -72,17 +73,17 @@ class.player_info_panel = extends(class.panel){
     
         }
         panel.page = 1 
-        -- local next_button = panel:add_button('image\\right.blp',773,371,64,64)
-        -- function next_button:on_button_clicked()
-        --     if panel.page == 1  then 
-        --         panel.page = 2
-        --         self:set_normal_image('image\\left.blp')
-        --     else
-        --         panel.page = 1
-        --         self:set_normal_image('image\\right.blp')
-        --     end    
-        --     panel:fresh()
-        -- end 
+        local next_button = panel:add_button('image\\right.blp',773,371,64,64)
+        function next_button:on_button_clicked()
+            if panel.page == 1  then 
+                panel.page = 2
+                self:set_normal_image('image\\left.blp')
+            else
+                panel.page = 1
+                self:set_normal_image('image\\right.blp')
+            end    
+            panel:fresh()
+        end 
         --属性列数
         local col ={
             --x,y,w,h,字体大小，对齐方式
@@ -110,6 +111,7 @@ class.player_info_panel = extends(class.panel){
             y2 = y2 + (i-1)*cre_height - base_y
 
             local attr_name = panel:add_text(name,x1,y1,w1,h1,line_height1,align1)
+            --颜色代码
             if i <=5 then 
                 attr_name:set_color(0xffF2F200)
             elseif i<=9 then 

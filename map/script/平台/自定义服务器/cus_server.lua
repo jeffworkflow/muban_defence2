@@ -212,9 +212,9 @@ local event = {
         local player = ui.player 
         player.cl_map_level = val
         player.mall = player.mall or {}
-        player.mall['赤灵地图等级'] = 10
+        player.mall['赤灵地图等级'] = val
         print('获取赤灵地图等级：',val)
-        if val >= 10 then 
+        if val >= 7 then 
             player.mall['赤灵限定'] = 1
         end
         -- print('同步后的数据',ac.flag_map)

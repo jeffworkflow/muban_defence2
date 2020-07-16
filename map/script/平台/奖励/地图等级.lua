@@ -538,6 +538,120 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['多重暴击'] = 1,
 }
 
+
+local mt = ac.skill['魔灵限定']
+mt{
+--等久
+level = 0,
+--图标
+art = [[yujian.blp]],
+title = '魔灵限定',  
+is_order = 1,
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥23|r|cffcccccc（可与 【商城道具】御剑守护 叠加属性，但此商品无 外观效果）
+
+|cffFFE799【属性】：|r
+|cff00ff00+10  每秒加护甲
+|cff00ffff+5% 减伤
+|cff00ffff+5% 免伤几率
+|cffffff00+5% 闪避
+|cffffff00+5% 每秒回血
+|cffff0000+1  练功房数量
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['每秒加护甲'] = 10,
+['减伤'] = 5,
+['免伤几率'] = 5,
+['闪避'] = 5,
+['每秒回血'] = 5,
+['练功房怪'] = 1,
+
+}
+
+local mt = ac.skill['地图等级元祖巨龙']
+mt{
+--等久
+level = 0,
+--图标
+art = [[yujian.blp]],
+title = '元祖巨龙',  
+is_order = 1,
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥23|r|cffcccccc（可与 【商城道具】御剑守护 叠加属性，但此商品无 外观效果）
+
+|cffFFE799【属性】：|r
+|cff00ff00+10  每秒加护甲
+|cff00ffff+5% 减伤
+|cff00ffff+5% 免伤几率
+|cffffff00+5% 闪避
+|cffffff00+5% 每秒回血
+|cffff0000+1  练功房数量
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['每秒加护甲'] = 10,
+['减伤'] = 5,
+['免伤几率'] = 5,
+['闪避'] = 5,
+['每秒回血'] = 5,
+['练功房怪'] = 1,
+    passive = true,
+    ignore_cool_save = true,
+    --伤害
+    damage = function(self)
+        return (self.owner:get('敏捷')+self.owner:get('力量')+self.owner:get('智力'))*250
+    end,
+    damage_area = 1300,
+    --被动事件
+    event_name = "造成伤害效果",
+    cool = 1,
+    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+    model = [[jn_tf3.mdx]],
+    model_size = 10,
+}
+mt.damage_start = ac.skill['元祖巨龙'].damage_start
+
+
+local mt = ac.skill['圣斗士']
+mt{
+is_skill = 1,
+title = '【英雄】圣斗士',    
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[ydn.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥30|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加敏捷】+320*Lv
+【敏捷】+50%
+【移动速度】+150
+【全伤加深】+250%
+【强大的永生系统】
+
+|cff00ffff【被动效果】攻击10%几率造成多次突袭伤害
+【伤害公式】（敏捷*25+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
+--特效
+effect = [[hero_hc04.mdx]]
+}
+
+
 local japi = require("jass.japi")
 local slk = require 'jass.slk'
 
@@ -546,7 +660,7 @@ for i,name in ipairs({
 	'诸葛亮','布莱特','吕布','鬼剑愁',
 	'张飞','金克丝','貂蝉','杰拉米','黄盖',
 	'关羽','堕落天使','加百列','王昭君','雅典娜',
-	'剑仙','天尊'
+	'剑仙','天尊','圣斗士'
 }) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
@@ -589,3 +703,4 @@ for i,name in ipairs({
     end 
 -- mt.on_add = mt.on_cast_start --自动显示特效
 end    
+
