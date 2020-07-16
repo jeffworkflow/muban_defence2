@@ -17,7 +17,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-    cool = 450,
+    cool = 550,
     -- cool = 4,
 	--属性加成
 ['杀怪加全属性'] = {250,5000},
@@ -28,7 +28,7 @@ mt{
 【攻击加全属性】+250*Lv
 【每秒加全属性】+250*Lv
 
-|cff00bdec【主动施放】获得|cffffff00【（3% +0.2%*Lv）当前属性值】|cff00bdec的属性
+|cff00bdec【主动施放】获得|cffffff00【（3% +0.1%*Lv）当前属性值】|cff00bdec的属性
 
 ]],
 	--技能图标
@@ -38,7 +38,7 @@ mt{
 	--特效4
     effect4 = [[触发时，每隔0.05秒在英雄身上播放一次特效，持续3次]],
     val = function(self)
-        return 3+0.2*self.level
+        return 3+0.1*self.level
     end
 }
 function mt:play_eff()

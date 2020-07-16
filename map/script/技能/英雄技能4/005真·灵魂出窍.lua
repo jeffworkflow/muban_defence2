@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 20,
     --触发几率
-   chance = function(self) return 1*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 0.8*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能品阶
@@ -31,7 +31,7 @@ mt{
 【攻击加全属性】+300*Lv
 【每秒加全属性】+300*Lv
 
-|cff00bdec【被动效果】杀怪 1% 几率获得|cffffff00【0.05%当前属性值】|cff00bdec的属性
+|cff00bdec【被动效果】杀怪 1% 几率获得|cffffff00【0.04%当前属性值】|cff00bdec的属性
  ]],
 	--技能图标
 	art = [[rizhaowuhua.blp]],
@@ -41,7 +41,7 @@ mt{
 	effect4 = [[触发时，每隔0.05秒在英雄身上播放一次特效，持续3次]],
 	--被动事件
 	event_name = "单位-杀死单位",
-	val =0.05
+	val =0.04
 }
 function mt:play_eff()
     local hero = self.owner
