@@ -27,21 +27,21 @@ ac.wait(1200,function()
         end)    
     end    
     --普通难度选择
-    local function common_degree(player,list3) 
-        t_create_dialog(player,"选择难度",list3,1,function (index,page)  
+    local function common_degree(player,list) 
+        t_create_dialog(player,"选择难度",list,1,function (index,page)  
             ac.g_game_degree = index + (page-1) * 10
             ac.g_game_degree_attr = index + (page-1) * 10
-            ac.g_game_degree_name = list3[ac.g_game_degree].name  
+            ac.g_game_degree_name = list[ac.g_game_degree].name  
             --创建预设英雄
             ac.choose_hero()
             --游戏-开始
             ac.wait(30*1000,function()
                 ac.game:event_notify('游戏-开始')
             end)
-            ac.player.self:sendMsg("选择了 |cffffff00"..list3[ac.g_game_degree].name.."|r")
+            ac.player.self:sendMsg("选择了 |cffffff00"..list[ac.g_game_degree].name.."|r")
             ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
             
-            print("选择了 |cffffff00"..list3[ac.g_game_degree].name.."|r")
+            print("选择了 |cffffff00"..list[ac.g_game_degree].name.."|r")
 
             if ac.g_game_degree_attr >= 12 then
                 ac.player.self:sendMsg("|cffebb608【新的征程】|r|cff00ff00无限难度，当前难度通关后，即可开启下一个征程的挑战！")
@@ -52,11 +52,11 @@ ac.wait(1200,function()
     end
 
     --贪婪魔窟选择
-    local function cave_degree(player,list3) 
-        t_create_dialog(player,"选择难度",list3,1,function (index,page)  
+    local function cave_degree(player,list) 
+        t_create_dialog(player,"选择难度",list,1,function (index,page)  
             ac.g_game_degree = index + (page-1) * 10
-            ac.g_game_degree_attr = list3[ac.g_game_degree].attr
-            ac.g_game_degree_name = '贪婪魔窟-'..list3[ac.g_game_degree].name  
+            ac.g_game_degree_attr = list[ac.g_game_degree].attr
+            ac.g_game_degree_name = '贪婪魔窟-'..list[ac.g_game_degree].name  
             --创建预设英雄
             ac.choose_hero()
             --游戏-开始
@@ -73,6 +73,26 @@ ac.wait(1200,function()
             print("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
         end)
     end
+
+    --魔灵争霸选择
+    local function moling_degree(player,list) 
+        ac.g_game_degree = 2
+        ac.g_game_degree_name = list.name
+        ac.g_game_degree_attr = list.attr
+        --发起投票
+        ac.game.start_vote()
+        ac.game:event '投票结束'(function(_,flag)
+            --创建预设英雄
+            ac.choose_hero()
+            --游戏-开始
+            ac.wait(30*1000,function()
+                ac.game:event_notify('游戏-开始')
+            end)
+            ac.player.self:sendMsg("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
+            ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
+        end)
+    end
+
     local function create_choose_dialog()
         local player = get_first_player()
         if not player then 
@@ -94,6 +114,7 @@ ac.wait(1200,function()
             { name = "超绝群伦" },
         }
         local list3 = {}
+        local show_list = {}
         local bit = player.server['无限难度'] or 0
         -- print(player.server['无限难度'],bit)
         local max_degree = bit + 1
@@ -111,9 +132,14 @@ ac.wait(1200,function()
             table.insert(ac.g_game_degree_list,name)  
         end  
 
-        --新增贪婪魔窟
+        --根据无限难度 开发对应模式
         local list4 = {}
+        if bit >= 2 then 
+            table.insert(show_list,{name = '段位挑战'})
+            table.insert(show_list,{name = '魔灵争霸',attr = 1})
+        end
         if bit >= 4 then 
+            table.insert(show_list,{name = '贪婪魔窟'})
             table.insert(list4,{name = '普通',attr = 5}) 
         end
         if bit >= 8 then 
@@ -128,17 +154,12 @@ ac.wait(1200,function()
             table.insert(ac.g_game_degree_list,'贪婪魔窟-'..name)  
         end  
 
-        local list5 = {}
-        if #list4 >0 then 
-            list5 = {
-                { name = "段位挑战" },
-                { name = "贪婪魔窟" },
-            }
-        end
-        if #list5 >0 then 
-            t_create_dialog(player,"选择难度",list5,1,function (index,page)  
+        if #show_list >0 then 
+            t_create_dialog(player,"选择难度",show_list,1,function (index,page)  
                 if index == 1 then 
                     common_degree(player,list3) 
+                elseif index == 2 then 
+                    moling_degree(player,show_list[2])
                 else
                     cave_degree(player,list4) 
                 end

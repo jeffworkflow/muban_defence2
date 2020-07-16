@@ -1516,9 +1516,10 @@ function helper:pause(num)
 		 end,
 	 }
 end	
---测试武林大会
-function helper:wldh()
-	ac.game.start_wldh()
+--测试魔灵争霸
+function helper:mlzb(time)
+	local time =tonumber(time)
+	ac.game.start_wldh(time)
 end	
 
 --测试 warning ring

@@ -2667,7 +2667,7 @@ local function init()
 		--物品或是技能 各自进入自己的施法流程
 		if item_cast and ac.item_cast then 
 			skill.target = target
-			ac.item_cast(skill)
+			ac.item_cast(hero,skill)
 		else
 			skill:cast_by_client(target)
 		end

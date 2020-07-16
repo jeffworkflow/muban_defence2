@@ -13,12 +13,16 @@ function mt:on_add()
 
 	self.target:add('暴击几率%', self.mul*100)
 	self.target:add('技暴几率%', self.mul*100)
+	self.target:add('会心几率%', self.mul*100)
+	self.target:add('多重暴击几率%', self.mul*100)
 end
 
 function mt:on_remove()
 	self.effect:remove()
 	self.target:add('暴击几率%', -self.mul*100)
 	self.target:add('技暴几率%', -self.mul*100)
+	self.target:add('会心几率%', -self.mul*100)
+	self.target:add('多重暴击几率%', -self.mul*100)
 end
 
 function mt:on_cover(new)

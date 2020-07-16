@@ -27,13 +27,14 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
     local id = player.id - 1
 	player:disableControl(ac.player[16])
 
-	--复活时间 减少复活时间 
-	hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))
-	
 	hero:event '单位-死亡' (function()
 		local p = hero.owner
 		--复活时间 减少复活时间 
 		hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))
+		--武林大会开启期间 复活时间属性无效
+		if ac.flag_wldh then 
+			hero.revive_time = 10
+		end
 		local time = hero.revive_time
 		--给玩家随从 添加对应的buff
 		add_units_buff(p,time)
@@ -51,7 +52,13 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 					hero:add_buff '无敌' {
 						time = 1
 					}
-				else	
+				elseif ac.flag_wldh then 
+					random_point = ac.rect.j_rect('moku5'):get_random_point()
+					hero:revive(random_point)
+					hero:add_buff '无敌' {
+						time = 3
+					}	
+				else
 					random_point = p.revive_point or ac.map.rects['出生点']:get_point()
 					hero:revive(random_point)
 				end	

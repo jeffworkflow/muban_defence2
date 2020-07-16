@@ -25,6 +25,10 @@ function mt:on_add()
 
     --重生相关
     self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
+        --武林大会期间，没有重生
+        if ac.flag_wldh then 
+            return 
+        end
         local point = hero:get_point()
         --额外特效
         if self.effect1 then 

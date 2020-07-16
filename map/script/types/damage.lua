@@ -862,7 +862,7 @@ function mt:on_reduce_defence()
 			target:add('护甲',-val)
 			-- target:add('魔抗',-val)
 			--记录数据，给pk模式用
-			if source:is_hero() and target:is_hero() then 
+			if target:is_hero() then 
 				target.had_reduce_defence = (target.had_reduce_defence or 0) + val
 			end	
 		end

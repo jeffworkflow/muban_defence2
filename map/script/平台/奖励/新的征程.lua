@@ -19,7 +19,7 @@ function mt:on_add()
     local p = hero:get_owner()
     --黑名单和反作弊处理 有26则视为
     local flag_val = 26
-    if has_flag(p.server['新的征程奖励'],2^(flag_val-1)) then
+    if has_flag(p.server['新的征程奖励'],2^(flag_val-1)) or not ac.flag_use_mall then
         return 
     end
     for index,skill in ipairs(self.skill_book) do 

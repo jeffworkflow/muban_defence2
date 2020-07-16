@@ -88,7 +88,7 @@ function mt:on_upgrade()
 				return 
 			end
 			--物品施法
-			ac.item_cast(self)
+			ac.item_cast(hero,self)
 			if not self.owner then 
 				self.timer:remove()
 				self.timer = nil

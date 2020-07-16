@@ -15,10 +15,10 @@ require '刷怪.隐藏玩法'
 require '刷怪.踢皮球'
 
 require '刷怪.贪婪魔窟'
+require '刷怪.魔灵争霸'
 
 
 -- require '刷怪.野怪'
--- require '刷怪.武林大会'
 -- require '刷怪.随机神符'
 -- require '刷怪.刷怪奶牛'
 -- require '刷怪.无限乱斗(快速)'

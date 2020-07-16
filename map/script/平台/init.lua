@@ -21,7 +21,6 @@ require '平台.宠物技能'
 require '平台.地图等级'
 require '平台.活动'
 require '平台.评论数'
-require '平台.武林大会'
 require '平台.精彩活动'
 -- require '平台.重置版奖励'
 

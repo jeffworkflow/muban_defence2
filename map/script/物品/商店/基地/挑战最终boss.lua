@@ -55,10 +55,15 @@ function mt:on_cast_start()
     if ac.flag_last_challent then
         return 
     end
+    local creep = ac.creep['刷怪1']
+    if creep.index >=21 then 
+        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 已经进入最终环节',3)
+        return 
+    end
     ac.flag_last_challent = true
-        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000发起最终挑战|r，请大家尽快回基地防守',3)
-        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000发起最终挑战|r，请大家尽快回基地防守',3)
-        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000发起最终挑战|r，请大家尽快回基地防守',3)
+    ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000发起最终挑战|r，请大家尽快回基地防守',3)
+    ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000发起最终挑战|r，请大家尽快回基地防守',3)
+    ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000发起最终挑战|r，请大家尽快回基地防守',3)
 
 	for i=1,3 do 
 		local creep = ac.creep['刷怪'..i]

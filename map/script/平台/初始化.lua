@@ -238,6 +238,10 @@ for i=1,10 do
                         end  
                         player.server[name] = val
                         -- print('111111111111111111',player,name,val)
+                        --如果要求关闭存档 设置为0 
+                        if not ac.flag_use_mall then 
+                            player.server[name] = 0
+                        end
                     end    
                 else
                     -- print('111111111111111111',player,key_name,player.server[key_name])
@@ -307,7 +311,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
     if not flag then 
         return 
     end         
-    if finds(ac.g_game_degree_name,'贪婪魔窟') then 
+    if finds(ac.g_game_degree_name,'贪婪魔窟','魔灵争霸') then 
         return 
     end
     

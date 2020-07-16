@@ -469,7 +469,7 @@
             end
         end    
     end
-    local function item_cast(item)
+    local function item_cast(hero,item)
         -- item:cast()
         -- 设置cd
         item:cost_mana()
@@ -536,6 +536,6 @@
                 return
             end
             --进入自定义物品施法流程
-            item_cast(item)
+            item_cast(hero,item)
             hero:event_notify('物品-施法完成', hero,item)
         end)

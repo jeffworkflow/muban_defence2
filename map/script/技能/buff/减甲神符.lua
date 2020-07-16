@@ -10,11 +10,13 @@ mt.model = [[Abilities\Spells\Undead\UnholyAura\UnholyAura.mdl]]
 function mt:on_add()
 	self.effect = self.target:add_effect(self.ref, self.model)
 	self.target:add('减少周围护甲', self.value)
+	self.target:add('攻击减甲', 500)
 end
 
 function mt:on_remove()
 	self.effect:remove()
 	self.target:add('减少周围护甲', - self.value)
+	self.target:add('攻击减甲', -500)
 end
 
 function mt:on_cover(new)
