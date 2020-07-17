@@ -435,9 +435,10 @@ function mt:on_cast_start()
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00使用了|cffffff00【定时炸弹】！',5)
     -- local eff = target:add_effect('overhead',self.effect)
     local time = self.time
+    ac.on_texttag_time(time,target)
     ac.timer(1*1000, math.ceil(time),function()
-        ac.on_texttag_time(time,target)
         time = time - 1
+        ac.on_texttag_time(time,target)
     end)
     ac.wait(self.time*1000,function()
         -- eff:remove()
