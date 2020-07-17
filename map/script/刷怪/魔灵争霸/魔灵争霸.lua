@@ -202,6 +202,9 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
         if not killer:is_hero() then 
             return 
         end
+        if not ac.flag_wldh then 
+            return 
+        end
         local p = killer:get_owner()
         p.wldh_jf = (p.wldh_jf or 0 ) + 1
         --保存魔灵争霸积分
