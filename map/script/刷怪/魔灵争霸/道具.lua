@@ -11,8 +11,10 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
+effect =[[Lightnings Long.mdx]],
 rate = 50
 }
 
@@ -35,8 +37,13 @@ function mt:on_cast_start()
                     time = 0.5,
                 }
                 --概率造成伤害
-                ac.wait(0/5*1000,function()
+                ac.wait(0.5*1000,function()
                     if math.random(100000)/1000 <= self.rate then 
+                        ac.effect_ex{
+                            point = point,
+                            model = self.effect,
+                            time = 0.5
+                        }
                         if pp.hero:is_in_range(point,150) then 
                             pp.hero:kill(hero)
                         end
@@ -60,7 +67,10 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 range = 10000,
@@ -71,11 +81,13 @@ effect1 = [[calldown_flydown.mdx]],
 --特效2
 effect2 = [[calldown_flyup.mdx]],
 effect3 = [[AZ_AurelVlaicu_C4.MDX]],
+area1 = 500,
 }
 
 function mt:atk_pas_shot(target)
     local skill = self
 	local hero = self.owner
+    local source_point = target:get_point():copy()
 
 	local function start_damage()
 		--导弹上升特效
@@ -87,19 +99,19 @@ function mt:atk_pas_shot(target)
 		--导弹下降特效
 		ac.wait(800,function()
 			ac.effect_ex{
-				point = target:get_point(),
+				point = source_point:get_point(),
 				model = skill.effect1,
 				size = 2
 			}:remove() 
 			ac.wait(500,function()
 				ac.effect_ex{
-					point = target:get_point(),
+					point = source_point:get_point(),
 					model = skill.effect3,
 					size = 2
 				}:remove() 
 
 				for i, u in ac.selector()
-				: in_range(target,skill.area)
+				: in_range(source_point,skill.area1)
                 : is_type('英雄')
                 : is_not(hero)
 				: ipairs()
@@ -113,7 +125,7 @@ function mt:atk_pas_shot(target)
 	local source = hero:get_point()
 	--瞄准特效
 	ac.effect_ex{
-		point = target:get_point(),
+		point = source_point:get_point(),
 		model = skill.effect,
 		time = 3
 	}
@@ -146,7 +158,10 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 range = 10000,
@@ -230,7 +245,10 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 range = 10000,
@@ -288,6 +306,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 target_type = ac.skill.TARGET_TYPE_POINT,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
@@ -343,6 +362,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 target_type = ac.skill.TARGET_TYPE_POINT,
 range = 10000,
 area = 200,
@@ -375,7 +395,10 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 range = 10000,
@@ -386,6 +409,7 @@ time = 30
 function mt:on_cast_start()
     local target = self.target
     local hero = self.owner 
+    local skill = self 
     local p = self.owner.owner
     if not self.target:is_hero() then 
         p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
@@ -394,7 +418,11 @@ function mt:on_cast_start()
     local target_p =self.target.owner
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00使用了|cffffff00【定时炸弹】！',5)
     -- local eff = target:add_effect('overhead',self.effect)
-    ac.on_texttag_time(self.time,target)
+    local time = self.time
+    ac.timer(1*1000, math.ceil(time),function()
+        ac.on_texttag_time(time,target)
+        time = time - 1
+    end)
     ac.wait(self.time*1000,function()
         -- eff:remove()
 
@@ -426,6 +454,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 -- target_type = ac.skill.TARGET_TYPE_UNIT,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
@@ -452,6 +481,7 @@ function mt:on_cast_start()
         end
     end
     
+    local p = self.owner.owner
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00你有我有全都有！|cff00ffff'..p:get_name()..'|cff00ff00使用了|cffffff00【均富】！|cffff0000所有玩家的木头、魔丸平分',5)
 end
 
@@ -468,8 +498,11 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 }
@@ -513,8 +546,11 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 rate = 50
@@ -564,8 +600,11 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 }
@@ -600,6 +639,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 effect =[[Abilities\Spells\Undead\Sleep\SleepTarget.mdl]],
@@ -638,8 +678,11 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 time = 15,
@@ -674,8 +717,11 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 time = 15,
@@ -720,8 +766,11 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
+specail_moddel = [[boss_skill8b.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
+--目标允许	
+target_data = '联盟 玩家单位 敌人',
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 }
