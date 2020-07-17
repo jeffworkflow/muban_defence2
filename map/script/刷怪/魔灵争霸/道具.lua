@@ -12,7 +12,8 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
+
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 effect =[[Lightnings Long.mdx]],
@@ -69,7 +70,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
 target_data = '联盟 玩家单位 敌人',
@@ -161,7 +162,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
 target_data = '联盟 玩家单位 敌人',
@@ -249,7 +250,8 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
+
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
 target_data = '联盟 玩家单位 敌人',
@@ -312,7 +314,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 target_type = ac.skill.TARGET_TYPE_POINT,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
@@ -369,7 +371,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 target_type = ac.skill.TARGET_TYPE_POINT,
 range = 10000,
 area = 200,
@@ -403,7 +405,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
 target_data = '联盟 玩家单位 敌人',
@@ -463,7 +465,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 -- target_type = ac.skill.TARGET_TYPE_UNIT,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
@@ -508,7 +510,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
@@ -557,7 +559,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
@@ -612,7 +614,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
@@ -652,7 +654,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r',
 effect =[[Abilities\Spells\Undead\Sleep\SleepTarget.mdl]],
@@ -692,7 +694,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
@@ -732,7 +734,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
@@ -782,7 +784,7 @@ tip = [[
 ]],
 --物品类型
 item_type = '消耗品',
-specail_moddel = [[boss_skill8b.mdx]],
+specail_model = [[item_gem_diamond.mdx]],
 range = 10000,
 target_type = ac.skill.TARGET_TYPE_UNIT,
 --目标允许	
