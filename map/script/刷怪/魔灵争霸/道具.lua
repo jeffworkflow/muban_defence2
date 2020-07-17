@@ -329,13 +329,14 @@ function mt:on_cast_start()
     local target = self.target
 
     local x,y = target:get_point():get()
-    local rect = ac.rect.create(x-100,y-100,x+100,y+100)
+    local rect = ac.rect.create(x-50,y-50,x+50,y+50)
     local region = ac.region.create(rect)
 
     local eff = ac.effect_ex{
         point = target:get_point(),
         model = self.effect,
-        time = self.time
+        time = self.time,
+        size = 10
     }
 
     region:event '区域-进入' (function(trg, hero)
@@ -347,11 +348,18 @@ function mt:on_cast_start()
                 time = self.stu_time
             }
             ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！不看路的|cff00ffff'..hero.owner:get_name()..'|cff00ff00踩到了一个香蕉，摔倒在地！',5)
+           
+            region:remove()
+            region = nil
+            eff:remove()
         end
     end)
 
     ac.wait(self.time*1000,function()
-        region:remove()
+        if region then 
+            region:remove()
+            region = nil
+        end
     end)
 
 end
@@ -429,9 +437,10 @@ function mt:on_cast_start()
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00使用了|cffffff00【定时炸弹】！',5)
     -- local eff = target:add_effect('overhead',self.effect)
     local time = self.time
+    ac.on_texttag_time(time,target)
     ac.timer(1*1000, math.ceil(time),function()
-        ac.on_texttag_time(time,target)
         time = time - 1
+        ac.on_texttag_time(time,target)
     end)
     ac.wait(self.time*1000,function()
         -- eff:remove()

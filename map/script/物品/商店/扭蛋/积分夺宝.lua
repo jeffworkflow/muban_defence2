@@ -52,7 +52,7 @@ function mt:on_cast_start()
     local player = self.owner:get_owner()
     local p =hero.owner
     hero = player.hero 
-    if p:get('守家积分')>self.val then 
+    if p:get('守家积分')>=self.val then 
         p:add('守家积分',-self.val)
         self:add_content()
     else
