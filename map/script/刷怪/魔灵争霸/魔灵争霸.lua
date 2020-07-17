@@ -1,8 +1,8 @@
 
 
 --每15分钟传送进魔灵争霸
-local start_time = 60 * 15
-start_time = 60 
+local start_time = 60 * 12
+start_time = 65
 local duration_time = 60 * 2 --持续时间
 duration_time = 45 
 local give_award 
@@ -23,7 +23,7 @@ local function ss_wldh(time)
     ac.wait( (start_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r魔灵争霸|cffff0000 '..t_time..' |r秒后开始，请做好准备')
+            ac.player.self:sendMsg('|cffebb608【系统】|r魔灵争霸|cffff0000 '..t_time..' |r秒后开始，请做好准备',4)
             if t_time <=0 then 
                 t:remove()
             end    
@@ -101,7 +101,7 @@ ac.game.start_wldh = function(time)
     ac.wait( (duration_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r魔灵争霸|cffff0000 '..t_time..' |r秒后结束',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r魔灵争霸|cffff0000 '..t_time..' |r秒后结束',5)
             if t_time <=0 then 
                 t:remove()
             end    
@@ -212,7 +212,7 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
         end 
         p.cus_server3['魔灵争霸'] = (p.cus_server3['魔灵争霸'] or 0) + 1
         --文字提醒
-        p:sendMsg('|cffffe799魔灵争霸积分+1|r',5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00击杀成功|r |cffdf19d0可存档杀戮值+1',5)
     end) 
 
 end)    
@@ -240,7 +240,7 @@ function give_award()
     table.sort(temp_tab,function(a,b)
         return a.wldh_jf>b.wldh_jf
     end)
-    local tip = '|cffffe799【系统消息】|r|cffff0000魔灵争霸结束，发放奖励如下|r\n\n'
+    local tip = '|cffebb608【系统】|r|cffff0000魔灵争霸结束，发放奖励如下|r\n\n'
     --循环给奖励
     for i,data in ipairs(temp_tab) do 
         local ad_it,jifen = table.unpack(award_item[i])
@@ -249,7 +249,7 @@ function give_award()
         local name = list[math.random(#list)]
         local it = hero:add_item(name,true)
         -- print(i,data.player,data.wldh_jf)
-        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r共获得|cffff0000'..(data.wldh_jf+jifen)..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
+        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r共获得|cffff0000'..(data.wldh_jf+jifen)..'|r杀戮值，奖励'..it.color_name..'|r'..'\n\n'
         local key = 'mlzb'
         --保存积分
         data.player:Map_AddServerValue(key,jifen) --网易服务器
