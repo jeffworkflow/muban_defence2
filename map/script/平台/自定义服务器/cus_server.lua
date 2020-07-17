@@ -123,11 +123,13 @@ local function sync_t(temp_tab)
         --取同步列表中，未同步成功的数据
         local sync_tab
         local sync_index
-        for i,data in ipairs(ac.player.self.sync_t) do 
-            if not data.is_succ then 
-                sync_tab = data
-                sync_index = i
-                break
+        if ac.player.self.sync_t then 
+            for i,data in ipairs(ac.player.self.sync_t) do 
+                if not data.is_succ then 
+                    sync_tab = data
+                    sync_index = i
+                    break
+                end
             end
         end
         if sync_tab then 
@@ -278,7 +280,7 @@ local event = {
                 if key =='vip'  then 
                     for i,data in ipairs(ac.mall) do 
                         --禁止给地图等级送的英雄
-                        if not data[4] then 
+                        if not data[4] and data[1]~='XBDFX' then 
                             player.mall[data[2]] = tonumber(val)
                         end    
                     end    

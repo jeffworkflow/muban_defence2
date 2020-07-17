@@ -6,15 +6,29 @@ ac.game:event '游戏-最终boss' (function(trg)
         return 
     end    
     --击杀最终BOSS倒计时
-    ac.timer_ex{
-        time = 20*60,
+    local time = 20*60
+    --测试 
+    time = 20
+    local timer = ac.timer_ex{
+        time = time,
         title = '击杀最终BOSS倒计时： ' ,
         func = function ()
             ac.game:event_notify('游戏-结束')
             ac.final_boss:remove()
         end,
     }
-
+    ac.player.self:sendMsg('|cff00bdec【系统消息】|r 最终boss已出现|r，请大家共同前往击杀',3)
+    --快到时，进行提醒
+    local t_time = 15
+    local wait_timer = ac.wait( (time - t_time)*1000,function() 
+        ac.final_boss_timer = ac.timer(1000,t_time,function(t)
+                t_time = t_time -1 
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r还有|cffff0000 '..t_time..' |r秒后游戏失败')
+                if t_time <=0 then 
+                    t:remove()
+                end    
+        end)
+    end )
 
     local point = ac.map.rects['进攻点']:get_point()
     local boss = ac.player.com[2]:create_unit(ac.attack_boss[#ac.attack_boss],point)
@@ -46,6 +60,19 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:event '单位-死亡'(function(_,unit,killer) 
         ac.final_boss = nil
         ac.final_boss_death = true
+        if timer then 
+            timer:remove()
+            timer = nil
+        end
+        if wait_timer then 
+            wait_timer:remove()
+            wait_timer = nil
+        end
+        if ac.final_boss_timer then 
+            ac.final_boss_timer:remove()
+            ac.final_boss_timer = nil
+        end
+        
         if ac.main_unit then
             ac.main_unit:add_restriction('无敌')
         end

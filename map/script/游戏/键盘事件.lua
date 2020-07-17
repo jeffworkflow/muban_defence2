@@ -93,6 +93,12 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         hero:kill()
     end     
       
+	if str == 'clear' then
+		for i,data in ipairs(ac.server_key) do 
+			local key = data[1]
+			p:Map_SaveServerValue(key,nil) --网易服务器
+        end	
+    end	
     
 	if str == 'qx' then
 		if not peon or not hero then return end 

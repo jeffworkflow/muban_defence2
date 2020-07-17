@@ -26,7 +26,7 @@ function mt:on_add()
     --重生相关
     self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
         --武林大会期间，没有重生
-        if ac.flag_wldh then 
+        if ac.g_game_degree_name =='魔灵争霸' and unit:get_name() ~='基地' then 
             return 
         end
         local point = hero:get_point()

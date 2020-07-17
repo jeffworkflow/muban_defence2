@@ -32,7 +32,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		--复活时间 减少复活时间 
 		hero.revive_time = math.max(1, 10 - hero:get('减少复活时间'))
 		--武林大会开启期间 复活时间属性无效
-		if ac.flag_wldh then 
+		if ac.g_game_degree_name =='魔灵争霸' then 
 			hero.revive_time = 10
 		end
 		local time = hero.revive_time
