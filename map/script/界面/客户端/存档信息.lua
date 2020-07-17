@@ -37,6 +37,7 @@ class.player_info_panel = extends(class.panel){
             '宠物毕业数量',
             '装备总评分',
             '爱心积分',
+            '杀戮值',
             '挖宝熟练度',
             '看书熟练度',
             '打造熟练度',
@@ -49,10 +50,13 @@ class.player_info_panel = extends(class.panel){
             -- '神奇的五分钟',
             -- '深渊乱斗',
             -- '无限乱斗','无上之境','斗破苍穹','修罗模式',
+            '士兵','骑士','主教','堡垒',
+            '国王','皇后','传奇','万古流芳',
+            '超凡入圣','冠世一绝','超绝群伦','新的征程',
             '贪婪魔窟',
-            '贪婪魔窟累计',
-            '新的征程',
-            '超绝群伦','冠世一绝','超凡入圣','万古流芳','传奇','皇后','国王','堡垒','主教','骑士','士兵',
+            
+            
+            
             
 
             
@@ -61,7 +65,7 @@ class.player_info_panel = extends(class.panel){
         }
         
         panel.titles2 = {
-            '魔灵争霸'
+            '贪婪魔窟累计',
             -- '斗破(无尽-最高)','修罗(无尽-最高)',
             -- '深渊(无尽-累计)','乱斗(无尽-累计)','无上(无尽-累计)','斗破(无尽-累计)','修罗(无尽-累计)',
 
@@ -182,6 +186,8 @@ class.player_info_panel = extends(class.panel){
                         new_value = new_value..' 星'
                     elseif name =='新的征程' then
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif name =='杀戮值' then
+                        new_value = string.format("%.f",player.cus_server['魔灵争霸'] or 0)  
                     elseif name =='签到' then
                         new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value ..' |cffff0000(改名会清零)|r'

@@ -73,7 +73,7 @@ art = [[yichan.blp]],
 --说明
 tip = [[ 
  
-|cff00ff00点击进行遗产签订，直接获得|cffffff00杀敌数+50万，木头+100万，魔丸+250万|cff00ff00，但|cffff0000所有资源加成锁定为0
+|cff00ff00点击进行遗产签订，直接获得|cffffff00杀敌数+25万，木头+50万，魔丸+125万|cff00ff00，但|cffff0000所有资源加成锁定为0!
 
 ]],
 --物品类型
@@ -100,7 +100,7 @@ function mt:on_cast_start()
     hero:add('魔丸加成^',0.0000000001)
     hero:add('物品获取率^',0.0000000001)
 
-    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00签订了二爷留下来的遗产！获得|cffffff00杀敌数+25万，木头+50万，魔丸+125万',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00签订了二爷留下来的遗产！获得|cffffff00杀敌数+25万，木头+50万，魔丸+125万|cff00ff00，但|cffff0000所有资源加成锁定为0!|cffff0000所有资源加成锁定为0!|cffff0000所有资源加成锁定为0!',5)
 end
 
 

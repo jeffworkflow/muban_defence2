@@ -20,7 +20,7 @@ function mt:on_cast_start()
    --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg('|cffebb608【系统】|r'..p:get_name()..'|cffff0000使用【闪电】，顿时风云变色，电闪雷鸣！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cffff0000使用【闪电】，顿时风云变色，电闪雷鸣！',5)
 
     for i=1,6 do 
         local pp = ac.player(i)
@@ -128,7 +128,8 @@ function mt:on_cast_start()
    --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg('|cffebb608【系统】|r'..p:get_name()..'|cffff0000使用【导弹】，大家小心！',5)
+    local target_p =self.target.owner
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00发射了一枚|cffffff00【导弹】！',5)
     self:atk_pas_shot(self.target)
 end
 
@@ -211,7 +212,8 @@ function mt:on_cast_start()
    --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg('|cffebb608【系统】|r'..p:get_name()..'|cffff0000使用【追踪导弹】，小心也没用！',5)
+    local target_p =self.target.owner
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00发射了一枚|cffffff00【追踪导弹】！',5)
     self:atk_pas_shot(self.target)
 end
 
@@ -221,10 +223,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[citie.blp]],
 --说明
 tip = [[ 
-    点击后，在其它玩家的脚下，播放倒计时0.5秒的预警圈，倒计时结束，50%的概率会劈下一道闪电(闪电模型：Lightnings Long.mdx)，如果命中立刻死亡
+|cff00ff00对一名玩家使用，吸收他身上所有的铁元素，让他全属性-5%，并增加到自己身上！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -242,10 +244,11 @@ function mt:on_cast_start()
     hero = p.hero
     
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
-    ac.player.self:sendMsg(p:get_name()..'使用了导弹',5)
+    local target_p =self.target.owner
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00使用了|cffffff00【磁铁】！',5)
 
     --自己加属性
     hero:add('力量',self.target:get('力量')*0.05)  
@@ -278,10 +281,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[xiangjiao.blp]],
 --说明
 tip = [[ 
-    施法距离10000，点击在目标位置放一个香蕉，模型bananaa.mdx，持续时间30秒，当有玩家走过时，晕眩4秒
+|cff00ff00在目标地点放置一个持续30秒的香蕉，不看路的玩家可能会摔倒！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -316,6 +319,7 @@ function mt:on_cast_start()
             hero:add_buff '晕眩'{
                 time = self.stu_time
             }
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！不看路的|cff00ffff'..hero.owner:get_name()..'|cff00ff00踩到了一个香蕉，摔倒在地！',5)
         end
     end)
 
@@ -332,10 +336,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[damowang1.blp]],
 --说明
 tip = [[ 
-    点击在目标位置召唤出可以控制的一只地狱火（等待创建），持续时间20秒
+|cff00ff00召唤出一只凶恶的大魔王，持续时间20秒！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -364,10 +368,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[dingshizhadan.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00请选择你想轰炸的玩家！炸弹30秒之后爆炸！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -384,9 +388,11 @@ function mt:on_cast_start()
     local hero = self.owner 
     local p = self.owner.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
+    local target_p =self.target.owner
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00使用了|cffffff00【定时炸弹】！',5)
     -- local eff = target:add_effect('overhead',self.effect)
     ac.on_texttag_time(self.time,target)
     ac.wait(self.time*1000,function()
@@ -406,8 +412,6 @@ function mt:on_cast_start()
             u:kill(hero)
         end	
     end)
-
-
 end
 
 local mt = ac.skill['均富']
@@ -415,10 +419,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[junfu.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00你有我有全都有！将所有玩家的木头、魔丸平分
 ]],
 --物品类型
 item_type = '消耗品',
@@ -447,6 +451,8 @@ function mt:on_cast_start()
             p:add_rec_ex(rec_ex/get_player_count())
         end
     end
+    
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00你有我有全都有！|cff00ffff'..p:get_name()..'|cff00ff00使用了|cffffff00【均富】！|cffff0000所有玩家的木头、魔丸平分',5)
 end
 
 
@@ -455,10 +461,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[junpin.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00你有我有！与指定玩家平分所有木头、魔丸
 ]],
 --物品类型
 item_type = '消耗品',
@@ -475,9 +481,10 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local target_p = target.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00Good luck！|cff00ffff'..p:get_name()..'|cff00ff00对|cff00ffff'..target_p:get_name()..'|cff00ff00使用了|cffffff00【均贫】！',5)
     wood = wood + p.wood + target_p.wood
     rec_ex = rec_ex + p.rec_ex + target_p.rec_ex
 
@@ -499,10 +506,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[qiangduo1.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00可抢夺其它玩家的装备
 ]],
 --物品类型
 item_type = '消耗品',
@@ -518,7 +525,7 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local target_p = target.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
     local temp = {}
@@ -529,7 +536,7 @@ function mt:on_cast_start()
         end
     end
     if #temp <=0 then 
-        p:sendMsg('抢夺失败,对方没有任何物品',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000抢夺失败',5)
         return 
     end
     --实施抢夺
@@ -537,9 +544,11 @@ function mt:on_cast_start()
         local it = temp[math.random(#temp)]
         target:remove_item(it)
         hero:add_item(it)
-        ac.player.self:sendMsg(p:get_name()..'抢夺了 '..target_p:get_name()..' 的'..it.color_name,5)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00夺走了|cff00ffff'..target_p:get_name()..'|cff00ff00的'..it.color_name,5)
+    else
+        p:sendMsg('|cffebb608【系统】|r|cffff0000抢夺失败',5)
     end
-
+    
 end
 
 
@@ -548,10 +557,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[qiangduo.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00可抢夺其它玩家的木头、魔灵
 ]],
 --物品类型
 item_type = '消耗品',
@@ -566,7 +575,7 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local target_p = target.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
     local rate = math.random(100)
@@ -576,7 +585,7 @@ function mt:on_cast_start()
     p:add_rec_ex(rec_ex)
     target_p:add_wood(-wood)
     target_p:add_rec_ex(-rec_ex)
-    ac.player.self:sendMsg(p:get_name()..'抢夺了 '..target_p:get_name()..rate..'% 资源',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00夺走了|cff00ffff'..target_p:get_name()..'|cffff0000'..rate..'|cffff0000%的木头和魔灵',5)
 end
 
 local mt = ac.skill['冬眠']
@@ -584,10 +593,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[dongmian.blp]],
 --说明
 tip = [[ 
-    点击后，在其它玩家的脚下，播放倒计时0.5秒的预警圈，倒计时结束，50%的概率会劈下一道闪电(闪电模型：Lightnings Long.mdx)，如果命中立刻死亡
+|cff00ff00使所有玩家进入冬眠！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -601,7 +610,7 @@ function mt:on_cast_start()
     --使用 
     local hero = self.owner 
     local p =hero.owner 
-    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cffff0000使用【冬眠】，所有玩家进入了沉睡！',5)
 
     for i=1,6 do 
         local pp = ac.player(i)
@@ -622,10 +631,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNSleep.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00让指定玩家进入梦游！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -642,14 +651,14 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local target_p = target.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
     target:add_buff '晕眩'{
         time = self.time,
         model = self.effect
     }
-    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡'..target_p:get_name(),5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00让|cff00ffff'..target_p:get_name()..'|cffff0000进入了【梦游】！',5)
 end
 
 
@@ -658,10 +667,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[wugui1.blp]],
 --说明
 tip = [[ 
-    移动速度降低90%，攻击速度降低250%，攻击间隔+0.5，持续时间10秒
+|cff00ff00让指定玩家变成乌龟，持续时间10秒！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -678,7 +687,7 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local target_p = target.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
     target:add_buff '召唤物' {
@@ -696,7 +705,7 @@ function mt:on_cast_start()
         target:add('攻击速度',250) 
         target:add('攻击间隔',-0.5) 
     end)
-    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡'..target_p:get_name(),5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00把|cff00ffff'..target_p:get_name()..'|cffff0000变成了一只乌龟！',5)
 end
 
 local mt = ac.skill['充公']
@@ -704,10 +713,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shadidubo.blp]],
+art = [[chonggong.blp]],
 --说明
 tip = [[ 
-点击选择一名玩家，在他头上倒计时30秒，30秒后，播放爆炸特效：AZ_AurelVlaicu_C4.MDX，范围500码的所有人都死亡
+|cff00ff00让指定玩家的木头、魔丸全部充公！
 ]],
 --物品类型
 item_type = '消耗品',
@@ -722,12 +731,12 @@ function mt:on_cast_start()
     local p = self.owner.owner
     local target_p = target.owner
     if not self.target:is_hero() then 
-        p:sendMsg('不可对非英雄单位使用',5)
+        p:sendMsg('|cffebb608【系统】|r|cffff0000不可对非英雄单位使用',5)
         return true
     end
     target_p:add_wood(-target_p.wood)
     target_p:add_rec_ex(-target_p.rec_ex)
-    ac.player.self:sendMsg(p:get_name()..'使用了闪电卡'..target_p:get_name(),5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00让|cff00ffff'..target_p:get_name()..'|cffff0000的木头、魔丸全部充公！',5)
 end
 
 --奖品
@@ -740,6 +749,13 @@ local award_list = {
         { rand = 1, name = '香蕉*1'},
         { rand = 1, name = '大魔王*1'},
         { rand = 1, name = '定时炸弹*1'},
+        { rand = 1, name = '均富*1'},
+        { rand = 1, name = '均贫*1'},
+        { rand = 1, name = '抢钱*1'},
+        { rand = 1, name = '冬眠*1'},
+        { rand = 1, name = '梦游*1'},
+        { rand = 1, name = '乌龟*1'},
+        { rand = 1, name = '充公*1'},
         
     },
 }
