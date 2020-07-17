@@ -7,6 +7,7 @@ level = 1,
 art = [[shandian.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00使用后会风云变色，电闪雷鸣，令其它玩家遭受雷劈！
 ]],
 --物品类型
@@ -63,6 +64,7 @@ level = 1,
 art = [[daodan.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00请选择你想轰炸的玩家！
 ]],
 --物品类型
@@ -154,6 +156,7 @@ level = 1,
 art = [[zhuizongdaodan.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00请选择你想轰炸的玩家！
 ]],
 --物品类型
@@ -241,6 +244,7 @@ level = 1,
 art = [[citie.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00对一名玩家使用，吸收他身上所有的铁元素，让他全属性-5%，并增加到自己身上！
 ]],
 --物品类型
@@ -301,7 +305,9 @@ level = 1,
 --图标
 art = [[xiangjiao.blp]],
 --说明
+
 tip = [[ 
+
 |cff00ff00在目标地点放置一个持续30秒的香蕉，不看路的玩家可能会摔倒！
 ]],
 --物品类型
@@ -358,6 +364,7 @@ level = 1,
 art = [[damowang1.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00召唤出一只凶恶的大魔王，持续时间20秒！
 ]],
 --物品类型
@@ -391,6 +398,7 @@ level = 1,
 art = [[dingshizhadan.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00请选择你想轰炸的玩家！炸弹30秒之后爆炸！
 ]],
 --物品类型
@@ -450,6 +458,7 @@ level = 1,
 art = [[junfu.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00你有我有全都有！将所有玩家的木头、魔丸平分
 ]],
 --物品类型
@@ -494,6 +503,7 @@ level = 1,
 art = [[junpin.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00你有我有！与指定玩家平分所有木头、魔丸
 ]],
 --物品类型
@@ -542,6 +552,7 @@ level = 1,
 art = [[qiangduo1.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00可抢夺其它玩家的装备
 ]],
 --物品类型
@@ -596,6 +607,7 @@ level = 1,
 art = [[qiangduo.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00可抢夺其它玩家的木头、魔灵
 ]],
 --物品类型
@@ -635,6 +647,7 @@ level = 1,
 art = [[dongmian.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00使所有玩家进入冬眠！
 ]],
 --物品类型
@@ -674,6 +687,7 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNSleep.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00让指定玩家进入梦游！
 ]],
 --物品类型
@@ -713,6 +727,7 @@ level = 1,
 art = [[wugui1.blp]],
 --说明
 tip = [[ 
+
 |cff00ff00让指定玩家变成乌龟，持续时间10秒！
 ]],
 --物品类型
@@ -762,6 +777,7 @@ level = 1,
 art = [[chonggong.blp]],
 --说明
 tip = [[ 
+    
 |cff00ff00让指定玩家的木头、魔丸全部充公！
 ]],
 --物品类型

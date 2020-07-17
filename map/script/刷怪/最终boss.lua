@@ -2,13 +2,13 @@
 --进入最终boss阶段，boss苏醒，打败boss进入无尽
 ac.game:event '游戏-最终boss' (function(trg) 
     if ac.final_boss then 
-        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 最终boss已出现|r，请大家共同前往击杀',3)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最终boss已经到来，请大家共同前往击杀！|cffff0000击杀限时20分钟！',6)
         return 
     end    
     --击杀最终BOSS倒计时
     local time = 20*60
     --测试 
-    time = 20
+    -- time = 25
     local timer = ac.timer_ex{
         time = time,
         title = '击杀最终BOSS倒计时： ' ,
@@ -17,13 +17,13 @@ ac.game:event '游戏-最终boss' (function(trg)
             ac.final_boss:remove()
         end,
     }
-    ac.player.self:sendMsg('|cff00bdec【系统消息】|r 最终boss已出现|r，请大家共同前往击杀',3)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最终boss已经到来，请大家共同前往击杀！|cffff0000击杀限时20分钟！',6)
     --快到时，进行提醒
     local t_time = 15
     local wait_timer = ac.wait( (time - t_time)*1000,function() 
         ac.final_boss_timer = ac.timer(1000,t_time,function(t)
                 t_time = t_time -1 
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r还有|cffff0000 '..t_time..' |r秒后游戏失败')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00请尽快击杀最终BOSS，|cffff0000 '..t_time..' |r|cff00ff00秒后游戏失败')
                 if t_time <=0 then 
                     t:remove()
                 end    

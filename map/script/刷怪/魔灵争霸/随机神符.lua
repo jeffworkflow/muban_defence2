@@ -147,7 +147,7 @@ function mt:on_cast_start()
             time =5
         }
     elseif  rand_name == '迟缓' then
-        ac.player.self:sendMsg('|cffebb608【系统】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0攻击速度-250%，移动速度-50%|r |cff00ff00持续3秒|r',6)
+        ac.player.self:sendMsg('|cffebb608【系统】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0攻击速度-250%，移动速度-50%|r |cff00ff00持续5秒|r',6)
         hero:add_buff '迟缓'{
             time = 5,
         }
