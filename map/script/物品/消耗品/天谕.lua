@@ -12,8 +12,8 @@ art = [[tianyu.blp]],
 --类型
 item_type = "消耗品",
 --模型
-specail_model = [[EmeraldCore.mdx]],
-model_size = 1.1,
+specail_model = [[item_gem_opal.mdx]],
+model_size = 1.3,
 --品质
 -- color = "紫",
 --冷却

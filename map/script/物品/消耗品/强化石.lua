@@ -12,9 +12,9 @@ art = [[qianghuashi.blp]],
 --类型
 item_type = "消耗品",
 --模型
-specail_model = [[EmeraldCore_blue.mdx]],
+specail_model = [[item_gem_sapphire.mdx]],
 -- specail_model = [[Athelas1.mdx]],
-model_size = 0.7,
+model_size = 0.9,
 --品质
 -- color = "紫",
 --冷却
