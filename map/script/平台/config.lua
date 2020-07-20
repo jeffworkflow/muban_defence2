@@ -207,6 +207,8 @@ local cus_key = {
     {'tcslg','太初锁灵鼓',{ ['太初锁灵鼓'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('tcslg')) end}}},
     --活动
     {'mljpz','魔灵精品粽',{ ['魔灵精品粽'] = {1,1,value = function(self,p) return p:Map_GetServerValue('mljpz') end}}},
+    {'zzdxb','真正的学霸',{ ['真正的学霸'] = {1,5,value = function(self,p) return p:Map_GetServerValue('zzdxb') end}}},
+    {'mlqlg','魔灵麒麟瓜',{ ['魔灵麒麟瓜'] = {1,5,value = function(self,p) return p:Map_GetServerValue('mlqlg') end}}},
     --绝世神剑
     {'jssj','绝世神剑',{ ['绝世神剑'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('jssj'))  end}}},
 

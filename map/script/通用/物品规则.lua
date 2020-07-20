@@ -73,7 +73,11 @@
             if it:_call_event 'on_cast_start' then 
                 it.owner = nil
                 --回收句柄 @@可能会有问题，为了解决神符类物品在地上上宠物拾取消失。
-                it.recycle = false
+                if it.seller then 
+                    it.recycle = true
+                else
+                    it.recycle = false
+                end
                 return true
             end    
             --使用物品，类似消耗品 通用技能→ 升级属性处理

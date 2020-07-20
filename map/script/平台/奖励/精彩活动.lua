@@ -29,6 +29,67 @@ need_map_level = 5,
 }
 
 
+local mt = ac.skill['真正的学霸']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 5, --要动态插入
+--图标
+art = [[mljpz.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff端午节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
+|cff00ff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['全属性'] = {200000,250000,300000,350000,500000},
+['攻击减甲'] = {20,25,30,35,50},
+['每秒加护甲'] = {2,3,4,5,6},
+['全伤加深'] = {10,12.5,15,17.5,25},
+need_map_level = 5,
+}
+
+local mt = ac.skill['魔灵麒麟瓜']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 5, --要动态插入
+--图标
+art = [[mljpz.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff端午节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
+|cff00ff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['全属性'] = {200000,250000,300000,350000,500000},
+['攻击减甲'] = {20,25,30,35,50},
+['每秒加护甲'] = {2,3,4,5,6},
+['全伤加深'] = {10,12.5,15,17.5,25},
+need_map_level = 5,
+}
+
+
 local mt = ac.skill['精彩活动']
 mt{
     is_spellbook = 1,
@@ -42,7 +103,7 @@ mt{
     
 }
 mt.skill_name ={
-    '魔灵精品粽',
+    '魔灵精品粽','真正的学霸','魔灵麒麟瓜',
 }
 
 mt.skills = {

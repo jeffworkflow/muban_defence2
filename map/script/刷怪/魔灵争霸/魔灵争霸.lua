@@ -2,9 +2,9 @@
 
 --每15分钟传送进魔灵争霸
 local start_time = 60 * 12
-start_time = 65
+-- start_time = 65
 local duration_time = 60 * 2 --持续时间
-duration_time = 45 
+-- duration_time = 45 
 local give_award 
 
 --魔灵争霸倒计时（文字提醒）
