@@ -124,40 +124,40 @@ mt{
     art = [[aixin.blp]],
 }
 
-local mt = ac.skill['魔灵争霸+20']
+local mt = ac.skill['魔灵争霸+2']
 mt{
-    title = '杀戮值+20',
+    title = '杀戮值+2',
     art = [[shaluzhi.blp]],
 }
-local mt = ac.skill['魔灵争霸+400']
+local mt = ac.skill['魔灵争霸+40']
 mt{
-    title = '杀戮值+400',
+    title = '杀戮值+40',
     art = [[shaluzhi.blp]],
 }
-local mt = ac.skill['魔灵争霸+1000']
+local mt = ac.skill['魔灵争霸+100']
 mt{
-    title = '杀戮值+1000',
+    title = '杀戮值+100',
     art = [[shaluzhi.blp]],
 }
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
-        {    rand = 15.1, name = '谢谢参与',},
+        {    rand = 14.4, name = '谢谢参与',},
 
-        {    rand = 40, name = '魔灵争霸+20' },
-        {    rand = 0.5, name = '魔灵争霸+400',},
-        {    rand = 0.2, name = '魔灵争霸+1000',},
+        {    rand = 3.5, name = '魔灵争霸+2' },
+        {    rand = 0.5, name = '魔灵争霸+40',},
+        {    rand = 0.2, name = '魔灵争霸+100',},
 
-        {    rand = 4, name = '爱心积分+20' },
+        {    rand = 3.5, name = '爱心积分+20' },
         {    rand = 0.5, name = '爱心积分+400',},
         {    rand = 0.2, name = '爱心积分+1000',},
 
-        {    rand = 4, name = '挖宝熟练度+100' },
-        {    rand = 4, name = '看书熟练度+100',},
-        {    rand = 4, name = '打造熟练度+100',},
-        {    rand = 4, name = '种树熟练度+100',},
-        {    rand = 4, name = '白嫖熟练度+100',},
-        {    rand = 4, name = '摇骰子熟练度+100',},
+        {    rand = 3.5, name = '挖宝熟练度+100' },
+        {    rand = 3.5, name = '看书熟练度+100',},
+        {    rand = 3.5, name = '打造熟练度+100',},
+        {    rand = 3.5, name = '种树熟练度+100',},
+        {    rand = 3.5, name = '白嫖熟练度+100',},
+        {    rand = 3.5, name = '摇骰子熟练度+100',},
 
         {    rand = 0.5, name = '挖宝熟练度+2000' },
         {    rand = 0.5, name = '看书熟练度+2000',},

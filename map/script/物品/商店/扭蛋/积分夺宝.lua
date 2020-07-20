@@ -92,7 +92,8 @@ function mt:add_content()
     end  
     --发送消息
     if flag then 
-        ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+        
+        p:sendMsg('|cffebb608【系统】|r|cff00ffff守家日当午，汗滴禾下土！|cff00ff00恭喜获得|cffff0000'..(rand_name)..'|r',4) 
     end    
 
     if rand_name == '无' then
