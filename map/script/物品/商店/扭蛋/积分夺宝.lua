@@ -82,6 +82,19 @@ function mt:add_content()
     if not rand_name then 
         return true
     end
+    local temp_rand_name = rand_name
+    --先处理属性相关
+    for k,v in string.gsub(temp_rand_name,'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
+        --增加人物属性
+        -- print(k,v)
+        flag = true
+        p.hero:add(k,v)
+    end  
+    --发送消息
+    if flag then 
+        ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+    end    
+
     if rand_name == '无' then
         p:sendMsg('|cffebb608【系统】|r|cff00ff00什么宝物都没有',3) 
     elseif finds(rand_name,'天谕','功法连升书','无谓因果','龙之血珠','吞噬丹','三眼赤痕','火龙气息','天魂融血丹','地魂融血丹','神奇的令牌') then

@@ -227,10 +227,11 @@ ac.game:event '游戏-结束' (function(trg,flag)
     if not flag then 
         return 
     end         
-    --地图等级>5的玩家数
+    --地图等级<5的玩家数
+    local lv = 7
     local name = '爱心积分'
     local key = ac.server.name2key(name)
-    local cnt = get_player_cnt_bylv(5)
+    local cnt = get_player_cnt_bylv(lv)
     local val = cnt *100 * (0.2*ac.g_game_degree_attr+0.8)
     --保存
     if val <=0 then 

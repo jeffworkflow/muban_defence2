@@ -288,6 +288,9 @@ local event = {
             ok = true
         end    
         if ok then 
+            if finds(player.reward_name,'魔灵争霸') then 
+                player.reward_name = player.reward_name:gsub('魔灵争霸', '杀戮值')
+            end
             ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00玩家|cff00ffff'..player:get_name()..'|cff00ff00在幸运转盘抽奖的时候，惊喜获得|cffff0000'..player.reward_name..'|cff00ff00，熟练度存档可按F4进行查看',10)
             return 
         end

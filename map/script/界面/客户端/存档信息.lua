@@ -185,9 +185,9 @@ class.player_info_panel = extends(class.panel){
                         new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value..' 星'
                     elseif name =='新的征程' then
-                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  --自定义服务器
                     elseif name =='杀戮值' then
-                        new_value = string.format("%.f",player.cus_server['魔灵争霸'] or 0)  
+                        new_value = string.format("%.f",player.server['魔灵争霸'] or 0)  --网易服务器
                     elseif name =='签到' then
                         new_value = string.format("%.f",player.server[name] or 0)
                         new_value = new_value ..' |cffff0000(改名会清零)|r'

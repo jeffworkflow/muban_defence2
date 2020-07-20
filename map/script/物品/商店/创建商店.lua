@@ -84,6 +84,7 @@ ac.game:event '单位-创建商店'(function(trg,shop)
         shop:set('生命上限',999999999999)
         shop:set('生命恢复',999999999999)
         shop:set('护甲',999999999999)
+        shop:set('魔抗',999999999999)
     end   
     
     if name == '夭夭' then

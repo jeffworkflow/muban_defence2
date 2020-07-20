@@ -124,10 +124,29 @@ mt{
     art = [[aixin.blp]],
 }
 
+local mt = ac.skill['魔灵争霸+20']
+mt{
+    title = '杀戮值+20',
+    art = [[shaluzhi.blp]],
+}
+local mt = ac.skill['魔灵争霸+400']
+mt{
+    title = '杀戮值+400',
+    art = [[shaluzhi.blp]],
+}
+local mt = ac.skill['魔灵争霸+1000']
+mt{
+    title = '杀戮值+1000',
+    art = [[shaluzhi.blp]],
+}
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
         {    rand = 15.1, name = '谢谢参与',},
+
+        {    rand = 40, name = '魔灵争霸+20' },
+        {    rand = 0.5, name = '魔灵争霸+400',},
+        {    rand = 0.2, name = '魔灵争霸+1000',},
 
         {    rand = 4, name = '爱心积分+20' },
         {    rand = 0.5, name = '爱心积分+400',},

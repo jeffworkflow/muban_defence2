@@ -21,6 +21,8 @@ item_type = '消耗品',
 specail_model = [[Objects\InventoryItems\CrystalShard\CrystalShard.mdl]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_POINT,
+--120秒后，没捡取，自动消失
+time_removed = 120,
 --施法距离
 range = 200,
 --物品详细介绍的title
