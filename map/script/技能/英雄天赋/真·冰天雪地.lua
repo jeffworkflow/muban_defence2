@@ -56,7 +56,7 @@ end,
     --护甲
     defence_rate = 50,
     --碎片数量
-    de_count = 24,
+    de_count = 12,
 	--范围
     hit_area = 600,
     --护盾抵消伤害
