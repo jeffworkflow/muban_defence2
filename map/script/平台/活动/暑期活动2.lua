@@ -91,6 +91,7 @@ local function give_award(hero)
         local it = hero:add_item(name)
         p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜迅速地完成了暑假作业！获得奖励|cffff0000'..name..'|r',4)
     elseif  rand_name == '真正的学霸' then 
+        local hero = p.hero
         local key = ac.server.name2key(rand_name)
         if p:Map_GetServerValue(key) < ac.skill[rand_name].max_level  then 
             --激活成就（存档） 
@@ -341,6 +342,7 @@ function mt:add_content()
     if rand_name == '无' then
         p:sendMsg('|cffebb608【系统】|r |cff00ffff美味的西瓜|cff00ff00果真名不虚传阿',3) 
     elseif  rand_name == '魔灵麒麟瓜' then 
+        local hero = p.hero
         local key = ac.server.name2key(rand_name)
         if p:Map_GetServerValue(key) < ac.skill[rand_name].max_level  then 
             --激活成就（存档） 

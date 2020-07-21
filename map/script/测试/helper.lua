@@ -2053,7 +2053,16 @@ function helper:test_sm()
 		end
 	end)
 end	
-
+--测试神符泄漏
+function helper:test_sf()
+	local rd= 0
+	ac.loop(1000,function()
+		for i=1,200 do 
+			rd= rd + 1
+			self:add_item('物品模板')
+		end
+	end)
+end	
 --测试存档物品的当前最大id
 function helper:start_id()
 	local function get_start_id()
@@ -2105,7 +2114,7 @@ function helper:ts2()
 	local p = self.owner
 	ac.game:event_notify('任务-圣龙气运',p) 
 end
---测试 绝世神剑
+--测试 万象天工
 function helper:ts3()
 	local p = self.owner
 	ac.check_txzr(true)

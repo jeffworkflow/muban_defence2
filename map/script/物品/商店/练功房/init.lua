@@ -80,7 +80,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
             return 
         end
         -- print(11111111111111111111111)
-        ac.wait(hero.revive_time * 1000 +10,function()
+        ac.wait((hero.revive_time or 10) * 1000 +10,function()
             -- print('sdfsdf')
             local p = hero:get_owner()
             p.current_creep = nil  

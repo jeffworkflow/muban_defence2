@@ -659,7 +659,7 @@ function mt:get_key(key,hero, level, need_level)
 	if type(tip) == 'function' then
 		tip = format_function(self, tip, hero, level, need_level)
 	end
-	if tip then
+	if type(tip) =='string' then
 		tip = format_string(self, tip, hero, level, need_level)
 	end
 	return tip

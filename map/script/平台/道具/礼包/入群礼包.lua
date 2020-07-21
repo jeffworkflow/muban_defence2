@@ -49,7 +49,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
     local hero = player.hero
     local p = player
     --输入 群号给奖励
-    if string.lower(str) == mt.qq_qum then
+    if string.lower(str) == mt.qq_qum and hero then
         if not player.is_qq_qum  then 
            local skl = hero:find_skill('入群礼包',nil,true)
            skl:set_level(1)
