@@ -187,6 +187,130 @@ end,
 
 }
 
+local mt = ac.skill['好为人师']
+mt{
+    level = 0,
+art = [[hwrs.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff爱心积分≥45000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+350  杀怪加全属性|r
+|cff00ff00+175  攻击减甲|r
+|cff00ff00+35   每秒加护甲|r
+|cff00ff00+70% 对BOSS额外伤害|r
+
+]],
+need_map_level = 22,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['爱心积分'] or 0
+    local str = '|cffdf19d0（当前爱心积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+
+['杀怪加全属性'] = 350,
+['攻击减甲'] = 175,
+['每秒加护甲'] = 35,
+['对BOSS额外伤害'] = 70,
+
+}
+
+local mt = ac.skill['桃李满天下']
+mt{
+    level = 0,
+art = [[tlmtx.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff爱心积分≥60000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+400  杀怪加全属性|r
+|cff00ff00+200  攻击减甲|r
+|cff00ff00+40   每秒加护甲|r
+|cff00ff00+80% 对BOSS额外伤害|r
+
+]],
+need_map_level = 24,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['爱心积分'] or 0
+    local str = '|cffdf19d0（当前爱心积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+
+['杀怪加全属性'] = 400,
+['攻击减甲'] = 200,
+['每秒加护甲'] = 40,
+['对BOSS额外伤害'] = 80,
+
+}
+
+local mt = ac.skill['大宗师']
+mt{
+    level = 0,
+art = [[dzs.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff爱心积分≥80000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+450  杀怪加全属性|r
+|cff00ff00+225  攻击减甲|r
+|cff00ff00+45   每秒加护甲|r
+|cff00ff00+90% 对BOSS额外伤害|r
+
+]],
+need_map_level = 26,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['爱心积分'] or 0
+    local str = '|cffdf19d0（当前爱心积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+
+['杀怪加全属性'] = 450,
+['攻击减甲'] = 225,
+['每秒加护甲'] = 45,
+['对BOSS额外伤害'] = 90,
+
+}
+
+local mt = ac.skill['一代宗师']
+mt{
+    level = 0,
+art = [[ydzs.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff爱心积分≥100000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+500  杀怪加全属性|r
+|cff00ff00+250  攻击减甲|r
+|cff00ff00+50   每秒加护甲|r
+|cff00ff00+100% 对BOSS额外伤害|r
+
+]],
+need_map_level = 28,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['爱心积分'] or 0
+    local str = '|cffdf19d0（当前爱心积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+
+['杀怪加全属性'] = 500,
+['攻击减甲'] = 250,
+['每秒加护甲'] = 50,
+['对BOSS额外伤害'] = 100,
+
+}
+
 
 local mt = ac.skill['关爱萌新成就']
 mt{
@@ -207,7 +331,7 @@ mt{
     
 }
 mt.skills = {
-    '救救孩子','关爱萌新','新人辅导员','无私奉献','爱心之星','爱心大使',
+    '救救孩子','关爱萌新','新人辅导员','无私奉献','爱心之星','爱心大使','好为人师','桃李满天下','大宗师','一代宗师',
 }
 local function get_player_cnt_bylv(lv)
     local lv = lv or 1 

@@ -215,7 +215,7 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
         end 
         p.cus_server3['魔灵争霸'] = (p.cus_server3['魔灵争霸'] or 0) + 1
         --文字提醒
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00击杀成功|r |cffdf19d0可存档杀戮值+1',5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00击杀成功|r |cffdf19d0可存档杀戮值+2',5)
     end) 
 
 end)    

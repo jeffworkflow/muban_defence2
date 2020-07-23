@@ -11,8 +11,7 @@ mt{
     
 }
 mt.skills = {
-    '新的征程1','新的征程2','新的征程3',
-    --'新的征程4','新的征程5',
+    '新的征程1','新的征程2','新的征程3','新的征程4','新的征程5',
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -60,7 +59,7 @@ tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00通关难度-|cffffff00新的征程（一）-（五）|cff00ff00获得
+|cff00ff00通关难度-|cffffff00新的征程（一）-（三）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+350   杀怪加全属性|r
@@ -86,7 +85,7 @@ tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00通关难度-|cffffff00新的征程（六）-（十）|cff00ff00获得
+|cff00ff00通关难度-|cffffff00新的征程（四）-（六）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+450   杀怪加全属性|r
@@ -113,7 +112,7 @@ tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00通关难度-|cffffff00新的征程（十一）-（十五）|cff00ff00获得
+|cff00ff00通关难度-|cffffff00新的征程（七）-（九）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+550   杀怪加全属性|r
@@ -125,53 +124,59 @@ tip = [[
 content = '',
 }
 
-
 local mt = ac.skill['新的征程4']
-mt['杀怪加攻击'] = 35
-mt['减少周围护甲'] = 1000
-mt['物品获取率'] = 35
-mt['物理伤害加深'] = 35
+mt['杀怪加全属性'] = 600
+mt['攻击减甲'] = 300
+mt['暴击伤害'] = 200
+mt['物理伤害加深'] = 100
+mt['多重暴击'] = 1
 mt{
-title = '龟基赛跑',
+title = '万界破灭',
+art = [[wjpm.blp]],
 tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00携带编号为【016】-【020】的宠物通关N2以上
+|cff00ff00通关难度-|cffffff00新的征程（十）-（十二）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
-+35   杀怪加攻击
-+1000 减少周围护甲
-+35%  物品获取率
-+35%  物理伤害加深
+|cff00ff00+600   杀怪加全属性|r
+|cff00ff00+300   攻击减甲|r
+|cff00ff00+200%  暴击伤害|r
+|cff00ff00+100%  物理伤害加深|r
+|cff00ff00+1     多重暴击|r
 
 ]],
 content = '',
 }
-
 
 local mt = ac.skill['新的征程5']
-mt['杀怪加生命上限'] = 35
-mt['吸血'] = 35
-mt['每秒回血'] = 10
-mt['技能伤害加深'] = 35
+mt['杀怪加全属性'] = 650
+mt['攻击减甲'] = 325
+mt['技暴伤害'] = 200
+mt['技能伤害加深'] = 100
+mt['对BOSS额外伤害'] = 50
 mt{
-title = '洋洋得意',
+title = '神界初现',
+art = [[sjcx.blp]],
 tip = [[
 
 %content%
 |cffffe799【获得方式】：|r
-|cff00ff00携带编号为【021】-【025】的宠物通关N2以上
+|cff00ff00通关难度-|cffffff00新的征程（十三）-（十五）|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
-+35  杀怪加生命上限
-+35% 吸血
-+10% 每秒回血
-+35% 技能伤害加深
+|cff00ff00+650   杀怪加全属性|r
+|cff00ff00+325   攻击减甲|r
+|cff00ff00+200%  技暴伤害|r
+|cff00ff00+100%  技能伤害加深|r
+|cff00ff00+50%   对BOSS额外伤害|r
 
 ]],
 content = '',
 }
+
+
 
 for i=1,10 do 
     local mt = ac.skill['新的征程'..i]
