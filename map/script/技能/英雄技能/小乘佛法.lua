@@ -39,7 +39,7 @@ end,
 	--技能图标
 	art = [[xcff.blp]],
 	--特效
-	effect = [[eff.MDX]],
+	effect = [[HongXiao.mdx]],
 	--特效4
 	effect4 = [[目标位置播放特效，伤害范围500码]],
 	time = 4,

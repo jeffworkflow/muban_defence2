@@ -361,6 +361,8 @@ rect gg_rct_moku4= null
 rect gg_rct_moku5= null
 rect gg_rct_zhuzi= null
 rect gg_rct_yingxiong21= null
+rect gg_rct_saijiboss1= null
+
 endglobals
 
     
@@ -1830,6 +1832,7 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_moku5=Rect(11136.0, 25952.0, 13984.0, 27680.0)
 	set gg_rct_zhuzi=Rect(5472.0, - 5888.0, 5536.0, - 5824.0)
 	set gg_rct_yingxiong21=Rect(- 10272.0, 26400.0, - 10240.0, 26432.0)
+	set gg_rct_saijiboss1=Rect(13568.0, 28032.0, 13664.0, 28128.0)
 endfunction
 
 //===========================================================================

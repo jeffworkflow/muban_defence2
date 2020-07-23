@@ -370,7 +370,7 @@ cool = 1,
 damage_area = 600,
 skill_attack = 10,
 
-effect = [[Dekan_LOL_Garen_Blade.mdx]]
+effect = [[Tx_shenpan.mdx]]
 }
 mt.damage_start = ac.skill['魔剑击'].damage_start
 

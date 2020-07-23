@@ -47,7 +47,7 @@ v3 = {8,120},
 攻击 %v1% %几率对敌人造成 %v2% + |cffffe799攻击力*%v3%|r 的范围技能伤害
 ]],
 	--特效
-	effect = [[AA_bwaxec.mdx]],
+	effect = [[effect2_az_jingzi_jiansheng01_e1.mdx]],
 	--备注
 	effect4 = [[在目标点释放模型，范围500]],
 	--业务技能代码

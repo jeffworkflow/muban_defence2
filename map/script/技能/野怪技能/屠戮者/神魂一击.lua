@@ -16,7 +16,7 @@ mt{
     tip = [[在所有玩家英雄脚下创建一个预警圈，1秒后对圈内的英雄造成伤害，并且治疗BOSS，治疗量：BOSS的生命上限 * 5%]],
 
     --镰刀模型
-    model = [[AZ_Rotund'jere_R2.MDX]],
+    model = [[effect2_az_jingzi_jiansheng01_e1.mdx]],
 
     --预警圈模型
     model1 = [[ring_600_2.mdx]],
@@ -79,7 +79,7 @@ function mt:on_cast_start()
 
                 u:follow{
                     source = hero,
-                    model = [[AZ_Rotund'jere_R2.MDX]],
+                    model = [[effect2_az_jingzi_jiansheng01_e1.mdx]],
                     time = 1.734,
                     skill = skill,
                 }
