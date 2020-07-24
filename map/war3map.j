@@ -364,6 +364,8 @@ rect gg_rct_yingxiong21= null
 rect gg_rct_saijiboss1= null
 rect gg_rct_saijiboss2= null
 
+camerasetup gg_cam_Camera_001= null
+
 endglobals
 
     
@@ -1536,6 +1538,18 @@ function Trig_luaActions takes nothing returns nothing
     call AbilityId("exec-lua:main")
     call FlushChildHashtable(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step)
 endfunction
+
+function CreateCameras takes nothing returns nothing
+    set gg_cam_Camera_001=CreateCameraSetup()
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ZOFFSET, 0.0, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ROTATION, 34.1, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ANGLE_OF_ATTACK, 315.7, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_TARGET_DISTANCE, 1024.5, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ROLL, 0.0, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_FIELD_OF_VIEW, 70.0, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_FARZ, 9743.6, 0.0)
+    call CameraSetupSetDestPosition(gg_cam_Camera_001, 13668.5, 28065.2, 0.0)
+endfunction
 //***************************************************************************
 //*
 //*  Regions
@@ -2057,6 +2071,7 @@ function main takes nothing returns nothing
     call SetAmbientDaySound("LordaeronSummerDay")
     call SetAmbientNightSound("LordaeronSummerNight")
     call SetMapMusic("Music", true, 0)
+    call CreateCameras()
     call CreateRegions()
     call InitBlizzard()
 

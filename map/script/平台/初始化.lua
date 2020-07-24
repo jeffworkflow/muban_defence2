@@ -136,6 +136,10 @@ for i=1,10 do
                         if p:Map_HasMallItem(ac.mall[n][1])  then 
                             local name = ac.mall[n][2]  
                             p.mall[name] = 1 
+                            --特殊处理 天尊直升包
+                            if name =='天尊直升包' and p.mall['剑仙'] == 1 then
+                                p.mall['天尊'] = 1
+                            end
                         end
                     end
                 end

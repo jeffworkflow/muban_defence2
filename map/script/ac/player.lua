@@ -487,6 +487,18 @@ function mt:setCamera(where, time)
 	end
 end
 
+--重置镜头 --所有玩家
+function mt:reset_camera(time)
+	jass.ResetToGameCamera(time or 0)
+end
+
+--应用镜头 --所有玩家
+function mt:CameraSetupApplyForceDuration(str,flag,time)
+	local camera = jass['gg_cam_'..str]
+	local flag = flag or true
+	jass.CameraSetupApplyForceDuration(camera,flag,time or 0)
+end
+
 --设置镜头属性
 --	镜头属性
 --	数值

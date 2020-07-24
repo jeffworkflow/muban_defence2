@@ -46,6 +46,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         --最大3000
         local distance = tonumber(p:getCameraField 'CAMERA_FIELD_TARGET_DISTANCE')  + 250
         -- print(distance)
+        p.distance = distance
         if type(distance) =='number' then  
             p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', distance)
         end    
@@ -56,6 +57,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         --最大3000
         local distance = tonumber(p:getCameraField('CAMERA_FIELD_TARGET_DISTANCE'))  -  250
         -- print(distance)
+        p.distance = distance
         if type(distance) =='number' then  
             p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', distance)
         end   

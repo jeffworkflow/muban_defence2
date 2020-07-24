@@ -83,9 +83,15 @@ ac.game:event '游戏-最终boss' (function(trg)
             --贪婪魔窟
             ac.game:event_notify('游戏-贪婪魔窟开始')
         else
-            --游戏结束
-            print('最终boss死亡，游戏胜利',boss)
-            ac.game:event_notify('游戏-结束',true)
+            -- --游戏结束 有几率触发赛季任务
+            local rate = 15 + ac.g_game_degree_attr * 5
+            rate = 100
+            if math.random(100000)/1000<=rate then 
+                ac.game:event_notify('赛季任务')
+            else
+                print('最终boss死亡，游戏胜利',boss)
+                ac.game:event_notify('游戏-结束',true)
+            end
         end    
 
         --隐藏成就 

@@ -306,6 +306,7 @@ local function start()
 				if not global_test then 
 					val = 2750
 				end
+				p.distance = val
 				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', val, 1)
 				p:setCameraBounds(minx-400, miny-400, maxx+400, maxy+400)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 	
