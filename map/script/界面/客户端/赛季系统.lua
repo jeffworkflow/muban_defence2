@@ -373,6 +373,7 @@ local function boss_ani()
         title = '击杀倒计时： ' ,
         func = function ()
             ac.game:event_notify('游戏-结束',true)
+            ac.player.self:sendMsg("|cffebb608【系统】|r|cffff0000很遗憾未能完美通关！")
             u:remove()
         end,
     }
@@ -408,7 +409,9 @@ local function boss_ani()
                 -- p:sendMsg('恭喜获得战令',5)
             end
         end
-        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令|cffffff00（每天只能获得一个荣耀战令）|cff00ff00，按F7可查看奖励！',10)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
         --游戏胜利
         ac.game:event_notify('游戏-结束',true)
     
@@ -525,7 +528,7 @@ local function blink_tlmk(start_time)
                         zoffset = 220,
                         show = true,
                     }
-                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 20分钟 |cff00ff00内杀死最强魔帝！")
+                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 10分钟 |cff00ff00内杀死最强魔帝！")
 
                 end)
             end
