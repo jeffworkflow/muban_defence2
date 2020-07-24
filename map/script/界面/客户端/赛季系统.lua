@@ -372,12 +372,13 @@ local function boss_ani()
     end)
     
     --20分钟没杀死，游戏胜利
-    local time = 20*60
+    local time = 10*60
     local timer = ac.timer_ex{
         time = time,
         title = '击杀倒计时： ' ,
         func = function ()
             ac.game:event_notify('游戏-结束',true)
+            ac.player.self:sendMsg("|cffebb608【系统】|r|cffff0000很遗憾未能完美通关！")
             u:remove()
         end,
     }
@@ -410,9 +411,12 @@ local function boss_ani()
 
                 --保存到自定义服务器 说今天已经打过战令
                 p:SetServerValue('zhanling',1)
-                p:sendMsg('恭喜获得战令',5)
+                -- p:sendMsg('恭喜获得战令',5)
             end
         end
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
         --游戏胜利
         ac.game:event_notify('游戏-结束',true)
     
@@ -529,8 +533,7 @@ local function blink_tlmk(start_time)
                         zoffset = 220,
                         show = true,
                     }
-                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 3分钟 |cff00ff00内杀死本层所有怪物，否则魔窟坍塌，|cffff0000游戏失败！")
-                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00通过每一层的挑战后，战斗力最强的玩家，可选择|cffffff00【获得装备并终止挑战】|cff00ff00或|cffffff00【继续挑战下一层】|cffff0000（挑战失败则一无所有，请量力而行！）")
+                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 10分钟 |cff00ff00内杀死最强魔帝！")
 
                 end)
             end

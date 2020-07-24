@@ -13,7 +13,7 @@ tip = [[
 |cffffe799【获得方式】：|r
 |cff00ff00累计获得|cff00ffff一个荣耀战令|cff00ff00后获得 
 
-|cffFFE799【成就属性】：|r
+|cffFFE799【属性】：|r
 |cff00ff00+5000   |cff00ff00挖宝熟练度|r
 
 ]],
@@ -29,19 +29,59 @@ mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
+title = '复制令牌',
 --图标
-art = [[mljpz.blp]],
+art = [[lingpai.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-挖宝熟练度+5000
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff两个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00开局十分钟赠送的神奇的令牌，可额外获得一个
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
 }
 
+
+local mt = ac.skill['精英版奖励3']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '魔帝的头颅',
+--图标
+art = [[modidetoulu.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff三个荣耀战令|cff00ff00后获得 
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+66   杀怪加全属性|r
+|cff00ff00+33   攻击减甲|r
+|cff00ff00+6    每秒加护甲|r
+|cff00ff00-5%   生命上限|r
+|cff00ff00+100% 全伤加深|r
+
+]],
+['杀怪加全属性'] = 66,
+['攻击减甲'] = 33,
+['每秒加护甲'] = 6,
+['生命上限%'] = -5,
+['全伤加深'] = 100,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
+}
 
 local mt = ac.skill['进阶版奖励1']
 mt{
@@ -56,7 +96,11 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-看书熟练度+5000
+|cff00ff00购买商城道具|cffffff00【S0赛季通行证】
+|cff00ff00累计获得|cff00ffff一个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00看书熟练度|r
 
 ]],
 --目标类型
@@ -90,13 +134,18 @@ mt{
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[xueba.blp]],
+art = [[aixin.blp]],
+title = '爱心积分',
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-看书熟练度+5000
+|cff00ff00购买商城道具|cffffff00【S0赛季通行证】
+|cff00ff00累计获得|cff00ffff两个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+1000   |cff00ff00爱心积分|r
 
 ]],
 --目标类型
@@ -106,6 +155,44 @@ award_cnt = 1000,
 need_map_level = 5,
 }
 mt.on_add = ac.skill['进阶版奖励1'].on_add
+
+local mt = ac.skill['进阶版奖励3']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '魔帝的心脏',
+--图标
+art = [[mddxz.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S0赛季通行证】
+|cff00ff00累计获得|cff00ffff三个荣耀战令|cff00ff00后获得 
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+66   杀怪加全属性|r
+|cff00ff00+33   攻击减甲|r
+|cff00ff00+6    每秒加护甲|r
+|cff00ff00+15%  生命上限|r
+|cff00ff00+15%  每秒回血|r
+|cff00ff00+100% 全伤加深|r
+
+]],
+['杀怪加全属性'] = 66,
+['攻击减甲'] = 33,
+['每秒加护甲'] = 6,
+['生命上限%'] = 15,
+['每秒回血'] = 15,
+['全伤加深'] = 100,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
+}
+
 
 for i,name in ipairs({'精英版奖励1','精英版奖励2','精英版奖励3'}) do 
     local mt = ac.skill[name]
@@ -120,6 +207,9 @@ for i,name in ipairs({'精英版奖励1','精英版奖励2','精英版奖励3'})
         end
     end
 end
+
+
+
 
 local mt = ac.skill['荣耀赛季']
 mt{

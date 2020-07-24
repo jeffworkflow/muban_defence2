@@ -1541,7 +1541,7 @@ endfunction
 
 function CreateCameras takes nothing returns nothing
     set gg_cam_Camera_001=CreateCameraSetup()
-    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ZOFFSET, 0.0, 0.0)
+    call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ZOFFSET, 100.0, 0.0)
     call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ROTATION, 34.1, 0.0)
     call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_ANGLE_OF_ATTACK, 315.7, 0.0)
     call CameraSetupSetField(gg_cam_Camera_001, CAMERA_FIELD_TARGET_DISTANCE, 1024.5, 0.0)
