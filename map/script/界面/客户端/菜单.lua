@@ -122,7 +122,7 @@ ac.wait(30*1000,function()
             name = '赛季系统', 
             path = 'entry1.blp',
             key = 'F7', 
-            tip = "|cff00ff00打开查看 赛季系统|r|n|n",
+            tip = "|cff00ff00点击查看 赛季系统|r|n|n",
             x = 120,
             y = 50,
             w = 78,

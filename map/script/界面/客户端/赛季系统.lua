@@ -94,8 +94,10 @@ local new_ui = class.panel:builder
             type = 'text',
             font_size =14,
             text =[[
-【赛季时间】7月25日-7月31日
-【赛季说明】击败最强魔帝，获得赛季战令，解锁丰富的可存档奖励
+
+            
+|cffffe799【赛季时间】|r|cff00ff007月25日-7月31日|r
+|cffffe799【赛季说明】|r|cff00ff00击败最强魔帝，获得荣耀战令，解锁丰富的可存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
             ]],
             align = 'auto_newline',
         },
@@ -105,10 +107,22 @@ local new_ui = class.panel:builder
             w=150,
             h=150,
             type = 'button',
-            normal_image = [[xigua.blp]],
+            normal_image = [[sjwz.blp]],
             on_button_mouse_enter = function(self)
-                local title ='赛季王者奖励'
-                local tip =[[dsfsdfsdf]]
+                local title ='|cffdf19d0S0赛季王者|r'
+                local tip =[[
+|cffFFE799【获得方式】：|r
+|cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+1%     会心几率|r
+|cff00ff00+20%   会心伤害|r
+|cff00ff00+38.8% 全伤加深|r
+|cffff0000局内地图等级+1
+
+]]
                 self:tooltip(title,tip,0,400,200)
             end
         },
@@ -122,8 +136,10 @@ local new_ui = class.panel:builder
             txz = {
                 type = 'button',
                 on_button_mouse_enter = function(self)
-                    local title ='进阶说明'
-                    local tip =[[dsfsdfsdf]]
+                    local title ='|cffdf19d0进阶说明|r'
+                    local tip =[[
+|cff00ff00购买|cffffff00【赛季通行证】|cff00ff00后可解锁进阶版奖励！|r
+                    ]]
                     self:tooltip(title,tip,0,400,200)
                 end,
             },
@@ -449,7 +465,7 @@ local function blink_tlmk(start_time)
     ac.wait( (start_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000 '..t_time..' |r |cff00ff00秒后进入|cffffff00贪婪魔窟|cff00ff00，请做好战前准备！',2)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000 '..t_time..' |r |cff00ff00秒开始挑战|cffffff00最强魔帝|cff00ff00，请做好战前准备！',2)
     
             if t_time <=0 then 
                 t:remove()
@@ -467,7 +483,7 @@ local function blink_tlmk(start_time)
                 hero:add_buff '时停'
                 {
                     time = 5,
-                    text = '秒后进入贪婪魔窟',
+                    text = '秒后挑战最强魔帝',
                     skill = '贪婪魔窟',
                     source = hero,
                     xoffset = -205,
@@ -506,7 +522,9 @@ end
 --赛季任务
 ac.game:event '赛季任务'(function()
     local time = 15
-    ac.player.self:sendMsg('【系统消息】最强魔帝2分钟后出现，它身上有至高无上的赛季战令！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     blink_tlmk(time)
 
 end)
