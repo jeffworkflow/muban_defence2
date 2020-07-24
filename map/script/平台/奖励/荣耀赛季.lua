@@ -9,20 +9,32 @@ art = [[mljpz.blp]],
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff端午节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
-
-|cffFFE799【成就属性】：|r
-|cff00ff00+%全属性%   |cff00ff00全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
-|cff00ff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深|r
+挖宝熟练度+5000
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['全属性'] = 200000,
+award ='挖宝熟练度',
+award_cnt = 5000,
 need_map_level = 5,
+}
+
+local mt = ac.skill['精英版奖励2']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[mljpz.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+挖宝熟练度+5000
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
 }
 
 
@@ -38,20 +50,56 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff暑假活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
-
-|cffFFE799【成就属性】：|r
-|cff00ff00+%全属性%   |cff00ff00全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
-|cff00ff00+%技能伤害加深% |cffffff00%  |cff00ff00技能伤害加深|r
+看书熟练度+5000
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['全属性'] = 200000,
+award ='看书熟练度',
+award_cnt = 5000,
 need_map_level = 5,
 }
+function mt:on_add()
+    local hero = self.owner
+    local p = hero.owner
+    local name = ac.server.key2name('s0jj')
+    local flag = p.server[name] or 0
+    local cnt = tonumber(self.name:sub(16,-1))
+    print('奖励n',self.name,cnt)
+    if flag >= cnt then 
+        return 
+    end
+
+    local key = ac.server.name2key(self.award)
+    p:Map_AddServerValue(key,self.award_cnt)
+    --保存标识
+    p:Map_AddServerValue('s0jj',1)
+
+end
+
+
+local mt = ac.skill['进阶版奖励2']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[xueba.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+看书熟练度+5000
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='爱心积分',
+award_cnt = 1000,
+need_map_level = 5,
+}
+mt.on_add = ac.skill['进阶版奖励1'].on_add
 
 for i,name in ipairs({'精英版奖励1','精英版奖励2','精英版奖励3'}) do 
     local mt = ac.skill[name]
@@ -59,9 +107,9 @@ for i,name in ipairs({'精英版奖励1','精英版奖励2','精英版奖励3'})
         local hero = self.owner
         local p = hero.owner
         local name = self.name:gsub('精英版','进阶版') 
-        print('动态插入数据1:',name)
+        -- print('动态插入数据1:',name)
         if (p.mall['S0赛季通行证'] or 0 ) > 0 then 
-            print('动态插入数据2:',name)
+            -- print('动态插入数据2:',name)
             ac.game:event_notify('技能-插入魔法书',hero,'荣耀赛季',name)
         end
     end

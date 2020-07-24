@@ -27,6 +27,10 @@ class.screen_button = extends(class.button){
                     if p:is_player() then 
                         if p.hero then 
                             p.hero:add_item('神奇的令牌') 
+                            
+                            if p.hero:find_skill('精英版奖励2',nil) then 
+                                p.hero:add_item('神奇的令牌') 
+                            end
                         end 
                     end       
                 end    
