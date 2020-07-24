@@ -380,16 +380,29 @@ local function boss_ani()
     --注册死亡事件
     u:event '单位-死亡'(function(trg,unit,killer)
         timer:remove()
-        
+
         for i=1,6 do 
             local p = ac.player(i)
             if p:is_player() and (p.cus_server['战令标识'] or 0) <=0 then 
+                local hero =p.hero
                 local key = ac.server.name2key('S0赛季战令')
                 --加战令 s0zl
                 local _,max_n = math.frexp(p.server['S0赛季战令'] or 0)
                 if not has_flag(p.server['S0赛季战令'] or 0,2^(max_n)) then 
                     p:Map_AddServerValue(key,2^(max_n))
                 end
+                --一次性存档奖励
+                local name = '精英版奖励'..(max_n+1)
+                local skl = hero:find_skill(name,nil,true)
+                if not skl then 
+                    -- print('name',name)
+                    skl = ac.skill[name]
+                    if skl.award then 
+                        local key = ac.server.name2key(skl.award)
+                        p:Map_AddServerValue(key,skl.award_cnt)
+                    end
+                end
+
                 --保存到自定义服务器 说今天已经打过战令
                 p:SetServerValue('zhanling',1)
                 -- p:sendMsg('恭喜获得战令',5)
