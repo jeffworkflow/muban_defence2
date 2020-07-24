@@ -100,7 +100,11 @@ function mt:boss_skill_shot(old_point)
 			search_area = 800, --搜敌路径
 		}
 		
-		u:add_buff '攻击英雄' {}
+		local where = ac.zqmd and ac.rect.j_rect('moku'):get_point()
+
+		u:add_buff '攻击英雄' {
+			where = where
+		}
 	end
 
 end

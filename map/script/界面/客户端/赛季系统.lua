@@ -7,8 +7,8 @@ local new_ui = class.panel:builder
     y = 176,--假的 372,176,1193,593
     w = 1193,
     h = 560,
-    is_show = true,
-    -- is_show = false,
+    -- is_show = true,
+    is_show = false,
     normal_image = [[image\排行榜\phb_bg.tga]],
     -- alpha = 0.7,
     --关闭按钮
@@ -343,8 +343,13 @@ local function boss_ani()
         time = 8,
         model =[[]]
     }
+    ac.zqmd = true
+    local where = ac.rect.j_rect('moku'):get_point()
     ac.wait(8*1000,function()
-        u:add_buff '攻击英雄' {}
+		u:set_search_range(500)
+        u:add_buff '攻击英雄' {
+            where = where
+        }
         u:add_skill('净化','英雄')
         u:add_skill('大地崩','英雄')
         u:add_skill('伤害守卫','英雄')

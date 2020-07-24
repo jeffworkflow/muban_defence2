@@ -113,6 +113,8 @@ ac.game:event '游戏-最终boss' (function(trg)
                 end
             end
         end
+        --杀死最终boss
+        ac.game:event_notify('杀死最终boss')
     end) ; 
     
 end);    

@@ -9,13 +9,14 @@ function mt:on_add()
 end
 function mt:on_pulse()
 	local unit = self.target
-	ac.attack_hero(unit)
+	-- print(self.where)
+	ac.attack_hero(unit,self.where)
 end	
 
 function mt:on_remove()
 	-- self.effect:remove()
 end
-local function attack_hero(unit)
+local function attack_hero(unit,where)
 	if not unit then 
 		print('没有传递unit进来') 
 		return 
@@ -28,6 +29,7 @@ local function attack_hero(unit)
 	else 	
 		point = ac.map.rects['主城']:get_point()
 	end
+	point = where or point
 	
 	if unit:is_alive() then 
 		if unit.last_point then 

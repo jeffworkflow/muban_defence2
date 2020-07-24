@@ -311,10 +311,10 @@ end)
 
 
 --注册 保存青铜，王者等星数
-ac.game:event '游戏-结束' (function(trg,flag)
-    if not flag then 
-        return 
-    end         
+ac.game:event '杀死最终boss' (function(trg,flag)
+    -- if not flag then 
+    --     return 
+    -- end         
     if finds(ac.g_game_degree_name,'贪婪魔窟','魔灵争霸') then 
         return 
     end
