@@ -85,7 +85,7 @@ ac.game:event '游戏-最终boss' (function(trg)
         else
             -- --游戏结束 有几率触发赛季任务
             local rate = 15 + ac.g_game_degree_attr * 5
-            rate = 100
+            -- rate = 100
             if math.random(100000)/1000<=rate then 
                 ac.game:event_notify('赛季任务')
             else

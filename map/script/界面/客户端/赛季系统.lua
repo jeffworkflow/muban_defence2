@@ -542,7 +542,7 @@ local function blink_tlmk(start_time)
 end    
 --赛季任务
 ac.game:event '赛季任务'(function()
-    local time = 15
+    local time = 120
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
