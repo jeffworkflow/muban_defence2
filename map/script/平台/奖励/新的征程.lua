@@ -23,8 +23,10 @@ function mt:on_add()
     end
     for index,skill in ipairs(self.skill_book) do 
         local min = tonumber(string.sub(skill.name,13, -1))
-        min =  (min -1)*5+1
-        local max = min + 4 
+        local page_count = 3
+        min =  (min -1)*page_count+1
+        local max = min + page_count - 1
+         
         local content = ''
         local ok_cnt = 0 
         for i = min,max do 
@@ -38,7 +40,7 @@ function mt:on_add()
         end    
         skill:set('content',content)
         skill:fresh_tip()
-        if ok_cnt == 5 then 
+        if ok_cnt == page_count then 
             skill:set_level(1)
         end    
     end     
@@ -218,7 +220,7 @@ local function save_cwjnc()
             local val = 2^(p.peon.data.cid -1)
             local key = ac.server.name2key('新的征程')
             if not has_flag(p.server['新的征程'],val) then 
-                print('宠物毕业:',p.peon.data.cid,p.peon:get_name())
+                -- print('宠物毕业:',p.peon.data.cid,p.peon:get_name())
                 p:Map_AddServerValue(key,val)
             end    
         end

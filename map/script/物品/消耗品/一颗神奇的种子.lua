@@ -119,7 +119,8 @@ specail_model = [[Objects\InventoryItems\Shimmerweed\Shimmerweed.mdl]],
 --Objects\InventoryItems\CrystalShard\CrystalShard.mdl
 model_size = 1.5,
 rate =3,
-
+--120秒后，没捡取，自动消失
+time_removed = 120,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title

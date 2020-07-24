@@ -50,6 +50,36 @@ local function create_u(skill,unit_name,target_rect,f)
     end)
 end
 
+local function check(p)
+    if p.cnt_total_succ == 4 and not ac.flag_msjy  then
+        ac.flag_msjy = true
+        local unit = ac.find_unit('第六幕·魔神之路')
+        unit:add_sell_item('魔神的交易',9)
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+    end
+    if p.cnt_total_succ == 8 and not ac.flag_mshc  then
+        ac.flag_mshc = true
+        local unit = ac.find_unit('第六幕·魔神之路')
+        unit:add_sell_item('魔神的合成',12)
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+    end
+
+    if p.cnt_total_succ == 12 and not ac.flag_mszs  then
+        ac.flag_mszs = true
+        local unit = ac.find_unit('第六幕·魔神之路')
+        unit:add_sell_item('魔神之石',4)
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+    end
+end
 
 function mt:on_cast_start()
     local p=self.owner.owner
@@ -84,34 +114,7 @@ function mt:on_cast_start()
             p.cnt_succ_ms = (p.cnt_succ_ms or 0) + 1 
             p.cnt_dz = (p.cnt_dz or 0) + 1
             p.cnt_total_succ =  (p.cnt_total_succ or 0) + 1
-            if p.cnt_total_succ == 4 and not ac.flag_msjy  then
-                ac.flag_msjy = true
-                local unit = ac.find_unit('第六幕·魔神之路')
-                unit:add_sell_item('魔神的交易',9)
-                
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-            end
-            if p.cnt_total_succ == 8 and not ac.flag_mshc  then
-                ac.flag_mshc = true
-                local unit = ac.find_unit('第六幕·魔神之路')
-                unit:add_sell_item('魔神的合成',12)
-                
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-            end
-
-            if p.cnt_total_succ == 12 and not ac.flag_mszs  then
-                ac.flag_mszs = true
-                local unit = ac.find_unit('第六幕·魔神之路')
-                unit:add_sell_item('魔神之石',4)
-                
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-            end
+            check(p)
         end)
     end
 
@@ -122,6 +125,8 @@ function mt:on_cast_start()
             local it_name = p:random(ac.ts_item,true)
             -- local it_name = ac.ts_item[math.random(#ac.ts_item)]
             if it_name then 
+                local mt = ac.skill[it_name]
+                mt.owner_ship = p
                 ac.item.create_item(it_name,unit:get_point())
             end
             -- p:sendMsg('恭喜击败'..name,5)
@@ -131,6 +136,7 @@ function mt:on_cast_start()
             p.cnt_succ_ms = (p.cnt_succ_ms or 0) + 1 
             p.cnt_dz = (p.cnt_dz or 0) + 1 
             p.cnt_total_succ =  (p.cnt_total_succ or 0) + 1
+            check(p)
         end)
     end
 end

@@ -206,14 +206,14 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
             return 
         end
         local p = killer:get_owner()
-        p.wldh_jf = (p.wldh_jf or 0 ) + 1
+        p.wldh_jf = (p.wldh_jf or 0 ) + 2
         --保存魔灵争霸积分
-        p:Map_AddServerValue('mlzb',1) --网易服务器
+        p:Map_AddServerValue('mlzb',2) --网易服务器
         --保存到自定义服务器 暂时先保存值，后面结束时再保存到服务器
         if not p.cus_server3 then 
             p.cus_server3 = {} 
         end 
-        p.cus_server3['魔灵争霸'] = (p.cus_server3['魔灵争霸'] or 0) + 1
+        p.cus_server3['魔灵争霸'] = (p.cus_server3['魔灵争霸'] or 0) + 2
         --文字提醒
         p:sendMsg('|cffebb608【系统】|r|cff00ff00击杀成功|r |cffdf19d0可存档杀戮值+2',5)
     end) 
@@ -221,11 +221,11 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
 end)    
 -----------------------------------------发放奖励-------------------------------------------------------
 local award_item = {
-    [1] = {'红',10},
-    [2] = {'金',8},
-    [3] = {'蓝',6},
-    [4] = {'白',4},
-    [5] = {'白',2},
+    [1] = {'红',20},
+    [2] = {'金',16},
+    [3] = {'蓝',12},
+    [4] = {'白',8},
+    [5] = {'白',4},
     [6] = {'白',0},
 }
 function give_award()

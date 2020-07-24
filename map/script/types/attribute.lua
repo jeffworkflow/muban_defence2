@@ -903,6 +903,12 @@ on_get['技暴几率'] = function(self, magic_rate)
 end
 
 
+on_get['多重射'] = function(self, cnt)
+	if cnt > 100 then
+		cnt = 100
+	end
+	return cnt
+end
 on_get['会心几率'] = function(self, heart_rate)
 	if heart_rate > 90 then
 		heart_rate = math.min(heart_rate,90 + self:get('会心几率极限')) 
