@@ -1203,6 +1203,22 @@ function helper:damage(damage)
 	}
 end
 
+--伤害自己
+function helper:add_color(str,cnt)
+	if not str or str =='' then 
+		return 
+	end	
+	for i,data in pairs(ac.skill) do 
+		if type(data) == 'table' then 
+			if finds(data.name,str) then 
+				for i=1,tonumber(cnt) or 1 do 
+					ac.item.add_skill_item(data.name,self)
+				end	
+			end	
+		end	
+	end	
+    
+end
 
 function helper:hotfix()
 	require('types.hot_fix').main(self:get_owner())
@@ -1769,6 +1785,14 @@ function helper:as(str,cnt)
 	if not str or str =='' then 
 		return 
 	end	
+	--优先添加品质物品
+	if ac.quality_skill and ac.quality_skill[str] then 
+		for i=1,tonumber(cnt) or 1 do 
+			local name = ac.quality_skill[str][math.random(#ac.quality_skill[str])]
+			ac.item.add_skill_item(name,self)
+		end	
+		return 
+	end
 	for i,data in pairs(ac.skill) do 
 		if type(data) == 'table' then 
 			if finds(data.name,str) then 

@@ -100,9 +100,11 @@ function mt:on_cast_shot()
 						-- else 
 						-- 	new_item = ac.item.create_item(selected_item[index].name,self.target) --创建物品
 						-- end
+						-- print('删除物品1：',selected_item[index].name,selected_item[index].color)
 						selected_item[index]:add_item_count(-1)
 						table.insert(selected_item,selected_item[index])
 					else
+						-- print('删除物品2：',selected_item[index].name,selected_item[index].color)
 						selected_item[index]:item_remove()
 					end	
 					selected_item[index] = nil
@@ -124,10 +126,14 @@ function mt:on_cast_shot()
 					local new_item
 					if next_type =='技能' then  
 						new_item= ac.item.create_skill_item(name,self.target) --创建物品
+						-- print('合成物品：',new_item.name,new_item.color)
 					else
 						new_item= ac.item.create_item(name,self.target) --创建物品
 					end
-					table.insert(selected_item,new_item)
+					
+					if finds(new_item.item_type,'装备','消耗品') and new_item.color and finds(new_item.color,'白','蓝','金','黄阶','玄阶','地阶')  then 
+						table.insert(selected_item,new_item)
+					end
 				end 
 			end	
 		end	
