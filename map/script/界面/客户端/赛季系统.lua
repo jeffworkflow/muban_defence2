@@ -357,7 +357,12 @@ local function boss_ani()
     
         u:add_skill('金色莲花','英雄')
         u:add_skill('金色鎏金','英雄')
-    
+
+        u:add_skill('给你一棒','英雄')
+        u:add_skill('织网','英雄')
+        u:add_skill('地狱噬咬','英雄')
+        u:add_skill('冰河爆裂','英雄')
+
         u:add_skill('屠戮_黑夜降临','隐藏')
         u:add_skill('屠戮_神魂一击','隐藏')
         u:add_skill('屠戮_屠戮盛宴','隐藏')
@@ -369,6 +374,8 @@ local function boss_ani()
         
         u:add('减伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
         u:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
+
+        u:add('闪避',50)
     end)
     
     --20分钟没杀死，游戏胜利
@@ -418,6 +425,7 @@ local function boss_ani()
         ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
         ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完美通关！获得荣耀战令，按F7可查看奖励！|cffffff00（每天只能获得一个荣耀战令）',10)
         --游戏胜利
+        ac.game:event_notify('杀死最强魔帝')
         ac.game:event_notify('游戏-结束',true)
     
     end)
@@ -543,7 +551,7 @@ end
 --赛季任务
 ac.game:event '赛季任务'(function()
     local time = 120
-    -- time =15
+    time =15
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
