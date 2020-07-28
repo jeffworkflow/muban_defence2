@@ -701,6 +701,9 @@ for i,name in ipairs({
         local hero = self.owner
         local player = self.owner:get_owner()
         local target_name = self.name
+        if target_name =='等级天尊' then 
+            target_name = '天尊'
+        end
         --连续点两下Pa取消特效
         if player.last_tran_unit and player.last_tran_unit == self.name then 
             target_name = hero:get_name()
