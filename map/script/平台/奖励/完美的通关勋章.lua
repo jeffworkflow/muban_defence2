@@ -1,5 +1,5 @@
 
-local mt = ac.skill['士兵勋章']
+local mt = ac.skill['完美的士兵勋章']
 mt{
     level = 0,
 art = [[shibing.blp]],
@@ -22,7 +22,7 @@ need_map_level = 5,
 ['攻击速度'] = 25,
 
 }
-local mt = ac.skill['骑士勋章']
+local mt = ac.skill['完美的骑士勋章']
 mt{
     level = 0,
 art = [[qishi.blp]],
@@ -46,7 +46,7 @@ need_map_level = 6,
 
 }
 
-local mt = ac.skill['主教勋章']
+local mt = ac.skill['完美的主教勋章']
 mt{
     level = 0,
 art = [[zhujiao.blp]],
@@ -71,7 +71,7 @@ need_map_level = 7,
 }
 
 
-local mt = ac.skill['堡垒勋章']
+local mt = ac.skill['完美的堡垒勋章']
 mt{
     level = 0,
 art = [[baolei.blp]],
@@ -95,7 +95,7 @@ need_map_level = 8,
 
 }
 
-local mt = ac.skill['国王勋章']
+local mt = ac.skill['完美的国王勋章']
 mt{
     level = 0,
 art = [[guowang.blp]],
@@ -119,7 +119,7 @@ need_map_level = 9,
 
 }
 
-local mt = ac.skill['皇后勋章']
+local mt = ac.skill['完美的皇后勋章']
 mt{
     level = 0,
 art = [[huanghou.blp]],
@@ -143,7 +143,7 @@ need_map_level = 10,
 
 }
 
-local mt = ac.skill['传奇勋章']
+local mt = ac.skill['完美的传奇勋章']
 mt{
     level = 0,
 art = [[chuanqi.blp]],
@@ -167,7 +167,7 @@ need_map_level = 11,
 
 }
 
-local mt = ac.skill['万古流芳勋章']
+local mt = ac.skill['完美的万古流芳勋章']
 mt{
     level = 0,
 art = [[wanguliufang.blp]],
@@ -191,7 +191,7 @@ need_map_level = 12,
 
 }
 
-local mt = ac.skill['超凡入圣勋章']
+local mt = ac.skill['完美的超凡入圣勋章']
 mt{
     level = 0,
 art = [[chaofanrusheng.blp]],
@@ -215,7 +215,7 @@ need_map_level = 13,
 
 }
 
-local mt = ac.skill['冠世一绝勋章']
+local mt = ac.skill['完美的冠世一绝勋章']
 mt{
     level = 0,
 art = [[guanshiyijue.blp]],
@@ -241,7 +241,7 @@ need_map_level = 14,
 
 }
 
-local mt = ac.skill['超绝群伦勋章']
+local mt = ac.skill['完美的超绝群伦勋章']
 mt{
     level = 0,
 art = [[chaojuequnlun.blp]],
@@ -271,7 +271,7 @@ need_map_level = 15,
 
 -- tgxz
 
-local mt = ac.skill['通关勋章']
+local mt = ac.skill['完美的通关勋章']
 mt{
     is_spellbook = 1,
     is_order = 2,
@@ -283,7 +283,9 @@ mt{
     
 }
 mt.skills = {
-    '士兵勋章','骑士勋章','主教勋章','堡垒勋章','国王勋章','皇后勋章','传奇勋章','万古流芳勋章','超凡入圣勋章','冠世一绝勋章','超绝群伦勋章'
+    '完美的士兵勋章','完美的骑士勋章','完美的主教勋章','完美的堡垒勋章',
+    '完美的国王勋章','完美的皇后勋章','完美的传奇勋章','完美的万古流芳勋章',
+    '完美的超凡入圣勋章','完美的冠世一绝勋章','完美的超绝群伦勋章'
 }
 
 
@@ -295,25 +297,20 @@ local function save(tab)
             local rate = tab.rate
             index = 2^(index-1)
             --没有这个数据
-            if not has_flag((p.server['通关勋章'] or 0),index) then
-                --概率 受通关次数影响
-                rate = rate + (p.server[ac.g_game_degree_name] or 0) * 4
-                print('获得通关勋章1：',p,index,rate,tab[1],ac.g_game_degree_name)
-                if math.random(100000)/1000 < rate then
-                    local key = ac.server.name2key('通关勋章')
-                    print('获得通关勋章2：',p,index,rate,tab[1],ac.g_game_degree_name)
+            if not has_flag((p.server['完美的通关勋章'] or 0),index) then
+                local key = ac.server.name2key('完美的通关勋章')
+                print('获得完美的通关勋章2：',p,index,rate,tab[1],ac.g_game_degree_name)
 
-                    p:sendMsg('|cffebb608【系统】|r|cffff0000运气爆棚！！！恭喜获得本难度的勋章！|cff00ff00勋章的属性可在最强魔灵-通关难度奖励-通关勋章中查看！',8)
+                p:sendMsg('|cffebb608【系统】|r|cffff0000运气爆棚！！！恭喜获得本难度的勋章！|cff00ff00勋章的属性可在最强魔灵-通关难度奖励-通关勋章中查看！',8)
 
-                    p:Map_AddServerValue(key,index)  
-                end
+                p:Map_AddServerValue(key,index)  
             end
         end
     end
 end
 
 --注册获得
-ac.game:event '杀死最终boss' (function(trg,flag)
+ac.game:event '杀死最强魔帝' (function(trg,flag)
     -- if not flag then 
     --     return 
     -- end         
@@ -323,11 +320,12 @@ ac.game:event '杀死最终boss' (function(trg,flag)
     if ac.g_game_degree_attr > 11 then 
         return 
     end
-    local list = ac.server.get_tab('通关勋章')[3]
+    local list = ac.server.get_tab('完美的通关勋章')[3]
     -- local name = 
-    local tab = list[ac.g_game_degree_name..'勋章']
+    local tab = list['完美的'..ac.g_game_degree_name..'勋章']
     if tab then 
-        -- print('勋章：',ac.g_game_degree_name..'勋章')
+        -- print('完美的勋章：',ac.g_game_degree_name..'勋章')
+        -- print_r(tab)
         save(tab)
     end
 end)

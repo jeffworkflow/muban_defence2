@@ -259,7 +259,7 @@ local function fresh_item(p)
 end
 ac.game:event '选择难度' (function(_,g_game_degree_name)
     --难度系数 存档物品 最高难15 按难15计算
-    local name = '难'..(ac.g_game_degree_attr > 15 and 15 or ac.g_game_degree_attr)
+    local name = '难'..(ac.g_game_degree_attr > 19 and 19 or ac.g_game_degree_attr)
     for i,data in ipairs(reward['神奇的令牌']) do 
         if data.name == '随机存档物品' then 
             data.name = ac.unit_reward[name][1].name

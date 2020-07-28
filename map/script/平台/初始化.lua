@@ -132,6 +132,10 @@ for i=1,10 do
                     if ac.mall[n][4] then 
                         local name = ac.mall[n][2]  
                         p.mall[name] = 1 
+                        --特殊处理 地图等级天尊
+                        if name == '等级天尊' then 
+                            p.mall['天尊'] = 1
+                        end
                     else
                         if p:Map_HasMallItem(ac.mall[n][1])  then 
                             local name = ac.mall[n][2]  

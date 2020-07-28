@@ -35,11 +35,11 @@ function mt:on_add()
 
     hero:add('攻击距离', self.attack_distance)
 
-    if not hero.weapon then 
-        hero.weapon = {}
-    end    
-    hero.weapon['弹道模型'] = self.weapon_model
-    hero.weapon['弹道速度'] = 4000
+    -- if not hero.weapon then 
+    --     hero.weapon = {}
+    -- end    
+    -- hero.weapon['弹道模型'] = self.weapon_model
+    -- hero.weapon['弹道速度'] = 4000
     
 end
 
@@ -55,11 +55,11 @@ function mt:on_remove()
 
     hero:add('攻击距离', -self.attack_distance)
     
-    if not hero.weapon then 
-        hero.weapon = {}
-    end    
-    hero.weapon['弹道模型'] = nil
-    hero.weapon['弹道速度'] = nil
+    -- if not hero.weapon then 
+    --     hero.weapon = {}
+    -- end    
+    -- hero.weapon['弹道模型'] = nil
+    -- hero.weapon['弹道速度'] = nil
 
 end
 

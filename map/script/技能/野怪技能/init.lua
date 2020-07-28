@@ -25,7 +25,7 @@ require '技能.野怪技能.善恶有报'
 require '技能.野怪技能.致命一击'
 require '技能.野怪技能.死亡之环'
 
-require '技能.野怪技能.多重射击'
+-- require '技能.野怪技能.多重射击'
 require '技能.野怪技能.快速'
 require '技能.野怪技能.火焰强化'
 require '技能.野怪技能.特别强壮'

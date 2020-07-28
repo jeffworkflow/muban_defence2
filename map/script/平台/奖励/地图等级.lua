@@ -656,6 +656,35 @@ tip = [[
 effect = [[JD_xuemai01.mdx]]
 }
 
+local mt = ac.skill['等级天尊']
+mt{
+is_skill = 1,
+title = '【英雄】天尊',    
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[hjsds.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥40|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+275*Lv
+【攻击减甲】+488
+【每秒加护甲】+68
+【全伤加深】+350%
+【极致的攻击速度】
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*12.5*Lv+2%敌人的最大生命值）
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
+--特效
+effect = [[xianzhang.mdx]]
+}
 
 local japi = require("jass.japi")
 local slk = require 'jass.slk'
@@ -665,7 +694,7 @@ for i,name in ipairs({
 	'诸葛亮','布莱特','吕布','鬼剑愁',
 	'张飞','金克丝','貂蝉','杰拉米','黄盖',
 	'关羽','堕落天使','加百列','王昭君','雅典娜',
-	'剑仙','天尊','圣斗士'
+	'剑仙','等级天尊','圣斗士'
 }) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
@@ -709,3 +738,17 @@ for i,name in ipairs({
 -- mt.on_add = mt.on_cast_start --自动显示特效
 end    
 
+
+--额外处理 地图等级50级时，且有天尊商城道具的，额外给技能
+ac.game:event '玩家-注册英雄' (function(_, player, hero)
+    -- hero
+    -- 加技能
+    if hero:get_name() ~='天尊' then 
+        return 
+    end
+    local p = player 
+    if p:Map_GetMapLevel() > 50 and p:Map_HasMallItem('TZ') then 
+        hero:add_skill('剑气冲霄2','英雄')
+    end
+
+end)

@@ -13,4 +13,5 @@ require '平台.奖励.通关勋章'
 require '平台.奖励.爱心积分'
 require '平台.奖励.魔灵争霸'
 require '平台.奖励.荣耀赛季'
+require '平台.奖励.完美的通关勋章'
 
