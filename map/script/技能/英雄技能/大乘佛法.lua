@@ -43,8 +43,8 @@ end,
 	effect4 = [[目标位置播放特效，伤害范围500码
 
 0.05秒后再播放一次，类似万剑归宗，只有模型特效，无伤害]],
-	time = 4,
-	pulse_time = 1,
+	time = 1,
+	pulse_time = 0.25,
 }
 
 function mt:atk_pas_shot(target)

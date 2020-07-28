@@ -97,7 +97,7 @@ local new_ui = class.panel:builder
 
             
 |cffffe799【赛季时间】|r|cff00ff007月25日-7月31日|r
-|cffffe799【赛季说明】|r|cff00ff00击败最强魔帝，获得荣耀战令，解锁丰富的可存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
+|cffffe799【赛季说明】|r|cff00ff00通关有概率召唤魔帝，击败可得荣耀战令，解锁大量存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
             ]],
             align = 'auto_newline',
         },
@@ -379,7 +379,7 @@ local function boss_ani()
     end)
     
     --20分钟没杀死，游戏胜利
-    local time = 10*60
+    local time = 5*60
     local timer = ac.timer_ex{
         time = time,
         title = '击杀倒计时： ' ,
@@ -541,7 +541,7 @@ local function blink_tlmk(start_time)
                         zoffset = 220,
                         show = true,
                     }
-                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 10分钟 |cff00ff00内杀死最强魔帝！")
+                    ac.player.self:sendMsg("|cffebb608【系统】|r|cff00ff00在|cffffff00 5分钟 |cff00ff00内杀死最强魔帝！")
 
                 end)
             end
