@@ -6,7 +6,7 @@ art = [[shibing.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff士兵|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff士兵|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+50 杀怪加全属性|r
@@ -29,7 +29,7 @@ art = [[qishi.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff骑士|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff骑士|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+75 杀怪加全属性|r
@@ -53,7 +53,7 @@ art = [[zhujiao.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff主教|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff主教|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+100 杀怪加全属性|r
@@ -78,7 +78,7 @@ art = [[baolei.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff堡垒|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff堡垒|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+125 杀怪加全属性|r
@@ -102,7 +102,7 @@ art = [[guowang.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff国王|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff国王|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+150 杀怪加全属性|r
@@ -126,7 +126,7 @@ art = [[huanghou.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff皇后|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff皇后|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+175  杀怪加全属性|r
@@ -150,7 +150,7 @@ art = [[chuanqi.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff传奇|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff传奇|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+200 杀怪加全属性|r
@@ -174,7 +174,7 @@ art = [[wanguliufang.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff万古流芳|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff万古流芳|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+225 杀怪加全属性|r
@@ -198,7 +198,7 @@ art = [[chaofanrusheng.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff超凡入圣|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff超凡入圣|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+250 杀怪加全属性|r
@@ -222,7 +222,7 @@ art = [[guanshiyijue.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff冠世一绝|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff冠世一绝|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+275 杀怪加全属性|r
@@ -248,7 +248,7 @@ art = [[chaojuequnlun.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff超绝群伦|cff00ff00有概率获得，概率和|cffff0000通关次数|cff00ff00有关
+|cff00ff00通关|cff00ffff超绝群伦|cff00ff00有概率召唤|cffffff00最强魔帝|cff00ff00，击败后可获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+300 杀怪加全属性|r
@@ -278,7 +278,7 @@ mt{
     art = [[shibing.blp]],
     tip = [[
 
-点击查看|cff00ffff通关勋章|r|cffffff00（每次通关有概率获得对应难度的勋章，获得概率和|cffff0000通关次数|cffffff00有关）
+点击查看|cff00ffff完美的通关勋章|r|cffffff00（每次通关有概率召唤最强魔帝，击败后可获得对应难度的完美勋章）
  ]],
     
 }

@@ -12,6 +12,8 @@ mt{
    damage_area = 500,
 	--技能品阶
 	color = "天赋",
+	title = "剑气冲霄",
+
 	--技能类型
 	skill_type = "天赋",
 	--被动

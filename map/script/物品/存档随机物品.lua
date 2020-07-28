@@ -31,12 +31,22 @@ local item_list = {
 -- ['菲普斯的护手']={num=20,type1 = '手套',lv = 4,art = 'siji6.blp',attr = {['护甲']=13500,['攻击距离']=120}},
 
 --新增
-['卓拉的魔石']={num=20,type1 = '武器',lv = 5,art = 'wuji1.blp',attr = {['攻击']=100000000,['攻击减甲']=400}},
-['卓拉的魔袍']={num=20,type1 = '衣服',lv = 5,art = 'wuji2.blp',attr = {['护甲']=100000}},
-['卓拉的魔法帽']={num=20,type1 = '头盔',lv = 5,art = 'wuji3.blp',attr = {['护甲']=25000,['技能基础伤害']=55000000}},
-['卓拉的魔靴']={num=20,type1 = '鞋子',lv = 5,art = 'wuji4.blp',attr = {['护甲']=25000,['移动速度']=150}},
-['卓拉的护腕']={num=20,type1 = '腰带',lv = 5,art = 'wuji5.blp',attr = {['护甲']=25000,['生命上限']=750000000}},
-['卓拉的护手']={num=20,type1 = '手套',lv = 5,art = 'wuji6.blp',attr = {['护甲']=25000,['攻击距离']=150}},
+-- ['卓拉的魔石']={num=20,type1 = '武器',lv = 5,art = 'wuji1.blp',attr = {['攻击']=100000000,['攻击减甲']=400}},
+-- ['卓拉的魔袍']={num=20,type1 = '衣服',lv = 5,art = 'wuji2.blp',attr = {['护甲']=100000}},
+-- ['卓拉的魔法帽']={num=20,type1 = '头盔',lv = 5,art = 'wuji3.blp',attr = {['护甲']=25000,['技能基础伤害']=55000000}},
+-- ['卓拉的魔靴']={num=20,type1 = '鞋子',lv = 5,art = 'wuji4.blp',attr = {['护甲']=25000,['移动速度']=150}},
+-- ['卓拉的腰带']={num=20,type1 = '腰带',lv = 5,art = 'wuji5.blp',attr = {['护甲']=25000,['生命上限']=750000000}},
+-- ['卓拉的护手']={num=20,type1 = '手套',lv = 5,art = 'wuji6.blp',attr = {['护甲']=25000,['攻击距离']=150}},
+
+--新增
+['天行者的队长盾']={num=20,type1 = '武器',lv = 6,art = 'liuji1.blp',attr = {['攻击']=200000000,['攻击减甲']=800}},
+['天行者的胸甲']={num=20,type1 = '衣服',lv = 6,art = 'liuji2.blp',attr = {['护甲']=200000}},
+['天行者的头盔']={num=20,type1 = '头盔',lv = 6,art = 'liuji3.blp',attr = {['护甲']=50000,['技能基础伤害']=100000000}},
+['天行者的战靴']={num=20,type1 = '鞋子',lv = 6,art = 'liuji4.blp',attr = {['护甲']=50000,['移动速度']=180}},
+['天行者的护腰']={num=20,type1 = '腰带',lv = 6,art = 'liuji5.blp',attr = {['护甲']=50000,['生命上限']=1500000000}},
+['天行者的护腕']={num=20,type1 = '手套',lv = 6,art = 'liuji6.blp',attr = {['护甲']=50000,['攻击距离']=180}},
+
+
 }
 -- local function get_start_id()
 --     local temp={}
@@ -51,7 +61,7 @@ local item_list = {
 --     return temp[1] or 1
 -- end
 --起始id
-local start_id =1+6*20*4*4+1
+local start_id =1+6*20*4*4+1+6*20*4+1
 -- print(start_id)
 local max = 0
 for name, data in pairs(item_list) do 

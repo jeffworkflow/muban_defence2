@@ -39,7 +39,7 @@ end,
 	--技能图标
 	art = [[card1_28.blp]],
 	--特效
-	effect = [[[TX]ES_Q.mdl]],
+	effect = [[Abilities\Spells\Orc\Shockwave\ShockwaveMissile.mdl]],
 	--特效1
 	effect1 = [[Abilities\Weapons\Bolt\BoltImpact.mdl]],
 	--特效4
