@@ -175,8 +175,9 @@ local new_ui = class.panel:builder
     award_data = {
         --贪婪魔窟
         ['贪婪魔窟-普通'] =  {{ rand = 1.5, name = {{ rand = 75,   name = '1级物品'},{ rand = 20,   name = '2级物品'},{ rand = 5,   name = '3级物品'},{ rand = 0,   name = '4级物品'}}}},
-        ['贪婪魔窟-噩梦'] =  {{ rand = 1.5, name = {{ rand = 30,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 25,   name = '3级物品'},{ rand = 5,   name = '4级物品'}}}},
+        ['贪婪魔窟-噩梦'] =  {{ rand = 1.5, name = {{ rand = 35,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 20,   name = '3级物品'},{ rand = 5,   name = '4级物品'}}}},
         ['贪婪魔窟-地狱'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 35,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'},{ rand = 5,   name = '5级物品'}}}},
+        ['贪婪魔窟-绝望'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 0,   name = '2级物品'},{ rand = 35,   name = '3级物品'},{ rand = 40,   name = '4级物品'},{ rand = 20,   name = '5级物品'},{ rand = 5,   name = '6级物品'}}}},
 
         ['存档物品'] = {
             { rand = 15,      name = '白'},

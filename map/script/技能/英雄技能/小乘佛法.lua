@@ -42,8 +42,8 @@ end,
 	effect = [[HongXiao.mdx]],
 	--特效4
 	effect4 = [[目标位置播放特效，伤害范围500码]],
-	time = 4,
-	pulse_time = 1,
+	time = 1,
+	pulse_time = 0.25,
 }
 
 function mt:atk_pas_shot(target)
