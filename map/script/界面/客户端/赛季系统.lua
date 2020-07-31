@@ -109,8 +109,8 @@ local new_ui = class.panel:builder
             type = 'button',
             normal_image = [[sjwz.blp]],
             on_button_mouse_enter = function(self)
-                local title ='|cffdf19d0S0赛季王者|r'
-                local tip =[[
+                local title =self.title or '|cffdf19d0S0赛季王者|r'
+                local tip =self.tip or [[
 |cffFFE799【获得方式】：|r
 |cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得
 
@@ -239,10 +239,39 @@ local new_ui = class.panel:builder
     },
     config = {
       ['S0赛季'] ={
+        ['赛季说明'] = [[
+|cffffe799【赛季时间】|r|cff00ff007月25日-7月31日|r
+|cffffe799【赛季说明】|r|cff00ff00通关有概率召唤魔帝，击败可得荣耀战令，解锁大量存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
+        ]],
+        ['赛季王者'] = {
+            title ='|cffdf19d0S0赛季王者|r',
+            art = [[sjwz.blp]],
+            tip = [[
+|cffFFE799【获得方式】：|r
+|cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+1%     会心几率|r
+|cff00ff00+20%   会心伤害|r
+|cff00ff00+38.8% 全伤加深|r
+|cffff0000局内地图等级+1
+            ]]
+        },
         ['精英'] = {'精英版奖励1','精英版奖励2','精英版奖励3'},
         ['进阶'] = {'进阶版奖励1','进阶版奖励2','进阶版奖励3'},
       },
       ['S1赛季'] ={
+        ['赛季说明'] = [[ S1S1S1S1S1S1
+|cffffe799【赛季时间】|r|cff00ff007月25日-7月31日|r
+|cffffe799【赛季说明】|r|cff00ff00通关有概率召唤魔帝，击败可得荣耀战令，解锁大量存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
+        ]],
+        ['赛季王者'] = {
+            title ='|cffdf19d0S1赛季王者|r',
+            art = [[]],
+            tip = [[]]
+        },
         ['精英'] = {
             'S1精英版奖励1','S1精英版奖励2','S1精英版奖励3','S1精英版奖励4',
             'S1精英版奖励5','S1精英版奖励6','S1精英版奖励7','S1精英版奖励8',
@@ -317,6 +346,15 @@ local new_ui = class.panel:builder
         local has_txz = (p.mall[name..'通行证'] or 0) > 0 
         local img = has_txz and [[F7UI2.blp]] or [[F7UI1.blp]]
         self.main_content.zhanling.txz:set_normal_image(img)
+        --刷新赛季说明
+        local data = self.config[name]['赛季说明']
+        self.main_content.text:set_text(data)
+        --刷新赛季王者
+        local data = self.config[name]['赛季王者']
+        self.main_content.seanson_icon.title = data.title
+        self.main_content.seanson_icon.tip = data.tip
+        self.main_content.seanson_icon:set_normal_image(data.art)
+
         --刷新战令相关
         local data = self.config[name]
         for i,ui in ipairs(self.zhanlings) do
