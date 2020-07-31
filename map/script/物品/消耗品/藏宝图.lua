@@ -79,7 +79,6 @@ function mt:on_add()
 
     -- print(ac.map.rects['藏宝区']:get_random_point(true))
     --测试用
-    -- self.random_point = self.owner:get_point()
 end
 
 function mt:on_cast_start()
@@ -132,6 +131,13 @@ function mt:on_cast_start()
                     for i =1,player.cnt_award_wabao or 1 do 
                        self:add_content()  
                     end
+                    --再来一次
+                    local rate = p:get('藏宝图再一次概率')
+                    if math.random(100000)/1000<=rate then 
+                        print('又获得一次'..self.name,rate)
+                        self:add_content()
+                    end
+
                     self:add_item_count(-1) 
                     if self.trg then 
                         self.trg:remove()
@@ -171,7 +177,14 @@ function mt:on_cast_start()
             --测试用
             for i =1,player.cnt_award_wabao or 1 do 
                 self:add_content()  
-             end 
+            end 
+            
+            --再来一次
+            local rate = p:get('藏宝图再一次概率')
+            if math.random(100000)/1000<=rate then 
+                print('又获得一次'..self.name,rate)
+                self:add_content()
+            end
         else
             player:pingMinimap(self.random_point, 3)
         end 

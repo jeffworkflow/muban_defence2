@@ -1803,7 +1803,25 @@ function helper:as(str,cnt)
 		end	
 	end	
 end
-
+function helper:re(str)
+	local player = self.owner
+    --丢弃物品在地上再移除 
+    if player.peon then 
+        for i=1,6 do
+            local it = player.peon:get_slot_item(i)
+            if it then 
+                if it.name ~= '勇士徽章' then 
+                    player.peon:remove_item(it)
+                end	
+            end
+        end
+        player.peon:remove()
+        player.peon = nil
+	end
+	local name = str or ac.peon_list[math.random(#ac.peon_list)]
+    --重新随机一只
+	player:create_pets(name,true)
+end
 --模糊添加物品
 function helper:ai(str,cnt)
 	if not str or str =='' then 

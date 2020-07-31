@@ -194,19 +194,20 @@ local event = {
         local data = ui.decode(tab_str) 
         for key,val in sortpairs(data) do 
             player.cus_server[key..'王者'] = 1
+            player.mall[key..'王者'] = 1
             player['局内地图等级'] = (player['局内地图等级'] or 0) +1
-            -- print('同步后的数据：',player:get_name(),name,player.cus_server[name])
+            print('赛季同步后的数据：',player.mall[key..'王者'],player:get_name(),name,player.cus_server[name])
         end    
     end,
 }
 ui.register_event('rank_season',event)
 
--- for i=1,10 do 
---     local p = ac.player(i)
---     if p:is_player() then 
---         p:sp_get_rank_season1()  
---     end    
--- end    
+for i=1,10 do 
+    local p = ac.player(i)
+    if p:is_player() then 
+        p:sp_get_rank_season1()  
+    end    
+end    
 
 require("平台.自定义服务器.排行榜.排行榜")
 require("平台.自定义服务器.排行榜.无尽榜")

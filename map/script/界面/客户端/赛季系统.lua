@@ -31,7 +31,7 @@ local new_ui = class.panel:builder
          --左边菜单 
          panel.menu_titles = {
             -- '深渊乱斗无尽','无限乱斗无尽','无上之境无尽','斗破苍穹无尽',
-            'S0赛季',
+            'S1赛季','S0赛季'
             
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
@@ -72,7 +72,7 @@ local new_ui = class.panel:builder
                 self.text:set_color(0xff744726)
                 panel.last_button = self
 
-                --刷新排行榜数据 title_background:set_alpha(0xff*0.1)
+                --刷新数据 title_background:set_alpha(0xff*0.1)
                 panel:fresh(button.name)
             end    
 
@@ -185,6 +185,15 @@ local new_ui = class.panel:builder
                             normal_image ='F7shuzi'..i..'.blp',
                             type = 'texture',
                         },
+                        num1 = {
+                            x= 35,
+                            y= -10,
+                            w= 25,
+                            h=40,
+                            normal_image = [[Transparent.tga]],
+                            type = 'texture',
+                            
+                        },
                         icon_jy = {
                             y= 39+20,
                             w=64,
@@ -234,14 +243,25 @@ local new_ui = class.panel:builder
         ['进阶'] = {'进阶版奖励1','进阶版奖励2','进阶版奖励3'},
       },
       ['S1赛季'] ={
-        ['精英'] = {'','',''},
-        ['进阶'] = {'','',''},
+        ['精英'] = {
+            'S1精英版奖励1','S1精英版奖励2','S1精英版奖励3','S1精英版奖励4',
+            'S1精英版奖励5','S1精英版奖励6','S1精英版奖励7','S1精英版奖励8',
+            'S1精英版奖励9','S1精英版奖励10','S1精英版奖励11','S1精英版奖励12',
+            'S1精英版奖励13','S1精英版奖励14','S1精英版奖励15'
+        },
+        ['进阶'] = {
+            'S1进阶版奖励1','S1进阶版奖励2','S1进阶版奖励3','S1进阶版奖励4',
+            'S1进阶版奖励5','S1进阶版奖励6','S1进阶版奖励7','S1进阶版奖励8',
+            'S1进阶版奖励9','S1进阶版奖励10','S1进阶版奖励11','S1进阶版奖励12',
+            'S1进阶版奖励13','S1进阶版奖励14','S1进阶版奖励15'
+        },
       },
 
     },
     clear = function(self)
         for i,ui in ipairs(self.zhanlings) do
             ui.num:set_normal_image([[Transparent.tga]])
+            ui.num1:set_normal_image([[Transparent.tga]])
 
             ui.icon_jy:set_normal_image([[Transparent.tga]])
             ui.icon_jy.complete:set_normal_image([[Transparent.tga]])
@@ -256,15 +276,40 @@ local new_ui = class.panel:builder
 
     init_data = function(self)
         self:menus()
+        self:next_button()
         self.main_content.zhanling:content()
         ac.wait(8*1000,function()
-            self:fresh('S0赛季')
+            self:fresh('S1赛季')
         end)
     end,
-
-    fresh = function(self,name)
+    next_button = function(self)
+        local panel = self
+        panel.page = 1 
+        local nb = panel:add_button('image\\right.blp',1111,250,64,64)
+        function nb:on_button_clicked()
+            if panel.page == 1  then 
+                panel.page = 2
+                self:set_normal_image('image\\left.blp')
+            else
+                panel.page = 1
+                self:set_normal_image('image\\right.blp')
+            end    
+            panel:fresh(panel.now_name,panel.page)
+        end
+        panel.nb = nb
+    end,
+    fresh = function(self,name,page)
         if not self.config[name] then 
             return 
+        end
+        local page = page or 1
+        self.now_name = name
+        -- print('个数：',#self.config[name]['精英'])
+        --下一页显示和隐藏
+        if #self.config[name]['精英']>9 then 
+            self.nb:show()
+        else 
+            self.nb:hide()
         end
         self:clear()
         local p=ac.player.self
@@ -275,9 +320,18 @@ local new_ui = class.panel:builder
         --刷新战令相关
         local data = self.config[name]
         for i,ui in ipairs(self.zhanlings) do
-            local jy_name = data['精英'][i]
+            local start_i = (page-1)*9+i
+            local jy_name = data['精英'][start_i]
             if jy_name then 
-                ui.num:set_normal_image('F7shuzi'..i..'.blp')
+                local tt_i = 0
+                for num in string.gmatch(start_i, "%w") do
+                    tt_i = tt_i +1
+                    if tt_i > 1 then 
+                        ui.num1:set_normal_image('F7shuzi'..num..'.blp')
+                    else
+                        ui.num:set_normal_image('F7shuzi'..num..'.blp')
+                    end
+                end
                 local skl = ac.skill[jy_name]
                 local art = skl:get_key('art')
                 local tip = skl:get_tip()
@@ -296,7 +350,7 @@ local new_ui = class.panel:builder
                     self:tooltip(title,tip,0,400,200)
                 end
 
-                local jy_name = data['进阶'][i] or ''
+                local jy_name = data['进阶'][start_i] or ''
                 local skl = ac.skill[jy_name]
                 local art = skl:get_key('art')
                 local tip = skl:get_tip()
@@ -398,14 +452,17 @@ local function boss_ani()
             local p = ac.player(i)
             if p:is_player() and (p.cus_server['战令标识'] or 0) <=0 then 
                 local hero =p.hero
-                local key = ac.server.name2key('S0赛季战令')
+                local zl_name = 'S1赛季战令'
+                local key = ac.server.name2key(zl_name)
                 --加战令 s0zl
-                local _,max_n = math.frexp(p.server['S0赛季战令'] or 0)
-                if not has_flag(p.server['S0赛季战令'] or 0,2^(max_n)) then 
+                local _,max_n = math.frexp(p.server[zl_name] or 0)
+                print('S1赛季战令1：',p.server[zl_name],max_n,2^max_n)
+                if not has_flag(p.server[zl_name] or 0,2^(max_n)) then 
+                    print('S1赛季战令2：',p.server[zl_name],max_n,2^max_n)
                     p:Map_AddServerValue(key,2^(max_n))
                 end
                 --一次性存档奖励
-                local name = '精英版奖励'..(max_n+1)
+                local name = 'S1精英版奖励'..(max_n+1)
                 local skl = hero:find_skill(name,nil,true)
                 if not skl then 
                     -- print('name',name)
@@ -427,7 +484,11 @@ local function boss_ani()
         --游戏胜利
         ac.game:event_notify('杀死最强魔帝')
         ac.game:event_notify('游戏-结束',true)
-    
+
+        --创建庄周
+        local x,y = ac.rect.j_rect('moku1'):get_point():get()
+        local shop = ac.shop.create('庄周',x,y,0,nil) 
+        shop:add_sell_item('兑换-神奇的令牌',9)
     end)
 
 

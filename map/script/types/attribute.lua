@@ -989,6 +989,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	hero:add('生命上限',hero:get('杀怪加生命上限'))
 
 	local player = hero:get_owner()
+	local p = player
 	--加金币
 	local gold = player.hero:get('杀怪加金币') 
 	player:addGold(gold) --不显示漂浮文字
@@ -1004,7 +1005,8 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 
 	--处理杀死进攻怪加守家积分
 	if finds(ac.attack_unit_str or '',target:get_name()) then 
-		player:add('守家积分',1) 
+		local val = 1*(1 + player:get('守家积分加成')/100) 
+		player:add('守家积分',val) 
 	end
 end) 
 

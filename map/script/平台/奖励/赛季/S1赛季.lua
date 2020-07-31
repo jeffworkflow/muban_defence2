@@ -1,4 +1,4 @@
-local mt = ac.skill['精英版奖励1']
+local mt = ac.skill['S1精英版奖励1']
 mt{
 --等级
 level = 1, --要动态插入
@@ -24,7 +24,7 @@ award_cnt = 5000,
 need_map_level = 5,
 }
 
-local mt = ac.skill['精英版奖励2']
+local mt = ac.skill['S1精英版奖励2']
 mt{
 --等级
 level = 1, --要动态插入
@@ -49,7 +49,7 @@ need_map_level = 5,
 }
 
 
-local mt = ac.skill['精英版奖励3']
+local mt = ac.skill['S1精英版奖励3']
 mt{
 --等级
 level = 1, --要动态插入
@@ -83,7 +83,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
-local mt = ac.skill['进阶版奖励1']
+local mt = ac.skill['S1进阶版奖励1']
 mt{
 --等级
 level = 1, --要动态插入
@@ -112,10 +112,10 @@ need_map_level = 5,
 function mt:on_add()
     local hero = self.owner
     local p = hero.owner
-    local name = ac.server.key2name('s0jj')
+    local name = ac.server.key2name('s1jj')
     local flag = p.server[name] or 0
-    local cnt = tonumber(self.name:sub(16,-1))
-    print('奖励n',self.name,cnt)
+    local cnt = tonumber(string.match(self.name, "%d+"))
+    print('S1奖励n',self.name,cnt)
     if flag >= cnt then 
         return 
     end
@@ -123,12 +123,12 @@ function mt:on_add()
     local key = ac.server.name2key(self.award)
     p:Map_AddServerValue(key,self.award_cnt)
     --保存标识
-    p:Map_AddServerValue('s0jj',1)
+    p:Map_AddServerValue('s1jj',1)
 
 end
 
 
-local mt = ac.skill['进阶版奖励2']
+local mt = ac.skill['S1进阶版奖励2']
 mt{
 --等级
 level = 1, --要动态插入
@@ -154,9 +154,9 @@ award ='爱心积分',
 award_cnt = 1000,
 need_map_level = 5,
 }
-mt.on_add = ac.skill['进阶版奖励1'].on_add
+mt.on_add = ac.skill['S1进阶版奖励1'].on_add
 
-local mt = ac.skill['进阶版奖励3']
+local mt = ac.skill['S1进阶版奖励3']
 mt{
 --等级
 level = 1, --要动态插入
@@ -194,42 +194,18 @@ need_map_level = 5,
 }
 
 
-for i,name in ipairs({'精英版奖励1','精英版奖励2','精英版奖励3'}) do 
+for i,name in ipairs({'S1精英版奖励1','S1精英版奖励2','S1精英版奖励3'}) do 
     local mt = ac.skill[name]
     function mt:on_add()
         local hero = self.owner
         local p = hero.owner
         local name = self.name:gsub('精英版','进阶版') 
         -- print('动态插入数据1:',name)
-        if (p.mall['S0赛季通行证'] or 0 ) > 0 then 
+        if (p.mall['S1赛季通行证'] or 0 ) > 0 then 
             -- print('动态插入数据2:',name)
-            ac.game:event_notify('技能-插入魔法书',hero,'荣耀赛季',name)
+            ac.game:event_notify('技能-插入魔法书',hero,'S1赛季',name)
         end
     end
 end
 
-
-
-
-local mt = ac.skill['荣耀赛季']
-mt{
-    is_spellbook = 1,
-    is_order = 2,
-    art = [[sjjl.blp]],
-    -- title = '荣耀赛季',
-    tip = [[
-
-点击查看 |cff00ffff赛季成就|r，通过完成 |cffffff00赛季活动|r 获得
-|cffffff00（按F7可打开赛季说明）
-    ]],
-    
-}
-mt.skill_name ={
-    '精英版奖励1','精英版奖励2','精英版奖励3',
-    -- '进阶版本奖励1','进阶版本奖励2','进阶版本奖励3',
-}
-
-mt.skills = {
-    -- '第一个吃螃蟹的人',
-}
 
