@@ -19,15 +19,15 @@ mt{
 	--介绍
 
 tip = [[ 
-|cffffe799移动速度+50
+|cffffe799每秒加木头-500
 
-|cff00ff00使用羊皮纸、无字天书时候，10%概率再解密一次
+|cff00ff00初始木头+100w
 
 ]],
 	--技能图标
-    art = [[shadiao.blp]],
+    art = [[wangkeke.blp]],
 	passive = true,
-	time = 10,
+	time = 120,
 	
 	awood = 1000000
 

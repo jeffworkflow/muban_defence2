@@ -19,13 +19,13 @@ mt{
 	--介绍
 
 tip = [[ 
-|cffffe799移动速度+50
+|cffffe799多重射+1
 
-|cff00ff00使用羊皮纸、无字天书时候，10%概率再解密一次
+|cff00ff00每隔5秒对周围敌人进行多重攻击
 
 ]],
 	--技能图标
-    art = [[shadiao.blp]],
+    art = [[ReplaceableTextures\CommandButtons\BTNGreenHydra.blp]],
     passive = true,
 
 }

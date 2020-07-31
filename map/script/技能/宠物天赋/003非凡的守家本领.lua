@@ -20,12 +20,13 @@ mt{
 	--介绍
 
 tip = [[ 
-|cffffe799移动速度+50
+|cffffe799物理伤害加深+20%
+
 |cff00ff00击杀进攻怪可以获得双倍的守家积分
 
 ]],
 	--技能图标
-    art = [[shadiao.blp]],
+    art = [[tanglaoya.blp]],
 	passive = true,
 
 }

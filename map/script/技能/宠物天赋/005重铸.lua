@@ -17,13 +17,14 @@ mt{
 	--介绍
 
 tip = [[ 
-|cffffe799移动速度+50
-|cff00ff00击杀进攻怪可以获得双倍的守家积分
+|cffffe799强化成功概率+2%
+
+|cff00ff00可对物品重铸，获得另外一个相同品质的物品
 
 ]],
 	--技能图标
-	art = [[shadiao.blp]],
-	cool = 10,
+	art = [[ronglu.blp]],
+	cool = 150,
     --目标类型
     target_type = ac.skill.TARGET_TYPE_UNIT,
 

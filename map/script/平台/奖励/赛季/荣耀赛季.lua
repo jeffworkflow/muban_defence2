@@ -21,13 +21,12 @@ mt.skills = {
     'S0赛季','S1赛季'
 }
 
-for i=0,10 do 
-local mt = ac.skill['S'..i..'赛季王者']
+local mt = ac.skill['S0赛季王者']
 mt{
 --等级
 level = 1, --要动态插入
 --图标
-art = [[sj02.blp]],
+art = [[s0sjwz.blp]],
 --说明
 tip = [[
 
@@ -51,19 +50,17 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['会心伤害'] = 10,
 ['全伤加深'] = 16.8
 }
-end
 
 
 local mt = ac.skill['S0赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sjjl.blp]],
+    art = [[S0saijitxz.blp]],
     -- title = 'S0赛季',
     tip = [[
 
-点击查看 |cff00ffff赛季成就|r，通过完成 |cffffff00赛季活动|r 获得
-|cffffff00（按F7可打开赛季说明）
+点击查看 |cff00ffffS0赛季成就|r
     ]],
     
 }
@@ -79,12 +76,11 @@ local mt = ac.skill['S1赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sjjl.blp]],
+    art = [[s1sjwz.blp]],
     -- title = 'S0赛季',
     tip = [[
 
-点击查看 |cff00ffff赛季成就|r，通过完成 |cffffff00赛季活动|r 获得
-|cffffff00（按F7可打开赛季说明）
+点击查看 |cff00ffffS1赛季成就|r
     ]],
     
 }
