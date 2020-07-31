@@ -487,7 +487,7 @@ local function boss_ani()
 
         --创建庄周
         local x,y = ac.rect.j_rect('moku1'):get_point():get()
-        local shop = ac.shop.create('庄周',x,y,0,nil) 
+        local shop = ac.shop.create('庄周',x,y,270,nil) 
         shop:add_sell_item('兑换-神奇的令牌',9)
     end)
 
