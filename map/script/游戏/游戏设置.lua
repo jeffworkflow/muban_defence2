@@ -283,13 +283,6 @@ ac.game:event '单位-攻击开始' (function(self, data)
 		if math.random(100000)/1000 < rate then 
 			ac.active_yccj(p,'人间大炮')
 		end
-
-		local rate = 0.3
-		rate = 40
-		if math.random(100000)/1000 < rate then 
-			ac.active_yccj(p,'天选之子')
-		end
-		
 	end
 end)
 --游戏说明 被玩家12攻击则无敌5秒

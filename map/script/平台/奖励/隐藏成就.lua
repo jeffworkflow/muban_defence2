@@ -871,3 +871,13 @@ ac.game:event '进球门' (function(trg,skill,hero)
         active_yccj(p,'香港脚')
     end
 end)
+
+--香港脚
+ac.game:event '完成天选之人' (function(trg,p)
+    p.cnt_txzr = (p.cnt_txzr or 0) + 1
+   
+    if p.cnt_txzr == 4 then 
+        active_yccj(p,'天选之子')
+    end
+end)
+

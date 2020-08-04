@@ -183,8 +183,10 @@ local function create_boss(where)
 end
 --检测 天选之人 全体完成次数，进入 神魔之剑
 local succ_cnt = 0
-local function check_txzr(flag) 
+local function check_txzr(p,flag) 
     succ_cnt = succ_cnt + 1
+    ac.game:event_notify('完成天选之人',p)
+    --发起同步
     if not flag then 
         if succ_cnt ~= 6 then 
             return 
@@ -265,7 +267,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
-            check_txzr()
+            check_txzr(p)
             local list = ac.quality_item['红']
             local name = list[math.random(#list)]
             local it = hero:add_item(name)
@@ -292,7 +294,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
-            check_txzr()
+            check_txzr(p)
             local list = ac.quality_skill['天阶']
             --添加给购买者
             local name = list[math.random(#list)]
@@ -320,7 +322,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
-            check_txzr()
+            check_txzr(p)
             local it = ac.item.create_item('天谕',hero:get_point())
             it:set_item_count(8)
             hero:add_item(it)
@@ -346,7 +348,7 @@ local award_list = {
        ]],
         --奖励 全伤加深50%
         award = function(self,p,hero)
-            check_txzr()
+            check_txzr(p)
             local hero = p.hero
             hero:add('全伤加深',50)
             ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00历经千经万苦，|cff00ffff '..p:get_name()..' |cff00ff00终于完成任务|cffffff00【超强伤害】|cff00ff00，奖励 |cffff0000全伤加深+50%',5)
@@ -371,7 +373,7 @@ local award_list = {
         ]],
         --奖励 全属性加5%
         award = function(self,p,hero)
-            check_txzr()
+            check_txzr(p)
             local hero = p.hero
             hero:add('力量%',10)
             hero:add('敏捷%',10)
@@ -397,7 +399,7 @@ local award_list = {
         ]],
         --奖励
         award = function(self,p,hero)
-            check_txzr()
+            check_txzr(p)
             local list = {
                 '杀敌数保本卡','木头保本卡','魔丸保本卡','全属性保本卡',
                 '杀敌数翻倍卡','木头翻倍卡','魔丸翻倍卡','全属性翻倍卡',

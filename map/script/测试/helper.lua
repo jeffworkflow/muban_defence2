@@ -2159,7 +2159,7 @@ end
 --测试 万象天工
 function helper:ts3()
 	local p = self.owner
-	ac.check_txzr(true)
+	ac.check_txzr(p,true)
 end
 --测试双层字
 function helper:test_sm_ui()
