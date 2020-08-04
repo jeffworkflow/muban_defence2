@@ -370,16 +370,133 @@ function mt:on_add()
 
     hero:add_item('吞噬丹')
 end
+
+local mt = ac.skill['鬼魅光毛刀']
+mt{
+--图标
+art = "juhunshi.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
+['敏捷%'] = 10,
+['全属性'] = 20000000,
+['分裂伤害'] = 100,
+['攻击减甲'] = 350,
+['攻击间隔极限'] = -0.05,
+
+tip = [[%extr_tip%
+
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性|r
+|cff00ff00+25个 强化石|r
+|cff00ff00+5个 天谕|r
+|cff00ff00+1个 吞噬丹|r
+
+|cff00ffff吞噬丹使用上限+1|r
+ ]],
+}
+
+local mt = ac.skill['惊龙集魂笔']
+mt{
+--图标
+art = "juhunshi.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
+['智力%'] = 10,
+['全属性'] = 20000000,
+['技能伤害加深'] = 200,
+['杀怪加杀敌数'] = 2,
+
+tip = [[%extr_tip%
+
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性
+|cff00ffff+10%   智力
+|cff00ffff+200%  技能伤害加深
+|cffff0000+2     杀怪加杀敌数（不受杀敌数加成影响）
+
+ ]],
+}
+
+local mt = ac.skill['乾离幻藤珠']
+mt{
+--图标
+art = "juhunshi.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
+['智力%'] = 10,
+['全属性'] = 20000000,
+['技能伤害加深'] = 200,
+['杀怪加木头'] = 30,
+
+tip = [[%extr_tip%
+
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性
+|cff00ffff+10%   智力
+|cff00ffff+200%  技能伤害加深
+|cffff0000+2     杀怪加杀敌数（不受杀敌数加成影响）
+
+ ]],
+}
+
+local mt = ac.skill['虎纹绣魔瓶']
+mt{
+--图标
+art = "juhunshi.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
+['智力%'] = 10,
+['全属性'] = 20000000,
+['技能伤害加深'] = 200,
+['杀怪加魔丸'] = 100,
+
+tip = [[%extr_tip%
+
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性
+|cff00ffff+10%   智力
+|cff00ffff+200%  技能伤害加深
+|cffff0000+2     杀怪加杀敌数（不受杀敌数加成影响）
+
+ ]],
+}
+
+local mt = ac.skill['鬼迷心窍']
+mt{
+--图标
+art = "juhunshi.blp",
+extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
+['智力%'] = 10,
+['全属性'] = 20000000,
+['技能伤害加深'] = 200,
+['杀怪加魔丸'] = 100,
+
+tip = [[%extr_tip%
+
+|cffFFE799【神器属性】：|r
+|cff00ff00+2000W 全属性
+|cff00ffff+10%   智力
+|cff00ffff+200%  技能伤害加深
+
+|cffffe799【被动-造宝】|r每隔180秒，造出一个随机装备（随机装备：纯随机，品质=白-红）
+ ]],
+ cool = 180,
+ passive = true ,
+ ignore_cool_save = true,
+}
+mt.on_upgrade = ac.skill['小聚宝盆'].on_upgrade
+mt.on_cast_start = ac.skill['小聚宝盆'].on_cast_start
+mt.on_remove = ac.skill['小聚宝盆'].on_remove
+
+
 -- 神器
 local magic_item = {
     '地狱咆哮','地狱意志','鬼神之石','魂幡之灵','天灾骨钟','生死簿','阎王印',
-    '谛听的印记','冥界本源','聚魂石'
+    '谛听的印记','冥界本源','聚魂石',
+    '鬼魅光毛刀','惊龙集魂笔','乾离幻藤珠','虎纹绣魔瓶','鬼迷心窍',
 }
 ac.tm_item = magic_item
 for i,value in ipairs(magic_item) do 
     local mt = ac.skill[value]
     --等久
     mt.level = 0
+    mt.max_level = 1
     --魔法书相关
     mt.is_order = 1 
     --物品类型
