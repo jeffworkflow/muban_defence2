@@ -421,7 +421,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
     p.hero:loop(time*1000,function()
         -- 天选之人概率
         p.txzr_cnt = (p.txzr_cnt or 0) + 1
-        local rate = 18 - ((p.txzr_cnt-1)*0.5)
+        local rate = 22 - ((p.txzr_cnt-1)*0.5)
         -- local rate = 90 - ((p.txzr_cnt-1)*0.5)
         rate = rate * (1 + p:get('天选之人概率')/100)
         print('触发天选之人：',p,rate,p.txzr_cnt,p:get('天选之人概率'))

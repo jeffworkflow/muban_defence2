@@ -151,7 +151,7 @@ local mt = ac.skill['天神之息']
 mt{
 --图标
 art = "tianshen.blp",
--- extr_tip = '\n|cffffff00点击对【天神之息】进行存档，存档后可在最强魔灵-成神中查看',
+
 max_level = 15,
 ['杀怪加生命上限'] = {88,1320},
 ['每秒回血'] = {1,15},
