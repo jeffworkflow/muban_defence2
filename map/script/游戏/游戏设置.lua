@@ -228,17 +228,21 @@ end
 --奖品
 local award_list = { 
     ['攻击奖励'] =  {
-        {    rand = 20, name = '随机力量',},
-        {    rand = 20, name = '随机敏捷',},
-        {    rand = 20, name = '随机智力',},
-        {    rand = 20, name = '随机全属性',},
-        {    rand = 5, name = '暴击伤害+1%',},
-        {    rand = 2, name = '技暴伤害+1%',},
-        {    rand = 2, name = '会心伤害+1%',},
-        {    rand = 2, name = '物理伤害加深+1%',},
-        {    rand = 2, name = '技能伤害加深+1%',},
-        {    rand = 2, name = '全伤加深+1%',},
-        {    rand = 2, name = '对BOSS额外伤害+1%',},
+        {    rand = 22.5, name = '随机力量',},
+        {    rand = 22.5, name = '随机敏捷',},
+        {    rand = 22.5, name = '随机智力',},
+		{    rand = 22.5, name = '随机全属性',},
+		
+		{    rand = 1, name = '攻击速度+1%',},
+		{    rand = 1, name = '分裂伤害+1%',},
+		{    rand = 1, name = '攻击距离+1',},
+        {    rand = 1, name = '暴击伤害+1%',},
+        {    rand = 1, name = '技暴伤害+1%',},
+        {    rand = 1, name = '会心伤害+1%',},
+        {    rand = 1, name = '物理伤害加深+1%',},
+        {    rand = 1, name = '技能伤害加深+1%',},
+        {    rand = 1, name = '全伤加深+1%',},
+        {    rand = 1, name = '对BOSS额外伤害+1%',},
     },
 }
 
@@ -253,13 +257,13 @@ local function add_content(p)
 		--增加人物属性
 		-- print(k,v)
 		p.hero:add(k,v)
-		ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r |cff00ff00一口将多汁的西瓜咬了下去，顿时精神百倍，获得|cffff0000'..rand_name..'|r',6) 
+		ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00'..rand_name..' ',3) 
 	end  
 	if finds(rand_name,'随机') then
 		local attr = rand_name:sub(7,-1)
 		local val = math.random(99)
 		p.hero:add(attr,val)
-		p:sendMsg('|cffebb608【系统】'..attr..'+'..val..'|r ',3) 
+		p:sendMsg('|cffebb608【系统】|r|cff00ff00'..attr..'+'..val..'|r ',3) 
 	end
 end
 --禁止A队友
@@ -274,7 +278,7 @@ ac.game:event '单位-攻击开始' (function(self, data)
 		add_content(p)
 		
 		--概率触发隐藏成就
-		local rate = 0.3
+		local rate = 0.08
 		rate = 40
 		if math.random(100000)/1000 < rate then 
 			ac.active_yccj(p,'人间大炮')

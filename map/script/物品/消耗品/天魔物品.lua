@@ -387,11 +387,11 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%   敏捷
-|cff00ffff+100%  分裂伤害
-|cff00ffff+350   攻击减甲
-|cffff0000-0.05  攻击间隔（无视攻击间隔极限）
-]],
+|cff00ff00+10%   敏捷
+|cff00ff00+100%  分裂伤害
+|cff00ff00+350   攻击减甲
+|cff00ff00-0.05  攻击间隔（无视攻击间隔极限）
+ ]],
 }
 
 local mt = ac.skill['惊龙集魂笔']
@@ -408,10 +408,10 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%   智力
-|cff00ffff+200%  技能伤害加深
-|cffff0000+2     杀怪加杀敌数
-]],
+|cff00ff00+10%   智力
+|cff00ff00+200%  技能伤害加深
+|cff00ff00+2     杀怪加杀敌数
+ ]],
 }
 
 local mt = ac.skill['乾离幻藤珠']
@@ -428,10 +428,10 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%   力量
-|cff00ffff+400%  物理伤害加深
-|cffff0000+30     杀怪加木头
-]],
+|cff00ff00+10%   力量
+|cff00ff00+400%  物理伤害加深
+|cff00ff00+30     杀怪加木头
+ ]],
 }
 
 local mt = ac.skill['虎纹绣魔瓶']
@@ -450,10 +450,10 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+5%    全属性
-|cff00ffff+100%  全伤加深
-|cffff0000+100     杀怪加魔丸
-]],
+|cff00ff00+5%    全属性
+|cff00ff00+100%  全伤加深
+|cff00ff00+100     杀怪加魔丸
+ ]],
 }
 
 local mt = ac.skill['鬼迷心窍']
@@ -470,12 +470,11 @@ tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%    护甲
-|cff00ffff+100%  对BOSS额外伤害
+|cff00ff00+10%    护甲
+|cff00ff00+100%  对BOSS额外伤害
 
-|cffffe799【被动-造宝】|r每隔180秒，造出一个随机装备
-
-]],
+|cff00ffff【被动-造宝】每隔180秒，造出一个随机装备
+ ]],
 cool = 180,
 passive = true ,
 ignore_cool_save = true,
