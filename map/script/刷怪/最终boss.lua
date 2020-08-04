@@ -113,6 +113,12 @@ ac.game:event '游戏-最终boss' (function(trg)
                 end
             end
         end
+        
+        --创建庄周
+        local x,y = ac.rect.j_rect('moku1'):get_point():get()
+        local shop = ac.shop.create('庄周',x,y,270,nil) 
+        shop:add_sell_item('兑换-神奇的令牌',9)
+
         --杀死最终boss
         ac.game:event_notify('杀死最终boss')
     end) ; 
