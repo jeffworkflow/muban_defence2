@@ -279,7 +279,7 @@ ac.game:event '单位-攻击开始' (function(self, data)
 		
 		--概率触发隐藏成就
 		local rate = 0.08
-		rate = 40
+		-- rate = 40
 		if math.random(100000)/1000 < rate then 
 			ac.active_yccj(p,'人间大炮')
 		end

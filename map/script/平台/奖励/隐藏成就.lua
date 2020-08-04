@@ -866,7 +866,7 @@ end)
 ac.game:event '进球门' (function(trg,skill,hero)
     local p = hero.owner
     local rate = 0.3
-    rate = 40
+    -- rate = 40
     if math.random(100000)/1000 < rate then 
         active_yccj(p,'香港脚')
     end
