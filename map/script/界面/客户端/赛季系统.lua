@@ -268,7 +268,7 @@ local new_ui = class.panel:builder
         ['赛季说明'] = [[
 
             
-|cffffe799【赛季时间】|r|cff00ff008月1日-8月30日|r
+|cffffe799【赛季时间】|r|cff00ff008月1日-8月31日|r
 |cffffe799【赛季说明】|r|cff00ff00通关有概率召唤魔帝，击败可得荣耀战令，解锁大量存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
             ]],
         ['赛季王者'] = {

@@ -142,7 +142,7 @@ mt{
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
-        {    rand = 14.4, name = '谢谢参与',},
+        {    rand = 15.4, name = '谢谢参与',},
 
         {    rand = 3.5, name = '魔灵争霸+2' },
         {    rand = 0.5, name = '魔灵争霸+40',},
@@ -188,16 +188,21 @@ local reward = {
         {    rand = 1, name = '绝世魔剑',},
         {    rand = 1, name = '绝世神剑',},
 
-        {    rand = 1, name = '番天印',},
-        {    rand = 1, name = '战舰之舵',},
-        {    rand = 1, name = '量天尺',},
-        {    rand = 1, name = '虚空王座',},
-        {    rand = 1, name = '天眼',},
-        {    rand = 1, name = '血羽之心',},
-        {    rand = 1, name = '天神之息',},
-        {    rand = 1, name = '灭世者',},
-        {    rand = 1, name = '宇宙之心',},
-        {    rand = 1, name = '太初锁灵鼓',},
+        {    rand = 0.6, name = '番天印',},
+        {    rand = 0.6, name = '战舰之舵',},
+        {    rand = 0.6, name = '量天尺',},
+        {    rand = 0.6, name = '虚空王座',},
+        {    rand = 0.6, name = '天眼',},
+        {    rand = 0.6, name = '血羽之心',},
+        {    rand = 0.6, name = '天神之息',},
+        {    rand = 0.6, name = '灭世者',},
+        {    rand = 0.6, name = '宇宙之心',},
+        {    rand = 0.6, name = '太初锁灵鼓',},
+        {    rand = 0.6, name = '晨钟暮鼓',},
+        {    rand = 0.6, name = '龙皇之心',},
+        {    rand = 0.6, name = '封神结',},
+        {    rand = 0.6, name = '烟月神镜',},
+        {    rand = 0.6, name = '天星奇光镯',},
         
 
     },
