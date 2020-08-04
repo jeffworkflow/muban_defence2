@@ -105,6 +105,9 @@ local cus_key = {
     {'ycmjbm','一出门就被秒',{ ['一出门就被秒'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('ycmjbm'))  end}}},
     {'jsmj','绝世魔剑',{ ['绝世魔剑'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('jsmj'))  end}}},
 
+    --绝世神剑
+    {'jssj','绝世神剑',{ ['绝世神剑'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('jssj'))  end}}},
+
 
     {'cdwq','存档武器'},
     {'cdyd','存档腰带'},
@@ -212,12 +215,18 @@ local cus_key = {
     {'msz','灭世者',{ ['灭世者'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('msz')) end}}},
     {'yzzx','宇宙之心',{ ['宇宙之心'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('yzzx')) end}}},
     {'tcslg','太初锁灵鼓',{ ['太初锁灵鼓'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('tcslg')) end}}},
+    {'czmg','晨钟暮鼓',{ ['晨钟暮鼓'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('czmg')) end}}},
+    {'lhzx','龙皇之心',{ ['龙皇之心'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('lhzx')) end}}},
+    {'fsj','封神结',{ ['封神结'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('fsj')) end}}},
+    {'yysj','烟月神镜',{ ['烟月神镜'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('yysj')) end}}},
+    {'txqgz','天星奇光镯',{ ['天星奇光镯'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('txqgz')) end}}},
+
+
     --活动
     {'mljpz','魔灵精品粽',{ ['魔灵精品粽'] = {1,1,value = function(self,p) return p:Map_GetServerValue('mljpz') end}}},
     {'zzdxb','真正的学霸',{ ['真正的学霸'] = {1,5,value = function(self,p) return p:Map_GetServerValue('zzdxb') end}}},
     {'mlqlg','魔灵麒麟瓜',{ ['魔灵麒麟瓜'] = {1,5,value = function(self,p) return p:Map_GetServerValue('mlqlg') end}}},
-    --绝世神剑
-    {'jssj','绝世神剑',{ ['绝世神剑'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*1,p:Map_GetServerValue('jssj'))  end}}},
+    
 
     
     {'wxnd','无限难度'},

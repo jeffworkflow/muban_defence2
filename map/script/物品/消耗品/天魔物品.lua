@@ -374,33 +374,33 @@ end
 local mt = ac.skill['鬼魅光毛刀']
 mt{
 --图标
-art = "juhunshi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
-['敏捷%'] = 10,
+art = "tianmo1.blp",
+extr_tip = '|cffffff00点击可激活【鬼魅光毛刀】，激活后可在圣龙气运-入魔中查看',
 ['全属性'] = 20000000,
+['敏捷%'] = 10,
 ['分裂伤害'] = 100,
 ['攻击减甲'] = 350,
 ['攻击间隔极限'] = -0.05,
+['攻击间隔'] = -0.05,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
-|cff00ff00+2000W 全属性|r
-|cff00ff00+25个 强化石|r
-|cff00ff00+5个 天谕|r
-|cff00ff00+1个 吞噬丹|r
-
-|cff00ffff吞噬丹使用上限+1|r
- ]],
+|cff00ff00+2000W 全属性
+|cff00ffff+10%   敏捷
+|cff00ffff+100%  分裂伤害
+|cff00ffff+350   攻击减甲
+|cffff0000-0.05  攻击间隔（无视攻击间隔极限）
+]],
 }
 
 local mt = ac.skill['惊龙集魂笔']
 mt{
 --图标
-art = "juhunshi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
-['智力%'] = 10,
+art = "tianmo2.blp",
+extr_tip = '|cffffff00点击可激活【惊龙集魂笔】，激活后可在圣龙气运-入魔中查看',
 ['全属性'] = 20000000,
+['智力%'] = 10,
 ['技能伤害加深'] = 200,
 ['杀怪加杀敌数'] = 2,
 
@@ -410,86 +410,87 @@ tip = [[%extr_tip%
 |cff00ff00+2000W 全属性
 |cff00ffff+10%   智力
 |cff00ffff+200%  技能伤害加深
-|cffff0000+2     杀怪加杀敌数（不受杀敌数加成影响）
-
- ]],
+|cffff0000+2     杀怪加杀敌数
+]],
 }
 
 local mt = ac.skill['乾离幻藤珠']
 mt{
 --图标
-art = "juhunshi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
-['智力%'] = 10,
+art = "tianmo3.blp",
+extr_tip = '|cffffff00点击可激活【乾离幻藤珠】，激活后可在圣龙气运-入魔中查看',
 ['全属性'] = 20000000,
-['技能伤害加深'] = 200,
+['力量%'] = 10,
+['物理伤害加深'] = 400,
 ['杀怪加木头'] = 30,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%   智力
-|cff00ffff+200%  技能伤害加深
-|cffff0000+2     杀怪加杀敌数（不受杀敌数加成影响）
-
- ]],
+|cff00ffff+10%   力量
+|cff00ffff+400%  物理伤害加深
+|cffff0000+30     杀怪加木头
+]],
 }
 
 local mt = ac.skill['虎纹绣魔瓶']
 mt{
 --图标
-art = "juhunshi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
-['智力%'] = 10,
+art = "tianmo4.blp",
+extr_tip = '|cffffff00点击可激活【虎纹绣魔瓶】，激活后可在圣龙气运-入魔中查看',
 ['全属性'] = 20000000,
-['技能伤害加深'] = 200,
+['力量%'] = 5,
+['敏捷%'] = 5,
+['智力%'] = 5,
+['全伤加深'] = 100,
 ['杀怪加魔丸'] = 100,
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%   智力
-|cff00ffff+200%  技能伤害加深
-|cffff0000+2     杀怪加杀敌数（不受杀敌数加成影响）
-
- ]],
+|cff00ffff+5%    全属性
+|cff00ffff+100%  全伤加深
+|cffff0000+100     杀怪加魔丸
+]],
 }
 
 local mt = ac.skill['鬼迷心窍']
 mt{
 --图标
-art = "juhunshi.blp",
-extr_tip = '|cffffff00点击可激活【冥界本源】，激活后可在圣龙气运-入魔中查看',
-['智力%'] = 10,
+art = "tianmo5.blp",
+extr_tip = '|cffffff00点击可激活【鬼迷心窍】，激活后可在圣龙气运-入魔中查看',
 ['全属性'] = 20000000,
-['技能伤害加深'] = 200,
-['杀怪加魔丸'] = 100,
+['护甲%'] = 10,
+['对BOSS额外伤害'] = 100,
+
 
 tip = [[%extr_tip%
 
 |cffFFE799【神器属性】：|r
 |cff00ff00+2000W 全属性
-|cff00ffff+10%   智力
-|cff00ffff+200%  技能伤害加深
+|cff00ffff+10%    护甲
+|cff00ffff+100%  对BOSS额外伤害
 
-|cffffe799【被动-造宝】|r每隔180秒，造出一个随机装备（随机装备：纯随机，品质=白-红）
- ]],
- cool = 180,
- passive = true ,
- ignore_cool_save = true,
+|cffffe799【被动-造宝】|r每隔180秒，造出一个随机装备
+
+]],
+cool = 180,
+passive = true ,
+ignore_cool_save = true,
 }
 mt.on_upgrade = ac.skill['小聚宝盆'].on_upgrade
 mt.on_cast_start = ac.skill['小聚宝盆'].on_cast_start
 mt.on_remove = ac.skill['小聚宝盆'].on_remove
 
 
+
+
 -- 神器
 local magic_item = {
     '地狱咆哮','地狱意志','鬼神之石','魂幡之灵','天灾骨钟','生死簿','阎王印',
-    '谛听的印记','冥界本源','聚魂石',
-    '鬼魅光毛刀','惊龙集魂笔','乾离幻藤珠','虎纹绣魔瓶','鬼迷心窍',
+    '谛听的印记','冥界本源','聚魂石','鬼魅光毛刀','惊龙集魂笔','乾离幻藤珠','虎纹绣魔瓶','鬼迷心窍'
 }
 ac.tm_item = magic_item
 for i,value in ipairs(magic_item) do 

@@ -31,13 +31,13 @@ model_size = 1.4
 --奖品
 local award_list = { 
     ['踢皮球'] =  {
-        { rand = 5, name = '扣除所有木头'},
-        { rand = 5, name = '定身5秒，禁止使用物品5秒'},
-        { rand = 5, name = '定身15秒，禁止使用物品15秒'},
-        { rand = 5, name = '随机卡片'},
-        { rand = 5, name = '神球小将'},
+        { rand = 4, name = '扣除所有木头'},
+        { rand = 4, name = '定身5秒，禁止使用物品5秒'},
+        { rand = 4, name = '定身15秒，禁止使用物品15秒'},
+        { rand = 4, name = '随机卡片'},
+        { rand = 4, name = '神球小将'},
         
-        { rand = 75, name = '无'},
+        { rand = 80, name = '无'},
     },
 }
 
