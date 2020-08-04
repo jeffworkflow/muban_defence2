@@ -480,9 +480,40 @@ cool = 180,
 passive = true ,
 ignore_cool_save = true,
 }
-mt.on_upgrade = ac.skill['小聚宝盆'].on_upgrade
-mt.on_cast_start = ac.skill['小聚宝盆'].on_cast_start
-mt.on_remove = ac.skill['小聚宝盆'].on_remove
+function mt:on_add()
+	local skill = self
+	local hero = self.owner
+	-- give_award(self,true)
+	--计时器检测
+	if not self.timer then 
+		self.timer = ac.loop(1000,function()
+			if skill:is_cooling() then 
+				return 
+			end
+			--物品施法
+            local name = ac.all_item[math.random(#ac.all_item)]
+            print('给了随机装备',self.name,name)
+            hero:add_item(name)
+            self:active_cd()
+			if not self.owner then 
+				self.timer:remove()
+				self.timer = nil
+			end
+		end)
+	end
+end
+function mt:on_remove()
+	local hero = self.owner
+	-- print('进入on_remove',self.name,self.timer)
+    if self.timer then 
+        self.timer:remove()
+        self.timer = nil
+    end 
+    if self.eff then 
+        self.eff:remove()
+        self.eff = nil
+    end 
+end
 
 
 

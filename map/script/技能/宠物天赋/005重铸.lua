@@ -40,7 +40,7 @@ function mt:on_cast_start()
 	local hero = unit
 
 	local color = it.color 
-	if not color or not ac.quality_item[color] then 
+	if not color or not ac.quality_item[color] or not finds(color,'白','蓝','金','红','黑') then 
 		p:sendMsg('不可操作',5)
 		-- ac.wait(0,function()
         --     self:set_cd(0)

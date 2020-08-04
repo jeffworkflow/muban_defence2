@@ -297,21 +297,21 @@ local function get_save_flag()
 end
 
 
-ac.game:event '选择难度' (function(_,g_game_degree_name)
-    local ok = get_save_flag() 
-    local time = 600
+-- ac.game:event '选择难度' (function(_,g_game_degree_name)
+--     local ok = get_save_flag() 
+--     local time = 600
     
-    if ac.g_game_degree >11 then
-        ac.loop(time*1000,function() 
-            if not ok then
-                ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
-                ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
+--     if ac.g_game_degree >11 then
+--         ac.loop(time*1000,function() 
+--             if not ok then
+--                 ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
+--                 ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
+--                 ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
 
-            end
-        end)
-    end
-end)
+--             end
+--         end)
+--     end
+-- end)
 
 
 --注册 保存青铜，王者等星数
@@ -324,6 +324,7 @@ ac.game:event '杀死最终boss' (function(trg,flag)
     end
     
     local ok = get_save_flag()
+    ok = true
     for i=1,10 do
         local player = ac.player[i]
         local p = ac.player[i]
@@ -344,7 +345,7 @@ ac.game:event '杀死最终boss' (function(trg,flag)
                 end
             end
             
-            if ok then  
+            if ok and ac.g_game_degree > 11 then  
                 local key = ac.server.name2key('新的征程')
                 local degree = ac.g_game_degree -11
                 -- print('保存新的征程到服务器1',player,degree,player.cus_server['新的征程'])
@@ -356,8 +357,8 @@ ac.game:event '杀死最终boss' (function(trg,flag)
                 if degree > (player.cus_server['今日新的征程']  or 0) then
                     player:SetServerValue('today_'..key,degree)  
                 end
-                if degree <=15 then
-                    --保存无限难度奖励 网易服务器
+                --保存无限难度奖励 网易服务器
+                if degree <= 30 then
                     degree = 2^(degree-1)
                     if not has_flag((p.server['新的征程奖励'] or 0),degree) then
                         local key = ac.server.name2key('新的征程奖励')

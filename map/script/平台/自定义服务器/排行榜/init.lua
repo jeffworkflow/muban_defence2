@@ -195,7 +195,8 @@ local event = {
         for key,val in sortpairs(data) do 
             player.cus_server[key..'王者'] = 1
             player.mall[key..'王者'] = 1
-            player['局内地图等级'] = (player['局内地图等级'] or 0) +1
+            -- player['局内地图等级'] = (player['局内地图等级'] or 0) +1
+            player:add('局内地图等级',1)
             print('赛季同步后的数据：',player.mall[key..'王者'],player:get_name(),name,player.cus_server[name])
         end    
     end,
