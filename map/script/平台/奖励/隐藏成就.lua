@@ -850,7 +850,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
 end)
 
 --香港脚
-ac.game:event '进球门'(function(trg,skill,hero)
+ac.game:event '进球门' (function(trg,skill,hero)
     local p = hero.owner
     local rate = 0.3
     rate = 40
