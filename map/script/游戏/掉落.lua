@@ -471,8 +471,8 @@ local unit_reward = {
             }
         },
         { rand = 0.004,      name = '吞噬丹'},
-        { rand = 10.01,      name = '天谕'},
-        { rand = 10.02,      name = '强化石'},
+        { rand = 0.01,      name = '天谕'},
+        { rand = 0.02,      name = '强化石'},
         { rand = 0.008,      name = '随机技能'},
         -- { rand = 0.01,      name = '藏宝图'},
         { rand = 0.01,      name = '羊皮纸'},
