@@ -187,7 +187,7 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-award ='杀戮值',
+award ='魔灵争霸',
 award_cnt = 100,
 need_map_level = 5,
 }
@@ -456,8 +456,8 @@ function mt:on_add()
     local p = hero.owner
     local name = ac.server.key2name('s1jj')
     local flag = p.server[name] or 0
-    local cnt = tonumber(self.name:sub(16,-1))
-    print('奖励n',self.name,cnt)
+    local cnt = tonumber(string.match(self.name, "S1进阶版奖励(%d+)"))
+    print('S1奖励n',self.name,cnt)
     if flag >= cnt then 
         return 
     end
@@ -520,7 +520,7 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-award ='杀戮值',
+award ='魔灵争霸',
 award_cnt = 100,
 need_map_level = 5,
 }
@@ -756,7 +756,7 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-award ='杀戮值',
+award ='魔灵争霸',
 award_cnt = 100,
 need_map_level = 5,
 }
@@ -881,7 +881,12 @@ need_map_level = 5,
 }
 
 
-for i,name in ipairs({'S1精英版奖励1','S1精英版奖励2','S1精英版奖励3'}) do 
+for i,name in ipairs({
+    'S1精英版奖励1','S1精英版奖励2','S1精英版奖励3','S1精英版奖励4',
+    'S1精英版奖励5','S1精英版奖励6','S1精英版奖励7','S1精英版奖励8',
+    'S1精英版奖励9','S1精英版奖励10','S1精英版奖励11','S1精英版奖励12',
+    'S1精英版奖励13','S1精英版奖励14','S1精英版奖励15',
+}) do 
     local mt = ac.skill[name]
     function mt:on_add()
         local hero = self.owner

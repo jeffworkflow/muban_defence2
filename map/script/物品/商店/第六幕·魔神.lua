@@ -97,7 +97,7 @@ function mt:on_cast_start()
 
     local cnt = (p.cnt_succ_tm or 0) + 1
     local name = '天魔BOSS'..(p.cnt_succ_ms or 0) + 1
-    if cnt <= 10 then 
+    if cnt <= 15 then 
         create_u(self,name,'moshen2',function(unit,killer)
             -- local it_name = ac.tm_item[math.random(#ac.tm_item)]
             
@@ -120,7 +120,7 @@ function mt:on_cast_start()
 
     local cnt = (p.cnt_succ_ts or 0) + 1
     local name = '天神BOSS'..(p.cnt_succ_ms or 0) + 1
-    if cnt <= 10 then 
+    if cnt <= 15 then 
         create_u(self,name,'moshen3',function(unit,killer)
             local it_name = p:random(ac.ts_item,true)
             -- local it_name = ac.ts_item[math.random(#ac.ts_item)]
@@ -143,7 +143,8 @@ end
 
 local mt = ac.skill['渡劫']
 mt{
-    pulse =0.08,
+    -- pulse =0.08,
+    -- pulse =0.08,
     dz_cnt = 50,
     cnt_dz = function(self)
         return ac.player.self.cnt_dz or 0
@@ -166,12 +167,14 @@ function mt:on_cast_start()
     --扣除次数
     p.cnt_dz = p.cnt_dz -1
     local bff 
+    local pulse = 0.08-(p.cnt_succ_dz or 0)*0.002
+    pulse = math.max(0.01,pulse)
     local wait = ac.wait(1*1000,function()
         bff = hero:add_buff '渡劫' {
             skill = self,
             damage = 250000000 * ((p.cnt_succ_dz or 0) + 1),
-            time = self.dz_cnt * self.pulse,
-            pulse = self.pulse,
+            time = self.dz_cnt * pulse,
+            pulse = pulse,
             dz_cnt = self.dz_cnt
         }
     end)

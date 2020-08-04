@@ -538,10 +538,6 @@ local function boss_ani()
         ac.game:event_notify('杀死最强魔帝')
         ac.game:event_notify('游戏-结束',true)
 
-        --创建庄周
-        local x,y = ac.rect.j_rect('moku1'):get_point():get()
-        local shop = ac.shop.create('庄周',x,y,270,nil) 
-        shop:add_sell_item('兑换-神奇的令牌',9)
     end)
 
 
@@ -665,11 +661,16 @@ end
 --赛季任务
 ac.game:event '赛季任务'(function()
     local time = 120
-    time =15
+    -- time =15
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     blink_tlmk(time)
+    
+    --创建庄周
+    local x,y = ac.rect.j_rect('moku1'):get_point():get()
+    local shop = ac.shop.create('庄周',x,y,270,nil) 
+    shop:add_sell_item('兑换-神奇的令牌',9)
 
 end)
 

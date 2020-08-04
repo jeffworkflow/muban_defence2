@@ -129,6 +129,8 @@ local attribute = {
 	['杀怪加护甲'] = true,  --默认表示为基础值
 	['杀怪加攻击'] = true,  --默认表示为基础值
 	['杀怪加生命上限'] = true,  --默认表示为基础值
+	['杀怪加杀敌数'] = true,  --默认表示为基础值
+	['杀怪加魔丸'] = true,  --默认表示为基础值
 	
 	['杀死进攻怪加木头'] = true,  --默认表示为基础值
 	
@@ -204,6 +206,8 @@ local base_attr =[[
 杀死进攻怪加木头
 杀怪加生命上限
 减少复活时间
+杀怪加杀敌数
+杀怪加魔丸
 ]]
 ac.base_attr = base_attr
 
@@ -996,15 +1000,18 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	--加木头
 	local wood = player.hero:get('杀怪加木头') 
 	player:add_wood(wood) 
+	--加杀敌数
+	local kill_count = player.hero:get('杀怪加杀敌数') 
+	player:add_kill_count(kill_count) 
+	--加魔丸
+	local rec_ex = player.hero:get('杀怪加魔丸') 
+	player:add_rec_ex(rec_ex) 
 	
 	--处理杀死进攻怪加木头
 	if finds(ac.attack_unit_str or '',target:get_name()) then 
 		local wood = player.hero:get('杀死进攻怪加木头') 
 		player:add_wood(wood) 
-	end
 
-	--处理杀死进攻怪加守家积分
-	if finds(ac.attack_unit_str or '',target:get_name()) then 
 		local val = 1*(1 + player:get('守家积分加成')/100) 
 		player:add('守家积分',val) 
 	end
