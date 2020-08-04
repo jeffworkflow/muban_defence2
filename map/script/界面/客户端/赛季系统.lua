@@ -666,11 +666,6 @@ ac.game:event '赛季任务'(function()
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00最强魔帝|cff00ffff2分钟|cff00ff00后出现，它拥有着至高无上的|cffff0000荣耀战令！',5)
     blink_tlmk(time)
-    
-    --创建庄周
-    local x,y = ac.rect.j_rect('moku1'):get_point():get()
-    local shop = ac.shop.create('庄周',x,y,270,nil) 
-    shop:add_sell_item('兑换-神奇的令牌',9)
 
 end)
 

@@ -624,6 +624,58 @@ function mt:damage_start(damage)
 	end	
 end
 
+local mt = ac.skill['香港脚']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 15,
+--图标
+art = [[xieniu.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+%生命上限%% |cffffff00% |cff00ff00生命上限
+
+|cffcccccc获得概率与生命上限/通关难度/地图等级相关]],
+['生命上限%'] = {5,75},
+
+}
+local mt = ac.skill['人间大炮']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 15,
+--图标
+art = [[xieniu.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+%生命上限%% |cffffff00% |cff00ff00生命上限
+
+|cffcccccc获得概率与生命上限/通关难度/地图等级相关]],
+['生命上限%'] = {5,75},
+
+}
+
+local mt = ac.skill['天选之子']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 15,
+--图标
+art = [[xieniu.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+%生命上限%% |cffffff00% |cff00ff00生命上限
+
+|cffcccccc获得概率与生命上限/通关难度/地图等级相关]],
+['生命上限%'] = {5,75},
+
+}
 
 
 local mt = ac.skill['隐藏成就']
@@ -640,7 +692,8 @@ mt{
 }
 mt.skill_name ={
     '我是大魔头','黄金矿工','书呆子','剑瞎子','采蘑菇的小姑娘','扭蛋人生','du徒',
-    '强悍之人','血牛','一出门就被秒','绝世魔剑','绝世神剑'
+    '强悍之人','血牛','一出门就被秒','绝世魔剑','绝世神剑',
+    '香港脚','人间大炮','天选之子'
 }
 
 mt.skills = {
@@ -793,5 +846,15 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     if math.random(100000)/1000 < rate then 
         p.air =(p.air or 0) + 1
         check_air(p)
+    end
+end)
+
+--香港脚
+ac.game:event '进球门'(function(trg,skill,hero)
+    local p = hero.owner
+    local rate = 0.3
+    rate = 40
+    if math.random(100000)/1000 < rate then 
+        active_yccj(p,'香港脚')
     end
 end)

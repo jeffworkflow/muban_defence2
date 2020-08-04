@@ -122,6 +122,7 @@ function mt:on_cast_start()
             end
             -- print(u)
             give_award(hero)
+            ac.game:event_notify('进球门')
             return true
 		end	
 	}

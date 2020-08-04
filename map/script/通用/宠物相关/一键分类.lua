@@ -64,6 +64,12 @@ function mt:on_cast_shot()
 							new_point = rightbuttom
 							v:set_point(new_point)
 						end	
+
+						local timer = v._self_skill_timer 
+						if timer then 
+							timer:remove()
+							v._self_skill_timer = nil 
+						end 
 					end
 				end
 			end
