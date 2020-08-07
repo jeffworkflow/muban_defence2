@@ -73,13 +73,13 @@ local new_ui = class.panel:builder
     --预设奖池
     award_list = {
         { rand = 7.14,      name = '挖宝熟练度+100'},
-        { rand = 7.14,     name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
-        { rand = 7.14,      name = '王昭君'},
+        { rand = 7.14,      name = '挖宝熟练度+100'},
+        { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},
         { rand = 7.14,      name = '挖宝熟练度+100'},

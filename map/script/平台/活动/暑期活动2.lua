@@ -8,7 +8,7 @@ is_order = 1,
 art = [[zuoyeben.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff007月20日-8月5日
+|cffffe799【活动时间】|r|cff00ff007月20日-8月12日
 |cffffe799【活动说明】|r|cff00ff00炎炎夏日，火似骄阳。暑期来临，魔神班主任担心大家荒废学业，往|cff00ffff藏经阁|cff00ff00投放了一些|cffffff00【暑假作业本】|cff00ff00，热爱学习的少侠赶紧去寻找吧！
 ]],
 --物品类型
@@ -181,7 +181,7 @@ art = [[xigua.blp]],
 is_order = 1,
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff007月20日-8月5日
+|cffffe799【活动时间】|r|cff00ff007月20日-8月12日
 |cffffe799【活动说明】|r|cff00ff00夏日炎炎，骄阳似火。行人于役，饥渴难耐。此时望见|cff00ffff百花宫|cff00ff00中那一片青翠的瓜田，一个个又大又圆的|cffffff00西瓜|cff00ff00都已成熟。
  ]],
 --物品类型

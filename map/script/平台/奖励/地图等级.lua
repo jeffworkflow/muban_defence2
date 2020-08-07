@@ -750,7 +750,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
         return 
     end
     local p = player 
-    if p:Map_GetMapLevel() > 50 and p:Map_HasMallItem('TZ') then 
+    if p:Map_GetMapLevel() > 49 and p:Map_HasMallItem('TZ') then 
         hero:add_skill('剑气冲霄2','英雄')
     end
 

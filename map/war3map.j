@@ -363,6 +363,13 @@ rect gg_rct_zhuzi= null
 rect gg_rct_yingxiong21= null
 rect gg_rct_saijiboss1= null
 rect gg_rct_saijiboss2= null
+rect gg_rct_jiao2= null
+rect gg_rct_jiao3= null
+rect gg_rct_jiao4= null
+rect gg_rct_jiao5= null
+rect gg_rct_jiao1= null
+rect gg_rct_jiao6= null
+
 
 camerasetup gg_cam_Camera_001= null
 
@@ -1849,6 +1856,12 @@ function CreateRegions takes nothing returns nothing
 	set gg_rct_yingxiong21=Rect(- 10272.0, 26400.0, - 10240.0, 26432.0)
 	set gg_rct_saijiboss1=Rect(13568.0, 28032.0, 13664.0, 28128.0)
 	set gg_rct_saijiboss2=Rect(12960.0, 27648.0, 13120.0, 27776.0)
+	set gg_rct_jiao2=Rect(11104.0, - 96.0, 11552.0, 288.0)
+    set gg_rct_jiao3=Rect(10400.0, - 2656.0, 10880.0, - 2176.0)
+    set gg_rct_jiao4=Rect(12512.0, - 1760.0, 13024.0, - 1280.0)
+    set gg_rct_jiao5=Rect(11200.0, - 1632.0, 11616.0, - 1280.0)
+    set gg_rct_jiao1=Rect(10432.0, 928.0, 10848.0, 1376.0)
+    set gg_rct_jiao6=Rect(- 4992.0, 8192.0, - 4832.0, 8320.0)
 endfunction
 
 //===========================================================================
