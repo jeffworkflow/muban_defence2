@@ -142,7 +142,7 @@ mt{
 --总奖池
 local reward = {
     ['神奇的令牌'] =  {	
-        {    rand = 15.4, name = '谢谢参与',},
+        {    rand = 18.4, name = '谢谢参与',},
 
         {    rand = 3.5, name = '魔灵争霸+2' },
         {    rand = 0.5, name = '魔灵争霸+40',},
@@ -175,18 +175,22 @@ local reward = {
 
         {    rand = 30, name = '随机存档物品',},
 
-        {    rand = 1, name = '我是大魔头',},
-        {    rand = 1, name = '黄金矿工',},
-        {    rand = 1, name = '书呆子',},
-        {    rand = 1, name = '剑瞎子',},
-        {    rand = 1, name = '采蘑菇的小姑娘',},
-        {    rand = 1, name = '扭蛋人生',},
-        {    rand = 1, name = 'du徒',},
-        {    rand = 1, name = '强悍之人',},
-        {    rand = 1, name = '血牛',},
-        {    rand = 1, name = '一出门就被秒',},
-        {    rand = 1, name = '绝世魔剑',},
-        {    rand = 1, name = '绝世神剑',},
+        {    rand = 0.6, name = '我是大魔头',},
+        {    rand = 0.6, name = '黄金矿工',},
+        {    rand = 0.6, name = '书呆子',},
+        {    rand = 0.6, name = '剑瞎子',},
+        {    rand = 0.6, name = '采蘑菇的小姑娘',},
+        {    rand = 0.6, name = '扭蛋人生',},
+        {    rand = 0.6, name = 'du徒',},
+        {    rand = 0.6, name = '强悍之人',},
+        {    rand = 0.6, name = '血牛',},
+        {    rand = 0.6, name = '一出门就被秒',},
+        {    rand = 0.6, name = '绝世魔剑',},
+        {    rand = 0.6, name = '绝世神剑',},
+        {    rand = 0.6, name = '香港脚',},
+        {    rand = 0.6, name = '天选之子',},
+        {    rand = 0.6, name = '人间大炮',},
+
 
         {    rand = 0.6, name = '番天印',},
         {    rand = 0.6, name = '战舰之舵',},

@@ -156,13 +156,13 @@ tip = [[
 |cff00ff00累计获得|cff00ffff六个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+1000   |cff00ff00白嫖熟练度|r
+|cff00ff00+5000   |cff00ff00白嫖熟练度|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 award ='白嫖熟练度',
-award_cnt = 1000,
+award_cnt = 5000,
 need_map_level = 5,
 }
 
