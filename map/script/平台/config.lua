@@ -386,7 +386,7 @@ local cus_key = {
 
     {'qd','签到',{
         --奖励  所需值 地图等级
-            ['签到'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*20,(p.cus_server['签到'] or 0)) end},
+            ['签到'] = {1,1,value = function(self,p) return math.min(p:Map_GetMapLevel()*20,(p.cus_server['签到'] or 0),100) end},
             ['开始签到'] = {2,1},
             ['每日一签'] = {5,3},
             ['我爱签到'] = {10,5},

@@ -49,9 +49,13 @@ local attribute = {
 	['攻击间隔极限']		=	true, --默认%
 	['攻击速度']    = true, --默认默认% 
 	['攻击距离']    = true, --默认基础值
+	['攻击距离极限']    = true, --默认基础值
+	
 	['移动速度']    = true, --默认基础值 
 	['减耗']       = true,  --默认基础值 减少扣篮量
 	['技能冷却']    = true, --默认% 
+	['技能冷却极限']    = true, --默认% 
+	
 	['吸血']       = true,  --默认%
 	['分裂伤害']       = true,  --默认%
 	['格挡']       = true,  --默认%
@@ -777,16 +781,15 @@ get['攻击距离'] = function(self)
 	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x16))
 end
 
-on_get['攻击距离'] = function(self, attack_distance)
-	if attack_distance >= 5000 then
-		return 5000
-	end
-	return attack_distance
+on_get['攻击距离'] = function(self, attack_range)
+	attack_range = math.min(attack_range,5000 + self:get('攻击距离极限')) 
+	return attack_range
 end
 
 set['攻击距离'] = function(self, attack_range)
 	--攻击距离最大 5000
-	attack_range = math.min(attack_range,5000) 
+	attack_range = math.min(attack_range,5000 + self:get('攻击距离极限')) 
+
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x16), attack_range)
 	if self.owner:is_player() then
 		--修改攻击距离后同时修改主动攻击范围
@@ -836,9 +839,7 @@ on_set['减耗'] = function(self)
 end
 
 on_get['技能冷却'] = function(self, cool_reduce)
-	if cool_reduce > 70 then
-		return 70
-	end
+	cool_reduce = math.min(cool_reduce,70 + self:get('技能冷却极限')) 
 	return cool_reduce
 end
 

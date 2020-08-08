@@ -1,6 +1,6 @@
 
 
-for ix =1 ,5 do 
+for ix =1 ,6 do 
     local affix 
     if ix == 1 then 
         affix = '一'
@@ -9,9 +9,11 @@ for ix =1 ,5 do
     elseif ix == 3 then
         affix = '三'    
     elseif ix == 4 then
-        affix = '四'    
-    else 
-        affix = '五' 
+        affix = '四'   
+    elseif ix == 5 then
+        affix = '五'    
+    elseif ix == 6 then 
+        affix = '六' 
     end          
     local mt = ac.skill[affix..'号熔炼石']
     mt{
@@ -148,5 +150,5 @@ mt{
 mt.skills = {
     -- '烧火棍','赤炎甲',nil,nil,
     nil,nil,nil,nil,
-    '一号熔炼石','二号熔炼石','三号熔炼石','四号熔炼石','五号熔炼石',
+    '一号熔炼石','二号熔炼石','三号熔炼石','四号熔炼石','五号熔炼石','六号熔炼石',
 }

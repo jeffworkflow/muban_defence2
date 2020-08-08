@@ -2290,20 +2290,42 @@ end
 --测试副本
 function helper:fb(str,cnt)
 	local cnt = cnt or 1
-	for x = 1,cnt do 
-		for i=1,3 do 
-			local creep = ac.creep['刷怪'..i]
+	local temp = {
+		['进攻刷怪'] = function()
+			--普通刷怪
+			for i=1,3 do 
+				local creep = ac.creep['刷怪'..i]
+				creep.index = tonumber(str) - 1
+				if i==1 then 
+					creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
+				end
+				if creep.has_started  then 
+					creep:next()
+				else
+					creep:start()
+				end		
+			end	
+		end,
+		['贪婪魔窟'] = function()
+			local creep = ac.creep['贪婪魔窟']
 			creep.index = tonumber(str) - 1
-			if i==1 then 
-				creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
-			end
 			if creep.has_started  then 
 				creep:next()
 			else
 				creep:start()
 			end		
-		end	
-		
+		end,
+
+	}
+	for x = 1,cnt do 
+		--贪婪魔窟
+		local name = '普通刷怪'
+		if ac.creep['贪婪魔窟'].index >=1 then 
+			name = '贪婪魔窟'
+		end
+		if temp[name] then 
+			temp[name]()
+		end
 	end
 end
 --测试副本

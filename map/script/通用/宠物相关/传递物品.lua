@@ -41,6 +41,11 @@ function mt:on_cast_start()
 	local it = self.target
 	local player = unit:get_owner()
 	local hero = player.hero
+	if finds(it:get_name(),'小皮球') then 
+		player:sendMsg('|cffebb608【系统】|cffff0000无法对小皮球使用|r',5)
+		return 
+	end
+
 	-- print(it)
 	local slot = hero:get_nil_slot()
 	if not slot then 

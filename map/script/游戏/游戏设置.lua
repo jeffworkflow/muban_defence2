@@ -269,19 +269,21 @@ end
 --禁止A队友
 ac.game:event '单位-攻击开始' (function(self, data)
 	if data.target:is_ally(data.source) then
-		if data.target:get_name() ~= '游戏说明' then 
+		if not finds(data.target:get_name(),'游戏说明','神奇的奶牛') then 
 			data.source:issue_order 'stop'
 			return true		--终结事件流程
 		end	
-		--攻击 游戏说明 加属性
-		local p = data.source.owner
-		add_content(p)
-		
-		--概率触发隐藏成就
-		local rate = 0.08
-		-- rate = 40
-		if math.random(100000)/1000 < rate then 
-			ac.active_yccj(p,'人间大炮')
+		if data.target:get_name() == '游戏说明' then
+			--攻击 游戏说明 加属性
+			local p = data.source.owner
+			add_content(p)
+			
+			--概率触发隐藏成就
+			local rate = 0.08
+			-- rate = 40
+			if math.random(100000)/1000 < rate then 
+				ac.active_yccj(p,'人间大炮')
+			end
 		end
 	end
 end)

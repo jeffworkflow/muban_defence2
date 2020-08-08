@@ -1193,7 +1193,7 @@ function item.create_item(name,poi,hide,p)
 	
 	--在继承skill的属性(如果带技能的话,不存在技能时遍历一下也无所谓)
 	local data = ac.skill[name]
-	for k, v in pairs(data) do
+	for k, v in sortpairs(data) do
 		items[k] = v
 	end	
 	-- local skl = ac.dummy:add_skill(name,'英雄')

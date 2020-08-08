@@ -51,7 +51,7 @@ local function create_u(skill,unit_name,target_rect,f)
 end
 
 local function check(p)
-    if p.cnt_total_succ == 4 and not ac.flag_msjy  then
+    if p.cnt_total_succ == 5 and not ac.flag_msjy  then
         ac.flag_msjy = true
         local unit = ac.find_unit('第六幕·魔神之路')
         unit:add_sell_item('魔神的交易',9)
@@ -60,7 +60,7 @@ local function check(p)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
     end
-    if p.cnt_total_succ == 8 and not ac.flag_mshc  then
+    if p.cnt_total_succ == 5 and not ac.flag_mshc  then
         ac.flag_mshc = true
         local unit = ac.find_unit('第六幕·魔神之路')
         unit:add_sell_item('魔神的合成',12)
@@ -70,7 +70,7 @@ local function check(p)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
     end
 
-    if p.cnt_total_succ == 12 and not ac.flag_mszs  then
+    if p.cnt_total_succ == 10 and not ac.flag_mszs  then
         ac.flag_mszs = true
         local unit = ac.find_unit('第六幕·魔神之路')
         unit:add_sell_item('魔神之石',4)
@@ -78,6 +78,36 @@ local function check(p)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神之石|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+    end
+    --少年达摩
+    if p.cnt_total_succ == 15 and not ac.flag_sndm  then
+        ac.flag_sndm = true 
+        local x,y = ac.rect.j_rect('npc13'):get_point():get()
+        local shop = ac.shop.create('少年达摩',x,y,270,nil) 
+        -- shop:add_sell_item('兑换-神奇的令牌',9)
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000少年达摩|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000少年达摩|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000少年达摩|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+    end
+
+    if p.cnt_total_succ == 6 and not ac.flag_sqdnn  then
+        ac.flag_sqdnn = true
+        local point = ac.rect.j_rect('jiao6'):get_point()
+        local shop = ac.player(12):create_unit('神奇的奶牛',point,270) 
+        shop:remove_restriction('无敌')
+
+        shop:add_restriction('定身')
+        shop:set('生命上限',999999999999)
+        shop:set('生命恢复',999999999999)
+        shop:set('护甲',999999999999)
+        shop:set('魔抗',999999999999)
+
+        ac.nainiu_unit = shop
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
     end
 end
 

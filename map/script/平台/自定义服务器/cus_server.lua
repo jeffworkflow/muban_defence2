@@ -225,6 +225,7 @@ local event = {
     
     on_get = function (key,val,update_time)
         local player = ui.player 
+        local p = ui.player 
         if not player.cus_server then 
             player.cus_server = {}
         end    
@@ -236,6 +237,7 @@ local event = {
         end   
         if key =='qd' then 
             player.qd_time = update_time and string2time(update_time) or 0
+            player.cus_server['签到']= math.min(p:Map_GetMapLevel()*20,(p.cus_server['签到'] or 0),100)
         end   
         if key =='exp' then 
             local exp = tonumber(val) or 0 

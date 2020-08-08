@@ -51,7 +51,7 @@ function mt:on_cast_shot()
 					if item_point:is_in_range(self.target ,self.area) then 
 						local new_point 
 						--装备
-						if finds(v.item_type,'装备','消耗品') and v.color and finds(v.color,'白','蓝','金','红','黑')  then 
+						if finds(v.item_type,'装备','消耗品') and v.color and finds(v.color,'白','蓝','金','红','黑','神')  then 
 							new_point = lefttop
 							v:set_point(new_point)
 						elseif finds(v.item_type,'装备','消耗品') and v.color and finds(v.color,'黄阶','玄阶','地阶','天阶','神阶')  then 

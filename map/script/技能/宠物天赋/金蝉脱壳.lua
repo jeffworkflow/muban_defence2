@@ -41,9 +41,14 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = self.owner.owner
     hero = p.hero
-    hero:add('力量',hero:get('力量')*0.05)  
-    hero:add('敏捷',hero:get('敏捷')*0.05)  
-    hero:add('智力',hero:get('智力')*0.05)  
+    
+    -- hero:add('力量',math.min(hero:get('力量')*self.val/100,10000000000))  
+    -- hero:add('敏捷',math.min(hero:get('敏捷')*self.val/100,10000000000))  
+    -- hero:add('智力',math.min(hero:get('智力')*self.val/100,10000000000))  
+
+    hero:add('力量',math.min(hero:get('力量')*0.05,10000000000))  
+    hero:add('敏捷',math.min(hero:get('敏捷')*0.05,10000000000))   
+    hero:add('智力',math.min(hero:get('智力')*0.05,10000000000))   
     hero:add_effect('chest',self.effect):remove()
     ac.wait(0.1*1000,function()
         hero:add_effect('chest',self.effect):remove()

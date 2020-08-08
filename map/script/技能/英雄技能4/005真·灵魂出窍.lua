@@ -59,9 +59,9 @@ function mt:damage_start(source,target)
     local p = hero:get_owner()
 	local target = target
 	
-    hero:add('力量',hero:get('力量')*self.val/100)  
-    hero:add('敏捷',hero:get('敏捷')*self.val/100)  
-	hero:add('智力',hero:get('智力')*self.val/100)  
+    hero:add('力量',math.min(hero:get('力量')*self.val/100,10000000000))  
+    hero:add('敏捷',math.min(hero:get('敏捷')*self.val/100,10000000000))  
+    hero:add('智力',math.min(hero:get('智力')*self.val/100,10000000000))  
 
 	self:play_eff()
 	

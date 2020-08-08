@@ -18,7 +18,7 @@ for name,data in pairs(ac.table.ItemData) do
             table.insert(all_item,name)
         end   
         
-        if finds(color,'白','蓝','金','红','黑') then 
+        if finds(color,'白','蓝','金','红','黑','神') then 
             if data.item_type =='装备' then
                 table.insert(equipment,name)
             end    
@@ -78,7 +78,7 @@ ac.wait(10,function()
     ac.all_save_item = all_save_item
     
     
-    -- print_r(ac.quality_item)
+    -- print_r(ac.quality_item['神'])
     -- print_r(ac.save_item)
     -- print_r(ac.all_save_item)
 end)

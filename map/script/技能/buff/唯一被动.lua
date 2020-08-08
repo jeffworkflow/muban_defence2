@@ -23,7 +23,18 @@ local mt = ac.buff['意志']
 mt.effect = nil
 mt.cover_type = 0 --独占性，只有一个生效
 mt.attr = '全属性%'
-for i,name in ipairs({'专注','战鼓','行军','战甲','意志'}) do 
+
+local mt = ac.buff['天下太平']
+mt.effect = nil
+mt.cover_type = 0 --独占性，只有一个生效
+mt.attr = '攻击%'
+
+local mt = ac.buff['荒芜']
+mt.effect = nil
+mt.cover_type = 0 --独占性，只有一个生效
+mt.attr = '护甲%'
+
+for i,name in ipairs({'专注','战鼓','行军','战甲','意志','天下太平','荒芜'}) do 
 	local mt = ac.buff[name]
 	function mt:on_add()
 		-- self.effect = self.target:add_effect(self.ref, self.model)
@@ -37,6 +48,8 @@ for i,name in ipairs({'专注','战鼓','行军','战甲','意志'}) do
 	end
 
 	function mt:on_cover(new)
-		return new.value > self.value
+		local new = new.cover or new.value
+		local now = self.cover or self.value
+		return new > new
 	end
 end

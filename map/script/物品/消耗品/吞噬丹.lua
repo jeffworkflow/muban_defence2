@@ -74,7 +74,7 @@ function mt:on_cast_start()
 
     for i=1,6 do 
         local item = hero:get_slot_item(i)
-        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')   then 
+        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑','神')   then 
             count = count + 1
             local info = {
                 tostring(item.handle),'', "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r ',
@@ -88,7 +88,7 @@ function mt:on_cast_start()
     peon = player.peon
     for i=1,6 do 
         local item = peon:get_slot_item(i)
-        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑')  then 
+        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红','黑','神')  then 
             count = count + 1
             local info = {
                 tostring(item.handle),'', "|cff"..ac.color_code['淡黄']..'吞噬 '..item.color_name  .. '|r |cffdf19d0(宠)|r'

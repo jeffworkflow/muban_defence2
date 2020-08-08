@@ -2615,7 +2615,7 @@ local function init()
 		--处理物品相关
 		local item_cast
 		if hero.item_list then 
-			for i,it in pairs(hero.item_list) do
+			for i,it in sortpairs(hero.item_list) do
 				if it.ability_id == ability_id then 
 					skill = it 
 					item_cast = true
