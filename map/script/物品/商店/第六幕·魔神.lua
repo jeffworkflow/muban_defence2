@@ -95,7 +95,7 @@ local function check(p)
         ac.flag_sqdnn = true
         local point = ac.rect.j_rect('jiao6'):get_point()
         local shop = ac.player(12):create_unit('神奇的奶牛',point,270) 
-        shop:remove_restriction('无敌')
+        -- shop:remove_restriction('无敌')
 
         shop:add_restriction('定身')
         shop:set('生命上限',999999999999)
