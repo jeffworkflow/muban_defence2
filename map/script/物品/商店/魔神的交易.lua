@@ -45,7 +45,7 @@ function mt:on_cast_start()
     end    
     if red_cnt < 4 then 
         p:sendMsg('|cffebb608【系统】|r|cffff0000材料不足')
-        return 
+        return true
     end    
     
     --删除物品
