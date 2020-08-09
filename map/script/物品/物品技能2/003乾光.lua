@@ -41,7 +41,7 @@ mt{
 |cffffff00+%攻击加敏捷%|r 攻击加敏捷
 |cffffff00+%每秒加敏捷%|r 每秒加敏捷
 |cffffff00+%闪避%|r |cffffff00%|r 闪避
-|cffffff00【极致的移动速度】
+|cff00ffff【极致的移动速度】
 ]],
 	--备注
 	effect4 = [[移动速度极限]],

@@ -86,9 +86,9 @@ local function check(p)
         local shop = ac.shop.create('少年达摩',x,y,270,nil) 
         -- shop:add_sell_item('兑换-神奇的令牌',9)
         
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000少年达摩|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000少年达摩|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000少年达摩|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00召唤出NPC“|cffff0000少年达摩|cff00ff00”，可前往基地的右下角查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00召唤出NPC“|cffff0000少年达摩|cff00ff00”，可前往基地的右下角查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00召唤出NPC“|cffff0000少年达摩|cff00ff00”，可前往基地的右下角查看 ',5)
     end
 
     if p.cnt_total_succ == 6 and not ac.flag_sqdnn  then
@@ -105,9 +105,8 @@ local function check(p)
 
         ac.nainiu_unit = shop
         
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的合成|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffcccccc自来鼻上无绳索，天地为栏夜不收',5)
+
     end
 end
 

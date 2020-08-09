@@ -38,9 +38,9 @@ v1 = {0.2,0.5},
 |cffffff00+%生命上限%%|r |cffffff00%|r 生命上限
 |cffffff00+%会心伤害%|r |cffffff00%|r 会心伤害
 |cffffff00+%全伤加深%|r |cffffff00%|r 全伤加深
-【强大的永生系统】（死亡后3秒重生）
+|cff00ffff【强大的永生系统】
 
-|cff00bdec【唯一被动-永恒】攻击10% 几率让自己无敌，持续%v1%S|r
+|cff00ffff【唯一被动-永恒】|r攻击10% 几率让自己无敌，持续%v1%S
 ]],
 	--特效
 	effect = [[Abilities\Spells\Human\DivineShield\DivineShieldTarget.mdl]],
