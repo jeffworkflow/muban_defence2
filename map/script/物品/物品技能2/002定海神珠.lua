@@ -37,7 +37,7 @@ v1 = {0.5,7.5},
 |cffffff00+%技暴伤害%|r |cffffff00%|r 技暴伤害
 |cffffff00+%技能伤害加深%|r |cffffff00%|r 技能伤害加深
 
-|cffffff00【唯一被动-冷却】|r|cffffff00+%v1%|r |cffffff00%|r 技能冷却（无视技能冷却上限）
+|cff00ffff【唯一被动-冷却】|r|cffffff00+%v1%|r |cffffff00%|r 技能冷却（无视技能冷却上限）
 ]],
 	attr = '技能冷却极限',
 	attr2 = '技能冷却',

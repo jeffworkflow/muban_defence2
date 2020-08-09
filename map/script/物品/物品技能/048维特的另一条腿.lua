@@ -35,7 +35,7 @@ local function create_dbl()
 			ac.item.create_item('六号熔炼石',unit:get_point())
 			p.flag_6hrls = true 
 		end
-		p:sendMsg('恭喜杀死了大菠萝',5)
+		p:sendMsg('|cffebb608【系统】|r |cff00ff00恭喜击败超级大菠萝',5)
 	end)
 
 end
@@ -86,9 +86,9 @@ local function create_nainiu(hero)
     end    
     ac.flag_jixian['奶牛'] = ac.timer_ex 
     {
-        time = 3*60, 
+        time = 2.5*60, 
         -- time = 30,  --测试
-        title = '奶牛'.."区,关闭倒计时：",
+        title = '奶牛'.."消失倒计时：",
         func = function ()--关闭刷怪
             for i=1 ,3 do 
                 local crep = ac.creep['奶牛'..i] 
@@ -115,7 +115,7 @@ ac.game:event '受到伤害效果'(function(_,damage)
 	
 	local rate =10
 	if math.random(100000)/1000 <=rate then 
-		p:sendMsg('恭喜触发奶牛关卡',5)
+		p:sendMsg('|cffebb608【系统】|r|cff00ff00你来到了一个全新的地方 ',5)
 		create_nainiu(hero)
 		item:add_item_count(-1)
 	end
