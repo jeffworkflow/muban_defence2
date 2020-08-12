@@ -143,7 +143,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     p.max_fall_cnt[rand_name] = (p.max_fall_cnt[rand_name] or 0)
     --获得最多次数
     local max_fall_cnt = 16   
-    local rate = 0.12
+    local rate = 0.2
     -- local rate = 1
     if math.random(100000)/1000 <= rate and p.max_fall_cnt[rand_name] < max_fall_cnt then 
         --当前个数+1
