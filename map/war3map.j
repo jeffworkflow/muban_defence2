@@ -369,6 +369,7 @@ rect gg_rct_jiao4= null
 rect gg_rct_jiao5= null
 rect gg_rct_jiao1= null
 rect gg_rct_jiao6= null
+rect gg_rct_kpds= null
 
 
 camerasetup gg_cam_Camera_001= null
@@ -1604,7 +1605,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_npc12=Rect(5728.0, 7072.0, 5792.0, 7136.0)
     set gg_rct_npc13=Rect(5728.0, 7520.0, 5792.0, 7584.0)
     set gg_rct_npc14=Rect(5728.0, 7968.0, 5792.0, 8032.0)
-    set gg_rct_npc15=Rect(5728.0, 8416.0, 5792.0, 8480.0)
+    set gg_rct_npc15=Rect(5632.0, 8320.0, 5888.0, 8608.0)
     set gg_rct_jg2_jd=Rect(4640.0, 7520.0, 4704.0, 7584.0)
     set gg_rct_sylh=Rect(- 9280.0, 21280.0, - 8960.0, 21504.0)
     set gg_rct_sylh1=Rect(- 9280.0, 22144.0, - 8960.0, 22368.0)
@@ -1862,6 +1863,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_jiao5=Rect(11200.0, - 1632.0, 11616.0, - 1280.0)
     set gg_rct_jiao1=Rect(10432.0, 928.0, 10848.0, 1376.0)
     set gg_rct_jiao6=Rect(- 4992.0, 8192.0, - 4832.0, 8320.0)
+	set gg_rct_kpds=Rect(- 1792.0, 224.0, - 1600.0, 416.0)
 endfunction
 
 //===========================================================================

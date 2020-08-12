@@ -11,7 +11,7 @@ mt{
     
 }
 mt.skills = {
-    '新的征程1','新的征程2','新的征程3','新的征程4','新的征程5',
+    '新的征程1','新的征程2','新的征程3','新的征程4','新的征程5','新的征程6','新的征程7','新的征程8',
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -177,6 +177,88 @@ tip = [[
 ]],
 content = '',
 }
+
+
+
+
+local mt = ac.skill['新的征程6']
+mt['杀怪加全属性'] = 700
+mt['攻击减甲'] = 350
+mt['会心伤害'] = 200
+mt['全伤加深'] = 100
+
+mt{
+title = '与神之战',
+art = [[yszz.blp]],
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00通关难度-|cffffff00新的征程（十六）-（十八）|cff00ff00获得
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+700   杀怪加全属性|r
+|cff00ff00+350   攻击减甲|r
+|cff00ff00+200%  会心伤害|r
+|cff00ff00+100%  全伤加深|r
+
+]],
+content = '',
+}
+
+
+local mt = ac.skill['新的征程7']
+mt['杀怪加全属性'] = 750
+mt['攻击减甲'] = 375
+mt['暴击伤害'] = 400
+mt['物理伤害加深'] = 200
+mt['多重暴击'] = 1
+mt{
+title = '踏破神界',
+art = [[tpsj.blp]],
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00通关难度-|cffffff00新的征程（十九）-（二十一）|cff00ff00获得
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+750   杀怪加全属性|r
+|cff00ff00+375   攻击减甲|r
+|cff00ff00+400%  暴击伤害|r
+|cff00ff00+200%  物理伤害加深|r
+|cff00ff00+1     多重暴击|r
+
+]],
+content = '',
+}
+
+local mt = ac.skill['新的征程8']
+mt['杀怪加全属性'] = 800
+mt['攻击减甲'] = 400
+mt['技暴伤害'] = 400
+mt['技能伤害加深'] = 200
+mt['对BOSS额外伤害'] = 100
+mt{
+title = '洞天真相',
+art = [[dtzx.blp]],
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00通关难度-|cffffff00新的征程（二十二）-（二十四）|cff00ff00获得
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+800   杀怪加全属性|r
+|cff00ff00+400   攻击减甲|r
+|cff00ff00+400%  技暴伤害|r
+|cff00ff00+200%  技能伤害加深|r
+|cff00ff00+100%  对BOSS额外伤害|r
+
+]],
+content = '',
+}
+
 
 
 

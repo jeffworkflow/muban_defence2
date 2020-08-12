@@ -16,6 +16,7 @@ tip = [[
 |cff00ffff开局赠送10个黑暗骰子
 黑暗骰子掉落概率提高一倍
 |cffff0000局内地图等级+1
+|cffff0000+5% 全伤加深系数
 
 ]],
 --目标类型
@@ -29,6 +30,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全属性翻倍概率'] = 1.5,
 ['黑暗骰子掉落概率'] = 100,
 ['局内地图等级'] = 1,
+['全伤加深系数'] = 5,
 }
 function mt:on_add()
     local hero = self.owner

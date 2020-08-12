@@ -16,6 +16,7 @@ tip = [[
 强化石、天谕掉落概率提高一倍
 |cffffff00随机物品一个（纯随机，运气好直接红装）
 |cffff0000局内地图等级+1
+|cffff0000+5% 全伤加深系数
 
 ]],
 --目标类型
@@ -25,6 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['强化石掉落概率'] = 100,
 ['天谕掉落概率'] = 100,
 ['局内地图等级'] = 1,
+['全伤加深系数'] = 5,
 }
 function mt:on_add()
     local hero = self.owner

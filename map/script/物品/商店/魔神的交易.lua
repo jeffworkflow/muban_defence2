@@ -13,7 +13,7 @@ tip = [[
 
 消耗 |cffff00004个红色物品|r 兑换 |cff00ff001个黑色物品|r
 
-|cffcccccc最大兑换次数12次]],
+|cffcccccc最大兑换次数15次]],
 
 content_tip = '|cffFFE799【说明】：|r|n',
 --物品类型
@@ -23,7 +23,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --最大购买次数
-max_buy_cnt = 11,
+max_buy_cnt = 15,
 --物品技能
 is_skill = true,
 }

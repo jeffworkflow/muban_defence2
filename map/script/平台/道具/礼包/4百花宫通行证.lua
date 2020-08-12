@@ -16,6 +16,7 @@ tip = [[
 一颗神奇的种子掉落概率提高一倍
 |cffffff00可自动种树（点击种子试试）
 |cffff0000局内地图等级+1
+|cffff0000+5% 全伤加深系数
 
 ]],
 --目标类型
@@ -25,6 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加护甲'] = 20,
 ['一颗神奇的种子掉落概率'] = 100,
 ['局内地图等级'] = 1,
+['全伤加深系数'] = 5,
 }
 function mt:on_add()
     local hero = self.owner

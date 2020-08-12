@@ -58,7 +58,7 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+50W 全属性
+|cff00ff00+30W 全属性
 +35% 杀敌数加成|r
 
 ]],
@@ -651,14 +651,14 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+300W 全属性
+|cff00ff00+200W 全属性
 +100% 攻击速度
-+25%  物品获取率
++35%  物品获取率
 
 ]],
-  ['全属性'] = 3000000, 
+  ['全属性'] = 2000000, 
   ['攻击速度'] = 100,
-  ['物品获取率'] = 25,
+  ['物品获取率'] = 35,
 }
 
 
@@ -668,9 +668,9 @@ local task_detail = {
         award = '大屠杀',
         sendMsg = function(p)
             -- p:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r|cff00ffff 把魔教弟子杀了个遍|r 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +25%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+50w全属性 +35%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+50w全属性 +35%杀敌数加成|r',5)
-            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+50w全属性 +35%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +35%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +35%杀敌数加成|r',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 把魔教弟子杀了个遍 获得成就|cffff0000 "大屠杀" |r，奖励 |cffff0000+30w全属性 +35%杀敌数加成|r',5)
         end,
     },
     
@@ -869,9 +869,9 @@ ac.game:event '游戏-开始' (function()
             local skl = hero:find_skill('输出机器',nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','输出机器')
-            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+300W全属性 +100%攻击速度 +25%物品获取率|r',6)
-            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+300W全属性 +100%攻击速度 +25%物品获取率|r',6)
-            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+300W全属性 +100%攻击速度 +25%物品获取率|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+200W全属性 +100%攻击速度 +35%物品获取率|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+200W全属性 +100%攻击速度 +35%物品获取率|r',6)
+            ac.player.self:sendMsg('|cffebb608【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+200W全属性 +100%攻击速度 +35%物品获取率|r',6)
             end
         end
     end)
