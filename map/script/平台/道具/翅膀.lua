@@ -454,38 +454,38 @@ effect = [[chibang2.mdx]]
 -- effect = [[chibang4.mdx]]
 -- }
 
-local mt = ac.skill['天罡苍羽翼']
-mt{
---等级
-level = 0,
---图标
-art = [[chibang3.blp]],
---说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+-- local mt = ac.skill['天罡苍羽翼']
+-- mt{
+-- --等级
+-- level = 0,
+-- --图标
+-- art = [[chibang3.blp]],
+-- --说明
+-- tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff王者10星
+-- |cffffe799【获得方式】：|r
+-- |cff00ffff王者10星
 
-|cffFFE799【翅膀属性】：|r
-|cff00ff00+150    杀怪加全属性|r
-|cff00ff00+3000W 生命|r
-|cff00ff00+3000   护甲
-|cff00ff00+5%   每秒回血|r
-|cff00ff00+2.5%   减伤|r
+-- |cffFFE799【翅膀属性】：|r
+-- |cff00ff00+150    杀怪加全属性|r
+-- |cff00ff00+3000W 生命|r
+-- |cff00ff00+3000   护甲
+-- |cff00ff00+5%   每秒回血|r
+-- |cff00ff00+2.5%   减伤|r
 
-|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 150,
-['生命上限'] = 30000000,
-['护甲'] = 3000,
-['减伤'] = 2.5,
-['每秒回血'] = 5,
-need_map_level = 10,
---特效
-effect = [[chibang3.mdx]]
-}
+-- |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
+-- ]],
+-- --目标类型
+-- target_type = ac.skill.TARGET_TYPE_NONE,
+-- ['杀怪加全属性'] = 150,
+-- ['生命上限'] = 30000000,
+-- ['护甲'] = 3000,
+-- ['减伤'] = 2.5,
+-- ['每秒回血'] = 5,
+-- need_map_level = 10,
+-- --特效
+-- effect = [[chibang3.mdx]]
+-- }
 
 -- local mt = ac.skill['白龙凝酥翼']
 -- mt{
@@ -747,7 +747,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[tgcyy.blp]],
 --说明
 tip = [[
 
@@ -755,31 +755,38 @@ tip = [[
 |cff00ffff商城购买后自动激活
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+250    杀怪加全属性|r
-|cff00ff00+488    攻击加全属性|r
-|cff00ff00+788    每秒加全属性|r
-|cff00ff00+10    每秒加护甲|r
-|cff00ff00+10%   减伤|r
-|cff00ff00+10%   免伤几率|r
-|cff00ff00+10%   对BOSS额外伤害|r
+|cff00ff00+50% 全伤加深系数|r
+|cff00ff00+50% 全属性|r
+|cff00ff00+50% 生命上限|r
+|cff00ff00+50% 护甲|r
+|cff00ff00+25% 减伤|r
+|cff00ff00+25% 免伤几率|r
+|cff00ff00+25% 闪避|r
+|cff00ff00+25% 每秒回血|r
+|cff00ff00+25% 技能冷却|r
+|cff00ff00+25% 触发概率加成|r
+|cff00ff00【秒杀练功房怪物】
+|cff00ff00【开局赠送随机神阶功法，到玩家背包】
 
-|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%， 会心伤害+100%
-
-|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
-]],
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深系数'] = 50,
-['每秒加全属性'] = 788,
-['攻击加全属性'] = 488,
-['每秒加护甲'] = 10,
-['免伤几率'] = 10,
-['对BOSS额外伤害'] = 10,
-['减伤'] = 10,
+['力量%'] = 50,
+['敏捷%'] = 50,
+['智力%'] = 50,
+['生命上限%'] = 50,
+['护甲%'] = 50,
+['减伤'] = 25,
+['免伤几率'] = 25,
+['闪避'] = 25,
+['每秒回血'] = 25,
+['技能冷却'] = 25,
+['触发概率加成'] = 25,
 
 ['秒杀练功房的怪物'] = 1,
 --特效
-effect = [[chibang7.mdx]]
+effect = [[hjcb2.MDX]]
 }
 function mt:on_add()
     local hero =self.owner

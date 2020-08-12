@@ -5,12 +5,23 @@ mt{
 level = 1,
 is_order = 1,
 --图标
-art = [[zuoyeben.blp]],
+art = [[huoba.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff007月20日-8月12日
-|cffffe799【活动说明】|r|cff00ff00炎炎夏日，火似骄阳。暑期来临，魔神班主任担心大家荒废学业，往|cff00ffff藏经阁|cff00ff00投放了一些|cffffff00【暑假作业本】|cff00ff00，热爱学习的少侠赶紧去寻找吧！
-]],
+|cffffe799【活动时间】|r|cff00ff008月13日-8月24日
+|cffffe799【活动说明】|r
+|cff00ff001.|cff00ffff火可熏田除祟、祈求丰年、招引光明、迎接福瑞。|cff00ff00最近三界在筹备一场盛世空前的篝火晚会，|cff00ff00请少侠帮忙|cffff0000收集一些火把|r|cff00ff00给我
+
+|cff00ff002.另外|cffffff00基地经常出现一些虫子|cff00ff00，少侠路过时，可顺便帮忙|cffffff00驱逐一下|r
+
+|cffffe799火把积分大于50|r   奖励 |cff00ff00【成就】护焰者
+|cffffe799火把积分大于150|r  奖励 |cff00ff00【成就】火焰杂耍
+|cffffe799火把积分大于300|r  奖励 |cff00ffff【成就】木杆热舞
+|cffffe799火把积分大于500|r  奖励 |cff00ffff【成就】燃烧之花
+|cffffe799火把积分大于750|r  奖励 |cffff0000【英雄】艾泽拉斯的火焰
+|cffffe799火把积分大于1000|r 奖励 |cffffff00【成就】火把节之王
+
+|cffcccccc（可在F4-可存档面板中，查看火把积分）]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -28,24 +39,16 @@ content_tip = ''
 --奖品
 local award_list = { 
     ['火把积分'] =  {
-        { rand = 3, name = '金'},
-        { rand = 3, name = '红'},
-        { rand = 3, name = '地阶'},
-        { rand = 3, name = '天阶'},
-        { rand = 3, name = '天谕*1'},
-        { rand = 3, name = '天谕*5'},
-        { rand = 3, name = '功法连升书*1'},
-        { rand = 3, name = '无谓因果*1'},
-        { rand = 3, name = '龙之血珠*1'},
-        { rand = 3, name = '吞噬丹*1'},
-        { rand = 3, name = '三眼赤痕*1'},
-        { rand = 3, name = '火龙气息*1'},
-        { rand = 3, name = '天魂融血丹*1'},
-        { rand = 3, name = '地魂融血丹*1'},
-        { rand = 15, name = '随机卡片'},
-        { rand = 3, name = '神奇的令牌*1'},
+        { rand = 4, name = '红'},
+        { rand = 4, name = '天阶'},
+        { rand = 4, name = '天谕*5'},
+        { rand = 4, name = '无谓因果*1'},
+        { rand = 4, name = '龙之血珠*1'},
+        { rand = 4, name = '吞噬丹*1'},
+        { rand = 4, name = '随机卡片'},
+        { rand = 4, name = '神奇的令牌*1'},
         
-        { rand = 30, name = '无'},
+        { rand = 68, name = '无'},
     },
 }
 
@@ -65,7 +68,10 @@ local function give_award(hero)
     p:Map_AddServerValue(key,1)
 
     if rand_name == '无' then
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00这暑假作业一看就是应付了事的！',3) 
+        -- p:sendMsg('|cffebb608【系统】|r|cff00ff00这暑假作业一看就是应付了事的！',3) 
+
+        p:sendMsg1('|cffebb608【系统】|r|cff00ff00恭喜完成火把任务，|cffffff00火把积分+1|cff00ff00，当前火把积分 '..player.server['火把积分']..' )|r',3)
+
     elseif  finds(rand_name,'天谕','功法连升书','无谓因果','龙之血珠','吞噬丹','三眼赤痕','火龙气息','天魂融血丹','地魂融血丹','神奇的令牌') then
         local it
         --处理掉落物品相关
@@ -74,25 +80,25 @@ local function give_award(hero)
                 it = hero:add_item(k)
             end 
         end
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜迅速地完成了暑假作业！获得奖励|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完成火把任务，|cffffff00火把积分+1|cff00ff00，并获得奖励|cffff0000'..(rand_name)..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = hero:add_item(name)
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜迅速地完成了暑假作业！获得奖励|cffff0000'..(it.color_name or rand_name)..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完成火把任务，|cffffff00火把积分+1|cff00ff00，并获得奖励|cffff0000'..(it.color_name or rand_name)..'|r',4)
     elseif  finds('地阶 天阶',rand_name) then   
         local list = ac.quality_skill[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = ac.item.add_skill_item(name,hero)
         local color = it and it.color 
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜迅速地完成了暑假作业！获得奖励|cffff0000|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完成火把任务，|cffffff00火把积分+1|cff00ff00，并获得奖励|cffff0000|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
     elseif finds(rand_name,'随机卡片')  then    
         local list = ac.all_card
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜迅速地完成了暑假作业！获得奖励|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜完成火把任务，|cffffff00火把积分+1|cff00ff00，并获得奖励|cffff0000'..name..'|r',4)
     end    
 
 
@@ -103,14 +109,15 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[zuoyeben.blp]],
+art = [[huoba.blp]],
 is_order = 1,
 --说明
 tip = [[ 
 |cffffe799【使用说明】|r
 
-|cff00ff00击杀100个怪物，即可完成作业
-]],
+|cff00ff00古人夜间行路时常用的照明用具，可用来驱逐虫子
+
+|cffcccccc火把节活动物品]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
@@ -137,6 +144,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     --获得最多次数
     local max_fall_cnt = 16   
     local rate = 0.12
+    -- local rate = 1
     if math.random(100000)/1000 <= rate and p.max_fall_cnt[rand_name] < max_fall_cnt then 
         --当前个数+1
         p.max_fall_cnt[rand_name] = (p.max_fall_cnt[rand_name] or 0) +1
@@ -175,9 +183,9 @@ end)
 
 ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
-    local time = 60 * 6 
-    local rate = 55
-    local time = 10
+    local time = 60 * 8 
+    -- local rate = 55
+    -- local time = 10
     ac.loop(time*1000,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/3) + 1 
@@ -187,7 +195,7 @@ ac.game:event '游戏-开始'(function()
             local unit = ac.player(16):create_unit('游荡的虫子',point)
 
             unit:add_buff '随机逃跑' {}
-            ac.nick_name('有人唠嗑不',unit,250)
+            -- ac.nick_name('有人唠嗑不',unit,250)
             unit:event '受到伤害开始'(function(_,damage)
                 local u = damage.source 
                 local rate =10 

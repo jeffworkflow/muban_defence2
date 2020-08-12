@@ -96,7 +96,7 @@ mt{
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[xigua.blp]],
+art = [[huhuozhe.blp]],
 --说明
 
 tip = [[
@@ -106,15 +106,18 @@ tip = [[
 |cff00ffff火把积分≥50%current%
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
-|cff00ff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['全属性'] = 20000,
+['杀怪加全属性'] = 8.8,
+['攻击减甲'] = 8.8,
+['物品获取率'] = 8.8,
+['全伤加深'] = 8.8,
 need_map_level = 5,
 current = function(self)
     local p = ac.player.self
@@ -130,26 +133,177 @@ mt{
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[xigua.blp]],
+art = [[hyzs.blp]],
 --说明
 
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff火把积分≥50%current%
+|cff00ffff火把积分≥150%current%
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
-|cff00ff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深|r
+|cff00ff00+%木头加成% |cff00ff00% |cff00ff00木头加成|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['全属性'] = 20000,
-need_map_level = 5,
+['杀怪加全属性'] = 16.8,
+['攻击减甲'] = 16.8,
+['木头加成'] = 16.8,
+['全伤加深'] = 16.8,
+need_map_level = 6,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['火把积分'] or 0
+    local str = '|cffdf19d0（当前火把积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+}
+
+local mt = ac.skill['木杆热舞']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[mgrw.blp]],
+--说明
+
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff火把积分≥300%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%魔丸加成% |cff00ff00% |cff00ff00魔丸加成|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 26.8,
+['攻击减甲'] = 26.8,
+['魔丸加成'] = 26.8,
+['全伤加深'] = 26.8,
+need_map_level = 7,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['火把积分'] or 0
+    local str = '|cffdf19d0（当前火把积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+}
+
+local mt = ac.skill['燃烧之花']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[rszh.blp]],
+--说明
+
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff火把积分≥500%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%杀敌数加成% |cff00ff00% |cff00ff00杀敌数加成|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 32.8,
+['攻击减甲'] = 32.8,
+['杀敌数加成'] = 32.8,
+['全伤加深'] = 32.8,
+need_map_level = 8,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['火把积分'] or 0
+    local str = '|cffdf19d0（当前火把积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+}
+
+local mt = ac.skill['艾泽拉斯的火焰']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[azlsdhy.blp]],
+--说明
+
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff火把积分≥750%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%木头加成% |cff00ff00% |cff00ff00木头加成|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 36.8,
+['攻击减甲'] = 36.8,
+['木头加成'] = 36.8,
+['全伤加深'] = 36.8,
+need_map_level = 9,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['火把积分'] or 0
+    local str = '|cffdf19d0（当前火把积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+}
+
+local mt = ac.skill['火把节之王']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[hbjzw.blp]],
+--说明
+
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff火把积分≥1000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 66.6,
+['攻击减甲'] = 66.6,
+['物品获取率'] = 66.6,
+['全伤加深'] = 66.6,
+need_map_level = 10,
 current = function(self)
     local p = ac.player.self
     local val = p.server and p.server['火把积分'] or 0
@@ -162,11 +316,11 @@ local mt = ac.skill['火把节']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[huodongchengjiu.blp]],
-    title = '火把节',
+    art = [[huoba.blp]],
+    title = '火把节成就',
     tip = [[
 
-点击查看 |cff00ffff火把节|r，通过完成 |cffffff00限时活动|r 获得
+点击查看 |cff00ffff火把节成就|r，通过完成 |cffffff00限时活动|r 获得
     ]],
     
 }

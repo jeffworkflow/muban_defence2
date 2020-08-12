@@ -69,7 +69,7 @@ art = [[BTNJBSX.blp]],
 --说明
 tip = [[|cffFFE799【使用说明】：|r
 
-|cffff0000免费刷新本批卡片|r
+|cff00ff00免费刷新本批卡片|r
  ]],
 --物品类型
 item_type = '神符',
@@ -115,7 +115,9 @@ function mt:on_cast_start()
     --改变tip
     for i=1,3 do 
         local it = seller.sell_item_list[i]
-        it.item_type_tip = [[花费30黑暗骰子 兑换\n]]
+        it.item_type_tip = [[|cff00ff00消耗 |cffff000030个黑暗骰子 |cff00ff00进行兑换
+
+]]
         it:fresh_tip()
     end
 end
