@@ -176,6 +176,8 @@ reg:event '区域-进入' (function(trg,unit)
         if p.hb_cnt <= 15 then 
             give_award(unit)
             it:add_item_count(-1)
+        else
+            p:sendMsg('火把已经提交够了',5)
         end
     end
 end)
@@ -186,7 +188,7 @@ ac.game:event '游戏-开始'(function()
     local time = 60 * 8 
     -- local rate = 55
     -- local time = 10
-    ac.loop(time*1000,function()
+    ac.timer(time*1000,8,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/3) + 1 
 
