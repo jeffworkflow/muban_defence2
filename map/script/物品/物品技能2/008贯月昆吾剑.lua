@@ -45,6 +45,7 @@ mt{
 ]],
 	--备注
 	effect4 = [[强敏捷]],
+	v1 = {1,1},
 	--业务技能代码
 }
 function mt:on_remove()

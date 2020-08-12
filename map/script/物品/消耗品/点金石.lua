@@ -59,7 +59,7 @@ function mt:on_cast_start()
             self:set_item_count(self._count+1)
         else
             --重新添加给英雄
-            unit:add_item(name,true)
+            unit:add_item(name)
         end     
         return 
     end 
@@ -102,7 +102,7 @@ function mt:on_cast_start()
                         self:set_item_count(self._count+1)
                     else
                         --重新添加给英雄
-                        unit:add_item(name,true)
+                        unit:add_item(name)
                     end  
                 end    
 
@@ -113,7 +113,7 @@ function mt:on_cast_start()
                     self:set_item_count(self._count+1)
                 else
                     --重新添加给英雄
-                    unit:add_item(name,true)
+                    unit:add_item(name)
                 end        
             end
             

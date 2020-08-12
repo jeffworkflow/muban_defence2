@@ -62,7 +62,7 @@ local task_detail = {
                         p:sendMsg('|cffebb608【系统】|r|cff00ff00触发俘虏事件',2)
                     end
                     p:sendMsg('|cffebb608【系统】|r|cff00ff00剿灭魔教成功，奖励|r |cffff0000【噬血珠】|r',6)
-                    hero:add_item('噬血珠',true)
+                    hero:add_item('噬血珠')
                     p.revive_point = nil --还原复活点
                 end)    
                 p:sendMsg('|cffebb608【系统】|r|cffff0000黑心老人|r已出现，小心他的|cffff0000冰火爪|r',2)

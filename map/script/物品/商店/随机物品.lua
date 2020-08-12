@@ -49,7 +49,7 @@ function mt:on_cast_start()
     --添加 
     local name = list[math.random(#list)]
     --满时，掉在地上
-    hero:add_item(name,true)
+    hero:add_item(name)
 
 end
 

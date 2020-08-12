@@ -93,17 +93,17 @@ local function give_award(hero)
         p:sendMsg('|cffebb608【系统】|r 青蛙快乐地游走了',3) 
     elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
         --满时，掉在地上
-        hero:add_item(rand_name,true)
+        hero:add_item(rand_name)
         ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 救蛙一命，胜造七级浮屠，奖励 |cffff0000'..rand_name..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
-        local item = hero:add_item(name,true)
+        local item = hero:add_item(name)
         p:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 救蛙一命，胜造七级浮屠，奖励 '..item.color_name..'',4) 
     elseif finds(rand_name,'点金石','恶魔果实','吞噬丹')  then
         --满时，掉在地上
-        hero:add_item(rand_name,true)
+        hero:add_item(rand_name)
         ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 救蛙一命，胜造七级浮屠，奖励 |cffff0000'..rand_name..'|r',4) 
     elseif finds(rand_name,'随机技能书')  then    
         local rand_list = ac.unit_reward['商店随机技能']

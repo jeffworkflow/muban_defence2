@@ -171,7 +171,7 @@ local function give_award(hero)
         --处理掉落物品相关
         for k,v in rand_name:gmatch '(%S+)%*(%d+%s-)' do
             for i=1,tonumber(v) do 
-                it = hero:add_item(k,true)
+                it = hero:add_item(k)
             end 
         end
         p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(rand_name)..'|r',4) 

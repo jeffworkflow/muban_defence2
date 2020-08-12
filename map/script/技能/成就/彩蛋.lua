@@ -662,6 +662,31 @@ mt{
 }
 
 
+local mt = ac.skill['绝对C位']
+mt{
+--等级
+level = 1, 
+max_level = 1,
+--图标
+art = [[zuqiuxiaojiang.blp]],
+--说明
+tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+1500W 全属性
++100%  攻击速度
++188   攻击减甲
+-0.05  攻击间隔
++50%   对BOSS额外伤害
+ ]],
+['全属性'] = 15000000,
+['攻击速度'] = 100,
+['攻击减甲'] = 188,
+['攻击间隔'] = -0.05,
+['对BOSS额外伤害'] = 50,
+
+}
+
 local task_detail = {
     ['血魔'] = {
         rate = 0.15,
@@ -876,3 +901,6 @@ ac.game:event '游戏-开始' (function()
         end
     end)
 end)
+
+
+--彩蛋 破损的箱子

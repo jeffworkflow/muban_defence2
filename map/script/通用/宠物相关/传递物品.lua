@@ -65,7 +65,7 @@ function mt:on_cast_start()
 	-- 	it:setPoint(hero:get_point())
 	-- end	
    ac.wait(10,function()
-		hero:add_item(it,true)
+		hero:add_item(it)
    end)
 end
 

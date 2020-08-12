@@ -299,7 +299,7 @@ function ac.unit.__index:add_save_item(it)
         end    
         --等待0秒后给物品
         ac.wait(0,function()
-            self:add_item(old_item.name,true)
+            self:add_item(old_item.name)
         end)
     end    
     p.save_item_list[it.type1] = it

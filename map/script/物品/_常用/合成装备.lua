@@ -326,7 +326,7 @@ local function streng_item(alltable,unit,it)
                                 end  
                                 new_it:set_item_count( stack -  tonumber(v))
                                 print('添加材料',u.owner,u,k)
-                                u:add_item(new_it,true)  
+                                u:add_item(new_it)  
                             end  
                         end)
 
@@ -354,7 +354,7 @@ local function streng_item(alltable,unit,it)
                                 end  
                                 new_it:set_item_count( stack -  tonumber(v))
                                 print('添加材料2',u.owner,u,name)
-                                u:add_item(new_it,true)  
+                                u:add_item(new_it)  
                             end  
                         end)
                     end    
@@ -408,7 +408,7 @@ local function streng_item(alltable,unit,it)
                 p:sendMsg('|cff00ff00合成|r |cff'..color..dest_str..' |r|cff00ff00成功|r',5)
                 local new_item  
                 if ac.table.ItemData[dest_str] then 
-                    new_item = u:add_item(dest_str,true)  
+                    new_item = u:add_item(dest_str)  
                 else
                     new_item = ac.item.add_skill_item(dest_str,u)
                 end  

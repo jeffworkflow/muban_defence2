@@ -137,6 +137,9 @@ function mt:add_sell_item(name,i)
 	if not item then 
 		return 
 	end
+	item.owner = self
+	item.seller = self
+	
 	item.shop_slot_id = i
 	-- print('设置seller',self:get_name())
 	-- item:set_store_title('                   '..self:get_name())
@@ -213,7 +216,6 @@ function mt:remove_sell_item(it)
 
 end
 --移除全部商品
---无用
 function mt:remove_all()
 	for i =1,12 do
 		if self.sell_item_list and self.sell_item_list[i] then

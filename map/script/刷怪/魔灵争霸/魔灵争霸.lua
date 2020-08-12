@@ -250,7 +250,7 @@ function give_award()
         local hero = data.player.hero 
         local list = ac.quality_item[ad_it]
         local name = list[math.random(#list)]
-        local it = hero:add_item(name,true)
+        local it = hero:add_item(name)
         -- print(i,data.player,data.wldh_jf)
         tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r共获得|cffff0000'..(data.wldh_jf+jifen)..'|r杀戮值，奖励'..it.color_name..'|r'..'\n\n'
         local key = 'mlzb'

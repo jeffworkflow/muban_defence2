@@ -902,11 +902,11 @@ end
 --添加物品
 --true,满格掉地上。默认是阻止添加。
 --应用： 合成装备时，满格掉落地上,给与装备，满格掉落
-function unit.__index:add_item(it,is_fall,p)
+function unit.__index:add_item(it,source)
 	--如果没有初始化则创建
 	if type(it) =='string'  then 	
 		--不创建特效
-		it = ac.item.create_item(it,nil,true,p)
+		it = ac.item.create_item(it,nil,true)
 		if not it then 
 			return 
 		end
@@ -975,9 +975,11 @@ function unit.__index:add_item(it,is_fall,p)
 	--获取一个空槽位
 	local slot = self:get_nil_slot()
 	if not slot then
-		-- self.owner:showSysWarning('物品栏已满')
 		self.owner:sendMsg('|cffebb608物品栏已满|r',5)
 		it.recycle = false
+		if source and source:is_type('商店') then 
+			it.recycle = true
+		end
 		it:on_recycle(self)
 		return it
 	end

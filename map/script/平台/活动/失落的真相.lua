@@ -185,7 +185,7 @@ for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实
                 --扣除材料
                 local key = ac.server.name2key(it_name)
                 p:Map_AddServerValue(key,-cnt)
-                self.owner:add_item(real_name,true) 
+                self.owner:add_item(real_name) 
                 p.max_cnt[real_name] = (p.max_cnt[real_name] or 0) + 1
                 p:sendMsg('|cffff0000兑换'..real_name..'成功|r')   
             else

@@ -281,13 +281,13 @@
             end    
         end    
         if flag then 
-            ac.item.add_skill_item(it.name,u,true)
+            ac.item.add_skill_item(it.name,u,seller)
         else    
             local item = ac.item.create_item(it.name,nil,true)
             item.seller = seller
             --在商店的物品，加属性时，统一加在英雄身上
             item.strong_hero = true 
-            u:add_item(item)   
+            u:add_item(item,seller)   
         end    
         --给单位添加物品时，会进行一系列逻辑处理，处理完后会改变 buy_suc 状态
         if u.buy_suc then 
@@ -377,7 +377,7 @@
         
         -- print('获得物品',it.handle,it.owner,it.name,it.slot_id)
 
-        u:add_item(it,true)
+        u:add_item(it)
     end)
 
 
@@ -481,7 +481,7 @@
         if item:_call_event 'on_cast_start' then 
             item_on_finish(item)
             if item.item_type == '消耗品' and item._count < 1  then
-                hero:add_item(item.name,true)
+                hero:add_item(item.name)
             end    
             return 
         end   

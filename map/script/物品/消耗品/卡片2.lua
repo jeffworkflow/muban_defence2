@@ -166,7 +166,7 @@ function mt:on_cast_start()
             self:set_item_count(self._count+1)
         else
             --重新添加给英雄
-            unit:add_item(name,true)
+            unit:add_item(name)
         end     
         return 
     end 
@@ -181,7 +181,7 @@ function mt:on_cast_start()
         local item = ac.item.item_map[tonumber(handle)]
         if item then 
             if math.random(100000)/1000 <= skill.rate then  
-                local it = ac.dummy:add_item(item.name,true)
+                local it = ac.dummy:add_item(item.name)
                 --升级
                 for i=1,(item.level-1) do 
                     ac.up_item(it)
@@ -205,7 +205,7 @@ function mt:on_cast_start()
                 skill:set_item_count(skill._count+1)
             else
                 --重新添加给英雄
-                unit:add_item(name,true)
+                unit:add_item(name)
             end        
         end 
     end
@@ -273,7 +273,7 @@ function mt:on_cast_start()
             self:set_item_count(self._count+1)
         else
             --重新添加给英雄
-            unit:add_item(name,true)
+            unit:add_item(name)
         end     
         return 
     end 
@@ -310,7 +310,7 @@ function mt:on_cast_start()
                 skill:set_item_count(skill._count+1)
             else
                 --重新添加给英雄
-                unit:add_item(name,true)
+                unit:add_item(name)
             end        
         end 
     end

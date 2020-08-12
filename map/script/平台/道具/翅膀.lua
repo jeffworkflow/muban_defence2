@@ -742,7 +742,7 @@ effect = [[chibang03.mdx]]
 -- effect = [[chibang8.mdx]]
 -- }
 
-local mt = ac.skill['轮迴幻魔翼']
+local mt = ac.skill['天罡苍羽翼']
 mt{
 --等级
 level = 0,
@@ -769,18 +769,28 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 250,
+['全伤加深系数'] = 50,
 ['每秒加全属性'] = 788,
 ['攻击加全属性'] = 488,
 ['每秒加护甲'] = 10,
 ['免伤几率'] = 10,
 ['对BOSS额外伤害'] = 10,
 ['减伤'] = 10,
+
+['秒杀练功房的怪物'] = 1,
 --特效
 effect = [[chibang7.mdx]]
 }
+function mt:on_add()
+    local hero =self.owner
+    --随机给神阶功法
+    local name = ac.quality_skill['神阶'][math.random(#ac.quality_skill['神阶'])]
+    -- hero:add_item(name)
+    ac.item.add_skill_item(name,hero)
 
-for i,name in ipairs({'小精灵之翼','火精灵之翼','杰拉米之翼','暗羽翼','光羽翼','玄羽绣云翼','绝世阳炎翼','龙吟双型翼','金鳞双型翼','赤魔双型翼'}) do
+end
+
+for i,name in ipairs({'小精灵之翼','火精灵之翼','杰拉米之翼','暗羽翼','光羽翼','玄羽绣云翼','绝世阳炎翼','龙吟双型翼','金鳞双型翼','赤魔双型翼','天罡苍羽翼'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

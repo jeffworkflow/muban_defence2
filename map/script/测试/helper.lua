@@ -1420,10 +1420,10 @@ function helper:upgrade(str,lv)
 	end	
 end
 --增加物品
-function helper:add_item(str,cnt,flag)
+function helper:add_item(str,cnt)
 	local cnt = cnt or 1
 	for i=1,cnt do
-		self:add_item(str,true,flag and self.owner)
+		self:add_item(str)
 	end	
 end
 
@@ -1440,7 +1440,7 @@ function helper:add_suit(str)
 		if data.suit_type and data.suit_type == str then 
 			if cnt > 0 then 
 				print(name)
-				self:add_item(name,true)
+				self:add_item(name)
 				cnt = cnt -1
 			else
 				break;	
@@ -1764,7 +1764,7 @@ function helper:addit(flag)
         -- local name = ac.all_item[math.random( 1,#ac.all_item)]
         local list = ac.quality_item['白'] 
         local name = list[math.random(#list)]
-		self.owner.peon:add_item(name,true)
+		self.owner.peon:add_item(name)
 	end	
 end
 
@@ -1841,7 +1841,7 @@ function helper:ai(str,cnt)
 		if finds(name,str) and data.category ~='商品' then 
 			ok = true
 			for i=1,tonumber(cnt) or 1 do 
-				self:add_item(name,true)
+				self:add_item(name)
 			end	
 		end	
 	end	
@@ -1850,7 +1850,7 @@ function helper:ai(str,cnt)
 			if type(data) == 'table' then 
 				if finds(data.name,str) then 
 					for i=1,tonumber(cnt) or 1 do 
-						self:add_item(data.name,true)
+						self:add_item(data.name)
 					end	
 				end	
 			end	

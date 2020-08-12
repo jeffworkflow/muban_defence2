@@ -57,7 +57,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     --随机装备
     local name = ac.equipment[math.random(1,#ac.equipment)]
-    local it = hero:add_item(name,true)
+    local it = hero:add_item(name)
     p:sendMsg('|cffebb608【系统】|r |cff00ff00这个月饼里面怎么有东西硬硬的，获得'..it.color_name..'',6) 
     --|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r
 end    
@@ -92,7 +92,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     --随机消耗品
     local name = ac.consumable_item[math.random(1,#ac.consumable_item)]
-    local it = hero:add_item(name,true)
+    local it = hero:add_item(name)
     p:sendMsg('|cffebb608【系统】|r |cff00ff00这个绝对不是普通的西瓜，获得'..it.color_name..'',6) 
 end    
 
@@ -201,7 +201,7 @@ ac.game:event '游戏-开始' (function()
         if math.random(100) <= rate  then 
             p.max_item_fall['大西瓜'] = (p.max_item_fall['大西瓜'] or 0) + 1
             if p.max_item_fall['大西瓜'] <= dxg_max_cnt then 
-                p.hero:add_item('大西瓜',true)
+                p.hero:add_item('大西瓜')
             end    
         end    
 	end)

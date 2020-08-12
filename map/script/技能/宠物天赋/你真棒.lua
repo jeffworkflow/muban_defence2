@@ -42,7 +42,7 @@ function mt:on_cast_start()
     --概率触发
     if math.random(100) <= self.chance then
         local name = ac.consumable_item[math.random(#ac.consumable_item)]
-        local it = hero:add_item(name,true)
+        local it = hero:add_item(name)
         p:sendMsg('|cffebb608【系统】|cff00ff00夸我我也不会高兴的！恭喜获得 '.. (it and (it.color_name or name)))
     else
         p:sendMsg('|cffebb608【系统】|cffff0000什么都没得到')

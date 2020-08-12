@@ -35,7 +35,7 @@ function mt:on_cast_start()
     local hero = self.owner
     
     --概率触发
-    hero:add_item(ac.all_item[math.random(#ac.all_item)],true)
+    hero:add_item(ac.all_item[math.random(#ac.all_item)])
 
 end
 function mt:on_remove()

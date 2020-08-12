@@ -73,7 +73,7 @@ function mt:on_upgrade()
                     if item.level >= item.max_level then 
                         item:item_remove()
                         -- hero:remove_item(self)
-                        hero:add_item('霸者之证',true)
+                        hero:add_item('霸者之证')
                     end
                 end    
             end    
@@ -106,7 +106,7 @@ function mt:on_add()
                     if item.level >= item.max_level then 
                         item:item_remove()
                         -- hero:remove_item(self)
-                        hero:add_item('霸者之证',true)
+                        hero:add_item('霸者之证')
                     end
                 end    
             end    

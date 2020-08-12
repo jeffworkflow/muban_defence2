@@ -63,7 +63,7 @@ local function give_award(hero,unit)
         if unit then 
             ac.item.create_item(rand_name,unit:get_point())
         else 
-            hero:add_item(rand_name,true)
+            hero:add_item(rand_name)
         end        
         ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4) 
     elseif  finds('红 金',rand_name) then   
@@ -74,7 +74,7 @@ local function give_award(hero,unit)
         if unit then  
             it = ac.item.create_item(name,unit:get_point())
         else 
-            it = hero:add_item(name,true)
+            it = hero:add_item(name)
         end      
         p:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
     elseif finds(rand_name,'点金石','恶魔果实','吞噬丹','蟠桃种子')  then
@@ -83,7 +83,7 @@ local function give_award(hero,unit)
         if unit then  
             it = ac.item.create_item(rand_name,unit:get_point())
         else 
-            it = hero:add_item(rand_name,true)
+            it = hero:add_item(rand_name)
         end  
         p:sendMsg('|cffebb608【系统】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4)
     elseif finds(rand_name,'随机技能书')  then    

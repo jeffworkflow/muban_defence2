@@ -228,7 +228,7 @@ for i,name in ipairs({'祭祀-格里芬','祭祀-黑暗项链','祭祀-最强生
             if (p.max_cnt[real_name] or 0 ) < self.max_cnt then 
                 --扣除材料
                 has_item:add_item_count(-cnt)
-                self.owner:add_item(real_name,true) 
+                self.owner:add_item(real_name) 
                 p.max_cnt[real_name] = (p.max_cnt[real_name] or 0) + 1
                 p:sendMsg('|cffff0000兑换'..real_name..'成功|r')   
             else

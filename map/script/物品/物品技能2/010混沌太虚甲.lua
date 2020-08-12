@@ -38,6 +38,7 @@ mt{
 ]],
 	--备注
 	effect4 = [[强护甲]],
+	v1 = {1,1},
 	--业务技能代码
 }
 function mt:on_remove()

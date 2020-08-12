@@ -107,7 +107,7 @@ local reward = {
         else
             --宠物打死的也掉人身上
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end    
     end,
     ['随机蓝装'] = function (player,hero,unit,is_on_hero)
@@ -126,7 +126,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
 
@@ -147,7 +147,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
 
@@ -167,7 +167,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['随机技能'] = function (player,hero,unit,is_on_hero)
@@ -200,7 +200,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['强化石'] = function (player,hero,unit,is_on_hero)
@@ -211,7 +211,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['天谕'] = function (player,hero,unit,is_on_hero)
@@ -222,7 +222,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['藏宝图'] = function (player,hero,unit,is_on_hero)
@@ -233,7 +233,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['羊皮纸'] = function (player,hero,unit,is_on_hero)
@@ -244,7 +244,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['无字天书'] = function (player,hero,unit,is_on_hero)
@@ -255,7 +255,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['扭蛋券(十连抽)'] = function (player,hero,unit,is_on_hero)
@@ -266,7 +266,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['超级扭蛋券(十连抽)'] = function (player,hero,unit,is_on_hero)
@@ -277,7 +277,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['一颗神奇的种子'] = function (player,hero,unit,is_on_hero)
@@ -288,7 +288,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['黑暗骰子'] = function (player,hero,unit,is_on_hero)
@@ -299,7 +299,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['神奇的令牌'] = function (player,hero,unit,is_on_hero)
@@ -313,7 +313,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['一号熔炼石'] = function (player,hero,unit,is_on_hero)
@@ -327,7 +327,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['二号熔炼石'] = function (player,hero,unit,is_on_hero)
@@ -341,7 +341,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['三号熔炼石'] = function (player,hero,unit,is_on_hero)
@@ -355,7 +355,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['四号熔炼石'] = function (player,hero,unit,is_on_hero)
@@ -369,7 +369,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['五号熔炼石'] = function (player,hero,unit,is_on_hero)
@@ -383,7 +383,7 @@ local reward = {
             end  
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['召唤boss'] = function (player,hero,unit,is_on_hero)
@@ -394,7 +394,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['召唤练功怪'] = function (player,hero,unit,is_on_hero)
@@ -405,7 +405,7 @@ local reward = {
             -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
-            hero:add_item(name,true)    
+            hero:add_item(name)    
         end 
     end,
     ['级物品'] = function (player,hero,unit,is_on_hero,str)

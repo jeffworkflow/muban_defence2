@@ -76,7 +76,7 @@ function mt:add_content()
         if finds(k,'熔炼石')  then
             if not p.flag_hatz[k] then  
                 for i=1,tonumber(v) do 
-                    it = self.owner:add_item(k,true)
+                    it = self.owner:add_item(k)
                 end 
                 p.flag_hatz[k] = true
                 tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
@@ -91,7 +91,7 @@ function mt:add_content()
             if it.owner_ship then
                 it.owner_ship = p
             end
-            it = self.owner:add_item(it,true) 
+            it = self.owner:add_item(it) 
             tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 将|cff00ff00'..self.name..'|r摇了下去,骰子摇身一变,原来是 |cffff0000'..(it.color_name or it.name)..'|r',2)
         end
     end 
@@ -102,7 +102,7 @@ function mt:add_content()
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
         --满时，掉在地上
-        self.owner:add_item(name,true)
+        self.owner:add_item(name)
         local lni_color ='白'
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color

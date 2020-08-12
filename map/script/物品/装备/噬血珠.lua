@@ -184,7 +184,7 @@ function mt:on_cast_start()
                 --物品升级
                 if item.level >= self.max_level then 
                     item:item_remove()
-                    hero:add_item('噬魂珠',true)  
+                    hero:add_item('噬魂珠')  
                 else 
                     item:add_item_count(-item.kill_cnt+1)
                     item:upgrade(1)

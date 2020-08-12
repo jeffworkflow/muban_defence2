@@ -90,6 +90,94 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
+local mt = ac.skill['护焰者']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[xigua.blp]],
+--说明
+
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff火把积分≥50%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
+|cff00ff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['全属性'] = 20000,
+need_map_level = 5,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['火把积分'] or 0
+    local str = '|cffdf19d0（当前火把积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+}
+
+local mt = ac.skill['火焰杂耍']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[xigua.blp]],
+--说明
+
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff火把积分≥50%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
+|cff00ff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['全属性'] = 20000,
+need_map_level = 5,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['火把积分'] or 0
+    local str = '|cffdf19d0（当前火把积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+}
+
+local mt = ac.skill['火把节']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[huodongchengjiu.blp]],
+    title = '火把节',
+    tip = [[
+
+点击查看 |cff00ffff火把节|r，通过完成 |cffffff00限时活动|r 获得
+    ]],
+    
+}
+mt.skill_name ={
+    '护焰者','火焰杂耍','木杆热舞','燃烧之花','艾泽拉斯的火焰','火把节之王'
+}
+
+mt.skills = {
+    -- '第一个吃螃蟹的人',
+}
+
 
 local mt = ac.skill['精彩活动']
 mt{
@@ -109,6 +197,7 @@ mt.skill_name ={
 
 mt.skills = {
     -- '第一个吃螃蟹的人',
+    '火把节'
 }
 
 function mt:on_add()

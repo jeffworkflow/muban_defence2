@@ -44,6 +44,8 @@ ac.all_card={}
 for name,data in pairs(ac.skill) do 
     if type(data) == 'table' then 
         if data.is_card  then 
+            data.raffle = [[黑暗骰子*30]]
+            data.on_selled_remove = true 
             table.insert(ac.all_card,name)
         end     
     end

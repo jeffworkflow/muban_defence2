@@ -71,7 +71,7 @@ function mt:add_content()
     if rand_name == '空蛋' then
         player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
     elseif finds(rand_name,'强化石','天谕') then
-        self.owner:add_item(rand_name,true)
+        self.owner:add_item(rand_name)
         if tran_player then 
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
         end
@@ -91,7 +91,7 @@ function mt:add_content()
         if not skl  then 
             --给藏宝图10张，挖宝熟练度100点
             for i=1,10 do
-                self.owner:add_item('藏宝图',true)
+                self.owner:add_item('藏宝图')
             end    
             -- player:AddServerValue('wbjf',100) 自定义服务器
             player:Map_AddServerValue('sldwb',100) --网易服务器
@@ -151,7 +151,7 @@ function mt:add_content()
         local list = ac.quality_item[rand_name] 
         local name = list[math.random(#list)]
         --满时，掉在地上
-        self.owner:add_item(name,true)
+        self.owner:add_item(name)
         local lni_color ='白'
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
@@ -170,7 +170,7 @@ function mt:add_content()
         local color = it and it.color 
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
     elseif  finds(rand_name,'技能升级书') then
-        self.owner:add_item(rand_name,true)
+        self.owner:add_item(rand_name)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
     elseif finds(rand_name,'熔炼石') then
         player.flag = player.flag or {}
@@ -179,13 +179,13 @@ function mt:add_content()
             return
         end
         player.flag[rand_name] = true
-        self.owner:add_item(rand_name,true)
+        self.owner:add_item(rand_name)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
     elseif rand_name == '吞噬丹' then
-        self.owner:add_item(rand_name,true)
+        self.owner:add_item(rand_name)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
     elseif  rand_name == '宠物经验书(小)' then
-        self.owner:add_item(rand_name,true)
+        self.owner:add_item(rand_name)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
     elseif finds(rand_name,'神兵','神甲') then
         local rand_list = ac.magic_item[rand_name]

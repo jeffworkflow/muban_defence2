@@ -236,7 +236,9 @@ ac.game:event '技能-升级' (function (_,hero,self)
             --生成buff
             local buff = ac.buff[skill.unique_name]
             if not buff.on_add then 
-                buff.cover_type = 0
+                buff.cover_type = 0 --会导致拥有两个时，将生效的物品丢弃后，另一个物品的被动不生效
+                -- buff.cover_type = 1
+                -- buff.cover_max = 1
                 buff.keep = true
                 function buff:on_add()
                     local target = self.target
@@ -247,12 +249,12 @@ ac.game:event '技能-升级' (function (_,hero,self)
                         cool = true,
                         damage_start = self.damage_start,
                     } 
-                    -- print('添加到buff:',self.dmg_trg,self.dmg_trg.skill,self.dmg_trg.skill.owner)
+                    print('添加到buff:',self.dmg_trg,self.dmg_trg.skill,self.dmg_trg.skill.owner)
                 end
 
                 function buff:on_remove()
                     local target = self.target   
-                    -- print('移除buff:',self.dmg_trg,self.dmg_trg.skill)
+                    print('移除buff:',self.dmg_trg,self.dmg_trg.skill)
                     if self.dmg_trg then 
                         self.dmg_trg:remove()
                         self.dmg_trg = nil 

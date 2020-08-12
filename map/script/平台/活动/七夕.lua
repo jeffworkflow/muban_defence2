@@ -290,7 +290,7 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
                     end    
 
                 else    
-                    self.owner:add_item(real_name,true) 
+                    self.owner:add_item(real_name) 
                 end    
 
                 p.max_cnt[real_name] = (p.max_cnt[real_name] or 0) + 1
@@ -396,7 +396,7 @@ ac.game:event '挖图成功'(function(trg,hero)
     local rand = math.random(10000)/100
     if rand <= rate then 
         if (p.max_cnt[name] or 0 ) < max_cnt then 
-            hero:add_item(name,true)
+            hero:add_item(name)
             p.max_cnt[name] = (p.max_cnt[name] or 0) + 1
             ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000喜鹊翎毛|r',6) 
         end    

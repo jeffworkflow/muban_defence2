@@ -248,7 +248,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         --进行多个处理
         local it 
         for i=1,tonumber(v) do 
-            it = self.owner:add_item(k,true)
+            it = self.owner:add_item(k)
         end  
         tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
@@ -264,7 +264,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
         --满时，掉在地上
-        self.owner:add_item(name,true)
+        self.owner:add_item(name)
         local lni_color ='白'
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color

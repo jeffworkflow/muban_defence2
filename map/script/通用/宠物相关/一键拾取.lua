@@ -79,7 +79,7 @@ function mt:on_cast_shot()
 							if v.name =='学习技能' then 
 								ac.item.add_skill_item(v,hero)
 							else 
-								hero:add_item(v,true)
+								hero:add_item(v)
 							end
 						else
 							if not flag then 

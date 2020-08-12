@@ -711,7 +711,7 @@ effect = [[Wuqi_leiguanglanjian.mdx]]
 
 
 
-local mt = ac.skill['皇帝剑']
+local mt = ac.skill['苍天帝剑']
 mt{
 --等级
 level = 0,
@@ -736,103 +736,26 @@ tip = [[
 |cffffff00皇帝剑+皇帝刀激活特殊属性：攻击减甲+250，减少周围护甲+1500，分裂伤害+150%
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
---触发几率
-chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
---伤害
-damage = function(self)
-    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*65)
-end,
---特效2
-damage_effect = [[jn_tf2.mdx]],
---伤害范围
-damage_area = 800,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 600,
-['暴击几率'] = 5,
+['全伤加深系数'] = 50,
+['强化成功概率'] = 100,
 ['暴击伤害'] = 100,
 ['技暴几率'] = 5,
 ['技暴伤害'] = 100,
 ['全伤加深'] = 25,
 --特效
-effect = [[wuqi8.mdx]]
+effect = [[ctdj.mdx]]
 }
-
-local mt = ac.skill['皇帝刀']
-mt{
---等级
-level = 0,
---图标
-art = [[wuqi11.blp]],
-is_order = 1,
---说明
-tip = [[
-
-|cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
-
-|cffFFE799【神兵属性】：|r
-|cff00ff00+750  杀怪加攻击|r
-|cff00ff00+5%   暴击几率|r
-|cff00ff00+100%   暴击伤害|r
-|cff00ff00+5%   技暴几率|r
-|cff00ff00+100%   技暴伤害|r
-|cff00ff00+30%   全伤加深|r
-|cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*100）
-
-|cffffff00皇帝剑+皇帝刀激活特殊属性：攻击减甲+250，减少周围护甲+1500，分裂伤害+150%
-
-|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
-]],
---触发几率
-chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
---伤害
-damage = function(self)
-    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*100)
-end,
---特效2
-damage_effect = [[jn_tf2.mdx]],
---伤害范围
-damage_area = 800,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 750,
-['暴击几率'] = 5,
-['暴击伤害'] = 100,
-['技暴几率'] = 5,
-['技暴伤害'] = 100,
-['全伤加深'] = 30,
-['攻击减甲'] = function(self) 
-    local val = 0 
-    local p = self.owner:get_owner()
-    if (p.mall and p.mall['皇帝剑'] or 0) >=1 then 
-        val = 250
-    end    
-    return val
-end,
-
-['减少周围护甲'] = function(self) 
-    local val = 0 
-    local p = self.owner:get_owner()
-    if (p.mall and p.mall['皇帝剑'] or 0) >=1 then 
-        val = 1500
-    end    
-    return val
-end,
-['分裂伤害'] = function(self) 
-    local val = 0 
-    local p = self.owner:get_owner()
-    if (p.mall and p.mall['皇帝剑'] or 0) >=1 then 
-        val = 150
-    end    
-    return val
-end,
---特效
-effect = [[wuqi11.mdx]]
-}
+function mt:on_add()
+    local hero =self.owner
+    --随机给黑装
+    local name = ac.quality_item['黑'][math.random(#ac.quality_item['黑'])]
+    hero:add_item(name)
+end
 
 
-for i,name in ipairs({'熔炉炎刀','冰莲穿山剑','紫阳白涛剑','霜之哀伤','熔炉流星刀','冰魂火焰枪','霸王莲龙锤','方天画戟','桃花天香棒','苍雷噬金枪'}) do
+for i,name in ipairs({'熔炉炎刀','冰莲穿山剑','紫阳白涛剑','霜之哀伤','熔炉流星刀','冰魂火焰枪','霸王莲龙锤','方天画戟','桃花天香棒','苍雷噬金枪','苍天帝剑'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self
@@ -847,34 +770,6 @@ for i,name in ipairs({'熔炉炎刀','冰莲穿山剑','紫阳白涛剑','霜之
         -- local orf = ac.hero_weapon[hero.name] or 'hand'
         hero.effect_wuqi = hero:add_effect(orf,self.effect)
 
-        --添加被动技能
-        if finds(name,'皇帝刀','皇帝剑') then
-            self.trg = hero:event '造成伤害效果' (function(_,damage)
-                if not damage:is_common_attack()  then 
-                    return 
-                end 
-                --触发时修改攻击方式
-                if math.random(100) <= self.chance then
-                    --创建特效
-                    local angle = damage.source:get_point() / damage.target:get_point()
-                    ac.effect(damage.source:get_point(),skill.damage_effect,angle,1,'origin'):remove()
-                    --计算伤害
-                    for _,unit in ac.selector()
-                    : in_sector(hero:get_point(),self.damage_area,angle,95 )
-                    : is_enemy(hero)
-                    : ipairs()
-                    do 
-                        unit:damage
-                        {
-                            source = hero,
-                            damage = skill.damage,
-                            skill = skill,
-                            damage_type = '法术'
-                        }
-                    end 
-                end
-            end)
-        end
     end    
     -- mt.on_cast_start=mt.on_add --自动显示特效
     function mt:on_remove()

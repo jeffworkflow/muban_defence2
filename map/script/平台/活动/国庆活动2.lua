@@ -132,7 +132,7 @@ local function give_seed()
         local p= ac.player(i)
         if p:is_player() then 
             if p.hero then 
-                p.hero:add_item('蟠桃种子',true)
+                p.hero:add_item('蟠桃种子')
             end
         end
     end

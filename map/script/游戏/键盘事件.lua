@@ -86,7 +86,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         -- print('当前怪物数量：',ac.unit_cnt)
         if not p.flag_pttq then 
             p.flag_pttq = true
-            local it = hero:add_item('蟠桃种子',true)
+            local it = hero:add_item('蟠桃种子')
             p:sendMsg('|cffebb608【系统】|r |cff00ff00恭喜获得|cffff0000蟠桃种子|r',4)
         end    
     end   

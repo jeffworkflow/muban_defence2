@@ -81,7 +81,7 @@ function mt:on_cast_start()
             self:set_item_count(self._count+1)
         else
             --重新添加给英雄
-            unit:add_item(name,true)
+            unit:add_item(name)
         end     
         return 
     end 
@@ -141,7 +141,7 @@ function mt:on_cast_start()
                     skill:set_item_count(skill._count+1)
                 else
                     --重新添加给英雄
-                    unit:add_item(name,true)
+                    unit:add_item(name)
                 end  
             end    
 
@@ -152,7 +152,7 @@ function mt:on_cast_start()
                 skill:set_item_count(skill._count+1)
             else
                 --重新添加给英雄
-                unit:add_item(name,true)
+                unit:add_item(name)
             end        
         end 
     end
@@ -280,7 +280,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         --进行多个处理
         local it 
         for i=1,tonumber(v) do 
-            it = self.owner:add_item(k,true)
+            it = self.owner:add_item(k)
         end  
         ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cffff0000'..(it.color_name or it.name)..'|r',2)
     end
@@ -291,17 +291,17 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
         --满时，掉在地上
-        self.owner:add_item(name,true)
+        self.owner:add_item(name)
         local lni_color ='白'
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
         ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif rand_name == '复制装备' then
-        local it = self.owner:add_item(_item.name,true)
+        local it = self.owner:add_item(_item.name)
         ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r的时候，突然发现一个 '..(it.color_name or _item.name),2)
     elseif rand_name == '真·复制装备' then
-        local it = ac.dummy:add_item(_item.name,true)
+        local it = ac.dummy:add_item(_item.name)
         --升级
         for i=1,(_item.level-1) do 
             up_item(it)
@@ -309,7 +309,7 @@ ac.game:event '触发锻造事件'(function(_,skill,hero,_item)
         ac.dummy:remove_item(it)
         self.owner:add_item(it)
         -- ac.wait(10,function()
-            -- local it = self.owner:add_item(_item.name,true)
+            -- local it = self.owner:add_item(_item.name)
             -- for i=1,(_item.level-1) do 
             --     up_item(it)
             -- end

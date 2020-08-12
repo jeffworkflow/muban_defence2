@@ -61,7 +61,7 @@ function mt:on_cast_start()
     local list = ac.quality_item['黑'] 
     local name = list[math.random(#list)]
     --满时，掉在地上 神阶功法 未处理
-    hero:add_item(name,true)
+    hero:add_item(name)
     p:sendMsg('|cff00ff00兑换成功|r')
 end
 
