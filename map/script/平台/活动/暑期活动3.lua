@@ -177,7 +177,7 @@ reg:event '区域-进入' (function(trg,unit)
             give_award(unit)
             it:add_item_count(-1)
         else
-            p:sendMsg('火把已经提交够了',5)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00火把已经够了',4) 
         end
     end
 end)
