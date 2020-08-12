@@ -26,7 +26,10 @@ ac.wait(30,function()
                 --触发 破损的箱子
                 local skl = hero:find_skill('破损的箱子',nil,true) 
                 if not skl  then 
-                    ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','破损的箱子')
+                    ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','绝对C位')
+                    ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 打爆了一堆箱子 获得成就|cffff0000 "绝对C位" |r，奖励 |cffff0000+150w全属性 +35%木头加成 +250减少周围护甲|r',5)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 打爆了一堆箱子 获得成就|cffff0000 "绝对C位" |r，奖励 |cffff0000+150w全属性 +35%木头加成 +250减少周围护甲|r',5)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 打爆了一堆箱子 获得成就|cffff0000 "绝对C位" |r，奖励 |cffff0000+150w全属性 +35%木头加成 +250减少周围护甲|r',5)
                 end
             end
         end)
@@ -40,8 +43,8 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
     end
     local p = killer.owner
     cnt = cnt + 1 
-    if cnt == 50 then 
-        ac.player.self:sendMsg('恭喜卡牌大师到来',5)
+    if cnt == 5000 then 
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00卡牌大师来到了这个世界，在罪恶城堡中可以找到他',5)
         --创建卡牌大师
         local x,y = ac.rect.j_rect('kpds'):get_point():get()
         local shop = ac.shop.create('卡牌大师',x,y,270)
@@ -66,10 +69,8 @@ art = [[BTNJBSX.blp]],
 --说明
 tip = [[|cffFFE799【使用说明】：|r
 
-|cffff0000点击直接进入最终挑战，挑战成功后游戏直接胜利|r
-
-|cffcccccc请确保已经有足够的实力|r
-|cffcccccc请确保木头足够再购买，否则技能会进入CD，切勿瞎点|r]],
+|cffff0000免费刷新本批卡片|r
+ ]],
 --物品类型
 item_type = '神符',
 is_order = 1,
