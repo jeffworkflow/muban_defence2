@@ -112,4 +112,10 @@ function mt:on_cast_start()
         end
     end
     seller:fresh()
+    --改变tip
+    for i=1,3 do 
+        local it = seller.sell_item_list[i]
+        it.item_type_tip = [[花费30黑暗骰子 兑换\n]]
+        it:fresh_tip()
+    end
 end
