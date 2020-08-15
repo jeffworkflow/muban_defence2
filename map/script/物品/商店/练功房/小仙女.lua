@@ -193,7 +193,7 @@ for _,name in ipairs(fairy) do
                 if skl then 
                     if finds(self.name, '召唤') then 
                         --概率激活变异狗熊
-                        local rate = 10
+                        local rate = 0.1
                         if math.random(10000)/100 <= rate then 
                             skl.unit_name = '变异狗熊'
                             skl.mul = 3

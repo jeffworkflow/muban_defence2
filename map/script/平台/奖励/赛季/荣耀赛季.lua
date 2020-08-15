@@ -31,7 +31,7 @@ art = [[s0sjwz.blp]],
 tip = [[
 
 |cffFFE799【获得方式】：|r
-|cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得
+|cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得|cffdf19d0（获得后切勿改名，改名会清零）|r
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+88.8   杀怪加全属性|r

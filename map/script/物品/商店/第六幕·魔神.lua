@@ -82,7 +82,7 @@ local function check(p)
     --少年达摩
     if p.cnt_total_succ == 15 and not ac.flag_sndm  then
         ac.flag_sndm = true 
-        local x,y = ac.rect.j_rect('npc13'):get_point():get()
+        local x,y = ac.rect.j_rect('npc14'):get_point():get()
         local shop = ac.shop.create('少年达摩',x,y,270,nil) 
         -- shop:add_sell_item('兑换-神奇的令牌',9)
         

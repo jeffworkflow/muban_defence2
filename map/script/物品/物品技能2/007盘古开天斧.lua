@@ -35,7 +35,14 @@ mt{
 	tip = [[
 
 |cffcccccc十大神器之一，具有毁天灭地之能，相传为盘古大神所持破开天地之物，性能不详。
-]],
+
+|cffffff00+%力量%%|r |cffffff00%|r 力量
+|cffffff00+%攻击%%|r |cffffff00%|r 攻击
+|cffffff00+%分裂伤害%|r |cffffff00%|r 分裂伤害
+|cffffff00+%减少周围护甲%|r 减少周围护甲
+|cffffff00+%全伤加深%|r |cffffff00%|r 全伤加深
+|cffffff00+%对BOSS额外伤害%|r |cffffff00%|r 对BOSS额外伤害
+ ]],
 	--备注
 	effect4 = [[强力量]],
 	--业务技能代码

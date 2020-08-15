@@ -18,8 +18,9 @@ tip = [[
 |cffffe799火把积分大于150|r  奖励 |cff00ff00【成就】火焰杂耍
 |cffffe799火把积分大于300|r  奖励 |cff00ffff【成就】木杆热舞
 |cffffe799火把积分大于500|r  奖励 |cff00ffff【成就】燃烧之花
-|cffffe799火把积分大于750|r  奖励 |cffff0000【英雄】艾泽拉斯的火焰
+|cffffe799火把积分大于750|r  奖励 |cffffff00【成就】艾泽拉斯的火焰
 |cffffe799火把积分大于1000|r 奖励 |cffffff00【成就】火把节之王
+|cffffe799火把积分大于1500|r 奖励 |cffff0000【英雄】火焰之王
 
 |cffcccccc（可在F4-可存档面板中，查看火把积分）]],
 --物品类型
@@ -142,7 +143,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local rand_name = '血魔123'
     p.max_fall_cnt[rand_name] = (p.max_fall_cnt[rand_name] or 0)
     --获得最多次数
-    local max_fall_cnt = 16   
+    local max_fall_cnt = 26   
     local rate = 0.2
     -- local rate = 1
     if math.random(100000)/1000 <= rate and p.max_fall_cnt[rand_name] < max_fall_cnt then 
@@ -173,7 +174,7 @@ reg:event '区域-进入' (function(trg,unit)
     local it = unit:has_item('火把')
     if it then 
         p.hb_cnt = (p.hb_cnt or 0 ) + 1
-        if p.hb_cnt <= 15 then 
+        if p.hb_cnt <= 25 then 
             give_award(unit)
             it:add_item_count(-1)
         else

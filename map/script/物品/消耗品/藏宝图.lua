@@ -275,10 +275,22 @@ function mt:add_content()
     elseif  rand_name == '魔丸' then
         self.owner:add_rec_ex(10000)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+10000|r',2) 
+    elseif  rand_name == '大魔丸' then
+        self.owner:add_rec_ex(50000)
+        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+50000|r',2) 
+    elseif  rand_name == '超大魔丸' then
+        self.owner:add_rec_ex(500000)
+        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+500000|r',2) 
     elseif  rand_name == '木头' then
         self.owner:add_wood(3500)
-
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+3500|r',2) 
+    elseif  rand_name == '大木头' then
+        self.owner:add_wood(15000)
+        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+15000|r',2) 
+    elseif  rand_name == '超大木头' then
+        self.owner:add_wood(150000)
+        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+150000|r',2) 
+        
     elseif rand_name == '碎片幼儿园' then
         if not ac.flag_spyey  then 
             ac.flag_spyey = true 

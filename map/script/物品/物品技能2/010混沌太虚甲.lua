@@ -35,7 +35,14 @@ mt{
 	tip = [[
 
 |cffcccccc十大神器之一，相传为盘古大神破开天地之后，天地胎膜所化，性能不详。
-]],
+
+|cffffff00+%每秒加护甲%|r 每秒加护甲
+|cffffff00+%护甲%%|r |cffffff00%|r 护甲
+|cffffff00+%减伤%|r |cffffff00%|r 减伤
+|cffffff00+%免伤几率%|r |cffffff00%|r 免伤几率
+|cffffff00+%闪避%|r |cffffff00%|r 闪避
+|cffffff00+%每秒回血%|r |cffffff00%|r 每秒回血
+ ]],
 	--备注
 	effect4 = [[强护甲]],
 	v1 = {1,1},
