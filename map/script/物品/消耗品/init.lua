@@ -39,6 +39,7 @@ require '物品.消耗品.扭蛋券'
 require '物品.消耗品.天魔物品'
 require '物品.消耗品.天神物品'
 require '物品.消耗品.卡片2'
+require '物品.消耗品.超级藏宝图'
 
 ac.all_card={}
 for name,data in pairs(ac.skill) do 

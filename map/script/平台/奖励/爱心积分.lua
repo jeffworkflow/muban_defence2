@@ -347,10 +347,10 @@ local function get_player_cnt_bylv(lv)
     return cnt
 end
 --注册 获得关爱萌新 积分
-ac.game:event '游戏-结束' (function(trg,flag)
-    if not flag then 
-        return 
-    end         
+ac.game:event '杀死最终boss' (function(trg,flag)
+    -- if not flag then 
+    --     return 
+    -- end         
     --地图等级<5的玩家数
     local lv = 7
     local name = '爱心积分'

@@ -51,7 +51,6 @@ for i =1,3 do
     }
     --进攻怪刷新时的初始化
     function mt:on_start()
-        local rect = require 'types.rect'
         if i == 1 then 
             self.timer_ex_title ='距离 第'..(self.index+2)..'波 怪物进攻'
          end   

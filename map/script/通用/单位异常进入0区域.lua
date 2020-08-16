@@ -5,9 +5,9 @@ local region = ac.region.create(rct)
 region:event '区域-进入' (function(trg, hero, self)
     if region < hero:get_point()  then --不加区域判断，会有莫名其妙的问题，在练功房传送到其他地方，可能会出现在其他区域。
         print('单位进入0点',hero,hero:get_point(),hero.born_point)
-        if hero.born_point then
-            hero:blink(hero.born_point)
-        end
+        -- if hero.born_point then
+        --     hero:blink(hero.born_point)
+        -- end
     end     
 end)    
 
@@ -19,7 +19,8 @@ ac.loop(time*1000,function()
             print('lua 生命:',u:get('生命'),'魔兽生命：',jass.GetWidgetLife(u.handle))
             if u.born_point then 
                 -- u:blink(u.born_point)--传送不了
-                u:setPoint(u.born_point)
+                -- u:setPoint(u.born_point)
+                u:kill()
             else 
                 u:kill()
             end

@@ -1086,6 +1086,7 @@ function unit.__index:remove_item(it)
 	it.slot_id = nil
 	it.owner = nil
 
+    -- print('技能移除2:',it,it.level,it.owner,it.unique_buff)
 	--阻止触发物品丢弃	modify by jeff 从单位身上移除装备，都是丢在地上
 	it.is_discard_event = true
 	

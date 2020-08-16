@@ -169,6 +169,7 @@ local attribute = {
 
 	['减少周围护甲'] =	true, --默认表示基础值
 	['物理伤害加深'] =	true, --默认表示为%
+	['物理伤害加深系数'] = true, --默认表示为%
 
 	['额外杀敌数'] =	true, --默认表示基础值
 	-- ['局内地图等级'] =	true, --默认表示基础值
@@ -609,6 +610,9 @@ end
 
 on_get['全伤加深'] = function(self, all_damage)
 	return all_damage * (1+self:get('全伤加深系数')/100)
+end
+on_get['物理伤害加深'] = function(self, damage)
+	return damage * (1+self:get('物理伤害加深系数')/100)
 end
 
 on_get['生命'] = function(self, life)
