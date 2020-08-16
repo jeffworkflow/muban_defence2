@@ -200,11 +200,17 @@ ac.game:event '游戏-开始'(function()
             -- ac.nick_name('有人唠嗑不',unit,250)
             unit:event '受到伤害开始'(function(_,damage)
                 local u = damage.source 
+                local p = u.owner
                 local rate =10 
                 if u:has_item('火把') then 
                     if math.random(100000)/1000<=rate then 
                         unit:kill(u)
                     end
+                end
+                
+                if math.random(100000)/1000 <=rate then 
+                    --发送提示【系统】需要维特的腿
+                    p:sendMsg('|cffebb608【系统】|r|cff00ff00需要火把 ',5)
                 end
                 return true
             end)
