@@ -370,6 +370,10 @@ rect gg_rct_jiao5= null
 rect gg_rct_jiao1= null
 rect gg_rct_jiao6= null
 rect gg_rct_kpds= null
+rect gg_rct_cbt5= null
+rect gg_rct_shengxiao= null
+rect gg_rct_shengxiao2= null
+rect gg_rct_yingxiong22= null
 
 
 camerasetup gg_cam_Camera_001= null
@@ -1714,7 +1718,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_cbg1=Rect(- 10784.0, 11584.0, - 10720.0, 11648.0)
     set gg_rct_cbg3=Rect(- 11488.0, 12672.0, - 10048.0, 13408.0)
     set gg_rct_cbg2=Rect(- 11488.0, 11776.0, - 10048.0, 12512.0)
-    set gg_rct_cbg4=Rect(- 10784.0, 13696.0, - 10720.0, 13760.0)
+    set gg_rct_cbg4=Rect(- 10784.0, 13568.0, - 10720.0, 13632.0)
     set gg_rct_cbt2=Rect(3296.0, 6368.0, 6176.0, 8416.0)
     set gg_rct_cjg1=Rect(- 4672.0, 12160.0, - 4608.0, 12224.0)
     set gg_rct_cjg2=Rect(- 5504.0, 12704.0, - 5120.0, 13056.0)
@@ -1864,6 +1868,10 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_jiao1=Rect(10432.0, 928.0, 10848.0, 1376.0)
     set gg_rct_jiao6=Rect(- 4992.0, 8192.0, - 4832.0, 8320.0)
 	set gg_rct_kpds=Rect(- 1792.0, 224.0, - 1600.0, 416.0)
+	set gg_rct_cbt5=Rect(- 10784.0, 13920.0, - 10720.0, 13984.0)
+	set gg_rct_shengxiao=Rect(16192.0, - 3936.0, 16352.0, - 3776.0)
+    set gg_rct_shengxiao2=Rect(15424.0, - 4640.0, 17120.0, - 3072.0)
+	set gg_rct_yingxiong22=Rect(- 11328.0, 26400.0, - 11296.0, 26432.0)
 endfunction
 
 //===========================================================================

@@ -89,7 +89,7 @@ class.wjphb_panel = extends(class.panel){
         local info = {
             name ='',
             -- tip = '每小时刷新一次'
-            tip = '|cff00ff00每小时刷新一次|cff00ffff(通过抽奖获得的熟练度，不计在内)\n|cffcccccc赛季结束将清空排行榜'
+            tip = '|cff00ff00每小时刷新一次|cff00ffff(通过抽奖获得的熟练度，不计在内)\n|cffcccccc赛季结束将清空排行榜|cffffff00(新的征程，必须从头挑战才可上榜)'
             
         }
         function more_tip1:on_button_mouse_enter()

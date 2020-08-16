@@ -386,6 +386,20 @@ local reward = {
             hero:add_item(name)    
         end 
     end,
+    ['六号熔炼石'] = function (player,hero,unit,is_on_hero)
+        local name = '六号熔炼石'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = player
+            end  
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name)    
+        end 
+    end,
     ['召唤boss'] = function (player,hero,unit,is_on_hero)
         local name = '召唤boss'
         --英雄死亡时 掉落在地上
@@ -520,29 +534,29 @@ local unit_reward = {
     ['藏宝阁小弟'] = {{rand =1.35,name = '藏宝图'}},
     ['藏宝阁阁主'] = {{rand =100,name = '藏宝图'}},
     ['藏宝图'] =  {	
-        {    rand = 36.59, name = '无' },
-        {    rand = 10, name = '随机物品',},
-        {    rand = 5, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
-                { rand = 40, name = '黄阶'},
-                { rand = 40, name = '玄阶'},
-                { rand = 10, name = '地阶'},
-                { rand = 10, name = '天阶'},
+        {    rand = 35.96, name = '无' },
+        {    rand = 13, name = '随机物品',},
+        {    rand = 2, name = { --'随机技能' 黄：55；玄：30:；地：12；天：3
+                { rand = 25, name = '黄阶'},
+                { rand = 25, name = '玄阶'},
+                { rand = 25, name = '地阶'},
+                { rand = 25, name = '天阶'},
         }}, 
-        {    rand = 3, name = '杀怪加力量+30 攻击加力量+150 每秒加力量+600' },
-        {    rand = 3, name = '杀怪加敏捷+30 攻击加敏捷+150 每秒加敏捷+600',},
-        {    rand = 3, name = '杀怪加智力+30 攻击加智力+150 每秒加智力+600',},
-        {    rand = 3, name = '杀怪加全属性+15 攻击加全属性+75 每秒加全属性+225',},
-        {    rand = 3, name = '杀怪加攻击+60 每秒加攻击+900',},
+        {    rand = 3, name = '杀怪加力量+50 攻击加力量+250 每秒加力量+750' },
+        {    rand = 3, name = '杀怪加敏捷+50 攻击加敏捷+250 每秒加敏捷+750',},
+        {    rand = 3, name = '杀怪加智力+50 攻击加智力+250 每秒加智力+750',},
+        {    rand = 3, name = '杀怪加全属性+25 攻击加全属性+125 每秒加全属性+375',},
+        {    rand = 3, name = '杀怪加攻击+100 每秒加攻击+2000',},
         {    rand = 3, name = '每秒加护甲+1',},
-        {    rand = 3, name = '攻击减甲+20',},
+        {    rand = 3, name = '攻击减甲+30',},
 
-        {    rand = 0.5, name = '杀怪加力量+200 攻击加力量+1000 每秒加力量+3000' },
-        {    rand = 0.5, name = '杀怪加敏捷+200 攻击加敏捷+1000 每秒加敏捷+3000',},
-        {    rand = 0.5, name = '杀怪加智力+200 攻击加智力+1000 每秒加智力+3000',},
-        {    rand = 0.5, name = '杀怪加全属性+100 攻击加全属性+500 每秒加全属性+1500',},
-        {    rand = 0.5, name = '杀怪加攻击+400 每秒加攻击+6000',},
+        {    rand = 0.5, name = '杀怪加力量+250 攻击加力量+1250 每秒加力量+3750' },
+        {    rand = 0.5, name = '杀怪加敏捷+250 攻击加敏捷+1250 每秒加敏捷+3750',},
+        {    rand = 0.5, name = '杀怪加智力+250 攻击加智力+1250 每秒加智力+3750',},
+        {    rand = 0.5, name = '杀怪加全属性+125 攻击加全属性+625 每秒加全属性+1875',},
+        {    rand = 0.5, name = '杀怪加攻击+500 每秒加攻击+10000',},
         {    rand = 0.5, name = '每秒加护甲+5',},
-        {    rand = 0.5, name = '攻击减甲+100',},
+        {    rand = 0.5, name = '攻击减甲+150',},
 
         {    rand = 0.1, name = '杀怪加力量+500 攻击加力量+2500 每秒加力量+7500' },
         {    rand = 0.1, name = '杀怪加敏捷+500 攻击加敏捷+2500 每秒加敏捷+7500',},
@@ -550,14 +564,21 @@ local unit_reward = {
         {    rand = 0.1, name = '杀怪加全属性+250 攻击加全属性+1250 每秒加全属性+3750',},
         {    rand = 0.1, name = '杀怪加攻击+1000 每秒加攻击+15000',},
         {    rand = 0.1, name = '每秒加护甲+25',},
-        {    rand = 0.1, name = '攻击减甲+250',},
+        {    rand = 0.1, name = '攻击减甲+300',},
 
         {    rand = 1, name = '宠物经验书(小)*1',},
         {    rand = 1, name = '宠物经验书(大)*1',},
         {    rand = 2, name = '魔丸',},
+        {    rand = 0.2, name = '大魔丸',},
+        {    rand = 0.02, name = '超大魔丸',},
+
         {    rand = 2, name = '木头',},
+        {    rand = 0.2, name = '大木头',},
+        {    rand = 0.02, name = '超大木头',},
 
         {    rand = 2, name = '黑暗骰子*1',},
+        {    rand = 0.01, name = '黑暗骰子*10',},
+        {    rand = 0.01, name = '黑暗骰子*100',},
 
         {    rand = 0.02, name = '神奇的令牌*1',},
 
@@ -566,18 +587,28 @@ local unit_reward = {
         {    rand = 0.06, name = '三号熔炼石*1',},
         {    rand = 0.04, name = '四号熔炼石*1',},
         {    rand = 0.02, name = '五号熔炼石*1',},
+        {    rand = 0.01, name = '六号熔炼石*1',},
         
 
         {    rand = 1.5, name = '功法升级书*1',}, --lv1
         {    rand = 0.75, name = '功法连升书*1',}, --lv2
+        
         {    rand = 0.8, name = '三眼赤痕*1',}, --lv1
         {    rand = 0.8, name = '火龙气息*1',}, --lv2
         {    rand = 0.4, name = '地魂融血丹*1',}, --lv1
         {    rand = 0.4, name = '天魂融血丹*1',}, --lv2
 
         {    rand = 2.5, name = '强化石*1',}, --lv2
+        {    rand = 0.01, name = '强化石*5',}, --lv2
+        {    rand = 0.01, name = '强化石*10',}, --lv2
+
         {    rand = 1, name = '天谕*1',}, --lv2
+        {    rand = 0.01, name = '天谕*5',}, --lv2
+        {    rand = 0.01, name = '天谕*10',}, --lv2
+
         {    rand = 0.3, name = '吞噬丹*1',}, --lv2
+        {    rand = 0.01, name = '吞噬丹*5',}, --lv2
+        {    rand = 0.01, name = '吞噬丹*10',}, --lv2
 
         --挖宝成就
         {    rand = 3.2, name = '勤劳的矿工',}, --lv2
