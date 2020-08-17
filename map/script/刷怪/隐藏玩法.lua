@@ -243,7 +243,7 @@ art = [[cjcbt.blp]],
 --说明
 tip = [[|cffFFE799【使用说明】：|r
 
-|cff00ff00消耗 50点挖宝积分 兑换 一张超级藏宝图（当前挖宝积分：%wt_cnt%）
+|cff00ff00消耗|cffff000050点挖宝积分|cff00ff00，兑换|cffffff00超级藏宝图|cffcccccc（当前挖宝积分：%wt_cnt%|cffcccccc）
  ]],
 --物品类型
 item_type = '神符',

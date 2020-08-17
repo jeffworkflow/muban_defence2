@@ -287,8 +287,8 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
         return 
     end
     --血魔 变异的基因
-    local rate = 0.2
-    rate = 20
+    local rate = 0.25
+    -- rate = 20
     local p = killer.owner
     if math.random(1000000)/10000 < rate and not p.flag_bydjy then 
         p.flag_bydjy = true
