@@ -190,7 +190,7 @@ function mt:add_content()
 
     if rand_name == '无' then
         player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
-    elseif finds(rand_name,'红','黑','神') then
+    elseif _in(rand_name,'红','黑','神') then
         --给英雄随机添加物品
         local list = ac.quality_item[rand_name]
         --添加给购买者
