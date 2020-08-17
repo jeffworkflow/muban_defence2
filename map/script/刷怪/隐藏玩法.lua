@@ -125,14 +125,14 @@ end
 
 
 --多啦A梦
-local cnt = 0
+local cnt = 1
 ac.game:event '挖图成功'(function(_,hero)
     
     local p = hero.owner
     p.wt_cnt = (p.wt_cnt or 0) + 1
     if p.wt_cnt == 2 and not ac.flag_dlam then 
         ac.flag_dlam = true
-        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00多啦A梦来到了这个世界，在罪恶城堡中可以找到他',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00多啦A梦来到了这个世界，在藏宝阁中可以找到他',5)
         --创建多啦A梦
         local x,y = ac.rect.j_rect('cbt5'):get_point():get()
         local shop = ac.shop.create('多啦A梦',x,y,270)
