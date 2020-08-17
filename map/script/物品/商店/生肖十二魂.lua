@@ -19,7 +19,9 @@ function mt:on_cast_start()
     end
     --没有人在挑战才进入
     if not ok then 
-        ac.creep[name]:start()
+        local cep = ac.creep[name]
+        cep.owner = p
+        cep:start()
     else
         p:sendMsg('已有人在挑战，请耐心等待',5)
         return true
@@ -94,7 +96,7 @@ ac.wait(0,function()
         local mt = ac.creep[name]{    
             region = 'shengxiao2',
             creeps_datas = skl.unit_name..'*25',
-            cool = 1,
+            cool = 0.5,
             is_random = true,
             create_unit_cool = 0,
             is_leave_region_replace = true,
