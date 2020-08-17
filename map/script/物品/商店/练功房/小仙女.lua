@@ -239,11 +239,11 @@ for _,name in ipairs(fairy) do
                 -- 下次抽中概率:'..self.rate + self.up_rate,5)  
                
                 --概率激活彩蛋
-                local rate = 2
+                local rate = 0.1
                 local real_name = '错臂之交'
                 --连续失败10次
                 p.cnt_failed = (p.cnt_failed  or 0) +1
-                if math.random(10000)/100 <= rate or p.cnt_failed == 10  then 
+                if math.random(10000)/100 <= rate or p.cnt_failed == 6  then 
                     local skl = hero:find_skill(real_name,nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',real_name)
