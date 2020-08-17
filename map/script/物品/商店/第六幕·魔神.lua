@@ -58,9 +58,9 @@ local function check(p)
         local shop = ac.shop.create('生肖十二魂',x,y,270)
         local it = shop:add_sell_item('挑战鼠天瞳',1)
         
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
     end
 
     if p.cnt_total_succ == 5 and not ac.flag_msjy  then

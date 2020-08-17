@@ -73,7 +73,9 @@ ac.wait(0,function()
             if tab then 
                 print('生肖十二魂',name)
                 save(tab)
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000运气爆棚！！！恭喜获得'..name..'！|cff00ff00勋章的属性可在最强魔灵-通关难度奖励-生肖十二魂中查看！',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00鼠天瞳已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00鼠天瞳已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00鼠天瞳已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
             end
             --传送回练功房
             local p = killer.owner
@@ -91,7 +93,7 @@ ac.wait(0,function()
         local skl = ac.skill[name]
         local mt = ac.creep[name]{    
             region = 'shengxiao2',
-            creeps_datas = skl.unit_name..'*15',
+            creeps_datas = skl.unit_name..'*25',
             cool = 1,
             is_random = true,
             create_unit_cool = 0,
@@ -108,7 +110,7 @@ ac.wait(0,function()
                 crep.kill_cnt = (crep.kill_cnt or 0) + 1
                 -- print('死亡数量',crep.kill_cnt)
 				--2000 个数量创建大菠萝
-                if crep.kill_cnt == 200 then 
+                if crep.kill_cnt == 500 then 
                     local boss = name:sub(7,-1)
                     print('boss 名字',boss,name)
 					create_unit(boss,killer:get_point())
