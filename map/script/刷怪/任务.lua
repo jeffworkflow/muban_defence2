@@ -283,6 +283,9 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
             pcall(task_detail[k],killer,target)
         end
     end  
+    if target:get_name() ~='血魔' then 
+        return 
+    end
     --血魔 变异的基因
     local rate = 0.2
     rate = 20
