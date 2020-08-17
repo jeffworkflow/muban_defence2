@@ -3,15 +3,13 @@ mt{
     --等久
     level = 1,
     --图标
-    art = [[cangbaotu.blp]],
+    art = [[cjcbt.blp]],
     --说明
     tip = [[
 
 
-根据提示，到指定地点，挖开即可获得|cffdf19d0 各种宝藏 |r|cffffff00（仅英雄单位可以使用）
-
-|cffffe799每点挖宝熟练度|r 奖励 |cff00ff00每秒加敏捷+0.1
-|cffcccccc（属性|cffff0000永久存档|cffcccccc，上限受地图等级影响）]],
+根据提示，到|cffffff00基地附近|r，挖开即可获得|cffdf19d0 各种宝藏 |r|cffffff00（仅英雄单位可以使用）
+ ]],
     --物品类型
     item_type = '消耗品',
     specail_model = [[ScrollOfProtection.mdx]],
@@ -20,11 +18,11 @@ mt{
     --物品技能
     is_skill = true,
     --挖图范围
-    area = 200,
+    area = 350,
     --售价
     kill_count = 200,
     --cd
-    cool = 10,
+    cool = 5,
     --物品详细介绍的title
     content_tip = '|cffffe799使用说明：|r',
     --可能会掉线
@@ -87,26 +85,26 @@ function mt:on_cast_start()
     local tx,ty = self.random_point:get()    
     local point = hero:get_point()
     local sx,sy = point:get()
-    local str ='【系统】罗盘指向了北（上）方]]'
+    local str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00北（上）方'
     local strs = {}
     --目标在右边
-    if tx - sx > 100 then 
-        str ='【系统】罗盘指向了东（右）方]]'
+    if tx - sx > 175 then 
+        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00东（右）方'
         table.insert(strs,str)
     end
     --目标在左边边
-    if tx - sx < -100 then 
-        str ='【系统】罗盘指向了西（左）方]]'
+    if tx - sx < -175 then 
+        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00西（左）方'
         table.insert(strs,str)
     end
     --目标在左边边
-    if ty - sy > 100 then 
-        str ='【系统】罗盘指向了北（上）方]]'
+    if ty - sy > 175 then 
+        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00北（上）方'
         table.insert(strs,str)
     end
     --目标在左边边
-    if ty - sy < -100 then 
-        str ='【系统】罗盘指向了南（下）方]]'
+    if ty - sy < -175 then 
+        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00南（下）方'
         table.insert(strs,str)
     end
 
@@ -189,7 +187,7 @@ function mt:add_content()
     end 
 
     if rand_name == '无' then
-        player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
+        player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生',2)
     elseif finds(rand_name,'红','黑','神') then
         --给英雄随机添加物品
         local list = ac.quality_item[rand_name]
@@ -197,20 +195,20 @@ function mt:add_content()
         local name = list[math.random(#list)]
         local it = self.owner:add_item(name)
         ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 '..it.color_name,2)
-    elseif finds(rand_name,'天阶','地阶','玄阶','黄阶') then
+    elseif finds(rand_name,'天阶','神阶') then
         local list = ac.quality_skill[rand_name]
         --添加给购买者
         local name = list[math.random(#list)]
         local it = ac.item.add_skill_item(name,self.owner)
         local color = it and it.color 
         ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
-    elseif  rand_name == '魔丸' then
-        self.owner:add_rec_ex(10000)
-        ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+10000|r',2) 
-    elseif  rand_name == '木头' then
-        self.owner:add_wood(3500)
+    elseif  rand_name == '超大魔丸' then
+        self.owner:add_rec_ex(500000)
+        ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+500000|r',2) 
+    elseif  rand_name == '超大木头' then
+        self.owner:add_wood(150000)
 
-        ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+3500|r',2) 
+        ac.player.self:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+150000|r',2) 
     elseif finds(rand_name,'科尔格的执着') then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
@@ -218,9 +216,9 @@ function mt:add_content()
             player.is_show_nickname = rand_name
             local tip = tran_space(new_skl:get_tip()) --去除换行为空格
             --给全部玩家发送消息
-            ac.player.self:sendMsg1('|cffebb608【系统】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，移速+75，技能冷却+5%，每秒加护甲+10',6)
-            ac.player.self:sendMsg1('|cffebb608【系统】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，移速+75，技能冷却+5%，每秒加护甲+10',6)
-            ac.player.self:sendMsg1('|cffebb608【系统】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+300万，移速+75，技能冷却+5%，每秒加护甲+10',6)
+            ac.player.self:sendMsg1('|cffebb608【系统】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1E，物理伤害加深系数+25%，每秒加护甲+50，每秒回血+15%',6)
+            ac.player.self:sendMsg1('|cffebb608【系统】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1E，物理伤害加深系数+25%，每秒加护甲+50，每秒回血+15%',6)
+            ac.player.self:sendMsg1('|cffebb608【系统】|r|cffff0000运气暴涨!!!|r|cff00ffff'..player:get_name()..'|r使用|cff00ff00'..self.name..'|r，惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+1E，物理伤害加深系数+25%，每秒加护甲+50，每秒回血+15%',6)
         else
             self:add_content() --已挖到再随机一次
             -- player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffffff00(挖宝熟练度+1，当前挖宝熟练度 '..player.server['挖宝熟练度']..' )|r',2)
