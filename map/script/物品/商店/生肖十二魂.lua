@@ -85,6 +85,9 @@ ac.wait(0,function()
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
                 p.hero:blink(point,true,false)
             end
+            --关闭挑战按钮
+            local shop = ac.find_unit('生肖十二魂')
+            shop:remove_sell_item('挑战'..unit:get_name())
             --save()
             -- p:sendMsg('|cffebb608【系统】|r |cff00ff00恭喜击败超级大菠萝',5)
         end)

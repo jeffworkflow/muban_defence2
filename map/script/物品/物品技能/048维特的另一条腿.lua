@@ -105,14 +105,14 @@ ac.game:event '受到伤害效果'(function(_,damage)
 	if not damage:is_common_attack()  then 
 		return 
 	end 
+	local hero = damage.source
+	local p = hero.owner
+	hero = p.hero
 	local rate =10
 	if math.random(100000)/1000 <=rate then 
 		--发送提示【系统】需要维特的腿
 		p:sendMsg('|cffebb608【系统】|r|cff00ff00需要维特的腿 ',5)
 	end
-	local hero = damage.source
-	local p = hero.owner
-	hero = p.hero
 	local item = damage.source:has_item('维特的另一条腿')
 	if not item then 
 		return 

@@ -138,6 +138,8 @@ ac.game:event '挖图成功'(function(_,hero)
         local shop = ac.shop.create('多啦A梦',x,y,270)
         local it = shop:add_sell_item('免费刷新2',9)
         it:on_cast_start()
+        shop:add_sell_item('兑换超级藏宝图',12)
+        
     end
 end)
 local all_item = {}
