@@ -154,7 +154,7 @@ ac.wait(100,function()
     table.sort(all_item,function(a,b)
         return a > b
     end)
-    print_r(all_item)
+    -- print_r(all_item)
 end)
 
 --物品名称

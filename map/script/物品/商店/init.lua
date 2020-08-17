@@ -20,6 +20,7 @@ require '物品.商店.第六幕·魔神'
 require '物品.商店.魔神的交易'
 require '物品.商店.魔神的合成'
 require '物品.商店.魔神之石'
+require '物品.商店.生肖十二魂'
 
 
 

@@ -51,6 +51,18 @@ local function create_u(skill,unit_name,target_rect,f)
 end
 
 local function check(p)
+    --生肖十二魂
+    if p.cnt_total_succ == 2 and not ac.flag_sxseh  then
+        ac.flag_sxseh = true
+        local x,y = ac.rect.j_rect('npc13'):get_point():get()
+        local shop = ac.shop.create('生肖十二魂',x,y,270)
+        local it = shop:add_sell_item('挑战鼠天瞳',1)
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000魔神的交易|cff00ff00”，在基地右下角npc-魔神之路中查看 ',5)
+    end
+
     if p.cnt_total_succ == 5 and not ac.flag_msjy  then
         ac.flag_msjy = true
         local unit = ac.find_unit('第六幕·魔神之路')

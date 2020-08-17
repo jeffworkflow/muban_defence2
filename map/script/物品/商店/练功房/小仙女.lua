@@ -205,7 +205,7 @@ for _,name in ipairs(fairy) do
                             skl.unit_name = '变异狗熊'
                             skl.mul = 3
                             ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 触发事件-|cffff0000变异|r',5)   
-                            it:remove()
+                            it:item_remove()
                         end
                     end
                     skl:set_level(1) 
