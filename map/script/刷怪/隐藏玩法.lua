@@ -170,7 +170,7 @@ art = [[BTNJBSX.blp]],
 --说明
 tip = [[|cffFFE799【使用说明】：|r
 
-|cff00ff00免费刷新本批卡片|r
+|cff00ff00免费刷新本批物品|r
  ]],
 --物品类型
 item_type = '神符',
@@ -194,10 +194,10 @@ local function get_status(tab,name)
 end
 
 local color_cost = {
-    ['白'] = 99,
-    ['蓝'] = 999,
-    ['金'] = 9999,
-    ['红'] = 99999,
+    ['白'] = 1999,
+    ['蓝'] = 9999,
+    ['金'] = 49999,
+    ['红'] = 249999,
     ['黑'] = 999999,
 }
 function mt:on_cast_start()

@@ -144,7 +144,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     p.max_fall_cnt[rand_name] = (p.max_fall_cnt[rand_name] or 0)
     --获得最多次数
     local max_fall_cnt = 26   
-    local rate = 0.2
+    local rate = 0.25
     -- local rate = 1
     if math.random(100000)/1000 <= rate and p.max_fall_cnt[rand_name] < max_fall_cnt then 
         --当前个数+1
@@ -211,7 +211,7 @@ ac.game:event '游戏-开始'(function()
                 
                 if math.random(100000)/1000 <=rate then 
                     --发送提示【系统】需要维特的腿
-                    p:sendMsg('|cffebb608【系统】|r|cff00ff00需要火把 ',5)
+                    p:sendMsg('|cffebb608【系统】|r|cff00ff00不痒不痛的，没有|cffffff00火把（新手任务掉落）|cff00ff00你也想搞我？ ',5)
                 end
                 return true
             end)
