@@ -125,7 +125,7 @@ end
 
 
 --多啦A梦
-local cnt = 1
+local cnt = 50
 ac.game:event '挖图成功'(function(_,hero)
     
     local p = hero.owner
