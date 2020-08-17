@@ -1130,3 +1130,18 @@ ac.game:event '造成伤害效果' (function(_,damage)
 	player:add_wood(wood) 
 
 end) 
+
+ac.game:event '造成伤害结束' (function (_,damage)
+    local source = damage.source
+    local target = damage.target
+    if not finds(target:get_name(),'经验怪','金币','木头','魔丸','功法怪') then 
+        return
+    end    
+    if not source:is_hero() then 
+        return 
+    end
+    local p = source:get_owner()
+    if source:get('秒杀练功房的怪物') >0 then 
+        target:kill(source)
+    end
+end)

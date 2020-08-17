@@ -349,7 +349,7 @@ function ac.ui:add_damage_total(u)
     new_ui:show1()
     --每一秒刷新一次统计数据
     if not new_ui.trg then 
-        new_ui.trg = ac.loop(1000,function()
+        new_ui.trg = game.loop(1000,function()
             new_ui:fresh()
         end)
     end
@@ -385,7 +385,7 @@ function ac.ui:add_damage_total(u)
             new_ui:give_award()
             
             --等待10秒隐藏面板
-            ac.wait(10*1000,function()
+            game.wait(10*1000,function()
                 new_ui:hide1()
                 --初始化ui数据
                 new_ui:init_data()

@@ -264,7 +264,7 @@ local new_ui = class.panel:builder
             self.timer:remove()
         end
         -- local
-        self.timer = ac.timer(1000,time,function(t)
+        self.timer = game.timer(1000,time,function(t)
             local str = string.format('%02d',t.count)
             --设置图片
             -- print('改变时间图片',str)

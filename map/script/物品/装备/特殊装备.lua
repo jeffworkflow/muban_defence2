@@ -82,18 +82,31 @@ mt{
     ['秒杀练功房的怪物'] = 1,
 }
 
-ac.game:event '造成伤害结束' (function (_,damage)
-    local source = damage.source
-    local target = damage.target
-    if not finds(target:get_name(),'经验怪','金币','木头','魔丸','功法怪') then 
-        return
-    end    
-    if not source:is_hero() then 
-        return 
-    end
-    local p = source:get_owner()
-    if source:get('秒杀练功房的怪物') >0 then 
-        target:kill(source)
-    end
-end)
+
+local mt = ac.skill['变异的基因']
+mt{
+    level = 1 ,
+    specail_model = [[File00000376 - RC.mdx]],
+    unique = true,
+    title = '|cffdf19d0变异的基因|r',
+    tip = [[ 
+|cffcccccc上古时期，乞丐经常被犬兽袭击，以此棒防身
+
+|cff00ff00力量+35%
+|cff00ffff攻击减甲+500
+|cff00ffff分裂伤害+200%
+|cffffff00多重暴击几率+10%
+|cffffff00多重暴击+1
+
+ ]],
+    --技能图标
+    art = [[dagoubang.blp]],
+    ['力量%'] = 35,
+    ['攻击减甲'] = 500,
+    ['分裂伤害'] = 200,
+    ['多重暴击几率'] = 10,
+    ['多重暴击'] = 1,
+    ['秒杀练功房的怪物'] = 1,
+}
+
 

@@ -297,21 +297,21 @@ local function get_save_flag()
 end
 
 
--- ac.game:event '选择难度' (function(_,g_game_degree_name)
---     local ok = get_save_flag() 
---     local time = 600
+ac.game:event '选择难度' (function(_,g_game_degree_name)
+    local ok = get_save_flag() 
+    local time = 600
     
---     if ac.g_game_degree >11 then
---         ac.loop(time*1000,function() 
---             if not ok then
---                 ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
---                 ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
---                 ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
+    if ac.g_game_degree >11 then
+        ac.loop(time*1000,function() 
+            if not ok then
+                ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
+                ac.player.self:sendMsg('|cffebb608【系统】|cffff0000检测到玩家作弊，请尽快退出游戏，避免存档无效、进黑名单或封号！',5)
 
---             end
---         end)
---     end
--- end)
+            end
+        end)
+    end
+end)
 
 
 --注册 保存青铜，王者等星数
@@ -324,7 +324,7 @@ ac.game:event '杀死最终boss' (function(trg,flag)
     end
     
     local ok = get_save_flag()
-    ok = true
+    -- ok = true
     for i=1,10 do
         local player = ac.player[i]
         local p = ac.player[i]

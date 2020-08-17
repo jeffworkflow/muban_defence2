@@ -18,7 +18,7 @@ for name,data in pairs(ac.table.ItemData) do
             table.insert(all_item,name)
         end   
         
-        if finds(color,'白','蓝','金','红','黑','神') then 
+        if _in(color,'白','蓝','金','红','黑','神') then 
             if data.item_type =='装备' then
                 table.insert(equipment,name)
             end    

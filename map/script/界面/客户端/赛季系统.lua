@@ -603,7 +603,7 @@ local function blink_tlmk(start_time)
     --快到时，进行提醒
     local t_time = 15
     ac.wait( (start_time - t_time)*1000,function() 
-        ac.timer(1000,t_time,function(t)
+        game.timer(1000,t_time,function(t)
             t_time = t_time -1 
             ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000 '..t_time..' |r |cff00ff00秒开始挑战|cffffff00最强魔帝|cff00ff00，请做好战前准备！',2)
     

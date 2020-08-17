@@ -153,7 +153,7 @@ ac.wait(0,function ()
     local attr_panel = class.attr_panel.create(492,934)
 
     -------------------当选中单位时 更新UI内容--------------------------------- 
-    console.update_timer = ac.loop(100,function ()
+    console.update_timer = game.loop(100,function ()
         local unit_handle = japi.GetRealSelectUnit()
         local unit = ac.unit.j_unit(unit_handle)
 

@@ -55,7 +55,7 @@ local new_ui = class.panel:builder
             self.timer = nil
         end
 
-        self.timer = ac.loop(1000,function(t)
+        self.timer = game.loop(1000,function(t)
             total_time = total_time - 1
             local str = os.date("!%H:%M:%S", total_time)
             self.bt.remain_time:set_text(str)

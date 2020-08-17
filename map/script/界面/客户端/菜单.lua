@@ -14,7 +14,7 @@ class.screen_button = extends(class.button){
         --处理 在线奖励 
         local total_time = 600 
         -- local total_time = 30 
-        ac.loop(1000,function(t)
+        game.loop(1000,function(t)
             --modify by jeff 
             total_time = total_time - 1
             local str = os.date("!%H:%M:%S", total_time)

@@ -1,3 +1,26 @@
+--先改变 game.timer 
+function game.timer(timeout, count, on_timer)
+	if count == 0 then
+		return game.loop(timeout, on_timer)
+	end
+	local t = game.loop(timeout, function(t)
+        if not t.cnt then 
+            t.cnt = 0
+        end
+        
+        t.cnt = t.cnt + 1	
+        count = count - 1
+        t.count = count
+        on_timer(t)
+        if count <= 0 then
+            if t.on_timeout then 
+                t:on_timeout()
+            end	
+            t:remove()
+        end
+	end)
+	return t
+end
 
 --淡化 
 --@正数：淡化 负数：渐入
@@ -7,7 +30,7 @@ function class.ui_base:fade(time)
     local source = time>0 and 100 or 0
     local time = math.abs(time)
 
-    ac.timer(time/100 * 1000,100,function(t)
+    game.timer(time/100 * 1000,100,function(t)
         -- print((100-t.cnt)/100) 
         local val = math.abs(source - t.cnt)/100
         self:set_alpha(val)
@@ -21,7 +44,7 @@ function class.ui_base:blink(time,speed,keep)
     local per_speed = 100 /(speed / 2 /0.001) 
     local flag=1
     local current_alpha = 1
-    ac.timer(0.001*1000,math.floor(time/0.001),function(t)
+    game.timer(0.001*1000,math.floor(time/0.001),function(t)
 
         current_alpha = (current_alpha*100 - per_speed * flag)/100
         -- print('闪烁:',current_alpha)
@@ -112,7 +135,7 @@ function mt:start(data)
         return 
     end
     
-    self.t_timer = ac.loop(10,function(t)
+    self.t_timer = game.loop(10,function(t)
         self:update()
     end)
 

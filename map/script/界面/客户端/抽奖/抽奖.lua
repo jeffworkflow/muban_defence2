@@ -194,7 +194,7 @@ local new_ui = class.panel:builder
         local speed = 0.05 --0.05秒位移一个物品
         self.moved = 0 --已经位移数
         local max_cnt = math.floor(time/0.01 + speed *20 /0.01)
-        ac.timer(0.01 * 1000,max_cnt,function(t)
+        game.timer(0.01 * 1000,max_cnt,function(t)
             if ('%.2f').format(t.cnt * 0.01) ~= ('%.2f').format(speed * (self.moved +1)) then 
                 return
             end 
@@ -207,7 +207,7 @@ local new_ui = class.panel:builder
             if t.cnt * 0.01 >= time and self.btns[slot].name == p.reward_name then 
                 print('中奖啦：',slot,self.btns[slot].name,p.reward_name)
                 --2秒后关闭 ui，提示中奖
-                ac.wait(2.5*1000,function()
+                game.wait(2.5*1000,function()
                     --发起同步请求
                     local info = {
                         type = 'draw',
@@ -241,7 +241,7 @@ local new_ui = class.panel:builder
 
 }
 ac.ui.client.draw = new_ui
-ac.wait(100,function()
+game.wait(100,function()
     new_ui:new()
 end)
 --关闭F7

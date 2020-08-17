@@ -589,7 +589,7 @@ function mt:on_cast_start()
     local temp = {}
     for i=1,6 do 
         local it = target:get_slot_item(i)
-        if it and finds(it.color,'白','蓝','金','红','黑','神') then 
+        if it and _in(it.color,'白','蓝','金','红','黑','神') then 
             table.insert(temp,it)
         end
     end

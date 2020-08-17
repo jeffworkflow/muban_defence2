@@ -97,9 +97,9 @@ end)
 -- text 扩展方法
 function class.text:set_time_ex(time)
     -- print('扩展方法')
-    ac.wait(time * 1000,function ()
+    game.wait(time * 1000,function ()
         --进行淡化
-        ac.timer(20,100,function(t)
+        game.timer(20,100,function(t)
             -- print((100-t.cnt)/100) 
             if t.count<=0 then 
                 self:destroy()

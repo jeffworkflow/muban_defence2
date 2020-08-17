@@ -70,11 +70,11 @@ local new_ui = class.panel:builder
         self:show()
         --停留时长
         local stu_time = 0.25
-        ac.wait(stu_time*1000,function()
+        game.wait(stu_time*1000,function()
             --淡化时长
             local time = 1
             local cnt = time/0.1
-            ac.timer(100,cnt,function(t)
+            game.timer(100,cnt,function(t)
                 local per_rate = 100/cnt
                 self:set_alpha(per_rate * t.count/100)
             end)
@@ -121,7 +121,7 @@ local new_ui = class.panel:builder
         --淡化时长
         local time = 4
         local cnt = math.floor( time/0.03 )
-        self.s_timer = ac.timer(30,cnt,function(t)
+        self.s_timer = game.timer(30,cnt,function(t)
             if t.count == 0 then 
                 t:remove()
                 self.s_timer = nil
@@ -258,7 +258,7 @@ ac.game:event '玩家-噬血珠满灵魂' (function(trg, player, item)
                 ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)    
             end   
             if not player.flag_frame then 
-                player.flag_frame = ac.wait(time*1000,function()
+                player.flag_frame = game.wait(time*1000,function()
                     ac.ui.client.panel.itemPanel.buttonList[slot].model_frame:hide()
                     player.flag_frame_hide = true
                     player.first_item = nil
@@ -289,7 +289,7 @@ ac.game:event '玩家-选择单位' (function(self, player, hero)
             ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)    
         end   
         if not player.flag_frame then 
-            player.flag_frame = ac.wait(time*1000,function()
+            player.flag_frame = game.wait(time*1000,function()
                 ac.ui.client.panel.itemPanel.buttonList[slot].model_frame:hide()
                 player.flag_frame_hide = true
                 player.first_item = nil

@@ -188,17 +188,25 @@ for _,name in ipairs(fairy) do
         if p.kill_count >self.kill_count  then 
             hero:add_kill_count(-self.kill_count)
             if math.random(100) <= self.rate then
+                p.cnt_failed = 0
                 --概率激活铭文
                 local skl = hero:find_skill(self.name,nil,true)
                 if skl then 
                     if finds(self.name, '召唤') then 
                         --概率激活变异狗熊
-                        local rate = 0.1
-                        if math.random(10000)/100 <= rate then 
+                        -- local rate = 0.1
+                        -- if math.random(10000)/100 <= rate then 
+                        --     skl.unit_name = '变异狗熊'
+                        --     skl.mul = 3
+                        --     ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 触发事件-|cffff0000变异|r',5)   
+                        -- end    
+                        local it = hero:has_item('变异的基因') or p.peon:has_item('变异的基因')
+                        if it then 
                             skl.unit_name = '变异狗熊'
                             skl.mul = 3
                             ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00恭喜 '..p:get_name()..' 触发事件-|cffff0000变异|r',5)   
-                        end    
+                            it:remove()
+                        end
                     end
                     skl:set_level(1) 
                     skl.passive = true
@@ -233,7 +241,9 @@ for _,name in ipairs(fairy) do
                 --概率激活彩蛋
                 local rate = 2
                 local real_name = '错臂之交'
-                if math.random(10000)/100 <= rate then 
+                --连续失败10次
+                p.cnt_failed = (p.cnt_failed  or 0) +1
+                if math.random(10000)/100 <= rate or p.cnt_failed == 10  then 
                     local skl = hero:find_skill(real_name,nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',real_name)

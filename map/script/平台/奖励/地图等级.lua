@@ -686,6 +686,36 @@ tip = [[
 effect = [[xianzhang.mdx]]
 }
 
+local mt = ac.skill['火焰之王']
+mt{
+is_skill = 1,
+title = '【英雄】火焰之王',    
+--等级
+level = 0,
+is_order = 1,
+--图标
+art = [[hjsds.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥40|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+275*Lv
+【攻击减甲】+488
+【每秒加护甲】+68
+【全伤加深】+350%
+【极致的攻击速度】
+
+|cff00ffff【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*12.5*Lv+2%敌人的最大生命值）
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r]],
+--特效
+effect = [[tj53.mdx]]
+}
+
 local japi = require("jass.japi")
 local slk = require 'jass.slk'
 
@@ -694,7 +724,7 @@ for i,name in ipairs({
 	'诸葛亮','布莱特','吕布','鬼剑愁',
 	'张飞','金克丝','貂蝉','杰拉米','黄盖',
 	'关羽','堕落天使','加百列','王昭君','雅典娜',
-	'剑仙','等级天尊','圣斗士'
+	'剑仙','等级天尊','圣斗士','火焰之王'
 }) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
