@@ -125,12 +125,12 @@ end
 
 
 --多啦A梦
-local cnt = 50
+local cnt = 2
 ac.game:event '挖图成功'(function(_,hero)
     
     local p = hero.owner
     p.wt_cnt = (p.wt_cnt or 0) + 1
-    if p.wt_cnt == 2 and not ac.flag_dlam then 
+    if p.wt_cnt == 50 and not ac.flag_dlam then 
         ac.flag_dlam = true
         ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00多啦A梦来到了这个世界，在藏宝阁中可以找到他',5)
         --创建多啦A梦
