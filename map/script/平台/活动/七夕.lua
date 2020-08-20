@@ -6,8 +6,8 @@ level = 1,
 art = [[xique.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月6日-8月8日
-|cffffe799【活动说明】|r|cff00ff00金风玉露一相逢，便胜却人间无数。年年岁岁架鹊桥，牛郎织女偷相会。少侠既然也是有心之人，还请帮忙收集|cffffff00喜鹊翎毛|r|cffcccccc（挖宝掉落）
+|cffffe799【活动时间】|r|cff00ff008月20日-8月31日
+|cffffe799【活动说明】|r|cff00ff00金风玉露一相逢，便胜却人间无数。年年岁岁架鹊桥，牛郎织女偷相会。少侠既然也是有心之人，还请帮忙收集|cffffff00喜鹊翎毛|r|cffcccccc（种树掉落）
 ]],
 --物品类型
 item_type = '神符',
@@ -29,11 +29,11 @@ mt{
 level = 1,
 store_name = '兑换-天谕',
 --图标
-art = [[item\shou204.blp]],
+art = [[tianyu.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000一根喜鹊翎毛|r 兑换 |cff00ff00天谕|r
+消耗 |cffff0000三根喜鹊翎毛|r 兑换 |cff00ff00天谕|r
 ]],
 --物品类型
 item_type = '神符',
@@ -42,7 +42,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_xqym = 1,
+need_xqym = 3,
 max_cnt = 99999,
 }   
 
@@ -74,12 +74,12 @@ mt{
 level = 1,
 store_name = '兑换-三眼赤痕',
 --图标
-art = [[guoshi.blp]],
+art = [[sanyanchihe.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000十五根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕|r
-]],
+消耗 |cffff0000五根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕|r
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -87,23 +87,22 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_xqym = 15,
+need_xqym = 5,
 max_cnt = 99999,
 }  
-local mt = ac.skill['兑换-龙之气息']
+
+local mt = ac.skill['兑换-火龙气息']
 mt{
 --等久
 level = 1,
-store_name = '兑换-龙之气息',
+store_name = '兑换-火龙气息',
 --图标
-art = [[gelifen.blp]],
+art = [[longqixi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-龙之气息|r
-
-|cffdf19d0龙之气息|cff00ffff+天魂融血丹+地魂融血丹+功法连升书=三眼赤痕（食用后可以获得惊人能力！)|r
-]],
+消耗 |cffff0000五根喜鹊翎毛|r 兑换 |cff00ff00火龙气息|r
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -111,7 +110,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_xqym = 4,
+need_xqym = 5,
 max_cnt = 99999,
 }  
 
@@ -121,14 +120,12 @@ mt{
 level = 1,
 store_name = '兑换-天魂融血丹',
 --图标
-art = [[heianxianglian.blp]],
+art = [[tianhundan.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-天魂融血丹|r
-
-|cff00ffff龙之气息+|cffdf19d0天魂融血丹|cff00ffff+地魂融血丹+功法连升书=三眼赤痕（食用后可以获得惊人能力！)|r
-]],
+消耗 |cffff0000五根喜鹊翎毛|r 兑换 |cff00ff00天魂融血丹|r
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -136,7 +133,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_xqym = 4,
+need_xqym = 5,
 max_cnt = 99999,
 }  
 
@@ -146,14 +143,12 @@ mt{
 level = 1,
 store_name = '兑换-地魂融血丹',
 --图标
-art = [[zqswxz.blp]],
+art = [[dihundan.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-地魂融血丹|r
-
-|cff00ffff龙之气息+天魂融血丹+|cffdf19d0地魂融血丹|cff00ffff+功法连升书=三眼赤痕（食用后可以获得惊人能力！)|r
-]],
+消耗 |cffff0000五根喜鹊翎毛|r 兑换 |cff00ff00地魂融血丹|r
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -161,7 +156,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_xqym = 4,
+need_xqym = 5,
 max_cnt = 99999,
 }  
 
@@ -171,14 +166,12 @@ mt{
 level = 1,
 store_name = '兑换-功法连升书',
 --图标
-art = [[zhidao.blp]],
+art = [[gongfashengji.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-功法连升书|r
-
-|cff00ffff龙之气息+天魂融血丹+地魂融血丹+|r|cffdf19d0功法连升书|r|cff00ffff=三眼赤痕（食用后可以获得惊人能力！)|r
-]],
+消耗 |cffff0000五根喜鹊翎毛|r 兑换 |cff00ff00功法连升书|r
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -186,7 +179,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_xqym = 4,
+need_xqym = 5,
 max_cnt = 99999,
 }  
 
@@ -202,11 +195,11 @@ tip = [[
 
 消耗 |cffff0000三十根喜鹊翎毛|r 兑换 |cff00ff00可存档成就-缘定三生|r
 
-|cffFFE799【成就属性】|r
-|cff00ff00杀怪加全属性 +13.8
-攻击减甲 +13.8
-木头加成 +13.8%
-会心伤害 +13.8%
+|cffFFE799【成就属性】：|r
+|cff00ff00+20W |cff00ff00全属性|r
+|cff00ff00+20  |cff00ff00攻击减甲|r
+|cff00ff00+2   |cff00ff00每秒加护甲|r
+|cff00ff00+1%  |cff00ff00技能伤害加深系数|r
 
 |cffcccccc【要求地图等级>5】|r]],
 --物品类型
@@ -222,7 +215,7 @@ max_cnt = 99999,
 
 
 
-for i,name in ipairs({'兑换-龙之气息','兑换-天魂融血丹','兑换-地魂融血丹','兑换-功法连升书','兑换-天谕','兑换-吞噬丹','兑换-三眼赤痕','兑换-缘定三生'}) do
+for i,name in ipairs({'兑换-火龙气息','兑换-天魂融血丹','兑换-地魂融血丹','兑换-功法连升书','兑换-天谕','兑换-吞噬丹','兑换-三眼赤痕','兑换-缘定三生'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
@@ -306,7 +299,7 @@ art = [[lushui.blp]],
 --说明
 tip = [[
 
-|cff00ff00传说七夕节时的露水是牛郎织女相会时的眼泪,如抹在眼上和手上,可使人眼明手快。|cffffff00使用后增加10%攻速|r
+|cff00ff00传说七夕节时的露水是牛郎织女相会时的眼泪,如抹在眼上和手上,可使人眼明手快。|cffffff00使用后增加1%敏捷 ，10%攻速，-0.01攻击间隔|r
 
 |cffcccccc七夕活动物品|r]],
 --品质
@@ -314,7 +307,9 @@ color = '紫',
 --物品类型
 item_type = '消耗品',
 cool = 1,
+['敏捷%'] = 1,
 ['攻击速度'] = 10,
+['攻击间隔'] = -0.01,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -330,7 +325,7 @@ art = [[xique.blp]],
 --说明
 tip = [[
 
-|cff00ff00可前往活动使者处（基地右下角）兑换奖励
+|cff00ff00可前往活动使者处（基地右上角）兑换奖励
 
 |cffcccccc七夕活动物品|r]],
 --品质
@@ -390,7 +385,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
         if (p.max_cnt[name] or 0 ) < max_cnt then 
             hero:add_item(name)
             p.max_cnt[name] = (p.max_cnt[name] or 0) + 1
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000喜鹊翎毛|r',6) 
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|r 种树过程中，惊喜获得 |cffff0000喜鹊翎毛|r',6) 
         end    
     end  
 

@@ -67,9 +67,9 @@ local function check(p)
         local shop = ac.find_unit('生肖十二魂')
         local it = shop:add_sell_item('挑战牛金刚',2)
         
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
-        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战牛金刚|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战牛金刚|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战牛金刚|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
     end
 
     if p.cnt_total_succ == 5 and not ac.flag_msjy  then

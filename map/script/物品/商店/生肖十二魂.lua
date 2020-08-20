@@ -50,9 +50,9 @@ ac.wait(0,function()
             if tab then 
                 print('生肖十二魂',name)
                 save(tab)
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00鼠天瞳已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00鼠天瞳已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00鼠天瞳已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00十二生肖已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00十二生肖已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00十二生肖已被击败，|cffff0000所有玩家获得|cffffff00【'..name..'】！|cff00ff00属性可在最强魔灵-生肖十二魂中查看！',8)
             end
             --传送回练功房
             local p = killer.owner
@@ -94,7 +94,7 @@ ac.wait(0,function()
                 cep.owner = p
                 cep:start()
             else
-                p:sendMsg('已有人在挑战，请耐心等待',5)
+                p:sendMsg('|cffebb608【系统】|cffff0000魔丸不足，或已有玩家正在挑战',5)
                 return true
             end
         end
