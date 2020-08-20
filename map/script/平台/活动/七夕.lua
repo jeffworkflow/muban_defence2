@@ -23,27 +23,17 @@ store_affix = '',
 content_tip = ''
 }
 
-function mt:on_cast_start() 
-    local hero = self.owner
-    local p = hero:get_owner()
-    local rect = ac.map.rects['藏宝图 ']
-    -- print(rect)
-    hero = p.hero
-    hero:blink(rect,true,false,true)
-end
-
-
-local mt = ac.skill['兑换-点金石']
+local mt = ac.skill['兑换-天谕']
 mt{
 --等久
 level = 1,
-store_name = '兑换-点金石',
+store_name = '兑换-天谕',
 --图标
 art = [[item\shou204.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000一根喜鹊翎毛|r 兑换 |cff00ff00点金石|r
+消耗 |cffff0000一根喜鹊翎毛|r 兑换 |cff00ff00天谕|r
 ]],
 --物品类型
 item_type = '神符',
@@ -78,17 +68,17 @@ is_skill = true,
 need_xqym = 10,
 max_cnt = 99999,
 }  
-local mt = ac.skill['兑换-恶魔果实']
+local mt = ac.skill['兑换-三眼赤痕']
 mt{
 --等久
 level = 1,
-store_name = '兑换-恶魔果实',
+store_name = '兑换-三眼赤痕',
 --图标
 art = [[guoshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000十五根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实|r
+消耗 |cffff0000十五根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕|r
 ]],
 --物品类型
 item_type = '神符',
@@ -100,19 +90,19 @@ is_skill = true,
 need_xqym = 15,
 max_cnt = 99999,
 }  
-local mt = ac.skill['兑换-格里芬']
+local mt = ac.skill['兑换-龙之气息']
 mt{
 --等久
 level = 1,
-store_name = '兑换-格里芬',
+store_name = '兑换-龙之气息',
 --图标
 art = [[gelifen.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-格里芬|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-龙之气息|r
 
-|cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
+|cffdf19d0龙之气息|cff00ffff+天魂融血丹+地魂融血丹+功法连升书=三眼赤痕（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -125,19 +115,19 @@ need_xqym = 4,
 max_cnt = 99999,
 }  
 
-local mt = ac.skill['兑换-黑暗项链']
+local mt = ac.skill['兑换-天魂融血丹']
 mt{
 --等久
 level = 1,
-store_name = '兑换-黑暗项链',
+store_name = '兑换-天魂融血丹',
 --图标
 art = [[heianxianglian.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-黑暗项链|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-天魂融血丹|r
 
-|cff00ffff格里芬+|cffdf19d0黑暗项链|cff00ffff+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
+|cff00ffff龙之气息+|cffdf19d0天魂融血丹|cff00ffff+地魂融血丹+功法连升书=三眼赤痕（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -150,19 +140,19 @@ need_xqym = 4,
 max_cnt = 99999,
 }  
 
-local mt = ac.skill['兑换-最强生物心脏']
+local mt = ac.skill['兑换-地魂融血丹']
 mt{
 --等久
 level = 1,
-store_name = '兑换-最强生物心脏',
+store_name = '兑换-地魂融血丹',
 --图标
 art = [[zqswxz.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-最强生物心脏|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-地魂融血丹|r
 
-|cff00ffff格里芬+黑暗项链+|cffdf19d0最强生物心脏|cff00ffff+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
+|cff00ffff龙之气息+天魂融血丹+|cffdf19d0地魂融血丹|cff00ffff+功法连升书=三眼赤痕（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -175,19 +165,19 @@ need_xqym = 4,
 max_cnt = 99999,
 }  
 
-local mt = ac.skill['兑换-白胡子的大刀']
+local mt = ac.skill['兑换-功法连升书']
 mt{
 --等久
 level = 1,
-store_name = '兑换-白胡子的大刀',
+store_name = '兑换-功法连升书',
 --图标
 art = [[zhidao.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-白胡子的大刀|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00三眼赤痕合成材料-功法连升书|r
 
-|cff00ffff格里芬+黑暗项链+最强生物心脏+|r|cffdf19d0白胡子的大刀|r|cff00ffff=恶魔果实（食用后可以获得惊人能力！)|r
+|cff00ffff龙之气息+天魂融血丹+地魂融血丹+|r|cffdf19d0功法连升书|r|cff00ffff=三眼赤痕（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -232,7 +222,7 @@ max_cnt = 99999,
 
 
 
-for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生物心脏','兑换-白胡子的大刀','兑换-点金石','兑换-吞噬丹','兑换-恶魔果实','兑换-缘定三生'}) do
+for i,name in ipairs({'兑换-龙之气息','兑换-天魂融血丹','兑换-地魂融血丹','兑换-功法连升书','兑换-天谕','兑换-吞噬丹','兑换-三眼赤痕','兑换-缘定三生'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
@@ -251,15 +241,14 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
 
         local has_cnt = (first_item and first_item._count or 0) + (second_item and  second_item._count or 0 )
 
-        if real_name =='缘定三生' then 
-            local has_mall = p.mall[real_name] or (p.server and p.server[real_name])
-            --已有物品的处理
-            if has_mall > 0 then 
-                p:sendMsg('【系统消息】已有'..real_name)    
+        if real_name == '缘定三生' then 
+            local hero = p.hero
+            local key = ac.server.name2key(real_name)
+            if p:Map_GetServerValue(key) >= ac.skill[real_name].max_level  then 
+                p:sendMsg('已满级',5)
                 return 
             end
-        end    
-
+        end
         --处理兑换
         if has_cnt >= self.need_xqym  then 
             if (p.max_cnt[real_name] or 0 ) < self.max_cnt then 
@@ -277,18 +266,21 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
                 end 
                 --给物品
                 if real_name == '缘定三生' then 
+                    local hero = p.hero
                     local key = ac.server.name2key(real_name)
-                    p:Map_SaveServerValue(key,1) --网易服务器
-                    local map_level = p:Map_GetMapLevel()
-                    if map_level >=5 then 
+                    if p:Map_GetServerValue(key) < ac.skill[real_name].max_level  then 
+                        --激活成就（存档） 
+                        p:Map_AddServerValue(key,1) --网易服务器
+                        --动态插入魔法书
                         local skl = hero:find_skill(real_name,nil,true) 
                         if not skl  then 
-                            ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','缘定三生')
-                        end  
-                    else
-                        p:sendMsg('|cffff0000地图等级不够，不生效|r')   
+                            ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
+                            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 不断食用美味的西瓜，惊喜获得|cffff0000【可存档成就】'..real_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
+                        else
+                            skl:upgrade(1)
+                            ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 不断食用美味的西瓜，使|cffff0000【可存档成就】'..real_name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
+                        end 
                     end    
-
                 else    
                     self.owner:add_item(real_name) 
                 end    
@@ -361,7 +353,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit:get_owner().id < 11 then 
         return
     end    
-    if not finds(unit:get_name(),'强盗') then 
+    if not finds(unit:get_name(),'百花宫宫女') then 
         return 
     end    
     local p = killer:get_owner()
@@ -369,7 +361,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         p.max_cnt = {}
     end    
     local rate = 0.5
-    local max_cnt = 150
+    local max_cnt = 50
     local name ='露水'
     -- local max_cnt = 5 --测试
     local rand = math.random(10000)/100
@@ -383,7 +375,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     
 end)
 --注册挖图回调
-ac.game:event '挖图成功'(function(trg,hero)
+ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     local p = hero:get_owner()
     if not p.max_cnt then 
         p.max_cnt = {}

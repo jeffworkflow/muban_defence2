@@ -55,8 +55,17 @@ local function check(p)
     if p.cnt_total_succ == 2 and not ac.flag_sxseh  then
         ac.flag_sxseh = true
         local x,y = ac.rect.j_rect('npc13'):get_point():get()
-        local shop = ac.shop.create('生肖十二魂',x,y,270)
+        local shop= ac.shop.create('生肖十二魂',x,y,270)
         local it = shop:add_sell_item('挑战鼠天瞳',1)
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
+    end
+    if p.cnt_total_succ == 4 and not ac.flag_tznl  then
+        ac.flag_tznl = true
+        local shop = ac.find_unit('生肖十二魂')
+        local it = shop:add_sell_item('挑战牛金刚',2)
         
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000生肖十二魂|cff00ff00”，可前往基地右边查看 ',5)

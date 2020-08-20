@@ -1,38 +1,13 @@
 local mt = ac.skill['挑战鼠天瞳']
 mt.unit_name = '鼠魔'
-function mt:on_cast_start()
-    local p=self.owner.owner
-    local hero =p.hero
-    local name = self.name 
-    local point = ac.rect.j_rect('shengxiao2'):get_point()
-    local ok
-    for i=1,6 do 
-        local p=ac.player(i)
-        if p:is_player() then 
-            if p.hero then 
-                ok = p.hero:is_in_range(point,2000)
-                if ok then 
-                    break
-                end
-            end
-        end
-    end
-    --没有人在挑战才进入
-    if not ok then 
-        local cep = ac.creep[name]
-        cep.owner = p
-        cep:start()
-    else
-        p:sendMsg('已有人在挑战，请耐心等待',5)
-        return true
-    end
-end
-
+local mt = ac.skill['挑战牛金刚']
+mt.unit_name = '牛魔'
 
 
 ac.wait(0,function()
     local cj = {
         ['鼠天瞳'] = '鼠灵',
+        ['牛金刚'] = '牛灵',
     }
     
     local function save(tab)
@@ -83,7 +58,7 @@ ac.wait(0,function()
             local p = killer.owner
             if p.hero then 
                 local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
-                p.hero:blink(point,true,false)
+                p.hero:blink(point,true,false,true)
             end
             --关闭挑战按钮
             local shop = ac.find_unit('生肖十二魂')
@@ -94,8 +69,36 @@ ac.wait(0,function()
     
         
     end
-    for i,name in ipairs({'挑战鼠天瞳'}) do
+    for i,name in ipairs({'挑战鼠天瞳','挑战牛金刚'}) do
         local skl = ac.skill[name]
+        function skl:on_cast_start()
+            local p=self.owner.owner
+            local hero =p.hero
+            local name = self.name 
+            local point = ac.rect.j_rect('shengxiao2'):get_point()
+            local ok
+            for i=1,6 do 
+                local p=ac.player(i)
+                if p:is_player() then 
+                    if p.hero then 
+                        ok = p.hero:is_in_range(point,2000)
+                        if ok then 
+                            break
+                        end
+                    end
+                end
+            end
+            --没有人在挑战才进入
+            if not ok then 
+                local cep = ac.creep[name]
+                cep.owner = p
+                cep:start()
+            else
+                p:sendMsg('已有人在挑战，请耐心等待',5)
+                return true
+            end
+        end
+
         local mt = ac.creep[name]{    
             region = 'shengxiao2',
             creeps_datas = skl.unit_name..'*25',

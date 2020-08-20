@@ -106,6 +106,31 @@ need_map_level = 3,
 }
 
 
+local mt = ac.skill['牛灵腰带']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[stt4.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+38  杀怪加生命上限
++30% 分裂伤害
++30% 物理伤害加深
+
+|cffcccccc杀死【鼠天瞳】获得，获得概率与通关难度/地图等级相关]],
+
+['杀怪加生命上限'] = 38,
+['分裂伤害'] = 30,
+['物理伤害加深'] = 30,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
 
 local mt = ac.skill['生肖十二魂']
 mt{
@@ -119,7 +144,7 @@ mt{
     
 }
 mt.skills = {
-    '鼠灵'
+    '鼠灵','牛灵'
 }
 
 
@@ -136,4 +161,19 @@ mt{
 }
 mt.skills = {
     '鼠灵法衣','鼠灵护符','鼠灵腰坠','鼠灵项链'
+}
+
+local mt = ac.skill['牛灵']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[stt.blp]],
+    tip = [[
+
+点击查看 |cff00ffff牛灵|r 成就，通过挑战|cff00ff00【鼠天瞳】|r获得
+ ]],
+    
+}
+mt.skills = {
+   '牛灵腰带','牛灵腿凯','牛灵靴','牛灵肩甲','牛灵护手','牛灵铠甲','牛灵头盔'
 }

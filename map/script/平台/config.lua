@@ -235,6 +235,8 @@ local cus_key = {
     {'mljpz','魔灵精品粽',{ ['魔灵精品粽'] = {1,1,value = function(self,p) return p:Map_GetServerValue('mljpz') end}}},
     {'zzdxb','真正的学霸',{ ['真正的学霸'] = {1,5,value = function(self,p) return p:Map_GetServerValue('zzdxb') end}}},
     {'mlqlg','魔灵麒麟瓜',{ ['魔灵麒麟瓜'] = {1,5,value = function(self,p) return p:Map_GetServerValue('mlqlg') end}}},
+
+    {'ydss','缘定三生',{ ['缘定三生'] = {1,5,value = function(self,p) return p:Map_GetServerValue('ydss') end}}},
     
 
     
@@ -332,6 +334,15 @@ local cus_key = {
             -- ['1作弊'] = {3,1,rate = 100, type = '二进制权限'},
             ['鼠灵腰坠'] = {3,3,rate = 100, type = '二进制权限'},
             ['鼠灵项链'] = {4,3,rate = 100, type = '二进制权限'},
+            ['牛灵腰带'] = {5,3,rate = 100, type = '二进制权限'},
+            ['牛灵腿凯'] = {6,3,rate = 100, type = '二进制权限'},
+            ['牛灵靴'] = {7,3,rate = 100, type = '二进制权限'},
+            ['牛灵肩甲'] = {8,3,rate = 100, type = '二进制权限'},
+            ['牛灵护手'] = {9,3,rate = 100, type = '二进制权限'},
+            ['牛灵铠甲'] = {10,3,rate = 100, type = '二进制权限'},
+            ['牛灵头盔'] = {11,3,rate = 100, type = '二进制权限'},
+
+            ['xs1作弊'] = {12,1,rate = 100, type = '二进制权限'},
 
         }
     },
