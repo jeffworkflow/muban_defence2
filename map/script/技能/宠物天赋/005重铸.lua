@@ -50,8 +50,12 @@ function mt:on_cast_start()
 
 	local name = ac.quality_item[color][math.random(#ac.quality_item[color])]
 	print('重铸',name)
-
-	it:item_remove()
+	--移除处理
+	if it.item_type =='消耗品' then 
+		it:add_item_count(-1)
+	else
+		it:item_remove()
+	end
 	hero:add_item(name)
 	self:active_cd()
 end

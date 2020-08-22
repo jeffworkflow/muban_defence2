@@ -2,12 +2,15 @@ local mt = ac.skill['挑战鼠天瞳']
 mt.unit_name = '鼠魔'
 local mt = ac.skill['挑战牛金刚']
 mt.unit_name = '牛魔'
+local mt = ac.skill['挑战武伯都']
+mt.unit_name = '虎魔'
 
 
 ac.wait(0,function()
     local cj = {
         ['鼠天瞳'] = '鼠灵',
         ['牛金刚'] = '牛灵',
+        ['武伯都'] = '虎灵',
     }
     
     local function save(tab)
@@ -69,7 +72,7 @@ ac.wait(0,function()
     
         
     end
-    for i,name in ipairs({'挑战鼠天瞳','挑战牛金刚'}) do
+    for i,name in ipairs({'挑战鼠天瞳','挑战牛金刚','挑战武伯都'}) do
         local skl = ac.skill[name]
         function skl:on_cast_start()
             local p=self.owner.owner
@@ -119,6 +122,7 @@ ac.wait(0,function()
                 -- print('死亡数量',crep.kill_cnt)
 				--2000 个数量创建大菠萝
                 if crep.kill_cnt == 500 then 
+                    -- crep.kill_cnt = 0
                     local boss = name:sub(7,-1)
                     print('boss 名字',boss,name)
 					create_unit(boss,killer:get_point())
