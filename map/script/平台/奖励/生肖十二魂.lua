@@ -292,6 +292,107 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 3,
 }
 
+local mt = ac.skill['虎灵法袍']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[njg7.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+58  攻击加全属性
++58 攻击加生命上限
++1% 全伤加深系数
+
+|cffcccccc杀死【牛金刚】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加全属性'] = 58,
+['攻击加生命上限'] = 58,
+['全伤加深系数'] = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['虎灵头束']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[njg7.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+58  攻击加全属性
++58 攻击加生命上限
++1% 全伤加深系数
+
+|cffcccccc杀死【牛金刚】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加全属性'] = 58,
+['攻击加生命上限'] = 58,
+['全伤加深系数'] = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+local mt = ac.skill['虎灵浮尘']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[njg7.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+58  攻击加全属性
++58 攻击加生命上限
++1% 全伤加深系数
+
+|cffcccccc杀死【牛金刚】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加全属性'] = 58,
+['攻击加生命上限'] = 58,
+['全伤加深系数'] = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+local mt = ac.skill['虎灵宝镜']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[njg7.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+58  攻击加全属性
++58 攻击加生命上限
++1% 全伤加深系数
+
+|cffcccccc杀死【牛金刚】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加全属性'] = 58,
+['攻击加生命上限'] = 58,
+['全伤加深系数'] = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
 
 local mt = ac.skill['生肖十二魂']
 mt{
@@ -337,4 +438,19 @@ mt{
 }
 mt.skills = {
    '牛灵腰带','牛灵腿凯','牛灵靴','牛灵肩甲','牛灵护手','牛灵铠甲','牛灵头盔'
+}
+
+local mt = ac.skill['虎灵']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[njg.blp]],
+    tip = [[
+
+点击查看 |cff00ffff牛灵|r 成就，通过挑战|cff00ff00【牛金刚】|r获得
+ ]],
+    
+}
+mt.skills = {
+    '虎灵法袍','虎灵头束','虎灵浮尘','虎灵宝镜'
 }
