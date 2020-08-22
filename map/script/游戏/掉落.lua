@@ -403,28 +403,6 @@ local reward = {
             hero:add_item(name)    
         end 
     end,
-    ['召唤boss'] = function (player,hero,unit,is_on_hero)
-        local name = '召唤boss'
-        --英雄死亡时 掉落在地上
-        if not is_on_hero or (not hero:is_alive()) then 
-            local item = ac.item.create_item(name,unit:get_point())
-            -- item_self_skill(item,hero)
-        else
-            hero = hero:get_owner().hero
-            hero:add_item(name)    
-        end 
-    end,
-    ['召唤练功怪'] = function (player,hero,unit,is_on_hero)
-        local name = '召唤练功怪'
-        --英雄死亡时 掉落在地上
-        if not is_on_hero or (not hero:is_alive()) then 
-            local item = ac.item.create_item(name,unit:get_point())
-            -- item_self_skill(item,hero)
-        else
-            hero = hero:get_owner().hero
-            hero:add_item(name)    
-        end 
-    end,
     ['级物品'] = function (player,hero,unit,is_on_hero,str)
         local lv = tonumber(string.sub(str,1,1))
         local color = ac.get_reward_name(ac.unit_reward['存档物品'])
@@ -439,7 +417,12 @@ local reward = {
             source = unit:get_point() ,
             model = ac.table.ItemData[name].specail_model ,
         }
-        
+    end,
+    ['杀怪加'] = function (player,hero,unit,is_on_hero,str)
+        local item = ac.item.create_item(str,unit:get_point())
+        if item.owner_ship then 
+            item.owner_ship = player
+        end  
     end,
 }
 ac.reward = reward

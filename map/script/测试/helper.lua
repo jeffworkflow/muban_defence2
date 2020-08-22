@@ -2315,13 +2315,24 @@ function helper:fb(str,cnt)
 				creep:start()
 			end		
 		end,
+		['深渊冒险'] = function()
+			local creep = ac.creep['深渊冒险']
+			creep.index = tonumber(str) - 1
+			if creep.has_started  then 
+				creep:next()
+			else
+				creep:start()
+			end		
+		end,
 
 	}
 	for x = 1,cnt do 
 		--贪婪魔窟
 		local name = '普通刷怪'
-		if ac.creep['贪婪魔窟'].index >=1 then 
+		if finds(ac.g_game_degree_name,'贪婪魔窟') then 
 			name = '贪婪魔窟'
+		elseif finds(ac.g_game_degree_name,'深渊冒险') then 
+			name = '深渊冒险'
 		end
 		if temp[name] then 
 			temp[name]()

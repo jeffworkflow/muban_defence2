@@ -42,6 +42,9 @@ for i =1 ,6 do
                 if p.flag_lgs then 
                     return 
                 end 
+                if finds(ac.g_game_degree_name,'深渊冒险') then 
+                    return 
+                end 
                 if hero:is_hero() then 
                     local group = ac.selector()
                                 :in_range(hero:get_point(),1500)

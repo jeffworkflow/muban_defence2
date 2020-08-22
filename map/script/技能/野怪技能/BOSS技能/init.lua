@@ -18,3 +18,7 @@ require '技能.野怪技能.BOSS技能.金色莲花'
 
 require '技能.野怪技能.BOSS技能.火焰喷射'
 require '技能.野怪技能.BOSS技能.死亡火球'
+
+require '技能.野怪技能.BOSS技能.简单技能'
+require '技能.野怪技能.BOSS技能.神出鬼没'
+require '技能.野怪技能.BOSS技能.群星陨落1'

@@ -16,6 +16,7 @@ require '刷怪.踢皮球'
 
 require '刷怪.贪婪魔窟'
 require '刷怪.魔灵争霸'
+require '刷怪.深渊冒险'
 
 
 -- require '刷怪.野怪'

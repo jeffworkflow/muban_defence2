@@ -181,6 +181,7 @@ function mt:find_sell_item(it)
 	end	
 	local item 
 	for i=1,12 do
+		-- print(self:get_name(),self.handle,self.sell,self.sell_item_list,i)
 		local items = self.sell_item_list[i]
 		if items and (items.name == it_name or items.color == it_name)then
 			item = items
@@ -207,7 +208,7 @@ function mt:remove_sell_item(it)
 	ac.item.shop_item_map[item.name] = nil
 	ac.shop_item_list[item.type_id] = false --true回收模板
 	self.sell_item_list[shop_slot_id] = nil
-	self.sell[shop_slot_id] = nil
+	self.sell[shop_slot_id] = ''
 	
 	-- print('从商店移除',item.type_id,item.name,item.shop_slot_id)
 	--从商店移除

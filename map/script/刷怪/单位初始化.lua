@@ -11,6 +11,21 @@ local function get_difficult(degree,br)
     end 
 end    
 ac.get_difficult=get_difficult
+
+local function add_skl(unit,name)
+
+    local skl = unit:find_skill(name,nil,true)
+    if skl then 
+        skl:remove()
+    end
+    local skl = unit:add_skill(name,'英雄')
+    if name =='重生' then 
+		skl.cnt = 99999999
+		skl.time = 2
+		skl.cool = 60*5
+    end
+end
+
 local function init_attribute(unit)
     
     -- 英雄返回
@@ -41,13 +56,13 @@ local function init_attribute(unit)
     local attr_mul = get_difficult(ac.g_game_degree_attr)
     --根据难度增强属性 
     if data.attribute then  
-        unit:set('攻击',(data.attribute['攻击']or 0) * (attr_mul or 1))
-        unit:set('生命上限',(data.attribute['生命上限']or 0) * (attr_mul or 1))
-        unit:set('魔法上限',(data.attribute['魔法上限']or 0))
+        unit:set('攻击',(data.attribute['攻击']or 1) * (attr_mul or 1))
+        unit:set('生命上限',(data.attribute['生命上限']or 1) * (attr_mul or 1))
+        unit:set('魔法上限',(data.attribute['魔法上限']or 1))
         unit:set('生命恢复',(data.attribute['生命恢复']or 0))
         unit:set('魔法恢复',(data.attribute['魔法恢复']or 0))
-        unit:set('护甲',(data.attribute['护甲']or 0) *  (attr_mul or 1))
-        unit:set('魔抗',(data.attribute['护甲']or 0) *  (attr_mul or 1))
+        unit:set('护甲',(data.attribute['护甲']or 1) *  (attr_mul or 1))
+        unit:set('魔抗',(data.attribute['护甲']or 1) *  (attr_mul or 1))
 
         unit:set('暴击伤害',(data.attribute['暴击伤害'] or 0) * (attr_mul or 1))
     end    
@@ -64,7 +79,17 @@ local function init_attribute(unit)
     if _in(unit:get_name(),'一棒男','戴瑟提克','格里弗','克尔苏加德','虚空诺亚','最强魔帝','太阳神','鼠天瞳','牛金刚','武伯都') then
         unit:set('每秒回血',1.25 * ((ac.g_game_degree_attr or 1 ) -1))
     end  
-    
+
+    --初始化技能
+    if data.skill_names then 
+        if type(data.skill_names) =='string' then 
+            add_skl(unit,data.skill_names)
+        else
+            for i,name in ipairs(data.skill_names) do  
+                add_skl(unit,data.name)
+            end
+        end
+    end
 end
 ac.unit.init_attribute = init_attribute    
 --单位创建 属性增强

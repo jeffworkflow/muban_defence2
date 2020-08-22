@@ -3,10 +3,7 @@ local mt = ac.skill['重生']
 mt.title = "重生"
 mt.tip = [[
 ]]
-
---影响三维值 (怪物为：生命上限，护甲，攻击力)
--- mt.value = 27.5
-
+mt.cool = 0
 --重生时间
 mt.time = 8
 mt.cnt = 1
@@ -34,6 +31,13 @@ function mt:on_add()
         if ac.g_game_degree_name =='魔灵争霸' and unit:get_name() ~='基地' then 
             return 
         end
+        --冷却期间，重生无效
+        if self:is_cooling() then 
+            return 
+        end
+        --激活cd
+        self:active_cd()
+
         local point = hero:get_point()
         --额外特效
         if self.effect1 then 

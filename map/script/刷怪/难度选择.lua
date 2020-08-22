@@ -25,7 +25,25 @@ ac.wait(1200,function()
                 f(index,page)
             end    
         end)    
-    end    
+    end
+    --深渊冒险难度选择
+    local function stmx_degree(player,list) 
+        t_create_dialog(player,"选择难度",list,1,function (index,page)  
+            ac.g_game_degree = index + (page-1) * 10
+            ac.g_game_degree_attr = index + (page-1) * 10
+            ac.g_game_degree_name = '深渊冒险-'..list[ac.g_game_degree].name  
+            --创建预设英雄
+            ac.choose_hero()
+            --游戏-开始
+            ac.wait(30*1000,function()
+                ac.game:event_notify('游戏-开始')
+            end)
+            ac.player.self:sendMsg("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
+            ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
+            
+            print("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
+        end)
+    end 
     --普通难度选择
     local function common_degree(player,list) 
         t_create_dialog(player,"选择难度",list,1,function (index,page)  
@@ -137,9 +155,14 @@ ac.wait(1200,function()
 
         --根据无限难度 开发对应模式
         local list4 = {}
+        local list5 = {} --深渊冒险
         if bit >= 1 then 
             table.insert(show_list,{name = '段位挑战'})
             table.insert(show_list,{name = '魔灵争霸',attr = 1})
+        end
+        --深渊冒险
+        if bit >= 3 then 
+            table.insert(show_list,{name = '深渊冒险'})
         end
         if bit >= 4 then 
             table.insert(show_list,{name = '贪婪魔窟'})
@@ -159,6 +182,17 @@ ac.wait(1200,function()
             local name = list4[i].name  
             table.insert(ac.g_game_degree_list,'贪婪魔窟-'..name)  
         end  
+        --深渊冒险
+        local degree = player.server['深渊冒险'] or 0
+        local max_degree = degree + 1
+        for i=1,max_degree do 
+            local name = ''..formatNumber(i)..'层'
+            table.insert(list5,{name = name} )    
+        end    
+        for i = #list5 ,1 ,-1 do 
+            local name = list5[i].name  
+            table.insert(ac.g_game_degree_list,'深渊冒险-'..name)  
+        end  
 
         if #show_list >0 then 
             t_create_dialog(player,"选择难度",show_list,1,function (index,page)  
@@ -166,6 +200,8 @@ ac.wait(1200,function()
                     common_degree(player,list3) 
                 elseif index == 2 then 
                     moling_degree(player,show_list[2])
+                elseif index == 3 then 
+                    stmx_degree(player,list5)
                 else
                     cave_degree(player,list4) 
                 end
@@ -186,6 +222,10 @@ ac.wait(1200,function()
         end
     end)
     ac.game:event '游戏-开始' (function()
+        --深渊模式下，不进行普通刷怪
+        if finds(ac.g_game_degree_name,'深渊冒险') then 
+            return 
+        end
         --游戏开始后 刷怪时间
         local time = 180
         -- if global_test then 

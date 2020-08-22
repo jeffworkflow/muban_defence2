@@ -322,6 +322,12 @@ function mt:get_group_count()
     end
     return i
 end
+function mt:get_force_cool()
+    return self.force_cool
+end
+function mt:set_force_cool(time)
+    self.force_cool = time 
+end
 
 function mt:next()
     --已经结束
@@ -460,8 +466,9 @@ function mt:next()
                 if ac.game:event_dispatch('游戏-回合结束',self.index,self)  then 
                     return 
                 end    
+                print('单位死亡，准备进入下一波',self:get_force_cool())
                 --防守时刷怪倒计时，如果怪物全杀死也不进入下一波
-                if self.force_cool then 
+                if self:get_force_cool() and self:get_force_cool() > 0 then 
                     return 
                 end    
                 --如果有刷新时间配置 则 按照时间等待后刷新，没有的话立即刷新
@@ -476,6 +483,7 @@ function mt:next()
                     --最小刷新时间
                     if not self.wait_trg then 
                         self.wait_trg = ac.wait(0.3 * 1000, function()
+                            print('单位死亡，准备进入下一波',self:get_force_cool())
                             self.wait_trg = nil
                             self:next()
                         end)

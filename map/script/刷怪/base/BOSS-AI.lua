@@ -31,7 +31,7 @@ local function cast_skill(hero,target,type)
     if skill.on_ai and not skill:on_ai() then 
         return 
     end      
-    print('boss 开始施法',skill.name)
+    print(hero:get_name(),'boss 开始施法',skill.name)
     if skill.target_type == 0 then 
         skill:cast()
     elseif skill.target_type == 1 then
