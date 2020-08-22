@@ -2296,6 +2296,7 @@ function helper:fb(str,cnt)
 			for i=1,3 do 
 				local creep = ac.creep['刷怪'..i]
 				creep.index = tonumber(str) - 1
+				print('普通刷怪')
 				if i==1 then 
 					creep.timer_ex_title ='距离 第'..(creep.index+2)..'波 怪物进攻'
 				end
@@ -2328,12 +2329,13 @@ function helper:fb(str,cnt)
 	}
 	for x = 1,cnt do 
 		--贪婪魔窟
-		local name = '普通刷怪'
+		local name = '进攻刷怪'
 		if finds(ac.g_game_degree_name,'贪婪魔窟') then 
 			name = '贪婪魔窟'
 		elseif finds(ac.g_game_degree_name,'深渊冒险') then 
 			name = '深渊冒险'
 		end
+		print('副本：',name)
 		if temp[name] then 
 			temp[name]()
 		end
