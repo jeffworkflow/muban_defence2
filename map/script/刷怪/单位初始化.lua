@@ -86,7 +86,7 @@ local function init_attribute(unit)
             add_skl(unit,data.skill_names)
         else
             for i,name in ipairs(data.skill_names) do  
-                add_skl(unit,data.name)
+                add_skl(unit,name)
             end
         end
     end

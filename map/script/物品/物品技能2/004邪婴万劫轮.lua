@@ -76,7 +76,7 @@ function mt:damage_start(damage)
 		{
 			source = hero,
 			skill = skill,
-			damage = u:get('生命上限')*skill.v2/100, --当前生命上限的百分比
+			damage = u:get('生命')*skill.v2/100, --当前生命上限的百分比
 			real_damage = true,
 		}
 	end	
