@@ -1,6 +1,7 @@
 
 local boss = {
-    '一棒男','戴瑟提克','格里弗','克尔苏加德','太阳神','鼠天瞳','牛金刚','武伯都'
+    --'一棒男','戴瑟提克','格里弗','克尔苏加德','太阳神',
+    '鼠天瞳','牛金刚','武伯都'
 }
 local boss_skill  ={
     ['一棒男'] = {'净化','给你一棒'},
@@ -12,7 +13,7 @@ local boss_skill  ={
     -- ['牛金刚'] = {'净化','金刚不坏','重生'},
     -- ['武伯都'] = {'净化','百兽之王','群星陨落1'},
     
-}
+} 
 local function change_attr(unit,index)
     --设置搜敌范围 因子
     unit:set_search_range(6000)
@@ -133,13 +134,14 @@ local mt = ac.creep['深渊冒险']{
     region = 'jg2_jd',
     creeps_datas = '',
     creep_player = ac.player(12),
+    -- force_cool = 600,
     force_cool = 20,
     max_index = 5,
 
 }
 --进攻怪刷新时的初始化
 function mt:on_start()
-    self.timer_ex_title ='距离 第'..(self.index+2)..'波 BOSS进攻'
+    self.timer_ex_title ='BOSS'
 end
 
 function mt:on_next()
@@ -150,7 +152,7 @@ function mt:on_next()
     self:set_creeps_datas()
 
     --设置下一波 boss 到来时间
-    self.timer_ex_title ='距离 第'..(self.index+2)..'波 BOSS进攻'
+    self.timer_ex_title ='BOSS'
     
     -- self.force_cool = 10*60
 
@@ -176,14 +178,14 @@ function mt:on_next()
         title = "游戏失败 倒计时",
         func = function ()
             print('魔窟挑战失败，请再接再厉，2分钟后结束游戏！！！',5)
-            local tip ='|cffebb608【系统】|cffff0000魔窟挑战失败，请再接再厉，2分钟后结束游戏！！！'
+            local tip ='|cffebb608【系统】|cffff0000深渊挑战失败，请再接再厉，2分钟后结束游戏！！！'
             ac.game:event_notify('游戏-结束',true,tip)
             self:finish()
         end,
     }
     self.timer_ex3 = ac.wait((time-15)*1000,function()
         self.timer_ex4 = ac.timer(1*1000,15,function(t)
-            ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00本层挑战倒计时 |cffff0000'..t.count..' 秒|cff00ff00,请尽快清理场上怪物！！！',5)
+            ac.player.self:sendMsg('|cffebb608【系统】|cff00ff00挑战倒计时 |cffff0000'..t.count..' 秒|cff00ff00,请尽快杀死BOSS！',5)
            
             if t.count<=0 then 
                 t:remove()
@@ -355,11 +357,11 @@ ac.game:event '游戏-开始' (function()
     --游戏开始后 刷怪时间
     local time = 5*60
     time = 10
-    ac.player.self:sendMsg("|cffebb608【系统】|cff00ff00"..time .. "秒后，怪物开始第1波进攻",10)
+    ac.player.self:sendMsg("|cffebb608【系统】|cff00ff00"..time .. "秒后，挑战首只深渊BOSS",10)
     ac.timer_ex 
     {
         time = time,
-        title = "距离第1波BOSS进攻",
+        title = "BOSS",
         func = function ()
             --开始刷怪
             print('开始刷兵啦') 

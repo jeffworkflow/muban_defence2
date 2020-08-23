@@ -17,7 +17,7 @@ tip = [[
 ]],
 
 damage = function(self)
-    return self.owner:get('攻击')*200
+    return self.owner:get('攻击')*50
 end, 
 --伤害范围 直径
 area = 650,

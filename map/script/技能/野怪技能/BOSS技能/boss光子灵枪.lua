@@ -19,7 +19,7 @@ tip = [[
 --伤害类型
 damage_type = '物理',
 damage = function(self)
-    return self.owner:get('攻击')*1
+    return self.owner:get('攻击')*3
 end, 
 --范围
 range = 1500,

@@ -17,7 +17,7 @@ tip = [[
 ]],
 
 damage = function(self)
-    return self.owner:get('攻击')*5
+    return self.owner:get('攻击')*50
 end, 
 --范围
 range = 2000,

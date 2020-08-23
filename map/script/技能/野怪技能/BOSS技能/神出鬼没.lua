@@ -25,7 +25,7 @@ end
 function mt:on_cast_shot()
     local hero = self.owner
     hero:add_buff '隐身' {
-        time = 3
+        time = 2
     }
     self:active_cd()
 end

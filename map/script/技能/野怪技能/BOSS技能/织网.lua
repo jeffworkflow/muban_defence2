@@ -20,11 +20,11 @@ damage = function(self)
     return self.owner:get('攻击')*100
 end, 
 --伤害范围 直径
-area = 650,
+area = 500,
 time = 0.5,
 time2 = 20,
 --冷却
-cool = 10,
+cool = 12,
 effect = [[Abilities\Spells\Undead\Web\WebTarget.mdl]]  --太小了，模型不对
 }
 -- mt.effect1 = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]
@@ -47,7 +47,7 @@ function mt:boss_skill_shot(old_point)
 	ac.effect_ex{
 		model = self.effect,
 		point = target:get_point(),
-		size = 15,
+		size = 12,
 		time = self.time2
 	}
 	if not self.timer then 
@@ -135,7 +135,7 @@ function mt:on_add()
 		target:add('移动速度',450)
 	else
 		target:add('移动速度%',-40)
-		target:add('攻击丢失',40)
+		target:add('攻击丢失',30)
 	end
 end
 
@@ -150,7 +150,7 @@ function mt:on_remove()
 		target:add('移动速度',-450)
 	else
 		target:add('移动速度%',40)
-		target:add('攻击丢失',-40)
+		target:add('攻击丢失',-30)
 	end
 end
 function mt:on_cover(new)

@@ -355,7 +355,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if not p.max_cnt then 
         p.max_cnt = {}
     end    
-    local rate = 0.5
+    local rate = 0.4
     local max_cnt = 50
     local name ='露水'
     -- local max_cnt = 5 --测试

@@ -16,7 +16,7 @@ tip = [[
     预警圈消失后，在每个小区域播放一个星落特效（模型Abilities\Spells\NightElf\Starfall\StarfallTarget.mdl），并造成攻击力*10的物理伤害，内置CD12秒
 ]],
 damage = function(self)
-    return self.owner:get('攻击')*100
+    return self.owner:get('攻击')*10
 end,  
 --范围
 range = 1000,
