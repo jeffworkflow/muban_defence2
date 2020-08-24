@@ -26,7 +26,7 @@ local function reset_all()
 end
 local boss = {
     '一棒男',
-    -- '戴瑟提克','格里弗','克尔苏加德','太阳神',
+    '戴瑟提克','格里弗','克尔苏加德','太阳神',
     '鼠天瞳',
     '牛金刚',
     '武伯都'
@@ -166,8 +166,8 @@ local mt = ac.creep['深渊冒险']{
     region = 'saijiboss2',
     creeps_datas = '',
     creep_player = ac.player(12),
-    -- force_cool = 600,
-    force_cool = 20,
+    force_cool = 600,
+    -- force_cool = 20,
     max_index = 5,
 
 }
@@ -455,6 +455,7 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
     player.auto_plant = true
     --增加物品获取率
     hero:add('物品获取率',150)
+    hero:add('每秒加金币',10000)
 end)
 --创建商店时，就删除对应商店或 商品
 ac.game:event '单位-创建商店'(function(trg,shop)
@@ -486,7 +487,7 @@ ac.game:event '游戏-开始' (function()
 
     --游戏开始后 刷怪时间
     local time = 5*60
-    time = 10
+    -- time = 10
     ac.player.self:sendMsg("|cffebb608【系统】|cff00ff00"..time .. "秒后，挑战首只深渊BOSS",10)
     ac.timer_ex 
     {
