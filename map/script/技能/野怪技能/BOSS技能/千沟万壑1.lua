@@ -25,6 +25,12 @@ range = 1000,
 area = 350,
  --每一个预警圈消失的时间
 time = 0.35,
+--碰撞范围
+hit_area = 200,
+--特效移动速度
+speed = 5000,
+--距离
+distance =1000,
 --冷却
 cool = 12,
 effect = [[ImpaleMissTarget.mdx]]
@@ -46,32 +52,56 @@ function mt:boss_skill_shot(angle)
 	local skill =self
 	local target = self.target
 
-	local angle = angle or (hero:get_point() / target:get_point())
-	--创建特效
-	ac.effect_ex{
-		model = self.effect,
+	local source = hero:get_point()
+	local target = target:get_point()
+	local angle = source / target
+	local mvr = ac.mover.line
+	{
+		source = hero,
+		start = hero,
 		angle = angle,
-		point = hero:get_point()
-	}:remove()
-	for i, u in ac.selector()
-		: in_line(hero, angle, self.range + 50, self.area) --	起点--	角度--	长度--	宽度
-		: of_not_building()
-		: is_enemy(hero)
-        : is_not(ac.main_unit)
-		: ipairs()
-	do
+		speed = skill.speed,
+		distance = skill.distance,
+		skill = skill,
+		high = 110,
+		model = '', 
+		hit_area = skill.hit_area,
+		size = 1
+	}
+	if not mvr then 
+		return
+	end
+
+	function mvr:on_move()
+		--创建特效
+		ac.effect_ex{
+			point = self.mover:get_point(),
+			model = skill.effect1
+		}:remove()  
+	end	
+	function mvr:on_hit(dest)
+		local u = dest
 		u:add_buff '晕眩'
 		{
-			time = 1
-		}	
-
+			time = 1,
+			skill = skill,
+			source = hero,
+		}
+		
+		u:add_buff '高度'
+		{
+			time = 0.3,
+			speed = 1200,
+			skill = skill,
+			reduction_when_remove = true
+		}
 		u:damage
 		{
-			source = hero,
-			damage = skill.damage,
 			skill = skill,
+			source = hero,
+			damage = skill.damage
 		}	
-	end
+	end	
 end
 
 function mt:on_cast_start()
