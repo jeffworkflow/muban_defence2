@@ -22,9 +22,9 @@ end,
 --范围
 range = 1000,
 --伤害范围 直径
-area = 400,
+area = 300,
  --每一个预警圈消失的时间
-time = 0.35,
+time = 0.8,
 --冷却
 cool = 12,
 effect = [[JNTX30.MDX]]
@@ -75,7 +75,7 @@ function mt:on_cast_start()
 	-- 	end)
 	-- 	return 
 	-- end
-	ac.timer(0.1*1000,5,function(t)
+	ac.timer(0.2*1000,5,function(t)
 		local point = hero:get_point() - {math.random(360),math.random(1200)}
 		ac.warning_effect_ring
 		{
@@ -85,6 +85,7 @@ function mt:on_cast_start()
 			func = function()
 				ac.effect_ex{
 					model = self.effect,
+					size = 2,
 					point = point
 				}:remove()
 				self:boss_skill_shot()
