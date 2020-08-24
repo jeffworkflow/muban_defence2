@@ -7,7 +7,7 @@ local new_ui = class.panel:builder{
     y = 100,--屏幕界面Y坐标
     w = 80,
     h = 80,
-    is_show = true,
+    is_show = false,
     level = 1,
     normal_image = 'Transparent.tga',
     --血条
