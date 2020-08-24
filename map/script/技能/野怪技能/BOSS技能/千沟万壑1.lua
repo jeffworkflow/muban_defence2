@@ -22,7 +22,7 @@ end,
 --范围
 range = 1000,
 --伤害范围 直径
-area = 250,
+area = 350,
  --每一个预警圈消失的时间
 time = 0.35,
 --碰撞范围
@@ -76,7 +76,7 @@ function mt:boss_skill_shot(angle)
 		--创建特效
 		ac.effect_ex{
 			point = self.mover:get_point(),
-			model = skill.effect1
+			model = skill.effect
 		}:remove()  
 	end	
 	function mvr:on_hit(dest)
