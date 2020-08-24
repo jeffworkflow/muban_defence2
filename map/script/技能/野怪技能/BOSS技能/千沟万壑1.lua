@@ -54,7 +54,6 @@ function mt:boss_skill_shot(angle)
 
 	local source = hero:get_point()
 	local target = target:get_point()
-	local angle = source / target
 	local mvr = ac.mover.line
 	{
 		source = hero,
