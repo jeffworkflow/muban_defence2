@@ -247,7 +247,10 @@ local award_list = {
 --改变怪物
 function mt:on_change_creep(unit,lni_data)
     change_attr(unit,self.index)
-
+    --显示boss 血条
+    if ac.ui and ac.ui.blood_bar then 
+        ac.ui.blood_bar:add_unit(unit)
+    end
     unit:event '单位-死亡'(function(_,u,killer)
         -- 掉落奖励
         local rate = 50
