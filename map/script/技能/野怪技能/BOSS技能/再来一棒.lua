@@ -27,7 +27,7 @@ area = 600,
 time = 0.8,
 --冷却
 cool = 12,
-effect = [[JNTX30.MDX]]
+effect = [[JNTX43.mdx]]
 }
 -- mt.effect1 = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]
 
@@ -84,6 +84,7 @@ function mt:on_cast_start()
 		func = function()
 			ac.effect_ex{
 				model = self.effect,
+				size = 2,
 				point = point
 			}:remove()
 			self:boss_skill_shot(point)

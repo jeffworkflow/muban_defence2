@@ -19,8 +19,8 @@ damage = function(self)
     return self.owner:get('攻击')*10
 end,  
 --范围
-range = 1000,
-area = 50,
+range = 800,
+area = 75,
 --冷却
 cool = 12}
 mt.effect = [[Abilities\Spells\NightElf\Starfall\StarfallTarget.mdl]]
@@ -33,7 +33,7 @@ function mt:boss_skill_shot()
 	local source = hero:get_point()
 	local target = self.target
     local temp = {} 
-    for i=1,10 do 
+    for i=1,12 do 
         local point = source:get_point() - {math.random(360),math.random(self.range)}
         --ac.point(math.random(x-self.range/2,x+self.range),math.random(y-self.range,y+self.range))
 
@@ -43,11 +43,11 @@ function mt:boss_skill_shot()
         {
             point = point,
             area = self.area,
-            time = 0.5,
+            time = 0.6,
         }
     end
     --造成伤害
-    ac.wait(0.5*1000,function()
+    ac.wait(0.6*1000,function()
         for i,point in ipairs(temp) do 
             --特效
             ac.effect_ex{
