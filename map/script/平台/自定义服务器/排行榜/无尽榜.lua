@@ -14,7 +14,7 @@ class.wjphb_panel = extends(class.panel){
             -- '深渊乱斗无尽','无限乱斗无尽','无上之境无尽','斗破苍穹无尽',
             '挖宝','看书','打造','种树','白嫖','摇骰子',
             '爱心积分',
-            '新的征程','贪婪魔窟','魔灵争霸'
+            '新的征程','贪婪魔窟','魔灵争霸','深渊冒险'
             
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
@@ -356,6 +356,8 @@ local rank = {
     {'tlmk','贪婪魔窟'},
     {'axjf','爱心积分'},
     {'mlzb','魔灵争霸'},
+    {'symx','深渊冒险'},
+    
     
     {'today_cntwb','今日挖宝'},
     {'today_cntks','今日看书'},
@@ -367,6 +369,7 @@ local rank = {
     {'today_tlmk','今日贪婪魔窟'},
     {'today_axjf','今日爱心积分'},
     {'today_mlzb','今日魔灵争霸'},
+    {'today_symx','今日深渊冒险'},
 }
 --处理,显示排行榜数据
 --取前10名数据

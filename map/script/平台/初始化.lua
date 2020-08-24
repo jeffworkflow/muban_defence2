@@ -278,24 +278,45 @@ end
 
 --处理通关难度
 --获取是否可以存到自定义服务器里面，只要有玩家通过所选难度的上一个难度即可全部存。
-local function get_save_flag()    
-    local ok
-    if ac.g_game_degree>11 then 
-        for i=1,10 do
-            local player = ac.player[i]
-            if player:is_player() then
-                -- local bit_val = 2^(ac.g_game_degree-3)
-                local val = ac.g_game_degree-12
-                if (player.cus_server['新的征程'] or 0) >=val then 
-                    ok = true 
-                    break
-                end  
+local function get_save_flag(name)    
+    local temp = {
+        ['新的征程'] = function()
+            local ok
+            if ac.g_game_degree>11 then 
+                for i=1,10 do
+                    local player = ac.player[i]
+                    if player:is_player() then
+                        -- local bit_val = 2^(ac.g_game_degree-3)
+                        local val = ac.g_game_degree-12
+                        if (player.cus_server['新的征程'] or 0) >=val then 
+                            ok = true 
+                            break
+                        end  
+                    end    
+                end    
+            end
+            return ok
+        end,
+        ['深渊冒险'] = function()
+            local ok
+            for i=1,10 do
+                local player = ac.player[i]
+                if player:is_player() then
+                    -- local bit_val = 2^(ac.g_game_degree-3)
+                    local val = ac.g_game_degree
+                    if (player.cus_server['新的征程'] or 0) >=val then 
+                        ok = true 
+                        break
+                    end  
+                end    
             end    
-        end    
-    end
+            return ok
+        end,
+
+    }
     return ok
 end
-
+ac.get_save_flag = get_save_flag
 
 -- ac.game:event '选择难度' (function(_,g_game_degree_name)
 --     local ok = get_save_flag() 
@@ -323,7 +344,7 @@ ac.game:event '杀死最终boss' (function(trg,flag)
         return 
     end
     
-    local ok = get_save_flag()
+    local ok = get_save_flag('新的征程')
     -- ok = true
     for i=1,10 do
         local player = ac.player[i]

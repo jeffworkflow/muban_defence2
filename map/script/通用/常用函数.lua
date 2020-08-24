@@ -89,7 +89,9 @@ ac.warning_effect_ring = function(data)
 		time = data.time,
 		item_show = true, --关闭特效时，预警圈也不关闭
 	}
-
+	if data.func and data.time then 
+		data:func()
+	end
 	-- if time then
 	-- 	ac.timer(time*1000,1,function()
 	-- 		if effect then

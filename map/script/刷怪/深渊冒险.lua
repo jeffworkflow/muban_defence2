@@ -1,4 +1,29 @@
 
+--恢复地图设置
+local function reset_all()    
+    for i=1,10 do 
+        local p = ac.player(i)
+        local hero = p.hero
+        local peon = p.peon
+
+        if p:is_player() and hero then 
+            --恢复镜头
+            local minx, miny, maxx, maxy = ac.map_area:get()
+            p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+            -- hero:blink(ac.map.rects['主城'],true,false) 
+            -- peon:blink(ac.map.rects['主城'],true,false)
+            ac.wait(10,function()
+                p:setCamera(hero:get_point())
+            end)
+            
+            --恢复F2,F3
+            local skl = hero:find_skill('F2回城',nil,true)
+            if skl then skl:enable() end 
+            local skl = hero:find_skill('F3小黑屋',nil,true)
+            if skl then skl:enable() end 
+        end    
+    end    
+end
 local boss = {
     --'一棒男','戴瑟提克','格里弗','克尔苏加德','太阳神',
     '鼠天瞳','牛金刚','武伯都'
@@ -34,6 +59,8 @@ local function change_attr(unit,index)
     if unit:get_name() =='虚空诺亚' then 
         unit:set('攻击减甲',0)
     end    
+    --增加 技能冷却
+    unit:add('技能冷却',50)
     --怪物技能
     local skl_list = boss_skill[unit:get_name()]
     if skl_list then 
@@ -49,7 +76,9 @@ local function change_attr(unit,index)
         skl.cool = 60*5
         print('添加了重生技能')
     end
-    unit:add_buff '攻击英雄'{}
+    unit:add_buff '攻击英雄'{
+        where = ac.rect.j_rect('moku'):get_point()
+    }
     --掉落概率
     unit.fall_rate = 0
     --掉落金币和经验
@@ -78,18 +107,18 @@ local shenfu = {
     '杀怪加魔丸+2','杀怪加魔丸+10','杀怪加魔丸+20',
 }
 
-local function add_content(unit,killer)
+local function add_content(rand_name,unit,killer)
     local p = killer:get_owner()
     local player = killer:get_owner()
     local hero = player.hero 
     
     -- print('使用了命运花')
-    local rand_list = award_list['进攻BOSS']
-    local rand_name,rand_rate = ac.get_reward_name(rand_list)
-    -- print(rand_list,rand_name) 
-    if not rand_name then 
-        return true
-    end  
+    -- local rand_list = award_list['进攻BOSS']
+    -- local rand_name,rand_rate = ac.get_reward_name(rand_list)
+    -- -- print(rand_list,rand_name) 
+    -- if not rand_name then 
+    --     return true
+    -- end  
 
     if  rand_name == '随机物品' then
         local cnt = get_player_count()*2
@@ -131,7 +160,7 @@ end
     
 
 local mt = ac.creep['深渊冒险']{    
-    region = 'jg2_jd',
+    region = 'saijiboss2',
     creeps_datas = '',
     creep_player = ac.player(12),
     -- force_cool = 600,
@@ -209,13 +238,21 @@ function mt:on_next()
     end
 
 end
+local award_list = {
+    '随机符文','随机物品','随机功法','强化石','天谕','功法升级书','功法连升书','黑暗骰子','神奇的令牌'
+}
 --改变怪物
 function mt:on_change_creep(unit,lni_data)
     change_attr(unit,self.index)
 
     unit:event '单位-死亡'(function(_,u,killer)
         -- 掉落奖励
-        add_content(u,killer)
+        local rate = 50
+        for i,name in ipairs(award_list) do 
+            if math.random(100000)/1000 <=rate then 
+                add_content(name,u,killer)
+            end
+        end
 
         -- 每回合开始 都会先检查计时器是否还存在，存在则清空，重新计时。
         if self.timer_ex2 then 
@@ -230,7 +267,8 @@ function mt:on_change_creep(unit,lni_data)
             self.timer_ex4:remove()
             self.timer_ex4 = nil
         end
-
+        --重设 地图设置 （镜头等）
+        reset_all()  
     end)
 
     
@@ -249,15 +287,30 @@ function mt:on_change_creep(unit,lni_data)
                 local p = ac.player[i]
                 if player:is_player() then
                     local key = 'symx'
-                    if ac.g_game_degree_attr > (player.server['深渊冒险'] or 0) then
-                        player:Map_SaveServerValue(key,ac.g_game_degree_attr) --网易服务器
+                    if ac.g_game_degree > (player.server['深渊冒险'] or 0) then
+                        player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
                     end 
         
-                    local degree = ac.g_game_degree_attr
+                    local degree = ac.g_game_degree
                     degree = 2^(degree-1)
                     if not has_flag((p.server['深渊冒险奖励'] or 0),degree) then
                         local key = ac.server.name2key('深渊冒险奖励')
                         player:Map_AddServerValue(key,degree)  
+                    end
+                    
+                    local ok = ac.get_save_flag('深渊冒险')
+                    if ok then 
+                        --处理排行榜相关
+                        local key = ac.server.name2key('深渊冒险')
+                        local degree = ac.g_game_degree
+                        if degree > (player.cus_server['深渊冒险'] or 0) then
+                            -- print('保存新的征程到服务器2',player,degree,player.cus_server['新的征程'])
+                            player:SetServerValue(key,degree) 
+                        end    
+                        --今日最榜
+                        if degree > (player.cus_server['今日深渊冒险']  or 0) then
+                            player:SetServerValue('today_'..key,degree)  
+                        end
                     end
                 end
             end
@@ -288,6 +341,53 @@ function mt:on_finish()
         self.timer_ex4 = nil
     end  
 end   
+   
+--回合开始时
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if creep.name ~= '深渊冒险' then
+        return
+    end    
+    --设置重生地点
+    ac.flag_symx = true 
+    --禁止F2,F3
+    for i=1,10 do 
+        local p = ac.player(i)
+        local hero = p.hero
+        local peon = p.peon
+        if p:is_player() and hero then 
+            local skl = hero:find_skill('F2回城',nil,true)
+            if skl then skl:disable() end 
+            local skl = hero:find_skill('F3小黑屋',nil,true)
+            if skl then skl:disable() end 
+        end    
+    end 
+    --传送+锁定镜头
+    for i=1,10 do 
+        local p = ac.player(i)
+        local hero = p.hero
+        local peon = p.peon
+        if p:is_player() and hero then 
+            local point = ac.rect.j_rect('moku'):get_point()
+            hero:blink(point,true,false)
+            peon:blink(point,true,false)
+            --锁定镜头
+            local minx, miny, maxx, maxy = ac.rect.j_rect('moku5'):get()
+            p:setCameraBounds(minx, miny-300, maxx, maxy+300+704)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+            p:setCamera(hero:get_point())  
+        end
+    end  
+
+end)
+--回合结束时
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if creep.name ~= '深渊冒险' then
+        return
+    end    
+    --设置重生地点
+    ac.flag_symx = false 
+end)
+
+
 
 --删除npc
 local npc = {'基地','火焰利刃','夭夭','套装熔炼','灵鹤'}
@@ -325,7 +425,31 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         table.insert(ac.unit_reward['进攻怪'],tab)
     end
 
+    --禁用泻药卡
+    ac.skill['泻药卡'].tip = [[禁用]]
+    ac.skill['泻药卡'].on_cast_start = function() end
+    --扭蛋券直接使用
+    for i,name in ipairs({'扭蛋券','扭蛋券(十连抽)','超级扭蛋券','超级扭蛋券(十连抽)'}) do
+        local mt = ac.skill[name]
+        mt.no_use = false
+        function mt:on_cast_start() 
+            local hero = self.owner
+            local new_name = self.name:gsub('券','')
+            hero:add_item(new_name)
+        end
+    end
 end) 
+ac.game:event '玩家-注册英雄' (function(trg, player, hero)
+    if not finds(ac.g_game_degree_name,'深渊冒险') then 
+        return
+    end  
+    --自动挖宝
+    hero.wabao_auto = true 
+    --自动种树
+    player.auto_plant = true
+    --增加物品获取率
+    hero:add('物品获取率',150)
+end)
 --创建商店时，就删除对应商店或 商品
 ac.game:event '单位-创建商店'(function(trg,shop)
     if not ac.g_game_degree_name then 

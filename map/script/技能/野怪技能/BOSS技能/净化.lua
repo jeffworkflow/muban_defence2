@@ -11,9 +11,9 @@ level = 1,
 --技能图标
 art = [[icon\card\2\card2_3.blp]],
 --技能说明
-title = '无敌',
+title = '净化',
 tip = [[
-    无敌
+    净化
 ]],
 force_cast=1,
 --冷却

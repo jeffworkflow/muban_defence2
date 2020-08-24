@@ -403,8 +403,11 @@ local cus_key = {
 
     {'s0jj','S0赛季进阶奖励标识'},
     {'s1jj','S1赛季进阶奖励标识'},
-    {'zhanling','战令标识'},
     --自定义服务器用到的内容
+    {'zhanling','战令标识'},
+    {'today_symx','今日深渊冒险'},
+    {'today_symxrank','今日深渊冒险排名'},
+
     {'today_mlzb','今日魔灵争霸'},
     {'today_mlzbrank','今日魔灵争霸排名'},
 

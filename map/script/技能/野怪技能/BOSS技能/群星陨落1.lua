@@ -33,9 +33,10 @@ function mt:boss_skill_shot()
 	local source = hero:get_point()
 	local target = self.target
     local temp = {} 
-    local x,y = source:get()
     for i=1,10 do 
-        local point = ac.point(math.random(x-self.range,x+self.range),math.random(y-self.range,y+self.range))
+        local point = source:get_point() - {math.random(360),math.random(self.range)}
+        --ac.point(math.random(x-self.range/2,x+self.range),math.random(y-self.range,y+self.range))
+
         table.insert(temp,point)
         --预警圈
         ac.warning_effect_ring
