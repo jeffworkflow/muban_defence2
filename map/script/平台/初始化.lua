@@ -304,7 +304,7 @@ local function get_save_flag(name)
                 if player:is_player() then
                     -- local bit_val = 2^(ac.g_game_degree-3)
                     local val = ac.g_game_degree
-                    if (player.cus_server['新的征程'] or 0) >=val then 
+                    if (player.cus_server['深渊冒险'] or 0) >=val then 
                         ok = true 
                         break
                     end  
@@ -314,7 +314,8 @@ local function get_save_flag(name)
         end,
 
     }
-    return ok
+
+    return temp[name]
 end
 ac.get_save_flag = get_save_flag
 
