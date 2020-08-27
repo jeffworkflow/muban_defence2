@@ -167,7 +167,7 @@ local mt = ac.creep['深渊冒险']{
     creeps_datas = '',
     creep_player = ac.player(12),
     force_cool = 600,
-    -- force_cool = 20,
+    force_cool = 20,
     max_index = 5,
 
 }
@@ -487,7 +487,7 @@ ac.game:event '游戏-开始' (function()
 
     --游戏开始后 刷怪时间
     local time = 5*60
-    -- time = 10
+    time = 10
     ac.player.self:sendMsg("|cffebb608【系统】|cff00ff00"..time .. "秒后，挑战首只深渊BOSS",10)
     ac.timer_ex 
     {
