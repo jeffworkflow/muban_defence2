@@ -11,13 +11,13 @@ mt{
     
 }
 mt.skills = {
-    '宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5','宠物纪念册6','宠物纪念册7',
+    '宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5','宠物纪念册6','宠物纪念册7','宠物纪念册8',
 } 
 function mt:on_add()
     local hero = self.owner 
     local p = hero:get_owner()
     --黑名单和反作弊处理 有31则视为
-    local flag_val = 36
+    local flag_val = 41
     if has_flag(p.server['宠物纪念册'],2^(flag_val-1)) or not ac.flag_use_mall then
         return 
     end
@@ -214,6 +214,29 @@ tip = [[
 +15% 对BOSS额外伤害
 
 ]]}
+
+local mt = ac.skill['宠物纪念册8']
+mt['杀怪加力量'] = 35
+mt['分裂伤害'] = 35
+mt['每秒加杀敌数'] = 3
+mt['对BOSS额外伤害'] = 15
+mt{
+title = '快乐西游',
+art = [[wjdjw.blp]],
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【031】-【035】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35   杀怪加力量
++35% 分裂伤害
++3   每秒加杀敌数
++15% 对BOSS额外伤害
+
+]]}
+
 
 for i=1,10 do 
     local mt = ac.skill['宠物纪念册'..i]

@@ -52,5 +52,8 @@ function mt:on_cast_start()
     local p = hero:get_owner()
 
     local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
+    if finds(ac.g_game_degree_name,'深渊冒险') then 
+        point = ac.rect.j_rect('zxzw1'):get_point()
+    end
     hero:blink(point,true,false,true)  
 end

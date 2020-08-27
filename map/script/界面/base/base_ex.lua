@@ -74,8 +74,8 @@ mt.target = 0 --目标
 mt.now = 0 --当前
 mt.last_max=0 --上次结束时的值 作为下次起点
 mt.min_per_val = 1 --最小步长(%)
-mt.tween_speed = 1
-mt.tween_flag = false
+mt.tween_speed = 1 --动画速度
+mt.tween_flag = true
 mt.t=0 --插值因子 动态
 function mt:get(str)
     return self[str]
@@ -95,6 +95,10 @@ function mt:update()
     if self.tween_flag then 
         local target = self:get('target')
         local source = self:get('source')
+        
+        -- if self.handle =='血条' then
+        -- print('起始位置1：',self,source)
+        -- end
         self.t = self.t + self.tween_speed * self:get_deltatime()
         -- print('插值因子：',self.t,self.tween_speed,self:get_deltatime(),japi.GetFps())
         if self.t > 1 then
@@ -107,6 +111,9 @@ function mt:update()
         -- print('现在的位置宽度：',now,now/420*100,now - old_now,(now - old_now)/420*100)
         self:set('now',now)
         self:show(now)
+    -- else
+    --     self:set('now',self:get('target'))
+    --     self:show(self:get('target'))
     end
 end
 function mt:remove()
@@ -124,17 +131,34 @@ function mt:start(data)
         for k,v in pairs(data) do 
             self[k] = v 
         end
-        self:set('source',self:get('last_max'))
+        -- if self.handle =='血条' then
+        --     print('起始位置2：',self,self.source)
+        -- end
+        --缓慢流动时，改变 source
+        if self.tween_flag then 
+            self:set('source',self:get('now'))
+        else
+            self:set('source',self:get('last_max'))
+        end
         self:set('target',data.target)
         self:set('t',0)
         self:set('tween_flag',true)
         
-        -- start_x = last_max_x;        
-        -- tween_flag = true;
-        -- tm_t = 0;
+        -- local distance = self.source  - self.target
+        -- local cur_distance = self.source - self.now 
+        -- if math.abs(cur_distance/distance) <= 0.01 then 
+        --     self:set('tween_flag',false)
+        --     self:set('now',self.target)
+        --     self:show(self.target)
+        -- else
+        -- end
+
+
+
         return 
     end
     
+    self:update()
     self.t_timer = game.loop(10,function(t)
         self:update()
     end)
@@ -157,7 +181,9 @@ function class.ui_base:set_process(data)
     else
         pr = self.all_process[handle]
     end
-    
+    -- if data.handle =='血条' then
+    -- print('起始位置：',pr,data.source,pr.source)
+    -- end
     pr:start(data)
 end   
 

@@ -43,7 +43,7 @@ local rate ={95,85,75,65,60,55,50,45,40,65,55,45,35,25}
 
 local strong_attr ={10,20,30,40,50,65,80,95,115,145,180,220,260,300}
 
-function mt:on_cast_start()
+function mt:add_content()
     local unit = self.owner
     local hero = self.owner
     local player = hero:get_owner()
@@ -156,7 +156,20 @@ function mt:on_cast_start()
             end        
         end 
     end
+end
 
+function mt:on_cast_start()
+    local hero = self.owner 
+    local p = hero:get_owner()
+    local player = hero:get_owner()
+
+    self:add_content()
+
+    local rate = p:get('强化石天谕再一次概率')
+    if math.random(100000)/1000<=rate then 
+        print('又获得一次'..self.name,rate)
+        self:add_content()
+    end
 end
 
 function mt:on_remove()

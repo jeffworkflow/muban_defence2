@@ -225,6 +225,27 @@ function player.__index:random(tab,flag)
 	end
 
 end
+--@table 
+--@一次取出 tab 不重复的3个值 
+function player.__index:random2(tab,num)
+	if type(tab) ~= 'table' then 
+		print('传入的不是table')
+		return 
+	end
+	if #tab <=0 then 
+		print('传入的table不是序列号型')
+		return 
+	end
+	local tab = ac.table_copy(tab) --使 不改变全局
+	--乱序
+	tab = table_rand(tab)
+	local res = {}
+	for i=1,num do 
+		table.insert(res,tab[i])
+	end
+	return res
+
+end
 --奖品
 local award_list = { 
     ['攻击奖励'] =  {

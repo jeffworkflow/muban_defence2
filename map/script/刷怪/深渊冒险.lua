@@ -409,6 +409,150 @@ local function del_npc()
 
 end
 
+local temp_award = {
+    '装备','功法','强化物品的石头','升级功法的书籍',
+    '卡片','稀有的物品','全属性','力量',
+    '敏捷','智力','熔炼石',
+}
+--给boss奖励
+local function add_content2(hero)
+    local p = hero.owner
+    local award_list = p:random2(temp_award,3)
+    local list ={}
+    for i,name in ipairs(award_list) do 
+        local temp = {name,'',name}
+        table.insert(list,temp)
+    end
+    local info = {
+        '取消','Esc',"取消 (Esc)",
+    }
+    table.insert(list,info)
+    table.insert(list,1,'选择奖励')
+
+    local dialog = p:dialog(list)
+    function dialog:onClick(name)
+        if name == '装备' then 
+            local cnt = math.random(2)
+            for i=1,cnt do 
+                local name = ac.all_item[math.random(#ac.all_item)]
+                hero:add_item(name)
+                p:sendMsg('恭喜获得'..name,5)
+            end
+        elseif name == '功法' then 
+            local cnt = math.random(2)
+            for i=1,cnt do 
+                local name = ac.all_skill[math.random(#ac.all_skill)]
+                hero:add_skill_item(name)
+                p:sendMsg('恭喜获得'..name,5)
+            end
+        elseif name == '强化物品的石头' then 
+            local temp = {
+                ['强化物品的石头'] =  {
+                    { rand = 80, name = '强化石'},
+                    { rand = 20, name = '天谕'},
+                }
+            }
+            local rand_list = temp['强化物品的石头']
+            local rand_name,rand_rate = ac.get_reward_name(rand_list)
+            -- print(rand_list,rand_name)  
+            if not rand_name then 
+                return true
+            end
+            local cnt = math.random(5)
+            for i=1,cnt do 
+                hero:add_item(rand_name)
+            end
+            p:sendMsg('恭喜获得'..rand_name..'*'..cnt,5)
+
+        elseif name == '升级功法的书籍' then 
+            local temp = {
+                ['升级功法的书籍'] =  {
+                    { rand = 80, name = '功法升级书'},
+                    { rand = 20, name = '功法连升书'},
+                }
+            }
+            local rand_list = temp['升级功法的书籍']
+            local rand_name,rand_rate = ac.get_reward_name(rand_list)
+            -- print(rand_list,rand_name)  
+            if not rand_name then 
+                return true
+            end
+            local cnt = math.random(2)
+            for i=1,cnt do 
+                hero:add_item(rand_name)
+            end
+            p:sendMsg('恭喜获得'..rand_name..'*'..cnt,5)
+        elseif name == '卡片' then 
+            local cnt = math.random(1)
+            for i=1,cnt do 
+                local name = ac.all_card[math.random(#ac.all_card)]
+                hero:add_item(name)
+                p:sendMsg('恭喜获得'..name,5)
+            end
+        elseif name == '稀有的物品' then  
+            local temp = {
+                ['稀有的物品'] =  {
+                    { rand = 33, name = '吞噬丹'},
+                    { rand = 33, name = '龙之血珠'},
+                    { rand = 34, name = '无谓因果'},
+                }
+            }
+            local rand_list = temp['稀有的物品']
+            local rand_name,rand_rate = ac.get_reward_name(rand_list)
+            -- print(rand_list,rand_name)  
+            if not rand_name then 
+                return true
+            end
+            local cnt = math.random(1)
+            for i=1,cnt do 
+                hero:add_item(rand_name)
+            end
+            p:sendMsg('恭喜获得'..rand_name..'*'..cnt,5)
+        elseif finds(name,'力量','敏捷','智力','全属性') then  
+            hero:add(name,10000000)
+        elseif name == '熔炼石' then 
+            local index = math.random(6)
+            local name = formatNumber(index)..'号熔炼石'
+            hero:add_item(name)
+        end
+
+    end
+end
+
+--创建boss
+local function create_boss(name,where,index,owner_ship)
+    local boss = ac.player(12):create_unit(name..'BOSS1',where)
+    boss:addSize(0.01*(index-1))
+    boss.owner_ship = owner_ship
+    --1, 1.4 ,1.4*1.4
+    --改变boss 属性
+    if index > 1 then 
+        boss:set('攻击', boss:get('攻击')*1.4^(index-1) )
+        boss:set('护甲', boss:get('护甲')*1.4^(index-1) )
+        boss:set('魔抗', boss:get('魔抗')*1.4^(index-1) )
+        boss:set('生命上限', boss:get('生命上限')*1.4^(index-1) )
+        boss:set('暴击伤害', boss:get('暴击伤害')*1.4^(index-1) )
+    end
+
+    local eff = boss:add_effect('chest',[[[AKE]11.mdx]])
+    boss:add_buff '召唤物'{
+        skill = self,
+        time = 30,
+        texttag = true
+    }
+    boss:add_buff '无敌'{
+        time = 3
+    }
+    boss:event '单位-死亡' (function(_,unit,killer)
+        eff:remove()
+        --给奖励
+        local p = owner_ship
+        add_content2(p.hero)
+    end)
+end
+
+
+
 --删除NPC
 ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     if not finds(g_game_degree_name,'深渊冒险') then 
@@ -438,12 +582,43 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     for i,name in ipairs({'扭蛋券','扭蛋券(十连抽)','超级扭蛋券','超级扭蛋券(十连抽)'}) do
         local mt = ac.skill[name]
         mt.no_use = false
+        mt.cool = 0
         function mt:on_cast_start() 
             local hero = self.owner
             local new_name = self.name:gsub('券','')
             hero:add_item(new_name)
         end
     end
+
+    local temp = {
+        '血魔','藏宝阁','藏经阁','剑冢','百花宫','龙宫','城堡'
+    }
+    --血魔等野怪的300只事件
+    ac.game:event '单位-杀死单位' (function(trg, killer, target)
+        local p = killer.owner 
+        p.unit_kill_cnt = p.unit_kill_cnt or {}
+        p.boss_kill_succ = p.boss_kill_succ or {}
+        local u_name = target:get_name()
+        
+        for i,name in ipairs(temp) do 
+            if finds(u_name,name) then 
+                p.unit_kill_cnt[name] = (p.unit_kill_cnt[name] or 0) +1
+                p.boss_kill_succ[name] = p.boss_kill_succ[name] or 0
+                --取商
+                -- local boss_index = math.floor(p.unit_kill_cnt[name]/300)
+                -- local flag = p.unit_kill_cnt[name] % 300
+                if p.unit_kill_cnt[name] == 300 then
+                    p.unit_kill_cnt[name] = 0 
+                    local boss_index = p.boss_kill_succ[name] + 1
+                    --创建boss
+                    local point = p.hero:get_point() - {math.random(360),200}
+                    create_boss(name,point,boss_index,p)
+                end
+            end
+        end
+
+    end)
+
 end) 
 ac.game:event '玩家-注册英雄' (function(trg, player, hero)
     if not finds(ac.g_game_degree_name,'深渊冒险') then 
@@ -456,6 +631,13 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
     --增加物品获取率
     hero:add('物品获取率',150)
     hero:add('每秒加金币',10000)
+    --提示玩家属性
+    player:add('藏宝图再一次概率',50)
+    player:add('羊皮无字再一次概率',50)
+    player:add('强化石天谕再一次概率，',50)
+    player:add('神奇的种子再一次概率，',50)
+    player:add('扭蛋券再一次概率',50)
+    player:add('黑暗骰子再一次概率',50)
 end)
 --创建商店时，就删除对应商店或 商品
 ac.game:event '单位-创建商店'(function(trg,shop)

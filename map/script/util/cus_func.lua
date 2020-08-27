@@ -318,3 +318,16 @@ function formatNumber( num )
 	end
 	return str
 end
+--table 乱序
+function table_rand(t)
+	if not t then return end
+	local tRet = {}
+	local Total = #t
+	while Total > 0 do
+		local i = math.random(1,Total)
+		table.insert(tRet,t[i])
+		t[i] = t[Total]
+		Total = Total -1
+	end
+	return tRet
+end

@@ -133,7 +133,11 @@ function mt:on_cast_start()
 
     self:add_content()
 
-
+    local rate = p:get('神奇的种子再一次概率')
+    if math.random(100000)/1000<=rate then 
+        print('又获得一次'..self.name,rate)
+        self:add_content()
+    end
 
 end   
 

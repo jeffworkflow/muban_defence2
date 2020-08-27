@@ -8,6 +8,33 @@ mt.dead_event = false
 mt.search_area = 600
 mt.ref = 'origin'
 mt.pulse = 1
+
+--倒计时
+local function on_texttag(target,time)
+	local x, y,z = target:get_point():get()
+	-- local z = target:get_point():getZ()
+	local tag = ac.texttag
+	{
+		string = time or '',
+		size = 10,
+		position = ac.point(x , y, z + 100),
+		speed = 250,
+		angle = 90,
+		red = 238,
+		green = 31,
+		blue = 39,
+		crit_size = 0,
+		life = 1,
+		fade = 0.5,
+		time = ac.clock(),
+	}
+	local cnt = math.ceil(time)
+	ac.timer(1000,cnt,function(t)
+		tag:setText(t.count)
+	end)
+	return tag
+end
+
 function mt:on_add()
 	local player = self.target:get_owner()
 	self.old_model = self.target:get_slk 'file'
@@ -65,6 +92,13 @@ function mt:on_add()
 			search_area = self.search_area
 		}
 	end
+	--设置倒计时
+	if self.texttag then 
+		if self.texttag_tag then 
+			self.texttag_tag:remove()
+		end
+		self.texttag_tag = on_texttag(self.target,self.time)
+	end
 
 	self.target:add_buff '镜像特效'
 	{
@@ -78,8 +112,13 @@ function mt:on_add()
 end
 function mt:on_remove()
     if self.effect then 
-        self.effect:remove()
+        self.effect:remove() 
+        self.effect = nil
 	end   
+	if self.texttag_tag then 
+		self.texttag_tag:remove()
+		self.texttag_tag = nil
+	end
 	-- print('buff移除')
 	--还原单位类型
 	self.target.unit_type = self.old_unit_type
