@@ -80,7 +80,7 @@ art = [[maoxiandashi.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00贪婪魔窟|cffff0000最高|cff00ff00层数大于|cffffff00 ？？？层 |cff00ff00获得
+|cff00ff00贪婪魔窟|cffff0000最高|cff00ff00层数大于|cffffff00 150层 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+250 杀怪加全属性|r
@@ -94,6 +94,30 @@ need_map_level = 25,
 ['攻击减甲'] = 125,
 ['每秒加护甲'] = 25,
 ['多重暴击'] = 1,
+
+}
+
+local mt = ac.skill['金牌冒险家']
+mt{
+level = 0,
+art = [[jpmxj.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00贪婪魔窟|cffff0000最高|cff00ff00层数大于|cffffff00 ？？？层 |cff00ff00获得
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+300 杀怪加全属性|r
+|cff00ff00+150 攻击减甲|r
+|cff00ff00+30  每秒加护甲|r
+|cff00ff00+2%    全伤加深系数|r
+
+]],
+need_map_level = 30,
+['杀怪加全属性'] = 300,
+['攻击减甲'] = 150,
+['每秒加护甲'] = 30,
+['全伤加深系数'] = 2,
 
 }
 
@@ -176,7 +200,7 @@ art = [[dashoucangjia.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00贪婪魔窟|cffff0000累计|cff00ff00层数大于|cffffff00 ？？？层 |cff00ff00获得
+|cff00ff00贪婪魔窟|cffff0000累计|cff00ff00层数大于|cffffff00 1500层 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+500 杀怪加全属性|r
@@ -193,6 +217,30 @@ need_map_level = 30,
 
 }
 
+local mt = ac.skill['收藏泰斗']
+mt{
+level = 0,
+art = [[sctd.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00贪婪魔窟|cffff0000累计|cff00ff00层数大于|cffffff00 ？？？层 |cff00ff00获得
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+600 杀怪加全属性|r
+|cff00ff00+300 攻击减甲|r
+|cff00ff00+10% 护甲%|r
+|cff00ff00+5% 技能伤害加深系数|r
+
+]],
+need_map_level = 35,
+['杀怪加全属性'] = 600,
+['攻击减甲'] = 300,
+['护甲%'] = 10,
+['技能伤害加深系数'] = 5,
+
+}
+
 local mt = ac.skill['贪婪魔窟']
 mt{
     is_spellbook = 1,
@@ -205,6 +253,6 @@ mt{
     
 }
 mt.skills = {
-    '开拓者','冒险家','大冒险家','冒险大师',
-    '拾荒者','拾荒狂魔','收藏家','大收藏家',
+    '开拓者','冒险家','大冒险家','冒险大师','金牌冒险家',
+    '拾荒者','拾荒狂魔','收藏家','大收藏家','收藏泰斗',
 }
