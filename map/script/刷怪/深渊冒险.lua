@@ -167,7 +167,7 @@ local mt = ac.creep['深渊冒险']{
     creeps_datas = '',
     creep_player = ac.player(12),
     force_cool = 600,
-    force_cool = 20,
+    -- force_cool = 20,
     max_index = 5,
 
 }
@@ -432,18 +432,18 @@ local function add_content2(hero)
     local dialog = p:dialog(list)
     function dialog:onClick(name)
         if name == '装备' then 
-            local cnt = math.random(2)
+            local cnt = math.random(3)
             for i=1,cnt do 
                 local name = ac.all_item[math.random(#ac.all_item)]
                 hero:add_item(name)
-                p:sendMsg('恭喜获得'..name,5)
+                p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..name,5)
             end
         elseif name == '功法' then 
-            local cnt = math.random(2)
+            local cnt = math.random(3)
             for i=1,cnt do 
                 local name = ac.all_skill[math.random(#ac.all_skill)]
                 hero:add_skill_item(name)
-                p:sendMsg('恭喜获得'..name,5)
+                p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..name,5)
             end
         elseif name == '强化物品的石头' then 
             local temp = {
@@ -458,11 +458,11 @@ local function add_content2(hero)
             if not rand_name then 
                 return true
             end
-            local cnt = math.random(5)
+            local cnt = math.random(6)
             for i=1,cnt do 
                 hero:add_item(rand_name)
             end
-            p:sendMsg('恭喜获得'..rand_name..'*'..cnt,5)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..rand_name..'*'..cnt,5)
 
         elseif name == '升级功法的书籍' then 
             local temp = {
@@ -481,13 +481,13 @@ local function add_content2(hero)
             for i=1,cnt do 
                 hero:add_item(rand_name)
             end
-            p:sendMsg('恭喜获得'..rand_name..'*'..cnt,5)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..rand_name..'*'..cnt,5)
         elseif name == '卡片' then 
             local cnt = math.random(1)
             for i=1,cnt do 
                 local name = ac.all_card[math.random(#ac.all_card)]
                 hero:add_item(name)
-                p:sendMsg('恭喜获得'..name,5)
+                p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..name,5)
             end
         elseif name == '稀有的物品' then  
             local temp = {
@@ -507,13 +507,16 @@ local function add_content2(hero)
             for i=1,cnt do 
                 hero:add_item(rand_name)
             end
-            p:sendMsg('恭喜获得'..rand_name..'*'..cnt,5)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..rand_name..'*'..cnt,5)
         elseif finds(name,'力量','敏捷','智力','全属性') then  
-            hero:add(name,10000000)
+            hero:add(name,20000000)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得2000W'..name,5)
         elseif name == '熔炼石' then 
             local index = math.random(6)
             local name = formatNumber(index)..'号熔炼石'
             hero:add_item(name)
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得'..name,5)
+
         end
 
     end
@@ -527,14 +530,14 @@ local function create_boss(name,where,index,owner_ship)
     --1, 1.4 ,1.4*1.4
     --改变boss 属性
     if index > 1 then 
-        boss:set('攻击', boss:get('攻击')*1.4^(index-1) )
-        boss:set('护甲', boss:get('护甲')*1.4^(index-1) )
-        boss:set('魔抗', boss:get('魔抗')*1.4^(index-1) )
-        boss:set('生命上限', boss:get('生命上限')*1.4^(index-1) )
-        boss:set('暴击伤害', boss:get('暴击伤害')*1.4^(index-1) )
+        boss:set('攻击', boss:get('攻击')*1.35^(index-1) )
+        boss:set('护甲', boss:get('护甲')*1.35^(index-1) )
+        boss:set('魔抗', boss:get('魔抗')*1.35^(index-1) )
+        boss:set('生命上限', boss:get('生命上限')*1.35^(index-1) )
+        boss:set('暴击伤害', boss:get('暴击伤害')*1.35^(index-1) )
     end
 
-    local eff = boss:add_effect('chest',[[[AKE]11.mdx]])
+    local eff = boss:add_effect('origin',[[[AKE]11.mdx]])
     boss:add_buff '召唤物'{
         skill = self,
         time = 30,
@@ -607,7 +610,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
                 --取商
                 -- local boss_index = math.floor(p.unit_kill_cnt[name]/300)
                 -- local flag = p.unit_kill_cnt[name] % 300
-                if p.unit_kill_cnt[name] == 300 then
+                if p.unit_kill_cnt[name] == 400 then
                     p.unit_kill_cnt[name] = 0 
                     local boss_index = p.boss_kill_succ[name] + 1
                     --创建boss
@@ -669,7 +672,7 @@ ac.game:event '游戏-开始' (function()
 
     --游戏开始后 刷怪时间
     local time = 5*60
-    time = 10
+    -- time = 10
     ac.player.self:sendMsg("|cffebb608【系统】|cff00ff00"..time .. "秒后，挑战首只深渊BOSS",10)
     ac.timer_ex 
     {

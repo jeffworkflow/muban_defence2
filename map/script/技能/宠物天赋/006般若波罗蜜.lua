@@ -17,13 +17,13 @@ mt{
 	--介绍
 
 tip = [[ 
-|cffffe799强化成功概率+2%
+|cffffe799技能伤害加深系数+10%
 
-|cff00ff00可对物品重铸，获得另外一个相同品质的物品
+|cff00ff00可对功法进行改写，获得另外一个相同品质的功法
 
 ]],
 	--技能图标
-	art = [[ronglu.blp]],
+	art = [[txs.blp]],
 	cool = 150,
     --目标类型
     target_type = ac.skill.TARGET_TYPE_UNIT,
