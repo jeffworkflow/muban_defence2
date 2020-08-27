@@ -72,6 +72,20 @@ local function up_item(item,player)
 end    
 
 function mt:on_cast_start()
+    local hero = self.owner 
+    local p = hero:get_owner()
+    local player = hero:get_owner()
+
+    self:add_content()
+
+    local rate = p:get('强化石天谕再一次概率')
+    if math.random(100000)/1000<=rate then 
+        print('又获得一次'..self.name,rate)
+        self:add_content()
+    end
+end
+
+function mt:add_content()
     local unit = self.owner
     local hero = self.owner
     local player = hero:get_owner()

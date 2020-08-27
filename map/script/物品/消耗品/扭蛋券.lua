@@ -202,11 +202,7 @@ local temp = {
 
 
 }  
-
-ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
-    if not finds(__u_raffle.name,'扭蛋券') then 
-        return 
-    end    
+local function add_content(seller,u,__it,__u_raffle)
     --__it 为神符类，已经被销毁
     local self = __u_raffle
     local hero = u
@@ -290,6 +286,19 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
         end
         tran_player:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 兑换|cff00ff00'..self.name..'|r的时候, 额外获得 |cffff0000再来一百次|cffcccccc（文字部分不做提醒）|r',2)
     end   
+
+
+end
+ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
+    if not finds(__u_raffle.name,'扭蛋券') then 
+        return 
+    end  
+    local rate = p:get('扭蛋券再一次概率')
+    if math.random(100000)/1000<=rate then 
+        print('又获得一次'..__u_raffle.name,rate)
+        add_content(seller,u,__it,__u_raffle)
+    end  
+    add_content(seller,u,__it,__u_raffle)
 
 end)
 

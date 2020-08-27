@@ -35,14 +35,16 @@ local new_ui = class.panel:builder{
         -- self.model_bg.model_red:set_progress(0.2)
         --设置动画
         local tab = self.model_bg
-        -- tab:set_process({
-        --     handle = '血条',
-        --     target = rate,
-        --     show = function(self,source)
-        --         tab.model_black:set_progress(source/100)
-        --     end
-        -- })
-        tab.model_black:set_progress(rate/100)
+        tab:set_process({
+            handle = '血条',
+            source = 100,
+            target = rate,
+            show = function(self,source)
+                -- print('设置：',source)
+                tab.model_black:set_progress(source/100)
+            end
+        })
+        -- tab.model_black:set_progress(rate/100)
     end,
     add_unit = function(self,unit)
         self:show()
@@ -54,13 +56,17 @@ local new_ui = class.panel:builder{
             self.trg1:remove()
             self.trg1 =nil
         end
-        self.trg = unit:event '伤害计算完毕' (function(_,damage)
+        --单位-属性变化 name, value)
+        self.trg = unit:event '单位-属性变化' (function(_,unit,name,value)
+            -- print('属性变化',_,name,value)
+            if name ~= '生命' then return end
             local rate = unit:get('生命') /unit:get('生命上限')*100
             -- print(rate)
             self:fresh(rate)
         end)
         self.trg1 = unit:event '单位-死亡' (function(_,damage)
             self:hide()
+            -- self.model_bg:remove_process('血条')
         end)
 
 
