@@ -293,6 +293,7 @@ ac.game:event '单位-触发抵用券' (function(_,seller,u,__it,__u_raffle)
     if not finds(__u_raffle.name,'扭蛋券') then 
         return 
     end  
+    local p = u:get_owner()
     local rate = p:get('扭蛋券再一次概率')
     if math.random(100000)/1000<=rate then 
         print('又获得一次'..__u_raffle.name,rate)
