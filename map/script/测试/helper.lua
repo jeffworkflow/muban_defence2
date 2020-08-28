@@ -1370,9 +1370,9 @@ end
 --读取 属性
 function helper:get(key)
 	if _in(key,ac.player_attr) then 
-		print('玩家属性：',key,self.owner:get(key))
+		print('玩家属性：',self:get_name(),key,self.owner:get(key))
 	else 
-		print('英雄属性：',key,self:get(key),self['属性'][key],self['属性'][key..'%'])
+		print('单位属性：',self:get_name(),key,self:get(key),self['属性'][key],self['属性'][key..'%'])
 	end	
 end	
 

@@ -263,7 +263,29 @@ game_event.on_key_up = function (code)
 end 
 game.register_event(game_event)
 
-
+local function add_sub_skl(skill)
+    local self = skill
+    -- print(self,self.name)
+    --如果有特性技能
+    if self.sub_skl then 
+        --调整基本数据
+        for key,val in pairs(ac.table.ItemData[self.name]) do 
+            self[key] = val
+        end
+        --调整属性数据
+        for key,val in sortpairs(self.attr) do 
+            if ac.skill[self.sub_skl].attr_mul then 
+                self.attr[key] = val * (1 + ac.skill[self.sub_skl].attr_mul/100)
+            end
+        end
+        --调整特性 tip 
+        self.sub_skl_tip = ac.skill[self.sub_skl]:get_tip()
+        local need_map_level = self.need_map_level - (ac.skill[self.sub_skl].reduce_level or 0)
+        self:set('need_map_level',need_map_level)
+        -- self:fresh_tip()
+        -- print('测试tip：',self.name,self.sub_skl_tip,self.sub_skl,ac.skill[self.sub_skl]:get_tip())
+    end
+end
 function ac.unit.__index:add_save_item(it)
     local p = self.owner 
     if type(it) =='string'  then 	
@@ -297,12 +319,20 @@ function ac.unit.__index:add_save_item(it)
                 p.hero:add(key,-val)
             end
         end    
+        --移除技能
+        if old_item.sub_skl then 
+            p.hero:remove_skill(old_item.sub_skl)
+        end 
         --等待0秒后给物品
         ac.wait(0,function()
             self:add_item(old_item.name)
         end)
     end    
     p.save_item_list[it.type1] = it
+    if it.sub_skl then 
+        --添加技能
+        p.hero:add_skill(it.sub_skl,'隐藏')
+    end
 
     --增加属性
     if it.attr and p:Map_GetMapLevel() >= it.need_map_level then 
@@ -336,21 +366,28 @@ ac.wait(100,function()
                 art = ac.table.ItemData[name].art,
                 color_name = '|cff'..ac.color_code[ac.table.ItemData[name].color or '白']..ac.table.ItemData[name].title..'|r',
                 need_map_level = ac.table.ItemData[name].need_map_level,
+                sub_skl = ac.table.ItemData[name].sub_skl,
                 map_level_tip = function(self)
-
+                    local level_tip = ac.table.ItemData[name].need_map_level
+                    -- if ac.table.ItemData[name].reduce_level then 
+                    --     level_tip = level_tip ..'(-'..ac.table.ItemData[name].reduce_level..')'
+                    -- end
                     if not self.owner then 
-                        return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
+                        return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..level_tip .. '|r'
                     end  
 
                     local p=self.owner.owner 
-                    if p:Map_GetMapLevel() >= self.need_map_level then
-                    -- local color  =  p:Map_GetMapLevel() > self.need_map_level and '绿' or '红'
-                        return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..self.need_map_level .. '|r'
+                    if p:Map_GetMapLevel() >= level_tip then
+                    -- local color  =  p:Map_GetMapLevel() > level_tip and '绿' or '红'
+                        return '|cffffe799需求地图等级: |cff'..ac.color_code['绿']..''..level_tip .. '|r'
                     else 
-                        return '|cff'..ac.color_code['红']..'需求地图等级: '..self.need_map_level .. '|r|cffffff00（可提前穿戴保存）|r'
+                        return '|cff'..ac.color_code['红']..'需求地图等级: '..level_tip .. '|r|cffffff00（可提前穿戴保存）|r'
                     end
                 end
             }
+            --添加特性相关的 属性
+            add_sub_skl(ac.skill[name])
+
             function mt:on_cast_start()
                 local hero = self.owner 
                 local p = self.owner 

@@ -5,6 +5,7 @@ require '物品.商店'
 require '物品._常用'
 require '物品.物品技能'
 require '物品.物品技能2'
+require '物品.存档随机物品'
 
 
 local unit = require 'types.unit'

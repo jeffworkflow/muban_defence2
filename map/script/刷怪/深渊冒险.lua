@@ -246,86 +246,108 @@ local award_list = {
 }
 --改变怪物
 function mt:on_change_creep(unit,lni_data)
-    change_attr(unit,self.index)
-    --显示boss 血条
-    if ac.ui and ac.ui.blood_bar then 
-        ac.ui.blood_bar:add_unit(unit)
-    end
-    unit:event '单位-死亡'(function(_,u,killer)
-        -- 掉落奖励
-        local rate = 50
-        for i,name in ipairs(award_list) do 
-            if math.random(100000)/1000 <=rate then 
-                add_content(name,u,killer)
-            end
+    --特效
+    ac.effect_ex{
+        model = [[Void Teleport Yellow To.mdx]],
+        point = ac.rect.j_rect('saijiboss2'),
+        time = 5
+    }
+    unit:add_buff '隐藏'{
+        time = 5
+    }
+    unit:add_buff '缴械'{
+        time = 5
+    }
+    unit:add_buff '无敌'{
+        time = 5
+    }
+    unit:add_buff '定身'{
+        time = 5
+    }
+
+    ac.wait(5*1000,function()
+        --改变属性
+        change_attr(unit,self.index)
+        unit:add_effect('origin',[[Void Teleport Yellow Target.mdx]]):remove()
+        --显示boss 血条
+        if ac.ui and ac.ui.blood_bar then 
+            ac.ui.blood_bar:add_unit(unit)
         end
-
-        -- 每回合开始 都会先检查计时器是否还存在，存在则清空，重新计时。
-        if self.timer_ex2 then 
-            self.timer_ex2:remove()
-            self.timer_ex2 = nil
-        end   
-        if self.timer_ex3 then 
-            self.timer_ex3:remove()
-            self.timer_ex3 = nil
-        end  
-        if self.timer_ex4 then 
-            self.timer_ex4:remove()
-            self.timer_ex4 = nil
-        end
-        --重设 地图设置 （镜头等）
-        reset_all()  
-    end)
-
-    
-    if self.index == 5 then 
-        
-        unit:add_buff '无敌'{
-            time = 3
-        }
-
         unit:event '单位-死亡'(function(_,u,killer)
-            print('深渊冒险成功',5)
-            -- ac.game:event_notify('深渊冒险成功')
-            --存档
-            for i=1,10 do
-                local player = ac.player[i]
-                local p = ac.player[i]
-                if player:is_player() then
-                    local key = 'symx'
-                    if ac.g_game_degree > (player.server['深渊冒险'] or 0) then
-                        player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
-                    end 
+            -- 掉落奖励
+            local rate = 50
+            for i,name in ipairs(award_list) do 
+                if math.random(100000)/1000 <=rate then 
+                    add_content(name,u,killer)
+                end
+            end
+    
+            -- 每回合开始 都会先检查计时器是否还存在，存在则清空，重新计时。
+            if self.timer_ex2 then 
+                self.timer_ex2:remove()
+                self.timer_ex2 = nil
+            end   
+            if self.timer_ex3 then 
+                self.timer_ex3:remove()
+                self.timer_ex3 = nil
+            end  
+            if self.timer_ex4 then 
+                self.timer_ex4:remove()
+                self.timer_ex4 = nil
+            end
+            --重设 地图设置 （镜头等）
+            reset_all()  
+        end)
+    
         
-                    local degree = ac.g_game_degree
-                    degree = 2^(degree-1)
-                    if not has_flag((p.server['深渊冒险奖励'] or 0),degree) then
-                        local key = ac.server.name2key('深渊冒险奖励')
-                        player:Map_AddServerValue(key,degree)  
-                    end
-                    
-                    local ok = ac.get_save_flag('深渊冒险')
-                    if ok then 
-                        --处理排行榜相关
-                        local key = ac.server.name2key('深渊冒险')
+        if self.index == 5 then 
+            
+            unit:add_buff '无敌'{
+                time = 3
+            }
+    
+            unit:event '单位-死亡'(function(_,u,killer)
+                print('深渊冒险成功',5)
+                -- ac.game:event_notify('深渊冒险成功')
+                --存档
+                for i=1,10 do
+                    local player = ac.player[i]
+                    local p = ac.player[i]
+                    if player:is_player() then
+                        local key = 'symx'
+                        if ac.g_game_degree > (player.server['深渊冒险'] or 0) then
+                            player:Map_SaveServerValue(key,ac.g_game_degree) --网易服务器
+                        end 
+            
                         local degree = ac.g_game_degree
-                        if degree > (player.cus_server['深渊冒险'] or 0) then
-                            -- print('保存新的征程到服务器2',player,degree,player.cus_server['新的征程'])
-                            player:SetServerValue(key,degree) 
-                        end    
-                        --今日最榜
-                        if degree > (player.cus_server['今日深渊冒险']  or 0) then
-                            player:SetServerValue('today_'..key,degree)  
+                        degree = 2^(degree-1)
+                        if not has_flag((p.server['深渊冒险奖励'] or 0),degree) then
+                            local key = ac.server.name2key('深渊冒险奖励')
+                            player:Map_AddServerValue(key,degree)  
+                        end
+                        
+                        local ok = ac.get_save_flag('深渊冒险')
+                        if ok then 
+                            --处理排行榜相关
+                            local key = ac.server.name2key('深渊冒险')
+                            local degree = ac.g_game_degree
+                            if degree > (player.cus_server['深渊冒险'] or 0) then
+                                -- print('保存新的征程到服务器2',player,degree,player.cus_server['新的征程'])
+                                player:SetServerValue(key,degree) 
+                            end    
+                            --今日最榜
+                            if degree > (player.cus_server['今日深渊冒险']  or 0) then
+                                player:SetServerValue('today_'..key,degree)  
+                            end
                         end
                     end
                 end
-            end
-        
-            local tip ='|cffebb608【系统】|cffff0000深渊冒险成功，2分钟后结束游戏！！！'
-            ac.game:event_notify('游戏-结束',true,tip)
-        end)
-    end
-   
+            
+                local tip ='|cffebb608【系统】|cffff0000深渊冒险成功，2分钟后结束游戏！！！'
+                ac.game:event_notify('游戏-结束',true,tip)
+            end)
+        end
+    end)
 
 end
 

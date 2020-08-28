@@ -2,57 +2,57 @@
 --存档物品库
 local item_list = {
     --名字 = 生成个数 装备类型 装备等级 图标 基础属性
--- ['霓光刀']={num=20,type1 = '武器',lv = 1,art = 'yiji1.blp',attr = {['攻击']=2000000,['攻击减甲']=10}},
--- ['霓光甲']={num=20,type1 = '衣服',lv = 1,art = 'yiji2.blp',attr = {['护甲']=2000}},
--- ['霓光面罩']={num=20,type1 = '头盔',lv = 1,art = 'yiji3.blp',attr = {['护甲']=500,['技能基础伤害']=1000000}},
--- ['霓光靴']={num=20,type1 = '鞋子',lv = 1,art = 'yiji4.blp',attr = {['护甲']=500,['移动速度']=15}},
--- ['霓光腰带']={num=20,type1 = '腰带',lv = 1,art = 'yiji5.blp',attr = {['护甲']=500,['生命上限']=5000000}},
--- ['霓光之钩']={num=20,type1 = '手套',lv = 1,art = 'yiji6.blp',attr = {['护甲']=500,['攻击距离']=15}},
+-- ['霓光刀']={num=3,type1 = '武器',lv = 1,art = 'yiji1.blp',attr = {['攻击']=2000000,['攻击减甲']=10}},
+-- ['霓光甲']={num=3,type1 = '衣服',lv = 1,art = 'yiji2.blp',attr = {['护甲']=2000}},
+-- ['霓光面罩']={num=3,type1 = '头盔',lv = 1,art = 'yiji3.blp',attr = {['护甲']=500,['技能基础伤害']=1000000}},
+-- ['霓光靴']={num=3,type1 = '鞋子',lv = 1,art = 'yiji4.blp',attr = {['护甲']=500,['移动速度']=15}},
+-- ['霓光腰带']={num=3,type1 = '腰带',lv = 1,art = 'yiji5.blp',attr = {['护甲']=500,['生命上限']=5000000}},
+-- ['霓光之钩']={num=3,type1 = '手套',lv = 1,art = 'yiji6.blp',attr = {['护甲']=500,['攻击距离']=15}},
 
--- ['血腥三月镰']={num=20,type1 = '武器',lv = 2,art = 'erji1.blp',attr = {['攻击']=6000000,['攻击减甲']=30}},
--- ['血腥三月甲']={num=20,type1 = '衣服',lv = 2,art = 'erji2.blp',attr = {['护甲']=6000}},
--- ['血腥三月面罩']={num=20,type1 = '头盔',lv = 2,art = 'erji3.blp',attr = {['护甲']=1500,['技能基础伤害']=3000000}},
--- ['血腥三月鞋']={num=20,type1 = '鞋子',lv = 2,art = 'erji4.blp',attr = {['护甲']=1500,['移动速度']=30}},
--- ['血腥三月腰带']={num=20,type1 = '腰带',lv = 2,art = 'erji5.blp',attr = {['护甲']=1500,['生命上限']=15000000}},
--- ['血腥三月护手']={num=20,type1 = '手套',lv = 2,art = 'erji6.blp',attr = {['护甲']=1500,['攻击距离']=30}},
+-- ['血腥三月镰']={num=3,type1 = '武器',lv = 2,art = 'erji1.blp',attr = {['攻击']=6000000,['攻击减甲']=30}},
+-- ['血腥三月甲']={num=3,type1 = '衣服',lv = 2,art = 'erji2.blp',attr = {['护甲']=6000}},
+-- ['血腥三月面罩']={num=3,type1 = '头盔',lv = 2,art = 'erji3.blp',attr = {['护甲']=1500,['技能基础伤害']=3000000}},
+-- ['血腥三月鞋']={num=3,type1 = '鞋子',lv = 2,art = 'erji4.blp',attr = {['护甲']=1500,['移动速度']=30}},
+-- ['血腥三月腰带']={num=3,type1 = '腰带',lv = 2,art = 'erji5.blp',attr = {['护甲']=1500,['生命上限']=15000000}},
+-- ['血腥三月护手']={num=3,type1 = '手套',lv = 2,art = 'erji6.blp',attr = {['护甲']=1500,['攻击距离']=30}},
 
--- ['银霜法杖']={num=20,type1 = '武器',lv = 3,art = 'sanji1.blp',attr = {['攻击']=18000000,['攻击减甲']=90}},
--- ['银霜甲']={num=20,type1 = '衣服',lv = 3,art = 'sanji2.blp',attr = {['护甲']=18000}},
--- ['银霜头盔']={num=20,type1 = '头盔',lv = 3,art = 'sanji3.blp',attr = {['护甲']=4500,['技能基础伤害']=9000000}},
--- ['银霜鞋']={num=20,type1 = '鞋子',lv = 3,art = 'sanji4.blp',attr = {['护甲']=4500,['移动速度']=60}},
--- ['银霜腰带']={num=20,type1 = '腰带',lv = 3,art = 'sanji5.blp',attr = {['护甲']=4500,['生命上限']=75000000}},
--- ['银霜护手']={num=20,type1 = '手套',lv = 3,art = 'sanji6.blp',attr = {['护甲']=4500,['攻击距离']=60}},
+-- ['银霜法杖']={num=3,type1 = '武器',lv = 3,art = 'sanji1.blp',attr = {['攻击']=18000000,['攻击减甲']=90}},
+-- ['银霜甲']={num=3,type1 = '衣服',lv = 3,art = 'sanji2.blp',attr = {['护甲']=18000}},
+-- ['银霜头盔']={num=3,type1 = '头盔',lv = 3,art = 'sanji3.blp',attr = {['护甲']=4500,['技能基础伤害']=9000000}},
+-- ['银霜鞋']={num=3,type1 = '鞋子',lv = 3,art = 'sanji4.blp',attr = {['护甲']=4500,['移动速度']=60}},
+-- ['银霜腰带']={num=3,type1 = '腰带',lv = 3,art = 'sanji5.blp',attr = {['护甲']=4500,['生命上限']=75000000}},
+-- ['银霜护手']={num=3,type1 = '手套',lv = 3,art = 'sanji6.blp',attr = {['护甲']=4500,['攻击距离']=60}},
 
--- ['菲普斯的法杖']={num=20,type1 = '武器',lv = 4,art = 'siji1.blp',attr = {['攻击']=54000000,['攻击减甲']=180}},
--- ['菲普斯的战甲']={num=20,type1 = '衣服',lv = 4,art = 'siji2.blp',attr = {['护甲']=54000}},
--- ['菲普斯的面具']={num=20,type1 = '头盔',lv = 4,art = 'siji3.blp',attr = {['护甲']=13500,['技能基础伤害']=27000000}},
--- ['菲普斯的鞋子']={num=20,type1 = '鞋子',lv = 4,art = 'siji4.blp',attr = {['护甲']=13500,['移动速度']=120}},
--- ['菲普斯的护腰']={num=20,type1 = '腰带',lv = 4,art = 'siji5.blp',attr = {['护甲']=13500,['生命上限']=375000000}},
--- ['菲普斯的护手']={num=20,type1 = '手套',lv = 4,art = 'siji6.blp',attr = {['护甲']=13500,['攻击距离']=120}},
+-- ['菲普斯的法杖']={num=3,type1 = '武器',lv = 4,art = 'siji1.blp',attr = {['攻击']=54000000,['攻击减甲']=180}},
+-- ['菲普斯的战甲']={num=3,type1 = '衣服',lv = 4,art = 'siji2.blp',attr = {['护甲']=54000}},
+-- ['菲普斯的面具']={num=3,type1 = '头盔',lv = 4,art = 'siji3.blp',attr = {['护甲']=13500,['技能基础伤害']=27000000}},
+-- ['菲普斯的鞋子']={num=3,type1 = '鞋子',lv = 4,art = 'siji4.blp',attr = {['护甲']=13500,['移动速度']=120}},
+-- ['菲普斯的护腰']={num=3,type1 = '腰带',lv = 4,art = 'siji5.blp',attr = {['护甲']=13500,['生命上限']=375000000}},
+-- ['菲普斯的护手']={num=3,type1 = '手套',lv = 4,art = 'siji6.blp',attr = {['护甲']=13500,['攻击距离']=120}},
+
+-- --新增
+-- ['卓拉的魔石']={num=3,type1 = '武器',lv = 5,art = 'wuji1.blp',attr = {['攻击']=100000000,['攻击减甲']=400}},
+-- ['卓拉的魔袍']={num=3,type1 = '衣服',lv = 5,art = 'wuji2.blp',attr = {['护甲']=100000}},
+-- ['卓拉的魔法帽']={num=3,type1 = '头盔',lv = 5,art = 'wuji3.blp',attr = {['护甲']=25000,['技能基础伤害']=55000000}},
+-- ['卓拉的魔靴']={num=3,type1 = '鞋子',lv = 5,art = 'wuji4.blp',attr = {['护甲']=25000,['移动速度']=150}},
+-- ['卓拉的腰带']={num=3,type1 = '腰带',lv = 5,art = 'wuji5.blp',attr = {['护甲']=25000,['生命上限']=750000000}},
+-- ['卓拉的护手']={num=3,type1 = '手套',lv = 5,art = 'wuji6.blp',attr = {['护甲']=25000,['攻击距离']=150}},
+
+-- --新增
+-- ['天行者的队长盾']={num=3,type1 = '武器',lv = 6,art = 'liuji1.blp',attr = {['攻击']=200000000,['攻击减甲']=800}},
+-- ['天行者的胸甲']={num=3,type1 = '衣服',lv = 6,art = 'liuji2.blp',attr = {['护甲']=200000}},
+-- ['天行者的头盔']={num=3,type1 = '头盔',lv = 6,art = 'liuji3.blp',attr = {['护甲']=50000,['技能基础伤害']=100000000}},
+-- ['天行者的战靴']={num=3,type1 = '鞋子',lv = 6,art = 'liuji4.blp',attr = {['护甲']=50000,['移动速度']=180}},
+-- ['天行者的护腰']={num=3,type1 = '腰带',lv = 6,art = 'liuji5.blp',attr = {['护甲']=50000,['生命上限']=1500000000}},
+-- ['天行者的护腕']={num=3,type1 = '手套',lv = 6,art = 'liuji6.blp',attr = {['护甲']=50000,['攻击距离']=180}},
 
 --新增
--- ['卓拉的魔石']={num=20,type1 = '武器',lv = 5,art = 'wuji1.blp',attr = {['攻击']=100000000,['攻击减甲']=400}},
--- ['卓拉的魔袍']={num=20,type1 = '衣服',lv = 5,art = 'wuji2.blp',attr = {['护甲']=100000}},
--- ['卓拉的魔法帽']={num=20,type1 = '头盔',lv = 5,art = 'wuji3.blp',attr = {['护甲']=25000,['技能基础伤害']=55000000}},
--- ['卓拉的魔靴']={num=20,type1 = '鞋子',lv = 5,art = 'wuji4.blp',attr = {['护甲']=25000,['移动速度']=150}},
--- ['卓拉的腰带']={num=20,type1 = '腰带',lv = 5,art = 'wuji5.blp',attr = {['护甲']=25000,['生命上限']=750000000}},
--- ['卓拉的护手']={num=20,type1 = '手套',lv = 5,art = 'wuji6.blp',attr = {['护甲']=25000,['攻击距离']=150}},
-
---新增
--- ['天行者的队长盾']={num=20,type1 = '武器',lv = 6,art = 'liuji1.blp',attr = {['攻击']=200000000,['攻击减甲']=800}},
--- ['天行者的胸甲']={num=20,type1 = '衣服',lv = 6,art = 'liuji2.blp',attr = {['护甲']=200000}},
--- ['天行者的头盔']={num=20,type1 = '头盔',lv = 6,art = 'liuji3.blp',attr = {['护甲']=50000,['技能基础伤害']=100000000}},
--- ['天行者的战靴']={num=20,type1 = '鞋子',lv = 6,art = 'liuji4.blp',attr = {['护甲']=50000,['移动速度']=180}},
--- ['天行者的护腰']={num=20,type1 = '腰带',lv = 6,art = 'liuji5.blp',attr = {['护甲']=50000,['生命上限']=1500000000}},
--- ['天行者的护腕']={num=20,type1 = '手套',lv = 6,art = 'liuji6.blp',attr = {['护甲']=50000,['攻击距离']=180}},
-
---新增
-['血骷髅之镰']={num=20,type1 = '武器',lv = 7,art = 'qiji1.blp',attr = {['攻击']=400000000,['攻击减甲']=1600}},
-['血骷髅之甲']={num=20,type1 = '衣服',lv = 7,art = 'qiji2.blp',attr = {['护甲']=400000}},
-['血骷髅之头']={num=20,type1 = '头盔',lv = 7,art = 'qiji3.blp',attr = {['护甲']=100000,['技能基础伤害']=200000000}},
-['血骷髅之蹄']={num=20,type1 = '鞋子',lv = 7,art = 'qiji4.blp',attr = {['护甲']=100000,['移动速度']=210}},
-['血骷髅的腰带']={num=20,type1 = '腰带',lv = 7,art = 'qiji5.blp',attr = {['护甲']=100000,['生命上限']=3000000000}},
-['血骷髅之手']={num=20,type1 = '手套',lv = 7,art = 'qiji6.blp',attr = {['护甲']=100000,['攻击距离']=210}},
+['血骷髅之镰']={num=23,type1 = '武器',lv = 7,art = 'qiji1.blp',rate = 13,attr = {['攻击']=400000000,['攻击减甲']=1600}},
+['血骷髅之甲']={num=23,type1 = '衣服',lv = 7,art = 'qiji2.blp',rate = 13,attr = {['护甲']=400000}},
+['血骷髅之头']={num=23,type1 = '头盔',lv = 7,art = 'qiji3.blp',rate = 13,attr = {['护甲']=100000,['技能基础伤害']=230000000}},
+['血骷髅之蹄']={num=23,type1 = '鞋子',lv = 7,art = 'qiji4.blp',rate = 13,attr = {['护甲']=100000,['移动速度']=210}},
+['血骷髅的腰带']={num=23,type1 = '腰带',lv = 7,art = 'qiji5.blp',rate = 13,attr = {['护甲']=100000,['生命上限']=3000000000}},
+['血骷髅之手']={num=23,type1 = '手套',lv = 7,art = 'qiji6.blp',rate = 13,attr = {['护甲']=100000,['攻击距离']=210}},
 
 
 }
@@ -69,7 +69,7 @@ local item_list = {
 --     return temp[1] or 1
 -- end
 --起始id
-local start_id =1+6*20*4*4+1+6*20*4+1
+local start_id =1+6*20*4*4+1+6*20*4+1+6*20*4+1 + 6*6*4*3+1
 -- print(start_id)
 local max = 0
 for name, data in pairs(item_list) do 
@@ -235,7 +235,10 @@ function bignum2string(value)
         return value % 100000000 == 0 and ('%.0f'):format(value/100000000)..'亿' or ('%.1f'):format(value/100000000)..'亿'
     end
 end
-
+local specail_skl = {
+    '简易','超级简易','无级别','精致','珍宝',
+    '破血狂攻','弱点击破','神佑','愤怒','魔兽之印'
+}
 local function lni_item()
 	local lni_str = {}
     local temp_max_attr ={}
@@ -259,6 +262,15 @@ category = '存档']]
                 table.insert(lni_str,"type1 = '"..data.type1.."'"..'\n')
                 table.insert(lni_str,"lv = "..data.lv..""..'\n')
                 table.insert(lni_str,"art = '"..data.art.."'"..'\n')
+                --处理特性
+                local rate = data.rate or 0
+                local sub_skl
+                if math.random(100000) / 1000 <= rate then 
+                    local skl_name = specail_skl[math.random(#specail_skl)]
+                    table.insert(lni_str,"sub_skl = '"..skl_name.."'"..'\n')
+                    sub_skl = skl_name
+                end
+
                 --主要属性浮动%
                 local main_attr_per = math.random(50,150)
                 table.insert(lni_str,"main_attr_per = "..main_attr_per..""..'\n')
@@ -340,6 +352,9 @@ category = '存档']]
                     else     
                         table.insert(lni_str,"|cffffff00+"..bignum2string(tab[2])..per_str..' |r'.. attr_name ..'\n')
                     end    
+                end
+                if sub_skl then 
+                    table.insert(lni_str,'\n%sub_skl_tip%'..'\n')
                 end
                 table.insert(lni_str,'\n|cff00ff00点击进行穿戴|cffff0000（只存档穿戴后的装备）|cff00ff00，按Tab查看效果'..'\n')
                 table.insert(lni_str,']]'..'\n')

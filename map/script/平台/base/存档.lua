@@ -115,6 +115,7 @@ function player.__index:Map_GetServerValue(key)
     else
         value = value
     end
+    -- print('测试:',string.format("%.0f",value),value) --精度有问题，超出16位后，数据不准确
     return tonumber(value) or 0
 end
 
@@ -127,7 +128,7 @@ end
 --存档通用型 只能存入字符串型
 function player.__index:Map_SaveServerValue(key,value)
     local handle = self.handle
-    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(value))
+    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),value)
     --保存本局数据
     if not self.server then 
         self.server ={}
@@ -148,7 +149,7 @@ function player.__index:Map_AddServerValue(key,value)
     local handle = self.handle
     local real_value = self:Map_GetServerValue(key)+ tonumber(value) --服务器数据，不受地图等级等影响
     local v = math.max(self.server[key_name],real_value)
-    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(v))
+    japi.DzAPI_Map_SaveServerValue(handle,tostring(key),v)
     
 end
 

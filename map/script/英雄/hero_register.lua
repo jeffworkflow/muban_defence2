@@ -112,9 +112,9 @@ hero_register_main()
 
 ac.game:event '玩家-选择单位后' (function(self, player, hero)
 	-- print(hero,2)
-	if hero:get_owner() ~= player then 
-		return 
-	end 
+	-- if hero:get_owner() ~= player then 
+	-- 	return 
+	-- end 
 	player.selected = hero 
 	--刷新技能
 	for skill in hero:each_skill('英雄',true) do 
