@@ -249,7 +249,7 @@ function mt:on_change_creep(unit,lni_data)
     --特效
     ac.effect_ex{
         model = [[Void Teleport Yellow To.mdx]],
-        point = ac.rect.j_rect('saijiboss2'),
+        point = ac.rect.j_rect('saijiboss2'):get_point(),
         time = 5
     }
     unit:add_buff '隐藏'{
@@ -610,8 +610,13 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
         mt.cool = 0
         function mt:on_cast_start() 
             local hero = self.owner
-            local new_name = self.name:gsub('券','')
-            hero:add_item(new_name)
+            ac.wait(0,function()
+                local new_name = self.name:gsub('券','')
+                hero:add_item(new_name)
+                local it = ac.item.create_item(new_name)
+                ac.game:event_notify('单位-触发抵用券',hero,hero,it,self)
+                it:item_remove()
+            end)
         end
     end
 

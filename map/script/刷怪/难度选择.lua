@@ -177,6 +177,9 @@ ac.wait(1200,function()
         if bit >= 15 then 
             table.insert(list4,{name = '绝望',attr = 16}) 
         end
+        if bit >= 19 then 
+            table.insert(list4,{name = '修罗',attr = 20}) 
+        end
         
         for i = #list4 ,1 ,-1 do 
             local name = list4[i].name  
