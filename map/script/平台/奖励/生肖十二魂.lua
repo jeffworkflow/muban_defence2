@@ -413,6 +413,31 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 3,
 }
 
+local mt = ac.skill['萝卜']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[wbd4.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+88  每秒加智力
++10% 生命上限
+
+|cffcccccc杀死【武伯度】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加智力'] = 88,
+['生命上限%'] = 10,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+
 local mt = ac.skill['生肖十二魂']
 mt{
     is_spellbook = 1,
@@ -425,7 +450,7 @@ mt{
     
 }
 mt.skills = {
-    '鼠灵','牛灵','虎灵'
+    '鼠灵','牛灵','虎灵','兔灵'
 }
 
 
@@ -493,4 +518,19 @@ mt{
 }
 mt.skills = {
     '虎灵法袍','虎灵头束','虎灵浮尘','虎灵宝镜'
+}
+
+local mt = ac.skill['兔灵']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[wbd.blp]],
+    tip = [[
+
+点击查看 |cff00ffff兔灵|r 成就，通过挑战|cff00ff00【兔飞】|r获得
+ ]],
+    
+}
+mt.skills = {
+    '萝卜','白菜','菠菜','芹菜'
 }
