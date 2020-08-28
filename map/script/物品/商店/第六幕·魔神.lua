@@ -80,6 +80,15 @@ local function check(p)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战武伯都|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战武伯都|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
     end
+    if p.cnt_total_succ == 9 and not ac.flag_tztl  then
+        ac.flag_tztl = true
+        local shop = ac.find_unit('生肖十二魂')
+        local it = shop:add_sell_item('挑战兔飞')
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战兔飞|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战兔飞|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战兔飞|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+    end
 
     if p.cnt_total_succ == 5 and not ac.flag_msjy  then
         ac.flag_msjy = true
