@@ -155,14 +155,12 @@ local mt = ac.skill['挑战最强魔帝']
 mt{
     store_name = '挑战最强魔帝',
     item_type = '神符',
-    art = [[lingpai.blp]],
+    art = [[hyzw.blp]],
     tip=[[
 |cffffe799【说明】
 
-|cff00ff00消耗 |cffff00005亿全属性 |cff00ff00兑换 |cff00ffff一个神奇的令牌
-|cffcccccc（可用于幸运转盘中抽取各种稀有存档道具）
-  
-|cffcccccc每局兑换上限受游戏难度影响]]
+|cff00ff00点击召唤【最强魔帝】，击杀后可得荣耀战令（按F7查看），和完美通关奖励
+  ]]
 }
 function mt:on_cast_start()
     local seller = self.seller 
@@ -181,10 +179,8 @@ mt{
     tip=[[
 |cffffe799【说明】
 
-|cff00ff00消耗 |cffff00005亿全属性 |cff00ff00兑换 |cff00ffff一个神奇的令牌
-|cffcccccc（可用于幸运转盘中抽取各种稀有存档道具）
-  
-|cffcccccc每局兑换上限受游戏难度影响]]
+|cff00ff00放弃挑战【最强魔帝】，每个玩家都可获得多个神奇的令牌
+ ]]
 }
 function mt:on_cast_start()
     local seller = self.seller 
