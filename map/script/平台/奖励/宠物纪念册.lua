@@ -2,14 +2,10 @@
 local mt = ac.skill['宠物传说']
 mt{
 title = '宠物传说',
-art = [[shangjinlieren.blp]],
+art = [[chongwuchuanshuo.blp]],
 tip = [[
 
-%content%
-|cffffe799【获得方式】：|r
-|cff00ff00携带编号为【001】-【005】的宠物通关N2以上
-
-|cffffe799【成就属性】|r:
+|cff00ff00携带该宠物通关N2以上，就等于点亮该宠物
 %active1% 点亮宠物5 - 物理伤害加深系数+1%
 %active2% 点亮宠物10 - 技能伤害加深系数+1%
 %active3% 点亮宠物15 - 全伤加深系数+1%
@@ -18,7 +14,7 @@ tip = [[
 %active6% 点亮宠物30 - 全伤加深系数+2%
 %active7% 点亮宠物35 - 物理伤害加深系数+3%
 %active8% 点亮宠物40 - 技能伤害加深系数+3%
-]],
+ ]],
 content = '',
 active = function(self)
     local p = self.owner.owner 
@@ -30,14 +26,14 @@ active = function(self)
     end
     return cnt
 end,
-active1 =function(self) return self.active >=5 and '|cff00ff00' or '|cffffffff' end,
-active2 =function(self) return self.active >=10 and '|cff00ff00' or '|cffffffff' end,
-active3 =function(self) return self.active >=15 and '|cff00ff00' or '|cffffffff' end,
-active4 =function(self) return self.active >=20 and '|cff00ff00' or '|cffffffff' end,
-active5 =function(self) return self.active >=25 and '|cff00ff00' or '|cffffffff' end,
-active6 =function(self) return self.active >=30 and '|cff00ff00' or '|cffffffff' end,
-active7 =function(self) return self.active >=35 and '|cff00ff00' or '|cffffffff' end,
-active8 =function(self) return self.active >=40 and '|cff00ff00' or '|cffffffff' end,
+active1 =function(self) return self.active >=5 and '|cff00ff00' or '|cffcccccc' end,
+active2 =function(self) return self.active >=10 and '|cff00ff00' or '|cffcccccc' end,
+active3 =function(self) return self.active >=15 and '|cff00ff00' or '|cffcccccc' end,
+active4 =function(self) return self.active >=20 and '|cff00ff00' or '|cffcccccc' end,
+active5 =function(self) return self.active >=25 and '|cff00ff00' or '|cffcccccc' end,
+active6 =function(self) return self.active >=30 and '|cff00ff00' or '|cffcccccc' end,
+active7 =function(self) return self.active >=35 and '|cff00ff00' or '|cffcccccc' end,
+active8 =function(self) return self.active >=40 and '|cff00ff00' or '|cffcccccc' end,
 ['物理伤害加深系数'] = function(self) 
     local val = 0
     if self.active >=5 then 
