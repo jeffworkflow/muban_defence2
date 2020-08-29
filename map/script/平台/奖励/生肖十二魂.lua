@@ -419,23 +419,96 @@ mt{
 level = 0, --要动态插入
 max_level = 1,
 --图标
-art = [[wbd4.blp]],
+art = [[tufei1.blp]],
 --说明
 tip = [[
 
 |cffffe799【成就属性】：|r
-|cff00ff00+88  每秒加智力
-+10% 生命上限
+|cff00ff00+10% 攻击
++2%  技能伤害加深系数
 
-|cffcccccc杀死【武伯度】获得，获得概率与通关难度/地图等级相关]],
+|cffcccccc杀死【兔飞】获得，获得概率与通关难度/地图等级相关]],
 
-['每秒加智力'] = 88,
-['生命上限%'] = 10,
+['技能伤害加深系数'] = 2,
+['攻击%'] = 10,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 3,
 }
+
+local mt = ac.skill['白菜']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[tufei2.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+100% 分裂伤害
++100  攻击减甲
+
+|cffcccccc杀死【兔飞】获得，获得概率与通关难度/地图等级相关]],
+
+['分裂伤害'] = 100,
+['攻击减甲'] = 100,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['菠菜']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[tufei3.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+5% 敏捷
++5% 智力
+
+|cffcccccc杀死【兔飞】获得，获得概率与通关难度/地图等级相关]],
+
+['智力%'] = 5,
+['敏捷%'] = 5,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['芹菜']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[tufei4.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+108 每秒加智力
++10%  触发概率加成
+
+|cffcccccc杀死【兔飞】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加智力'] = 108,
+['触发概率加成'] = 10,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
 
 
 local mt = ac.skill['生肖十二魂']
@@ -524,7 +597,7 @@ local mt = ac.skill['兔灵']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wbd.blp]],
+    art = [[tufei.blp]],
     tip = [[
 
 点击查看 |cff00ffff兔灵|r 成就，通过挑战|cff00ff00【兔飞】|r获得

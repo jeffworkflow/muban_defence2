@@ -1,27 +1,27 @@
 local mt = ac.skill['简易']
 {
     reduce_level =5,
-    tip=[[佩戴的地图等级需求减少5级]],
+    tip=[[|cffffe799【特性-简易】|r佩戴的地图等级需求减少5级]],
 }
 local mt = ac.skill['超级简易']
 {
     reduce_level =15,
-    tip=[[佩戴的地图等级需求减少15级]],
+    tip=[[|cffffe799【特性-超级简易】|r佩戴的地图等级需求减少15级]],
 }
 local mt = ac.skill['无级别']
 {
     reduce_level =99, --表示无级别
-    tip=[[无视佩戴的地图等级需求]],
+    tip=[[|cffffe799【特性-无级别】|r无视佩戴的地图等级需求]],
 }
 local mt = ac.skill['精致']
 {
     attr_mul =35, --表示无级别
-    tip=[[全部属性 + 35%]],
+    tip=[[|cffffe799【特性-精致】|r该装备的实际属性额外提升35%]],
 }
 local mt = ac.skill['珍宝']
 {
     attr_mul =50, --表示无级别
-    tip=[[全部属性 + 50%]],
+    tip=[[|cffffe799【特性-珍宝】|r该装备的实际属性额外提升50%]],
 }
 
 local mt = ac.skill['破血狂攻']
@@ -29,7 +29,7 @@ local mt = ac.skill['破血狂攻']
     unique_name ='破血狂攻',
     event_name = '造成伤害效果',
     attack_cnt =10,
-    tip =[[攻击10次再打一次]]
+    tip =[[|cffffe799【唯一特性-破血狂攻】|r每攻击10下，可以额外攻击1次]]
 }
 function mt:on_add()
     local skill = self
@@ -90,7 +90,7 @@ end
 
 local mt = ac.skill['弱点击破']
 mt{
-    tip=[[djfisdjfijsdif]]
+    tip=[[|cffffe799【唯一特性-神佑】|r无视敌人5%的护甲]]
 }
 function mt:on_add()
     local hero = self.owner 
@@ -119,11 +119,11 @@ end
 local mt = ac.skill['神佑']
 mt{
     --触发几率
-   chance = 20,
+   chance = 10,
    unique_name ='神佑',
    effect = [[Abilities\Spells\Human\Resurrect\ResurrectCaster.mdl]],
    event_name = '单位-即将死亡',
-   tip=[[20%的几率出现神佑复活效果]]
+   tip=[[|cffffe799【唯一特性-神佑】|r死亡时10%几率复活]]
 }
 function mt:damage_start(unit,killer)
     local hero =self.owner
@@ -154,7 +154,7 @@ mt{
    chance = 10,
    unique_name ='愤怒',
    event_name = '造成伤害效果',
-   tip=[[攻击10%几率提升5%全伤加深系数，持续10秒]]
+   tip=[[|cffffe799【唯一特性-愤怒】|r攻击10% 几率提升5%全伤加深系数，持续10秒]]
 }
 function mt:damage_start(damage)
     local skill = self
@@ -166,10 +166,11 @@ function mt:damage_start(damage)
 		return 
 	end 
 	hero:add_buff '属性_全伤加深系数'{
-        cover_max = 1,
+        cover_max = 10,
         cover_type = 1,
         time = 10,
         value = 5,
+        
     }
 end
 
@@ -179,8 +180,8 @@ mt{
    chance = 10,
    unique_name ='愤怒',
    event_name = '造成伤害效果',
-   damage_area = 800,
-   tip=[[唯一-魔兽之印：攻击10%几率提升，周围友方单位2.5%全伤加深系数，持续10秒]]
+   damage_area = 2000,
+   tip=[[|cffffe799【唯一特性-魔兽之印】|r攻击10% 几率，提升周围友方单位2.5%全伤加深系数，持续10秒]]
 }
 function mt:damage_start(damage)
     local skill = self
@@ -197,7 +198,7 @@ function mt:damage_start(damage)
     : ipairs()
     do
         u:add_buff '属性_全伤加深系数'{
-            cover_max = 1,
+            cover_max = 10,
             cover_type = 1,
             time = 10,
             value = 2.5,

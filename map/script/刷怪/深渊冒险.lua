@@ -29,7 +29,8 @@ local boss = {
     '戴瑟提克','格里弗','克尔苏加德','太阳神',
     '鼠天瞳',
     '牛金刚',
-    '武伯都'
+    '武伯都',
+    '兔飞'
 }
 local boss_skill  ={
     ['一棒男'] = {'净化','给你一棒','再来一棒'},
@@ -249,20 +250,21 @@ function mt:on_change_creep(unit,lni_data)
     --特效
     ac.effect_ex{
         model = [[Void Teleport Yellow To.mdx]],
+        size = 1.5,
         point = ac.rect.j_rect('saijiboss2'):get_point(),
-        time = 5
+        time = 3
     }
     unit:add_buff '隐藏'{
-        time = 5
+        time = 3
     }
     unit:add_buff '缴械'{
-        time = 5
-    }
-    unit:add_buff '无敌'{
-        time = 5
+        time = 3
     }
     unit:add_buff '定身'{
-        time = 5
+        time = 3
+    }
+    unit:add_buff '无敌'{
+        time = 6
     }
 
     ac.wait(5*1000,function()
@@ -637,7 +639,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
                 --取商
                 -- local boss_index = math.floor(p.unit_kill_cnt[name]/300)
                 -- local flag = p.unit_kill_cnt[name] % 300
-                if p.unit_kill_cnt[name] == 750 then
+                if p.unit_kill_cnt[name] == 850 then
                     p.unit_kill_cnt[name] = 0 
                     local boss_index = p.boss_kill_succ[name] + 1
                     --创建boss
