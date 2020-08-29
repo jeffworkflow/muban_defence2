@@ -333,6 +333,21 @@ function helper:reload_mall(flag)
     -- end
 end	
 
+--服务器存档 保存 
+function helper:add_server(key,value)
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	-- p:SetServerValue(key,tonumber(value) or 1) 自定义服务器
+	if not key then 
+		for i,data in ipairs(ac.server_key) do 
+			local key = data[1]
+			p:Map_AddServerValue(key,value) --网易服务器
+		end		
+	elseif key == 'qd' then 	
+		p:AddServerValue(key,value) --自定义服务器
+	else
+		p:Map_AddServerValue(key,value) --网易服务器
+	end	
+end	
 
 --服务器存档 保存 
 function helper:save(key,value)
@@ -341,12 +356,12 @@ function helper:save(key,value)
 	if not key then 
 		for i,data in ipairs(ac.server_key) do 
 			local key = data[1]
-			p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器
+			p:Map_SaveServerValue(key,value) --网易服务器
 		end		
 	elseif key == 'qd' then 	
-		p:SetServerValue(key,tonumber(value) or nil) --自定义服务器
+		p:SetServerValue(key,value) --自定义服务器
 	else
-		p:Map_SaveServerValue(key,tonumber(value) or nil) --网易服务器
+		p:Map_SaveServerValue(key,value) --网易服务器
 	end	
 end	
 

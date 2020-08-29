@@ -1,3 +1,81 @@
+
+local mt = ac.skill['宠物传说']
+mt{
+title = '宠物传说',
+art = [[shangjinlieren.blp]],
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【001】-【005】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:
+%active1% 点亮宠物5 - 物理伤害加深系数+1%
+%active2% 点亮宠物10 - 技能伤害加深系数+1%
+%active3% 点亮宠物15 - 全伤加深系数+1%
+%active4% 点亮宠物20 - 物理伤害加深系数+2%
+%active5% 点亮宠物25 - 技能伤害加深系数+2%
+%active6% 点亮宠物30 - 全伤加深系数+2%
+%active7% 点亮宠物35 - 物理伤害加深系数+3%
+%active8% 点亮宠物40 - 技能伤害加深系数+3%
+]],
+content = '',
+active = function(self)
+    local p = self.owner.owner 
+    local cnt =0
+    for i=1,64 do 
+        if has_flag(p.server['宠物纪念册'],2^(i-1)) then 
+            cnt = cnt + 1 
+        end
+    end
+    return cnt
+end,
+active1 =function(self) return self.active >=5 and '|cff00ff00' or '|cffffffff' end,
+active2 =function(self) return self.active >=10 and '|cff00ff00' or '|cffffffff' end,
+active3 =function(self) return self.active >=15 and '|cff00ff00' or '|cffffffff' end,
+active4 =function(self) return self.active >=20 and '|cff00ff00' or '|cffffffff' end,
+active5 =function(self) return self.active >=25 and '|cff00ff00' or '|cffffffff' end,
+active6 =function(self) return self.active >=30 and '|cff00ff00' or '|cffffffff' end,
+active7 =function(self) return self.active >=35 and '|cff00ff00' or '|cffffffff' end,
+active8 =function(self) return self.active >=40 and '|cff00ff00' or '|cffffffff' end,
+['物理伤害加深系数'] = function(self) 
+    local val = 0
+    if self.active >=5 then 
+        val = val +1
+    end 
+    if self.active >=20 then 
+        val = val +2
+    end
+    if self.active >=35 then 
+        val = val +3
+    end
+    return  val
+end,
+['技能伤害加深系数'] = function(self) 
+    local val = 0
+    if self.active >=10 then 
+        val = val +1
+    end 
+    if self.active >=25 then 
+        val = val +2
+    end
+    if self.active >=40 then 
+        val = val +3
+    end
+    return  val
+end,
+['全伤加深系数'] = function(self) 
+    local val = 0
+    if self.active >=15 then 
+        val = val +1
+    end 
+    if self.active >=30 then 
+        val = val +2
+    end
+    return  val
+end,
+
+}
 local mt = ac.skill['宠物纪念册']
 mt{
     is_spellbook = 1,
@@ -11,7 +89,7 @@ mt{
     
 }
 mt.skills = {
-    '宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5','宠物纪念册6','宠物纪念册7','宠物纪念册8',
+    '宠物传说','宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5','宠物纪念册6','宠物纪念册7','宠物纪念册8',
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -23,25 +101,27 @@ function mt:on_add()
     end
 
     for index,skill in ipairs(self.skill_book) do 
-        local min = tonumber(string.sub(skill.name,16, -1))
-        min =  (min -1)*5+1
-        local max = min + 4 
-        local content = ''
-        local ok_cnt = 0 
-        for i = min,max do 
-            --有毕业 则 cid ac.peon_list
-            if has_flag(p.server['宠物纪念册'],2^(i-1)) and ac.peon_list[i] then 
-                content = content ..'|cff00ff00【'..string.format('%03d',i)..'】'..ac.peon_list[i]..'|r \n'
-                ok_cnt = ok_cnt + 1
-            else
-                content = content ..'【'..string.format('%03d',i)..'】'..'？？？ \n'
-            end        
-        end    
-        skill:set('content',content)
-        skill:fresh_tip()
-        if ok_cnt == 5 then 
-            skill:set_level(1)
-        end    
+        if index >1 then 
+            local min = tonumber(string.sub(skill.name,16, -1))
+            min =  (min -1)*5+1
+            local max = min + 4 
+            local content = ''
+            local ok_cnt = 0 
+            for i = min,max do 
+                --有毕业 则 cid ac.peon_list
+                if has_flag(p.server['宠物纪念册'],2^(i-1)) and ac.peon_list[i] then 
+                    content = content ..'|cff00ff00【'..string.format('%03d',i)..'】'..ac.peon_list[i]..'|r \n'
+                    ok_cnt = ok_cnt + 1
+                else
+                    content = content ..'【'..string.format('%03d',i)..'】'..'？？？ \n'
+                end        
+            end    
+            skill:set('content',content)
+            skill:fresh_tip()
+            if ok_cnt == 5 then 
+                skill:set_level(1)
+            end    
+        end
     end     
 end    
 

@@ -164,6 +164,11 @@ mt{
 }
 function mt:on_cast_start()
     local seller = self.seller 
+    --移除倒计时时间
+    if ac.choosed_timer then 
+        ac.choosed_timer:remove()
+        ac.choosed_timer = nil 
+    end
     --出现最强魔帝
     ac.zq_boss_ani()
     ac.wait(0,function()

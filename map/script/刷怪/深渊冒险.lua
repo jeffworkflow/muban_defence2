@@ -345,8 +345,22 @@ function mt:on_change_creep(unit,lni_data)
                     end
                 end
             
-                local tip ='|cffebb608【系统】|cffff0000深渊冒险成功，2分钟后结束游戏！！！'
-                ac.game:event_notify('游戏-结束',true,tip)
+                local rate = 45
+                if math.random(100000)/1000 <= rate then 
+                    local x,y = ac.rect.j_rect('moku'):get_point():get()
+                    local shop = ac.shop.create('最终的挑战',x,y,270)
+                    shop:add_sell_item('挑战最强魔帝')
+                    shop:add_sell_item('放弃挑战')
+                    -- print(shop,shop:get_point())
+                end  
+                ac.choosed_timer = ac.timer_ex{
+                    time = 120,
+                    title = "2分钟后结束游戏",
+                    func = function ()
+                        local tip ='|cffebb608【系统】|cffff0000深渊冒险成功，2分钟后结束游戏！！！'
+                        ac.game:event_notify('游戏-结束',true,tip)
+                    end,
+                }
             end)
         end
     end)
@@ -719,19 +733,11 @@ ac.game:event '游戏-开始' (function()
 end)
 
 --回合结束，概率出现 最终的挑战
-ac.game:event '游戏-回合结束'(function(trg,index, creep) 
-    if creep.name ~= '深渊冒险' then
-        return
-    end  
-    local rate = 45
-    if math.random(100000)/1000 <= rate then 
-        local x,y = ac.rect.j_rect('moku'):get_point():get()
-        local shop = ac.shop.create('最终的挑战',x,y,270)
-        shop:add_sell_item('挑战最强魔帝')
-        shop:add_sell_item('放弃挑战')
-        -- print(shop,shop:get_point())
-    end  
-end)
+-- ac.game:event '游戏-回合结束'(function(trg,index, creep) 
+--     if creep.name ~= '深渊冒险' then
+--         return
+--     end  
+-- end)
 
 
 
