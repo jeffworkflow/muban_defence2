@@ -314,7 +314,7 @@ ac.game:event '杀死最强魔帝' (function(trg,flag)
     -- if not flag then 
     --     return 
     -- end         
-    if finds(ac.g_game_degree_name,'贪婪魔窟') then 
+    if finds(ac.g_game_degree_name,'贪婪魔窟','深渊冒险') then 
         return 
     end   
     if ac.g_game_degree_attr > 11 then 

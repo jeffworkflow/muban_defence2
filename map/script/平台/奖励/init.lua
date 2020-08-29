@@ -16,4 +16,5 @@ require '平台.奖励.赛季'
 require '平台.奖励.完美的通关勋章'
 require '平台.奖励.生肖十二魂'
 require '平台.奖励.深渊冒险'
+require '平台.奖励.完美深渊冒险'
 

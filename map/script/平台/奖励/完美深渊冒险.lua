@@ -1,5 +1,5 @@
 --通关难度
-local mt = ac.skill['深渊一层']
+local mt = ac.skill['完美深渊一层']
 mt{
 --等级
 level = 0,
@@ -10,7 +10,7 @@ art = [[symx1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊一层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊一层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+50 杀怪加全属性|r
@@ -28,7 +28,7 @@ need_map_level = 5,
 }
 
 
-local mt = ac.skill['深渊二层']
+local mt = ac.skill['完美深渊二层']
 mt{
 --等级
 level = 0,
@@ -39,7 +39,7 @@ art = [[symx2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊二层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊二层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+75 杀怪加全属性|r
@@ -56,7 +56,7 @@ need_map_level = 6,
 
 }
 
-local mt = ac.skill['深渊三层']
+local mt = ac.skill['完美深渊三层']
 mt{
 --等级
 level = 0,
@@ -67,7 +67,7 @@ art = [[symx3.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊三层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊三层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+100 杀怪加全属性|r
@@ -84,7 +84,7 @@ need_map_level = 7,
 
 }
 
-local mt = ac.skill['深渊四层']
+local mt = ac.skill['完美深渊四层']
 mt{
 --等级
 level = 0,
@@ -95,7 +95,7 @@ art = [[symx4.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊四层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊四层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+125 杀怪加全属性|r
@@ -112,7 +112,7 @@ need_map_level = 8,
 
 }
 
-local mt = ac.skill['深渊五层']
+local mt = ac.skill['完美深渊五层']
 mt{
 --等级
 level = 0,
@@ -123,7 +123,7 @@ art = [[symx5.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊五层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊五层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+150 杀怪加全属性|r
@@ -140,7 +140,7 @@ need_map_level = 9,
 
 }
 
-local mt = ac.skill['深渊六层']
+local mt = ac.skill['完美深渊六层']
 mt{
 --等级
 level = 0,
@@ -151,7 +151,7 @@ art = [[symx6.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊六层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊六层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+175 杀怪加全属性|r
@@ -168,7 +168,7 @@ need_map_level = 10,
 
 }
 
-local mt = ac.skill['深渊七层']
+local mt = ac.skill['完美深渊七层']
 mt{
 --等级
 level = 0,
@@ -179,7 +179,7 @@ art = [[symx7.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊七层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊七层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+200 杀怪加全属性|r
@@ -196,7 +196,7 @@ need_map_level = 11,
 
 }
 
-local mt = ac.skill['深渊八层']
+local mt = ac.skill['完美深渊八层']
 mt{
 --等级
 level = 0,
@@ -207,7 +207,7 @@ art = [[symx8.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊八层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊八层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+225 杀怪加全属性|r
@@ -224,7 +224,7 @@ need_map_level = 12,
 
 }
 
-local mt = ac.skill['深渊九层']
+local mt = ac.skill['完美深渊九层']
 mt{
 --等级
 level = 0,
@@ -235,7 +235,7 @@ art = [[symx9.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊九层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊九层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+250 杀怪加全属性|r
@@ -252,7 +252,7 @@ need_map_level = 13,
 
 }
 
-local mt = ac.skill['深渊十层']
+local mt = ac.skill['完美深渊十层']
 mt{
 --等级
 level = 0,
@@ -263,7 +263,7 @@ art = [[symx10.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00通关|cff00ffff深渊十层|cff00ff00获得
+|cff00ff00通关|cff00ffff完美深渊十层|cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+275 杀怪加全属性|r
@@ -280,12 +280,12 @@ need_map_level = 14,
 
 }
 
-local mt = ac.skill['深渊冒险奖励']
+local mt = ac.skill['完美深渊冒险奖励']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[symx.blp]],
-    title = '深渊冒险',
+    title = '完美深渊冒险',
     tip = [[
 
 点击查看|cff00ffff 深渊冒险|r 成就
@@ -293,8 +293,8 @@ mt{
     
 }
 mt.skills ={
-    '完美深渊冒险奖励','深渊一层','深渊二层','深渊三层','深渊四层',
-    '深渊五层','深渊六层','深渊七层','深渊八层',
-    '深渊九层','深渊十层',
+    '完美深渊一层','完美深渊二层','完美深渊三层','完美深渊四层',
+    '完美深渊五层','完美深渊六层','完美深渊七层','完美深渊八层',
+    '完美深渊九层','完美深渊十层',
 }
 

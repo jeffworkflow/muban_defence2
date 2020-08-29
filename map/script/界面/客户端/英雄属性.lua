@@ -270,7 +270,11 @@ local function add_sub_skl(skill)
     if self.sub_skl then 
         --调整基本数据
         for key,val in pairs(ac.table.ItemData[self.name]) do 
-            self[key] = val
+            local  new_val = val
+            if type(val) == 'table' then 
+                new_val = table_copy(val)
+            end
+            self[key] = new_val
         end
         --调整属性数据
         for key,val in sortpairs(self.attr) do 
@@ -283,7 +287,7 @@ local function add_sub_skl(skill)
         local need_map_level = self.need_map_level - (ac.skill[self.sub_skl].reduce_level or 0)
         self:set('need_map_level',need_map_level)
         -- self:fresh_tip()
-        -- print('测试tip：',self.name,self.sub_skl_tip,self.sub_skl,ac.skill[self.sub_skl]:get_tip())
+        -- print('测试tip：',self.name,need_map_level,ac.skill[self.sub_skl].reduce_level,self.sub_skl_tip,self.sub_skl,ac.skill[self.sub_skl]:get_tip())
     end
 end
 function ac.unit.__index:add_save_item(it)
@@ -301,6 +305,7 @@ function ac.unit.__index:add_save_item(it)
             end    
         end)
     end	
+    add_sub_skl(it)
     --地图等级限制
     if p:Map_GetMapLevel() < it.need_map_level then 
         p:sendMsg('|cffebb608【系统】|cffff0000地图等级不够,装备属性不生效',5)

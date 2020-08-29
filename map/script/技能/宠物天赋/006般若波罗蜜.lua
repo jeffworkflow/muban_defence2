@@ -56,7 +56,7 @@ function mt:on_cast_start()
 	else
 		it:item_remove()
 	end
-	hero:add_item(name)
+	hero:add_skill_item(name)
 	self:active_cd()
 end
 

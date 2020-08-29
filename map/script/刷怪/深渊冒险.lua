@@ -717,3 +717,55 @@ ac.game:event '游戏-开始' (function()
         end,
     }
 end)
+
+--回合结束，概率出现 最终的挑战
+ac.game:event '游戏-回合结束'(function(trg,index, creep) 
+    if creep.name ~= '深渊冒险' then
+        return
+    end  
+    local rate = 45
+    if math.random(100000)/1000 <= rate then 
+        local x,y = ac.rect.j_rect('moku'):get_point():get()
+        local shop = ac.shop.create('最终的挑战',x,y,270)
+        shop:add_sell_item('挑战最强魔帝')
+        shop:add_sell_item('放弃挑战')
+        -- print(shop,shop:get_point())
+    end  
+end)
+
+
+
+--注册 获得完美深渊冒险奖励
+ac.game:event '杀死最强魔帝' (function(trg,flag)
+    -- if not flag then 
+    --     return 
+    -- end         
+    if not finds(ac.g_game_degree_name,'深渊冒险') then 
+        return 
+    end   
+    local list = ac.server.get_tab('完美深渊冒险')[3]
+    -- local name = 
+    local tab = list['完美深渊'..formatNumber(ac.g_game_degree)..'层']
+    if tab then 
+        -- print('完美的勋章：',ac.g_game_degree_name..'勋章')
+        -- print_r(tab)
+        for i=1,6 do 
+            local p = ac.player(i)
+            if p:is_player() then 
+                local index = tab[1]
+                local rate = tab.rate
+                index = 2^(index-1)
+                --没有这个数据
+                if not has_flag((p.server['完美深渊冒险'] or 0),index) then
+                    local key = ac.server.name2key('完美深渊冒险')
+                    print('获得完美深渊冒险2：',p,index,rate,tab[1],ac.g_game_degree_name)
+
+                    p:sendMsg('|cffebb608【系统】|r|cffff0000运气爆棚！！！恭喜获得本难度的勋章！|cff00ff00勋章的属性可在最强魔灵-通关难度奖励-通关勋章中查看！',8)
+
+                    p:Map_AddServerValue(key,index)  
+                end
+            end
+        end
+    end
+end)
+

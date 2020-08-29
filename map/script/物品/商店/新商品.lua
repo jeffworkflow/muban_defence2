@@ -150,3 +150,56 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     end
 
 end)
+
+local mt = ac.skill['挑战最强魔帝']
+mt{
+    store_name = '挑战最强魔帝',
+    item_type = '神符',
+    art = [[lingpai.blp]],
+    tip=[[
+|cffffe799【说明】
+
+|cff00ff00消耗 |cffff00005亿全属性 |cff00ff00兑换 |cff00ffff一个神奇的令牌
+|cffcccccc（可用于幸运转盘中抽取各种稀有存档道具）
+  
+|cffcccccc每局兑换上限受游戏难度影响]]
+}
+function mt:on_cast_start()
+    local seller = self.seller 
+    --出现最强魔帝
+    ac.zq_boss_ani()
+    ac.wait(0,function()
+        seller:remove()
+    end)
+end
+
+local mt = ac.skill['放弃挑战']
+mt{
+    store_name = '放弃挑战',
+    item_type = '神符',
+    art = [[lingpai.blp]],
+    tip=[[
+|cffffe799【说明】
+
+|cff00ff00消耗 |cffff00005亿全属性 |cff00ff00兑换 |cff00ffff一个神奇的令牌
+|cffcccccc（可用于幸运转盘中抽取各种稀有存档道具）
+  
+|cffcccccc每局兑换上限受游戏难度影响]]
+}
+function mt:on_cast_start()
+    local seller = self.seller 
+    --给神奇的令牌
+    local cnt = math.floor(ac.g_game_degree_attr/3+2)
+    for i=1,6 do 
+        local p = ac.player(i) 
+        if p:is_player() then 
+            local it = ac.item.create_item('神奇的令牌')
+            it:set_item_count(cnt)
+            p.hero:add_item(it)
+        end
+    end
+
+    ac.wait(0,function()
+        seller:remove()
+    end)
+end

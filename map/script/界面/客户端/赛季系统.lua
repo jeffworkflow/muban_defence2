@@ -574,7 +574,7 @@ local function boss_ani()
     end)
     
 end
-
+ac.zq_boss_ani = boss_ani
 --传送到贪婪魔窟  倒计时（文字提醒）
 local function blink_tlmk(start_time)
     local start_time = start_time or 60 
