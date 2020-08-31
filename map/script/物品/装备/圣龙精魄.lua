@@ -5,7 +5,7 @@ mt{
     color = '紫',
     item_type ='消耗品',
     tip = [[ 
-|cff00ff00可熔炼顶级的烧火棍和赤炎甲
+|cff00ff00可熔炼顶级的烧火棍和赤炎甲，熔炼后可获得圣龙气运，是触发“天选之人”的唯一条件
  ]],
     --技能图标
     art = [[jingpo.blp]],
@@ -52,6 +52,7 @@ function mt:on_cast_start()
         --发布 
         ac.game:event_notify('任务-圣龙气运',p) 
         p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看',5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得圣龙气运，它是触发“天选之人”的唯一条件',5)
         return
     end
      
@@ -78,7 +79,8 @@ function mt:on_cast_start()
         
         p.flag_sljp = true
         ac.game:event_notify('任务-圣龙气运',p) 
-        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看',5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜熔炼成功，炼化后的属性可在圣龙气运-套装熔炼中查看，早日成为“天选之人”',5)
+        p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得圣龙气运，它是触发“天选之人”的唯一条件',5)
     else
         self:add_item_count(1)
         p:sendMsg('|cffebb608【系统】|r|cff00ff00请检查烧火棍和赤炎甲是否已经升至|cffffff00顶级',5)    
