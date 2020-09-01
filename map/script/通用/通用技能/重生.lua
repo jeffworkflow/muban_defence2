@@ -7,7 +7,7 @@ mt.cool = 0
 --重生时间
 mt.time = 8
 mt.cnt = 1
-
+mt.passive = true
 mt.effect = [[Abilities\Spells\Orc\Reincarnation\ReincarnationTarget.mdl]]
 
 

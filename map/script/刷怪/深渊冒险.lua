@@ -48,8 +48,9 @@ local function change_attr(unit,index)
     unit:set_search_range(6000)
     local attr_mul = ac.get_difficult(ac.g_game_degree_attr)
     local data = ac.table.UnitData['第'..formatNumber(index)..'只BOSS']
+    print('深渊冒险：',data,index,'第'..formatNumber(index)..'只BOSS')
     --根据难度增强属性 
-    if data.attribute then  
+    if data and data.attribute then  
         unit:set('攻击',(data.attribute['攻击']or 1) * (attr_mul or 1))
         unit:set('生命上限',(data.attribute['生命上限']or 1) * (attr_mul or 1))
         unit:set('魔法上限',(data.attribute['魔法上限']or 1))

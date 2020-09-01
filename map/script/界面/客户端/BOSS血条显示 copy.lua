@@ -5,7 +5,7 @@
 local new_ui = class.panel:builder{
     x = 600,--屏幕界面X坐标
     y = 100,--屏幕界面Y坐标
-    w = 788,
+    w = 80,
     h = 80,
     is_show = false,
     level = 1,
@@ -21,25 +21,6 @@ local new_ui = class.panel:builder{
             level = 5,
             size = 1.5,
             model = [[Bar_XT_Black.mdx]],
-            pic_white = {
-                x=2,
-                y=15,
-                h=53,
-                w=0,
-                base_w = 783,
-                base_x = 2,
-                alpha = 0.7,
-                type = 'texture',
-                normal_image = [[image\white.tga]],
-                set_progress1 = function(self,rate,source_rate)
-                    local w = math.abs(rate - source_rate) * self.base_w
-                    -- local flag = rate - source_rate 
-                    local start_x = self.base_x + rate * self.base_w
-                    self:set_position(start_x,self.y)
-                    self:set_width(w)
-                    -- print(start_x,w)
-                end
-            },
         },
     },
     init_data = function(self)
@@ -58,17 +39,9 @@ local new_ui = class.panel:builder{
             handle = '血条',
             source = 100,
             target = rate,
-            tween_speed =1.4,
             show = function(self,source)
                 -- print('设置：',source)
-                tab.model_black:set_progress(self.target/100)
-                tab.model_black.pic_white:set_progress1(self.target/100,source/100)
-                
-                -- if math.abs(source - self.target) >=2 then
-                --     --白色图片，缓慢移动
-                -- else
-                --     tab.model_black.pic_white:set_width(0)
-                -- end
+                tab.model_black:set_progress(source/100)
             end
         })
         -- tab.model_black:set_progress(rate/100)
@@ -93,7 +66,7 @@ local new_ui = class.panel:builder{
         end)
         self.trg1 = unit:event '单位-死亡' (function(_,damage)
             self:hide()
-            self.model_bg:remove_process('血条')
+            -- self.model_bg:remove_process('血条')
         end)
 
 
