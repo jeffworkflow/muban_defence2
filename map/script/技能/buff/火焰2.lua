@@ -5,7 +5,7 @@ mt.is_damage_on_add = true
 mt.cover_max = 1
 
 function mt:on_add()
-    self.eff = self.target:add_effect('chest',[[Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl]])
+    self.eff = self.target:add_effect('origin',[[Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl]])
 
     if self.is_damage_on_add then  
         self:on_pulse()

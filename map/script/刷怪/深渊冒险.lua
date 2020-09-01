@@ -169,7 +169,7 @@ local mt = ac.creep['深渊冒险']{
     creeps_datas = '',
     creep_player = ac.player(12),
     force_cool = 600,
-    -- force_cool = 20,
+    -- force_cool = 10,
     max_index = 5,
 
 }
@@ -346,7 +346,7 @@ function mt:on_change_creep(unit,lni_data)
                     end
                 end
             
-                local rate = 45
+                local rate = 50
                 if math.random(100000)/1000 <= rate then 
                     local x,y = ac.rect.j_rect('moku'):get_point():get()
                     local shop = ac.shop.create('最终的挑战',x,y,270)
