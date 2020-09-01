@@ -563,16 +563,16 @@ end
 --创建boss
 local function create_boss(name,where,index,owner_ship)
     local boss = ac.player(12):create_unit(name..'BOSS1',where)
-    boss:addSize(0.01*(index-1))
+    boss:addSize(0.05*(index-1))
     boss.owner_ship = owner_ship
     --1, 1.4 ,1.4*1.4
     --改变boss 属性
     if index > 1 then 
-        boss:set('攻击', boss:get('攻击')*2^(index-1) )
-        boss:set('护甲', boss:get('护甲')*2^(index-1) )
-        boss:set('魔抗', boss:get('魔抗')*2^(index-1) )
-        boss:set('生命上限', boss:get('生命上限')*2^(index-1) )
-        boss:set('暴击伤害', boss:get('暴击伤害')*2^(index-1) )
+        boss:set('攻击', boss:get('攻击')*3^(index-1) )
+        boss:set('护甲', boss:get('护甲')*3^(index-1) )
+        boss:set('魔抗', boss:get('魔抗')*3^(index-1) )
+        boss:set('生命上限', boss:get('生命上限')*3^(index-1) )
+        boss:set('暴击伤害', boss:get('暴击伤害')*3^(index-1) )
     end
 
     local eff = boss:add_effect('origin',[[[AKE]11.mdx]])
@@ -653,7 +653,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
                 --取商
                 -- local boss_index = math.floor(p.unit_kill_cnt[name]/300)
                 -- local flag = p.unit_kill_cnt[name] % 300
-                if p.unit_kill_cnt[name] == 850 then
+                if p.unit_kill_cnt[name] == 1000 then
                     p.unit_kill_cnt[name] = 0 
                     local boss_index = p.boss_kill_succ[name] + 1
                     --创建boss
