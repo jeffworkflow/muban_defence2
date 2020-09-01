@@ -186,7 +186,7 @@ function bignum2string(value)
 end
 
 
---二进制开关，是否拥有***
+--二进制开关，是否拥有*** flag 最大值为 2^54-1 
 function has_flag(flag, bit)
 	return flag % (bit * 2) - flag % bit == bit
 end

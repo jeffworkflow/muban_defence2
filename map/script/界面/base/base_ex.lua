@@ -75,7 +75,7 @@ mt.now = 0 --当前
 mt.last_max=0 --上次结束时的值 作为下次起点
 mt.min_per_val = 1 --最小步长(%)
 mt.tween_speed = 1 --动画速度
-mt.tween_flag = true
+mt.tween_flag = false
 mt.t=0 --插值因子 动态
 function mt:get(str)
     return self[str]
@@ -111,9 +111,9 @@ function mt:update()
         -- print('现在的位置宽度：',now,now/420*100,now - old_now,(now - old_now)/420*100)
         self:set('now',now)
         self:show(now)
-    -- else
-    --     self:set('now',self:get('target'))
-    --     self:show(self:get('target'))
+    else
+        self:set('now',self:get('target'))
+        self:show(self:get('target'))
     end
 end
 function mt:remove()
@@ -152,8 +152,6 @@ function mt:start(data)
         --     self:show(self.target)
         -- else
         -- end
-
-
 
         return 
     end

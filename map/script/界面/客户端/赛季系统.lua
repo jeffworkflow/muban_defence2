@@ -31,7 +31,7 @@ local new_ui = class.panel:builder
          --左边菜单 
          panel.menu_titles = {
             -- '深渊乱斗无尽','无限乱斗无尽','无上之境无尽','斗破苍穹无尽',
-            'S1赛季','S0赛季'
+            'S2赛季','S1赛季','S0赛季'
             
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
@@ -300,7 +300,42 @@ local new_ui = class.panel:builder
             'S1进阶版奖励13','S1进阶版奖励14','S1进阶版奖励15'
         },
       },
+      ['S2赛季'] ={
+        ['赛季说明'] = [[
 
+            
+|cffffe799【赛季时间】|r|cff00ff008月1日-8月31日|r
+|cffffe799【赛季说明】|r|cff00ff00通关有概率召唤魔帝，击败可得荣耀战令，解锁大量存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
+            ]],
+        ['赛季王者'] = {
+            title ='|cffdf19d0S2赛季王者|r',
+            art = [[sjwz1.blp]],
+            tip = [[
+|cffFFE799【获得方式】：|r
+|cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+88.8%  会心伤害|r
+|cff00ff00+88.8%  全伤加深|r
+|cffff0000局内地图等级+1
+
+]]
+        },
+        ['精英'] = {
+            'S2精英版奖励1','S2精英版奖励2','S2精英版奖励3','S2精英版奖励4',
+            'S2精英版奖励5','S2精英版奖励6','S2精英版奖励7','S2精英版奖励8',
+            'S2精英版奖励9','S2精英版奖励10','S2精英版奖励11','S2精英版奖励12',
+            'S2精英版奖励13','S2精英版奖励14','S2精英版奖励15'
+        },
+        ['进阶'] = {
+            'S2进阶版奖励1','S2进阶版奖励2','S2进阶版奖励3','S2进阶版奖励4',
+            'S2进阶版奖励5','S2进阶版奖励6','S2进阶版奖励7','S2进阶版奖励8',
+            'S2进阶版奖励9','S2进阶版奖励10','S2进阶版奖励11','S2进阶版奖励12',
+            'S2进阶版奖励13','S2进阶版奖励14','S2进阶版奖励15'
+        },
+      },
     },
     clear = function(self)
         for i,ui in ipairs(self.zhanlings) do
@@ -323,7 +358,7 @@ local new_ui = class.panel:builder
         self:next_button()
         self.main_content.zhanling:content()
         ac.wait(8*1000,function()
-            self:fresh('S1赛季')
+            self:fresh('S2赛季')
         end)
     end,
     next_button = function(self)
@@ -450,6 +485,9 @@ local function boss_ani()
         time = 8,
         model =[[]]
     }
+    u:add_buff '缴械'{
+        time = 8,
+    }
     ac.zqmd = true
     local where = ac.rect.j_rect('moku'):get_point()
     ac.wait(8*1000,function()
@@ -505,17 +543,21 @@ local function boss_ani()
             local p = ac.player(i)
             if p:is_player() and (p.cus_server['战令标识'] or 0) <=0 then 
                 local hero =p.hero
-                local zl_name = 'S1赛季战令'
+                local zl_name = 'S2赛季战令'
                 local key = ac.server.name2key(zl_name)
                 --加战令 s0zl
                 local _,max_n = math.frexp(p.server[zl_name] or 0)
-                print('S1赛季战令1：',p.server[zl_name],max_n,2^max_n)
+                print('S2赛季战令1：',p.server[zl_name],max_n,2^max_n)
+                if max_n >= 15 then 
+                    print('S2战令已经集满')
+                    return 
+                end
                 if not has_flag(p.server[zl_name] or 0,2^(max_n)) then 
-                    print('S1赛季战令2：',p.server[zl_name],max_n,2^max_n)
+                    print('S2赛季战令2：',p.server[zl_name],max_n,2^max_n)
                     p:Map_AddServerValue(key,2^(max_n))
                 end
                 --一次性存档奖励
-                local name = 'S1精英版奖励'..(max_n+1)
+                local name = 'S2精英版奖励'..(max_n+1)
                 local skl = hero:find_skill(name,nil,true)
                 if not skl then 
                     -- print('name',name)

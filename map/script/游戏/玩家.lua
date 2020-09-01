@@ -139,7 +139,7 @@ ac.game:event '玩家-离开' (function(trg, p)
 	else
 		hero_name = '没有英雄'
 	end
-	player.self:sendMsg(('%s%s(%s)|r |cffff1111哭着逃跑了!|r'):format(p:getColorWord(), p:getBaseName(), hero_name),3)
+	player.self:sendMsg(('%s%s(%s)|r |cffff1111哭着逃跑了!|r'):format(p:getColorWord(), p:get_name(), hero_name),3)
 end)
 
 --玩家离开删除英雄并分钱
