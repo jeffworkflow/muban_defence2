@@ -3,148 +3,6 @@ mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '看书熟练度',
---图标
-art = [[fadajing.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff一个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00看书熟练度|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='看书熟练度',
-award_cnt = 5000,
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2精英版奖励2']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '打造熟练度',
---图标
-art = [[suijiwupin.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff两个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00打造熟练度|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='打造熟练度',
-award_cnt = 5000,
-need_map_level = 5,
-}
-
-
-local mt = ac.skill['S2精英版奖励3']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '爱心积分',
---图标
-art = [[aixin.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff三个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+1000   |cff00ff00爱心积分|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='爱心积分',
-award_cnt = 1000,
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2精英版奖励4']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '攻击减甲',
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNGhoulFrenzy.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff四个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+66   |cff00ff00攻击减甲|r
-
-]],
-['攻击减甲'] = 66,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2精英版奖励5']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '魔帝的獠牙',
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNCannibalize.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff五个荣耀战令|cff00ff00后获得 
-
-|cffffe799【成就属性】|r:|cff00ff00
-|cff00ff00+66   杀怪加全属性|r
-|cff00ff00+33   攻击减甲|r
-|cff00ff00+6    每秒加护甲|r
-|cff00ff00+5%  吸血|r
-|cff00ff00+1w  护甲|r
-|cff00ff00+200% 暴击伤害|r
-
-]],
-['杀怪加全属性'] = 66,
-['攻击减甲'] = 33,
-['每秒加护甲'] = 6,
-['吸血'] = 5,
-['护甲'] = 10000,
-['暴击伤害'] = 200,
-
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2精英版奖励6']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
 title = '白嫖熟练度',
 --图标
 art = [[niudantiancai.blp]],
@@ -153,7 +11,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff六个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff一个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+5000   |cff00ff00白嫖熟练度|r
@@ -166,7 +24,34 @@ award_cnt = 5000,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2精英版奖励7']
+local mt = ac.skill['S2精英版奖励2']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '种树熟练度',
+--图标
+art = [[zhongzi.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff两个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00种树熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='种树熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+
+
+local mt = ac.skill['S2精英版奖励3']
 mt{
 --等级
 level = 1, --要动态插入
@@ -179,7 +64,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff七个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff三个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+100   |cff00ff00杀戮值|r
@@ -192,125 +77,65 @@ award_cnt = 100,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2精英版奖励8']
+local mt = ac.skill['S2精英版奖励4']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '摇骰子熟练度',
+title = '每秒回血',
 --图标
-art = [[anheishaizi.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNRingSkull.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff八个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff四个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00摇骰子熟练度|r
+|cff00ff00+5%   |cff00ff00每秒回血|r
 
 ]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='摇骰子熟练度',
-award_cnt = 5000,
-need_map_level = 5,
-}
-
-
-
-
-local mt = ac.skill['S2精英版奖励9']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '减少周围护甲',
---图标
-art = [[ReplaceableTextures\CommandButtons\BTNSpiritOfVengeance.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff九个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+666   |cff00ff00减少周围护甲|r
-
-]],
-['减少周围护甲'] = 666,
+['每秒回血'] = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2精英版奖励10']
+local mt = ac.skill['S2精英版奖励5']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '魔帝的触手',
+title = '魔帝的杀戮',
 --图标
-art = [[mddcs.blp]],
+art = [[mddsl.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff十个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff五个荣耀战令|cff00ff00后获得 
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+66   杀怪加全属性|r
 |cff00ff00+33   攻击减甲|r
 |cff00ff00+6    每秒加护甲|r
-|cff00ff00+50   攻击距离|r
-|cff00ff00+1    多重射|r
-|cff00ff00+100% 技暴伤害|r
+|cff00ff00+5%  全伤系数加深|r
 
 ]],
 ['杀怪加全属性'] = 66,
 ['攻击减甲'] = 33,
 ['每秒加护甲'] = 6,
-['攻击距离'] = 50,
-['多重射'] = 1,
-['技暴伤害'] = 100,
+['全伤系数加深'] = 5,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2精英版奖励11']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '爱心积分',
---图标
-art = [[aixin.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff十一个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+1000   |cff00ff00爱心积分|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='爱心积分',
-award_cnt = 1000,
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2精英版奖励12']
+local mt = ac.skill['S2精英版奖励6']
 mt{
 --等级
 level = 1, --要动态插入
@@ -323,7 +148,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff十二个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff六个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+5000   |cff00ff00看书熟练度|r
@@ -336,7 +161,120 @@ award_cnt = 5000,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2精英版奖励13']
+local mt = ac.skill['S2精英版奖励7']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '爱心积分',
+--图标
+art = [[aixin.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff七个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+1000   |cff00ff00爱心积分|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='爱心积分',
+award_cnt = 1000,
+need_map_level = 5,
+}
+
+local mt = ac.skill['S2精英版奖励8']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '挖宝熟练度',
+--图标
+art = [[chanzi.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff八个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00挖宝熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='挖宝熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+
+
+
+
+local mt = ac.skill['S2精英版奖励9']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '会心伤害',
+--图标
+art = [[huixin.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff九个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+25%   |cff00ff00会心伤害|r
+
+]],
+['会心伤害'] = 25,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+
+need_map_level = 5,
+}
+
+local mt = ac.skill['S2精英版奖励10']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '魔帝的血链',
+--图标
+art = [[mddxl.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff十个荣耀战令|cff00ff00后获得 
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+66   杀怪加全属性|r
+|cff00ff00+33   攻击减甲|r
+|cff00ff00+6    每秒加护甲|r
+|cff00ff00+5%  技能伤害加深系数|r
+
+]],
+['杀怪加全属性'] = 66,
+['攻击减甲'] = 33,
+['每秒加护甲'] = 6,
+['技能伤害加深系数'] = 5,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
+}
+
+local mt = ac.skill['S2精英版奖励11']
 mt{
 --等级
 level = 1, --要动态插入
@@ -349,7 +287,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00累计获得|cff00ffff十三个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff十一个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+5000   |cff00ff00打造熟练度|r
@@ -362,14 +300,66 @@ award_cnt = 5000,
 need_map_level = 5,
 }
 
+local mt = ac.skill['S2精英版奖励12']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '摇骰子熟练度',
+--图标
+art = [[anheishaizi.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff十二个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00摇骰子熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='摇骰子熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+
+local mt = ac.skill['S2精英版奖励13']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '白嫖熟练度',
+--图标
+art = [[niudantiancai.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00累计获得|cff00ffff十三个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00白嫖熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='白嫖熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+
 local mt = ac.skill['S2精英版奖励14']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '对BOSS额外伤害',
+title = '物理伤害加深',
 --图标
-art = [[ReplaceableTextures\CommandButtons\BTNSacrifice.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNClawsOfAttack.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -378,10 +368,10 @@ tip = [[
 |cff00ff00累计获得|cff00ffff十四个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+25   |cff00ff00对BOSS额外伤害|r
+|cff00ff00+100%   |cff00ff00物理伤害加深|r
 
 ]],
-['对BOSS额外伤害'] = 25,
+['物理伤害加深'] = 100,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
@@ -393,32 +383,27 @@ mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '魔帝之翼',
+title = '魔帝的骸骨',
 --图标
-art = [[mdzy.blp]],
+art = [[mddhg.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
 |cff00ff00累计获得|cff00ffff十五个荣耀战令|cff00ff00后获得 
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+66   杀怪加全属性|r
 |cff00ff00+33   攻击减甲|r
 |cff00ff00+6    每秒加护甲|r
-|cff00ff00+25   移动速度|r
-|cff00ff00+1     多重暴击|r
-|cff00ff00+50%  会心伤害|r
+|cff00ff00+5k 减少周围护甲|r
 
 ]],
 ['杀怪加全属性'] = 66,
 ['攻击减甲'] = 33,
 ['每秒加护甲'] = 6,
-['移动速度'] = 25,
-['多重暴击'] = 1,
-['会心伤害'] = 50,
+['减少周围护甲'] = 5000,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -431,8 +416,8 @@ mt{
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[niudantiancai.blp]],
-title = '白嫖熟练度',
+art = [[fadajing.blp]],
+title = '看书熟练度',
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -442,12 +427,12 @@ tip = [[
 |cff00ff00累计获得|cff00ffff一个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00白嫖熟练度|r
+|cff00ff00+5000   |cff00ff00看书熟练度|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-award ='白嫖熟练度',
+award ='看书熟练度',
 award_cnt = 5000,
 need_map_level = 5,
 }
@@ -476,8 +461,8 @@ mt{
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[zhongzi.blp]],
-title = '种树熟练度',
+art = [[suijiwupin.blp]],
+title = '打造熟练度',
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -487,136 +472,18 @@ tip = [[
 |cff00ff00累计获得|cff00ffff两个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00种树熟练度|r
+|cff00ff00+5000   |cff00ff00打造熟练度|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-award ='种树熟练度',
+award ='打造熟练度',
 award_cnt = 5000,
 need_map_level = 5,
 }
 mt.on_add = ac.skill['S2进阶版奖励1'].on_add
 
 local mt = ac.skill['S2进阶版奖励3']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
---图标
-art = [[shaluzhi.blp]],
-title = '杀戮值',
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff三个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+100   |cff00ff00杀戮值|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='魔灵争霸',
-award_cnt = 100,
-need_map_level = 5,
-}
-mt.on_add = ac.skill['S2进阶版奖励1'].on_add
-
-local mt = ac.skill['S2进阶版奖励4']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
---图标
-art = [[ReplaceableTextures\PassiveButtons\PASBTNGnollCommandAura.blp]],
-title = '全伤加深',
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff四个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+25%   |cff00ff00全伤加深|r
-
-]],
-['全伤加深'] = 25,
-
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2进阶版奖励5']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
-title = '魔帝的凝视',
---图标
-art = [[item\qiu524.blp]],
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff五个荣耀战令|cff00ff00后获得 
-
-|cffffe799【成就属性】|r:|cff00ff00
-|cff00ff00+66   杀怪加全属性|r
-|cff00ff00+66   攻击减甲|r
-|cff00ff00+6    每秒加护甲|r
-|cff00ff00+50%  物品获取率|r
-|cff00ff00+200% 物理伤害加深|r
-
-]],
-['杀怪加全属性'] = 66,
-['攻击减甲'] = 66,
-['每秒加护甲'] = 6,
-['物品获取率'] = 50,
-['物理伤害加深'] = 200,
-
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
-}
-
-local mt = ac.skill['S2进阶版奖励6']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
---图标
-art = [[fadajing.blp]],
-title = '看书熟练度',
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff六个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00看书熟练度|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='看书熟练度',
-award_cnt = 5000,
-need_map_level = 5,
-}
-mt.on_add = ac.skill['S2进阶版奖励1'].on_add
-
-local mt = ac.skill['S2进阶版奖励7']
 mt{
 --等级
 level = 1, --要动态插入
@@ -630,7 +497,7 @@ tip = [[
 
 |cffffe799【获得方式】：|r
 |cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff七个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff三个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+1000   |cff00ff00爱心积分|r
@@ -644,125 +511,69 @@ need_map_level = 5,
 }
 mt.on_add = ac.skill['S2进阶版奖励1'].on_add
 
-local mt = ac.skill['S2进阶版奖励8']
+local mt = ac.skill['S2进阶版奖励4']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[chanzi.blp]],
-title = '挖宝熟练度',
+art = [[ReplaceableTextures\CommandButtons\BTNRobeOfTheMagi.blp]],
+title = '技能伤害加深',
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff八个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff四个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+5000   |cff00ff00挖宝熟练度|r
+|cff00ff00+50%   |cff00ff00技能伤害加深|r
 
 ]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='挖宝熟练度',
-award_cnt = 5000,
-need_map_level = 5,
-}
-mt.on_add = ac.skill['S2进阶版奖励1'].on_add
-
-local mt = ac.skill['S2进阶版奖励9']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
---图标
-art = [[baoji.blp]],
-title = '暴击伤害',
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff九个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+100%   |cff00ff00暴击伤害|r
-
-]],
-['暴击伤害'] = 100,
+['技能伤害加深'] = 50,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2进阶版奖励10']
+local mt = ac.skill['S2进阶版奖励5']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '魔帝的暴怒',
+title = '魔帝的拥抱',
 --图标
-art = [[mddfn.blp]],
+art = [[mddyb.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff十个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff五个荣耀战令|cff00ff00后获得 
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+66   杀怪加全属性|r
 |cff00ff00+66   攻击减甲|r
 |cff00ff00+6    每秒加护甲|r
-|cff00ff00+50%  杀敌数加成|r
-|cff00ff00+100% 技能伤害加深|r
+|cff00ff00+10% 每秒回血|r
+|cff00ff00+10% 物理伤害加深系数|r
 
 ]],
 ['杀怪加全属性'] = 66,
 ['攻击减甲'] = 66,
 ['每秒加护甲'] = 6,
-['杀敌数加成'] = 50,
-['技能伤害加深'] = 100,
+['每秒回血'] = 10,
+['物理伤害加深系数'] = 10,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S2进阶版奖励11']
-mt{
---等级
-level = 1, --要动态插入
-max_level = 1, --要动态插入
---图标
-art = [[shaluzhi.blp]],
-title = '杀戮值',
---说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff十一个荣耀战令|cff00ff00后获得 
-
-|cffFFE799【属性】：|r
-|cff00ff00+100   |cff00ff00杀戮值|r
-
-]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-award ='魔灵争霸',
-award_cnt = 100,
-need_map_level = 5,
-}
-mt.on_add = ac.skill['S2进阶版奖励1'].on_add
-
-local mt = ac.skill['S2进阶版奖励12']
+local mt = ac.skill['S2进阶版奖励6']
 mt{
 --等级
 level = 1, --要动态插入
@@ -776,7 +587,7 @@ tip = [[
 
 |cffffe799【获得方式】：|r
 |cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff十二个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff六个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+5000   |cff00ff00白嫖熟练度|r
@@ -790,7 +601,155 @@ need_map_level = 5,
 }
 mt.on_add = ac.skill['S2进阶版奖励1'].on_add
 
-local mt = ac.skill['S2进阶版奖励13']
+local mt = ac.skill['S2进阶版奖励7']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[shaluzhi.blp]],
+title = '杀戮值',
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
+|cff00ff00累计获得|cff00ffff七个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+100   |cff00ff00杀戮值|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='魔灵争霸',
+award_cnt = 100,
+need_map_level = 5,
+}
+mt.on_add = ac.skill['S2进阶版奖励1'].on_add
+
+local mt = ac.skill['S2进阶版奖励8']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[anheishaizi.blp]],
+title = '摇骰子熟练度',
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
+|cff00ff00累计获得|cff00ffff八个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00摇骰子熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='摇骰子熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+mt.on_add = ac.skill['S2进阶版奖励1'].on_add
+
+local mt = ac.skill['S2进阶版奖励9']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
+title = '木头加成',
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
+|cff00ff00累计获得|cff00ffff九个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+25%   |cff00ff00木头加成|r
+
+]],
+['木头加成'] = 25,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
+}
+
+local mt = ac.skill['S2进阶版奖励10']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+title = '魔帝的复仇',
+--图标
+art = [[mddfc.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
+|cff00ff00累计获得|cff00ffff十个荣耀战令|cff00ff00后获得 
+
+|cffffe799【成就属性】|r:|cff00ff00
+|cff00ff00+66   杀怪加全属性|r
+|cff00ff00+66   攻击减甲|r
+|cff00ff00+6    每秒加护甲|r
+|cff00ff00+10%  智力|r
+|cff00ff00+100% 技暴伤害|r
+|cff00ff00+100% 技能伤害加深|r
+
+]],
+['杀怪加全属性'] = 66,
+['攻击减甲'] = 66,
+['每秒加护甲'] = 6,
+['智力%'] = 10,
+['技暴伤害'] = 100,
+['技能伤害加深'] = 100,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
+}
+
+local mt = ac.skill['S2进阶版奖励11']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[chanzi.blp]],
+title = '挖宝熟练度',
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
+|cff00ff00累计获得|cff00ffff十一个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00挖宝熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='挖宝熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+mt.on_add = ac.skill['S2进阶版奖励1'].on_add
+
+local mt = ac.skill['S2进阶版奖励12']
 mt{
 --等级
 level = 1, --要动态插入
@@ -804,7 +763,7 @@ tip = [[
 
 |cffffe799【获得方式】：|r
 |cff00ff00购买商城道具|cffffff00【S2赛季通行证】
-|cff00ff00累计获得|cff00ffff十三个荣耀战令|cff00ff00后获得 
+|cff00ff00累计获得|cff00ffff十二个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
 |cff00ff00+5000   |cff00ff00种树熟练度|r
@@ -818,14 +777,42 @@ need_map_level = 5,
 }
 mt.on_add = ac.skill['S2进阶版奖励1'].on_add
 
+local mt = ac.skill['S2进阶版奖励13']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1, --要动态插入
+--图标
+art = [[fadajing.blp]],
+title = '看书熟练度',
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00购买商城道具|cffffff00【S2赛季通行证】
+|cff00ff00累计获得|cff00ffff十三个荣耀战令|cff00ff00后获得 
+
+|cffFFE799【属性】：|r
+|cff00ff00+5000   |cff00ff00看书熟练度|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+award ='看书熟练度',
+award_cnt = 5000,
+need_map_level = 5,
+}
+mt.on_add = ac.skill['S2进阶版奖励1'].on_add
+
 local mt = ac.skill['S2进阶版奖励14']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
 --图标
-art = [[jibao.blp]],
-title = '技暴伤害',
+art = [[shadidubo.blp]],
+title = '杀敌数加成',
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -835,10 +822,10 @@ tip = [[
 |cff00ff00累计获得|cff00ffff十四个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+50%   |cff00ff00技暴伤害|r
+|cff00ff00+25%   |cff00ff00杀敌数加成|r
 
 ]],
-['技暴伤害'] = 50,
+['杀敌数加成'] = 25,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -850,9 +837,9 @@ mt{
 --等级
 level = 1, --要动态插入
 max_level = 1, --要动态插入
-title = '魔帝的咆哮',
+title = '魔帝的怒风',
 --图标
-art = [[mddpx.blp]],
+art = [[mddnf.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -865,15 +852,17 @@ tip = [[
 |cff00ff00+66   杀怪加全属性|r
 |cff00ff00+66   攻击减甲|r
 |cff00ff00+6    每秒加护甲|r
-|cff00ff00+50%  木头加成|r
-|cff00ff00+50% 对BOSS额外伤害|r
+|cff00ff00+10% 敏捷|r
+|cff00ff00+50% 会心伤害|r
+|cff00ff00-0.1 攻击间隔|r
 
 ]],
 ['杀怪加全属性'] = 66,
 ['攻击减甲'] = 66,
 ['每秒加护甲'] = 6,
-['木头加成'] = 50,
-['对BOSS额外伤害'] = 50,
+['敏捷%'] = 10,
+['会心伤害'] = 50,
+['攻击间隔'] = -0.1,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,

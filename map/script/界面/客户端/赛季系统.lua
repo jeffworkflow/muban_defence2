@@ -304,12 +304,12 @@ local new_ui = class.panel:builder
         ['赛季说明'] = [[
 
             
-|cffffe799【赛季时间】|r|cff00ff008月1日-8月31日|r
+|cffffe799【赛季时间】|r|cff00ff009月1日-9月30日|r
 |cffffe799【赛季说明】|r|cff00ff00通关有概率召唤魔帝，击败可得荣耀战令，解锁大量存档奖励|r|cffffff00（每天只可获得一个荣耀战令）|r
             ]],
         ['赛季王者'] = {
             title ='|cffdf19d0S2赛季王者|r',
-            art = [[sjwz1.blp]],
+            art = [[sjwz2.blp]],
             tip = [[
 |cffFFE799【获得方式】：|r
 |cff00ff00赛季结束时，所有在 |cffff0000F5/F6排行榜 |cff00ff00上面的玩家，均可获得

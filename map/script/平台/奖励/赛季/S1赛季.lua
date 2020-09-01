@@ -116,7 +116,6 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S1赛季通行证】
 |cff00ff00累计获得|cff00ffff五个荣耀战令|cff00ff00后获得 
 
 |cffffe799【成就属性】|r:|cff00ff00
@@ -260,7 +259,6 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S1赛季通行证】
 |cff00ff00累计获得|cff00ffff十个荣耀战令|cff00ff00后获得 
 
 |cffffe799【成就属性】|r:|cff00ff00
@@ -401,7 +399,6 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00购买商城道具|cffffff00【S1赛季通行证】
 |cff00ff00累计获得|cff00ffff十五个荣耀战令|cff00ff00后获得 
 
 |cffffe799【成就属性】|r:|cff00ff00
