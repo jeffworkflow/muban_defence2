@@ -4,7 +4,6 @@ mt.cover_type = 1
 mt.model =[[Abilities\Spells\Human\DivineShield\DivineShieldTarget.mdl]]
 mt.ref = 'origin'
 mt.eff = nil
-mt.debuff = true
 mt.control = 5
 
 function mt:on_add()
