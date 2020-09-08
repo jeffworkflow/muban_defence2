@@ -188,7 +188,7 @@ local function check_txzr(p,flag)
     ac.game:event_notify('完成天选之人',p)
     --发起同步
     if not flag then 
-        if succ_cnt ~= 6 then 
+        if succ_cnt ~= 5 then 
             return 
         end
     end

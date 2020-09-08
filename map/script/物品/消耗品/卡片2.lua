@@ -21,7 +21,7 @@ function mt:on_cast_start()
     local p = self.owner.owner 
     local hero = p.hero 
     --百分50进攻暂停，百分50直接开始下一波
-    if math.random(100000)/1000 < 40 then 
+    if math.random(100000)/1000 < 30 then 
         --下一波
         ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00使用泻药卡时，被敌军抓包，愤怒的魔界大军直接|cffff0000开启了下一波的进攻！',5)
         ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00使用泻药卡时，被敌军抓包，愤怒的魔界大军直接|cffff0000开启了下一波的进攻！',5)
@@ -36,8 +36,8 @@ function mt:on_cast_start()
         end    
     else
         --暂停60秒
-        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00将泻药投进了魔界大军的水井中，魔军上下不断拉肚子，|cffff0000暂停进攻60秒！',5)
-        local time = 60
+        ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..p:get_name()..'|cff00ff00将泻药投进了魔界大军的水井中，魔军上下不断拉肚子，|cffff0000暂停进攻90秒！',5)
+        local time = 90
         for i=1,3 do 
             local creep = ac.creep['刷怪'..i]
             creep:PauseTimer(time)

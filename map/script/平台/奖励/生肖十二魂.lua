@@ -509,6 +509,103 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 3,
 }
 
+local mt = ac.skill['龙珠风']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[chenlong1.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+5% 护甲
++5%  物理伤害加深系数
+
+|cffcccccc杀死【辰龙】获得，获得概率与通关难度/地图等级相关]],
+
+['护甲%'] = 5,
+['物理伤害加深系数'] = 5,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+
+
+local mt = ac.skill['龙珠火']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[chenlong2.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+128 每秒加攻击
++1%  暴击伤害系数
+
+|cffcccccc杀死【辰龙】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加攻击'] = 128,
+['暴击伤害系数'] = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['龙珠林']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[chenlong3.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+5% 敏捷
++5%  攻击距离
+
+|cffcccccc杀死【辰龙】获得，获得概率与通关难度/地图等级相关]],
+
+['敏捷%'] = 5,
+['攻击距离%'] = 5,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['龙珠风']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[chenlong4.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+128 每秒加敏捷
++1%  技暴伤害系数
+
+|cffcccccc杀死【辰龙】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加敏捷'] = 128,
+['技暴伤害系数'] = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
 
 
 local mt = ac.skill['生肖十二魂']
@@ -606,4 +703,20 @@ mt{
 }
 mt.skills = {
     '萝卜','白菜','菠菜','芹菜'
+}
+
+
+local mt = ac.skill['龙灵']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[chenlong.blp]],
+    tip = [[
+
+点击查看 |cff00ffff龙灵|r 成就，通过挑战|cff00ff00【辰龙】|r获得
+ ]],
+    
+}
+mt.skills = {
+    '龙珠风','龙珠火','龙珠林','龙珠山'
 }

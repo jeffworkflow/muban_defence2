@@ -30,7 +30,8 @@ local boss = {
     '鼠天瞳',
     '牛金刚',
     '武伯都',
-    '兔飞'
+    '兔飞',
+    '辰龙'
 }
 local boss_skill  ={
     ['一棒男'] = {'净化','给你一棒','再来一棒'},
@@ -346,7 +347,7 @@ function mt:on_change_creep(unit,lni_data)
                     end
                 end
             
-                local rate = 50
+                local rate = 55
                 if math.random(100000)/1000 <= rate then 
                     local x,y = ac.rect.j_rect('moku'):get_point():get()
                     local shop = ac.shop.create('最终的挑战',x,y,270)

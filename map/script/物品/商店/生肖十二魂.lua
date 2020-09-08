@@ -14,6 +14,7 @@ ac.wait(0,function()
         ['牛金刚'] = '牛灵',
         ['武伯都'] = '虎灵',
         ['兔飞'] = '兔灵',
+        ['辰龙'] = '龙灵',
     }
     
     local function save(tab)
@@ -75,7 +76,7 @@ ac.wait(0,function()
     
         
     end
-    for i,name in ipairs({'挑战鼠天瞳','挑战牛金刚','挑战武伯都','挑战兔飞'}) do
+    for i,name in ipairs({'挑战鼠天瞳','挑战牛金刚','挑战武伯都','挑战兔飞','挑战辰龙'}) do
         local skl = ac.skill[name]
         function skl:on_cast_start()
             local p=self.owner.owner
