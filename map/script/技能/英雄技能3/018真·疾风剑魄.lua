@@ -102,7 +102,10 @@ function mt:damage_start(damage)
 	end
 	start_damage(skill,target)
 	if self.owner:has_item('三少爷的剑') then 
-		ac.wait(200,function()
+		ac.wait(400,function()
+			start_damage(skill,target)
+		end)
+		ac.wait(800,function()
 			start_damage(skill,target)
 		end)
 	end 

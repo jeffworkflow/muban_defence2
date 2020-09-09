@@ -100,6 +100,9 @@ function mt:damage_start(damage)
 		ac.wait(200,function()
 			start_damage(skill,damage)
 		end)
+		ac.wait(400,function()
+			start_damage(skill,damage)
+		end)
 	end
 end
 function mt:on_remove()
