@@ -44,12 +44,6 @@ end,
 	effect = [[Piercing Thrust.mdx]],
 	--特效4
 	effect4 = [[如图，]],
-	is_strong = function(self)
-		if not self.owner then 
-			return 
-		end 
-		return self.owner:has_item('三少爷的剑')
-	end,
 }
 local function start_damage(self,target)
     local skill = self
@@ -100,7 +94,8 @@ function mt:damage_start(damage)
 		return 
 	end 
 	start_damage(skill,target)
-	if self.is_strong then 
+	-- print(self.is_strong,self.owner,self.owner:has_item('三少爷的剑'))
+	if self.owner:has_item('三少爷的剑') then 
 		ac.wait(1000,function()
 			start_damage(skill,target)
 		end)
