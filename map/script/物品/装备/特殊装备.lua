@@ -103,3 +103,29 @@ mt{
 }
 
 
+local mt = ac.skill['三少爷的剑']
+mt{
+    level = 1 ,
+    specail_model = [[File00000376 - RC.mdx]],
+    unique = true,
+    title = '|cffdf19d0三少爷的剑|r',
+    tip = [[ 
+|cffcccccc上古时期，乞丐经常被犬兽袭击，以此棒防身
+
+|cff00ff00力量+35%
+|cff00ffff攻击减甲+500
+|cff00ffff分裂伤害+200%
+|cffffff00多重暴击几率+10%
+|cffffff00多重暴击+1
+
+|cffffff00增强【神阶功法】一棒封神
+|cffff0000【唯一被动-打狗】可秒杀练功房的怪物
+ ]],
+    --技能图标
+    art = [[dagoubang.blp]],
+    ['力量%'] = 35,
+    ['攻击减甲'] = 500,
+    ['分裂伤害'] = 200,
+    ['多重暴击几率'] = 10,
+    ['多重暴击'] = 1,
+}

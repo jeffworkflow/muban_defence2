@@ -42,15 +42,18 @@ end,
 	effect = [[AZ_Slark_C.mdx]],
 	--特效4
 	effect4 = [[目标区域播放特效，伤害范围1000]],
+	is_strong = function(self)
+		if not self.owner then 
+			return 
+		end 
+		return self.owner:has_item('噬魂棒')
+	end,
 }
-function mt:damage_start(damage)
+local function start_damage(skill,damage)
     local skill = self
     local hero = self.owner
     local p = hero:get_owner()
     local target = damage.target
-	if not damage:is_common_attack()  then 
-		return 
-	end 
 	--创建特效
 	ac.effect_ex{
 		model = self.effect,
@@ -72,4 +75,29 @@ function mt:damage_start(damage)
 			damage_type = '法术'
 		}	
 	end
+end
+
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+    local target = damage.target
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+	start_damage(skill,damage)
+	if self.is_strong then 
+		ac.wait(200,function()
+			start_damage(skill,damage)
+		end)
+	end
+end
+function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    if self.trg then
+        self.trg:remove()
+        self.trg = nil
+    end
 end

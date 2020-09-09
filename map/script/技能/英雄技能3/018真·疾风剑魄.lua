@@ -44,15 +44,17 @@ end,
 	effect = [[Piercing Thrust.mdx]],
 	--特效4
 	effect4 = [[如上图，造成2次伤害，播放两次]],
+	is_strong = function(self)
+		if not self.owner then 
+			return 
+		end 
+		return self.owner:has_item('三少爷的剑')
+	end,
 }
-function mt:damage_start(damage)
+local function start_damage(skill,target)
     local skill = self
     local hero = self.owner
     local p = hero:get_owner()
-    local target = damage.target
-	if not damage:is_common_attack()  then 
-		return 
-	end 
 	hero:timer(400,2,function()
 		--创建特效
 		for i=1,6 do 
@@ -89,5 +91,20 @@ function mt:damage_start(damage)
 			end
 		end)
 	end) 
+end
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+    local target = damage.target
+	if not damage:is_common_attack()  then 
+		return 
+	end
+	start_damage(skill,target)
+	if self.is_strong then 
+		ac.wait(200,function()
+			start_damage(skill,target)
+		end)
+	end 
 	
 end

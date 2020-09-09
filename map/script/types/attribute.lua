@@ -74,14 +74,17 @@ local attribute = {
 	['暴击几率']		=	true, --默认%
 	['暴击几率极限']		=	true, --默认%
 	['暴击伤害']		=	true,--默认%
-
+	['暴击伤害系数']		=	true,--默认%
+	
 	['会心几率']		=	true,--默认%
 	['会心几率极限']		=	true, --默认%
 	['会心伤害']		=	true,--默认%
+	['会心伤害系数']		=	true,--默认%
 
 	['技暴几率']		=	true,--默认%
 	['技暴几率极限']		=	true, --默认%
 	['技暴伤害']		=	true,--默认%
+	['技暴伤害系数']		=	true,--默认%
 
 	['技能伤害']		=	true, --默认表示为%
 	['技能基础伤害']	 =	true, --默认表示为基础值
@@ -619,6 +622,16 @@ on_get['物理伤害加深'] = function(self, damage)
 end
 on_get['技能伤害加深'] = function(self, damage)
 	return damage * (1+self:get('技能伤害加深系数')/100)
+end
+
+on_get['暴击伤害'] = function(self, damage)
+	return damage * (1+self:get('暴击伤害系数')/100)
+end
+on_get['技暴伤害'] = function(self, damage)
+	return damage * (1+self:get('技暴伤害系数')/100)
+end
+on_get['会心伤害'] = function(self, damage)
+	return damage * (1+self:get('会心伤害系数')/100)
 end
 
 on_get['生命'] = function(self, life)

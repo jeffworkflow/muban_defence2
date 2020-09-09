@@ -52,7 +52,117 @@ end,
 	effect = [[Abilities\Spells\Orc\Shockwave\ShockwaveMissile.mdl]],
 	--特效1
 	effect1 = [[ShockwaveMissile.mdx]],
+	is_strong = function(self)
+		if not self.owner then 
+			return 
+		end 
+		return self.owner:has_item('三少爷的剑')
+	end,
 }
+local function  mvr_damage(self,data)
+    local skill = self
+	local hero = self.owner
+
+	local mvr = ac.mover.line
+	{
+		source = hero,
+		start = data.start,
+		skill = skill,
+		model =  data.model,
+		speed = 5000,
+		angle = data.angle,
+		hit_area = 250,
+		distance = data.distance,
+		high = 120,
+		size = data.size
+	}
+	if mvr then
+		function mvr:on_hit(u)
+			u:damage
+			{
+				source = hero,
+				skill = skill,
+				target = u,
+				damage = skill.damage,
+				damage_type = skill.damage_type,
+			}
+			u:damage
+			{
+				source = hero,
+				skill = skill,
+				target = u,
+				damage = u:get('生命上限') * 0.001,
+				real_damage = true,
+			}
+			
+		end
+	end
+end
+
+local function start_damage(skill,damage)--创建特效
+	local self = skill
+	local hero = self.owner
+
+	local start_angle = math.random(360)
+	for i=1,8 do 
+		local angle = start_angle + 360/8*(i-1)
+		if i%2 == 1 then 
+			local data = {
+				angle = angle,
+				start = hero:get_point(),
+				model = skill.effect,
+				distance = 5000,
+				size = 1.5,
+			}
+			mvr_damage(skill,data)
+		else 
+			ac.wait(0.2*1000,function()
+				local data = {
+					angle = angle,
+					start = hero:get_point(),
+					model = skill.effect1,
+					distance = 5000,
+					size = 1.5,
+				}
+				mvr_damage(skill,data)
+			end)
+		end	
+	end	
+
+	ac.wait(0.8*1000,function()
+		--创建特效
+		local start_angle = math.random(360)
+		for i=1,8 do 
+			local angle = start_angle + 360/8*(i-1)
+			local new_point = damage.target:get_point() - {angle,2500}
+			if i%2 == 1 then 
+				local data = {
+					angle = new_point/damage.target:get_point(),
+					start = new_point,
+					model = skill.effect,
+					distance = 5000,
+					size = 1.5,
+				}
+				mvr_damage(skill,data)
+			else 
+				ac.wait(0.2*1000,function()
+					local data = {
+						angle = new_point/damage.target:get_point(),
+						start = new_point,
+						model = skill.effect1,
+						distance = 5000,
+						size = 1.5,
+					}
+					mvr_damage(skill,data)
+				end)
+			end	
+		end	
+	end)
+
+end
+
+
+
 function mt:on_add()
     local skill = self
 	local hero = self.owner
@@ -79,45 +189,6 @@ function mt:on_add()
 		end
     end)
 
-	local function  mvr_damage(data)
-		local mvr = ac.mover.line
-		{
-			source = hero,
-			start = data.start,
-			skill = skill,
-			model =  data.model,
-			speed = 5000,
-			angle = data.angle,
-			hit_area = 250,
-			distance = data.distance,
-			high = 120,
-			size = data.size
-		}
-		if mvr then
-			function mvr:on_hit(u)
-				u:damage
-				{
-					source = hero,
-					skill = skill,
-					target = u,
-					damage = skill.damage,
-					damage_type = skill.damage_type,
-				}
-				u:damage
-				{
-					source = hero,
-					skill = skill,
-					target = u,
-					damage = u:get('生命上限') * 0.001,
-					real_damage = true,
-				}
-				
-			end
-
-			function mvr:on_remove()
-			end
-		end
-	end
 	self.trg = hero:event '造成伤害效果' (function(_,damage)
 		if not damage:is_common_attack()  then 
 			return 
@@ -128,65 +199,14 @@ function mt:on_add()
 		end 
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
-			--创建特效
-			local start_angle = math.random(360)
-			for i=1,8 do 
-				local angle = start_angle + 360/8*(i-1)
-				if i%2 == 1 then 
-					local data = {
-						angle = angle,
-						start = hero:get_point(),
-						model = skill.effect,
-						distance = 5000,
-						size = 1.5,
-					}
-					mvr_damage(data)
-				else 
-					ac.wait(0.2*1000,function()
-						local data = {
-							angle = angle,
-							start = hero:get_point(),
-							model = skill.effect1,
-							distance = 5000,
-							size = 1.5,
-						}
-						mvr_damage(data)
-					end)
-				end	
-			end	
-
-			ac.wait(0.8*1000,function()
-				--创建特效
-				local start_angle = math.random(360)
-				for i=1,8 do 
-					local angle = start_angle + 360/8*(i-1)
-					local new_point = damage.target:get_point() - {angle,2500}
-					if i%2 == 1 then 
-						local data = {
-							angle = new_point/damage.target:get_point(),
-							start = new_point,
-							model = skill.effect,
-							distance = 5000,
-							size = 1.5,
-						}
-						mvr_damage(data)
-					else 
-						ac.wait(0.2*1000,function()
-							local data = {
-								angle = new_point/damage.target:get_point(),
-								start = new_point,
-								model = skill.effect1,
-								distance = 5000,
-								size = 1.5,
-							}
-							mvr_damage(data)
-						end)
-					end	
-				end	
-			end)
-			
-            --激活cd
-            skill:active_cd() 
+			start_damage(skill,damage)
+			if self.is_strong then 
+				ac.wait(200,function()
+					start_damage(skill,damage)
+				end)
+			end
+			--激活cd
+			skill:active_cd() 
         end
     end)
 end

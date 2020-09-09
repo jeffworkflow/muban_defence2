@@ -168,6 +168,17 @@ function mt:on_cast_start()
                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
                 ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 惊喜获得技能|cffff0000 "不惧轮回" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*175的伤害，并晕眩1秒|r',6)
             end   
+
+            --触发 扫地神僧
+            if not ac.sdss then 
+                ac.sdss = true 
+                local x,y = ac.rect.j_rect('sds'):get_point():get()
+                local shop = ac.shop.create('扫地神僧',x,y,270)
+                shop:add_sell_item('神僧的秘密',1)
+                shop:add_sell_item('真·神魂修炼',9)
+                shop:add_sell_item('神魂合成',12)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 扫地僧出现|r',6)
+            end
         else               
             -- print('取消更换技能')
             if skill._count > 1 then 

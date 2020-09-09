@@ -48,16 +48,19 @@ end,
 	effect4 = [[类似火焰呼吸，不过伤害区域是一个长方形，区域大小400*1200]],
 	distance = 1200,
 	hit_area = 250,
-	time =1
+	time =1,
+	is_strong = function(self)
+		if not self.owner then 
+			return 
+		end 
+		return self.owner:has_item('打狗棒')
+	end,
 }
-function mt:damage_start(damage)
+local function start_damage(skill,damage)
     local skill = self
     local hero = self.owner
     local p = hero:get_owner()
     local target = damage.target
-	if not damage:is_common_attack()  then 
-		return 
-	end 
 	local angle = damage.source:get_point() / damage.target:get_point()
 	--创建特效
 	ac.effect_ex{
@@ -81,6 +84,23 @@ function mt:damage_start(damage)
 			skill = skill,
 			damage_type = '法术'
 		}	
+	end
+end
+
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+    local target = damage.target
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+	start_damage(skill,damage)
+	if self.is_strong then 
+		ac.wait(200,function()
+			start_damage(skill,damage)
+		end)
 	end
 end
 function mt:on_remove()

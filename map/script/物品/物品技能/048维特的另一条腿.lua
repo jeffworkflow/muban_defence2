@@ -30,11 +30,12 @@ local function create_dbl()
 		local name = ac.quality_item['神'][math.random(#ac.quality_item['神'])]
 		ac.item.create_item(name,unit:get_point())
 		--给六号熔炼石
+		ac.item.create_item('六号熔炼石',unit:get_point())
 		local p = killer.owner 
-		if not p.flag_6hrls then 
-			ac.item.create_item('六号熔炼石',unit:get_point())
-			p.flag_6hrls = true 
-		end
+		-- if not p.flag_6hrls then 
+		-- 	ac.item.create_item('六号熔炼石',unit:get_point())
+		-- 	p.flag_6hrls = true 
+		-- end
 		p:sendMsg('|cffebb608【系统】|r |cff00ff00恭喜击败超级大菠萝',5)
 	end)
 
@@ -56,9 +57,14 @@ ac.wait(0,function()
 				local hero = player.hero
 				kill_cnt = kill_cnt + 1
 				--2000 个数量创建大菠萝
-				if kill_cnt == 2000 then 
+				if kill_cnt == 750 then 
 					kill_cnt = 0 
 					create_dbl()
+					--关闭刷新
+					for i=1,3 do 
+						local crep = ac.creep['奶牛'..i]
+						crep:finish(true)
+					end
 				end 
 			end)
 		end  

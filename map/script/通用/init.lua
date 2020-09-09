@@ -16,7 +16,7 @@ require '通用.特效跳字'
 require '通用.AI施法'
 
 require '通用.dialog'
-require '通用.单位异常进入0区域'
+-- require '通用.单位异常进入0区域'
 
 
 

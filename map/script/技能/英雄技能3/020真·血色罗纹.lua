@@ -44,15 +44,25 @@ end,
 	effect4 = [[目标区域播放特效，伤害范围1000
 
 造成2次伤害，播放两次]],
+	is_strong = function(self)
+		if not self.owner then 
+			return 
+		end 
+		return self.owner:has_item('噬魂棒')
+	end,
 }
-function mt:damage_start(damage)
-    local skill = self
-    local hero = self.owner
-    local p = hero:get_owner()
-    local target = damage.target
-	if not damage:is_common_attack()  then 
-		return 
-	end 
+local function start_damage(skill,damage)
+	local skill = self
+	local hero = self.owner
+	local p = hero:get_owner()
+	local target = damage.target
+	--创建特效
+	ac.effect_ex{
+		model = self.effect,
+		size = 3,
+		point = target:get_point(),
+	}:remove()
+	--造成伤害
 	hero:timer(300,2,function()
 		--创建特效
 		ac.effect_ex{
@@ -76,6 +86,23 @@ function mt:damage_start(damage)
 			}	
 		end
 	end)
+end
+
+function mt:damage_start(damage)
+    local skill = self
+    local hero = self.owner
+    local p = hero:get_owner()
+    local target = damage.target
+	if not damage:is_common_attack()  then 
+		return 
+	end 
+	start_damage(skill,damage)
+	if self.is_strong then 
+		ac.wait(200,function()
+			start_damage(skill,damage)
+		end)
+	end
+	
 end
 function mt:on_remove()
     local hero = self.owner

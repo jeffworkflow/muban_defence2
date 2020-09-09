@@ -6,6 +6,9 @@ local mt = ac.skill['挑战武伯都']
 mt.unit_name = '虎魔'
 local mt = ac.skill['挑战兔飞']
 mt.unit_name = '兔魔'
+local mt = ac.skill['挑战辰龙']
+mt.unit_name = '龙魔'
+
 
 
 ac.wait(0,function()
