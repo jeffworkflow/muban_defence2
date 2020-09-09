@@ -583,7 +583,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 3,
 }
 
-local mt = ac.skill['龙珠风']
+local mt = ac.skill['龙珠山']
 mt{
 --等级
 level = 0, --要动态插入
@@ -620,7 +620,7 @@ mt{
     
 }
 mt.skills = {
-    '鼠灵','牛灵','虎灵','兔灵'
+    '鼠灵','牛灵','虎灵','兔灵','龙灵'
 }
 
 

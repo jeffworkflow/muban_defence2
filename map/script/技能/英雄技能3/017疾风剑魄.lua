@@ -101,7 +101,7 @@ function mt:damage_start(damage)
 	end 
 	start_damage(skill,target)
 	if self.is_strong then 
-		ac.wait(200,function()
+		ac.wait(1000,function()
 			start_damage(skill,target)
 		end)
 	end

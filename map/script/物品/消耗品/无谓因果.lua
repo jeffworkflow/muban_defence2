@@ -177,7 +177,9 @@ function mt:on_cast_start()
                 shop:add_sell_item('神僧的秘密',1)
                 shop:add_sell_item('真·神魂修炼',9)
                 shop:add_sell_item('神魂合成',12)
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用'..skill:get_title()..'|r 扫地僧出现|r',6)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00在|cff00ffff藏经阁|cff00ff00的虚弥空间隐藏着一位远古大能、能力通天，传言只要此人出山便可解决这次无数时空、位面的旷世大劫。',6)
+                ac.player.self:sendMsg('|cff00ff00可惜，此人不知何原因心意已死，独守虚弥空间，即使万千世界毁灭亦不踏出一步，谁入便是敌人。',6)
+                ac.player.self:sendMsg('|cffffff00传说此人身兼数万灭世大能，即这世间极少数站在顶峰之人传言中的凌驾所有功法之上的|cffff0000神阶功法。',6)
             end
         else               
             -- print('取消更换技能')
