@@ -23,6 +23,8 @@ end,
 range = 1000,
 --伤害范围 直径
 area = 350,
+hit_area = 200,
+distance = 1500,
  --每一个预警圈消失的时间
 time = 0.35,
 --冷却
@@ -45,34 +47,40 @@ function mt:boss_skill_shot(angle)
 	local hero = self.owner
 	local skill =self
 	local target = self.target
-
-	local angle = angle or (hero:get_point() / target:get_point())
-	--创建特效
-	ac.effect_ex{
-		model = self.effect,
+	local mvr = ac.mover.line
+	{
+		source = hero,
+		skill = skill,
+		model =  skill.effect,
+		speed = 1000,
 		angle = angle,
-		point = hero:get_point()
-	}:remove()
-	for i, u in ac.selector()
-		: in_line(hero, angle, self.range + 50, self.area) --	起点--	角度--	长度--	宽度
-		: of_not_building()
-		: is_enemy(hero)
-        : is_not(ac.main_unit)
-		: ipairs()
-	do
-		u:damage
-		{
-			source = hero,
-			damage = skill.damage,
-			skill = skill,
-		}	
-		u:damage
-		{
-			source = hero,
-			damage = u:get('生命上限')*0.2,
-			skill = skill,
-			real_damage = true
-		}	
+		hit_area = skill.hit_area,
+		distance = skill.distance,
+		high = 120,
+		size = 0.9,
+	}
+	if mvr then
+		function mvr:on_hit(u)
+			u:damage
+			{
+				source = hero,
+				damage = skill.damage,
+				skill = skill,
+			}	
+			u:damage
+			{
+				source = hero,
+				damage = u:get('生命上限')*0.2,
+				skill = skill,
+				real_damage = true
+			}	
+		end
+
+		function mvr:on_remove()
+			if timer then
+				timer:remove()
+			end
+		end
 	end
 end
 
