@@ -203,7 +203,7 @@ function mt:on_add()
 			start_damage(skill,damage)
 			-- print(self.dead_damage)
 			-- print(self.is_strong,self.owner,self.owner:has_item('三少爷的剑'))
-			if self.is_strong then 
+			if self.owner:has_item('三少爷的剑') then 
 				ac.wait(200,function()
 					start_damage(skill,damage)
 				end)

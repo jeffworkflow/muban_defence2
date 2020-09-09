@@ -200,7 +200,7 @@ function mt:on_add()
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
 			start_damage(skill,damage)
-			if self.is_strong then 
+			if self.owner:has_item('三少爷的剑') then 
 				ac.wait(200,function()
 					start_damage(skill,damage)
 				end)

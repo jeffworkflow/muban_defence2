@@ -97,7 +97,7 @@ function mt:damage_start(damage)
 		return 
 	end 
 	start_damage(skill,damage)
-	if self.is_strong then 
+	if self.owner:has_item('打狗棒') then 
 		ac.wait(200,function()
 			start_damage(skill,damage)
 		end)
