@@ -51,7 +51,7 @@ end,
 		return self.owner:has_item('三少爷的剑')
 	end,
 }
-local function start_damage(skill,target)
+local function start_damage(self,target)
     local skill = self
     local hero = self.owner
     local p = hero:get_owner()

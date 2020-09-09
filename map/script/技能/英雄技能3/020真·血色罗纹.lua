@@ -51,7 +51,7 @@ end,
 		return self.owner:has_item('噬魂棒')
 	end,
 }
-local function start_damage(skill,damage)
+local function start_damage(self,damage)
 	local skill = self
 	local hero = self.owner
 	local p = hero:get_owner()
