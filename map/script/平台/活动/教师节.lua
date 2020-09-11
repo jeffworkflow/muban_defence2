@@ -90,7 +90,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     p.seed_cnt = (p.seed_cnt or 0) + 1
     add_content(p)
     --成就相关
-    if p.seed_cnt == 10 and (p.cus_server['懂事的孩子标识'] or 0) <=0 then 
+    if p.seed_cnt == 100 and (p.cus_server['懂事的孩子标识'] or 0) <=0 then 
         local real_name = '懂事的孩子'
         local hero = p.hero
         local key = ac.server.name2key(real_name)
