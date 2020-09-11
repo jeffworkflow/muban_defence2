@@ -312,6 +312,68 @@ end,
 }
 
 
+local mt = ac.skill['大宗匠']
+mt{
+    level = 0,
+art = [[zongjiang.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff爱心积分≥125000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+500  杀怪加全属性|r
+|cff00ff00+250  攻击减甲|r
+|cff00ff00+50   每秒加护甲|r
+|cff00ff00+10% 对BOSS额外伤害系数|r
+
+]],
+need_map_level = 30,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['爱心积分'] or 0
+    local str = '|cffdf19d0（当前爱心积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+
+['杀怪加全属性'] = 550,
+['攻击减甲'] = 275,
+['每秒加护甲'] = 55,
+['对BOSS额外伤害系数'] = 10,
+
+}
+
+local mt = ac.skill['一代宗匠']
+mt{
+    level = 0,
+art = [[ydzj.blp]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff爱心积分≥150000%current%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+600  杀怪加全属性|r
+|cff00ff00+300  攻击减甲|r
+|cff00ff00+60   每秒加护甲|r
+|cff00ff00+20% 对BOSS额外伤害系数|r
+
+]],
+need_map_level = 30,
+current = function(self)
+    local p = ac.player.self
+    local val = p.server and p.server['爱心积分'] or 0
+    local str = '|cffdf19d0（当前爱心积分：|cffffe799'..val..'|cffdf19d0）'
+    return str
+end,
+
+['杀怪加全属性'] = 600,
+['攻击减甲'] = 300,
+['每秒加护甲'] = 60,
+['对BOSS额外伤害系数'] = 20,
+
+}
+
 local mt = ac.skill['关爱萌新成就']
 mt{
     is_spellbook = 1,
@@ -331,7 +393,7 @@ mt{
     
 }
 mt.skills = {
-    '救救孩子','关爱萌新','新人辅导员','无私奉献','爱心之星','爱心大使','好为人师','桃李满天下','大宗师','一代宗师',
+    '救救孩子','关爱萌新','新人辅导员','无私奉献','爱心之星','爱心大使','好为人师','桃李满天下','大宗师','一代宗师','大宗匠','一代宗匠',
 }
 local function get_player_cnt_bylv(lv)
     local lv = lv or 1 

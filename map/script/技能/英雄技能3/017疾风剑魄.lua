@@ -99,7 +99,7 @@ function mt:damage_start(damage)
 		ac.wait(400,function()
 			start_damage(skill,target)
 		end)
-		ac.wait(600,function()
+		ac.wait(800,function()
 			start_damage(skill,target)
 		end)
 	end

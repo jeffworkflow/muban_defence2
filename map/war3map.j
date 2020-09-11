@@ -375,7 +375,7 @@ rect gg_rct_shengxiao= null
 rect gg_rct_shengxiao2= null
 rect gg_rct_yingxiong22= null
 rect gg_rct_sds= null
-
+rect gg_rct_xianhua= null
 
 camerasetup gg_cam_Camera_001= null
 
@@ -1874,6 +1874,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_shengxiao2=Rect(15424.0, - 4640.0, 17120.0, - 3072.0)
 	set gg_rct_yingxiong22=Rect(- 11328.0, 26400.0, - 11296.0, 26432.0)
 	set gg_rct_sds=Rect(- 5408.0, 14496.0, - 5376.0, 14528.0)
+	set gg_rct_xianhua=Rect(- 4160.0, 6112.0, - 3392.0, 6944.0)
 endfunction
 
 //===========================================================================
