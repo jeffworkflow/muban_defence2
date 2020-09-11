@@ -112,6 +112,8 @@ local attribute = {
 	['攻击回血']		=	true,--默认表示为基础值
 	['杀怪回血']		=	true,--默认表示为基础值
 	['对BOSS额外伤害']  =   true,--默认表示为%
+	['对BOSS额外伤害系数']  =   true,--默认表示为%
+	
 	['基础金币']  =   true,--默认表示为基础值
 	['积分加成']  =   true,--默认表示为基础值
 	['熟练度加成']  =   true,--默认表示为基础值
@@ -122,7 +124,7 @@ local attribute = {
 	['物品获取率'] = true,--默认表示为% 怪物物品掉落率加成
 	['技能伤害加深'] = true, --默认表示为% 技能的法术伤害加成
 	['技能伤害加深系数'] = true, --默认表示为% 技能的法术伤害加成
-
+	
 
 	['召唤物'] = true, --默认表示为基础值,召唤物数量
 	['召唤物属性'] = true, --默认表示为%, 召唤物属性加成
@@ -617,6 +619,11 @@ end
 on_get['全伤加深'] = function(self, all_damage)
 	return all_damage * (1+self:get('全伤加深系数')/100)
 end
+on_get['对BOSS额外伤害系数'] = function(self, all_damage)
+	return all_damage * (1+self:get('对BOSS额外伤害系数')/100)
+end
+
+
 on_get['物理伤害加深'] = function(self, damage)
 	return damage * (1+self:get('物理伤害加深系数')/100)
 end

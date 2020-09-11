@@ -185,11 +185,14 @@ end
 
 
 --测试合成
-function helper:test_hc()
-	for i=1,1000 do 
-		self:add_item('超级扭蛋(百连抽)')
-	end
+function helper:tsd()
+	local x,y = ac.rect.j_rect('sds'):get_point():get()
+	local shop = ac.shop.create('扫地神僧',x,y,270)
+	shop:add_sell_item('神僧的秘密',1)
+	shop:add_sell_item('真·神魂修炼',9)
+	shop:add_sell_item('神魂合成',12)
 end
+
 
 --创建全图视野
 function helper:icu()

@@ -238,7 +238,8 @@ local cus_key = {
     {'mlqlg','魔灵麒麟瓜',{ ['魔灵麒麟瓜'] = {1,5,value = function(self,p) return p:Map_GetServerValue('mlqlg') end}}},
 
     {'ydss','缘定三生',{ ['缘定三生'] = {1,5,value = function(self,p) return p:Map_GetServerValue('ydss') end}}},
-    
+    {'dsdhz','懂事的孩子',{ ['懂事的孩子'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
+    {'dsdhzbs','懂事的孩子标识'},
 
     
     {'wxnd','无限难度'},

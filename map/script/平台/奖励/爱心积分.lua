@@ -395,13 +395,15 @@ mt{
 mt.skills = {
     '救救孩子','关爱萌新','新人辅导员','无私奉献','爱心之星','爱心大使','好为人师','桃李满天下','大宗师','一代宗师','大宗匠','一代宗匠',
 }
-local function get_player_cnt_bylv(lv)
+local function get_player_cnt_bylv(p,lv)
     local lv = lv or 1 
     local cnt = 0
+    local self_p = p 
     for i=1,10 do 
         local p = ac.player(i)
-        if p:is_player() then 
-            if p:Map_GetMapLevel() < lv then 
+        if p:is_player() and p ~= self_p then 
+            local diff_level = self_p:Map_GetMapLevel() - p:Map_GetMapLevel()
+            if diff_level >=lv then 
                 cnt = cnt + 1
             end
         end
@@ -413,33 +415,27 @@ ac.game:event '杀死最终boss' (function(trg,flag)
     -- if not flag then 
     --     return 
     -- end         
-    --地图等级<5的玩家数
-    local lv = 7
+    local lv = 10
     local name = '爱心积分'
     local key = ac.server.name2key(name)
-    local cnt = get_player_cnt_bylv(lv)
-    local val = cnt *100 * (0.2*ac.g_game_degree_attr+0.8)
-    --保存
-    if val <=0 then 
-        return 
-    end
     for i=1,10 do 
         local p = ac.player(i)
         if p:is_player() then 
-            if p:Map_GetMapLevel() >= 10 then 
-                --网易服务器
-                p:Map_AddServerValue(key,val)
+            local cnt = get_player_cnt_bylv(p,lv)
+            local val = cnt *100 * (0.2*ac.g_game_degree_attr+0.8)
+            local v = val *(1+p:get('爱心积分加成')/100) 
+            --网易服务器
+            p:Map_AddServerValue(key,v)
 
-                --保存到自己的服务器    
-                --凌晨数据弄为0 
-                p:clear_key('today_'..key)
-                --今日累计榜
-                p:AddServerValue('today_'..key,val) 
-                --累计总榜
-                p:AddServerValue(key,val) 
-                p:sendMsg('|cffebb608【系统】|r|cff00ff00本次通关获得爱心积分: |cffff0000'..val)
-                print('恭喜获得关爱萌新积分: '..val)
-            end
+            --保存到自己的服务器    
+            --凌晨数据弄为0 
+            p:clear_key('today_'..key)
+            --今日累计榜
+            p:AddServerValue('today_'..key,v) 
+            --累计总榜
+            p:AddServerValue(key,v) 
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00本次通关获得爱心积分: |cffff0000'..v)
+            print('恭喜获得关爱萌新积分: '..v)
         end
     end
 end)
