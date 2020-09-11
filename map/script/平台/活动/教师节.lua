@@ -3,12 +3,15 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[xique.blp]],
+art = [[huahua.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月20日-9月9日
-|cffffe799【活动说明】|r|cff00ff00金风玉露一相逢，便胜却人间无数。年年岁岁架鹊桥，牛郎织女偷相会。少侠既然也是有心之人，还请帮忙收集|cffffff00喜鹊翎毛|r|cffcccccc（种树掉落）
-]],
+|cffffe799【活动时间】|r|cff00ff009月12日-9月22日
+|cffffe799【活动说明】|r
+|cff00ff001.教师节到了，为回报师父平日的教导，亲手种一些鲜花送给师父吧！|cffffff00百花宫|cff00ff00中有着不少种子！
+
+|cff00ff002.活动期间内，带萌新通关获得的|cffff0000爱心积分翻倍！
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -26,21 +29,27 @@ content_tip = ''
 --奖品
 local award_list = { 
     ['攻击奖励'] =  {
-        {    rand = 22.5, name = '随机力量',},
-        {    rand = 22.5, name = '随机敏捷',},
-        {    rand = 22.5, name = '随机智力',},
+        {    rand = 20.5, name = '随机力量',},
+        {    rand = 20.5, name = '随机敏捷',},
+        {    rand = 20.5, name = '随机智力',},
 		{    rand = 22.5, name = '随机全属性',},
 		
-		{    rand = 1, name = '攻击速度+1%',},
-		{    rand = 1, name = '分裂伤害+1%',},
-		{    rand = 1, name = '攻击距离+1',},
-        {    rand = 1, name = '暴击伤害+1%',},
-        {    rand = 1, name = '技暴伤害+1%',},
-        {    rand = 1, name = '会心伤害+1%',},
-        {    rand = 1, name = '物理伤害加深+1%',},
-        {    rand = 1, name = '技能伤害加深+1%',},
-        {    rand = 1, name = '全伤加深+1%',},
-        {    rand = 1, name = '对BOSS额外伤害+1%',},
+		{    rand = 1, name = '攻击速度+10%',},
+		{    rand = 1, name = '分裂伤害+10%',},
+		{    rand = 1, name = '攻击距离+10',},
+        {    rand = 1, name = '暴击伤害+10%',},
+        {    rand = 1, name = '技暴伤害+10%',},
+        {    rand = 1, name = '会心伤害+10%',},
+        {    rand = 1, name = '物理伤害加深+10%',},
+        {    rand = 1, name = '技能伤害加深+10%',},
+        {    rand = 1, name = '全伤加深+10%',},
+        {    rand = 1, name = '对BOSS额外伤害+10%',},
+        {    rand = 1, name = '暴击伤害系数+2%',},
+        {    rand = 1, name = '技暴伤害系数+2%',},
+        {    rand = 1, name = '会心伤害系数+2%',},
+        {    rand = 1, name = '物理伤害加深系数+2%',},
+        {    rand = 1, name = '技能伤害加深系数+2%',},
+        {    rand = 1, name = '全伤加深系数+2%',},
     },
 }
 
@@ -55,13 +64,13 @@ local function add_content(p)
 		--增加人物属性
 		-- print(k,v)
 		p.hero:add(k,v)
-		ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00'..rand_name..' ',3) 
+		ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00将鲜花献给了恩师，恭喜额外获得|cffffff00'..rand_name..' ',3) 
 	end  
 	if finds(rand_name,'随机') then
 		local attr = rand_name:sub(7,-1)
 		local val = math.random(99999)
 		p.hero:add(attr,val)
-		p:sendMsg('|cffebb608【系统】|r|cff00ff00'..attr..'+'..val..'|r ',3) 
+		p:sendMsg('|cffebb608【系统】|r|cff00ff00将鲜花献给了恩师，恭喜额外获得|cffffff00'..attr..'|cffffff00+'..val..'|r ',3) 
 	end
 end
 --爱心积分翻倍
@@ -81,7 +90,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     p.seed_cnt = (p.seed_cnt or 0) + 1
     add_content(p)
     --成就相关
-    if p.seed_cnt == 100 and (p.cus_server['懂事的孩子标识'] or 0) <=0 then 
+    if p.seed_cnt == 10 and (p.cus_server['懂事的孩子标识'] or 0) <=0 then 
         local real_name = '懂事的孩子'
         local hero = p.hero
         local key = ac.server.name2key(real_name)
@@ -94,10 +103,10 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
             local skl = hero:find_skill(real_name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
-                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 不断食用美味的西瓜，惊喜获得|cffff0000【可存档成就】'..real_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
+                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 不断种植鲜花献给恩师，惊喜获得|cffff0000【可存档成就】'..real_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
             else
                 skl:upgrade(1)
-                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 不断食用美味的西瓜，使|cffff0000【可存档成就】'..real_name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
+                ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..p:get_name()..'|r 不断种植鲜花献给恩师，使|cffff0000【可存档成就】'..real_name..'|r得到了升级，升级后的属性可在“最强魔灵-活动成就”中查看',6) 
             end 
         end    
     end

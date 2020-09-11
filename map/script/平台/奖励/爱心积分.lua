@@ -359,7 +359,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+20% 对BOSS额外伤害系数|r
 
 ]],
-need_map_level = 30,
+need_map_level = 32,
 current = function(self)
     local p = ac.player.self
     local val = p.server and p.server['爱心积分'] or 0
@@ -385,7 +385,7 @@ mt{
 点击查看 |cff00ffff关爱萌新成就|r，主要通过 |cffffff00不断带萌新通关|r 获得
 
 |cffebb608【说明】|r
-|cff00ff00老司机|cffffff00（地图等级≥10的玩家）|cff00ff00带萌新|cffffff00（地图等级≤7的玩家）|cff00ff00通关，能获得可存档的爱心积分
+|cff00ff00老司机带萌新|cffffff00（地图等级相差10级以上的玩家）|cff00ff00通关，能获得可存档的爱心积分
 
 |cffff0000当爱心积分达到一定值，能自动解锁可存档成就
     
