@@ -89,8 +89,8 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
     local p = hero:get_owner() 
     p.seed_cnt = (p.seed_cnt or 0) + 1
     add_content(p)
-    --成就相关
-    if p.seed_cnt == 100 and (p.cus_server['懂事的孩子标识'] or 0) <=0 then 
+    --成就相关 and (p.cus_server['懂事的孩子标识'] or 0) <=0 
+    if p.seed_cnt == 100 then 
         local real_name = '懂事的孩子'
         local hero = p.hero
         local key = ac.server.name2key(real_name)
@@ -98,7 +98,7 @@ ac.game:event '触发一颗神奇的种子事件'(function(trg,skill,hero)
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
             --激活今日标识
-            p:SetServerValue(ac.server.name2key('懂事的孩子标识'),1) --自己服务器
+            -- p:SetServerValue(ac.server.name2key('懂事的孩子标识'),1) --自己服务器
             --动态插入魔法书
             local skl = hero:find_skill(real_name,nil,true) 
             if not skl  then 
