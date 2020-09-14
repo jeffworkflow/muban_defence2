@@ -356,7 +356,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff教师节活动获得 |cffff0000重复完成可升级成就（每天限完成一次）|r |cff00ffff最大等级=5
+|cff00ffff教师节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%全属性%   |cff00ff00全属性|r
