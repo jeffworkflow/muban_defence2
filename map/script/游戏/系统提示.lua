@@ -7,7 +7,7 @@ local tips = {
     '|cff00ffff输入 qlwp，可删除除练功房外的所有物品|cffff0000（可解决后期地图报错问题）',
     '|cff00ffff输入 nd，可取消扭蛋、藏宝图等文字提醒|cffff0000（可解决后期地图报错问题）',
 }
-local time = 10 * 60
+local time = 8 * 60
 
 ac.loop( time * 1000,function ()
     local rand = math.random(#tips)
