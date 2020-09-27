@@ -129,6 +129,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     if finds(g_game_degree_name , '绝望') then 
         max_index = 150
     end
+    
     local mt = ac.creep['贪婪魔窟']{    
         region = 'moku1 moku2 moku3 moku4',
         creeps_datas = '',

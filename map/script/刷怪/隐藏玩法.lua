@@ -243,7 +243,7 @@ art = [[cjcbt.blp]],
 --说明
 tip = [[|cffFFE799【使用说明】：|r
 
-|cff00ff00消耗|cffff000050点挖宝积分|cff00ff00，兑换|cffffff00超级藏宝图|cffcccccc（当前挖宝积分：%wt_cnt%|cffcccccc）
+|cff00ff00消耗|cffff000040点当局挖宝积分|cff00ff00，兑换|cffffff00超级藏宝图|cffcccccc（当局挖宝积分：%wt_cnt%|cffcccccc）
  ]],
 --物品类型
 item_type = '神符',
@@ -264,9 +264,9 @@ function mt:on_cast_start()
     local hero = self.owner 
     local p = hero.owner
     p.wt_cnt = p.wt_cnt or 0
-    if p.wt_cnt >=50 then 
+    if p.wt_cnt >=40 then 
         --扣积分
-        p.wt_cnt = p.wt_cnt - 50 
+        p.wt_cnt = p.wt_cnt - 40 
         --加超级藏宝图
         hero:add_item('超级藏宝图')
     else

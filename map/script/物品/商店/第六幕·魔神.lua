@@ -99,6 +99,16 @@ local function check(p)
         ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战辰龙|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
     end
 
+    if p.cnt_total_succ == 13 and not ac.flag_tzsl  then
+        ac.flag_tzll = true
+        local shop = ac.find_unit('生肖十二魂')
+        local it = shop:add_sell_item('挑战紫')
+        
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战紫|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战紫|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+        ac.player.self:sendMsg('|cffebb608【系统】|cff00ffff '..p:get_name()..' |cff00ff00开启了“|cffff0000挑战紫|cff00ff00”，在基地右边的npc-生肖十二魂中查看 ',5)
+    end
+
     if p.cnt_total_succ == 5 and not ac.flag_msjy  then
         ac.flag_msjy = true
         local unit = ac.find_unit('第六幕·魔神之路')

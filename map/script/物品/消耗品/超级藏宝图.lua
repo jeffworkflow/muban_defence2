@@ -22,7 +22,7 @@ mt{
     --售价
     kill_count = 200,
     --cd
-    cool = 5,
+    cool = 4,
     --物品详细介绍的title
     content_tip = '|cffffe799使用说明：|r',
     --可能会掉线
@@ -85,26 +85,26 @@ function mt:on_cast_start()
     local tx,ty = self.random_point:get()    
     local point = hero:get_point()
     local sx,sy = point:get()
-    local str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00北（上）方'
+    local str ='|cffebb608【系统】|cff00ff00未获得宝藏，罗盘震动了一下，指向了|cffffff00北（上）方'
     local strs = {}
     --目标在右边
     if tx - sx > 175 then 
-        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00东（右）方'
+        str ='|cffebb608【系统】|cff00ff00未获得宝藏，罗盘震动了一下，指向了|cffffff00东（右）方'
         table.insert(strs,str)
     end
     --目标在左边边
     if tx - sx < -175 then 
-        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00西（左）方'
+        str ='|cffebb608【系统】|cff00ff00未获得宝藏，罗盘震动了一下，指向了|cffffff00西（左）方'
         table.insert(strs,str)
     end
     --目标在左边边
     if ty - sy > 175 then 
-        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00北（上）方'
+        str ='|cffebb608【系统】|cff00ff00未获得宝藏，罗盘震动了一下，指向了|cffffff00北（上）方'
         table.insert(strs,str)
     end
     --目标在左边边
     if ty - sy < -175 then 
-        str ='|cffebb608【系统】|cff00ff00罗盘指向了|cffffff00南（下）方'
+        str ='|cffebb608【系统】|cff00ff00未获得宝藏，罗盘震动了一下，指向了|cffffff00南（下）方'
         table.insert(strs,str)
     end
 

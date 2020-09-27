@@ -198,14 +198,18 @@ tip = [[
 
 |cffffe799【成就属性】：|r
 |cff00ff00+58  杀怪加生命上限
-+50% 分裂伤害
-+50% 物理伤害加深
++
+% 分裂伤害
++
+% 物理伤害加深
 
 |cffcccccc杀死【鼠天瞳】获得，获得概率与通关难度/地图等级相关]],
 
 ['杀怪加生命上限'] = 58,
-['分裂伤害'] = 50,
-['物理伤害加深'] = 50,
+['分裂伤害'] = 
+,
+['物理伤害加深'] = 
+,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -303,13 +307,15 @@ tip = [[
 
 |cffffe799【成就属性】：|r
 |cff00ff00+58  每秒加全属性
-+50% 暴击伤害
++
+% 暴击伤害
 +25% 技暴伤害
 
 |cffcccccc杀死【牛金刚】获得，获得概率与通关难度/地图等级相关]],
 
 ['每秒加全属性'] = 58,
-['暴击伤害'] = 50,
+['暴击伤害'] = 
+,
 ['技暴伤害'] = 25,
 
 --目标类型
@@ -607,6 +613,285 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 3,
 }
 
+local mt = ac.skill['蛇灵仙盔']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi1.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 杀怪加全属性
++15% 暴击伤害
++2%  暴击伤害系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['杀怪加全属性'] = 168,
+['暴击伤害'] = 15,
+['暴击伤害系数'] = 2,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙肩']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi2.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 每秒加全属性
++15%  技暴伤害
++2%   技暴伤害系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加全属性'] = 168,
+['技暴伤害系数'] = 2,
+['技暴伤害'] = 15,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙膝']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi3.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 攻击加全属性
++15% 会心伤害
++2%  会心伤害系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加全属性'] = 168,
+['会心伤害'] = 15,
+['会心伤害系数'] = 2,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙链']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi4.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 杀怪加力量
++15% 物理伤害加深
++2%  物理伤害加深系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['杀怪加力量'] = 168,
+['物理伤害加深'] = 15,
+['物理伤害加深系数'] = 2,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙坠']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi5.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 每秒加力量
++15%  技能伤害加深
++2%   技能伤害加深系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加力量'] = 168,
+['技能伤害加深'] = 15,
+['技能伤害加深系数'] = 2,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙腰']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi6.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 攻击加力量
++15%  全伤加深
++2%   全伤加深系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加力量'] = 168,
+['全伤加深'] = 15,
+['全伤加深系数'] = 2,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙手']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi7.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 杀怪加敏捷
++50%  分裂伤害
++50%  攻击速度
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['杀怪加敏捷'] = 168,
+['攻击速度'] = 50,
+['分裂伤害'] = 50,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙靴']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi8.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 攻击加敏捷
++25   移动速度
++10%  触发概率加成
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['攻击加敏捷'] = 168,
+['移动速度'] = 25,
+['触发概率加成'] = 50,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙裤']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi9.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 每秒加敏捷
++3%  暴击伤害系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加敏捷'] = 168,
+['暴击伤害系数'] = 3,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙衣']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi10.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 杀怪加攻击
++3%  技暴伤害系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['杀怪加攻击'] = 168,
+['技暴伤害系数'] = 3,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
+local mt = ac.skill['蛇灵仙剑']
+mt{
+--等级
+level = 0, --要动态插入
+max_level = 1,
+--图标
+art = [[zi11.blp]],
+--说明
+tip = [[
+
+|cffffe799【成就属性】：|r
+|cff00ff00+168 每秒加攻击
++3%  会心伤害系数
+
+|cffcccccc杀死【紫】获得，获得概率与通关难度/地图等级相关]],
+
+['每秒加攻击'] = 168,
+['会心伤害系数'] = 3,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 3,
+}
+
 
 local mt = ac.skill['生肖十二魂']
 mt{
@@ -620,7 +905,7 @@ mt{
     
 }
 mt.skills = {
-    '鼠灵','牛灵','虎灵','兔灵','龙灵'
+    '鼠灵','牛灵','虎灵','兔灵','龙灵','蛇灵'
 }
 
 
@@ -650,7 +935,8 @@ mt{
 
 集齐全部套装可获得额外属性：
 |cff00ff00+58  每秒加全属性
-+50% 暴击伤害
++
+% 暴击伤害
 +25% 技暴伤害|r
  ]],
     
@@ -719,4 +1005,36 @@ mt{
 }
 mt.skills = {
     '龙珠风','龙珠火','龙珠林','龙珠山'
+}
+
+local mt = ac.skill['蛇灵']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[zi.blp]],
+    tip = [[
+
+点击查看 |cff00ffff蛇灵|r 成就，通过挑战|cff00ff00【紫】|r获得
+
+集齐|cffffff006件套装|r可获得额外属性：
+|cff00ff00+688 每秒加攻击 
++688 攻击加全属性 
++24% 暴击伤害
++15% 物理伤害加深
++10% 技能伤害加深
++1   额外杀敌数|r
+
+集齐|cffffff00全部套装|r可获得额外属性：
+|cff00ff00+688 杀怪加攻击
++15   每秒加护甲
++10% 暴击伤害系数
++10% 技暴伤害系数
++10% 会心伤害系数
++10% 物理伤害加深系数
++10% 技能伤害加深系数
+ ]],
+    
+}
+mt.skills = {
+    '蛇灵仙盔','蛇灵仙肩','蛇灵仙膝','蛇灵仙链','蛇灵仙坠','蛇灵仙腰','蛇灵仙手','蛇灵仙靴','蛇灵仙裤','蛇灵仙衣','蛇灵仙剑'
 }
