@@ -376,7 +376,7 @@ tip = [[
 |cff00ff00累计获得|cff00ffff十四个荣耀战令|cff00ff00后获得 
 
 |cffFFE799【属性】：|r
-|cff00ff00+25   |cff00ff00对BOSS额外伤害|r
+|cff00ff00+25%   |cff00ff00对BOSS额外伤害|r
 
 ]],
 ['对BOSS额外伤害'] = 25,
