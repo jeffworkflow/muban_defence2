@@ -78,7 +78,7 @@ local item_list = {
 --     return temp[1] or 1
 -- end
 --起始id
-local start_id =1+6*20*4*4+1+6*20*4+1+6*20*4+1 + 6*6*4*3+1+ 6*6*4*3+1
+local start_id =1+6*20*4*4+1+6*20*4+1+6*20*4+1 + 6*6*4*3+1+ 6*23*4*3+1
 -- print(start_id)
 local max = 0
 for name, data in pairs(item_list) do 
