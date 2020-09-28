@@ -132,6 +132,10 @@ content_tip = '|cffffe799使用说明：|r'
 --插入到合成表
 ac.wait(100,function()
     table.insert(ac.streng_item_list,{'博饼券','【中】*1 【秋】*1 【快】*1 【乐】*1'})
+    table.insert(ac.check_hecheng,'【中】')
+    table.insert(ac.check_hecheng,'【秋】')
+    table.insert(ac.check_hecheng,'【快】')
+    table.insert(ac.check_hecheng,'【乐】')
 end)
 --奖品
 local award_list = { 

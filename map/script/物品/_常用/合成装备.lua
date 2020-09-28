@@ -128,6 +128,7 @@ local check_hecheng = {
     '全属性精通','力量专精','敏捷专精','智力专精',
     '恶魔之力',
 }
+ac.check_hecheng = check_hecheng
 for i,name in ipairs(check_hecheng) do 
     local mt = ac.skill[name]
     mt.check_hecheng = true
