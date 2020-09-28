@@ -466,6 +466,184 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
+--=======================中秋活动=====================
+local mt = ac.skill['秀才']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[xiucai.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+18.8   杀怪加全属性|r
+|cff00ff00+18.8   攻击减甲|r
+|cff00ff00+18.8%  木头加成|r
+|cff00ff00+18.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 18.8,
+['攻击减甲'] = 18.8,
+['木头加成'] = 18.8,
+['全伤加深'] = 18.8,
+
+need_map_level = 5,
+}
+local mt = ac.skill['举人']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[juren.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+28.8   杀怪加全属性|r
+|cff00ff00+28.8   攻击减甲|r
+|cff00ff00+28.8%  木头加成|r
+|cff00ff00+28.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 28.8,
+['攻击减甲'] = 28.8,
+['木头加成'] = 28.8,
+['全伤加深'] = 28.8,
+
+need_map_level = 5,
+}
+local mt = ac.skill['进士']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[jinshi.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+38.8   杀怪加全属性|r
+|cff00ff00+38.8   攻击减甲|r
+|cff00ff00+38.8%  木头加成|r
+|cff00ff00+38.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 38.8,
+['攻击减甲'] = 38.8,
+['木头加成'] = 38.8,
+['全伤加深'] = 38.8,
+
+need_map_level = 5,
+}
+
+local mt = ac.skill['探花']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[tanhua.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+48.8   杀怪加全属性|r
+|cff00ff00+48.8   攻击减甲|r
+|cff00ff00+48.8%  木头加成|r
+|cff00ff00+48.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 48.8,
+['攻击减甲'] = 48.8,
+['木头加成'] = 48.8,
+['全伤加深'] = 48.8,
+
+need_map_level = 5,
+}
+local mt = ac.skill['榜眼']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[bangyan.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+68.8   杀怪加全属性|r
+|cff00ff00+68.8   攻击减甲|r
+|cff00ff00+68.8%  木头加成|r
+|cff00ff00+68.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 68.8,
+['攻击减甲'] = 68.8,
+['木头加成'] = 68.8,
+['全伤加深'] = 68.8,
+
+need_map_level = 5,
+}
+
+
+local mt = ac.skill['状元']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[zhuangyuan.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+88.8%  木头加成|r
+|cff00ff00+88.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 88.8,
+['攻击减甲'] = 88.8,
+['木头加成'] = 88.8,
+['全伤加深'] = 88.8,
+
+need_map_level = 5,
+}
 
 local mt = ac.skill['火把节']
 mt{
