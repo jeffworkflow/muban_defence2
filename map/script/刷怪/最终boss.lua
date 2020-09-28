@@ -76,7 +76,7 @@ ac.game:event '游戏-最终boss' (function(trg)
         if ac.main_unit then
             ac.main_unit:add_restriction('无敌')
         end
-        if ac.g_game_degree_attr >= 100000 then 
+        if finds(ac.g_game_degree_name,'无尽模式') then
             --无尽开始
             ac.game:event_notify('游戏-无尽开始')
         elseif finds(ac.g_game_degree_name,'贪婪魔窟') then

@@ -13,6 +13,7 @@ end
 table.sort(mobing,function(a,b)
     return a < b
 end)
+ac.mobing = mobing
 -- print_r(mobing)
 
 local skill_list = {}
@@ -27,6 +28,7 @@ end
 table.sort(skill_list,function(a,b)
     return a < b
 end)
+ac.creep_skill_list = skill_list
 -- print_r(skill_list)
 
 --无尽怪物改变所有属性
@@ -128,6 +130,10 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,degree)
     end
     if finds(g_game_degree_name , '绝望') then 
         max_index = 150
+    end
+
+    if finds(g_game_degree_name , '修罗') then 
+        max_index = 200
     end
     
     local mt = ac.creep['贪婪魔窟']{    

@@ -114,6 +114,29 @@ ac.wait(1200,function()
         end)
     end
 
+    --无尽模式 选择
+    local function endless_degree(player,list) 
+        t_create_dialog(player,"选择难度",list,1,function (index,page)  
+            ac.g_game_degree = index + (page-1) * 10
+            ac.g_game_degree_attr = list[ac.g_game_degree].attr
+            ac.g_game_degree_name = '无尽模式-'..list[ac.g_game_degree].name  
+            --创建预设英雄
+            ac.choose_hero()
+            --游戏-开始
+            ac.wait(30*1000,function()
+                ac.game:event_notify('游戏-开始')
+            end)
+            ac.player.self:sendMsg("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
+            ac.game:event_notify('选择难度',ac.g_game_degree_name,ac.g_game_degree_attr)
+
+            ac.player.self:sendMsg("|cffebb608【开启条件】|r|cff00ff00通关堡垒/万古流芳/超绝群伦后开启！|cff00ffff（对应贪婪魔窟的普通/噩梦/地狱模式）")
+            ac.player.self:sendMsg("|cffebb608【模式介绍】|r|cff00ff00通关后可进入|cffffff00贪婪魔窟|cff00ff00，获取大量的|cffff0000可存档装备！")
+
+            
+            print("选择了 |cffffff00"..ac.g_game_degree_name.."|r")
+        end)
+    end
+
     local function create_choose_dialog()
         local player = get_first_player()
         if not player then 
@@ -156,6 +179,7 @@ ac.wait(1200,function()
         --根据无限难度 开发对应模式
         local list4 = {}
         local list5 = {} --深渊冒险
+        local list6 = {} --无尽模式
         if bit >= 1 then 
             table.insert(show_list,{name = '段位挑战'})
             table.insert(show_list,{name = '魔灵争霸',attr = 1})
@@ -179,6 +203,14 @@ ac.wait(1200,function()
         end
         if bit >= 19 then 
             table.insert(list4,{name = '修罗',attr = 20}) 
+        end
+        if bit >= 23 then 
+            table.insert(list4,{name = '苍穹',attr = 24}) 
+        end
+        --无尽模式
+        if bit >= 7 then 
+            table.insert(show_list,{name = '无尽模式'}) 
+            table.insert(list6,{name = '牛刀小试',attr=6}) 
         end
         
         for i = #list4 ,1 ,-1 do 
@@ -205,8 +237,10 @@ ac.wait(1200,function()
                     moling_degree(player,show_list[2])
                 elseif index == 3 then 
                     stmx_degree(player,list5)
-                else
+                elseif index == 4 then 
                     cave_degree(player,list4) 
+                else
+                    endless_degree(player,list6) 
                 end
             end)
         else 

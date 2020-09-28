@@ -198,18 +198,14 @@ tip = [[
 
 |cffffe799【成就属性】：|r
 |cff00ff00+58  杀怪加生命上限
-+
-% 分裂伤害
-+
-% 物理伤害加深
++50% 分裂伤害
++50% 物理伤害加深
 
 |cffcccccc杀死【鼠天瞳】获得，获得概率与通关难度/地图等级相关]],
 
 ['杀怪加生命上限'] = 58,
-['分裂伤害'] = 
-,
-['物理伤害加深'] = 
-,
+['分裂伤害'] = 50,
+['物理伤害加深'] = 50,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -307,15 +303,13 @@ tip = [[
 
 |cffffe799【成就属性】：|r
 |cff00ff00+58  每秒加全属性
-+
-% 暴击伤害
++50% 暴击伤害
 +25% 技暴伤害
 
 |cffcccccc杀死【牛金刚】获得，获得概率与通关难度/地图等级相关]],
 
 ['每秒加全属性'] = 58,
-['暴击伤害'] = 
-,
+['暴击伤害'] = 50,
 ['技暴伤害'] = 25,
 
 --目标类型
@@ -1038,3 +1032,41 @@ mt{
 mt.skills = {
     '蛇灵仙盔','蛇灵仙肩','蛇灵仙膝','蛇灵仙链','蛇灵仙坠','蛇灵仙腰','蛇灵仙手','蛇灵仙靴','蛇灵仙裤','蛇灵仙衣','蛇灵仙剑'
 }
+function mt:on_add()
+    
+    ac.wait(0,function()
+        local cnt = 0
+        for index=1,table.maxnum(self.skill_book) do 
+            local skl = self.skill_book[index]
+            if skl and skl.level >=1 then 
+                cnt = cnt + 1
+
+                if cnt == 6 then 
+                    self.owner:add_skill('蛇灵6件套','隐藏')
+                end
+                if cnt == #self.skills then 
+                    self.owner:add_skill('蛇灵全套','隐藏')
+                end
+            end
+        end
+    end)
+end
+
+local mt = ac.skill['蛇灵6件套']
+mt{
+--等级
+level = 1, 
+['每秒加全属性'] = 58,
+['暴击伤害'] = 50,
+['技暴伤害'] = 25,
+}
+
+local mt = ac.skill['蛇灵全套']
+mt{
+--等级
+level = 1, 
+['每秒加全属性'] = 58,
+['暴击伤害'] = 50,
+['技暴伤害'] = 25,
+}
+

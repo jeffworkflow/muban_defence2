@@ -14,6 +14,7 @@ tip = [[
 %active6% 点亮宠物30 - 全伤加深系数+2%
 %active7% 点亮宠物35 - 物理伤害加深系数+3%
 %active8% 点亮宠物40 - 技能伤害加深系数+3%
+%active9% 点亮宠物40 - 技能伤害加深系数+3%
  ]],
 content = '',
 active = function(self)
@@ -34,6 +35,7 @@ active5 =function(self) return self.active >=25 and '|cff00ff00' or '|cffcccccc'
 active6 =function(self) return self.active >=30 and '|cff00ff00' or '|cffcccccc' end,
 active7 =function(self) return self.active >=35 and '|cff00ff00' or '|cffcccccc' end,
 active8 =function(self) return self.active >=40 and '|cff00ff00' or '|cffcccccc' end,
+active9 =function(self) return self.active >=45 and '|cff00ff00' or '|cffcccccc' end,
 ['物理伤害加深系数'] = function(self) 
     local val = 0
     if self.active >=5 then 
@@ -85,13 +87,13 @@ mt{
     
 }
 mt.skills = {
-    '宠物传说','宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5','宠物纪念册6','宠物纪念册7','宠物纪念册8',
+    '宠物传说','宠物纪念册1','宠物纪念册2','宠物纪念册3','宠物纪念册4','宠物纪念册5','宠物纪念册6','宠物纪念册7','宠物纪念册8','宠物纪念册9',
 } 
 function mt:on_add()
     local hero = self.owner 
     local p = hero:get_owner()
     --黑名单和反作弊处理 有31则视为
-    local flag_val = 41
+    local flag_val = 46
     if has_flag(p.server['宠物纪念册'],2^(flag_val-1)) or not ac.flag_use_mall then
         return 
     end
@@ -292,6 +294,28 @@ tip = [[
 ]]}
 
 local mt = ac.skill['宠物纪念册8']
+mt['杀怪加敏捷'] = 35
+mt['触发概率加成'] = 10
+mt['每秒加木头'] = 15
+mt['多重暴击'] = 1
+mt{
+title = '快乐西游',
+art = [[klxy.blp]],
+tip = [[
+
+%content%
+|cffffe799【获得方式】：|r
+|cff00ff00携带编号为【036】-【040】的宠物通关N2以上
+
+|cffffe799【成就属性】|r:|cff00ff00
++35  杀怪加敏捷
++10% 触发概率加成
++15  每秒加木头
++1   多重暴击
+
+]]}
+
+local mt = ac.skill['宠物纪念册9']
 mt['杀怪加敏捷'] = 35
 mt['触发概率加成'] = 10
 mt['每秒加木头'] = 15

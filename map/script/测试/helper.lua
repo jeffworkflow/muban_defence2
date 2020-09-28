@@ -1900,7 +1900,7 @@ function helper:point()
 end
 
 --测试 魔法书功能
-function helper:test_b1(str,cnt)
+function helper:b1(str,cnt)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	local hero = p.hero
 	local cnt = cnt or 1 
@@ -1909,7 +1909,7 @@ function helper:test_b1(str,cnt)
 	end
 
 end	
-function helper:test_b2(str)
+function helper:b2(str)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	local hero = p.hero
 	ac.game:event_notify('技能-删除魔法书',hero,'精彩活动',str or '有趣的灵魂')

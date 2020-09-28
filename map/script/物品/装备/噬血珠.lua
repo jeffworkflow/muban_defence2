@@ -24,9 +24,19 @@ mt{
         return str
     end,    
     --全属性
-    ['全属性'] = {1000,15000,50000,500000,1500000,2500000,5000000,7500000,10000000,15000000,20000000,},
+    ['全属性'] =  function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        local val = {1000,15000,50000,500000,1500000,2500000,5000000,7500000,10000000,15000000,20000000,}
+        return (val[self.level] or 0) *(1+p:get('噬魂珠翻倍')/100)
+    end,
     --每秒加全属性
-    ['每秒加全属性'] = {50,100,200,400,800,1600,3200,6400,12800,25600,51200,},
+    ['每秒加全属性'] = function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        local val = {50,100,200,400,800,1600,3200,6400,12800,25600,51200,}
+        return (val[self.level] or 0) *(1+p:get('噬魂珠翻倍')/100)
+    end,
     -- --攻击
     -- ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
     -- --护甲
@@ -34,16 +44,40 @@ mt{
     --每秒加金币
     -- ['每秒加金币'] = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
     --每秒加木头
-    ['每秒加木头']  = {0,0,1,3,5,10,20,40,75,150,300,},
-    ['减少周围护甲']  = {0,0,0,50,150,250,500,1000,2000,3500,5000,},
-    ['多重暴击几率']  = {0,0,0,0,0,1,2,3,4,5,5,},
-    ['多重暴击']  = {0,0,0,0,0,0,0,0,0,0,1,},
+    ['每秒加木头']  = function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        local val = {0,0,1,3,5,10,20,40,75,150,300,}
+        return (val[self.level] or 0) *(1+p:get('噬魂珠翻倍')/100)
+    end,
+    ['减少周围护甲']  = function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        local val = {0,0,0,50,150,250,500,1000,2000,3500,5000,}
+        return (val[self.level] or 0) *(1+p:get('噬魂珠翻倍')/100)
+    end,
+    ['多重暴击几率']  =function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        local val =  {0,0,0,0,0,1,2,3,4,5,5,}
+        return (val[self.level] or 0) *(1+p:get('噬魂珠翻倍')/100)
+    end,
+    ['多重暴击']  = function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        local val =  {0,0,0,0,0,0,0,0,0,0,1,}
+        return (val[self.level] or 0) *(1+p:get('噬魂珠翻倍')/100)
+    end,
     -- --会心几率
     -- ['会心几率']  = {0,0,0,1,2,3,4,5,6,8,10,},
     -- --会心伤害
     -- ['会心伤害'] = {0,0,0,10,20,30,40,50,60,80,100,},
     -- --吸血
-    ['吸血'] = 12,
+    ['吸血'] = function(self)
+        if not self.owner then return 0 end
+        local p = self.owner.owner
+        return  12 *(1+p:get('噬魂珠翻倍')/100)
+    end,
     --杀敌个数
     kill_cnt = {150,450,1500,3000,4500,6000,7500,9000,10500,12000,13500},
     -- kill_cnt = {1,11},

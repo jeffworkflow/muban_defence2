@@ -83,6 +83,11 @@ function mt:on_cast_start()
         print('又获得一次'..self.name,rate)
         self:add_content()
     end
+    local rate = p:get('强化石天谕重复获得概率')
+    if math.random(100000)/1000<=rate then 
+        print('又获得'..self.name,rate)
+        hero:add_item(self.name)
+    end
 end
 
 function mt:add_content()

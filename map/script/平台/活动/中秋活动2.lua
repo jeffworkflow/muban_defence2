@@ -143,7 +143,6 @@ local award_list = {
         { rand = 2,      name = '探花'},
         { rand = 1,      name = '榜眼'},
         { rand = 0.45,      name = '状元'},
-        { rand = 0.3,      name = '王昭君'},
     },
 }
 local name2id = {
@@ -170,15 +169,6 @@ local function give_award(hero)
     end
     if rand_name == '无' then
         p:sendMsg('|cffebb608【系统】|r|cff00ff00什么都没有博到',3) 
-    elseif rand_name == '王昭君' then
-        local has_award = p.server and p.server['王昭君'] or 0
-        if has_award >0 then 
-            p:sendMsg('|cffebb608【系统】|r|cff00ff00什么都没有博到',3) 
-        else 
-            local key = ac.server.name2key('王昭君')
-            p:Map_SaveServerValue(key,1)
-            p:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r |cff00ff00将骰子摇了下去，好多“四”，惊喜获得|cffff0000【可存档英雄】'..rand_name..'|r |cff00ff00激活条件可在“最强魔灵-英雄皮肤”中查看',6) 
-        end    
     else    
         local key = 'bobing'
         -- local server_value = p.server and p.server[ac.server.key2name(key)] or 0 

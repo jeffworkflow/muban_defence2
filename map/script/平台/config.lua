@@ -36,6 +36,8 @@ local item = {
     {'CTDJ','苍天帝剑',1},
     {'TGCYY','天罡苍羽翼',1},
     
+    {'JFLB','积分礼包',1},
+    {'XSLY','血色领域',1},
     
     --反作弊
     {'XBDFX','寻宝大飞侠',1},
@@ -61,6 +63,9 @@ local item = {
     {'DJYGJL','地图等级元祖巨龙',45,true},
 
     {'DJTZ','等级天尊',50,true},
+
+    {'DJTGCYY','地图等级天罡苍羽翼',60,true},
+    {'DJCTDJ','地图等级苍天帝剑',65,true},
     
 }
 
@@ -239,8 +244,11 @@ local cus_key = {
 
     {'ydss','缘定三生',{ ['缘定三生'] = {1,5,value = function(self,p) return p:Map_GetServerValue('ydss') end}}},
     {'dsdhz','懂事的孩子',{ ['懂事的孩子'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
-    {'dsdhzbs','懂事的孩子标识'},
 
+    {'jzdw','九洲帝王',{ ['九洲帝王'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
+    {'dygcpxdr','第一个吃螃蟹的人',{ ['第一个吃螃蟹的人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
+    {'bobing','博饼',{ ['博饼'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
+    
     
     {'wxnd','无限难度'},
     {'symx','深渊冒险'},
@@ -470,7 +478,25 @@ local cus_key = {
     {'s0jj','S0赛季进阶奖励标识'},
     {'s1jj','S1赛季进阶奖励标识'},
     {'s2jj','S2赛季进阶奖励标识'},
+
+    
+    {'xsndwj','牛刀小试无尽',{
+        --奖励  所需值 地图等级
+            ['牛刀1'] = {25,10},
+            ['牛刀2'] = {50,15},
+        }
+    },
+    {'xsndwjlj','牛刀小试无尽累计',{
+            --奖励  所需值 地图等级
+            ['牛刀小试1'] = {250,15},
+            ['牛刀小试2'] = {500,20},
+        }
+    },
+
     --自定义服务器用到的内容
+    {'today_xsndwj','今日牛刀小试无尽'},
+    {'today_xsndwjrank','今日牛刀小试无尽排名'},
+
     {'zhanling','战令标识'},
     {'today_symx','今日深渊冒险'},
     {'today_symxrank','今日深渊冒险排名'},

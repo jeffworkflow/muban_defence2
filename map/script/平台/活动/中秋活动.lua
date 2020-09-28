@@ -156,12 +156,12 @@ end
 -- 攻击木桩1%掉落 大西瓜
 -- 击杀武器BOSS3，35%掉落 肥美的螃蟹
 local unit_reward = { 
-    ['强盗领主'] =  {{rand = 30,     name = '五仁月饼'}},
-    ['武器boss3'] =  {{ rand = 40,     name = '肥美的螃蟹'}},
+    ['藏宝阁阁主'] =  {{rand = 35,     name = '五仁月饼'}},
+    ['哪吒'] =  {{ rand = 35,     name = '肥美的螃蟹'}},
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
     local reward_type = unit:get_name()
-    if not finds(reward_type,'强盗领主','武器boss3') then 
+    if not finds(reward_type,'藏宝阁阁主','哪吒') then 
         return
     end    
     local p = killer:get_owner()
@@ -178,10 +178,10 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local yb_max_cnt = 20   
     local px_max_cnt = 10
 
-    if reward_type == '强盗领主' and p.max_item_fall[rand_name] <= yb_max_cnt then 
+    if reward_type == '藏宝阁阁主' and p.max_item_fall[rand_name] <= yb_max_cnt then 
         ac.item.create_item(rand_name,unit:get_point())
     end    
-    if reward_type == '武器boss3' and p.max_item_fall[rand_name] <= px_max_cnt then 
+    if reward_type == '哪吒' and p.max_item_fall[rand_name] <= px_max_cnt then 
         ac.item.create_item(rand_name,unit:get_point())
     end
 
