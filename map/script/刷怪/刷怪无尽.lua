@@ -209,15 +209,21 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     boss:add_skill('金色鎏金','英雄')
     print('boss 出现啦。',boss,boss:get_point())
 
-end)    
+end)   
 --清理地图上面的 商店等
 local function clear_map()
     --删除商店
-    local del_shop = [[练功师]]
+    local del_shop = [[火焰利刃]]
     for key,unit in pairs(ac.shop.unit_list) do 
 		if finds(del_shop,unit:get_name()) then 
 			unit:remove()
-		end	
+        end	
+        
+        if unit:get_name() == '武学功法' then 
+            unit:remove_sell_item('黄阶练功')
+            unit:remove_sell_item('玄阶练功')
+            unit:remove_sell_item('地阶练功')
+        end
     end	
     
     -- --练功房 自动刷怪停止
