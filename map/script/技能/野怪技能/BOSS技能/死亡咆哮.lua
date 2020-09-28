@@ -3,7 +3,7 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 0,
+cast_channel_time = 1.2,
 cast_shot_time = 0,
 cast_finish_time = 0.0,
 --初始等级
@@ -19,14 +19,16 @@ tip = [[
 cost_data = {	type = '魔法',	num_type = '三维',	rate = 0.2,},
 --范围
 range = 1000,
-area = 750,
+area = 1500,
 damage = function(self)
     return self.owner:get('攻击') * 50
 end,  
 
 damage_type = '物理',
 --冷却
-cool = 12}
+cool = 12,
+time =1.2,
+}
 mt.effect = [[Hero_Sven_N3S_W_Caster.mdx]]
 
 function mt:boss_skill_shot()
@@ -43,7 +45,7 @@ function mt:boss_skill_shot()
 	hero:add_effect('overhead',skill.effect):remove()
 
 	for i, u in ac.selector()
-	: in_range(target,skill.area)
+	: in_range(hero,skill.area/2)
 	: is_enemy(hero)
 	: ipairs()
 	do 
@@ -67,17 +69,14 @@ function mt:boss_skill_shot()
 end
 
 function mt:on_cast_start()
-    -- if self:is_cooling() then 
-    --     return 
-    -- end    
-    -- self.eft = ac.warning_effect_ring
-    -- {
-    --     point = self.target,
-    --     area = self.area,
-    --     time = self.cast_channel_time,
-    -- }
+	--预警圈
+	ac.warning_effect_circle
+	{
+		point = hero:get_point(),
+		area = self.area,
+		time = self.cast_channel_time,
+	}
 end
-
 function mt:on_cast_shot()
     self:boss_skill_shot()
     self:active_cd()
