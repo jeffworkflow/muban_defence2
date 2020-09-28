@@ -14,19 +14,17 @@ mt{
 	strong_hero = true,
 	passive = true,
 	--属性加成
- ['物理伤害加深系数'] = 10,
- ['神奇的种子再一次概率'] = 10,
+ ['闪避'] = 10,
 	--介绍
 
-tip = [[ 
-	|cffffe799闪避+10%
+tip = [[  
+|cffffe799闪避+10%
 	
-	|cff00ff00使得英雄，每隔几秒（1-10秒）对周围1000码的随机几个敌人（1-20）个，进行闪电攻击，使用闪电链（Abilities\Spells\Orc\LightningBolt\LightningBoltMissile.mdl）
+|cff00ff00使得英雄可对周围敌人进行闪电攻击
 	
-
 ]],
 	--技能图标
-	art = [[sxs.blp]],
+	art = [[ReplaceableTextures\CommandButtons\BTNChainLightning.blp]],
 	effect = [[Abilities\Spells\Orc\LightningBolt\LightningBoltMissile.mdl]],
 	damage_area = 500,
 	area = 1000,

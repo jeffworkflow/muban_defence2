@@ -19,12 +19,10 @@ mt{
 	--介绍
 
 tip = [[ 
-	|cffffe799闪避+10%
-	
-	|cff00ff00使得英雄，每隔几秒（1-10秒）对周围1000码的随机几个敌人（1-20）个，进行闪电攻击，使用闪电链（Abilities\Spells\Orc\LightningBolt\LightningBoltMissile.mdl）
-	
+|cffffe799技能伤害加深系数+15%
 
-]],
+|cff00ff00使用黑暗骰子时，10%概率获得一个黑暗骰子
+ ]],
 	--技能图标
-	art = [[sxs.blp]],
+	art = [[anheishaizi.blp]],
 }

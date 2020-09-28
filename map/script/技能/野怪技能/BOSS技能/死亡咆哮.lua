@@ -1,4 +1,4 @@
-local mt = ac.skill['大地崩']
+local mt = ac.skill['死亡咆哮']
 mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息

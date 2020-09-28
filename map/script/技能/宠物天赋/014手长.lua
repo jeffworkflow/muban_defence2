@@ -14,19 +14,18 @@ mt{
 	strong_hero = true,
 	passive = true,
 	--属性加成
- ['物理伤害加深系数'] = 20,
- ['黑暗骰子重复获得概率'] = 10,
+ ['多重射'] = 2,
 	--介绍
 
 tip = [[ 
-	|cffffe799闪避+10%
-	%has_val%
+|cffffe799多重射+2
 
-]],
+|cff00ff00杀怪1% 概率永久提高2点攻击距离（已增加 %has_val% |cff00ff00攻击距离）
+ ]],
 	--技能图标
-	art = [[sxs.blp]],
+	art = [[changbiyuan.blp]],
     --触发几率
-    chance = 100,
+    chance = 1,
 	max_val = 1500,
 	attr_name = '攻击距离',
 	value = 2,
