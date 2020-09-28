@@ -16,6 +16,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 
 no_use =true,
 wood = 1000,
@@ -46,6 +47,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -71,6 +73,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -96,6 +99,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -132,10 +136,6 @@ content_tip = '|cffffe799使用说明：|r'
 --插入到合成表
 ac.wait(100,function()
     table.insert(ac.streng_item_list,{'博饼券','【中】*1 【秋】*1 【快】*1 【乐】*1'})
-    table.insert(ac.check_hecheng,'【中】')
-    table.insert(ac.check_hecheng,'【秋】')
-    table.insert(ac.check_hecheng,'【快】')
-    table.insert(ac.check_hecheng,'【乐】')
 end)
 --奖品
 local award_list = { 
