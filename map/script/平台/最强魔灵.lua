@@ -232,7 +232,7 @@ mt{
     is_spellbook = 1,
     is_order = 2,
 }
-mt.skills = {'九洲帝王','逆天改命',}
+mt.skills = {'逆天改命',}
 
 local mt = ac.skill['英雄']
 mt{

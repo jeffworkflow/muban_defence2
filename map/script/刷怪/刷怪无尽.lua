@@ -1,6 +1,6 @@
-local force_cool = 60
+local force_cool = 30
 if global_test then 
-    force_cool = 60
+    force_cool = 30
 end    
 
 local base_attr = {

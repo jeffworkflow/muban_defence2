@@ -3,7 +3,7 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 1.2,
+cast_channel_time = 1.3,
 cast_shot_time = 0,
 cast_finish_time = 0.0,
 --初始等级
@@ -19,7 +19,7 @@ tip = [[
 cost_data = {	type = '魔法',	num_type = '三维',	rate = 0.2,},
 --范围
 range = 1000,
-area = 1500,
+area = 1000,
 damage = function(self)
     return self.owner:get('攻击') * 50
 end,  
@@ -27,7 +27,6 @@ end,
 damage_type = '物理',
 --冷却
 cool = 12,
-time =1.2,
 }
 mt.effect = [[Hero_Sven_N3S_W_Caster.mdx]]
 
@@ -69,6 +68,7 @@ function mt:boss_skill_shot()
 end
 
 function mt:on_cast_start()
+    local hero =self.owner
 	--预警圈
 	ac.warning_effect_circle
 	{

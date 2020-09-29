@@ -702,25 +702,28 @@ mt{
 level = 0,
 is_order = 1,
 --图标
-art = [[chenghao1.blp]],
+art = [[lhgh.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff种树熟练度≥1000%current%
+|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
-|cffFFE799【称号属性】：|r
-|cff00ff00+18  杀怪加全属性|r
-|cff00ff00+1   每秒加木头|r
-|cff00ff00+5% 全伤加深|r
+|cffFFE799【领域属性】：|r
+|cff00ff00杀怪加全属性+188
+|cff00ffff攻击减甲+100
+|cff00ffff减少周围护甲+2000
+|cffffff00每秒加护甲+35
+|cffff0000全伤加深系数+地图等级*1%
 
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 18,
-['全伤加深'] = 5,
-['每秒加木头'] = 1,
+['杀怪加全属性'] = 188,
+['攻击减甲'] = 100,
+['减少周围护甲'] = 2000,
+['每秒加护甲'] = 35,
+
 ['全伤加深系数'] = function(self)
     if not self.owner then return 0 end
     local p =  self.owner.owner

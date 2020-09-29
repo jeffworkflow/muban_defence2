@@ -245,9 +245,10 @@ local cus_key = {
     {'ydss','缘定三生',{ ['缘定三生'] = {1,5,value = function(self,p) return p:Map_GetServerValue('ydss') end}}},
     {'dsdhz','懂事的孩子',{ ['懂事的孩子'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
 
-    {'jzdw','九洲帝王',{ ['九洲帝王'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
-    {'dygcpxdr','第一个吃螃蟹的人',{ ['第一个吃螃蟹的人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
-    {'bobing','博饼',{ ['博饼'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dsdhz') end}}},
+    {'jzdw','九洲帝王',{ ['九洲帝王'] = {1,5,value = function(self,p) return p:Map_GetServerValue('jzdw') end}}},
+    {'shgty','四海共团圆',{ ['四海共团圆'] = {1,5,value = function(self,p) return p:Map_GetServerValue('shgty') end}}},
+    {'dygcpxdr','第一个吃螃蟹的人',{ ['第一个吃螃蟹的人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dygcpxdr') end}}},
+    {'bobing','博饼',{ ['博饼'] = {1,5,value = function(self,p) return p:Map_GetServerValue('bobing') end}}},
     
     
     {'wxnd','无限难度'},
@@ -482,14 +483,20 @@ local cus_key = {
     
     {'xsndwj','牛刀小试无尽',{
         --奖励  所需值 地图等级
-            ['牛刀1'] = {25,10},
-            ['牛刀2'] = {50,15},
+            ['牛刀小试最高波数奖励1'] = {25,10},
+            ['牛刀小试最高波数奖励2'] = {75,15},
+            ['牛刀小试最高波数奖励3'] = {150,20},
+            ['牛刀小试最高波数奖励4'] = {250,25},
+            ['牛刀小试最高波数奖励5'] = {375,30},
         }
     },
     {'xsndwjlj','牛刀小试无尽累计',{
             --奖励  所需值 地图等级
-            ['牛刀小试1'] = {250,15},
-            ['牛刀小试2'] = {500,20},
+            ['牛刀小试累计波数奖励1'] = {250,15},
+            ['牛刀小试累计波数奖励2'] = {750,20},
+            ['牛刀小试累计波数奖励3'] = {1500,25},
+            ['牛刀小试累计波数奖励4'] = {2500,30},
+            ['牛刀小试累计波数奖励5'] = {3750,35},
         }
     },
 
