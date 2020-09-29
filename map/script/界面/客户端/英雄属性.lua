@@ -359,7 +359,7 @@ function ac.unit.__index:add_save_item(it)
 end 
 --统一增加所有的存档物品方法
 ac.wait(100,function()
-    for i=1,#ac.all_save_item do 
+    for i=1,table.maxnum(ac.all_save_item) do 
         local name = ac.all_save_item[i]
         if name then 
             local mt = ac.skill[name]

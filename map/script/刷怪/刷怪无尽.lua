@@ -315,6 +315,10 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     if not finds(ac.g_game_degree_name,'无尽模式') then
         return
     end     
+    if creep.name ~= '刷怪-无尽1' then
+        return
+    end    
+
     local record_name = string.gsub( ac.g_game_degree_name,'无尽模式%-','')
     record_name = record_name..'无尽'
     for i=1,6 do 
@@ -325,6 +329,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
                 p:SetServerValue(key,index) 
             end   
             if index > (p.server[record_name] or 0) then
+                -- print('记录：',record_name,key,index)
                 p:Map_SaveServerValue(key,index) --网易服务器
             end   
             --今日最榜
