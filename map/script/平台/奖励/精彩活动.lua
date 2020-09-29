@@ -414,7 +414,7 @@ max_level = 20, --要动态插入
 art = [[dygcpxdr.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+|cffffff00【要求地图等级> %need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
 |cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=20
@@ -432,6 +432,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击减甲'] = {2,40},
 ['物品获取率'] = {2,40},
 ['全伤加深'] = {2,40},
+need_map_level = 5,
 }
 
 

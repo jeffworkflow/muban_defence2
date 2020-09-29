@@ -122,7 +122,7 @@ for i =1,3 do
         --难度 12 （斗破苍穹） 增加技能
         self.skill_name = ac.creep_skill_name1
         if self.skill_name then 
-            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00当前挑战 |cffffff00魔窟第'..self.index..'层|cff00ff00，怪物特性： |cffff0000'..self.skill_name)
+            ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ff00当前挑战 |cffffff00无尽第'..self.index..'波|cff00ff00，怪物特性： |cffff0000'..self.skill_name)
         end     
     end
     --改变怪物
