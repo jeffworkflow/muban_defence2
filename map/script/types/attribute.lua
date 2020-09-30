@@ -131,6 +131,7 @@ local attribute = {
 	['主动释放的增益效果'] = true,  --默认表示为%
 
 	['攻击减甲'] = true,  --默认表示为基础值 永久性攻击减甲
+	['攻击减甲系数'] = true,  --默认表示为基础值 永久性攻击减甲
 	
 
 	['杀怪加金币'] = true,  --默认表示为基础值
@@ -614,6 +615,10 @@ set['生命'] = function(self, life)
 	end
 
 	self:event_notify('单位-生命变化',self)
+end
+
+on_get['攻击减甲'] = function(self, all_damage)
+	return all_damage * (1+self:get('攻击减甲系数')/100)
 end
 
 on_get['全伤加深'] = function(self, all_damage)
