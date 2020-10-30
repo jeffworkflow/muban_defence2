@@ -76,7 +76,7 @@ local function init_attribute(unit)
         unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) + 100)
     end 
 
-    if _in(unit:get_name(),'一棒男','戴瑟提克','格里弗','克尔苏加德','虚空诺亚','最强魔帝','太阳神','鼠天瞳','牛金刚','武伯都','兔飞','辰龙','紫') then
+    if _in(unit:get_name(),'一棒男','戴瑟提克','格里弗','克尔苏加德','虚空诺亚','最强魔帝','太阳神','鼠天瞳','牛金刚','武伯都','兔飞','辰龙','紫','马不凡') then
         unit:set('每秒回血',1.25 * ((ac.g_game_degree_attr or 1 ) -1))
     end  
 

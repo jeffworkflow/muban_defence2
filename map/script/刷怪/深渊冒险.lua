@@ -32,7 +32,8 @@ local boss = {
     '武伯都',
     '兔飞',
     '辰龙',
-    '紫'
+    '紫',
+    '马不凡'
     
 }
 local boss_skill  ={
