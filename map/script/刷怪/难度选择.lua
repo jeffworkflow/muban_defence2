@@ -212,6 +212,9 @@ ac.wait(1200,function()
             table.insert(show_list,{name = '无尽模式'}) 
             table.insert(list6,{name = '牛刀小试',attr=6}) 
         end
+        if bit >= 12 then 
+            table.insert(list6,{name = '驾轻就熟',attr=11}) 
+        end
         
         for i = #list4 ,1 ,-1 do 
             local name = list4[i].name  

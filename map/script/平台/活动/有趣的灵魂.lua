@@ -28,19 +28,55 @@ content_tip = ''
 }
 
 
-
-
-local mt = ac.skill['祭祀-点金石']
+local mt = ac.skill['白嫖的快乐']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-点金石',
+--图标
+art = [[zyj.blp]],
+--说明
+tip = [[ 
+|cffffe799【活动时间】|r|cff00ff009月3日-9月7日
+|cffffe799【活动说明】|r
+|cff00ff001.这几天举办祭祀活动，以慰在基地游玩的众家鬼魂，并祈求大家全年的平安顺利。|cff00ff00还请少侠帮忙|cffff0000贡献一些食物|r
+
+|cff00ff002.好看的皮囊千篇一律，有趣的灵魂万里挑一。|cff00ffff基地经常出现一些有趣的灵魂。|cff00ff00还请少侠帮忙|cffff0000击败并超度它们|r
+ ]],
+--物品类型
+item_type = '神符',
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--冷却
+cool = 1,
+--物品技能
+is_skill = true,
+store_affix = '',
+store_name = '|cffdf19d0白嫖的快乐|r',
+--物品详细介绍的title
+content_tip = ''
+}
+--初始化设置所有人都拥有黑科技礼包
+for i=1,10 do 
+    local p = ac.player(i)
+    if p:is_player() then 
+        p.mall = p.mall or {}
+        p.mall['黑科技礼包'] = 1
+    end 
+end
+
+
+
+local mt = ac.skill['祭祀-三眼赤痕']
+mt{
+--等久
+level = 1,
+store_name = '祭祀-三眼赤痕',
 --图标
 art = [[item\shou204.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000一个完美的鸡翅|r 奖励 |cff00ff00点金石|r
+贡献 |cffff0000一个完美的鸡翅|r 奖励 |cff00ff00三眼赤痕|r
 
 |cffcccccc最大贡献次数=10次|r]],
 --物品类型
@@ -50,21 +86,21 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡翅*1',
-max_cnt = 10,
+need_material = '羊皮纸*2',
+max_cnt = 2,
 }   
 
-local mt = ac.skill['祭祀-吞噬丹']
+local mt = ac.skill['祭祀-火龙气息']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-吞噬丹',
+store_name = '祭祀-火龙气息',
 --图标
 art = [[icon\tunshi.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000五个完美的鸡腿|r 奖励 |cff00ff00吞噬丹|r
+贡献 |cffff0000五个完美的鸡腿|r 奖励 |cff00ff00火龙气息|r
 
 |cffcccccc最大贡献次数=2次|r]],
 --物品类型
@@ -74,20 +110,20 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡腿*5',
+need_material = '羊皮纸*2',
 max_cnt = 2,
 }   
-local mt = ac.skill['祭祀-恶魔果实']
+local mt = ac.skill['祭祀-天魂融血丹']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-恶魔果实',
+store_name = '祭祀-天魂融血丹',
 --图标
 art = [[guoshi.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000十个完美的鸡头|r 奖励 |cff00ff00恶魔果实|r
+贡献 |cffff0000十个完美的鸡头|r 奖励 |cff00ff00天魂融血丹|r
 
 |cffcccccc最大贡献次数=1次|r]],
 --物品类型
@@ -97,22 +133,22 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡头*10',
-max_cnt = 1,
+need_material = '羊皮纸*2',
+max_cnt = 2,
 }  
-local mt = ac.skill['祭祀-格里芬']
+local mt = ac.skill['祭祀-地魂融血丹']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-格里芬',
+store_name = '祭祀-地魂融血丹',
 --图标
 art = [[gelifen.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个完美的鸡汤|r 奖励 |cff00ff00格里芬|r
+贡献 |cffff0000两个无字天书|r 奖励 |cff00ff00地魂融血丹|r
 
-|cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
+|cffdf19d0地魂融血丹|cff00ffff+功法连升书+天谕+吞噬丹=天魂融血丹（食用后可以获得惊人能力！)|r
 
 |cffcccccc最大贡献次数=1次|r]],
 --物品类型
@@ -122,23 +158,23 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡汤*2',
-max_cnt = 1,
+need_material = '羊皮纸*2',
+max_cnt = 2,
 }  
 
-local mt = ac.skill['祭祀-黑暗项链']
+local mt = ac.skill['祭祀-功法连升书']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-黑暗项链',
+store_name = '祭祀-功法连升书',
 --图标
 art = [[heianxianglian.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个完美的鸡汤|r 奖励 |cff00ff00黑暗项链|r
+贡献 |cffff0000两个无字天书|r 奖励 |cff00ff00功法连升书|r
 
-|cff00ffff格里芬+|cffdf19d0黑暗项链|cff00ffff+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
+|cff00ffff地魂融血丹+|cffdf19d0功法连升书|cff00ffff+天谕+吞噬丹=天魂融血丹（食用后可以获得惊人能力！)|r
 
 |cffcccccc最大贡献次数=1次|r]],
 --物品类型
@@ -148,23 +184,23 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡汤*2',
-max_cnt = 1,
+need_material = '无字天书*2',
+max_cnt = 5,
 }  
 
-local mt = ac.skill['祭祀-最强生物心脏']
+local mt = ac.skill['祭祀-天谕']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-最强生物心脏',
+store_name = '祭祀-天谕',
 --图标
 art = [[zqswxz.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个完美的鸡汤|r 奖励 |cff00ff00最强生物心脏|r
+贡献 |cffff0000两个无字天书|r 奖励 |cff00ff00天谕|r
 
-|cff00ffff格里芬+黑暗项链+|cffdf19d0最强生物心脏|cff00ffff+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
+|cff00ffff地魂融血丹+功法连升书+|cffdf19d0天谕|cff00ffff+吞噬丹=天魂融血丹（食用后可以获得惊人能力！)|r
 
 |cffcccccc最大贡献次数=1次|r]],
 --物品类型
@@ -174,25 +210,19 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡汤*2',
-max_cnt = 1,
+need_material = '强化石*3',
+max_cnt = 10,
 }  
 
-local mt = ac.skill['祭祀-白胡子的大刀']
+local mt = ac.skill['祭祀-吞噬丹']
 mt{
 --等久
 level = 1,
-store_name = '祭祀-白胡子的大刀',
+store_name = '祭祀-吞噬丹',
 --图标
-art = [[zhidao.blp]],
+art = [[]],
 --说明
-tip = [[
-
-贡献 |cffff0000两个完美的鸡汤|r 奖励 |cff00ff00白胡子的大刀|r
-
-|cff00ffff格里芬+黑暗项链+最强生物心脏+|r|cffdf19d0白胡子的大刀|r|cff00ffff=恶魔果实（食用后可以获得惊人能力！)|r
-
-|cffcccccc最大贡献次数=1次|r]],
+tip = [[]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -200,13 +230,15 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【祭祀说明】：|r\n',
 --物品技能
 is_skill = true,
-need_material = '完美的鸡汤*2',
-max_cnt = 1,
+need_material = '藏宝图*5',
+max_cnt = 2,
 }  
 
 
-for i,name in ipairs({'祭祀-格里芬','祭祀-黑暗项链','祭祀-最强生物心脏','祭祀-白胡子的大刀','祭祀-点金石','祭祀-吞噬丹','祭祀-恶魔果实','祭祀-缘定三生'}) do
+for i,name in ipairs({'祭祀-地魂融血丹','祭祀-功法连升书','祭祀-天谕','祭祀-吞噬丹','祭祀-三眼赤痕','祭祀-火龙气息','祭祀-天魂融血丹'}) do
     local mt = ac.skill[name]
+    -- mt.art = ac.skill[string.gsub(name,'祭祀%-','')].art
+    -- mt.tip = ac.skill[string.gsub(name,'祭祀%-','')]:get_tip()
     function mt:on_cast_start()
         local hero = self.owner
         local p = hero:get_owner()
@@ -245,14 +277,14 @@ ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
     local time = 60 * 6 
     local rate = 55
-    -- local time = 10
+    local time = 10
     ac.loop(time*1000,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/3) + 1 
 
         for i= 1, cnt do 
             local point = ac.map.rects['藏宝区']:get_random_point()
-            local unit = ac.player(16):create_unit('灵魂',point)
+            local unit = ac.player(16):create_unit('有趣的灵魂',point)
 
             unit:add_buff '随机逃跑' {}
             ac.nick_name('有人唠嗑不',unit,250)

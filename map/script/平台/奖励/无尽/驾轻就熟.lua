@@ -1,12 +1,12 @@
 
-local mt = ac.skill['牛刀小试最高波数奖励1']
+local mt = ac.skill['驾轻就熟最高波数奖励1']
 mt{
     level = 0,
 art = [[kaituozhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000最高|cff00ff00波数大于|cffffff00 25 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000最高|cff00ff00波数大于|cffffff00 25 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+100  杀怪加全属性|r
@@ -23,14 +23,14 @@ need_map_level = 10,
 
 }
 
-local mt = ac.skill['牛刀小试最高波数奖励2']
+local mt = ac.skill['驾轻就熟最高波数奖励2']
 mt{
     level = 0,
 art = [[kaituozhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000最高|cff00ff00波数大于|cffffff00 75 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000最高|cff00ff00波数大于|cffffff00 75 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+150  杀怪加全属性|r
@@ -46,14 +46,14 @@ need_map_level = 15,
 ['技暴伤害系数'] = 2,
 
 }
-local mt = ac.skill['牛刀小试最高波数奖励3']
+local mt = ac.skill['驾轻就熟最高波数奖励3']
 mt{
     level = 0,
 art = [[kaituozhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000最高|cff00ff00波数大于|cffffff00 150 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000最高|cff00ff00波数大于|cffffff00 150 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+200  杀怪加全属性|r
@@ -69,14 +69,14 @@ need_map_level = 20,
 ['会心伤害系数'] = 2,
 
 }
-local mt = ac.skill['牛刀小试最高波数奖励4']
+local mt = ac.skill['驾轻就熟最高波数奖励4']
 mt{
     level = 0,
 art = [[kaituozhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000最高|cff00ff00波数大于|cffffff00 250 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000最高|cff00ff00波数大于|cffffff00 250 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+250  杀怪加全属性|r
@@ -92,14 +92,14 @@ need_map_level = 25,
 ['暴击伤害系数'] = 3,
 
 }
-local mt = ac.skill['牛刀小试最高波数奖励5']
+local mt = ac.skill['驾轻就熟最高波数奖励5']
 mt{
     level = 0,
 art = [[kaituozhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000最高|cff00ff00波数大于|cffffff00 375 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000最高|cff00ff00波数大于|cffffff00 375 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+300  杀怪加全属性|r
@@ -116,14 +116,14 @@ need_map_level = 30,
 
 }
 
-local mt = ac.skill['牛刀小试累计波数奖励1']
+local mt = ac.skill['驾轻就熟累计波数奖励1']
 mt{
     level = 0,
 art = [[shihuangzhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000累计|cff00ff00波数大于|cffffff00 250 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000累计|cff00ff00波数大于|cffffff00 250 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+200 杀怪加全属性|r
@@ -141,14 +141,14 @@ need_map_level = 15,
 }
 
 
-local mt = ac.skill['牛刀小试累计波数奖励2']
+local mt = ac.skill['驾轻就熟累计波数奖励2']
 mt{
     level = 0,
 art = [[shihuangzhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000累计|cff00ff00波数大于|cffffff00 750 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000累计|cff00ff00波数大于|cffffff00 750 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+250 杀怪加全属性|r
@@ -166,14 +166,14 @@ need_map_level = 20,
 }
 
 
-local mt = ac.skill['牛刀小试累计波数奖励3']
+local mt = ac.skill['驾轻就熟累计波数奖励3']
 mt{
     level = 0,
 art = [[shihuangzhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000累计|cff00ff00波数大于|cffffff00 1500 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000累计|cff00ff00波数大于|cffffff00 1500 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+300 杀怪加全属性|r
@@ -191,14 +191,14 @@ need_map_level = 25,
 }
 
 
-local mt = ac.skill['牛刀小试累计波数奖励4']
+local mt = ac.skill['驾轻就熟累计波数奖励4']
 mt{
     level = 0,
 art = [[shihuangzhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000累计|cff00ff00波数大于|cffffff00 2500 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000累计|cff00ff00波数大于|cffffff00 2500 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+350 杀怪加全属性|r
@@ -216,14 +216,14 @@ need_map_level = 30,
 }
 
 
-local mt = ac.skill['牛刀小试累计波数奖励5']
+local mt = ac.skill['驾轻就熟累计波数奖励5']
 mt{
     level = 0,
 art = [[shihuangzhe.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ff00无尽模式-牛刀小试|cffff0000累计|cff00ff00波数大于|cffffff00 3750 |cff00ff00获得
+|cff00ff00无尽模式-驾轻就熟|cffff0000累计|cff00ff00波数大于|cffffff00 3750 |cff00ff00获得
 
 |cffffe799【成就属性】|r:|cff00ff00
 |cff00ff00+400 杀怪加全属性|r
@@ -240,13 +240,11 @@ need_map_level = 35,
 
 }
 
-
-
-local mt = ac.skill['无尽模式']
+local mt = ac.skill['驾轻就熟']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wjms.blp]],
+    art = [[kaituozhe.blp]],
     tip = [[
 
 点击查看 |cff00ffff无尽成就|r，主要通过 |cffffff00不断挑战无尽模式|r 获得
@@ -254,6 +252,7 @@ mt{
     
 }
 mt.skills = {
-    '牛刀小试最高波数奖励1','牛刀小试最高波数奖励2','牛刀小试最高波数奖励3','牛刀小试最高波数奖励4','牛刀小试最高波数奖励5',
-    '牛刀小试累计波数奖励1','牛刀小试累计波数奖励2','牛刀小试累计波数奖励3','牛刀小试累计波数奖励4','牛刀小试累计波数奖励5',
+    '驾轻就熟最高波数奖励1','驾轻就熟最高波数奖励2','驾轻就熟最高波数奖励3','驾轻就熟最高波数奖励4','驾轻就熟最高波数奖励5',
+    '驾轻就熟累计波数奖励1','驾轻就熟累计波数奖励2','驾轻就熟累计波数奖励3','驾轻就熟累计波数奖励4','驾轻就熟累计波数奖励5',
 }
+

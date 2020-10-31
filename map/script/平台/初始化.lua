@@ -173,6 +173,55 @@ ac.wait(10,function()
         {'zdlgsyj','冠世一绝战斗力'},
         {'zdlcjql','超绝群伦战斗力'},
        
+        --自定义服务器
+        {'today_jqjswj','今日驾轻就熟无尽'},
+        {'today_jqjswjrank','今日驾轻就熟无尽排名'},
+
+        {'today_xsndwj','今日牛刀小试无尽'},
+        {'today_xsndwjrank','今日牛刀小试无尽排名'},
+
+        {'zhanling','战令标识'},
+        {'today_symx','今日深渊冒险'},
+        {'today_symxrank','今日深渊冒险排名'},
+
+        {'today_mlzb','今日魔灵争霸'},
+        {'today_mlzbrank','今日魔灵争霸排名'},
+
+        {'today_axjf','今日爱心积分'},
+        {'today_axjfrank','今日爱心积分排名'},
+
+        {'today_tlmk','今日贪婪魔窟'},
+        {'today_tlmkrank','今日贪婪魔窟排名'},
+
+        
+        {'xdzc','新的征程'},
+        {'today_xdzc','今日新的征程'},
+        {'today_xdzcrank','今日新的征程排名'},
+
+        {'cntwb','挖宝'},
+        {'today_cntwb','今日挖宝'},
+        {'today_cntwbrank','今日挖宝排名'},
+
+        {'cntks','看书'},
+        {'today_cntks','今日看书'},
+        {'today_cntksrank','今日看书排名'},
+
+        {'cntdz','打造'},
+        {'today_cntdz','今日打造'},
+        {'today_cntdzrank','今日打造排名'},
+
+        {'cntzs','种树'},
+        {'today_cntzs','今日种树'},
+        {'today_cntzsrank','今日种树排名'},
+
+        {'cntbp','白嫖'},
+        {'today_cntbp','今日白嫖'},
+        {'today_cntbprank','今日白嫖排名'},
+        
+        {'cntytz','摇骰子'},
+        {'today_cntytz','今日摇骰子'},
+        {'today_cntytzrank','今日摇骰子排名'},
+        {'level','地图等级'}
     }
     for i,data in ipairs(ac.mall) do 
         table.insert(temp_mall,data)

@@ -251,6 +251,7 @@ local cus_key = {
     {'shgty','四海共团圆',{ ['四海共团圆'] = {1,5,value = function(self,p) return p:Map_GetServerValue('shgty') end}}},
     {'dygcpxdr','第一个吃螃蟹的人',{ ['第一个吃螃蟹的人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dygcpxdr') end}}},
     {'bobing','博饼',{ ['博饼'] = {1,5,value = function(self,p) return p:Map_GetServerValue('bobing') end}}},
+    {'yqdlh','有趣的灵魂',{ ['有趣的灵魂'] = {1,5,value = function(self,p) return p:Map_GetServerValue('yqdlh') end}}},
     
     
     {'wxnd','无限难度'},
@@ -557,8 +558,31 @@ local cus_key = {
             ['牛刀小试累计波数奖励5'] = {3750,35},
         }
     },
+    {'jqjswj','驾轻就熟无尽',{
+        --奖励  所需值 地图等级
+            ['驾轻就熟最高波数奖励1'] = {25,10},
+            ['驾轻就熟最高波数奖励2'] = {75,15},
+            ['驾轻就熟最高波数奖励3'] = {150,20},
+            ['驾轻就熟最高波数奖励4'] = {250,25},
+            ['驾轻就熟最高波数奖励5'] = {375,30},
+        }
+    },
+    {'jqjswjlj','驾轻就熟无尽累计',{
+            --奖励  所需值 地图等级
+            ['驾轻就熟累计波数奖励1'] = {250,15},
+            ['驾轻就熟累计波数奖励2'] = {750,20},
+            ['驾轻就熟累计波数奖励3'] = {1500,25},
+            ['驾轻就熟累计波数奖励4'] = {2500,30},
+            ['驾轻就熟累计波数奖励5'] = {3750,35},
+        }
+    },
+
+    {'xdzcjl','新的征程奖励'},
 
     --自定义服务器用到的内容
+    {'today_jqjswj','今日驾轻就熟无尽'},
+    {'today_jqjswjrank','今日驾轻就熟无尽排名'},
+
     {'today_xsndwj','今日牛刀小试无尽'},
     {'today_xsndwjrank','今日牛刀小试无尽排名'},
 
@@ -579,7 +603,6 @@ local cus_key = {
     {'xdzc','新的征程'},
     {'today_xdzc','今日新的征程'},
     {'today_xdzcrank','今日新的征程排名'},
-    {'xdzcjl','新的征程奖励'},
 
     {'cntwb','挖宝'},
     {'today_cntwb','今日挖宝'},
