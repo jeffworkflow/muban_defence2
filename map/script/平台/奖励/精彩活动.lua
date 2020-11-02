@@ -679,13 +679,13 @@ tip = [[
 |cff00ffff超度灵魂获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=35
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%暴击伤害%   |cff00ff00暴击伤害|r
-|cff00ff00+%技暴伤害%   |cff00ff00技暴伤害|r
-|cff00ff00+%会心伤害%   |cff00ff00会心伤害|r
-|cff00ff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深|r
-|cff00ff00+%技能伤害加深% |cffffff00%  |cff00ff00技能伤害加深|r
-|cff00ff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深|r
-|cff00ff00+%对BOSS额外伤害% |cffffff00%  |cff00ff00对BOSS额外伤害|r
+|cff00ff00+%暴击伤害% |cffffff00% |cff00ff00暴击伤害|r
+|cff00ff00+%技暴伤害% |cffffff00% |cff00ff00技暴伤害|r
+|cff00ff00+%会心伤害% |cffffff00% |cff00ff00会心伤害|r
+|cff00ff00+%物理伤害加深% |cffffff00% |cff00ff00物理伤害加深|r
+|cff00ff00+%技能伤害加深% |cffffff00% |cff00ff00技能伤害加深|r
+|cff00ff00+%全伤加深% |cffffff00% |cff00ff00全伤加深|r
+|cff00ff00+%对BOSS额外伤害% |cffffff00% |cff00ff00对BOSS额外伤害|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
