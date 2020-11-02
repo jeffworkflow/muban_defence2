@@ -20,11 +20,11 @@ damage = function(self)
     return self.owner:get('攻击')*50
 end, 
 --范围
-range = 1000,
+range = 800,
 --伤害范围 直径
-area = 1000,
+area = 800,
  --每一个预警圈消失的时间
-time = 0.4,
+time = 0.7,
 --晕眩
 stun_time =2,
 max_life_rate = 25,

@@ -668,31 +668,34 @@ local mt = ac.skill['有趣的灵魂']
 mt{
 --等级
 level = 1, --要动态插入
-max_level = 25, --要动态插入
+max_level = 35, --要动态插入
 --图标
-art = [[mljpz.blp]],
+art = [[zyj.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff端午节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+|cff00ffff超度灵魂获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=35
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%暴击伤害%   |cff00ff00暴击伤害|r
 |cff00ff00+%技暴伤害%   |cff00ff00技暴伤害|r
-|cff00ff00+%每秒加护甲%   |cff00ff00每秒加护甲|r
+|cff00ff00+%会心伤害%   |cff00ff00会心伤害|r
+|cff00ff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深|r
+|cff00ff00+%技能伤害加深% |cffffff00%  |cff00ff00技能伤害加深|r
 |cff00ff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深|r
+|cff00ff00+%对BOSS额外伤害% |cffffff00%  |cff00ff00对BOSS额外伤害|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['暴击伤害'] = {1,25},
-['技暴伤害'] = {1,25},
-['会心伤害'] = {1,25},
-['物理伤害加深'] = {1,25},
-['技能伤害加深'] = {1,25},
-['全伤加深'] = {1,25},
-['对BOSS额外伤害'] = {1,25},
+['暴击伤害'] = {1,35},
+['技暴伤害'] = {1,35},
+['会心伤害'] = {1,35},
+['物理伤害加深'] = {1,35},
+['技能伤害加深'] = {1,35},
+['全伤加深'] = {1,35},
+['对BOSS额外伤害'] = {1,35},
 need_map_level = 5,
 }
 

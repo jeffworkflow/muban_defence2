@@ -7,7 +7,7 @@ level = 1,
 art = [[zyj.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月3日-9月7日
+|cffffe799【活动时间】|r|cff00ff0011月1日-11月15日
 |cffffe799【活动说明】|r
 |cff00ff001.这几天举办祭祀活动，以慰在基地游玩的众家鬼魂，并祈求大家全年的平安顺利。|cff00ff00还请少侠帮忙|cffff0000贡献一些食物|r
 
@@ -33,14 +33,12 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[zyj.blp]],
+art = [[bpdkl.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月3日-9月7日
+|cffffe799【活动时间】|r|cff00ff0011月1日-11月15日
 |cffffe799【活动说明】|r
-|cff00ff001.这几天举办祭祀活动，以慰在基地游玩的众家鬼魂，并祈求大家全年的平安顺利。|cff00ff00还请少侠帮忙|cffff0000贡献一些食物|r
-
-|cff00ff002.好看的皮囊千篇一律，有趣的灵魂万里挑一。|cff00ffff基地经常出现一些有趣的灵魂。|cff00ff00还请少侠帮忙|cffff0000击败并超度它们|r
+|cff00ff00本次白嫖的商城道具是|cffffff00【黑科技礼包】|r|cff00ff00，属性可在最强魔灵-礼包中查看
  ]],
 --物品类型
 item_type = '神符',
@@ -72,13 +70,13 @@ mt{
 level = 1,
 store_name = '祭祀-三眼赤痕',
 --图标
-art = [[item\shou204.blp]],
+art = [[sanyanchihe.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000一个完美的鸡翅|r 奖励 |cff00ff00三眼赤痕|r
+贡献 |cffff00002本羊皮纸|r 奖励 |cff00ff00三眼赤痕|r
 
-|cffcccccc最大贡献次数=10次|r]],
+|cffcccccc最大贡献次数=2次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -96,11 +94,11 @@ mt{
 level = 1,
 store_name = '祭祀-火龙气息',
 --图标
-art = [[icon\tunshi.blp]],
+art = [[longqixi.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000五个完美的鸡腿|r 奖励 |cff00ff00火龙气息|r
+贡献 |cffff00002本羊皮纸|r 奖励 |cff00ff00火龙气息|r
 
 |cffcccccc最大贡献次数=2次|r]],
 --物品类型
@@ -119,13 +117,13 @@ mt{
 level = 1,
 store_name = '祭祀-天魂融血丹',
 --图标
-art = [[guoshi.blp]],
+art = [[tianhundan.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000十个完美的鸡头|r 奖励 |cff00ff00天魂融血丹|r
+贡献 |cffff00002本羊皮纸|r 奖励 |cff00ff00天魂融血丹|r
 
-|cffcccccc最大贡献次数=1次|r]],
+|cffcccccc最大贡献次数=2次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -142,15 +140,13 @@ mt{
 level = 1,
 store_name = '祭祀-地魂融血丹',
 --图标
-art = [[gelifen.blp]],
+art = [[dihundan.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个无字天书|r 奖励 |cff00ff00地魂融血丹|r
+贡献 |cffff00002本羊皮纸|r 奖励 |cff00ff00地魂融血丹|r
 
-|cffdf19d0地魂融血丹|cff00ffff+功法连升书+天谕+吞噬丹=天魂融血丹（食用后可以获得惊人能力！)|r
-
-|cffcccccc最大贡献次数=1次|r]],
+|cffcccccc最大贡献次数=2次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -168,15 +164,13 @@ mt{
 level = 1,
 store_name = '祭祀-功法连升书',
 --图标
-art = [[heianxianglian.blp]],
+art = [[gongfashengji.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个无字天书|r 奖励 |cff00ff00功法连升书|r
+贡献 |cffff00002本无字天书|r 奖励 |cff00ff00功法连升书|r
 
-|cff00ffff地魂融血丹+|cffdf19d0功法连升书|cff00ffff+天谕+吞噬丹=天魂融血丹（食用后可以获得惊人能力！)|r
-
-|cffcccccc最大贡献次数=1次|r]],
+|cffcccccc最大贡献次数=5次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -194,15 +188,13 @@ mt{
 level = 1,
 store_name = '祭祀-天谕',
 --图标
-art = [[zqswxz.blp]],
+art = [[tianyu.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个无字天书|r 奖励 |cff00ff00天谕|r
+贡献 |cffff00003个强化石|r 奖励 |cff00ff00天谕|r
 
-|cff00ffff地魂融血丹+功法连升书+|cffdf19d0天谕|cff00ffff+吞噬丹=天魂融血丹（食用后可以获得惊人能力！)|r
-
-|cffcccccc最大贡献次数=1次|r]],
+|cffcccccc最大贡献次数=10次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -220,9 +212,13 @@ mt{
 level = 1,
 store_name = '祭祀-吞噬丹',
 --图标
-art = [[]],
+art = [[icon\tunshi.blp]],
 --说明
-tip = [[]],
+tip = [[
+
+贡献 |cffff00005张藏宝图|r 奖励 |cff00ff00吞噬丹|r
+
+|cffcccccc最大贡献次数=2次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -277,7 +273,7 @@ ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
     local time = 60 * 6 
     local rate = 55
-    local time = 10
+    -- local time = 10
     ac.loop(time*1000,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/3) + 1 
@@ -306,7 +302,7 @@ ac.game:event '游戏-开始'(function()
                     local skl = hero:find_skill(save_name,nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','有趣的灵魂')
-                        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..save_name..'|r，成就属性可在“最强魔灵-精彩活动”中查看',6) 
+                        ac.player.self:sendMsg('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..save_name..'|r，成就属性可在“最强魔灵-活动成就”中查看',6) 
                     else
                         --有魔法书的情况下，升级
                         skl:upgrade(1)

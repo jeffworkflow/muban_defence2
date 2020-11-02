@@ -2,7 +2,7 @@
 local mt = ac.skill['驾轻就熟最高波数奖励1']
 mt{
     level = 0,
-art = [[kaituozhe.blp]],
+art = [[jiaqingjiushu1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -15,7 +15,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+2%  暴击伤害系数|r
 
 ]],
-need_map_level = 10,
+need_map_level = 15,
 ['杀怪加全属性'] = 100,
 ['攻击减甲'] = 50,
 ['暴击伤害'] = 25,
@@ -26,7 +26,7 @@ need_map_level = 10,
 local mt = ac.skill['驾轻就熟最高波数奖励2']
 mt{
     level = 0,
-art = [[kaituozhe.blp]],
+art = [[jiaqingjiushu1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -39,7 +39,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+2%  技暴伤害系数|r
 
 ]],
-need_map_level = 15,
+need_map_level = 20,
 ['杀怪加全属性'] = 150,
 ['攻击减甲'] = 75,
 ['技暴伤害'] = 25,
@@ -49,7 +49,7 @@ need_map_level = 15,
 local mt = ac.skill['驾轻就熟最高波数奖励3']
 mt{
     level = 0,
-art = [[kaituozhe.blp]],
+art = [[jiaqingjiushu1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -62,7 +62,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+2%  会心伤害系数|r
 
 ]],
-need_map_level = 20,
+need_map_level = 25,
 ['杀怪加全属性'] = 200,
 ['攻击减甲'] = 100,
 ['会心伤害'] = 25,
@@ -72,7 +72,7 @@ need_map_level = 20,
 local mt = ac.skill['驾轻就熟最高波数奖励4']
 mt{
     level = 0,
-art = [[kaituozhe.blp]],
+art = [[jiaqingjiushu1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -85,7 +85,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+3%  暴击伤害系数|r
 
 ]],
-need_map_level = 25,
+need_map_level = 30,
 ['杀怪加全属性'] = 250,
 ['攻击减甲'] = 125,
 ['暴击伤害'] = 35,
@@ -95,7 +95,7 @@ need_map_level = 25,
 local mt = ac.skill['驾轻就熟最高波数奖励5']
 mt{
     level = 0,
-art = [[kaituozhe.blp]],
+art = [[jiaqingjiushu1.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -108,7 +108,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+3%  技暴伤害系数|r
 
 ]],
-need_map_level = 30,
+need_map_level = 35,
 ['杀怪加全属性'] = 300,
 ['攻击减甲'] = 150,
 ['技暴伤害'] = 35,
@@ -119,7 +119,7 @@ need_map_level = 30,
 local mt = ac.skill['驾轻就熟累计波数奖励1']
 mt{
     level = 0,
-art = [[shihuangzhe.blp]],
+art = [[jiaqingjiushu2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -132,7 +132,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+2%  物理伤害加深系数|r
 
 ]],
-need_map_level = 15,
+need_map_level = 20,
 ['杀怪加全属性'] = 200,
 ['攻击减甲'] = 100,
 ['物理伤害加深'] = 25,
@@ -144,7 +144,7 @@ need_map_level = 15,
 local mt = ac.skill['驾轻就熟累计波数奖励2']
 mt{
     level = 0,
-art = [[shihuangzhe.blp]],
+art = [[jiaqingjiushu2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -157,7 +157,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+2%  技能伤害加深系数|r
 
 ]],
-need_map_level = 20,
+need_map_level = 25,
 ['杀怪加全属性'] = 250,
 ['攻击减甲'] = 125,
 ['技能伤害加深'] = 25,
@@ -169,7 +169,7 @@ need_map_level = 20,
 local mt = ac.skill['驾轻就熟累计波数奖励3']
 mt{
     level = 0,
-art = [[shihuangzhe.blp]],
+art = [[jiaqingjiushu2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -182,7 +182,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+2%  全伤加深系数|r
 
 ]],
-need_map_level = 25,
+need_map_level = 30,
 ['杀怪加全属性'] = 300,
 ['攻击减甲'] = 150,
 ['全伤加深'] = 25,
@@ -194,7 +194,7 @@ need_map_level = 25,
 local mt = ac.skill['驾轻就熟累计波数奖励4']
 mt{
     level = 0,
-art = [[shihuangzhe.blp]],
+art = [[jiaqingjiushu2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -207,7 +207,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+3%  物理伤害加深系数|r
 
 ]],
-need_map_level = 30,
+need_map_level = 35,
 ['杀怪加全属性'] = 350,
 ['攻击减甲'] = 175,
 ['物理伤害加深'] = 35,
@@ -219,7 +219,7 @@ need_map_level = 30,
 local mt = ac.skill['驾轻就熟累计波数奖励5']
 mt{
     level = 0,
-art = [[shihuangzhe.blp]],
+art = [[jiaqingjiushu2.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
@@ -232,7 +232,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+3%  技能伤害加深系数|r
 
 ]],
-need_map_level = 35,
+need_map_level = 40,
 ['杀怪加全属性'] = 400,
 ['攻击减甲'] = 200,
 ['技能伤害加深'] = 35,
@@ -244,10 +244,10 @@ local mt = ac.skill['驾轻就熟']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[kaituozhe.blp]],
+    art = [[jiaqingjiushu1.blp]],
     tip = [[
 
-点击查看 |cff00ffff无尽成就|r，主要通过 |cffffff00不断挑战无尽模式|r 获得
+点击查看 |cff00ffff驾轻就熟成就|r，主要通过 |cffffff00挑战无尽模式-驾轻就熟|r 获得
     ]],
     
 }

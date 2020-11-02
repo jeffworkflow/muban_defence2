@@ -247,7 +247,7 @@ mt{
     art = [[kaituozhe.blp]],
     tip = [[
 
-点击查看 |cff00ffff无尽成就|r，主要通过 |cffffff00不断挑战无尽模式|r 获得
+点击查看 |cff00ffff牛刀小试成就|r，主要通过 |cffffff00挑战无尽模式-牛刀小试|r 获得
     ]],
     
 }
