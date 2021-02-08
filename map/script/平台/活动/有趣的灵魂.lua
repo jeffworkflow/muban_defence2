@@ -274,7 +274,8 @@ ac.game:event '游戏-开始'(function()
     local time = 60 * 6 
     local rate = 55
     -- local time = 10
-    ac.loop(time*1000,function()
+    local cnt = 35
+    ac.timer(time*1000,cnt,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/3) + 1 
 

@@ -252,7 +252,12 @@ local cus_key = {
     {'dygcpxdr','第一个吃螃蟹的人',{ ['第一个吃螃蟹的人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('dygcpxdr') end}}},
     {'bobing','博饼',{ ['博饼'] = {1,5,value = function(self,p) return p:Map_GetServerValue('bobing') end}}},
     {'yqdlh','有趣的灵魂',{ ['有趣的灵魂'] = {1,5,value = function(self,p) return p:Map_GetServerValue('yqdlh') end}}},
+
+    {'fpxdr','放炮小达人',{ ['放炮小达人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('fpxdr') end}}},
+    {'shzy','兽魂之佑',{ ['兽魂之佑'] = {1,5,value = function(self,p) return p:Map_GetServerValue('shzy') end}}},
     
+    {'wf','五福'},--五福收集次数
+    {'sjwf','世界五福'},--世界五福收集次数
     
     {'wxnd','无限难度'},
     {'symx','深渊冒险'},

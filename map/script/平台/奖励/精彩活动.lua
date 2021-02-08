@@ -699,6 +699,95 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
+local mt = ac.skill['兽魂之佑']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 10,
+--图标
+art = [[ruishou.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff春节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%杀敌数加成% |cff00ff00%  |cff00ff00杀敌数加成|r
+|cff00ff00+%暴击加深% |cff00ff00%  |cff00ff00暴击加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+['杀敌数加成'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+['暴击加深'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+need_map_level = 5,
+}
+
+local mt = ac.skill['放炮小达人']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 10,
+--图标
+art = [[zhadanren.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff春节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%火灵加成% |cff00ff00%  |cff00ff00火灵加成|r
+|cff00ff00+%技暴加深% |cff00ff00%  |cff00ff00技暴加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+['火灵加成'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+['技暴加深'] = {8.8,17.6,26.4,35.2,44,50,55,60,65,75},
+need_map_level = 5,
+}
+
+local mt = ac.skill['五福']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1,
+title ='五福活动奖励',
+--图标
+art = [[fuqi.blp]],
+--说明
+tip = [[ 
+|cffffe799【成就说明】：|r
+|cff00ff00通过|cffffff00“五福四海过福年”活动|cff00ff00获得，|cff00ff00集五福瓜分100亿的可存档全属性
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%全属性% |cff00ff00全属性|r
+
+|cffcccccc您集齐了%wufu%|cffcccccc次五福，世界一共集齐|cffffff00952038|cffcccccc次五福]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+wufu = function(self)
+    local p = self.owner.owner
+    return math.min(p.cus_server['五福'],15*p:Map_GetMapLevel())
+end,
+['全属性'] = function(self)
+    local v = math.floor( 10000000000 / 952038 )
+    return self.wufu * v
+end,
+need_map_level = 5,
+}
 
 
 local mt = ac.skill['精彩活动']
@@ -714,7 +803,7 @@ mt{
     
 }
 mt.skill_name ={
-    '魔灵精品粽','真正的学霸','魔灵麒麟瓜','缘定三生','懂事的孩子','第一个吃螃蟹的人','四海共团圆','九洲帝王','有趣的灵魂'
+    '魔灵精品粽','真正的学霸','魔灵麒麟瓜','缘定三生','懂事的孩子','第一个吃螃蟹的人','四海共团圆','九洲帝王','有趣的灵魂','放炮小达人','兽魂之佑'
 }
 
 mt.skills = {
