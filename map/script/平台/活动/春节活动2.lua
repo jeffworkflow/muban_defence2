@@ -18,7 +18,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 1,
 wufu = function()
-    return math.min(ac.player.self.cus_server['五福'],15*ac.player.self:Map_GetMapLevel())
+    return math.min(ac.player.self.server['五福'],15*ac.player.self:Map_GetMapLevel())
 end,
 sj_wufu = function()
     return ac.player.self.cus_server and ac.player.self.cus_server['世界五福']
