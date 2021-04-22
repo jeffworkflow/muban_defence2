@@ -22,7 +22,7 @@ mt{
 ]],
 	
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNSpellStealOn.blp]],
+	art = [[mfst.blp]],
 	
     ignore_cool_save = true, --忽略技能冷却
 	--cd
