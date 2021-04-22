@@ -16,8 +16,7 @@ mt{
 
 	tip = [[
 
-|cffFFE799【使用说明】：|r
-将身上的物品|cff00ff00传递|r给英雄
+|cff00ff00将身上的物品|cffffff00传递|cff00ff00给英雄
 		
 ]],
 	

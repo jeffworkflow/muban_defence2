@@ -11,7 +11,13 @@ mt{
     tip = [[
 
 将地上 |cff00ff00四个低品质装备|r 合成 |cffdf19d0一个高品质装备|r
+将地上 |cff00ff00四个低品质功法|r 合成 |cffdf19d0一个高品质功法|r
+
 将背包内 |cff00ff00四个低品质装备|r 合成 |cffdf19d0一个高品质装备|r
+将背包内 |cff00ff00四个低品质功法|r 合成 |cffdf19d0一个高品质功法|r
+
+将背包内 |cff00ff00两个红色装备|r 合成 |cffdf19d0另一个红色装备|r
+将背包内 |cff00ff00两个天阶功法|r 合成 |cffdf19d0另一个天阶功法|r
  ]],
 
     ignore_cool_save = true, --忽略技能冷却
