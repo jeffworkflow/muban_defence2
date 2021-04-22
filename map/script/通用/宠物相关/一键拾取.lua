@@ -1,50 +1,27 @@
 local mt = ac.skill['一键拾取']
-
 mt{
-	--必填
-	is_skill = true,
-	
 	--初始等级
 	level = 1,
-	is_order= 1,
+	is_order = 1,
 	title = function(self)
-		return '一键拾取'
+		return '拾取'
 	end,	
-	max_level = 5,
-	auto_fresh_tip = false,
-	
-	tip = [[
-		
-|cffFFE799【使用说明】：|r
-一键|cff00ff00拾取|r周围 %area% 码的物品
-
-]],
+	tip = [[ 
+|cff00ff00拾取地上的物品
+ ]],
 	
 	--技能图标
-	art = [[icon\jineng037.blp]],
+	art = [[ReplaceableTextures\CommandButtons\BTNPickUpItem.blp]],
 
     ignore_cool_save = true, --忽略技能冷却
 	--技能目标类型 无目标
-	target_type = ac.skill.TARGET_TYPE_NONE,
-
+	target_type = ac.skill.TARGET_TYPE_POINT,
 	--施法范围
-	area = 350,
-
+	area = 250,
 	--cd
-	cool = 0.5,
-	--自动合成
-	auto_hecheng= function(self)
-		local hero = self.owner
-		local p = hero:get_owner()
-		local str = p.flag_auto_hecheng and '|cff00ff00开|r' or '|cffff0000关|r'
-		return str
-	end,	
-	--特效模型
-	effect = [[AZ_Doomdragon_T.mdx]],
-	-- effect = [[Hero_Juggernaut_N4S_F_Source.mdx]],
-	
+	cool = 0.1,	
 	--施法距离
-	range = 99999,
+	range = 3000,
 }
 
 
@@ -56,7 +33,7 @@ function mt:on_cast_shot()
     local skill = self
 	local hero = self.owner
 	local p = hero:get_owner()
-	
+	local target = self.target
 	-- local slot = hero:get_nil_slot()
 	-- --满格
 	-- if not slot then 
@@ -75,7 +52,7 @@ function mt:on_cast_shot()
 				local has_item = hero:has_item(v:get_name())
 				local item_point = v:get_point()
 				if item_point then 
-					if item_point:is_in_range(hero,self.area) then 
+					if item_point:is_in_range(target,self.area) then 
 						if slot or (not slot and v.item_type =='消耗品' and has_item)  then
 							if v.name =='学习技能' then 
 								ac.item.add_skill_item(v,hero)
@@ -87,6 +64,7 @@ function mt:on_cast_shot()
 								p:sendMsg('物品栏已满',5)
 								flag = true
 							end
+							v:set_point(hero:get_point())
 						end
 					end    
 				end    
@@ -101,3 +79,4 @@ end
 function mt:on_remove()
 
 end
+

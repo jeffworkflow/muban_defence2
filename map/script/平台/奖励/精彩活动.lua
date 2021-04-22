@@ -775,15 +775,15 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+%全属性% |cff00ff00全属性|r
 
-|cffcccccc您集齐了%wufu%|cffcccccc次五福，世界一共集齐|cffffff00952038|cffcccccc次五福]],
+|cffcccccc您集齐了%wufu%|cffcccccc次五福，世界一共集齐|cffffff004477|cffcccccc次五福]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 wufu = function(self)
     local p = self.owner.owner
-    return math.min(p.cus_server['五福'],15*p:Map_GetMapLevel())
+    return math.min(p.server['五福'],15*p:Map_GetMapLevel())
 end,
 ['全属性'] = function(self)
-    local v = math.floor( 10000000000 / 952038 )
+    local v = math.floor( 10000000000 / 4477 )
     return self.wufu * v
 end,
 need_map_level = 5,
@@ -803,7 +803,8 @@ mt{
     
 }
 mt.skill_name ={
-    '魔灵精品粽','真正的学霸','魔灵麒麟瓜','缘定三生','懂事的孩子','第一个吃螃蟹的人','四海共团圆','九洲帝王','有趣的灵魂','放炮小达人','兽魂之佑'
+    '魔灵精品粽','真正的学霸','魔灵麒麟瓜','缘定三生','懂事的孩子','第一个吃螃蟹的人','四海共团圆','九洲帝王','有趣的灵魂','放炮小达人','兽魂之佑',
+    '五福'
 }
 
 mt.skills = {

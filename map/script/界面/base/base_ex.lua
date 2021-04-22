@@ -21,20 +21,77 @@ function game.timer(timeout, count, on_timer)
 	end)
 	return t
 end
+--文字，字体大小，返回宽度
+ac.ui.get_auto_width = function(text,font_size)
+    local tool = class.panel:builder
+    {
+        h = 30,
+        w = 80,
+        is_show = false,
+        title = {
+            font_size =font_size,
+            type = 'text',
+            text = text,
+            align = 'auto_width',
+        }
+    }
+    local w = tool.w
+    tool:destroy()
+    return w
+end
+
+function class.ui_base:get_point()
+    local x,y = self:get_position()
+    return ac.point(x,y)
+end
+--平移 
+--@正数：淡化 负数：渐入
+function class.ui_base:move(target,speed)
+    if self.move_timer then 
+        self.move_timer:remove()
+    end 
+    local speed = speed or 1 
+    self.move_timer=game.loop(0.03*1000,function(t)
+        --进行移动
+        local source = self:get_point()
+        local angle = source / target
+        local new_point = source - {angle,speed}
+        -- print('平移：',source,new_point,speed,speed*0.03)
+        --检查碰撞
+        local is_finish
+        if new_point * target <= speed then 
+            new_point = target
+            is_finish = true
+        end
+        local x,y = new_point:get()
+        self:set_position(x,y)
+        if is_finish then 
+            t:remove()
+            self.move_timer = nil
+        end
+    end)
+    self.move_timer:on_timer()
+end   
 
 --淡化 
 --@正数：淡化 负数：渐入
-function class.ui_base:fade(time)
+function class.ui_base:fade(time,source)
     --进行淡化
     local time = time or 0.3
-    local source = time>0 and 100 or 0
+    local source = source or (time>0 and 100 or 0)
     local time = math.abs(time)
-
-    game.timer(time/100 * 1000,100,function(t)
+    if self.fade_timer then 
+        self.fade_timer:remove()
+    end 
+    local timer_cnt = math.floor(time/0.001)
+    self.fade_timer=game.timer(0.001 * 1000,timer_cnt,function(t)
         -- print((100-t.cnt)/100) 
-        local val = math.abs(source - t.cnt)/100
+        local speed = source / timer_cnt
+        local val = math.abs(source - speed*t.cnt)
+        --math.abs(source - t.cnt)/100
         self:set_alpha(val)
     end)
+    self.fade_timer:on_timer()
 end   
 
 --闪烁
@@ -44,7 +101,11 @@ function class.ui_base:blink(time,speed,keep)
     local per_speed = 100 /(speed / 2 /0.001) 
     local flag=1
     local current_alpha = 1
-    game.timer(0.001*1000,math.floor(time/0.001),function(t)
+    if self.blink_timer then 
+        self.blink_timer:remove()
+        self.blink_timer = nil
+    end
+    self.blink_timer = game.timer(0.001*1000,math.floor(time/0.001),function(t)
 
         current_alpha = (current_alpha*100 - per_speed * flag)/100
         -- print('闪烁:',current_alpha)
@@ -189,5 +250,87 @@ function class.ui_base:remove_process(handle)
     if self.all_process[handle] then 
         self.all_process[handle]:remove()
         self.all_process[handle] = nil 
+    end
+end
+
+
+--鼠标划过时，添加图片
+function class.ui_base:hover(img)
+    if self.hover_img_ui then 
+        print('已经有hover_img_ui了 ')
+        return 
+        -- self.hover_img_ui:destroy()
+    end
+    local new_ui = class.panel:builder
+    {
+        parent = self,
+        x = 0,
+        y = 0,
+        w = self.w,
+        h = self.h,
+        is_show = true,
+        type = 'panel',
+        normal_image = [[]],
+        btn = {
+            type = 'button',
+            normal_image = [[]],
+            on_button_mouse_enter = function(self)
+                -- print('鼠标进入啦')
+                self:set_normal_image(img)
+            end,
+            on_button_mouse_leave = function(self)
+                -- print('鼠标离开啦')
+                self:set_normal_image([[]])
+            end,
+        },
+    }
+    self.hover_img_ui = new_ui
+end   
+
+--重写缩放
+function class.ui_base:set_relative_size(size, not_scale_font,align)
+    local w,h = self.w, self.h
+    local x,y = self.x,self.y
+    -- print('进入重写的的缩放')
+    local scale = self._scale or 1
+    local default = self.default_size or 1
+    local old_size = (self.relative_size or 1) * default
+
+    local real_size = 1 / old_size * size * scale
+    self.relative_size = size 
+    self.default_size = scale
+
+    if self.set_size and not_scale_font ~= true then 
+        self:set_size(self.size or 1)
+    end 
+    if self._control == nil then 
+        self:set_control_size(self.w * real_size,self.h * real_size)
+    end
+    for index,child in ipairs(self.children) do
+        if child._control == nil then
+            child._scale = scale 
+            child:set_relative_size(size, not_scale_font)
+            child:set_position(child.x * real_size,child.y * real_size)
+        end
+    end
+    local pad_x
+    local pad_y
+    --缩放排列
+    if align then 
+        if align == 'center' then 
+            pad_x = x - ((w * real_size) - w) / 2
+            pad_y = y - ((h * real_size) - h) / 2
+        elseif align =='topright' then 
+            pad_x = x - ((w * real_size) - w) 
+            pad_y = y 
+        elseif align =='bottomright' then 
+            pad_x = x - ((w * real_size) - w)
+            pad_y = y - ((h * real_size) - h)
+        elseif align =='bottomleft' then 
+            pad_x = x
+            pad_y = y - ((h * real_size) - h)
+        end
+        -- print('进入重写的缩放',align,pad_x,pad_y,x,y)
+        self:set_position(pad_x,pad_y)
     end
 end

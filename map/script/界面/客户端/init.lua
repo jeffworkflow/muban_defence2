@@ -1,4 +1,4 @@
-ac.ui = {}
+
 ac.ui.client = {}
 ac.ui.server = {}
 require '界面.客户端.控制台'

@@ -2,16 +2,17 @@ local mt = ac.skill['全图闪烁']
 
 mt{
     --等级
-    level = 1,
+	level = 1,
+	is_order = 1,
+	title ='闪烁',
 	tip = [[
 
-|cffFFE799【使用说明】：|r
-可以|cff00ff00闪烁|r到指定区域
+|cff00ff00可以|cffffff00闪烁|r|cff00ff00到指定区域
 		
 ]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBlink.blp]],
-	cool = 0.5,
+	cool = 0.1,
 
 	target_type = ac.skill.TARGET_TYPE_POINT,
 
@@ -77,17 +78,17 @@ function mt:on_cast_start()
 	local target = self.target
 	local new_point = self.new_point
 
-	self.eff = ac.effect(hero:get_point(),[[AZ_SSCrow_D.mdx]],0,1,'overhead'):remove();
-	self.eff1 = ac.effect(new_point,[[AZ_SSCrow_D.mdx]],0,1,'overhead'):remove(); 
+	-- self.eff = ac.effect(hero:get_point(),[[AZ_SSCrow_D.mdx]],0,1,'overhead'):remove();
+	-- self.eff1 = ac.effect(new_point,[[AZ_SSCrow_D.mdx]],0,1,'overhead'):remove(); 
 
-	hero:add_buff '淡化*改'
-	{
-		source_alpha = 100,
-		target_alpha = 0,
-		time = self.cast_start_time,
-		remove_when_hit = false,
+	-- hero:add_buff '淡化*改'
+	-- {
+	-- 	source_alpha = 100,
+	-- 	target_alpha = 0,
+	-- 	time = self.cast_start_time,
+	-- 	remove_when_hit = false,
 		
-	}
+	-- }
 end
 
 function mt:on_cast_shot()
@@ -99,25 +100,25 @@ function mt:on_cast_shot()
 end
 function mt:on_cast_finish()
 	local hero = self.owner
-	hero:add_buff '淡化*改'
-	{
-		source_alpha = 0,
-		target_alpha = 100,
-		time = self.cast_finish_time,
-		remove_when_hit = false,
-	}
+	-- hero:add_buff '淡化*改'
+	-- {
+	-- 	source_alpha = 0,
+	-- 	target_alpha = 100,
+	-- 	time = self.cast_finish_time,
+	-- 	remove_when_hit = false,
+	-- }
 end	
 
 
 function mt:on_cast_break()
 	local hero = self.owner
-	hero:add_buff '淡化*改'
-	{
-		source_alpha = 0,
-		target_alpha = 100,
-		time = self.cast_finish_time,
-		remove_when_hit = false,
-	}
+	-- hero:add_buff '淡化*改'
+	-- {
+	-- 	source_alpha = 0,
+	-- 	target_alpha = 100,
+	-- 	time = self.cast_finish_time,
+	-- 	remove_when_hit = false,
+	-- }
 
 end	
 

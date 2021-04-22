@@ -52,12 +52,13 @@ function mt:damage_start(damage)
     local hero = self.owner
     local p = hero:get_owner()
     local source = hero:get_point()
-    local u =  hero:create_illusion(source-{math.random(360),100})
-	
+    local point = source:get_point()-{math.random(360),40}
+    local u = p:create_unit('幻象马甲',point)
     if not u then 
         print('无法创造出镜像')
         return 
     end
+    u:setColor(0,0,100)
     local attribute ={
         ['攻击'] = hero:get('攻击') * self.value,
         ['护甲'] = hero:get('护甲') * self.value*0.1,

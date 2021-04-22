@@ -314,6 +314,9 @@ function helper:reload_mall(flag)
 	local skl = peon:find_skill('宠物技能')
 	if skl then skl:remove() end
 	peon:add_skill('宠物技能','英雄',8)
+	local skl = peon:find_skill('一键丢弃')
+	if skl then skl:remove() end
+	peon:add_skill('一键丢弃','英雄',3)
 
 	--宠物重载身上技能
 	if p:Map_GetMapLevel() >= 3 then 
@@ -321,13 +324,10 @@ function helper:reload_mall(flag)
 		if skl then skl:remove() end
 		peon:add_skill('一键合成','英雄',6)
 		
-		local skl = peon:find_skill('一键丢弃')
-		if skl then skl:remove() end
-		peon:add_skill('一键丢弃','英雄',7)
 		
 		local skl = peon:find_skill('一键分类')
 		if skl then skl:remove() end
-		peon:add_skill('一键分类','英雄',10)
+		peon:add_skill('一键分类','英雄',7)
     end
 
 	--重载 一键神魂修炼

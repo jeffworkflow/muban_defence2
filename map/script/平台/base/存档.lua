@@ -162,7 +162,7 @@ end
 if global_test then 
     function player.__index:Map_GetMapLevel()
         if ac.flag_use_mall then 
-            return (self.map_level or 1) + self:get('局内地图等级')
+            return (self.map_level or 15) + self:get('局内地图等级')
         else     
             return 1
         end    

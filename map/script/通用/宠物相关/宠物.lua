@@ -54,9 +54,10 @@ function player.__index:create_pets(name,re)
     u:add_restriction '缴械'
     u:add_skill('拾取','拾取',1)
 
-    u:add_skill('全图闪烁','英雄')
+    u:add_skill('全图闪烁','隐藏')
     u:add_skill('传递物品','英雄')
     u:add_skill('一键拾取','英雄')
+    u:add_skill('一键丢弃','英雄')
     u:add_skill('物品合成','英雄')
     -- u:add_skill('荣耀称号','英雄',8)
     u:add_skill('宠物纪念册','英雄',12)
@@ -65,9 +66,8 @@ function player.__index:create_pets(name,re)
     -- u:add_skill('商城管理','英雄')
     if self:Map_GetMapLevel() >= 3 then 
         u:add_skill('一键出售','英雄',11)
-        u:add_skill('一键合成','英雄',6)
-        u:add_skill('一键丢弃','英雄',7)
-        u:add_skill('一键分类','英雄',10)
+        -- u:add_skill('一键合成','英雄',6)
+        u:add_skill('一键分类','英雄',7)
     end
     -- 测试魔法书
     -- u:add_skill('魔法书demo','英雄')
