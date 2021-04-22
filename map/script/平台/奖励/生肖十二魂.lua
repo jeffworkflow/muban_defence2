@@ -1127,7 +1127,7 @@ local mt = ac.skill['生肖十二魂']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[stt.blp]],
+    art = [[BTNsx.blp]],
     tip = [[
 
 点击查看 |cff00ffff生肖十二魂|r 成就，通过挑战|cff00ff00【十二生肖】|r获得

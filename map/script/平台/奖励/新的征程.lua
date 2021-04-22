@@ -2,7 +2,7 @@ local mt = ac.skill['新的征程']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[ditupaoxiao.blp]],
+    art = [[BTNzc.blp]],
     title = '新的征程',
     tip = [[
 

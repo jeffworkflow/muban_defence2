@@ -7,6 +7,7 @@ mt{
     title = '物品合成',
     content_tip = '',
     cool = 0.5,
+    is_order= 1,
 
     art = [[other\hecheng.blp]],
     tip = [[

@@ -228,7 +228,7 @@ mt{
     is_spellbook = 1,
     is_order = 2,
     title = '魔灵争霸',
-    art = [[molingzhengba.blp]],
+    art = [[BTNzb.blp]],
     tip = [[
 
 点击查看 |cff00ffff魔灵争霸成就|r，主要通过 |cffffff00不断PK|r 获得

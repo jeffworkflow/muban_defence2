@@ -794,7 +794,7 @@ local mt = ac.skill['精彩活动']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[huodongchengjiu.blp]],
+    art = [[BTNhd.blp]],
     title = '活动成就',
     tip = [[
 

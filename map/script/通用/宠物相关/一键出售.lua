@@ -2,6 +2,7 @@ local mt = ac.skill['一键出售']
 mt{
 	--初始等级
 	level = 1,
+	is_order= 1,
 	tip = [[
 
 |cffFFE799【使用说明】：|r

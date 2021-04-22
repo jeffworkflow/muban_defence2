@@ -245,7 +245,7 @@ local mt = ac.skill['贪婪魔窟']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[dashoucangjia.blp]],
+    art = [[BTNmk.blp]],
     tip = [[
 
 点击查看 |cff00ffff魔窟成就|r，主要通过 |cffffff00不断挑战魔窟|r 获得

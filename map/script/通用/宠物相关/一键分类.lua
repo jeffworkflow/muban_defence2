@@ -3,7 +3,8 @@ local mt = ac.skill['一键分类']
 mt{
 	--目标类型 = 单位
 	target_type = ac.skill.TARGET_TYPE_POINT,
-	level = 1,	
+	level = 1,
+	is_order= 1,	
 	max_level = 5,
 	tip = [[
 

@@ -7,7 +7,7 @@ local mt = ac.skill['无尽模式']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wjms.blp]],
+    art = [[BTNwj.blp]],
     tip = [[
 
 点击查看 |cff00ffff无尽成就|r，主要通过 |cffffff00不断挑战无尽模式|r 获得

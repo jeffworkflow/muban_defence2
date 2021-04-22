@@ -4,6 +4,7 @@ mt{
     is_skill = true,
     --初始等级
     level = 1,
+    is_order= 1,
     --最大等级
    max_level = 1,
 	--流派

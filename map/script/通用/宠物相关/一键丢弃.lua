@@ -6,7 +6,7 @@ mt{
 	
 	--初始等级
 	level = 1,
-
+	is_order= 1,
 	max_level = 5,
 	auto_fresh_tip = false,
 	tip = [[

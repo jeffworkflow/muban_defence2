@@ -6,6 +6,7 @@ mt{
     
     --等级
     level = 1,
+	is_order= 1,
     --目标类型
     target_type = ac.skill.TARGET_TYPE_UNIT,
 	auto_fresh_tip = false,
@@ -21,7 +22,7 @@ mt{
 ]],
 	
 	--技能图标
-	art = [[icon\jineng038.blp]],
+	art = [[ReplaceableTextures\CommandButtons\BTNSpellStealOn.blp]],
 	
     ignore_cool_save = true, --忽略技能冷却
 	--cd

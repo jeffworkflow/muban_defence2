@@ -284,7 +284,7 @@ local mt = ac.skill['深渊冒险奖励']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[symx.blp]],
+    art = [[BTNsy.blp]],
     title = '深渊冒险',
     tip = [[
 

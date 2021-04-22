@@ -6,6 +6,7 @@ mt{
 	
 	--初始等级
 	level = 1,
+	is_order= 1,
 	title = function(self)
 		return '一键拾取'
 	end,	

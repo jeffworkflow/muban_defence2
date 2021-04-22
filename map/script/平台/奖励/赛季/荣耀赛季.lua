@@ -2,7 +2,7 @@ local mt = ac.skill['荣耀赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sjjl.blp]],
+    art = [[BTNsj.blp]],
     -- title = '荣耀赛季',
     tip = [[
 

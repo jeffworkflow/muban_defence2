@@ -695,7 +695,7 @@ local mt = ac.skill['隐藏成就']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[yincangchengjiu.blp]],
+    art = [[BTNyc.blp]],
     title = '隐藏成就',
     tip = [[
 
