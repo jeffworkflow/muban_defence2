@@ -16,7 +16,7 @@ mt{
     ugrade_tip = function(self)
         local str =''
         if self.level >= self.max_level then 
-            str = '\n|cffcccccc【天下至凶，生者勿近】'
+            str = '\n|cffcccccc【天下至凶，生者勿近，点击可|cffffff00熔炼入体|cffcccccc】'
         else 
             str = '\n|cffFFE799【进阶】|r杀满 %kill_cnt% 只怪后，点击前往杀死心魔BOSS'
         end        
@@ -77,7 +77,7 @@ mt{
         return  12 *(1+p:get('噬魂珠翻倍')/100)
     end,
     --杀敌个数
-    kill_cnt = {15000,16500,18000,20000,},
+    kill_cnt = {10000,10000,10000,10000,},
     -- kill_cnt = {10,100},
     --唯一
     unique = true,
