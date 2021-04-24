@@ -1,4 +1,12 @@
 
+local function is_type(name,type)
+    local data = ac.table.ItemData[name]
+    local item_type = ac.skill[name].item_type
+    if data then 
+        item_type = data.item_type
+    end
+    return item_type == type
+end
 local function table_copy(tbl) 
     local res = {} 
     if tbl then 
@@ -433,6 +441,12 @@ local function fall_move(data)
     local model = data.model
     local is_skill = data.is_skill
     local owner_ship = data.owner
+    
+    local tab = ac.table.ItemData[it_name] 
+    if not tab then 
+        tab = ac.skill[it_name]
+    end
+    model = tab.specail_model or (is_type(it_name,'消耗品') and ac.xhp_color_model[tab.color or '无'] or ac.zb_color_model[tab.color or '无'])
     --运动
     local mvr = ac.mover.target
     {
@@ -1278,6 +1292,52 @@ local unit_reward = {
    
 }
 ac.unit_reward = unit_reward
+
+local function fall_move2(data)
+    local it_name = data.name
+    local where = data.source or data.unit:get_point()
+    local point = data.target:get_point() or (where:get_point() - {math.random(360),math.random(200,500)})
+    local model = data.model
+    local is_skill = data.is_skill
+    local owner_ship = data.owner_ship or data.killer_p--or ac.player(data.unit.owner:get() - 6)
+    local p = owner_ship
+    local owner_ship_id = owner_ship:get()
+    --特殊，批量处理
+    -- print('掉落啦',it_name)
+    local tab = ac.table.ItemData[it_name] 
+    if not tab then 
+        tab = ac.skill[it_name]
+    end
+    point = is_skill and ac.rect.j_rect('lgfnpc'..(p:get()..'8')):get_point() or ac.rect.j_rect('lgfnpc'..(p:get()..'9')):get_point()
+    model = tab.specail_model or (is_type(it_name,'消耗品') and ac.xhp_color_model[tab.color or '无'] or ac.zb_color_model[tab.color or '无'])
+    --运动
+    local mvr = ac.mover.target
+    {
+        source = where:get_point(),
+        target = point,
+        model = model or [[Objects\InventoryItems\TreasureChest\treasurechest.mdl]],
+        height = data.height or 250,
+        speed = data.speed or 300,
+        accel = data.accel or 0,
+        skill = '掉落运动'
+    }
+    if not mvr then
+        return
+    end
+    function mvr:on_finish()
+        local it 
+        if is_skill then 
+            it = ac.item.create_skill_item(it_name,point)
+        else
+            it = ac.item.create_item(it_name,point)
+        end
+        
+        if it.owner_ship then 
+            it.owner_ship = ac.player(owner_ship_id)
+        end  
+    end
+end    
+ac.fall_move2 = fall_move2
 
 --递归匹配唯一奖励
 local function get_reward_name(tbl)

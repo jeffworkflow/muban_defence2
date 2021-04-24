@@ -167,12 +167,26 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
     hero = p.hero
+    if self.level == self.max_level and not p.flag_tsshz then 
+        local skl = hero:find_skill(self.name,nil,true) 
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'套装熔炼',self.name)
+            local skl = hero:find_skill(self.name,nil,true) 
+            skl:upgrade(skl.max_level)
+            p.flag_tsshz = true
+
+            ac.wait(0,function()
+                self:item_remove()
+            end)
+            return 
+        end    
+    end
+    
     --处理进入魔窟截止
     if ac.flag_tlmt then 
         p:sendMsg('|cffebb608【系统】|cffff0000已入魔窟，无法传送',5)
         return 
     end
-
 
 
     --需要先增加一个，否则消耗品点击则无条件先消耗

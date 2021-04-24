@@ -151,6 +151,7 @@ local color_model = {
     ['紫'] = [[faguangzi.mdx]],
 	['黑'] = [[File00000376 - RC.mdx]],
 }
+ac.xhp_color_model = color_model
 
 --颜色模型 目前应用于装备
 local zb_color_model = {
