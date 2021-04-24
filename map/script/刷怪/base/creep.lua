@@ -53,6 +53,7 @@ mt.is_finish = false
 mt.is_unit_kill = false
 -- 移除时是否移除掉所指区域现在的刷怪。
 mt.is_region_replace = false
+mt.auto_next = true --自动下一波
 
 local function register_creep(self, name, data)
 	
@@ -443,6 +444,9 @@ function mt:next()
                 end     
                 -- 不允许下一波 则返回
                 if  not self.allow_next then 
+                    return
+                end    
+                if  not self.auto_next then 
                     return
                 end    
                 -- print('进攻怪死亡:3',#self.group)
