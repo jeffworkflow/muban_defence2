@@ -174,7 +174,7 @@ function mt:on_cast_start()
             local skl = hero:find_skill(self.name,nil,true) 
             skl:upgrade(skl.max_level)
             p.flag_tsshz = true
-
+            p:sendMsg('|cffebb608【系统】|r|cff00ff00熔炼成功|r 炼化后的属性可在圣龙气运-熔炼石系统中查看',2)
             ac.wait(0,function()
                 self:item_remove()
             end)

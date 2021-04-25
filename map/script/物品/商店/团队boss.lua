@@ -1,125 +1,147 @@
  
 --物品名称
-local mt = ac.skill['召唤团队BOSS【肉山】']
+local mt = ac.skill['召唤世界BOSS【肉山】']
 mt{
-title = '召唤团队BOSS【肉山】',
+title = '召唤世界BOSS【肉山】',
 --等久
 level = 1,
 --图标
-art = [[jinbiguai1.blp]],
+art = [[roushan.blp]],
 --说明
-tip = [[|cffFFE799难度：|cff00ff00低
-|cffFFE799奖励：|cffffff00大量金币
-|cffFFE799简介：|cff00ff00难度低，建议优先挑战|cffcccccc（10个怪物）
+tip = [[ 
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00肉山|r|cff00ff00，共同击杀！
+
+|cffFFE799【任务奖励】|r
+|cff00ff00所有玩家的杀敌数+2500
+|cff00ffff所有玩家的杀敌数加成+50%
+|cffffff00所有玩家的物品获取率+50%|r
  ]],
 is_order = 1,
 --特殊id 带cd EX06
 cool = function(self)
     local p = self.owner.owner
-    return 10 * (1-p:get('挑战商店cd减少百分比')/100)
+    return 300 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
-init_cd = 4,
+init_cd = 60,
+init_cd = 10,
 ignore_cool_save = true,
 unit_name ='肉山',
 unit_cool = 0.5,
 unit_num = 1
 }
 
-local mt = ac.skill['召唤团队BOSS【梦魇】']
+local mt = ac.skill['召唤世界BOSS【梦魇】']
 mt{
-title = '召唤团队BOSS【梦魇】',
+title = '召唤世界BOSS【梦魇】',
 --等久
 level = 1,
 --图标
-art = [[ReplaceableTextures\CommandButtons\BTNEnt.blp]],
+art = [[mengyan.blp]],
 --说明
-tip = [[|cffFFE799难度：|cff00ff00中
-|cffFFE799奖励：|cffffff00大量木头
-|cffFFE799简介：|cff00ff00建议早点挑战|cffcccccc（3个怪物）
+tip = [[ 
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00梦魇|r|cff00ff00，共同击杀！
+
+|cffFFE799【任务奖励】|r
+|cff00ff00所有玩家的木头+1万
+|cff00ff00所有玩家的魔丸+5万
+|cff00ffff所有玩家的木头加成+50%
+|cffffff00所有玩家的魔丸加成+50%|r
  ]],
 is_order = 1,
 --特殊id 带cd
 cool = function(self)
     local p = self.owner.owner
-    return 10 * (1-p:get('挑战商店cd减少百分比')/100)
+    return 420 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
-init_cd = 120,
+init_cd = 180,
+init_cd = 20,
 ignore_cool_save = true,
 unit_name ='梦魇',
 unit_cool = 1,
 unit_num = 1
 }
 
-local mt = ac.skill['召唤团队BOSS【戈登的激情】']
+local mt = ac.skill['召唤世界BOSS【戈登的激情】']
 mt{
-title = '召唤团队BOSS【戈登的激情】',
+title = '召唤世界BOSS【戈登的激情】',
 --等久
 level = 1,
 --图标
-art = [[long.blp]],
+art = [[gddjq.blp]],
 --说明
-tip = [[|cffFFE799难度：|cff00ffff高
-|cffFFE799奖励：|cffffff001个随机装备和1个随机丹药|cffcccccc（随挑战次数增加数量）
-|cffFFE799简介：|cff00ff00为周围怪物提供护甲光环|cffcccccc（1个怪物）
+tip = [[ 
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00戈登的激情|r|cff00ff00，共同击杀！
+
+|cffFFE799【任务奖励】|r
+|cff00ff00所有玩家都获得10个天谕或3本功法连升书（发放至练功房）|r
  ]],
 is_order = 1,
 --特殊id 带cd
 cool = function(self)
     local p = self.owner.owner
-    return 240 * (1-p:get('挑战商店cd减少百分比')/100)
+    return 540 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
-init_cd = 180,
+init_cd = 300,
+init_cd = 30,
 ignore_cool_save = true,
 unit_name ='戈登的激情',
 unit_cool = 1,
 unit_num = 1
 }
 
-local mt = ac.skill['召唤团队BOSS【火焰领主】']
+local mt = ac.skill['召唤世界BOSS【火焰领主】']
 mt{
-title = '召唤团队BOSS【火焰领主】',
+title = '召唤世界BOSS【火焰领主】',
 --等久
 level = 1,
 --图标
-art = [[hyzw.blp]],
+art = [[huoyanlingzhu.blp]],
 --说明
-tip = [[|cffFFE799难度：|cffff0000非常高
-|cffFFE799奖励：|cffffff00吞噬丹
-|cffFFE799简介：|cff00ff00为周围怪物提供加速光环和回血光环|cffcccccc（1个怪物）
+tip = [[ 
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00火焰领主|r|cff00ff00，共同击杀！
+
+|cffFFE799【任务奖励】|r
+|cff00ff00所有玩家都获得1个吞噬丹或1个无谓因果（发放至练功房）|r
  ]],
 is_order = 1,
 ignore_cool_save = true,
-init_cd = 300,
+
 cool = function(self)
     local p = self.owner.owner
     -- print('减少',p,240 * (1-p:get('挑战商店cd减少百分比')/100))
-    return 300 * (1-p:get('挑战商店cd减少百分比')/100)
+    return 660 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
+init_cd = 420,
+init_cd = 40,
 --特殊id 带cd
 unit_name ='火焰领主',
 unit_cool = 1,
 unit_num = 1
 }
-local mt = ac.skill['召唤团队BOSS【毁灭者】']
+local mt = ac.skill['召唤世界BOSS【毁灭者】']
 mt{
-title = '召唤团队BOSS【毁灭者】',
+title = '召唤世界BOSS【毁灭者】',
 --等久
 level = 1,
 --图标
-art = [[hyzw.blp]],
+art = [[huimiezhe.blp]],
 --说明
-tip = [[|cffFFE799难度：|cffff0000非常高
-|cffFFE799奖励：|cffffff00吞噬丹
-|cffFFE799简介：|cff00ff00为周围怪物提供加速光环和回血光环|cffcccccc（1个怪物）
+tip = [[ 
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00毁灭者|r|cff00ff00，共同击杀！
+
+|cffFFE799【任务奖励】|r
+|cff00ff00所有玩家都获得1个黑色装备或1本神阶功法（发放至练功房）|r
  ]],
 is_order = 1,
 ignore_cool_save = true,
-init_cd = 300,
+
 cool = function(self)
     local p = self.owner.owner
     -- print('减少',p,240 * (1-p:get('挑战商店cd减少百分比')/100))
-    return 300 * (1-p:get('挑战商店cd减少百分比')/100)
+    return 780 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
+init_cd = 540,
+init_cd = 50,
 --特殊id 带cd
 unit_name ='毁灭者',
 unit_cool = 1,
@@ -127,7 +149,7 @@ unit_num = 1
 }
 
 
-for i,name in ipairs({'召唤团队BOSS【肉山】','召唤团队BOSS【梦魇】','召唤团队BOSS【戈登的激情】','召唤团队BOSS【火焰领主】','召唤团队BOSS【毁灭者】'}) do 
+for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇】','召唤世界BOSS【戈登的激情】','召唤世界BOSS【火焰领主】','召唤世界BOSS【毁灭者】'}) do 
 
     -- local ay =ac.skill[name..'1']
     -- ay{
@@ -229,7 +251,7 @@ for i,name in ipairs({'召唤团队BOSS【肉山】','召唤团队BOSS【梦魇�
                             hero:add_wood(10000)
                             hero:add_rec_ex(50000)
                             hero:add('木头加成',50)
-                            hero:add('魔丸获取率',50)
+                            hero:add('魔丸加成',50)
                         end
 
                         --每个玩家获得奖励10个天谕或3本功法连升书；
@@ -282,14 +304,14 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
         return 
     end
 
-    ac.player.self:sendMsg('【系统】世界任务开启，在基地左边的NPC世界BOSS中查看！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff世界BOSS|r|cff00ff00任务开启，请前往|cffffff00基地左上角|cff00ff00找NPC查看！',5)
     --支线·破碎箱子
     local x,y = ac.rect.j_rect('npc3'):get_point():get()
     for i=1,6 do 
         local player = ac.player(i) 
         if player:is_player() then 
             local shop = ac.shop.create('世界BOSS',x,y,270,nil,player)
-            for i,name in ipairs({'召唤团队BOSS【肉山】','召唤团队BOSS【梦魇】','召唤团队BOSS【戈登的激情】','召唤团队BOSS【火焰领主】','召唤团队BOSS【毁灭者】'}) do 
+            for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇】','召唤世界BOSS【戈登的激情】','召唤世界BOSS【火焰领主】','召唤世界BOSS【毁灭者】'}) do 
                 shop:set_high(10000)
                 player.sjboss_shop = shop
                 --初始化技能

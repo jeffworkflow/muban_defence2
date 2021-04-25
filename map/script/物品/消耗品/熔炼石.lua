@@ -106,7 +106,7 @@ for ix =1 ,6 do
                     for k,v in string.gsub(val[3][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         player.hero:add(k,v)
                     end 
-                    player:sendMsg('|cffebb608【系统】|r|cff00ff00熔炼成功|r 激活的属性可在圣龙气运-熔炼石系统中查看',2)
+                    player:sendMsg('|cffebb608【系统】|r|cff00ff00熔炼成功|r 炼化后的属性可在圣龙气运-熔炼石系统中查看',2)
                     --标记已经熔炼过（不可熔炼两套海贼王）
                     player.hero.flag_suit[key] =true
                     break

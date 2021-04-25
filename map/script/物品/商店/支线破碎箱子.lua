@@ -7,9 +7,26 @@ local ix = 0
 --获得事件
 local unit_reward = { 
     ['随机装备1'] =  { { rand = 70,name = '蓝'}, { rand = 25,name = '金'}, { rand = 5,name = '红'},},
-    ['随机装备2'] =  { { rand = 70,name = '蓝'}, { rand = 25,name = '金'}, { rand = 5,name = '红'},},
-    ['随机装备3'] =  { { rand = 70,name = '蓝'}, { rand = 25,name = '金'}, { rand = 5,name = '红'},},
-    ['随机装备4'] =  { { rand = 70,name = '蓝'}, { rand = 25,name = '金'}, { rand = 5,name = '红'},},
+    ['随机装备2'] =  { { rand = 60,name = '蓝'}, { rand = 35,name = '金'}, { rand = 5,name = '红'},},
+    ['随机装备3'] =  { { rand = 50,name = '蓝'}, { rand = 45,name = '金'}, { rand = 5,name = '红'},},
+    ['随机装备4'] =  { { rand = 40,name = '蓝'}, { rand = 55,name = '金'}, { rand = 5,name = '红'},},
+    ['随机装备5'] =  { { rand = 30,name = '蓝'}, { rand = 65,name = '金'}, { rand = 5,name = '红'},},
+    ['随机装备6'] =  { { rand = 20,name = '蓝'}, { rand = 70,name = '金'}, { rand = 10,name = '红'},},
+    ['随机装备7'] =  { { rand = 10,name = '蓝'}, { rand = 70,name = '金'}, { rand = 20,name = '红'},},
+    ['随机装备8'] =  { { rand = 0,name = '蓝'}, { rand = 70,name = '金'}, { rand = 25,name = '红'}, { rand = 5,name = '黑'}},
+    ['随机装备9'] =  { { rand = 0,name = '蓝'}, { rand = 60,name = '金'}, { rand = 35,name = '红'}, { rand = 5,name = '黑'}},
+    ['随机装备10'] =  { { rand = 0,name = '蓝'}, { rand = 50,name = '金'}, { rand = 45,name = '红'}, { rand = 5,name = '黑'}},
+    ['随机装备11'] =  { { rand = 0,name = '蓝'}, { rand = 40,name = '金'}, { rand = 55,name = '红'}, { rand = 5,name = '黑'}},
+    ['随机装备12'] =  { { rand = 0,name = '蓝'}, { rand = 30,name = '金'}, { rand = 65,name = '红'}, { rand = 5,name = '黑'}},
+    ['随机装备13'] =  { { rand = 0,name = '蓝'}, { rand = 20,name = '金'}, { rand = 70,name = '红'}, { rand = 10,name = '黑'}},
+    ['随机装备14'] =  { { rand = 0,name = '蓝'}, { rand = 10,name = '金'}, { rand = 70,name = '红'}, { rand = 20,name = '黑'}},
+    ['随机装备15'] =  { { rand = 0,name = '蓝'}, { rand = 0,name = '金'}, { rand = 70,name = '红'}, { rand = 25,name = '黑'}, { rand = 5,name = '神'}},
+    ['随机装备16'] =  { { rand = 0,name = '蓝'}, { rand = 0,name = '金'}, { rand = 60,name = '红'}, { rand = 35,name = '黑'}, { rand = 5,name = '神'}},
+    ['随机装备17'] =  { { rand = 0,name = '蓝'}, { rand = 0,name = '金'}, { rand = 50,name = '红'}, { rand = 45,name = '黑'}, { rand = 5,name = '神'}},
+    ['随机装备18'] =  { { rand = 0,name = '蓝'}, { rand = 0,name = '金'}, { rand = 40,name = '红'}, { rand = 55,name = '黑'}, { rand = 5,name = '神'}},
+    ['随机装备19'] =  { { rand = 0,name = '蓝'}, { rand = 0,name = '金'}, { rand = 30,name = '红'}, { rand = 65,name = '黑'}, { rand = 5,name = '神'}},
+    ['随机装备20'] =  { { rand = 0,name = '蓝'}, { rand = 0,name = '金'}, { rand = 20,name = '红'}, { rand = 70,name = '黑'}, { rand = 10,name = '神'}},
+
 }
  
 for page=1,2 do 
@@ -23,7 +40,7 @@ for page=1,2 do
             level = 0,
             is_order = 1,
             art = [[posuixiangzi.blp]],
-            tip = '挑战铁匠boss 获得装备',
+            tip = '|n|cffFFE799【任务要求】|r|cff00ff00点击前往击败|cffffff00铁匠BOSS|r|n|n|cffFFE799【任务奖励】|r|cff00ff00随机装备（发放至练功房）|r|n|n',
             page = page,
             ix = i,
             award_name = '随机装备'..ix
@@ -162,7 +179,7 @@ ac.game:event '任务-圣龙气运'(function(self,p)
     end
     ac.flag_zxpsxz = true
 
-    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff支线-破碎箱子|r|cff00ff00任务开启，请前往|cffffff00基地左边|cff00ff00的NPC查看！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff支线-破碎箱子|r|cff00ff00任务开启，请前往|cffffff00基地左边|cff00ff00找NPC查看！',5)
     --支线·破碎箱子
     local x,y = ac.rect.j_rect('npc4'):get_point():get()
     for i=1,6 do 

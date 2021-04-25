@@ -3,7 +3,7 @@ local mt = ac.skill['噬血珠']
 mt{
     level = 1 ,
     max_level = 11,
-    sec_degree_attr = 5,
+    sec_degree_attr = 4,
     --颜色
     color = '紫',
     tip = [[
