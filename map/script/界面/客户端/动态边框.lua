@@ -68,4 +68,58 @@ for name, func in pairs(tools) do
 end 
 
 
+ac.fream_panel = class.panel.create('', 0, 0, 1920, 1080)
+local panel =ac.fream_panel
+--画按钮
+local function init()
+    local slots = {9,10,11,12,5,6,7,8,1,2,3,4}
+    
+    local function create_button(p,x,y,w,h)
+        local button = p:add_button('',x,y,w,h)
+        return button
+    end
 
+    local slot_id = 0
+    --整个技能栏的面板
+    local skillPanel = panel:add_panel('',1480,841,417,230)
+    local buttonList = {}
+    --画12个技能栏按钮
+    for row = 0, 2 do
+        local y = 3 + row * 68 + row * 9
+        for column = 0, 3 do 
+            slot_id = slot_id + 1
+            local x = 4 + column * 90 + column * 15
+            local button = create_button(skillPanel,x, y, 90, 68)
+            button.old_slot_id = slot_id
+            button.slot_id = slots[slot_id]
+            button.type_name = '技能栏'
+            buttonList[slot_id] = button
+        end 
+    end
+
+    skillPanel.buttonList = buttonList
+    panel.skillPanel = skillPanel
+
+    slot_id = 0
+    --整个物品栏的面板
+    local itemPanel = panel:add_panel('',1235,875,179,201)
+    local buttonList = {}
+    for row = 0,2 do
+        local y = 4 + row * 56 + row * 13
+        for column = 0,1 do 
+            slot_id = slot_id + 1
+            local x = 4 + column * 75 + column * 21
+            local button = create_button(itemPanel,x, y, 75, 56)
+            button.slot_id = slot_id
+            button.type_name = '物品栏'
+            buttonList[slot_id] = button
+        end 
+    end
+    itemPanel.buttonList = buttonList
+    panel.itemPanel = itemPanel
+
+    local button = create_button(panel,989,908,65,49)
+    button.type_name = '属性栏'
+end
+
+init()

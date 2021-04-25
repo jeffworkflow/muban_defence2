@@ -255,11 +255,13 @@ ac.game:event '玩家-噬血珠满灵魂' (function(trg, player, item)
         if player:is_self()  then
             -- print(2222,ac.ui.client.panel.itemPanel.buttonList[slot],ac.ui.client.panel.skillPanel.buttonList[slot])n     
             if not player.flag_frame_hide then
-                ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)    
+                -- ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)  
+                ac.fream_panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)  
             end   
             if not player.flag_frame then 
                 player.flag_frame = game.wait(time*1000,function()
-                    ac.ui.client.panel.itemPanel.buttonList[slot].model_frame:hide()
+                    -- ac.ui.client.
+                    ac.fream_panel.itemPanel.buttonList[slot].model_frame:hide()
                     player.flag_frame_hide = true
                     player.first_item = nil
                     player.flag_frame = nil
@@ -286,11 +288,12 @@ ac.game:event '玩家-选择单位' (function(self, player, hero)
     
     if player:is_self()  then     
         if not player.flag_frame_hide then
-            ac.ui.client.panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)    
+            -- ac.ui.client.panel.
+            ac.fream_panel.itemPanel.buttonList[slot]:add_frame(35,-54,1,{1.2,1.2,1},true)    
         end   
         if not player.flag_frame then 
             player.flag_frame = game.wait(time*1000,function()
-                ac.ui.client.panel.itemPanel.buttonList[slot].model_frame:hide()
+                ac.fream_panel.itemPanel.buttonList[slot].model_frame:hide()
                 player.flag_frame_hide = true
                 player.first_item = nil
                 player.flag_frame = nil
@@ -315,8 +318,8 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
     end
     local slot = player.first_item.slot_id
     if player:is_self()  then
-        if ac.ui.client.panel.itemPanel.buttonList[slot].model_frame then 
-            ac.ui.client.panel.itemPanel.buttonList[slot].model_frame:hide()
+        if ac.fream_panel.itemPanel.buttonList[slot].model_frame then 
+            ac.fream_panel.itemPanel.buttonList[slot].model_frame:hide()
         end
     end 
 end)
@@ -332,14 +335,15 @@ ac.game:event '玩家-选择单位' (function(self, player, hero)
     if ac.g_game_time >= time then 
         self:remove()
         if player:is_self() then 
-            if ac.ui.client.panel.skillPanel.buttonList[1].model_frame then 
-                ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
+            if ac.fream_panel.skillPanel.buttonList[1].model_frame then 
+                ac.fream_panel.skillPanel.buttonList[1].model_frame:hide()
             end
         end
         return
     end    
     if player:is_self()then
-        ac.ui.client.panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},true)
+        -- ac.ui.client.panel
+        ac.fream_panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},true)
     end 
 end)
 ac.game:event '玩家-取消选择单位' (function(self, player, hero)
@@ -349,14 +353,14 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
     if ac.g_game_time >= time then 
         self:remove()
         if player:is_self() then 
-            if ac.ui.client.panel.skillPanel.buttonList[1].model_frame then 
-                ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
+            if ac.fream_panel.skillPanel.buttonList[1].model_frame then 
+                ac.fream_panel.skillPanel.buttonList[1].model_frame:hide()
             end
         end
         return
     end   
     if player:is_self()then
-        ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
+        ac.fream_panel.skillPanel.buttonList[1].model_frame:hide()
     end 
 end)
 
@@ -369,7 +373,8 @@ ac.game:event '玩家-选择单位' (function(self, player, hero)
         return 
     end
     if player:is_self() then
-        ac.ui.client.panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},nil,function()
+        -- ac.ui.client.panel
+        ac.fream_panel.skillPanel.buttonList[1]:add_frame(42,-45,1.4 ,{1,1.1,1},nil,function()
             player.flag_peon_frame =true
         end)
     end 
@@ -382,7 +387,8 @@ ac.game:event '玩家-取消选择单位' (function(self, player, hero)
         return 
     end   
     if player:is_self()then
-        ac.ui.client.panel.skillPanel.buttonList[1].model_frame:hide()
+        -- ac.ui.client.panel.
+        ac.fream_panel.skillPanel.buttonList[1].model_frame:hide()
     end 
 end)
 
