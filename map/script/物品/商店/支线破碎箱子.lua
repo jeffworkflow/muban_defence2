@@ -162,9 +162,9 @@ ac.game:event '任务-圣龙气运'(function(self,p)
     end
     ac.flag_zxpsxz = true
 
-    ac.player.self:sendMsg('【系统】支线任务开启，在基地左边的NPC破碎箱子中查看！',5)
+    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff支线-破碎箱子|r|cff00ff00任务开启，请前往|cffffff00基地左边|cff00ff00的NPC查看！',5)
     --支线·破碎箱子
-    local x,y = ac.rect.j_rect('NPC4'):get_point():get()
+    local x,y = ac.rect.j_rect('npc4'):get_point():get()
     for i=1,6 do 
         local player = ac.player(i) 
         if player:is_player() then 

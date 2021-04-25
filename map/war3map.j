@@ -385,6 +385,7 @@ rect gg_rct_lgfnpc68= null
 rect gg_rct_lgfnpc69= null
 rect gg_rct_tiejiang1= null
 rect gg_rct_tiejiang11= null
+rect gg_rct_tiejiang2= null
 
 endglobals
 
@@ -1890,6 +1891,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_lgfnpc69=Rect(7424.0, 352.0, 7584.0, 544.0)
 	set gg_rct_tiejiang1=Rect(5248.0, 25056.0, 5536.0, 25344.0)
     set gg_rct_tiejiang11=Rect(5248.0, 25760.0, 5536.0, 26048.0)
+	set gg_rct_tiejiang2=Rect(4288.0, 24448.0, 6432.0, 26688.0)
 endfunction
 
 //===========================================================================
