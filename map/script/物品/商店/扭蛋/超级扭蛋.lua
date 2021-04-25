@@ -70,7 +70,7 @@ function mt:add_content()
     if rand_name == '空蛋' then
         player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 发现了 |cffff0000蛋是空的|r',2)
     elseif finds(rand_name,'强化石','天谕') then
-        self.owner:add_item(rand_name)
+        local it = add_item(self.owner,rand_name)
         if tran_player then 
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
         end
@@ -135,7 +135,7 @@ function mt:add_content()
         --给英雄随机添加物品
         local name = ac.all_item[math.random( 1,#ac.all_item)]
         --满时，掉在地上
-        self.owner:add_item(name)
+        local it = add_item(self.owner,name)
         local lni_color ='白'
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
@@ -150,29 +150,14 @@ function mt:add_content()
         local list = ac.quality_skill[rand_name]
         --添加给购买者
         local name = list[math.random(#list)]
-        local it = ac.item.add_skill_item(name,self.owner)
+        -- local it = ac.item.add_skill_item(name,self.owner)4
+        local it = add_item(self.owner,name)
         local color = it and it.color 
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
-    elseif  finds(rand_name,'功法连升书') then
-        self.owner:add_item(rand_name)
+    elseif  finds(rand_name,'功法连升书','功法升级书','地魂融血丹','天魂融血丹','三眼赤痕','火龙气息','吞噬丹','宠物经验书(大)') then
+        -- self.owner:add_item(rand_name)
+        local it = add_item(self.owner,rand_name)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    elseif  finds(rand_name,'功法升级书') then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-
-    elseif  finds(rand_name,'地魂融血丹') then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    elseif  finds(rand_name,'天魂融血丹') then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    elseif  finds(rand_name,'三眼赤痕') then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    elseif  finds(rand_name,'火龙气息') then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-
     elseif finds(rand_name,'熔炼石') then
         player.flag = player.flag or {}
         if player.flag[rand_name] then 
@@ -180,14 +165,9 @@ function mt:add_content()
             return
         end
         player.flag[rand_name] = true
-        self.owner:add_item(rand_name)
+        local it = add_item(self.owner,rand_name)
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    elseif rand_name == '吞噬丹' then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    elseif  rand_name == '宠物经验书(大)' then
-        self.owner:add_item(rand_name)
-        tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+    
     elseif finds(rand_name,'神兵','神甲') then
         local rand_list = ac.magic_item[rand_name]
         --添加给英雄
@@ -198,7 +178,7 @@ function mt:add_content()
             
             self:add_content()
         else 
-            self.owner:add_item(name,true)
+            local it = add_item(self.owner,name)
             tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2) 
         end 
     elseif  rand_name == '魔丸' then

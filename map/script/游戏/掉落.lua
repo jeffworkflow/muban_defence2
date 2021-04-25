@@ -95,88 +95,52 @@ end
 
 ac.on_texttag =  on_texttag
 
+local function color_random_item(color,player,hero,unit,is_on_hero)
+    local list = ac.quality_item[color]
+    if list == nil then 
+        print('没有'..color..'色装备 添加失败')
+        return 
+    end 
+    local name = list[math.random(#list)]
+    --英雄死亡时 掉落在地上
+    if not is_on_hero or (not hero:is_alive()) then 
+        local ok = finds(unit:get_name(),'经验怪','小金币怪','中金币怪','大金币怪','小木头怪','中木头怪','大木头怪','超大木头怪','小魔丸怪','中魔丸怪','大魔丸怪')  
+        if ac.table.ItemData[name] and ok then 
+            ac.fall_move2{
+                name = name ,
+                unit = unit,
+                accel = 200,
+                owner_ship = player,
+                model = ac.table.ItemData[name].specail_model or ac.zb_color_model[ac.table.ItemData[name].color or '无'],
+            } 
+        else
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+            if item.owner_ship then 
+                item.owner_ship = ac.player(unit.owner:get() - 6)
+            end 
+        end
+    else
+        --宠物打死的也掉人身上
+        hero = hero:get_owner().hero
+        hero:add_item(name,nil,nil,player)    
+    end    
+end
 --先列出所有奖励 再按概率抽取
 local reward = {
 
+    
     ['随机白装'] = function (player,hero,unit,is_on_hero)
-        local list = ac.quality_item['白']
-        if list == nil then 
-            print('没有白色装备 添加失败')
-            return 
-        end 
-        local name = list[math.random(#list)]
-        --英雄死亡时 掉落在地上
-        if not is_on_hero or (not hero:is_alive()) then 
-            local item = ac.item.create_item(name,unit:get_point())
-            -- item_self_skill(item,hero)
-            if item.owner_ship then 
-                item.owner_ship = player
-            end  
-        else
-            --宠物打死的也掉人身上
-            hero = hero:get_owner().hero
-            hero:add_item(name)    
-        end    
+        color_random_item('白',player,hero,unit,is_on_hero)
     end,
     ['随机蓝装'] = function (player,hero,unit,is_on_hero)
-        local list = ac.quality_item['蓝']
-        if list == nil then 
-            print('没有蓝色装备 添加失败')
-            return 
-        end 
-        local name = list[math.random(#list)]
-        --英雄死亡时 掉落在地上
-        if not is_on_hero or (not hero:is_alive()) then 
-            local item = ac.item.create_item(name,unit:get_point())
-            -- item_self_skill(item,hero)
-            if item.owner_ship then 
-                item.owner_ship = player
-            end  
-        else
-            hero = hero:get_owner().hero
-            hero:add_item(name)    
-        end 
+        color_random_item('蓝',player,hero,unit,is_on_hero)
     end,
-
-
     ['随机金装'] = function (player,hero,unit,is_on_hero)
-        local list = ac.quality_item['金']
-        if list == nil then 
-            print('没有金色装备 添加失败')
-            return 
-        end 
-        local name = list[math.random(#list)]
-        --英雄死亡时 掉落在地上
-        if not is_on_hero or (not hero:is_alive()) then 
-            local item = ac.item.create_item(name,unit:get_point())
-            -- item_self_skill(item,hero)
-            if item.owner_ship then 
-                item.owner_ship = player
-            end  
-        else
-            hero = hero:get_owner().hero
-            hero:add_item(name)    
-        end 
+        color_random_item('金',player,hero,unit,is_on_hero)
     end,
-
     ['随机红装'] = function (player,hero,unit,is_on_hero)
-        local list = ac.quality_item['红']
-        if list == nil then 
-            print('没有红色装备 添加失败')
-            return 
-        end 
-        local name = list[math.random(#list)]
-        --英雄死亡时 掉落在地上
-        if not is_on_hero or (not hero:is_alive()) then 
-            local item = ac.item.create_item(name,unit:get_point())
-            -- item_self_skill(item,hero)
-            if item.owner_ship then 
-                item.owner_ship = player
-            end  
-        else
-            hero = hero:get_owner().hero
-            hero:add_item(name)    
-        end 
+        color_random_item('红',player,hero,unit,is_on_hero)
     end,
     ['随机技能'] = function (player,hero,unit,is_on_hero)
         local list = ac.all_skill
@@ -1296,7 +1260,7 @@ ac.unit_reward = unit_reward
 local function fall_move2(data)
     local it_name = data.name
     local where = data.source or data.unit:get_point()
-    local point = data.target:get_point() or (where:get_point() - {math.random(360),math.random(200,500)})
+    local point = data.target and data.target:get_point() or (where:get_point() - {math.random(360),math.random(200,500)})
     local model = data.model
     local is_skill = data.is_skill
     local owner_ship = data.owner_ship or data.killer_p--or ac.player(data.unit.owner:get() - 6)
