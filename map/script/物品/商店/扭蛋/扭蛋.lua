@@ -28,6 +28,10 @@ mt{
     --商店名词缀
     store_affix = '',
 }
+function get_color_name(name)
+    local it_config = ac.table.ItemData[name] or ac.skill[name]
+    return '|cff'..ac.color_code[it_config.color or  '白']..name..'|r'
+end
 function add_item(hero,name,is_skill)
     --判断是否满格 
     local ix = hero:get_nil_slot()

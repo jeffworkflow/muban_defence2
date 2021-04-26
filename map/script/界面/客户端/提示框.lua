@@ -130,23 +130,23 @@ local tool ={
                     show_jifen = item:sell_jifen()
                     show_rec_ex = item:sell_rec_ex()
                 end
-                if gold >0 then 
+                if gold >0 and ((unit.unit_type ~='商店' and skill.type_name =='物品') or unit.unit_type =='商店') then 
                     skill.coin = '金币'
                     table.insert(self.icons,{coin = '金币',val = show_gold})
                 end
-                if wood >0 then 
+                if wood >0 and ((unit.unit_type ~='商店' and skill.type_name =='物品') or unit.unit_type =='商店') then 
                     skill.coin = '木头'
                     table.insert(self.icons,{coin = '木头',val = show_wood})
                 end
-                if kill_count >0 then 
+                if kill_count >0 and ((unit.unit_type ~='商店' and skill.type_name =='物品') or unit.unit_type =='商店') then 
                     skill.coin = '杀敌数'
                     table.insert(self.icons,{coin = '杀敌数',val = show_kill_count})
                 end
-                if rec_ex >0 then 
+                if rec_ex >0 and ((unit.unit_type ~='商店' and skill.type_name =='物品') or unit.unit_type =='商店') then 
                     skill.coin = '魔丸'
                     table.insert(self.icons,{coin = '魔丸',val = show_rec_ex})
                 end
-                if jifen >0 then 
+                if jifen >0 and ((unit.unit_type ~='商店' and skill.type_name =='物品') or unit.unit_type =='商店') then 
                     skill.coin = '积分'
                     table.insert(self.icons,{coin = '积分',val = show_jifen})
                 end
@@ -206,6 +206,9 @@ function panel.updateToolTip(button)
         else
             local skl = unit:find_skill( button.slot_id, unit.skill_page or '英雄',true)
             skill = skl 
+            if skill then 
+                skill.type_name = '技能'
+            end
             -- if skl and skl.is_ui_text then 
             --     skill = skl 
             -- end
@@ -213,6 +216,9 @@ function panel.updateToolTip(button)
         end
     elseif button.type_name == '物品栏' then 
         skill = unit:get_slot_item(button.slot_id)
+        if skill then 
+            skill.type_name = '物品'
+        end
     end     
     if not skill then 
         tool:hide()

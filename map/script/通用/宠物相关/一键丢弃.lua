@@ -14,6 +14,8 @@ mt{
     ignore_cool_save = true, --忽略技能冷却
 	--技能目标类型 无目标
 	target_type = ac.skill.TARGET_TYPE_UNIT_OR_POINT,
+    --目标允许
+	-- target_data = '玩家单位 物品 地面 空中 自己 无敌 可攻击的',
 	--施法范围
 	-- area = 500,
 	--cd
@@ -27,7 +29,7 @@ function mt:on_add()
 	local hero = self.owner 
 end	
 
-function mt:on_cast_shot()
+function mt:on_cast_start()
     local skill = self
 	local hero = self.owner
 	local gold = 0 

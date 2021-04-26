@@ -40,6 +40,7 @@ for page=1,2 do
             level = 0,
             is_order = 1,
             art = [[posuixiangzi.blp]],
+            effect2 = [[Void Teleport Target.mdx]],
             tip = '|n|cffFFE799【任务要求】|r|cff00ff00点击前往击败|cffffff00铁匠BOSS|r|n|n|cffFFE799【任务奖励】|r|cff00ff00随机装备（发放至练功房）|r|n|n',
             page = page,
             ix = i,
@@ -51,6 +52,10 @@ for page=1,2 do
             local seller = self.owner
             local p = seller.owner 
             local hero = p.hero
+            if p.flag_tzps then 
+                p:sendMsg('已经有人在挑战',5)
+                return 
+            end
             --传送
             p.flag_tzps = true
             local blink_rect = ac.rect.j_rect('tiejiang1')
@@ -106,29 +111,29 @@ for page=1,2 do
                         owner = p,
                     }
                     -- local it = hero:add_item(name)
-                    -- p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(it.color_name or rand_name)..'|r',4)
+                    p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(get_color_name(name))..'|r,已发放至练功房',4)
                     
 
                 end)
             end)
 
             --创建区域离开事件
-            -- local reg = ac.map.regions['shaohuogun2']
-            -- reg:event '区域-离开'(function(trg,unit)
-            --     if hero ~= unit then 
-            --         return 
-            --     end  
-            --     if u and u:is_alive() then 
-            --         u:remove()
-            --     end
-            --     if trg_t then 
-            --         trg_t:remove()
-            --         trg_t = nil 
-            --     end
-            --     p.flag_shg = false 
-            --     --删除自己的
-            --     trg:remove()  
-            -- end)
+            local reg = ac.map.regions['tiejiang2']
+            reg:event '区域-离开'(function(trg,unit)
+                if hero ~= unit then 
+                    return 
+                end  
+                if u and u:is_alive() then 
+                    u:remove()
+                end
+                if trg_t then 
+                    trg_t:remove()
+                    trg_t = nil 
+                end
+                p.flag_tzps = false 
+                --删除自己的
+                trg:remove()  
+            end)
         end
         
     end
