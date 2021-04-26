@@ -204,6 +204,8 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
         end
         
         ac.player.self:sendMsg('【系统】玩家'..p:get_name()..self.name..'，请大家共同前往击杀；',5)
+        
+        ac.red_remind:fresh()--红屏警告
     end
 
     --刷怪相关
@@ -284,7 +286,7 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                                     name = rand_name ,
                                     source = hero,
                                     accel = 200,
-                                    owner_ship = hero.owner,
+                                    owner_ship = p,
                                 } 
                             end
                             show_tip = [[奖励10个天谕或3本功法连升书；]]
@@ -303,7 +305,7 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                                 name = rand_name ,
                                 source = hero,
                                 accel = 200,
-                                owner_ship = hero.owner,
+                                owner_ship = p,
                             } 
                             show_tip = '奖励'..get_color_name(name)
                         end
@@ -323,13 +325,13 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                                 name = name,
                                 source = hero,
                                 accel = 200,
-                                owner_ship = hero.owner,
+                                owner_ship = p,
                             } 
                             show_tip = '奖励'..get_color_name(name)
                         end
                     end
                 end
-                ac.player.self:sendMsg('【系统】'..unit:get_name()..'已被击败，击败他的是'..p:get_name()..'；所有玩家获得'..show_tip,5)
+                ac.player.self:sendMsg('【系统】'..unit:get_name()..'已被击败，击败他的是'..killer.owner:get_name()..'；所有玩家获得'..show_tip,5)
 
 
             end)

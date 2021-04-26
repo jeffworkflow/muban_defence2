@@ -55,6 +55,24 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
 
 end)
 
+local new_ui = class.panel:builder
+{
+    x = 0,--假的
+    y = 0,--假的
+    w = 1920,
+    h = 1080,
+    level = 5,
+    is_show = false,
+    normal_image = 'xueliangguodi.blp',
+    fresh = function(self,title)
+        self:show()
+        --@总时长
+        --@一闪烁来回时间 单位秒
+        self:blink(1,2)
+    end
+}
+ac.red_remind = new_ui
+
 --业务：蜗牛出品 
 local new_ui = class.panel:builder
 {
