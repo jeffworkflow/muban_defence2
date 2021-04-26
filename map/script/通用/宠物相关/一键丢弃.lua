@@ -13,7 +13,8 @@ mt{
 	art = [[ReplaceableTextures\CommandButtons\BTNUnLoad.blp]],
     ignore_cool_save = true, --忽略技能冷却
 	--技能目标类型 无目标
-	target_type = ac.skill.TARGET_TYPE_UNIT_OR_POINT,
+	target_type = ac.skill.TARGET_TYPE_POINT,
+	force = 1,
     --目标允许
 	-- target_data = '玩家单位 物品 地面 空中 自己 无敌 可攻击的',
 	--施法范围

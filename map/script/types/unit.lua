@@ -1614,9 +1614,13 @@ end
 -- 行为限制
 local function restriction_move(unit, flag)
 	if flag then
-		jass.SetUnitMoveSpeed(unit.handle, 0)
+		japi.EXSetUnitMoveType(unit.handle, 1)
+	elseif unit:has_restriction '飞行' then
+		japi.EXSetUnitMoveType(unit.handle, 4)
+	elseif unit:has_restriction '幽灵' then
+		japi.EXSetUnitMoveType(unit.handle, 16)
 	else
-		jass.SetUnitMoveSpeed(unit.handle, unit:get '移动速度')
+		japi.EXSetUnitMoveType(unit.handle, 2)
 	end
 end
 
