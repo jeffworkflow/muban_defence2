@@ -5,6 +5,7 @@ mt{
 title = '召唤世界BOSS【肉山】',
 --等久
 level = 1,
+
 --图标
 art = [[roushan.blp]],
 --说明
@@ -23,7 +24,7 @@ cool = function(self)
     return 300 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
 init_cd = 60,
-init_cd = 10,
+-- init_cd = 10,
 ignore_cool_save = true,
 unit_name ='肉山',
 unit_cool = 0.5,
@@ -54,7 +55,7 @@ cool = function(self)
     return 420 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
 init_cd = 180,
-init_cd = 20,
+-- init_cd = 20,
 ignore_cool_save = true,
 unit_name ='梦魇',
 unit_cool = 1,
@@ -82,7 +83,7 @@ cool = function(self)
     return 540 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
 init_cd = 300,
-init_cd = 30,
+-- init_cd = 30,
 ignore_cool_save = true,
 unit_name ='戈登的激情',
 unit_cool = 1,
@@ -112,7 +113,7 @@ cool = function(self)
     return 660 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
 init_cd = 420,
-init_cd = 40,
+-- init_cd = 40,
 --特殊id 带cd
 unit_name ='火焰领主',
 unit_cool = 1,
@@ -141,7 +142,7 @@ cool = function(self)
     return 780 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
 init_cd = 540,
-init_cd = 50,
+-- init_cd = 50,
 --特殊id 带cd
 unit_name ='毁灭者',
 unit_cool = 1,
@@ -202,10 +203,8 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                 skl:active_cd()
             end
         end
-        
-        ac.player.self:sendMsg('【系统】玩家'..p:get_name()..self.name..'，请大家共同前往击杀；',5)
-        
-        ac.red_remind:fresh()--红屏警告
+        ac.red_remind:fresh()
+        ac.player.self:sendMsg('|cffFFE799【系统】|r|cff00ffff玩家'..p:get_name()..'|r|cff00ff00在|cffffff00基地上方|cff00ff00召唤出了|cffff0000'..self.name..'|r|cff00ff00，请大家共同前往击杀；',5)
     end
 
     --刷怪相关
@@ -253,7 +252,7 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                             hero:add_kill_count(2500)
                             hero:add('杀敌数加成',50)
                             hero:add('物品获取率',50)
-                            show_tip = [[奖励2500杀敌数，每个玩家获得杀敌数加成+50%，物品获取率+50%]]
+                            show_tip = [[杀敌数+2500，杀敌数加成+50%，物品获取率+50%]]
                         end
                         --每个玩家获得奖励1万木头，5万魔丸，每个玩家获得木头获取率+50%，魔丸获取率+50%，
                         if unit:get_name() == '梦魇' then 
@@ -261,7 +260,7 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                             hero:add_rec_ex(50000)
                             hero:add('木头加成',50)
                             hero:add('魔丸加成',50)
-                            show_tip = [[奖励1万木头，5万魔丸，每个玩家获得木头获取率+50%，魔丸获取率+50%，]]
+                            show_tip = [[木头+1万，魔丸+5万，木头加成+50%，魔丸加成+50%]]
                         end
 
                         --每个玩家获得奖励10个天谕或3本功法连升书；
@@ -289,7 +288,7 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                                     owner_ship = p,
                                 } 
                             end
-                            show_tip = [[奖励10个天谕或3本功法连升书；]]
+                            show_tip = '10个天谕或3本功法连升书（发放至练功房）'
                         end
 
                         --每个玩家获得奖励一个吞噬丹或一个无谓因果
@@ -307,7 +306,7 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                                 accel = 200,
                                 owner_ship = p,
                             } 
-                            show_tip = '奖励'..get_color_name(name)
+                            show_tip = '1个吞噬丹或1个无谓因果（发放至练功房）'
                         end
                         --每个玩家获得奖励一个吞噬丹或一个无谓因果
                         if unit:get_name() == '毁灭者' then 
@@ -327,11 +326,11 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                                 accel = 200,
                                 owner_ship = p,
                             } 
-                            show_tip = '奖励'..get_color_name(name)
+                            show_tip = '1个黑色装备或1本神阶功法（发放至练功房）'
                         end
                     end
                 end
-                ac.player.self:sendMsg('【系统】'..unit:get_name()..'已被击败，击败他的是'..killer.owner:get_name()..'；所有玩家获得'..show_tip,5)
+                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，所有玩家获得|cffffff00'..show_tip,5)
 
 
             end)
