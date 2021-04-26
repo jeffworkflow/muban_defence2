@@ -111,7 +111,7 @@ for page=1,2 do
                         owner = p,
                     }
                     -- local it = hero:add_item(name)
-                    p:sendMsg('|cffebb608【系统】|r|cff00ff00这个粽子里面怎么有东西硬硬的，获得|cffff0000'..(get_color_name(name))..'|r,已发放至练功房',4)
+                    p:sendMsg('|cffebb608【系统】|r|cff00ff00恭喜获得|cffff0000'..(get_color_name(name))..'|r|cff00ff00,已发放至练功房',4)
                     
 
                 end)
