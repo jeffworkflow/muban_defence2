@@ -6,7 +6,7 @@ level = 1,
 art = [[mengchong.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff004月23日-5月13日
+|cffffe799【活动时间】|r|cff00ff004月29日-5月13日
 |cffffe799【活动说明】|r|cff00ff00劳动节期间，农牧天官给每一位少侠带来了一只可爱的小猪仔，希望小猪仔能被|cff00fffff充满爱心的你|cff00ff00好好照料！
  ]],
 --物品类型
