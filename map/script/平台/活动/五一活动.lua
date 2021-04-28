@@ -48,10 +48,10 @@ local award_list = {
         { rand = 5, name = '天谕*15'},
         { rand = 5, name = '功法连升书*1'},
         { rand = 5, name = '功法连升书*3'},
-        { rand = 5, name = '无谓因果'},
-        { rand = 5, name = '吞噬丹'},
+        { rand = 5, name = '无谓因果*1'},
+        { rand = 5, name = '吞噬丹*1'},
         { rand = 5, name = '随机卡片'},
-        { rand = 5, name = '神奇的令牌'},
+        { rand = 5, name = '神奇的令牌*1'},
         { rand = 5, name = '归梦五行图'},
         { rand = 35, name = '无'},
     },
@@ -161,7 +161,7 @@ end
 function mt:on_add()
     --全图随机刷 正式用
     local name = rand_rect[math.random(#rand_rect)]
-    self.random_point =  ac.rect.j_rect(name):get_point()
+    self.random_point =  ac.rect.j_rect(name):get_random_point()
 end
 
 function mt:on_cast_start()
