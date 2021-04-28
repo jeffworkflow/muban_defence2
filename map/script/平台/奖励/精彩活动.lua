@@ -790,6 +790,66 @@ need_map_level = 5,
 }
 
 
+local mt = ac.skill['归梦五行图']
+mt{
+--等级
+level = 1, 
+max_level = 5, 
+--图标
+art = [[wuxingtu.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff劳动节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%攻击加全属性%   |cff00ff00攻击加全属性|r
+|cff00ff00+%每秒加木头%   |cff00ff00每秒加木头|r
+|cff00ff00+%减少周围护甲% |cff00ff00减少周围护甲|r
+|cff00ff00+%技暴加深% |cffffff00%  |cff00ff00技暴加深|r
+ ]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['攻击加全属性'] = {28,58,88,118,148},
+['减少周围护甲'] = {100,200,300,400,500},
+['技暴加深'] = {8.8,13.8,18.8,23.8,28.8},
+['每秒加木头'] = {1,2,3,4,5},
+need_map_level = 5,
+}
+
+local mt = ac.skill['放了那只猪']
+mt{
+--等级
+level = 1, 
+max_level = 5, 
+--图标
+art = [[mengchong.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff劳动节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%攻击加全属性%   |cff00ff00攻击加全属性|r
+|cff00ff00+%每秒加杀敌数%   |cff00ff00每秒加杀敌数|r
+|cff00ff00+%攻击减甲% |cff00ff00攻击减甲|r
+|cff00ff00+%暴击加深% |cffffff00%  |cff00ff00暴击加深|r
+ ]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+
+['攻击加全属性'] = {28,58,88,118,148},
+['攻击减甲'] = {10,20,30,40,50},
+['暴击加深'] = {8.8,23.8,38.8,43.8,58.8},
+['每秒加杀敌数'] = {1,2,3,4,5},
+need_map_level = 5,
+}
+
+
 local mt = ac.skill['精彩活动']
 mt{
     is_spellbook = 1,
@@ -804,7 +864,7 @@ mt{
 }
 mt.skill_name ={
     '魔灵精品粽','真正的学霸','魔灵麒麟瓜','缘定三生','懂事的孩子','第一个吃螃蟹的人','四海共团圆','九洲帝王','有趣的灵魂','放炮小达人','兽魂之佑',
-    '五福'
+    '五福','归梦五行图','放了那只猪'
 }
 
 mt.skills = {

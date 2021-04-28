@@ -82,7 +82,7 @@ if global_test then
 
             --重新添加技能
             local temp_unit = {}
-            for i=1,4 do 
+            for i=1,6 do 
                 local p = ac.player(i)
                 if p:is_player() then 
                     if p.hero then 

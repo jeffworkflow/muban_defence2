@@ -475,3 +475,16 @@ for name, func in pairs(tools) do
     class.ui_base[name] = func
 end 
 tools.old_remove_tooltip =  real_remove
+
+
+-- tool['通用']
+-- ac.loop(0.01*1000,function()
+--     local name = ac._all_skill[math.random(#ac._all_skill)]
+--     local skill = ac.skill[name]
+--     skill.owner = ac.dummy
+--     ac.ui.tooltip['通用']:fresh(skill,nil)
+--     ac.ui.tooltip:show('通用')
+--     ac.is_sharing = true
+
+
+-- end)

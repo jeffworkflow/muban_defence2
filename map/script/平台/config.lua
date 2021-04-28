@@ -256,6 +256,9 @@ local cus_key = {
     {'fpxdr','放炮小达人',{ ['放炮小达人'] = {1,5,value = function(self,p) return p:Map_GetServerValue('fpxdr') end}}},
     {'shzy','兽魂之佑',{ ['兽魂之佑'] = {1,5,value = function(self,p) return p:Map_GetServerValue('shzy') end}}},
     
+    {'gmwxt','归梦五行图',{ ['归梦五行图'] = {1,5,value = function(self,p) return p:Map_GetServerValue('gmwxt') end}}},
+    {'flnzz','放了那只猪',{ ['放了那只猪'] = {1,5,value = function(self,p) return p:Map_GetServerValue('flnzz') end}}},
+
     {'wf','五福'},--五福收集次数
     {'sjwf','世界五福'},--世界五福收集次数
     

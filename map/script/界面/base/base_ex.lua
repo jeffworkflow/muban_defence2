@@ -93,7 +93,18 @@ function class.ui_base:fade(time,source)
     end)
     self.fade_timer:on_timer()
 end   
+function class.ui_base:fade(time)
+        --进行淡化
+    local time = time or 0.3
+    local source = time>0 and 100 or 0
+    local time = math.abs(time)
 
+    game.timer(time/100 * 1000,100,function(t)
+        -- print((100-t.cnt)/100) 
+        local val = math.abs(source - t.cnt)/100
+        self:set_alpha(val)
+    end)
+end   
 --闪烁
 function class.ui_base:blink(time,speed,keep)
     local time = time or 1

@@ -84,7 +84,7 @@ function mt:add_content()
     if rand_name == '空蛋' then
         -- player:sendMsg1('玩家 |cff00ffff'..player:get_name()..'|r |cff00ffff'..self.name..'|r, |cffff0000什么事都没发生|r',10)
     elseif finds(rand_name,'强化石','天谕') then
-        local it = add_item(self.owner,name)
+        local it = add_item(self.owner,rand_name)
         if tran_player then 
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
         end
