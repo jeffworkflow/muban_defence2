@@ -69,7 +69,7 @@ local function give_award(hero)
         return true
     end
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，普天同庆|cff00ff00!',3) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00什么都没有！',3) 
     elseif  finds(rand_name,'天谕','功法连升书','无谓因果','龙之血珠','吞噬丹','三眼赤痕','火龙气息','天魂融血丹','地魂融血丹','神奇的令牌') then
         local it
         --处理掉落物品相关
@@ -78,25 +78,25 @@ local function give_award(hero)
                 it = hero:add_item(k)
             end 
         end
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..(rand_name)..'|r',4) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..(rand_name)..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = hero:add_item(name)
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..(it.color_name or rand_name)..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..(it.color_name or rand_name)..'|r',4)
     elseif  finds('地阶 天阶',rand_name) then   
         local list = ac.quality_skill[rand_name]
         local name = list[math.random(#list)]
         --满时，掉在地上
         local it = ac.item.add_skill_item(name,hero)
         local color = it and it.color 
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000|cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',4)
     elseif finds(rand_name,'随机卡片')  then    
         local list = ac.all_card
         local name = list[math.random(#list)]
         local it = hero:add_item(name)
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..name..'|r',4)
     elseif  rand_name == '归梦五行图' then 
         local hero = p.hero
         local key = ac.server.name2key(rand_name)
