@@ -180,7 +180,7 @@ function mt:add_content()
         local name = list[math.random(#list)]
         -- local it = ac.item.add_skill_item(name,self.owner)
         
-        local it = add_item(self.owner,name)
+        local it = add_item(self.owner,name,true)
         local color = it and it.color 
         if tran_player then 
         tran_player:sendMsg1('|cffebb608【系统】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[color or '白']..'【技能书】'..name..'|r',2)
