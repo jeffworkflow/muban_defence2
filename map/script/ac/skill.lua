@@ -499,8 +499,17 @@ function mt:set_art(art)
 end
 
 --刷新技能图标
-function mt:fresh_art()
-	self:set_art(self:get_art())
+--modify by jeff 解决 选择其他单位时，添加了英雄技能导致图标刷新
+function mt:fresh_art(force)
+	if force or self.item_type then 
+		self:set_art(self:get_art())
+		return
+	end
+	local hero = self.owner
+	local p = hero.owner 
+	if p.selected == hero then 
+		self:set_art(self:get_art())
+	end
 end
 
 -- 格式化数字 

@@ -127,7 +127,7 @@ local function cast_spell(msg, hero, name, force)
 	--由于 TARGET_TYPE_POINT 与官方快捷施法冲突，所以默认设置这些类型的都是快捷施法
 	if skl.target_type == ac.skill.TARGET_TYPE_POINT then
 		--or (not force and get_smart_cast_type(hero,name) ~= 1)
-		--改为 指向点的,无范围area的,进入快捷施法。 (x == 0 and y == 0) or 
+		--改为 指向点的,无范围area的,进入快捷施法。
 		if (not force or skl.area) then
 			save_last_skill(msg, hero, name)
 			return false
@@ -204,6 +204,15 @@ function clean_last_skill()
 	jass.ForceUICancel()
 	return true
 end
+
+--使用物品
+-- local function cast_item_spell(msg, hero, skl, slot_id)
+-- 	if skl.target_type == ac.skill.TARGET_TYPE_NONE then
+-- 		message.order_target(852270, 0.5566,slot_id + 0.5 , 0, FLAG_INSTANT)
+-- 		return true
+-- 	end 
+-- 	return false
+-- end
 
 --是否选中了英雄
 local function is_select_hero()
@@ -294,11 +303,90 @@ keyboard['Esc'] = 512
 local last_click = 0
 --本地消息
 function message.hook(msg)	
+	if ac.build_select and ac.build_select(msg) ~= true then
+		return false
+	end
+	-- if msg.type == 'key_down' then
+	-- 	if code == keyboard['Esc'] or code == keyboard['F1'] then
+	-- 		return true
+	-- 	end
+	-- end
+	-- print_r(msg)
+	local hero = unit.j_unit(message.selection()) 
+	-- print('选择了单位',hero:get_name())
+	--刷新技能图标
+	if hero then 
+		local select_p = hero.owner
+		if msg.type == 'select_unit' then 
+			for skill in hero:each_skill('英雄',true) do 
+				-- print('开始刷新图标',hero:get_name(),skill.name)
+				skill:fresh_art(true)
+			end 
+		end
+		-- print('选中了其他单位的商店',hero:get_name(),select_p,ac.player.self,select_p:get(),msg.type)
+		
+		local list = {'Q', 'W', 'E', 'R', 'A','S','D', 'F', 'G','Z','X','C','V','H'}
+		local ok 
+		if msg.type == 'key_down' then 
+			for i,key in ipairs(list) do 
+				if msg.code == keyboard[key] then 
+					ok = true 
+					break
+				end
+			end
+		end
+		if msg.type == 'select_unit' or msg.type =='mouse_ability' or ok then
+
+			if hero:is_type('商店') and hero.owner ~= ac.player.self and select_p:get()<=6 then 
+				-- ClearSelection()
+				-- SelectUnit(ac.player.self.hero.handle,true)
+				print('阻断操作')
+				return false
+			end
+			
+		end
+	end
+
+	local code = msg.code
+	local order = msg.order
+	local item_slot_id
+
+	if msg.type == 'key_down' then 
+		item_slot_id = num_order_map[code]
+		if item_slot_id then 
+			order = item_slot_id + 852007
+		end 
+	elseif msg.type == 'mouse_item' and order >= 852008 and order <= 852013 and code == 1 then 
+		item_slot_id = order - 852007
+	end 
+
+
+	if order and item_slot_id and hero then 
+		local item = hero:get_slot_item(item_slot_id)
+		
+		if item then
+			-- print(item.name,111,order)
+			--如果在选择建造的时候 屏蔽掉这些快捷键
+			if ac.is_build_select then
+				return false
+			end
+
+			--japi 改变模型 无法获取预设的h000 单位的handle ,一直为象牙塔。
+			-- japi.SetUnitModel(self.handle,self.model_now)
+
+			return true
+		end
+	end 
+
 	
 	--键盘按下消息
 	if msg.type == 'key_down' then
 		local code = msg.code
 		local state = msg.state
+		-- print('键盘按下：',code,state)
+		if state == 4 then 
+			ac.player.self.is_alt = true
+		end
 		--D 凌波微步
 		if code == keyboard['D'] then
 			if is_select_hero() then 
@@ -314,6 +402,40 @@ function message.hook(msg)
 				
 				return true
 			end
+		end
+		--停止键
+		if code == keyboard['S'] then
+			if not is_select_player_unit() and not is_select_hero() and not is_select_off_line_hero() and not select_hero() then
+				return true
+			end
+			message.order_immediate(ORDER_STOP, FLAG_INSTANT)
+		end
+
+		--攻击键
+		if code == keyboard['A'] then
+			if is_select_player_unit() then
+				return true
+			end
+			
+			if is_select_hero() then
+				return true
+			end
+
+			if is_select_off_line_hero() then
+				return true
+			end
+
+			if select_hero() then
+				local x, y = message.mouse()
+				if x == 0 and y == 0 then
+					return false
+				end
+				message.order_target(ORDER_ATTACK, x, y, 0, FLAG_INSTANT)
+				message.order_target(ORDER_ATTACK, x, y, 0, 0)
+				return false
+			end
+
+			return true
 		end
 
 		local list = {'Q', 'W', 'E', 'R', 'A','S','D', 'F', 'G','Z','X','C','V','H','Esc'}
@@ -373,41 +495,7 @@ function message.hook(msg)
 			return true
 		end
 
-		--停止键
-		if code == keyboard['S'] then
-			if not is_select_player_unit() and not is_select_hero() and not is_select_off_line_hero() and not select_hero() then
-				return true
-			end
-			message.order_immediate(ORDER_STOP, FLAG_INSTANT)
-		end
-
-		--攻击键
-		if code == keyboard['A'] then
-			if is_select_player_unit() then
-				return true
-			end
-			
-			if is_select_hero() then
-				return true
-			end
-
-			if is_select_off_line_hero() then
-				return true
-			end
-
-			if select_hero() then
-				local x, y = message.mouse()
-				if x == 0 and y == 0 then
-					return false
-				end
-				message.order_target(ORDER_ATTACK, x, y, 0, FLAG_INSTANT)
-				message.order_target(ORDER_ATTACK, x, y, 0, 0)
-				return false
-			end
-
-			return true
-		end
-
+		
 		--回城键
 		if code == keyboard['B'] then
 			local hero = is_select_off_line_hero() or select_hero()
@@ -474,7 +562,7 @@ function message.hook(msg)
 	--键盘放开消息
 	if msg.type == 'key_up' then
 		local code = msg.code
-		
+		ac.player.self.is_alt = false
 		--如果是组合键,则跳过
 		local state = msg.state
 		if state ~= 0 then
@@ -540,29 +628,64 @@ function message.hook(msg)
 		local order = msg.order
 		local ability = msg.ability
 		local name = base.id2string(ability or 0)
-		-- print('技能id',ability)
+		-- print('技能id',code,order,ability,name)
 		local store = ac.unit.j_unit(message.selection())
 		local hero = ac.player.self.hero 
-		--商店购买
-		if hero and hero:is_alive() and store and store.sell_list then 
-			for index,skill in ipairs(store.sell_list) do 
-				-- print(skill.ability_id,name,skill.ability_id == name )
-				--利用命令 将商品槽位传递过去
+
+		if ac.player.self.is_alt and store and store:is_type('商店') and store == ac.player.self.yx_store then 
+			for skill in store:each_skill() do
 				if skill.ability_id == name then 
+					-- -- print('本地命令发布：',GetUnitAbilityLevel(hero.handle,base.string2id('AHta')))
+					-- message.order_target(852270, 0.7788,index + 0.5 , 0, FLAG_INSTANT)
+					--找到英雄的技能
+					local skl = hero:find_skill('分享英雄')
+					-- print(hero:get_name(),skl)
+					if not skl then
+						return false
+					end
+					-- 不是通魔则返回
+					if skl:get_slk 'Order' ~= 'channel' then
+						return false
+					end
+					-- 鼠标当前指向的位置
+					-- local x, y = message.mouse()
+					local order = skl:get_slk 'DataF1'
+					local order_id = order_id[order]
+					-- local target = find_target(skl, x, y)
+					-- print('要释放技能啦：',order_id,skill.slotid,0,0,FLAG_INSTANT)
+					--X为英雄释放技能的槽位
 					ClearSelection()
 					SelectUnit(hero.handle,true)
-					-- print('本地命令发布：',GetUnitAbilityLevel(hero.handle,base.string2id('AHta')))
-					message.order_target(852270, 0.7788,index + 0.5 , 0, FLAG_INSTANT)
+					message.order_point(order_id, skill.slotid, 0, FLAG_INSTANT)
+					-- message.order_target(order_id, skill.slotid,0, 0, FLAG_INSTANT)
 					ClearSelection()
 					SelectUnit(store.handle,true)
-					return false  
-				end 
-			end 
-		end 
+					return false
+				end
+			end
+		end
 
-		if name == 'Asid' then 
-			return true 
-		end 
+
+		-- --商店购买
+		-- if hero and hero:is_alive() and store and store.sell_list then 
+		-- 	for index,skill in ipairs(store.sell_list) do 
+		-- 		-- print(skill.ability_id,name,skill.ability_id == name )
+		-- 		--利用命令 将商品槽位传递过去
+		-- 		if skill.ability_id == name then 
+		-- 			ClearSelection()
+		-- 			SelectUnit(hero.handle,true)
+		-- 			-- print('本地命令发布：',GetUnitAbilityLevel(hero.handle,base.string2id('AHta')))
+		-- 			message.order_target(852270, 0.7788,index + 0.5 , 0, FLAG_INSTANT)
+		-- 			ClearSelection()
+		-- 			SelectUnit(store.handle,true)
+		-- 			return false  
+		-- 		end 
+		-- 	end 
+		-- end 
+
+		-- if name == 'Asid' then 
+		-- 	return true 
+		-- end 
 
 		-- 鼠标左键按下 1.24才有用，会有问题，宠物技能无法用鼠标点击
 		-- if code == 1 then
