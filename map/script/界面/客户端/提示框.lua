@@ -100,6 +100,9 @@ local tool ={
                 end
                 --刷新其他
                 local title = skill.color_name or skill:get_title()
+                if skill.type_name =='技能栏' then 
+                    title = skill:get_title()
+                end
                 local tip = skill:get_tip()..(skill.suit_tip or '')
                 self.title:set_text(title)
                 self.tip:set_text(tip)

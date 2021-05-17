@@ -48,7 +48,7 @@ for key,value in pairs(ac.exchange_kill) do
     --物品技能
     is_skill = true,
     real_kill_cnt = 500,
-    store_name = function(self)
+    title = function(self)
         local lv = self.player_buy_cnt and self.player_buy_cnt[ac.player.self] 
         lv = lv and ' Lv'..lv or ''
         return self.name..lv

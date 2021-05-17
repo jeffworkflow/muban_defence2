@@ -33,16 +33,9 @@ local function get_select()
 end
 
 --技能是否开启了智能施法
-local function get_smart_cast_type(hero,name)
-	local hero = hero or ac.player.self.hero
-	if not hero then
-		return 0
-	end
-	local skl = hero:find_skill(name, '英雄')
-	if skl and hero.smart_cast_type and hero.smart_cast_type[skl.slotid] then
-		return hero.smart_cast_type[skl.slotid]
-	end
-	return 0
+--在英萌中，0：不开启智能，1：开启智能施法，2：显示施法指示圈
+local function get_smart_cast_type(skl)
+	return skl.cast_smart_type
 end
 
 --是否是目标选择界面
@@ -128,18 +121,22 @@ local function cast_spell(msg, hero, name, force)
 	if skl.target_type == ac.skill.TARGET_TYPE_POINT then
 		--or (not force and get_smart_cast_type(hero,name) ~= 1)
 		--改为 指向点的,无范围area的,进入快捷施法。
-		if (not force or skl.area) then
-			save_last_skill(msg, hero, name)
+		-- print('0点目标施法',order_id,x,y,flag,skl.name)
+		if (x == 0 and y == 0) or (not force and get_smart_cast_type(skl) ~= 1) then
+			save_last_skill(msg, hero, name,skl)
 			return false
 		end
+		-- print('1点目标施法',order_id,x,y,flag,skl.name)
 		local target = ac.point(x, y)
 		if not on_can_order(skl, target) then
 			return true
 		end
+		-- print('2点目标施法',order_id,x,y,flag,skl.name)
 		clean_last_skill()
 		if skl:is_in_range(target) then
 			flag = flag + FLAG_INSTANT
 		end
+		-- print('施法',order_id,x,y,flag,skl.name)
 		message.order_point(order_id, x, y, flag)
 		return true
 	elseif skl.target_type == ac.skill.TARGET_TYPE_NONE then
@@ -147,8 +144,8 @@ local function cast_spell(msg, hero, name, force)
 		message.order_immediate(order_id, flag + FLAG_INSTANT)
 		return true
 	else
-		if (x == 0 and y == 0) or (not force and get_smart_cast_type(hero,name) ~= 1) then
-			save_last_skill(msg, hero, name)
+		if (x == 0 and y == 0) or (not force and get_smart_cast_type(skl) ~= 1) then
+			save_last_skill(msg, hero, name,skl)
 			return false
 		end
 		local target = find_target(skl, x, y)
@@ -165,32 +162,37 @@ local function cast_spell(msg, hero, name, force)
 			return true
 		end
 	end
-	if get_smart_cast_type(hero,name) == 1 then
+	if get_smart_cast_type(skl) == 1 then
 		return true
 	end
-	save_last_skill(msg, hero, name)
+	save_last_skill(msg, hero, name,skl)
 	return false
 end
 
 --保存上个技能的状态
-function save_last_skill(msg, hero, name)
+function save_last_skill(msg, hero, name,skl)
 	function last_skill(code)
-		--print('last_skill', hero == get_select())
+		-- print('1save_last_skill', hero == get_select())
 		if hero ~= get_select() then
 			clean_last_skill()
 			return false
 		end
+		-- print('2save_last_skill', is_select_ui())
 		--检查是不是处于目标选择界面
 		if not is_select_ui() then
 			clean_last_skill()
 			return false
 		end
-		if code and (code ~= msg.code or get_smart_cast_type(hero,name) ~= 2) then
+		
+		-- print('3save_last_skill', msg.code,code)
+		if code and (code ~= msg.code or get_smart_cast_type(skl) ~= 2) then
 			return false
 		end
+		-- print('4save_last_skill', hero == get_select())
 		if cast_spell(msg, hero, name, true) then
 			return true
 		end
+		-- print('5save_last_skill', hero == get_select())
 		return false
 	end
 end
@@ -438,25 +440,34 @@ function message.hook(msg)
 			return true
 		end
 
-		local list = {'Q', 'W', 'E', 'R', 'A','S','D', 'F', 'G','Z','X','C','V','H','Esc'}
+		local list = {
+			-- 'Q', 'W', 'E', 'R', 'A','S','D', 'F', 'G','Z','X','C','V','H'
+		}
 		-- 技能快捷键
 		for index, key in ipairs(list) do
 			if code == keyboard[key] then
+				-- print('1智能施法：',key,state,is_select_shop(),order)
 				if state == 0 and is_select_shop() then
 					return true
 				end
 				local hero = unit.j_unit(message.selection())
+				-- print('2智能施法：',hero)
 				if hero == nil then
 					hero = is_select_off_line_hero() or select_hero()
 				end 
+				-- print('3智能施法：',hero)
 				if not hero then
 					return true
 				end
 				--判断是否是组合键
 				if state == 0 then
+					-- print('3.1智能施法：',hero)
 					if is_book_ui() then
 						return true
 					end
+					-- print('3.2智能施法：',is_book_ui())
+					
+					-- print('4智能施法：',hero)
 					local skill 
 					local page = hero.skill_page or '英雄'
 					for skl in hero:each_skill(page) do 
@@ -466,11 +477,13 @@ function message.hook(msg)
 							break 
 						end 
 					end 
+					-- print('5智能施法：',hero,skill)
 					if not skill then
 						if msg.code == 512 then return true end 
 						return false
 					end
 					local name = skill.name
+					-- print('6智能施法：',hero,name)
 					if not can_cast(hero,name) then
 						if msg.code == 512 then return true end 
 						return false
@@ -481,10 +494,12 @@ function message.hook(msg)
 						return false 
 					end 
 
+					-- print('7智能施法：',hero,name)
 					if cast_spell(msg, hero, name) then
 						if msg.code == 512 then return true end 
 						return false
 					end
+					-- print('7.1智能施法：',hero,name)
 				end
 				return true
 			end
@@ -582,7 +597,7 @@ function message.hook(msg)
 			-- end
 			return false
 		end
-		
+		-- print('按键松开')
 		if last_skill then
 			last_skill(code)
 		end
@@ -615,7 +630,7 @@ function message.hook(msg)
 			--if is_select_shop() or not is_select_player_unit() then
 			--	select_hero()
 			--end
-			
+			-- print('发送了order_smart')
 			local x, y = message.mouse()
 			message.order_target(ORDER_SMART, x, y, 0, FLAG_INSTANT)
 			return true
