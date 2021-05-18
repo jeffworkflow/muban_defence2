@@ -379,7 +379,7 @@ mt{
     is_spellbook = 1,
     is_order = 2,
     title = '关爱萌新',
-    art = [[BTNmk.blp]],
+    art = [[BTNmx.blp]],
     tip = [[
 
 点击查看 |cff00ffff关爱萌新成就|r，主要通过 |cffffff00不断带萌新通关|r 获得
