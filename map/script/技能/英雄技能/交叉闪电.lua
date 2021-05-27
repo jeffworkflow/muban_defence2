@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
@@ -51,7 +51,7 @@ end,
 
     --释放几率
     chance = 15,
-    cool = 1,
+    cool = 3,
 
     --交叉闪电数量
     lig_count = {2,3,4,5,6},

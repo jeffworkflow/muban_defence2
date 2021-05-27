@@ -19,7 +19,7 @@ tip = [[%extr_tip%
  ]],
     --触发几率
     chance = 10,
-    cool = 1,
+    cool = 3,
     --业务技能代码
     effect =[[zhansha.mdx]],
     event_name = '造成伤害效果',

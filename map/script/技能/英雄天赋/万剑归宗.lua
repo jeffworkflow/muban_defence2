@@ -50,7 +50,7 @@ end,
     pulse_time = 0.5,
     area = 500,
     value = 0.13,
-    cool = 1,
+    cool = 3,
 }
 
 function mt:atk_pas_shot(target)

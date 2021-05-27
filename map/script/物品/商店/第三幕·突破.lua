@@ -42,7 +42,7 @@ mt{
         return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*35)
    end,
    --冷却
-   cool = 1,
+   cool = 3,
    effect =[[Abilities\Spells\Other\HowlOfTerror\HowlCaster.mdl]],
    event_name = '造成伤害效果'
 }

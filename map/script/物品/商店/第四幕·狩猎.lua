@@ -46,7 +46,7 @@ damage = function(self)
     return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*65)
 end,
 --冷却
-cool = 1,
+cool = 3,
 effect =[[Abilities\Spells\Human\Thunderclap\ThunderClapCaster.mdl]],
 event_name = '造成伤害效果'
 }

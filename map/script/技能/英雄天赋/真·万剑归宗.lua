@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--伤害
 	damage = function(self)
   return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*11+10000)* self.level
@@ -53,7 +53,7 @@ end,
     pulse_time = 0.5,
     area = 500,
     value = 0.13,
-    cool = 1,
+    cool = 3,
 }
 
 function mt:atk_pas_shot(target)

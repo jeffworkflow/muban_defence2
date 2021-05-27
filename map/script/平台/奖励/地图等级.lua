@@ -618,7 +618,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
     damage_area = 1300,
     --被动事件
     event_name = "造成伤害效果",
-    cool = 1,
+    cool = 3,
     chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     model = [[jn_tf3.mdx]],
     model_size = 10,

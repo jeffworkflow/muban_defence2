@@ -18,7 +18,7 @@ mt{
 	passive = true,
 	--耗蓝
 	cost = 0,
-	cool = 1,
+	cool = 3,
 	--伤害
 	damage = function(self)
   return (self.owner:get('力量')*15+10007)* self.level

@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
@@ -55,7 +55,7 @@ end,
     --主伤害比
     main_damage = 100,
     --cd
-    cool = 1,
+    cool = 3,
     damage_type = '法术'
 }
 

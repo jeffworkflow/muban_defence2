@@ -49,9 +49,9 @@ for i,key in ipairs(ac.pratice_man) do
                     local name = key..i
                     local mt = ac.creep[name]{    
                         creeps_datas = key..'*'..(10 + player:get('练功房怪')),
-                        cool = 0.5,
+                        cool = 0.8,
                         create_unit_cool = 0,
-                        first_wait_time = 0.6, --调整切换练功怪首次出现时间
+                        first_wait_time = 1, --调整切换练功怪首次出现时间
                         is_leave_region_replace = true,
                         is_region_replace = true,
                     }

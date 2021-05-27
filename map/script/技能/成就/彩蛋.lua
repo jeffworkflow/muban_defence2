@@ -301,7 +301,7 @@ mt{
 	--被动
 	passive = true,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--伤害
 	damage = function(self)
         return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*200
@@ -486,7 +486,7 @@ mt{
 	--被动
 	passive = true,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--伤害
 	damage = function(self)
         return (self.owner:get('力量')+self.owner:get('敏捷')+self.owner:get('智力'))*50

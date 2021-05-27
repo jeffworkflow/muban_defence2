@@ -19,7 +19,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--忽略技能冷却
 	ignore_cool_save = true,
 	--伤害
@@ -48,7 +48,7 @@ end,
 	distance = 1000,
 	hit_area = 125,
 	--概率%
-	cool = 1,
+	cool = 3,
 	--弹道数量
 	num = 1,
 	damage_type = '法术'

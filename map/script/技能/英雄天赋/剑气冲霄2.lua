@@ -21,7 +21,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 1,
+	cool = 3,
 	--伤害
 	damage = function(self)
   return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10)* self.level
