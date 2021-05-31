@@ -17,7 +17,7 @@ mt{
 	--耗蓝
 	cost = 0,
 	--冷却时间
-	cool = 5,
+	cool = 15,
 	--忽略技能冷却
 	ignore_cool_save = true,
     passive = true,
@@ -29,29 +29,14 @@ mt{
 	range = 10000,
 	--施法范围
 	area = 100,
-	--介绍
-	tip = [[|cff00bdec【被动效果】攻击20%概率召唤1只地狱使者为你作战，持续时间15秒
+	tip = [[ 
+|cff00bdec【被动效果】攻击20%概率召唤地狱使者为你作战，持续时间45秒
 
-地狱使者拥有技能【地狱火焰】：每秒对周围500码的敌人造成攻击*10*技能等级的物理伤害
-
-【地狱使者】属性已经在物编中写好，但需要额外增加下面属性：
-
-['分裂伤害'] = 100,
-        ['物品获取率'] = function() return hero:get('物品获取率') end,
-        ['木头加成'] = function() return hero:get('木头加成') end,
-        ['金币加成'] = function() return hero:get('金币加成') end,
-        ['杀敌数加成'] = function() return hero:get('杀敌数加成') end,
-        ['魔丸加成'] = function() return hero:get('魔丸加成') end,
-
-当技能升级时，
-召唤物的攻击=物编中的攻击*LV
-召唤物的生命上限=物编中的生命上限*LV
-
-当游戏难度提升时，攻击/生命上限/护甲=上一个难度的属性*难度系数1.68]],
+ ]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNInfernal.blp]],
     unit_name = '地狱使者',
-    time = 25,
+    time = 45,
     event_name ='造成伤害效果',
     cnt = 1
 }

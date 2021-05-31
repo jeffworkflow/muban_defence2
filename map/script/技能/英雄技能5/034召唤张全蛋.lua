@@ -25,21 +25,10 @@ mt{
 	--施法范围
 	area = 100,
 	--介绍
-	tip = [[|cff00bdec【主动施放】在任意位置召唤1只张全蛋为你作战，持续时间25秒
+	tip = [[ 
+|cff00bdec【主动施放】在任意位置召唤张全蛋为你作战，持续时间25秒
 
-【张全蛋】属性已经在物编中写好，但需要额外增加下面属性：
-
-        ['物品获取率'] = 英雄的物品获取率+50%*技能等级,
-        ['木头加成'] = function() return hero:get('木头加成') end,
-        ['金币加成'] = function() return hero:get('金币加成') end,
-        ['杀敌数加成'] = function() return hero:get('杀敌数加成') end,
-        ['魔丸加成'] = function() return hero:get('魔丸加成') end,
-
-当技能升级时，
-召唤物的攻击=物编中的攻击*LV
-召唤物的生命上限=物编中的生命上限*LV
-
-当游戏难度提升时，攻击/生命上限/护甲=上一个难度的属性*难度系数1.68]],
+ ]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNPocketFactory.blp]],
     unit_name = '张全蛋',

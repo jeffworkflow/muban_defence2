@@ -25,29 +25,17 @@ mt{
 	--施法范围
 	area = 100,
 	--介绍
-	tip = [[|cff00bdec【主动施放】在任意位置召唤2只水元素为你作战，持续时间25秒
+	tip = [[ 
+|cff00bdec【主动施放】在任意位置召唤2只水元素为你作战，持续时间25秒
 
-【水元素】属性已经在物编中写好，但需要额外增加下面属性：
-
-        ['弹射'] = 1,
-        ['物品获取率'] = function() return hero:get('物品获取率') end,
-        ['木头加成'] = function() return hero:get('木头加成') end,
-        ['金币加成'] = function() return hero:get('金币加成') end,
-        ['杀敌数加成'] = function() return hero:get('杀敌数加成') end,
-        ['魔丸加成'] = function() return hero:get('魔丸加成') end,
-
-当技能升级时，
-召唤物的攻击=物编中的攻击*LV
-召唤物的生命上限=物编中的生命上限*LV
-
-当游戏难度提升时，攻击/生命上限/护甲=上一个难度的属性*难度系数1.68]],
+ ]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNSummonWaterElemental.blp]],
     unit_name = '水元素',
     time = 25,
     cnt = 2,
     
-    weapon_model = 'units\\nightelf\\Wisp\\Wisp.mdl'
+    weapon_model = 'Abilities\\Weapons\\WaterElementalMissile\\WaterElementalMissile.mdl'
 }
 
 function mt:on_cast_start()
@@ -93,7 +81,7 @@ function mt:create_illusion()
     attribute['金币加成'] = function() return hero:get('金币加成') end
     attribute['杀敌数加成'] = function() return hero:get('杀敌数加成') end
     attribute['魔丸加成'] = function() return hero:get('魔丸加成') end
-    attribute['弹射'] = 10
+    attribute['弹射'] = 1
 
     
     u:remove_ability 'AInv'

@@ -12,9 +12,8 @@ cool = 0,
 tip = [[
 
 
-可以|cff00ff00吞噬装备|r 永久增加对应的属性|cffffff00（套装效果无法加成）|r
-
-|cff00ffff已吞噬|r %cnt%|cffffff00 / %max_cnt%|r |cff00ffff个：|r %content%]],
+可以|cff00ff00吞噬指定装备|r |cffffff00所有玩家|r均可获得吞噬后的装备属性|cffffff00（套装效果无法加成）|r
+ ]],
 cnt = function(self) 
     local cnt = ac.tunshi_cnt or 0  
     return cnt

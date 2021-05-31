@@ -155,13 +155,13 @@ title = '召唤世界BOSS【伏地魔】',
 --等久
 level = 1,
 --图标
-art = [[huimiezhe.blp]],
+art = [[fdm.blp]],
 --说明
 tip = [[ 
-|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00毁灭者|r|cff00ff00，共同击杀！
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00伏地魔|r|cff00ff00，共同击杀！
 
 |cffFFE799【任务奖励】|r
-|cff00ff00所有玩家都获得1个黑色装备或1本神阶功法（发放至练功房）|r
+|cff00ff00世界吞噬丹|r
  ]],
 is_order = 1,
 ignore_cool_save = true,
@@ -367,7 +367,7 @@ for i,name in ipairs(ac.world_boss ) do
                     end
                 end
                 if show_tip == '世界吞噬丹' then 
-                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，掉落|cffffff00世界吞噬丹',5)
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，掉落了|cffffff00世界吞噬丹',5)
                 else
                     ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，所有玩家获得|cffffff00'..show_tip,5)
                 end
