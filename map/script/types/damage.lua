@@ -189,6 +189,9 @@ function mt:on_attribute_attack()
 	if not self['分裂伤害'] then
 		self['分裂伤害'] = source:get '分裂伤害'
 	end
+	if not self['弹射'] then
+		self['弹射'] = source:get '弹射'
+	end
 	--self.attack and 
 	if self.damage_type == '物理' then	
 		--致命一击
@@ -320,6 +323,60 @@ local function on_splash(self)
 	end
 	--在地上创建特效
 	target:get_point():add_effect([[Dekan_Weapon_Sputtering.mdl]]):remove()
+end
+
+local function on_light_damage(self,source,target,num)
+
+	if num <=0 then 
+		return 
+	end
+	-- print('弹射伤害1：',self.damage,self.current_damage)
+	local mvr = ac.mover.target
+	{
+		source = source,
+		target = target,
+		model = self.source.missile_art or (self.source.weapon and self.source.weapon['弹道模型']) or self.source:get_slk 'Missileart_1',
+		speed = 1000,
+		skill = self.skill or '弹射',
+		on_finish = function()
+			num = num - 1
+			self.damage = self.damage * 1.1
+			-- print('弹射伤害2：',self.damage,self.current_damage)
+			target:damage
+			{
+				source = self.source,
+				aoe = true,
+				skill = '弹射', --self.skill or 
+				damage = self.damage,
+			}
+			local new = ac.selector():in_range(target,600):is_enemy(self.source):is_not(target):random()
+			-- print(self,num)
+			if new then 
+				on_light_damage(self,target,new,num)
+			end
+		end
+	}
+
+end
+
+local function on_light(self)
+	--普攻、都有效 or (not self.source:isMelee()) 
+	if not self:is_attack() or self:is_aoe() then
+		return
+	end
+	local source, target = self.source, self.target
+	local splash = self['弹射']
+	if splash == 0 or not splash then
+		return
+	end
+	if source:isMelee() then 
+		return 
+	end
+	local new = ac.selector():in_range(target,400):is_enemy(self.source):is_not(target):random()
+	-- print(self,splash)
+	if new then
+		on_light_damage(self,target,new,splash)
+	end
 end
 
 --伤害音效
@@ -1083,6 +1140,8 @@ function damage:__call()
 			on_life_steal(self)
 			--分裂伤害
 			on_splash(self)
+			--弹射
+			on_light(self)
 			--攻击减甲
 			self:on_reduce_defence()
 			--多重暴击

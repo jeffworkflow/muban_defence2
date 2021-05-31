@@ -4,6 +4,25 @@ local player = require 'ac.player'
 ac.server ={}
 --读取玩家的商城道具
 local item = {
+    {'LLZS','力量之书',type = '次数'},
+    {'MJZS','敏捷之书',type = '次数'},
+
+    {'ZLZS','智力之书',type = '次数'},
+    {'HJZS','护甲之书',type = '次数'},
+    {'QSXZS','全属性之书',type = '次数'},
+    {'WPHQLXS','物品获取率系数 ',type = '次数'},
+    {'SDSJCXS','杀敌数加成系数 ',type = '次数'},
+    {'MTJCXS','木头加成系数 ',type = '次数'},
+    {'MWJCXS','魔丸加成系数 ',type = '次数'},
+    {'GJJJXS','攻击减甲系数 ',type = '次数'},
+    {'BJSHXS','暴击伤害系数 ',type = '次数'},
+    {'JBSHXS','技暴伤害系数 ',type = '次数'},
+    {'WLSHJSXS','物理伤害加深系数 ',type = '次数'},
+    {'JNSHJSXS','技能伤害加深系数 ',type = '次数'},
+    {'HXSHXS','会心伤害系数 ',type = '次数'},
+    {'QSJSXS','全伤加深系数 ',type = '次数'},
+
+
     {'JBLB','金币礼包',1},
     {'MCLB','木材礼包',1},
     

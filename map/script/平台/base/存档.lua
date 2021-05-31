@@ -36,6 +36,18 @@ register_japi[[
 ]]
 ac.flag_use_mall = true --默认使用商城数据
 
+--判断玩家商城道具数量
+function player.__index:Map_GetMallItemCnt(key)
+    local handle = self.handle
+    -- print(handle,key)
+    if global_test then 
+        return 10
+    else    
+        return RequestExtraIntegerData(41, handle, key, nil, false, 0, 0, 0)
+    end    
+    --测试时，默认都为空，商城开关
+    -- return false
+end
 --获取玩家评论数
 function player.__index:Map_CommentCount()
     local handle = self.handle

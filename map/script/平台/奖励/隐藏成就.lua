@@ -294,8 +294,16 @@ function mt:on_cast_start()
     local p = hero.owner
     --创建 可控制单位 魔剑
     local u = p:create_unit('魔剑',ac.map.rects['出生点']:get_point())
-    u:add_skill('魔剑击','英雄')
+    
+    --攻击/生命上限/护甲
+    local data = ac.table.UnitData[self.unit_name]
+    local attribute = table_copy(data.attribute)
+    local attr_mul = ac.get_difficult(ac.g_game_degree_attr)
+    u:set('攻击',attribute['攻击']*attr_mul)
+    u:set('生命上限',attribute['生命上限']*attr_mul)
+    u:set('护甲',attribute['护甲']*attr_mul)
 
+    u:add_skill('魔剑击','英雄')
     --激活隐藏成就
     ac.active_yccj(p,'绝世魔剑')
 end

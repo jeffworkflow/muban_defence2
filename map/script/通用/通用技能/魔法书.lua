@@ -391,7 +391,7 @@ ac.game:event '玩家-选择单位' (function (_,player,unit)
         return 
     end
 
-    local skl = last_selected_unit:find_skill('关闭',last_selected_unit.skill_page or '英雄') or last_selected_unit:find_skill('下一页',hero.skill_page or '英雄')
+    local skl = last_selected_unit:find_skill('关闭',last_selected_unit.skill_page or '英雄') or last_selected_unit:find_skill('下一页',hero and hero.skill_page or '英雄')
     -- print(skl.name,pet.skill_page)
     if skl and not skl:is_hide() then
         skl:close()

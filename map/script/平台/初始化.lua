@@ -147,9 +147,13 @@ for i=1,10 do
                         end
                     end
                 end
+                local name = ac.mall[n][2]  
                 if p.cheating then    
-                    local name = ac.mall[n][2]  
                     p.mall[name] = 1  
+                end
+                if ac.mall[n]['type'] == '次数' then 
+                    p.mall[name] = p:Map_GetMallItemCnt(ac.mall[n][1])
+                    print('商城',name,p,ac.mall[n][1],p.mall[name])
                 end
             end    
         end)    

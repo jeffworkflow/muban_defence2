@@ -59,17 +59,4 @@ end,
 	hit_area = 100,
 }
 mt.on_cast_shot = ac.skill['X射线'].on_cast_shot
-function mt:damage_start(damage)
-    local skill = self
-    local hero = self.owner
-    local p = hero:get_owner()
-    local target = damage.target
-end
-function mt:on_remove()
-    local hero = self.owner
-    local p = hero:get_owner()
-    if self.trg then
-        self.trg:remove()
-        self.trg = nil
-    end
-end
+

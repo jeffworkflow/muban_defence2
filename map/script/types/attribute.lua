@@ -97,12 +97,18 @@ local attribute = {
 
 	['法术伤害减免']			=	true, --默认表示为%
 	['法术伤害减伤']		    =	true, --默认表示为基础值
+
 	
+	['物品获取率'] = true,--默认表示为% 怪物物品掉落率加成
+	['物品获取率系数'] = true,--默认表示为% 怪物物品掉落率加成
 	['金币加成']		=	true,--默认表示为%
 	['经验加成']		=	true,--默认表示为%
 	['木头加成']		=	true,--默认表示为%
+	['木头加成系数']		=	true,--默认表示为%
 	['杀敌数加成']		=	true,--默认表示为%
+	['杀敌数加成系数']		=	true,--默认表示为%
 	['魔丸加成']		=	true,--默认表示为%
+	['魔丸加成系数']		=	true,--默认表示为%
 
 	['天赋触发几率']	=	true,--默认表示为%
 	['多重射']	=	true,--默认表示为基础值
@@ -121,7 +127,6 @@ local attribute = {
 	
 	['全伤加深'] = true, --默认表示为%
 	['全伤加深系数'] = true, --默认表示为%
-	['物品获取率'] = true,--默认表示为% 怪物物品掉落率加成
 	['技能伤害加深'] = true, --默认表示为% 技能的法术伤害加成
 	['技能伤害加深系数'] = true, --默认表示为% 技能的法术伤害加成
 	
@@ -193,6 +198,7 @@ local attribute = {
 	['减少复活时间'] = true,  --默认表示为基础 单位秒
 	['秒杀练功房的怪物'] = true,  --默认表示为基础
 	['额外受到伤害'] = true,  --默认表示为基础
+	['弹射'] = true, --默认表示为基础
 	
 	
 }
@@ -223,6 +229,7 @@ local base_attr =[[
 减少复活时间
 杀怪加杀敌数
 杀怪加魔丸
+弹射
 ]]
 ac.base_attr = base_attr
 
@@ -615,6 +622,19 @@ set['生命'] = function(self, life)
 	end
 
 	self:event_notify('单位-生命变化',self)
+end
+
+on_get['物品获取率'] = function(self, val)
+	return val * (1+self:get('物品获取率系数')/100)
+end
+on_get['杀敌数加成'] = function(self, val)
+	return val * (1+self:get('杀敌数加成系数')/100)
+end
+on_get['木头加成'] = function(self, val)
+	return val * (1+self:get('木头加成系数')/100)
+end
+on_get['魔丸加成'] = function(self, val)
+	return val * (1+self:get('魔丸加成系数')/100)
 end
 
 on_get['攻击减甲'] = function(self, all_damage)

@@ -149,8 +149,39 @@ unit_cool = 1,
 unit_num = 1
 }
 
+local mt = ac.skill['召唤世界BOSS【伏地魔】']
+mt{
+title = '召唤世界BOSS【伏地魔】',
+--等久
+level = 1,
+--图标
+art = [[huimiezhe.blp]],
+--说明
+tip = [[ 
+|cffFFE799【任务要求】|r|cff00ff00点击在|cffff0000基地上方|r|cff00ff00召唤出|cffffff00毁灭者|r|cff00ff00，共同击杀！
 
-for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇】','召唤世界BOSS【戈登的激情】','召唤世界BOSS【火焰领主】','召唤世界BOSS【毁灭者】'}) do 
+|cffFFE799【任务奖励】|r
+|cff00ff00所有玩家都获得1个黑色装备或1本神阶功法（发放至练功房）|r
+ ]],
+is_order = 1,
+ignore_cool_save = true,
+
+cool = function(self)
+    local p = self.owner.owner
+    -- print('减少',p,240 * (1-p:get('挑战商店cd减少百分比')/100))
+    return 900 * (1-p:get('挑战商店cd减少百分比')/100)
+end,
+init_cd = 660,
+init_cd = 10,
+--特殊id 带cd
+unit_name ='伏地魔',
+unit_cool = 1,
+unit_num = 1
+}
+ac.world_boss = {'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇】','召唤世界BOSS【戈登的激情】','召唤世界BOSS【火焰领主】','召唤世界BOSS【毁灭者】','召唤世界BOSS【伏地魔】'}
+
+
+for i,name in ipairs(ac.world_boss ) do 
 
     -- local ay =ac.skill[name..'1']
     -- ay{
@@ -328,9 +359,18 @@ for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇�
                             } 
                             show_tip = '1个黑色装备或1本神阶功法（发放至练功房）'
                         end
+                        --在死亡位置掉落一个物品：世界吞噬丹
+                        if unit:get_name() == '伏地魔' then 
+                            ac.item.create_item('世界吞噬丹',unit:get_point())
+                            show_tip = '世界吞噬丹'
+                        end
                     end
                 end
-                ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，所有玩家获得|cffffff00'..show_tip,5)
+                if show_tip == '世界吞噬丹' then 
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，掉落|cffffff00世界吞噬丹',5)
+                else
+                    ac.player.self:sendMsg('|cffebb608【系统】|r|cff00ffff'..unit:get_name()..'|cff00ff00已被击败，击败他的是|cff00ffff'..killer.owner:get_name()..'|cff00ff00，所有玩家获得|cffffff00'..show_tip,5)
+                end
 
 
             end)
@@ -355,7 +395,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
         local player = ac.player(i) 
         if player:is_player() then 
             local shop = ac.shop.create('世界BOSS',x,y,270,nil,player)
-            for i,name in ipairs({'召唤世界BOSS【肉山】','召唤世界BOSS【梦魇】','召唤世界BOSS【戈登的激情】','召唤世界BOSS【火焰领主】','召唤世界BOSS【毁灭者】'}) do 
+            for i,name in ipairs(ac.world_boss) do 
                 shop:set_high(10000)
                 player.sjboss_shop = shop
                 --初始化技能

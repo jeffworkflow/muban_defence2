@@ -441,6 +441,7 @@ function message.hook(msg)
 		end
 
 		local list = {
+			'Esc'
 			-- 'Q', 'W', 'E', 'R', 'A','S','D', 'F', 'G','Z','X','C','V','H'
 		}
 		-- 技能快捷键

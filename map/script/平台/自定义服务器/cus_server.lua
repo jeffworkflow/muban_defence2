@@ -322,7 +322,7 @@ function player.__index:SetServerValue(key,value,f)
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
-    local key_name,is_mall = ac.server.key2name(key)
+    local key_name = ac.server.key2name(key)
     local value = tostring(value) 
 
     local post = 'exec=' .. json.encode({
@@ -332,7 +332,7 @@ function player.__index:SetServerValue(key,value,f)
         para3 = key,
         para4 = key_name,
         para5 = value,
-        para6 = is_mall or 0,
+        para6 =  0,
     })
     local f = f or function (retval)  end
     -- print(url,post)

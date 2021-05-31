@@ -35,17 +35,4 @@ mt{
 	--技能图标
 	art = [[mowan1.blp]],
 }
-function mt:damage_start(damage)
-    local skill = self
-    local hero = self.owner
-    local p = hero:get_owner()
-    local target = damage.target
-end
-function mt:on_remove()
-    local hero = self.owner
-    local p = hero:get_owner()
-    if self.trg then
-        self.trg:remove()
-        self.trg = nil
-    end
-end
+
