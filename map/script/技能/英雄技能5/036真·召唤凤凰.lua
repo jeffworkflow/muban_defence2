@@ -80,7 +80,7 @@ function mt:create_illusion(damage)
         attribute = attribute,
         remove_target = true,
         skill = self,
-        follow = true,
+        -- follow = true,
         search_area = 1000, 
     }
 

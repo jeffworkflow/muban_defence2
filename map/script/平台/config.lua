@@ -6,7 +6,6 @@ ac.server ={}
 local item = {
     {'LLZS','力量之书',type = '次数'},
     {'MJZS','敏捷之书',type = '次数'},
-
     {'ZLZS','智力之书',type = '次数'},
     {'HJZS','护甲之书',type = '次数'},
     {'QSXZS','全属性之书',type = '次数'},

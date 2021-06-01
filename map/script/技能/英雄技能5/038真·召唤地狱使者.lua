@@ -91,7 +91,7 @@ function mt:create_illusion(damage)
 		source = u,
 		skill = self,
 		pulse = 1,
-		keep = true,
+		-- keep = true,
 		is_damage_on_add = false,
 		damage = attribute['攻击']*10*self.level,
 	}

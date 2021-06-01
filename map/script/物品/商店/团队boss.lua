@@ -172,7 +172,7 @@ cool = function(self)
     return 900 * (1-p:get('挑战商店cd减少百分比')/100)
 end,
 init_cd = 660,
-init_cd = 10,
+-- init_cd = 10,
 --特殊id 带cd
 unit_name ='伏地魔',
 unit_cool = 1,
