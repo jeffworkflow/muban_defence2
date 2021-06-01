@@ -92,11 +92,13 @@ ac.game:event '单位-移除'(function(_,self)
         return 
     end    
     --移除模拟死亡中对应的key 保存值，以免影响其他单位
+    if self._need_remove then 
     for k in pairs(self._need_remove) do 
         if self[k] then 
             self[k] =nil 
         end
     end
+end
 
     --处理移除时，单位操作
     self:add_restriction '隐藏'
