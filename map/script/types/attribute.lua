@@ -1034,8 +1034,9 @@ end
 ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	--召唤物杀死也继承
 	local hero = killer:get_owner().hero
+	hero = killer.is_specail_dummy and killer or hero -- 根据自己的属性计算获得金币
 	if not hero then return end
-	if not hero:is_hero() or hero:get_owner().id>10 then 
+	if hero:get_owner().id>10 then 
 		return
 	end	
 
@@ -1056,21 +1057,21 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	local player = hero:get_owner()
 	local p = player
 	--加金币
-	local gold = player.hero:get('杀怪加金币') 
+	local gold = hero:get('杀怪加金币') 
 	player:addGold(gold) --不显示漂浮文字
 	--加木头
-	local wood = player.hero:get('杀怪加木头') 
+	local wood = hero:get('杀怪加木头') 
 	player:add_wood(wood) 
 	--加杀敌数
-	local kill_count = player.hero:get('杀怪加杀敌数') 
+	local kill_count = hero:get('杀怪加杀敌数') 
 	player:add_kill_count(kill_count) 
 	--加魔丸
-	local rec_ex = player.hero:get('杀怪加魔丸') 
+	local rec_ex = hero:get('杀怪加魔丸') 
 	player:add_rec_ex(rec_ex) 
 	
 	--处理杀死进攻怪加木头
 	if finds(ac.attack_unit_str or '',target:get_name()) then 
-		local wood = player.hero:get('杀死进攻怪加木头') 
+		local wood = hero:get('杀死进攻怪加木头') 
 		player:add_wood(wood) 
 
 		local val = 1*(1 + player:get('守家积分加成')/100) 

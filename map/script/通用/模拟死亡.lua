@@ -30,7 +30,11 @@ function unit.get_unit_handle(id,class)
     end	 
     return handle,u
 end
-
+function unit.__index:add_simu_remove(key)
+    self._need_remove = self._need_remove or {}
+    self._need_remove[key] = true
+    
+end
 ac.game:event '单位-创建'(function(_,u)
     local name = u:get_name()
     local data = ac.table.UnitData[name]
@@ -49,16 +53,32 @@ ac.game:event '单位-创建前'(function(_,id,self,j_id, x, y,face)
         -- local u = unit.init_unit(handle, self) --重新初始化
         -- print('2',u:get_point())
         -- jass.SetUnitOwner(handle,self.handle, false) --需要重新设置所有者
-        u:set_owner(self)
+        u:set_owner(self,true)
         unit.remove_handle_map[handle] = nil 
         u.removed = nil
         u._is_alive = true
-        u:remove_restriction '隐藏'
-        u:remove_restriction '定身'
-        u:remove_restriction '无敌'
+        if u:has_restriction '隐藏' then 
+            u:remove_restriction '隐藏'
+        end
+        if u:has_restriction '定身' then 
+            u:remove_restriction '定身'
+        end
+        if u:has_restriction '无敌' then 
+            u:remove_restriction '无敌'
+        end
+        if u:has_restriction '缴械' then 
+            u:remove_restriction '缴械'
+        end
         -- u:remove_restriction '禁锢'
-        u:remove_restriction '缴械'
+        --重新初始化相关属性
+        for key in sortpairs(ac.unit.attribute) do 
+            if key ~= '生命上限' and key~='魔法上限' then
+                u:set(key,0)
+            end
+        end
         u:set('生命', u:get '生命上限')
+        -- print('单位创建前',u.handle)
+        
         if ac.unit.init_attribute then 
             ac.unit.init_attribute(u)
         end
@@ -71,6 +91,13 @@ ac.game:event '单位-移除'(function(_,self)
     if self:get_class() ~= '模拟死亡' then 
         return 
     end    
+    --移除模拟死亡中对应的key 保存值，以免影响其他单位
+    for k in pairs(self._need_remove) do 
+        if self[k] then 
+            self[k] =nil 
+        end
+    end
+
     --处理移除时，单位操作
     self:add_restriction '隐藏'
     self:add_restriction '定身'
@@ -94,6 +121,19 @@ ac.game:event '单位-移除'(function(_,self)
             t:remove()
         end
     end
+    --移除单位的所有技能
+    for skill in self:each_skill() do
+        skill:remove()
+    end
+    --只有英雄才删除物品
+    if self:is_hero() then 
+        for i = 1, 6 do
+            local it = self:get_slot_item(i)
+            if it then
+                it:item_remove()
+            end
+        end
+    end	
     --移除事件events
     self.events = nil
     

@@ -86,6 +86,7 @@ function mt:create_illusion()
         follow = true,
         search_area = 1000, 
     }
+	u.is_specail_dummy = true
 
 
 end

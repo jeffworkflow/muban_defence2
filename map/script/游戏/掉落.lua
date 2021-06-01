@@ -1381,13 +1381,14 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end
     local player = killer:get_owner()
     local dummy_unit = player.hero or ac.dummy
+    dummy_unit = killer.is_specail_dummy and killer or dummy_unit
     -- print(unit,unit.category)
     -- 进攻怪 和 boss 掉落 日常掉落物品
     if unit.category and unit.category =='进攻怪' or unit.category =='boss'  then
         --物品获取率 最大生效为 2000
         local more_rate = math.min(dummy_unit:get('物品获取率'),2000)
         local fall_rate = unit.fall_rate *( 1 + more_rate/100 )
-        -- print('装备掉落概率：',fall_rate,unit.fall_rate)
+        -- print('装备掉落概率：',dummy_unit:get_name(),fall_rate,unit.fall_rate)
         hero_kill_unit(unit_reward['进攻怪'],player,killer,unit,fall_rate)
 
         --存档型装备处理
