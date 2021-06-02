@@ -33,6 +33,9 @@ register_japi[[
     native DzGetMouseTerrainY               takes nothing returns real
     native DzGetMouseTerrainZ               takes nothing returns real
     native RequestExtraIntegerData          takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns integer
+    native RequestExtraBooleanData          takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns boolean
+    native RequestExtraStringData           takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns string
+    native RequestExtraRealData             takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns real
 ]]
 ac.flag_use_mall = true --默认使用商城数据
 
@@ -43,7 +46,7 @@ function player.__index:Map_GetMallItemCnt(key)
     if global_test then 
         return 10
     else    
-        return RequestExtraIntegerData(41, handle, key, nil, false, 0, 0, 0)
+        return japi.RequestExtraIntegerData(41, handle, key, nil, false, 0, 0, 0)
     end    
     --测试时，默认都为空，商城开关
     -- return false

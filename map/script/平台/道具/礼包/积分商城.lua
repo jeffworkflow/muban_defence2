@@ -4,7 +4,7 @@ local mt = ac.skill['力量之书']
 mt{
 --等级
 level = 0,
-max_level = 99999,
+max_level = 1000,
 --图标
 art = [[q1_64x64.blp]],
 --说明
@@ -25,7 +25,7 @@ local mt = ac.skill['敏捷之书']
 mt{
 --等级
 level = 0,
-max_level = 99999,
+max_level = 1000,
 --图标
 art = [[q2_64x64.blp]],
 --说明
@@ -45,7 +45,7 @@ local mt = ac.skill['智力之书']
 mt{
 --等级
 level = 0,
-max_level = 99999,
+max_level = 1000,
 --图标
 art = [[q3_64x64.blp]],
 --说明
@@ -64,7 +64,7 @@ local mt = ac.skill['护甲之书']
 mt{
 --等级
 level = 0,
-max_level = 99999,
+max_level = 1000,
 --图标
 art = [[q4_64x64.blp]],
 --说明
@@ -83,7 +83,7 @@ local mt = ac.skill['全属性之书']
 mt{
 --等级
 level = 0,
-max_level = 99999,
+max_level = 1000,
 --图标
 art = [[q5_64x64.blp]],
 --说明
@@ -106,7 +106,7 @@ tip = [[
 -- mt{
 -- --等级
 -- level = 0,
--- max_level = 99999,
+-- max_level = 1000,
 -- --图标
 -- art = [[q1_64x64.blp]],
 -- --说明
@@ -131,7 +131,7 @@ for i,name in ipairs{'物品获取率系数','杀敌数加成系数','木头加�
     mt{
         --等级
         level = 0,
-        max_level = 99999,
+        max_level = 1000,
         --说明
 --         tip = [[
 -- ]]..name..[[+%]]..name..[[% %（X=获得总数）
@@ -147,7 +147,7 @@ for i,name in ipairs{'物品获取率系数','杀敌数加成系数','木头加�
 |cffffff00当前已获得]]..name..[[+%]]..name..[[%|cffffff00 %
 
 ]],
-        [name] = {1,99999},
+        [name] =  function(self) return 1 * self.level end,
     }
 end
 
@@ -163,19 +163,6 @@ ac.skill['技能伤害加深系数 '].art = [[q14_64x64.blp]]
 ac.skill['会心伤害系数 '].art = [[q15_64x64.blp]]
 ac.skill['全伤加深系数 '].art = [[q16_64x64.blp]]
 
-local mt = ac.skill['物品获取率指数']
-mt{
-    --等级
-    level = 0,
-    max_level = 99999,
-    art = [[fabao1.blp]],
-    --说明
-    tip = [[
-        敏捷+%敏捷% %（X=获得总数）
-        每个商品敏捷+1%，重复获得可叠加
-    ]],
-    ['物品获取率系数'] = function(self) return 1 * self.level end,
-}
 
 
 

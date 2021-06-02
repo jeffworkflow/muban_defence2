@@ -35,6 +35,7 @@ mt{
     art = [[ReplaceableTextures\CommandButtons\BTNFlyingMachine.blp]],
     event_name ='造成伤害效果',
     unit_name = 'F4战斗机',
+    weapon_model =[[Abilities\Weapons\WaterElementalMissile\WaterElementalMissile.mdl]],
     time = 45,
     cnt = 1,
 }
@@ -52,6 +53,11 @@ function mt:create_illusion(damage)
         print('无法创造出镜像')
         return 
     end
+    if not u.weapon then 
+        u.weapon = {}
+    end    
+    u.weapon['弹道模型'] = self.weapon_model
+    u.weapon['弹道速度'] = 1000
     -- u:add_restriction '无敌'
     -- u:setColor(0,0,100)
     local data = ac.table.UnitData[self.unit_name]

@@ -72,7 +72,7 @@ ac.game:event '单位-创建前'(function(_,id,self,j_id, x, y,face)
         -- u:remove_restriction '禁锢'
         --重新初始化相关属性
         for key in sortpairs(ac.unit.attribute) do 
-            if key ~= '生命上限' and key~='魔法上限' then
+            if key ~= '生命上限' and key~='魔法上限' and key~='生命' and key~='魔法' then
                 u:set(key,0)
             end
         end
