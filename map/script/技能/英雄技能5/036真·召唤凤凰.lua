@@ -64,7 +64,7 @@ function mt:create_illusion(damage)
     attribute['生命上限'] = attribute['生命上限']*attr_mul*self.level
     attribute['护甲'] = attribute['护甲']*attr_mul
 
-    attribute['攻击减甲'] = attribute['攻击减甲']*self.level
+    attribute['攻击减甲'] = attribute['攻击减甲']*attr_mul*self.level
     
     attribute['物品获取率'] = function() return hero:get('物品获取率') end
     attribute['木头加成'] = function() return hero:get('木头加成') end

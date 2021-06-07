@@ -9,7 +9,7 @@ mt{
     target_type = ac.skill.TARGET_TYPE_UNIT,
 
     --拾取距离 测试没用
-	range = 150,
+	range = 99999,
 
     --目标允许
     target_data = '物品',

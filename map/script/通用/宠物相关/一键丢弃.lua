@@ -22,7 +22,7 @@ mt{
 	--cd
 	cool = 0.1,
 	--施法距离
-	range = 3000,
+	range = 99999,
 	cast_smart_type = 1, --只能施法
 }
 
