@@ -940,12 +940,19 @@ function unit.__index:add_item(it,source)
 		return it
 	end	
 	--如果物品指定所有者，不是所有者就返回
-	if it.owner_ship and type(it.owner_ship)=='table' and it.owner_ship ~= self:get_owner() then 
-	   self.owner:showSysWarning('|cffff0000这东西不属于你')
-	   it.recycle = false 
-	   it:on_recycle(self)
-	   return it
-	end   	
+	if it.owner_ship and type(it.owner_ship)=='table'  then
+		-- print(it.owner_ship:get_name(),p,it.owner_ship:get('物品开关'))
+		if it.owner_ship:get('物品开关') <=0 then 
+			if it.owner_ship ~= p then 
+				self.owner:showSysWarning('|cffff0000这东西不属于你,属于|cff00ffff玩家'.. it.owner_ship:get()..'('..it.owner_ship:get_name()..')',3)
+				it.recycle = false 
+				it:on_recycle(self)
+				return it
+			end
+		else
+			it.owner_ship = p
+		end
+	end  	
 	--为了合成装备
 	-- print('装备2',it)
 	--获取一个空槽位

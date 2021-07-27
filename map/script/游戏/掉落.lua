@@ -117,7 +117,7 @@ local function color_random_item(color,player,hero,unit,is_on_hero)
             local item = ac.item.create_item(name,unit:get_point())
             -- item_self_skill(item,hero)
             if item.owner_ship then 
-                item.owner_ship = ac.player(unit.owner:get() - 6)
+                item.owner_ship = player
             end 
         end
     else
@@ -1296,8 +1296,9 @@ local function fall_move2(data)
             it = ac.item.create_item(it_name,point)
         end
         
-        if it.owner_ship then 
+        if owner_ship then 
             it.owner_ship = ac.player(owner_ship_id)
+            print(it.name,it.owner_ship)
         end  
     end
 end    

@@ -8,9 +8,10 @@ end
 local function clear_item_bug(u)
     if not u  then  return end
     if not u.item_list then return end
-    for i=1,18 do 
-        local handle = u.item_list[i] and u.item_list[i].handle
-        if not handle then 
+    for i=1,6 do 
+        local it = u.item_list[i] 
+        if it and not it.handle  then 
+            print('检测物品bug',u:get_name(),it,it.name,it.slot_id)
             u.item_list[i] = nil 
         end    
     end

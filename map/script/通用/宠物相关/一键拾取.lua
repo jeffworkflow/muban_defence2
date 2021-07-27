@@ -64,7 +64,16 @@ function mt:on_cast_shot()
 								p:sendMsg('物品栏已满',5)
 								flag = true
 							end
-							v:set_point(hero:get_point())
+							local it = v
+							if it.owner_ship and type(it.owner_ship)=='table'  then
+								if it.owner_ship:get('物品开关') <=0 then 
+									if it.owner_ship == p then 
+										it:set_point(hero:get_point())
+									end
+								end
+							else
+								it:set_point(hero:get_point())
+							end
 						end
 					end    
 				end    
